@@ -101,6 +101,7 @@ body.dark .dark-toggle{background:var(--gray-bg) !important;border-color:var(--b
 body.dark .tab-btn.active{background:var(--surface) !important;border-color:var(--border) !important;color:var(--text) !important;}
 body.dark .tab-bar{background:var(--gray-bg) !important;}
 body.dark .run-btn{background:#7c8594 !important;}
+body.dark .run-btn:hover:not(:disabled){background:#1a3a7a !important;box-shadow:0 0 0 3px rgba(120,180,240,0.35) !important}
 body.dark .logo-icon{background:var(--green2-bg) !important;}
 body.dark .logo-icon svg{stroke:#8cc244 !important;}
 body.dark .sens-table td{border-color:var(--border) !important;}
@@ -198,10 +199,13 @@ input,select,button{font-family:inherit;font-size:14px}
 select.sb-select{width:100%;padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);
   background:#fafafa;color:var(--text);appearance:none;cursor:pointer;font-size:12px}
 .run-btn{width:100%;padding:9px;background:#6b7280;color:#fff;border:none;
-  border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;transition:opacity .15s;
+  border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;transition:background .18s,box-shadow .18s;
   display:flex;align-items:center;justify-content:center;gap:6px}
-.run-btn:hover{opacity:.85}
+.run-btn:hover:not(:disabled){background:#1a3a7a;box-shadow:0 0 0 3px rgba(26,58,122,0.35)}
 .run-btn:disabled{opacity:.4;cursor:not-allowed}
+/* Welcome step card hover */
+.gs-step-card{cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+.gs-step-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.18)}
 .custom-badge{background:var(--amber-bg);color:var(--amber-dark);
   font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;
   border:1px solid #FAC775;display:none}
@@ -1276,19 +1280,19 @@ body.dark .doc-card-green{background:var(--green2-bg) !important}
     </div>
 
     <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;justify-content:center">
-      <div id="gsCard1" onclick="highlightSearch()" style="padding:10px 16px;background:var(--green2-bg);border:1px solid #C0DD97;transition:border-color .15s,box-shadow .15s;
+      <div id="gsCard1" class="gs-step-card" onclick="highlightSearch()" style="padding:10px 16px;background:var(--green2-bg);border:1px solid #C0DD97;transition:border-color .15s,box-shadow .15s,transform .15s;
         border-radius:var(--radius);font-size:12px;color:var(--green2-dark);text-align:left;
         max-width:200px;cursor:pointer">
         <div style="font-weight:700;margin-bottom:4px;font-size:15px">1. Wert suchen</div>
         <div style="color:var(--text-3)">Ticker, Name oder WKN in die Suche eingeben</div>
       </div>
-      <div id="gsCard2" onclick="highlightPresets()" style="padding:10px 16px;background:var(--blue-bg);border:1px solid var(--blue-mid);transition:border-color .15s,box-shadow .15s;
+      <div id="gsCard2" class="gs-step-card" onclick="highlightPresets()" style="padding:10px 16px;background:var(--blue-bg);border:1px solid var(--blue-mid);transition:border-color .15s,box-shadow .15s,transform .15s;
         border-radius:var(--radius);font-size:12px;color:var(--blue-dark);text-align:left;
         max-width:200px;cursor:pointer">
         <div style="font-weight:700;margin-bottom:4px;font-size:15px">2. Vorlage wählen</div>
         <div style="color:var(--text-3)">Branche auswählen für passende Standardwerte</div>
       </div>
-      <div id="gsCard3" onclick="highlightRunBtn()" style="padding:10px 16px;background:var(--gray-bg);border:1px solid var(--border);transition:border-color .15s,box-shadow .15s;
+      <div id="gsCard3" class="gs-step-card" onclick="highlightRunBtn()" style="padding:10px 16px;background:var(--gray-bg);border:1px solid var(--border);transition:border-color .15s,box-shadow .15s,transform .15s;
         border-radius:var(--radius);font-size:12px;color:var(--text);text-align:left;
         max-width:200px;cursor:pointer">
         <div style="font-weight:700;margin-bottom:4px;font-size:15px">3. Starten</div>
@@ -1556,7 +1560,7 @@ body.dark .doc-card-green{background:var(--green2-bg) !important}
 </main>
 
 <script>
-const API=window.location.origin==='http://localhost:8000'?'http://localhost:8000':window.location.origin;
+const API='http://localhost:8000';
 let state={ticker:null,currency:'USD',period:'10y',data:null};
 let mainChart=null,growthChart=null,finChart=null;
 let advOpen=false;
