@@ -12,8 +12,6 @@ Neu in v3.1:
 
 import math
 import os
-import time
-import random
 from typing import Optional
 import requests as req_lib
 from requests.adapters import HTTPAdapter
@@ -40,56 +38,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# ── Yahoo Finance Session mit Browser-Headers ──────────────────────────────
-# Cloud-Server-IPs werden von Yahoo häufig geblockt — ein realistischer
-# User-Agent und eine persistente Session umgehen das meistens.
-
-_YF_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Accept": "application/json, text/plain, */*",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Referer": "https://finance.yahoo.com/",
-    "Origin": "https://finance.yahoo.com",
-}
-
-def _make_yf_session():
-    s = req_lib.Session()
-    s.headers.update(_YF_HEADERS)
-    adapter = HTTPAdapter(max_retries=3)
-    s.mount("https://", adapter)
-    s.mount("http://",  adapter)
-    return s
-
-def _yf_ticker(symbol: str) -> yf.Ticker:
-    """Create a yfinance Ticker with a browser-like session + retry."""
-    return yf.Ticker(symbol, session=_make_yf_session())
-
-def _fetch_info_with_retry(symbol: str, retries: int = 3) -> dict:
-    """Fetch ticker.info with exponential backoff on empty responses."""
-    for attempt in range(retries):
-        try:
-            tk   = _yf_ticker(symbol)
-            info = tk.info or {}
-            # Yahoo sometimes returns {"trailingPegRatio": null} only — check for price
-            if info.get("currentPrice") or info.get("regularMarketPrice") or info.get("previousClose"):
-                return info
-            # Empty or stub response — wait and retry
-            if attempt < retries - 1:
-                time.sleep(1.5 * (attempt + 1) + random.uniform(0, 0.5))
-        except Exception:
-            if attempt < retries - 1:
-                time.sleep(1.5 * (attempt + 1))
-    # Last attempt — return whatever we get
-    try:
-        return _yf_ticker(symbol).info or {}
-    except Exception:
-        return {}
 
 # -- Frontend ausliefern --------------------------------------------------
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend")
@@ -128,7 +76,7 @@ def _fx(target: str, source: str = "USD") -> float:
     if target == source:
         return 1.0
     try:
-        tk = _yf_ticker("EURUSD=X")
+        tk = yf.Ticker("EURUSD=X")
         h  = tk.history(period="2d")
         if not h.empty:
             rate = float(h["Close"].iloc[-1])
@@ -151,7 +99,7 @@ def _get_identifiers(ticker: str) -> dict:
     Returns dict with keys: isin, wkn (wkn may be None for non-DE securities).
     """
     try:
-        tk   = _yf_ticker(ticker)
+        tk   = yf.Ticker(ticker)
         info = tk.info or {}
 
         # ISIN from yfinance
@@ -191,19 +139,6 @@ def _get_identifiers(ticker: str) -> dict:
         return {"isin": None, "wkn": None}
 
 
-def _safe_currency(tk) -> str:
-    """Extract currency from a yfinance Ticker without making a network call.
-    Tries fast_info (cached object), falls back to 'USD'."""
-    try:
-        fi = tk.fast_info
-        # fast_info is an object with attributes, not a dict
-        v = getattr(fi, "currency", None)
-        if v and isinstance(v, str) and len(v) == 3:
-            return v.upper()
-    except Exception:
-        pass
-    return "USD"
-
 
 def _find_row(df, candidates):
     if df is None or df.empty:
@@ -233,7 +168,7 @@ def _to_daily(pts: pd.Series, target_dates: pd.DatetimeIndex):
 
 def _fv_history(ticker, price_dates, target_pe, target_ev_ebitda,
                 shares, debt, cash, fx):
-    tk    = _yf_ticker(ticker)
+    tk    = yf.Ticker(ticker)
     dates = pd.DatetimeIndex(price_dates)
 
     try:
@@ -445,7 +380,7 @@ def _commodity_valuation(ticker: str, currency: str) -> dict:
     3. Seasonal / historical percentile
     4. Backwardation / Contango signal for futures
     """
-    tk   = _yf_ticker(ticker)
+    tk   = yf.Ticker(ticker)
     info = tk.info or {}
     fx   = _fx(currency, info.get("currency", "USD"))
 
@@ -614,7 +549,7 @@ def _crypto_valuation(ticker: str, currency: str) -> dict:
     Returns structured dict matching standard valuation format.
     """
     import math as _math
-    tk   = _yf_ticker(ticker)
+    tk   = yf.Ticker(ticker)
     info = tk.info or {}
     fx   = _fx(currency, info.get("currency", "USD"))
 
@@ -799,6 +734,7 @@ def search(q: str):
                     })
         return results[:10]
     except Exception as e:
+        import traceback; traceback.print_exc()
         raise HTTPException(500, str(e))
 
 
@@ -848,7 +784,7 @@ def valuation(
         # 0. Detect crypto — route to separate handler
         _pre_info = {}
         try:
-            _pre_tk = _yf_ticker(ticker.upper())
+            _pre_tk = yf.Ticker(ticker.upper())
             _pre_info = _pre_tk.info or {}
         except Exception:
             pass
@@ -1055,20 +991,20 @@ def valuation(
 @app.get("/history/{ticker}")
 def history(ticker: str, period: str = "10y", currency: str = "USD"):
     try:
-        tk   = _yf_ticker(ticker.upper())
+        tk   = yf.Ticker(ticker.upper())
         hist = tk.history(period=period)
         if hist.empty:
             raise HTTPException(404, "No price data")
         hist         = hist.reset_index()
-        hist["Date"] = pd.to_datetime(hist["Date"]).dt.tz_localize(None)
-        src_currency = _safe_currency(tk)
-        fx_rate      = _fx(currency, src_currency)
+        hist["Date"] = pd.to_datetime(hist["Date"]).apply(lambda x: x.replace(tzinfo=None) if x.tzinfo else x)
+        fx_rate = _fx(currency)
         prices       = [round(float(c) * fx_rate, 4) for c in hist["Close"]]
         dates        = [str(d.date()) for d in hist["Date"]]
         return {"dates": dates, "prices": prices, "fx_rate": fx_rate}
     except HTTPException:
         raise
     except Exception as e:
+        import traceback; traceback.print_exc()
         raise HTTPException(500, str(e))
 
 
@@ -1078,15 +1014,14 @@ def fvhistory(ticker: str, period: str = "10y", currency: str = "USD",
               shares: float = 1e9, debt: float = 0, cash: float = 0,
               bear_fv: float = 0, bull_fv: float = 0):
     try:
-        tk   = _yf_ticker(ticker.upper())
+        tk   = yf.Ticker(ticker.upper())
         hist = tk.history(period=period)
         if hist.empty:
             return {"dates": [], "fv": [], "method": "no data",
                     "bear_band": [], "bull_band": [], "median_pe_fv": []}
         hist         = hist.reset_index()
-        hist["Date"] = pd.to_datetime(hist["Date"]).dt.tz_localize(None)
-        src_currency = _safe_currency(tk)
-        fx_rate      = _fx(currency, src_currency)
+        hist["Date"] = pd.to_datetime(hist["Date"]).apply(lambda x: x.replace(tzinfo=None) if x.tzinfo else x)
+        fx_rate = _fx(currency)
         dates_idx    = pd.DatetimeIndex(hist["Date"])
         fv_vals, method = _fv_history(
             ticker, dates_idx, target_pe, target_ev_ebitda,
@@ -1150,6 +1085,7 @@ def fvhistory(ticker: str, period: str = "10y", currency: str = "USD",
             "median_pe_fv": median_pe_fv,
         }
     except Exception as e:
+        import traceback; traceback.print_exc()
         raise HTTPException(500, str(e))
 
 @app.get("/financials/{ticker}")
@@ -1160,8 +1096,8 @@ def financials(ticker: str, currency: str = "USD"):
     Values are returned in Billions of the requested currency.
     """
     try:
-        tk   = _yf_ticker(ticker.upper())
-        fx   = _fx(currency, _safe_currency(tk))
+        tk   = yf.Ticker(ticker.upper())
+        fx   = _fx(currency)
 
         inc = tk.income_stmt   # annual, columns = dates newest→oldest
         if inc is None or inc.empty:
@@ -1211,6 +1147,7 @@ def financials(ticker: str, currency: str = "USD"):
             "unit":       "Mrd.",
         }
     except Exception as e:
+        import traceback; traceback.print_exc()
         raise HTTPException(500, str(e))
 
 
@@ -1223,8 +1160,9 @@ def quality_check(ticker: str, currency: str = "USD"):
     """
     import math as _math
     try:
-        tk   = _yf_ticker(ticker.upper())
-        info = _fetch_info_with_retry(ticker.upper())
+        tk   = yf.Ticker(ticker.upper())
+        tk2  = yf.Ticker(ticker.upper())
+        info = tk2.info or {}
         fx   = _fx(currency, info.get("currency", "USD"))
 
         inc  = tk.income_stmt          # annual, newest→oldest
@@ -1409,4 +1347,5 @@ def quality_check(ticker: str, currency: str = "USD"):
             }
         }
     except Exception as e:
+        import traceback; traceback.print_exc()
         raise HTTPException(500, str(e))

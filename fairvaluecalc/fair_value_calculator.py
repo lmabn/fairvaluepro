@@ -298,34 +298,8 @@ class StockData:
     # ── yfinance ────────────────────────────────────────────────
 
     def _fetch_yfinance(self):
-        import time, random
-        try:
-            import requests as _req
-            from requests.adapters import HTTPAdapter
-            _s = _req.Session()
-            _s.headers.update({
-                "User-Agent": (
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                "Accept": "application/json, text/plain, */*",
-                "Accept-Language": "en-US,en;q=0.9",
-                "Referer": "https://finance.yahoo.com/",
-            })
-            _s.mount("https://", HTTPAdapter(max_retries=3))
-            tk = yf.Ticker(self.ticker, session=_s)
-        except Exception:
-            tk = yf.Ticker(self.ticker)
-
-        # Retry info fetch up to 3x on empty response
-        info = {}
-        for _attempt in range(3):
-            info = tk.info or {}
-            if info.get("currentPrice") or info.get("regularMarketPrice") or info.get("previousClose"):
-                break
-            if _attempt < 2:
-                time.sleep(1.5 * (_attempt + 1) + random.uniform(0, 0.5))
+        tk   = yf.Ticker(self.ticker)
+        info = tk.info or {}
 
         self.company_name    = info.get("longName") or info.get("shortName", self.ticker)
         self.currency        = info.get("currency", "USD")
