@@ -1560,7 +1560,7 @@ body.dark .doc-card-green{background:var(--green2-bg) !important}
 </main>
 
 <script>
-const API='http://localhost:8000';
+const API=window.location.origin==='http://localhost:8000'?'http://localhost:8000':window.location.origin;
 let state={ticker:null,currency:'USD',period:'10y',data:null};
 let mainChart=null,growthChart=null,finChart=null;
 let advOpen=false;
