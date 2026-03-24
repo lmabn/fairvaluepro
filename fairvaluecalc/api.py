@@ -191,6 +191,20 @@ def _get_identifiers(ticker: str) -> dict:
         return {"isin": None, "wkn": None}
 
 
+def _safe_currency(tk) -> str:
+    """Extract currency from a yfinance Ticker without making a network call.
+    Tries fast_info (cached object), falls back to 'USD'."""
+    try:
+        fi = tk.fast_info
+        # fast_info is an object with attributes, not a dict
+        v = getattr(fi, "currency", None)
+        if v and isinstance(v, str) and len(v) == 3:
+            return v.upper()
+    except Exception:
+        pass
+    return "USD"
+
+
 def _find_row(df, candidates):
     if df is None or df.empty:
         return None
@@ -1047,11 +1061,7 @@ def history(ticker: str, period: str = "10y", currency: str = "USD"):
             raise HTTPException(404, "No price data")
         hist         = hist.reset_index()
         hist["Date"] = pd.to_datetime(hist["Date"]).dt.tz_localize(None)
-        # Avoid second tk.info call — derive currency from fast_info if available
-        try:
-            src_currency = tk.fast_info.get("currency", "USD") if hasattr(tk, "fast_info") else "USD"
-        except Exception:
-            src_currency = "USD"
+        src_currency = _safe_currency(tk)
         fx_rate      = _fx(currency, src_currency)
         prices       = [round(float(c) * fx_rate, 4) for c in hist["Close"]]
         dates        = [str(d.date()) for d in hist["Date"]]
@@ -1075,11 +1085,7 @@ def fvhistory(ticker: str, period: str = "10y", currency: str = "USD",
                     "bear_band": [], "bull_band": [], "median_pe_fv": []}
         hist         = hist.reset_index()
         hist["Date"] = pd.to_datetime(hist["Date"]).dt.tz_localize(None)
-        # Use fast_info to avoid extra .info call
-        try:
-            src_currency = tk.fast_info.get("currency", "USD") if hasattr(tk, "fast_info") else "USD"
-        except Exception:
-            src_currency = "USD"
+        src_currency = _safe_currency(tk)
         fx_rate      = _fx(currency, src_currency)
         dates_idx    = pd.DatetimeIndex(hist["Date"])
         fv_vals, method = _fv_history(
@@ -1155,11 +1161,7 @@ def financials(ticker: str, currency: str = "USD"):
     """
     try:
         tk   = _yf_ticker(ticker.upper())
-        try:
-            src_cur = tk.fast_info.get("currency", "USD") if hasattr(tk, "fast_info") else "USD"
-        except Exception:
-            src_cur = "USD"
-        fx   = _fx(currency, src_cur)
+        fx   = _fx(currency, _safe_currency(tk))
 
         inc = tk.income_stmt   # annual, columns = dates newest→oldest
         if inc is None or inc.empty:
