@@ -1047,7 +1047,12 @@ def history(ticker: str, period: str = "10y", currency: str = "USD"):
             raise HTTPException(404, "No price data")
         hist         = hist.reset_index()
         hist["Date"] = pd.to_datetime(hist["Date"]).dt.tz_localize(None)
-        fx_rate      = _fx(currency, tk.info.get("currency", "USD"))
+        # Avoid second tk.info call — derive currency from fast_info if available
+        try:
+            src_currency = tk.fast_info.get("currency", "USD") if hasattr(tk, "fast_info") else "USD"
+        except Exception:
+            src_currency = "USD"
+        fx_rate      = _fx(currency, src_currency)
         prices       = [round(float(c) * fx_rate, 4) for c in hist["Close"]]
         dates        = [str(d.date()) for d in hist["Date"]]
         return {"dates": dates, "prices": prices, "fx_rate": fx_rate}
@@ -1060,15 +1065,21 @@ def history(ticker: str, period: str = "10y", currency: str = "USD"):
 @app.get("/fvhistory/{ticker}")
 def fvhistory(ticker: str, period: str = "10y", currency: str = "USD",
               target_pe: float = 22.0, target_ev_ebitda: float = 14.0,
-              shares: float = 1e9, debt: float = 0, cash: float = 0):
+              shares: float = 1e9, debt: float = 0, cash: float = 0,
+              bear_fv: float = 0, bull_fv: float = 0):
     try:
         tk   = _yf_ticker(ticker.upper())
         hist = tk.history(period=period)
         if hist.empty:
-            return {"dates": [], "fv": [], "method": "no data"}
+            return {"dates": [], "fv": [], "method": "no data",
+                    "bear_band": [], "bull_band": [], "median_pe_fv": []}
         hist         = hist.reset_index()
         hist["Date"] = pd.to_datetime(hist["Date"]).dt.tz_localize(None)
-        src_currency = tk.info.get("currency", "USD")
+        # Use fast_info to avoid extra .info call
+        try:
+            src_currency = tk.fast_info.get("currency", "USD") if hasattr(tk, "fast_info") else "USD"
+        except Exception:
+            src_currency = "USD"
         fx_rate      = _fx(currency, src_currency)
         dates_idx    = pd.DatetimeIndex(hist["Date"])
         fv_vals, method = _fv_history(
@@ -1076,15 +1087,62 @@ def fvhistory(ticker: str, period: str = "10y", currency: str = "USD",
             shares, debt, cash, fx_rate,
         )
         dates = [str(d.date()) for d in hist["Date"]]
-        if fv_vals is not None:
-            fv_clean = [
+
+        def _clean(vals):
+            if vals is None:
+                return [None] * len(dates)
+            return [
                 round(float(v), 4)
                 if v is not None and not math.isnan(float(v)) else None
-                for v in fv_vals
+                for v in vals
             ]
-        else:
-            fv_clean = [None] * len(dates)
-        return {"dates": dates, "fv": fv_clean, "method": method}
+
+        fv_clean = _clean(fv_vals)
+
+        # Bear/Bull band
+        bear_band = [round(bear_fv * fx_rate, 4)] * len(dates) if bear_fv else []
+        bull_band = [round(bull_fv * fx_rate, 4)] * len(dates) if bull_fv else []
+
+        # Median-PE historical fair value line
+        median_pe_fv = []
+        try:
+            qi   = tk.quarterly_income_stmt
+            ni_r = _find_row(qi, ["Net Income", "Net Income Common Stockholders"])
+            if ni_r is not None and shares > 0:
+                t4    = ni_r.sort_index().rolling(4, min_periods=4).sum().dropna()
+                eps_q = (t4 / shares)[t4 > 0]
+                eps_q.index = pd.to_datetime(eps_q.index)
+                price_s = hist.set_index("Date")["Close"]
+                eps_daily = _to_daily(eps_q, dates_idx)
+                if eps_daily is not None:
+                    prices_arr = price_s.values
+                    eps_arr    = eps_daily.values
+                    pe_arr     = np.where(
+                        (eps_arr > 0) & (prices_arr > 0),
+                        prices_arr / eps_arr, np.nan
+                    )
+                    pe_series = pd.Series(pe_arr)
+                    roll_med  = pe_series.rolling(252 * 5, min_periods=252).median()
+                    med_pe_fv = roll_med * eps_daily.values
+                    med_pe_fv = np.where(
+                        (roll_med > 5) & (roll_med < 200) & (eps_daily.values > 0),
+                        med_pe_fv * fx_rate, np.nan
+                    )
+                    median_pe_fv = [
+                        round(float(v), 4) if not math.isnan(v) else None
+                        for v in med_pe_fv
+                    ]
+        except Exception:
+            median_pe_fv = []
+
+        return {
+            "dates":        dates,
+            "fv":           fv_clean,
+            "method":       method,
+            "bear_band":    bear_band,
+            "bull_band":    bull_band,
+            "median_pe_fv": median_pe_fv,
+        }
     except Exception as e:
         raise HTTPException(500, str(e))
 
@@ -1097,8 +1155,11 @@ def financials(ticker: str, currency: str = "USD"):
     """
     try:
         tk   = _yf_ticker(ticker.upper())
-        info = tk.info or {}
-        fx   = _fx(currency, info.get("currency", "USD"))
+        try:
+            src_cur = tk.fast_info.get("currency", "USD") if hasattr(tk, "fast_info") else "USD"
+        except Exception:
+            src_cur = "USD"
+        fx   = _fx(currency, src_cur)
 
         inc = tk.income_stmt   # annual, columns = dates newest→oldest
         if inc is None or inc.empty:
@@ -1161,7 +1222,7 @@ def quality_check(ticker: str, currency: str = "USD"):
     import math as _math
     try:
         tk   = _yf_ticker(ticker.upper())
-        info = tk.info or {}
+        info = _fetch_info_with_retry(ticker.upper())
         fx   = _fx(currency, info.get("currency", "USD"))
 
         inc  = tk.income_stmt          # annual, newest→oldest
