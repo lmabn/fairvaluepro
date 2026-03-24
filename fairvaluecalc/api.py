@@ -12,6 +12,8 @@ Neu in v3.1:
 
 import math
 import os
+import time
+import random
 from typing import Optional
 import requests as req_lib
 from requests.adapters import HTTPAdapter
@@ -38,6 +40,28 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── Versions-erkennender yfinance Ticker ──────────────────────────────────
+# Neue yfinance (>= 0.2.50) lehnt requests.Session ab.
+# Alte yfinance (auf Render) braucht Session gegen Cloud-IP-Blocking.
+# try/except erkennt automatisch welche Version installiert ist.
+
+def _yf_ticker(symbol: str) -> yf.Ticker:
+    try:
+        s = req_lib.Session()
+        s.headers.update({
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            ),
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "https://finance.yahoo.com/",
+        })
+        s.mount("https://", HTTPAdapter(max_retries=2))
+        return yf.Ticker(symbol, session=s)
+    except Exception:
+        return yf.Ticker(symbol)
 
 # -- Frontend ausliefern --------------------------------------------------
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend")
@@ -76,7 +100,7 @@ def _fx(target: str, source: str = "USD") -> float:
     if target == source:
         return 1.0
     try:
-        tk = yf.Ticker("EURUSD=X")
+        tk = _yf_ticker("EURUSD=X")
         h  = tk.history(period="2d")
         if not h.empty:
             rate = float(h["Close"].iloc[-1])
@@ -99,7 +123,7 @@ def _get_identifiers(ticker: str) -> dict:
     Returns dict with keys: isin, wkn (wkn may be None for non-DE securities).
     """
     try:
-        tk   = yf.Ticker(ticker)
+        tk   = _yf_ticker(ticker)
         info = tk.info or {}
 
         # ISIN from yfinance
@@ -168,7 +192,7 @@ def _to_daily(pts: pd.Series, target_dates: pd.DatetimeIndex):
 
 def _fv_history(ticker, price_dates, target_pe, target_ev_ebitda,
                 shares, debt, cash, fx):
-    tk    = yf.Ticker(ticker)
+    tk    = _yf_ticker(ticker)
     dates = pd.DatetimeIndex(price_dates)
 
     try:
@@ -323,6 +347,9 @@ def _build_response(d, dcf, rel, scenarios, roic, drivers, sens_df,
             "cash":        fv(d.cash),
             "fcf_margin":  _safe(d.fcf_margin),
             "rev_cagr":    _safe(d.revenue_cagr),
+            "fcf_yield":   _safe(getattr(d, "fcf_yield", None)),
+            "hist_pe_median": _safe(getattr(d, "hist_pe_median", None)),
+            "hist_pe_fv":     fv(getattr(d, "hist_pe_fv", None)),
         },
 
         "quality": {
@@ -380,7 +407,7 @@ def _commodity_valuation(ticker: str, currency: str) -> dict:
     3. Seasonal / historical percentile
     4. Backwardation / Contango signal for futures
     """
-    tk   = yf.Ticker(ticker)
+    tk   = _yf_ticker(ticker)
     info = tk.info or {}
     fx   = _fx(currency, info.get("currency", "USD"))
 
@@ -549,7 +576,7 @@ def _crypto_valuation(ticker: str, currency: str) -> dict:
     Returns structured dict matching standard valuation format.
     """
     import math as _math
-    tk   = yf.Ticker(ticker)
+    tk   = _yf_ticker(ticker)
     info = tk.info or {}
     fx   = _fx(currency, info.get("currency", "USD"))
 
@@ -784,7 +811,7 @@ def valuation(
         # 0. Detect crypto — route to separate handler
         _pre_info = {}
         try:
-            _pre_tk = yf.Ticker(ticker.upper())
+            _pre_tk = _yf_ticker(ticker.upper())
             _pre_info = _pre_tk.info or {}
         except Exception:
             pass
@@ -806,6 +833,49 @@ def valuation(
         fcf_norm, fcf_method   = data.compute_normalized_fcf()
         data.fcf_normalized    = fcf_norm
         data.fcf_norm_method   = fcf_method
+
+        # 3b. FCF-Yield berechnen (freier Cashflow / Marktkapitalisierung)
+        try:
+            _mcap = (data.current_price or 0) * (data.shares_outstanding or 0)
+            _fcf  = data.fcf_ttm or 0
+            data.fcf_yield = (_fcf / _mcap) if (_mcap > 0 and _fcf > 0) else None
+        except Exception:
+            data.fcf_yield = None
+
+        # 3c. Historisches 5J-Median-KGV
+        try:
+            _tk_hist = _yf_ticker(ticker.upper())
+            _hist_prices = _tk_hist.history(period="5y")["Close"]
+            _qi = _tk_hist.quarterly_income_stmt
+            _ni_r = _find_row(_qi, ["Net Income", "Net Income Common Stockholders"])
+            _sh = data.shares_outstanding or 1
+            if _ni_r is not None and _sh > 0 and not _hist_prices.empty:
+                _t4_ni = _ni_r.sort_index().rolling(4, min_periods=4).sum().dropna()
+                _eps_q = (_t4_ni / _sh)[_t4_ni > 0]
+                _eps_q.index = pd.to_datetime(_eps_q.index)
+                _dates_5y = pd.DatetimeIndex(
+                    [d.replace(tzinfo=None) if hasattr(d, 'tzinfo') and d.tzinfo else d
+                     for d in _hist_prices.index]
+                )
+                _eps_daily = _to_daily(_eps_q, _dates_5y)
+                if _eps_daily is not None:
+                    _prices_arr = _hist_prices.values
+                    _eps_arr = _eps_daily.values[:len(_prices_arr)]
+                    _valid = (_eps_arr > 0) & (_prices_arr[:len(_eps_arr)] > 0)
+                    _pe_hist = _prices_arr[:len(_eps_arr)][_valid] / _eps_arr[_valid]
+                    if len(_pe_hist) > 30:
+                        _pe_trim = _pe_hist[(_pe_hist > 5) & (_pe_hist < 200)]
+                        _med_pe = float(np.median(_pe_trim)) if len(_pe_trim) > 10 else None
+                        data.hist_pe_median = _med_pe
+                        data.hist_pe_fv = (_med_pe * data.eps_ttm) if (_med_pe and data.eps_ttm) else None
+                    else:
+                        data.hist_pe_median = None; data.hist_pe_fv = None
+                else:
+                    data.hist_pe_median = None; data.hist_pe_fv = None
+            else:
+                data.hist_pe_median = None; data.hist_pe_fv = None
+        except Exception:
+            data.hist_pe_median = None; data.hist_pe_fv = None
 
         # 4. WACC berechnen
         wacc_calc = WACCCalculator(data)
@@ -991,7 +1061,7 @@ def valuation(
 @app.get("/history/{ticker}")
 def history(ticker: str, period: str = "10y", currency: str = "USD"):
     try:
-        tk   = yf.Ticker(ticker.upper())
+        tk   = _yf_ticker(ticker.upper())
         hist = tk.history(period=period)
         if hist.empty:
             raise HTTPException(404, "No price data")
@@ -1014,7 +1084,7 @@ def fvhistory(ticker: str, period: str = "10y", currency: str = "USD",
               shares: float = 1e9, debt: float = 0, cash: float = 0,
               bear_fv: float = 0, bull_fv: float = 0):
     try:
-        tk   = yf.Ticker(ticker.upper())
+        tk   = _yf_ticker(ticker.upper())
         hist = tk.history(period=period)
         if hist.empty:
             return {"dates": [], "fv": [], "method": "no data",
@@ -1096,7 +1166,7 @@ def financials(ticker: str, currency: str = "USD"):
     Values are returned in Billions of the requested currency.
     """
     try:
-        tk   = yf.Ticker(ticker.upper())
+        tk   = _yf_ticker(ticker.upper())
         fx   = _fx(currency)
 
         inc = tk.income_stmt   # annual, columns = dates newest→oldest
@@ -1160,8 +1230,8 @@ def quality_check(ticker: str, currency: str = "USD"):
     """
     import math as _math
     try:
-        tk   = yf.Ticker(ticker.upper())
-        tk2  = yf.Ticker(ticker.upper())
+        tk   = _yf_ticker(ticker.upper())
+        tk2  = _yf_ticker(ticker.upper())
         info = tk2.info or {}
         fx   = _fx(currency, info.get("currency", "USD"))
 
