@@ -298,7 +298,27 @@ class StockData:
     # ── yfinance ────────────────────────────────────────────────
 
     def _fetch_yfinance(self):
-        tk   = yf.Ticker(self.ticker)
+        # Versions-erkennende Session: Browser-Header für Cloud-Server (Render),
+        # automatischer Fallback für neue yfinance-Versionen die requests.Session ablehnen
+        tk = None
+        try:
+            import requests as _req
+            from requests.adapters import HTTPAdapter as _HA
+            _s = _req.Session()
+            _s.headers.update({
+                "User-Agent": (
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                "Accept": "application/json, text/plain, */*",
+                "Referer": "https://finance.yahoo.com/",
+            })
+            _s.mount("https://", _HA(max_retries=2))
+            tk = yf.Ticker(self.ticker, session=_s)
+        except Exception:
+            tk = yf.Ticker(self.ticker)
+
         info = tk.info or {}
 
         self.company_name    = info.get("longName") or info.get("shortName", self.ticker)
