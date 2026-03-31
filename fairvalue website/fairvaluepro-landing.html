@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Value Pro — Aktien rational bewerten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Manrope:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:      #0a0f1a;
+    --bg2:     #0d1320;
+    --bg3:     #111827;
+    --bg4:     #16202e;
+    --neon:    #00ff87;
+    --neon-dim: rgba(0,255,135,0.10);
+    --neon-border: rgba(0,255,135,0.28);
+    --blue:    #4da8ff;
+    --blue-dim: rgba(77,168,255,0.10);
+    --blue-border: rgba(77,168,255,0.28);
+    --red:     #ff5370;
+    --text:    #d4e0f0;
+    --text-2:  #7a8fa8;
+    --text-3:  #3d5068;
+    --border:  rgba(255,255,255,0.06);
+    --border2: rgba(255,255,255,0.10);
+    --sans:    'Space Grotesk', system-ui, sans-serif;
+    --display: 'Manrope', system-ui, sans-serif;
+    --mono:    'JetBrains Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 58px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    background: rgba(10,15,26,0.90); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--text); }
+  .nav-logo .dot { color: var(--neon); }
+  nav a.cta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.45rem 1.2rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
+  nav a.cta:hover { background: var(--neon-dim); }
+
+  section { padding: 7rem 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .wide { max-width: 1120px; margin: 0 auto; }
+
+  .tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); margin-bottom: 1.4rem; }
+  .tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
+
+  /* HERO */
+  #hero { padding-top: 9rem; padding-bottom: 4rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero-glow { position: absolute; width: 700px; height: 500px; top: -100px; left: -150px; background: radial-gradient(ellipse, rgba(0,229,160,0.05) 0%, transparent 70%); pointer-events: none; }
+  .hero-glow2 { position: absolute; width: 500px; height: 400px; top: 0; right: -100px; background: radial-gradient(ellipse, rgba(59,158,255,0.05) 0%, transparent 70%); pointer-events: none; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-2); margin-bottom: 1.5rem; }
+  h1.hero-hl { font-family: var(--display); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.6rem; max-width: 780px; }
+  h1.hero-hl .n { color: var(--neon); }
+  h1.hero-hl .b { color: var(--blue); }
+  .hero-sub { font-size: 1.08rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .btn-neon { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 600; display: inline-block; transition: opacity 0.2s, transform 0.15s; }
+  .btn-neon:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-ghost { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+  .btn-ghost:hover { color: var(--blue); }
+
+  .ticker-wrap { margin-top: 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.65rem 0; overflow: hidden; position: relative; }
+  .ticker-wrap::before,.ticker-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
+  .ticker-wrap::before { left:0; background:linear-gradient(90deg,var(--bg),transparent); }
+  .ticker-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg),transparent); }
+  .ticker-inner { display:flex; gap:2.5rem; animation:tick 30s linear infinite; width:max-content; }
+  .ti { font-family:var(--mono); font-size:0.7rem; display:flex; align-items:center; gap:0.6rem; white-space:nowrap; }
+  .ti .s { color:var(--text); font-weight:500; }
+  .ti .v { color:var(--text-2); }
+  .ti .u { color:var(--neon); }
+  .ti .d { color:var(--red); }
+  @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* MANIFESTO */
+  #manifesto { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 6rem 2rem; }
+  .manifesto-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .manifesto-left h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .manifesto-left h2 .n { color: var(--neon); }
+  .manifesto-left h2 .b { color: var(--blue); }
+  .manifesto-left p { color: var(--text-2); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.75; }
+  .manifesto-left strong { color: var(--text); font-weight: 500; }
+  .stat-row { border-top: 1px solid var(--border); padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .stat-row:last-child { border-bottom: 1px solid var(--border); }
+  .stat-label { font-size: 0.88rem; color: var(--text-2); max-width: 240px; line-height: 1.4; }
+  .stat-val { font-family: var(--display); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+  .stat-val.n { color: var(--neon); }
+  .stat-val.b { color: var(--blue); }
+  .stat-val.r { color: var(--red); }
+  .stat-val.g { color: var(--text-2); }
+
+  /* PROBLEM ROWS */
+  #problem { border-bottom: 1px solid var(--border); }
+  .problem-intro { max-width: 680px; margin-bottom: 3.5rem; }
+  .problem-intro h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+  .problem-intro p { color: var(--text-2); font-size: 0.97rem; }
+  .problem-list { list-style: none; margin-bottom: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
+  .problem-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 0 2rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--border);
+    align-content: start;
+  }
+  .problem-row:nth-child(1),
+  .problem-row:nth-child(2) { border-top: 1px solid var(--border); }
+  .pr-num {
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em;
+    color: var(--text-3); padding-top: 0.22rem; align-self: start;
+  }
+  .pr-body h3 {
+    font-family: var(--display); font-size: 1.05rem; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--text); line-height: 1.3; margin-bottom: 0;
+  }
+  .pr-body h3 .accent-r { color: var(--red); }
+  .pr-body h3 .accent-b { color: var(--blue); }
+  .pr-body details { margin-top: 0; }
+  .pr-body details summary { border-bottom: none; padding: 0.35rem 0 0; width: auto; color: var(--text-3); font-size: 0.62rem; }
+  .pr-body details summary:hover { color: var(--text-2); }
+  .pr-body details .detail-body { padding-top: 0.7rem; }
+  .pr-body details .detail-body p { font-size: 0.88rem; }
+  .versus-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .versus-side { background: var(--bg2); padding: 2rem; }
+  .vs-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .versus-side.bad .vs-label { color: var(--red); }
+  .versus-side.good .vs-label { color: var(--neon); }
+  .vs-label::before { content: ''; display:block; width:8px; height:8px; border-radius:50%; }
+  .versus-side.bad .vs-label::before { background: var(--red); }
+  .versus-side.good .vs-label::before { background: var(--neon); }
+  .versus-side ul { list-style: none; }
+  .versus-side ul li { font-size: 0.87rem; color: var(--text-2); padding: 0.5rem 0 0.5rem 1.2rem; border-bottom: 1px solid var(--border); position: relative; line-height: 1.4; }
+  .versus-side ul li:last-child { border-bottom: none; }
+  .versus-side ul li::before { position:absolute; left:0; font-size:0.75rem; top:0.55rem; }
+  .versus-side.bad ul li::before { content:'✕'; color: var(--red); }
+  .versus-side.good ul li::before { content:'✓'; color: var(--neon); }
+
+  /* OUTPUTS */
+  #outputs { background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .outputs-header { max-width: 600px; margin-bottom: 3.5rem; }
+  .outputs-header h2 { font-family: var(--display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1rem; }
+  .outputs-header p { color: var(--text-2); font-size: 0.97rem; }
+  .outputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .output-card { border: 1px solid var(--border2); border-radius: 4px; padding: 2.2rem; background: var(--bg3); position: relative; overflow: hidden; }
+  .output-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .output-card.neon-card::before { background: linear-gradient(90deg, var(--neon), rgba(0,229,160,0)); }
+  .output-card.blue-card::before { background: linear-gradient(90deg, var(--blue), rgba(59,158,255,0)); }
+  .oc-icon { font-family: var(--mono); font-size: 1.4rem; margin-bottom: 1.2rem; display: block; }
+  .neon-card .oc-icon { color: var(--neon); }
+  .blue-card .oc-icon { color: var(--blue); }
+  .output-card h3 { font-family: var(--display); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+  .neon-card h3 { color: var(--neon); }
+  .blue-card h3 { color: var(--blue); }
+  .output-card p { color: var(--text-2); font-size: 0.9rem; line-height: 1.7; }
+  .oc-metrics { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .oc-metric { font-family: var(--mono); font-size: 0.72rem; display: flex; justify-content: space-between; padding: 0.45rem 0.8rem; border-radius: 3px; color: var(--text-2); }
+  .neon-card .oc-metric { background: var(--neon-dim); }
+  .blue-card .oc-metric { background: var(--blue-dim); }
+  .neon-card .oc-metric .mv { color: var(--neon); }
+  .blue-card .oc-metric .mv { color: var(--blue); }
+
+  /* HOW */
+  #how { border-bottom: 1px solid var(--border); }
+  .how-header { text-align: center; margin-bottom: 4rem; }
+  .how-header h2 { font-family: var(--display); font-size: clamp(1.8rem,4vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:0.8rem; }
+  .how-header p { color: var(--text-2); max-width: 560px; margin: 0 auto; }
+  .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 3rem; }
+  .how-step { background: var(--bg); padding: 2.5rem 2rem; text-align: center; }
+  .step-n { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; color: var(--text-3); margin-bottom: 1rem; }
+  .how-step h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+  .how-step p { font-size: 0.86rem; color: var(--text-2); line-height: 1.65; }
+
+  .philosophy-box { border: 1px solid var(--neon-border); border-radius: 4px; background: rgba(0,229,160,0.04); padding: 2.5rem; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; }
+  .ph-icon { font-family: var(--mono); font-size: 1.6rem; color: var(--neon); line-height: 1; padding-top: 2px; }
+  .philosophy-box h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; color: var(--neon); margin-bottom: 0.7rem; }
+  .philosophy-box p { font-size: 0.92rem; color: var(--text-2); line-height: 1.75; margin-bottom: 0.8rem; }
+  .philosophy-box p:last-of-type { margin-bottom: 0; }
+  .philosophy-box strong { color: var(--text); font-weight: 500; }
+
+  .formula { display: flex; align-items: center; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.8rem; padding: 1.5rem; background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; }
+  .formula-part { text-align: center; }
+  .fp-val { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.05em; padding: 0.5rem 1rem; border-radius: 3px; display: inline-block; }
+  .formula-part.m .fp-val { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
+  .formula-part.a .fp-val { background: var(--neon-dim); color: var(--neon); border: 1px solid var(--neon-border); }
+  .formula-part.r .fp-val { color: var(--text); border: 1px solid var(--border2); }
+  .fp-label { font-size: 0.62rem; color: var(--text-3); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--mono); }
+  .formula-op { font-family: var(--display); font-size: 1.4rem; color: var(--text-3); font-weight: 800; }
+
+  /* PRODUCT */
+  #product { background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .product-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
+  .product-text h2 { font-family:var(--display); font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:1.2rem; line-height:1.15; }
+  .product-text h2 .n { color: var(--neon); }
+  .product-text p { color: var(--text-2); font-size: 0.93rem; margin-bottom: 0.9rem; }
+
+  .terminal { background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; overflow: hidden; font-family: var(--mono); font-size: 0.73rem; }
+  .t-bar { background: var(--bg4); padding: 0.7rem 1rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+  .t-dots { display:flex; gap:6px; }
+  .t-dot { width:10px; height:10px; border-radius:50%; }
+  .t-dot.r { background:#ff5370; }
+  .t-dot.y { background:#ffc94a; }
+  .t-dot.g { background:var(--neon); }
+  .t-title { color: var(--text-2); font-size: 0.65rem; letter-spacing: 0.12em; }
+  .t-body { padding: 1.2rem; }
+  .t-input-row { display: flex; gap: 0.5rem; margin-bottom: 1.2rem; align-items: center; }
+  .t-prompt { color: var(--neon); }
+  .t-cursor { display: inline-block; width: 7px; height: 13px; background: var(--neon); animation: blink 1.1s step-end infinite; vertical-align: middle; margin-left: 2px; }
+  @keyframes blink { 50% { opacity:0; } }
+  .t-section-head { color: var(--text-3); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; margin: 1rem 0 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+  .t-row { display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); color: var(--text-2); }
+  .t-row .v { color: var(--text); }
+  .t-row .v.n { color: var(--neon); }
+  .t-row .v.b { color: var(--blue); }
+  .t-row .v.r { color: var(--red); }
+  .t-quality { margin-top:0.5rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+  .t-q-bar { height: 4px; border-radius: 2px; background: var(--border2); }
+  .t-q-bar.filled { background: var(--neon); }
+  .t-verdict { margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .t-v-box { padding: 0.8rem; border-radius: 3px; text-align: center; }
+  .t-v-box.neon { background: var(--neon-dim); border: 1px solid var(--neon-border); }
+  .t-v-box.blue { background: var(--blue-dim); border: 1px solid var(--blue-border); }
+  .vl { font-size: 0.58rem; letter-spacing: 0.1em; text-transform:uppercase; color: var(--text-2); }
+  .vv { font-size: 0.9rem; font-weight: 500; margin-top: 0.2rem; }
+  .t-v-box.neon .vv { color: var(--neon); }
+  .t-v-box.blue .vv { color: var(--blue); }
+
+  /* FEATURES */
+  #features { border-bottom: 1px solid var(--border); }
+  .feat-header { max-width: 600px; margin-bottom: 3.5rem; }
+  .feat-header h2 { font-family:var(--display); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:0.8rem; }
+  .feat-header p { color: var(--text-2); }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .feat-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
+  .feat-card:hover { background: var(--bg3); }
+  .feat-icon { font-family: var(--mono); font-size: 0.8rem; color: var(--neon); border: 1px solid var(--neon-border); display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 3px; margin-bottom: 1.2rem; }
+  .feat-card h3 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
+  .feat-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
+
+  /* SOCIAL */
+  #social { background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .test-card { background: var(--bg2); padding: 2rem; }
+  .test-stars { color: var(--neon); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .test-quote { font-size: 0.93rem; color: var(--text); line-height: 1.7; margin-bottom: 1.3rem; font-style: italic; }
+  .test-author { font-family: var(--mono); font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.05em; }
+  .test-author span { color: var(--text-3); display: block; margin-top: 0.2rem; }
+
+  /* CTA */
+  #cta { text-align: center; position: relative; overflow: hidden; }
+  #cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 400px; background: radial-gradient(ellipse at 50% 100%, rgba(0,229,160,0.06), transparent 70%); pointer-events: none; }
+  #cta::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse at 50% 100%, rgba(59,158,255,0.04), transparent 70%); pointer-events: none; }
+  .cta-badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.35rem 1.1rem; border-radius: 50px; margin-bottom: 2rem; }
+  #cta h2 { font-family: var(--display); font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; max-width: 720px; margin: 0 auto 1.5rem; }
+  #cta h2 .n { color: var(--neon); }
+  #cta h2 .b { color: var(--blue); }
+  #cta .sub { color: var(--text-2); max-width: 480px; margin: 0 auto 2.5rem; font-size: 0.95rem; }
+  .cta-stack { display:flex; flex-direction:column; align-items:center; gap:0.8rem; }
+  .cta-note { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family:var(--display); font-size:0.9rem; font-weight:800; color:var(--text-2); }
+  .footer-logo .dot { color:var(--neon); }
+  footer p { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); max-width:400px; }
+
+  .fade { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease, transform 0.65s ease; }
+  .fade.in { opacity:1; transform:translateY(0); }
+
+  /* ACCORDION */
+  details { margin-top: 1rem; }
+  details summary {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-2); cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border); width: 100%;
+    transition: color 0.2s;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before { content: '+'; font-size: 1rem; color: var(--neon); line-height: 1; transition: transform 0.2s; display: inline-block; width: 14px; }
+  details[open] summary::before { transform: rotate(45deg); }
+  details summary:hover { color: var(--text); }
+  details .detail-body { padding-top: 1.2rem; }
+  details .detail-body p { color: var(--text-2); font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.8rem; }
+  details .detail-body p:last-child { margin-bottom: 0; }
+  details .detail-body strong { color: var(--text); font-weight: 500; }
+
+  @media(max-width:720px){
+    .manifesto-layout,.product-layout { grid-template-columns:1fr; gap:2.5rem; }
+    .how-steps { grid-template-columns:1fr; }
+    .outputs-grid,.versus-bar { grid-template-columns:1fr; }
+    .philosophy-box { grid-template-columns:1fr; gap:1rem; }
+    .problem-list { grid-template-columns: 1fr; }
+    .problem-row:nth-child(2) { border-top: none; }
+    nav a.cta { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Fair Value Pro<span class="dot">.</span></div>
+  <a href="#cta" class="cta">Jetzt testen</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-eyebrow fade in" style="text-align:center; justify-content:center;">Aktienanalyse · Fundamental · Transparent</div>
+    <h1 class="hero-hl fade in" style="text-align:center; max-width:100%;">
+      Fundamentalanalyse. <span class="n">Für alle.</span>
+    </h1>
+    <p class="hero-sub fade in" style="text-align:center; margin-left:auto; margin-right:auto;">
+      Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, ohne Umwege.
+    </p>
+    <div class="hero-btns fade in" style="justify-content:center;">
+      <a href="#cta" class="btn-neon">Kostenlos testen →</a>
+      <a href="#manifesto" class="btn-ghost">Warum das wichtig ist</a>
+    </div>
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker-inner" id="ticker"></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="container">
+    <div class="manifesto-layout">
+      <div class="manifesto-left fade">
+        <div class="tag">Direktanlage in Aktien</div>
+        <h2>Was ist eine Aktie<br><span class="n">wirklich</span> <span class="b">wert?</span></h2>
+        <p style="color:var(--text-2); font-size:0.97rem; line-height:1.75;">
+          Direktinvestitionen in Einzelaktien ermöglichen maximale Kostenkontrolle und Transparenz — ohne Zwischenhändler, die an der Rendite mitverdienen.
+        </p>
+        <details>
+          <summary>Warum das relevant ist</summary>
+          <div class="detail-body">
+            <p>Verwaltungsgebühren klingen gering, wirken aber über Jahrzehnte als stiller Renditefresser. 1,5 % p.a. klingen harmlos — über 30 Jahre reduzieren sie das Endvermögen um rund ein Drittel.</p>
+            <p>Dazu kommt: Die meisten aktiv verwalteten Fonds schaffen es langfristig nicht, ihren Vergleichsindex nach Kosten zu übertreffen. Das ist keine Meinung, sondern eine empirisch gut belegte Beobachtung.</p>
+            <p>Wer selbst anlegt, trägt die volle Verantwortung — und hat damit auch die volle Kontrolle. <strong>Dafür braucht es Wissen, Kalkulation und fundierte Analyse.</strong> Das Wissen bringst du mit — den Rest übernimmt Fair Value Pro.</p>
+          </div>
+        </details>
+      </div>
+      <div class="manifesto-right fade">
+        <div class="stat-row">
+          <span class="stat-label">Durchschnittliche jährliche Rendite des S&P 500 (letzte 30 Jahre)</span>
+          <span class="stat-val n">~10 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Rendite nach typischen Fondsgebühren (1,5 % p.a.)</span>
+          <span class="stat-val g">~8,4 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Kapitalverlust durch Gebühren über 30 Jahre</span>
+          <span class="stat-val r">≈ 30 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Aktiv verwaltete Fonds, die den Index langfristig verfehlen</span>
+          <span class="stat-val b">~90 %</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-intro fade">
+      <div class="tag">Das Problem</div>
+      <h2>Wer rechnet,<br>kauft besser.</h2>
+      <p>Vier Hürden, die fundierte Anlageentscheidungen unnötig schwer machen.</p>
+    </div>
+    <ul class="problem-list">
+      <li class="problem-row fade">
+        <span class="pr-num">01</span>
+        <div class="pr-body">
+          <h3>Kein Gefühl für den <span class="accent-r">fairen Wert</span></h3>
+          <details><summary>Mehr</summary><div class="detail-body"><p>Eine Aktie bei 100 € — günstig oder überteuert? Ohne Bewertungsmodell ist das reines Raten. Analysten-Kursziele sind interessengeleitet und selten unabhängig.</p></div></details>
+        </div>
+      </li>
+      <li class="problem-row fade">
+        <span class="pr-num">02</span>
+        <div class="pr-body">
+          <h3>Manuelle Berechnung: <span class="accent-r">zu komplex</span></h3>
+          <details><summary>Mehr</summary><div class="detail-body"><p>Ein sauberes DCF-Modell in Excel aufzubauen dauert Stunden: Finanzdaten zusammensuchen, WACC schätzen, Cashflows projizieren, diskontieren, Sensitivitätsanalyse — fehleranfällig und für jeden neuen Wert von vorne.</p></div></details>
+        </div>
+      </li>
+      <li class="problem-row fade">
+        <span class="pr-num">03</span>
+        <div class="pr-body">
+          <h3>Andere Tools: <span class="accent-b">Annahmen versteckt</span></h3>
+          <details><summary>Mehr</summary><div class="detail-body"><p>Fertige Screener liefern eine Zahl — ohne zu erklären, welche Wachstumsrate, welchen Diskontierungssatz, welche Annahmen dahinterstecken. Du bekommst ein Ergebnis, aber keine Kontrolle.</p></div></details>
+        </div>
+      </li>
+      <li class="problem-row fade">
+        <span class="pr-num">04</span>
+        <div class="pr-body">
+          <h3>Einzelkennzahlen <span class="accent-b">ohne Kontext</span></h3>
+          <details><summary>Mehr</summary><div class="detail-body"><p>Ein KGV von 15 kann Schnäppchen oder Falle sein — je nach Wachstum, Qualität und Zinsumfeld. Ohne vollständiges Qualitätsbild fehlt die entscheidende Dimension.</p></div></details>
+        </div>
+      </li>
+    </ul>
+
+    <details class="fade" style="margin-top:2.5rem;">
+      <summary style="font-family:var(--display); font-size:1rem; font-weight:700; letter-spacing:-0.01em; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:1rem; text-transform:none; letter-spacing:0;">
+        Fair Value Pro vs. andere Tools
+      </summary>
+      <div class="detail-body" style="padding-top:1.5rem;">
+        <div class="versus-bar">
+          <div class="versus-side bad">
+            <div class="vs-label">Andere Tools &amp; manuelle Modelle</div>
+            <ul>
+              <li>Stunden Excel-Arbeit pro Aktie</li>
+              <li>Annahmen versteckt, nicht anpassbar</li>
+              <li>Eine Zahl ohne Erklärung</li>
+              <li>Kein Kontext zur Unternehmensqualität</li>
+              <li>Finanzdaten manuell eintippen</li>
+            </ul>
+          </div>
+          <div class="versus-side good">
+            <div class="vs-label">Fair Value Pro</div>
+            <ul>
+              <li>Ergebnis in Sekunden</li>
+              <li>Alle Annahmen sichtbar &amp; frei steuerbar</li>
+              <li>Qualität + fairer Wert auf einen Blick</li>
+              <li>Mehrere Modelle gleichzeitig</li>
+              <li>Automatischer Datenabruf</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- OUTPUTS -->
+<section id="outputs">
+  <div class="wide">
+    <div class="outputs-header fade">
+      <div class="tag">Was wir ausgeben</div>
+      <h2>So denken professionelle<br>Analysten.</h2>
+      <p>Zwei Kernaussagen — Qualität des Unternehmens und fairer Wert. Mehr braucht es nicht für eine fundierte Entscheidung.</p>
+    </div>
+    <div class="outputs-grid">
+      <div class="output-card neon-card fade">
+        <span class="oc-icon">◈</span>
+        <h3>Unternehmensqualität</h3>
+        <p>Ist dieses Unternehmen überhaupt einen Blick wert? Bevor der Preis relevant wird, muss die Substanz stimmen. Fair Value Pro bewertet die wirtschaftliche Stärke anhand mehrerer fundamentaler Kennzahlen — Eigenkapitalrendite, Gewinnwachstum, Verschuldung.</p>
+        <div class="oc-metrics">
+          <div class="oc-metric"><span>Eigenkapitalrendite (Ø 10 J.)</span><span class="mv">24,8 %</span></div>
+          <div class="oc-metric"><span>Gewinnwachstum 5 Jahre</span><span class="mv">+18,3 % p.a.</span></div>
+          <div class="oc-metric"><span>Verschuldungsgrad</span><span class="mv">moderat</span></div>
+          <div class="oc-metric"><span>Qualitätsscore</span><span class="mv">4 / 5</span></div>
+        </div>
+      </div>
+      <div class="output-card blue-card fade">
+        <span class="oc-icon">◎</span>
+        <h3>Fairer Wert</h3>
+        <p>Was wäre dieses Unternehmen wert, wenn deine Annahmen eintreten? Der faire Wert ist keine magische Zahl — er folgt direkt aus deinen eigenen Erwartungen. Transparent, nachvollziehbar, kontrollierbar.</p>
+        <div class="oc-metrics">
+          <div class="oc-metric"><span>DCF Fair Value</span><span class="mv">$189,60</span></div>
+          <div class="oc-metric"><span>Graham-Zahl</span><span class="mv">$178,20</span></div>
+          <div class="oc-metric"><span>Aktueller Kurs</span><span class="mv">$214,40</span></div>
+          <div class="oc-metric"><span>Margin of Safety</span><span class="mv">− 13,1 %</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="container">
+    <div class="how-header fade">
+      <div class="tag">So funktioniert es</div>
+      <h2>In drei Schritten zur Bewertung.</h2>
+      <p>Keine Vorkenntnisse in Finanzmodellierung erforderlich. Ticker eingeben, Annahmen anpassen, Entscheidung treffen.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step fade">
+        <div class="step-n">Schritt 01</div>
+        <h3>Ticker eingeben</h3>
+        <p>Beliebiges Kürzel eintippen — AAPL, SAP, ALV, NVDA. Finanzdaten werden automatisch geladen. Kein manuelles Eintippen.</p>
+      </div>
+      <div class="how-step fade">
+        <div class="step-n">Schritt 02</div>
+        <h3>Annahmen definieren</h3>
+        <p>Wachstumsrate, WACC, Sicherheitsmarge. Du entscheidest, was du erwartest — der Rechner macht daraus eine Zahl.</p>
+      </div>
+      <div class="how-step fade">
+        <div class="step-n">Schritt 03</div>
+        <h3>Entscheidung treffen</h3>
+        <p>Qualität, fairer Wert und Margin of Safety auf einen Blick. Kaufen, beobachten oder meiden.</p>
+      </div>
+    </div>
+
+    <div class="philosophy-box fade">
+      <div class="ph-icon">⟳</div>
+      <div>
+        <h3>So denken professionelle Analysten.</h3>
+        <p style="color:var(--text-2); font-size:0.9rem; line-height:1.75; margin-bottom:1rem;">
+          Der faire Wert folgt direkt aus deinen eigenen Annahmen — nicht aus versteckten Modellparametern.
+          Modell + eigene Erwartungen = dein Kursziel.
+        </p>
+        <details>
+          <summary>Wie das funktioniert</summary>
+          <div class="detail-body">
+            <p>Fair Value Pro berechnet, was ein Unternehmen <strong>wert wäre, wenn deine Annahmen eintreten</strong>. Wer 30 % Wachstum einstellt, bekommt einen hohen fairen Wert — das ist dann seine eigene Prognose, keine objektive Wahrheit.</p>
+            <p>Das ist kein Fehler, sondern Methode: <strong>Genau so arbeiten professionelle Analysten.</strong> Transparent, nachvollziehbar, ehrlich.</p>
+            <p>Andere Tools verstecken ihre Annahmen und suggerieren falsche Objektivität. Fair Value Pro legt alles offen — du behältst die vollständige Kontrolle.</p>
+          </div>
+        </details>
+        <div class="formula">
+          <div class="formula-part m">
+            <div class="fp-val">Bewertungsmodell</div>
+            <div class="fp-label">DCF · Graham · Lynch</div>
+          </div>
+          <div class="formula-op">+</div>
+          <div class="formula-part a">
+            <div class="fp-val">Deine Annahmen</div>
+            <div class="fp-label">Wachstum · WACC · Sicherheit</div>
+          </div>
+          <div class="formula-op">=</div>
+          <div class="formula-part r">
+            <div class="fp-val">Dein Kursziel</div>
+            <div class="fp-label">Fair Value · Margin of Safety</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT VISUAL -->
+<section id="product">
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-text fade">
+        <div class="tag">Live-Vorschau</div>
+        <h2>Sieh, wie es aussieht —<br><span class="n">in Echtzeit.</span></h2>
+        <p>Der Rechner läuft direkt im Browser. Keine Installation, kein Account, kein Abo. Einfach Ticker eingeben und loslegen.</p>
+        <p>Alle Modelle gleichzeitig — Graham-Zahl, DCF, Peter-Lynch — auf einen Blick vergleichbar. Qualität und fairer Wert nebeneinander.</p>
+        <p style="margin-top:1.2rem; font-size:0.88rem; color:var(--text-2);">Presets speichern &amp; laden · PDF-Export · Glossar mit 46 Fachbegriffen · Automatischer Datenabruf</p>
+      </div>
+      <div class="terminal fade">
+        <div class="t-bar">
+          <div class="t-dots"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div></div>
+          <div class="t-title">Fair Value Pro</div>
+          <div style="font-size:0.6rem; color:var(--text-3)" id="clock">--:-- MEZ</div>
+        </div>
+        <div class="t-body">
+          <div class="t-input-row">
+            <span class="t-prompt">$</span>
+            <span style="color:var(--text)">AAPL</span>
+            <span class="t-cursor"></span>
+          </div>
+          <div class="t-section-head">Unternehmensqualität</div>
+          <div class="t-row"><span>Eigenkapitalrendite (Ø)</span><span class="v n">24,8 %</span></div>
+          <div class="t-row"><span>Gewinnwachstum 5J</span><span class="v n">+18,3 %</span></div>
+          <div class="t-row"><span>Verschuldung</span><span class="v b">moderat</span></div>
+          <div class="t-row"><span>Score</span></div>
+          <div class="t-quality">
+            <div class="t-q-bar filled"></div><div class="t-q-bar filled"></div>
+            <div class="t-q-bar filled"></div><div class="t-q-bar filled"></div>
+            <div class="t-q-bar"></div>
+          </div>
+          <div class="t-section-head" style="margin-top:1rem;">Fairer Wert</div>
+          <div class="t-row"><span>Aktueller Kurs</span><span class="v">$214,40</span></div>
+          <div class="t-row"><span>DCF Fair Value</span><span class="v b">$189,60</span></div>
+          <div class="t-row"><span>Graham-Zahl</span><span class="v b">$178,20</span></div>
+          <div class="t-row"><span>Margin of Safety</span><span class="v r">− 13,1 %</span></div>
+          <div class="t-verdict">
+            <div class="t-v-box neon"><div class="vl">Qualität</div><div class="vv">★★★★☆</div></div>
+            <div class="t-v-box blue"><div class="vl">Bewertung</div><div class="vv">Überbewertet</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wide">
+    <div class="feat-header fade">
+      <div class="tag">Funktionen</div>
+      <h2>Alles drin. Nichts versteckt.</h2>
+      <p>Kein Abo-Modell, keine Premium-Features hinter einer Paywall — alles kostenlos.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card fade">
+        <div class="feat-icon">Σ</div>
+        <h3>Mehrere Bewertungsmodelle</h3>
+        <p>Graham-Zahl, DCF und Peter-Lynch gleichzeitig — alle Ergebnisse nebeneinander vergleichbar.</p>
+      </div>
+      <div class="feat-card fade">
+        <div class="feat-icon">↻</div>
+        <h3>Automatischer Datenabruf</h3>
+        <p>Kein manuelles Eintippen. Finanzdaten werden direkt via Yahoo Finance geladen — aktuell und vollständig.</p>
+      </div>
+      <div class="feat-card fade">
+        <div class="feat-icon">⚙</div>
+        <h3>Vollständig steuerbar</h3>
+        <p>Wachstumsrate, WACC, Sicherheitsmarge — alle Annahmen per Schieberegler anpassbar. Keine Black Box.</p>
+      </div>
+      <div class="feat-card fade">
+        <div class="feat-icon">↓</div>
+        <h3>PDF-Export</h3>
+        <p>Jede Analyse als sauberes PDF speichern — für das eigene Investmentjournal oder die Watchlist.</p>
+      </div>
+      <div class="feat-card fade">
+        <div class="feat-icon">☆</div>
+        <h3>Presets speichern</h3>
+        <p>Eigene Annahmen als Preset speichern und laden. Schnellerer Workflow für wiederkehrende Analysen.</p>
+      </div>
+      <div class="feat-card fade">
+        <div class="feat-icon">?</div>
+        <h3>Glossar mit 46 Begriffen</h3>
+        <p>Jeder Fachbegriff direkt erklärt — vom KGV bis zum WACC. Kein externes Nachschlagen nötig.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="social">
+  <div class="wide">
+    <div class="tag fade" style="margin-bottom:2rem;">Frühe Nutzer</div>
+    <div class="test-grid">
+      <div class="test-card fade">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</p>
+        <div class="test-author">Michael R.<span>Privatanleger · München</span></div>
+      </div>
+      <div class="test-card fade">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</p>
+        <div class="test-author">Sarah K.<span>Ingenieurin &amp; Privatanlegerin · Berlin</span></div>
+      </div>
+      <div class="test-card fade">
+        <div class="test-stars">★★★★☆</div>
+        <p class="test-quote">„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Das Glossar hilft dabei enorm. Genau das wollte ich."</p>
+        <div class="test-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-badge">Limitierter Beta-Zugang — kostenlos</div>
+    <p style="font-family:var(--display); font-size:clamp(0.9rem,1.5vw,1.1rem); font-weight:700; letter-spacing:-0.01em; color:var(--text-2); margin-bottom:0.6rem;">Eine Zahl verändert alles.</p>
+    <h2>
+      Fang an zu rechnen.<br>
+      <span class="n">Selbst.</span> <span class="b">Bewusst.</span><br>
+      Ohne Umwege.
+    </h2>
+    <p class="sub">Fair Value Pro ist im Betatest — kostenlos zugänglich für eine kleine Gruppe unabhängiger Anleger. Kein Account erforderlich.</p>
+    <div class="cta-stack fade">
+      <a href="#" class="btn-neon" id="main-cta" style="font-size:0.8rem; padding:1rem 2.8rem;">
+        Jetzt kostenlos testen →
+      </a>
+      <span class="cta-note">Kein Abo · Kein Account · Sofort nutzbar</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p>Keine Anlageberatung. Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information.</p>
+</footer>
+
+<script>
+  const tdata=[
+    {s:'AAPL',v:'$214.40',c:'+1.2%',u:true},{s:'MSFT',v:'$417.20',c:'+0.8%',u:true},
+    {s:'NVDA',v:'$875.50',c:'+2.4%',u:true},{s:'SAP',v:'€189.30',c:'-0.3%',u:false},
+    {s:'ALV',v:'€268.80',c:'+0.5%',u:true},{s:'AMZN',v:'$183.70',c:'+1.1%',u:true},
+    {s:'GOOGL',v:'$162.40',c:'-0.6%',u:false},{s:'BRK.B',v:'$413.20',c:'+0.2%',u:true},
+    {s:'VOW3',v:'€89.40',c:'-1.4%',u:false},{s:'JNJ',v:'$147.60',c:'+0.4%',u:true}
+  ];
+  const tk=document.getElementById('ticker');
+  tk.innerHTML=[...tdata,...tdata].map(t=>
+    `<span class="ti"><span class="s">${t.s}</span><span class="v">${t.v}</span><span class="${t.u?'u':'d'}">${t.c}</span></span>`
+  ).join('');
+
+  function clk(){const n=new Date(),h=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0');document.getElementById('clock').textContent=`${h}:${m} MEZ`;}
+  clk();setInterval(clk,30000);
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),e.target.dataset.d||0);obs.unobserve(e.target);}
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.fade').forEach((el,i)=>{el.dataset.d=(i%4)*90;obs.observe(el);});
+
+  document.getElementById('main-cta').addEventListener('click',e=>{
+    e.preventDefault();
+    alert('Hier deinen Tool-Link oder Kontaktformular einfügen.');
+  });
+</script>
+</body>
+</html>
