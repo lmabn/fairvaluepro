@@ -296,7 +296,8 @@
     nav { padding: 0 1.25rem; }
     nav a.cta { display:none; }
 
-    h1.hero-hl { font-size: clamp(1.6rem, 8vw, 2.4rem); word-break: break-word; hyphens: auto; }
+    h1.hero-hl { font-size: clamp(2rem, 9vw, 2.8rem); }
+    .hl-break::after { content: '\A'; white-space: pre; }
     .hero-sub { font-size: 0.97rem; }
     #hero { padding-top: 6rem; padding-bottom: 2.5rem; }
 
@@ -363,7 +364,7 @@
   <div class="container">
     <div class="hero-eyebrow fade in" style="text-align:center; justify-content:center;">Aktienanalyse · Fundamental · Transparent</div>
     <h1 class="hero-hl fade in" style="text-align:center; max-width:100%;">
-      Fundamentalanalyse. <span class="n">Für alle.</span>
+      Fundamental<span class="hl-break">analyse.</span> <span class="n">Für alle.</span>
     </h1>
     <p class="hero-sub fade in" style="text-align:center; margin-left:auto; margin-right:auto;">
       Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, ohne Umwege.
