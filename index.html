@@ -296,7 +296,7 @@
     nav { padding: 0 1.25rem; }
     nav a.cta { display:none; }
 
-    h1.hero-hl { font-size: clamp(2rem, 11vw, 3rem); }
+    h1.hero-hl { font-size: clamp(1.6rem, 8vw, 2.4rem); word-break: break-word; hyphens: auto; }
     .hero-sub { font-size: 0.97rem; }
     #hero { padding-top: 6rem; padding-bottom: 2.5rem; }
 
@@ -323,7 +323,29 @@
     #cta h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
 
     .hero-btns { flex-direction: column; align-items: center; }
-    .btn-neon { width: 100%; text-align: center; }
+    .btn-neon { width: auto; text-align: center; padding-left: 1.8rem; padding-right: 1.8rem; }
+  }
+  /* FORMSPREE */
+  .email-form { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.8rem; }
+  .email-form input[type="email"] {
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em;
+    background: var(--bg3); border: 1px solid var(--neon-border); color: var(--text);
+    padding: 0.85rem 1.2rem; border-radius: 3px; width: 280px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-form input[type="email"]::placeholder { color: var(--text-3); }
+  .email-form input[type="email"]:focus { border-color: var(--neon); }
+  .email-form button[type="submit"] {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--neon); color: var(--bg); border: none; padding: 0.85rem 1.8rem;
+    border-radius: 3px; cursor: pointer; font-weight: 600;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .email-form button[type="submit"]:hover { opacity: 0.88; transform: translateY(-1px); }
+  .form-success { display: none; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; padding: 1rem 0; color: var(--neon); }
+  @media(max-width:480px){
+    .email-form { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
+    .email-form input[type="email"] { width: 100%; }
   }
 </style>
 </head>
@@ -693,10 +715,12 @@
     </h2>
     <p class="sub">Fair Value Pro ist im Betatest — kostenlos zugänglich für eine kleine Gruppe unabhängiger Anleger. Kein Account erforderlich.</p>
     <div class="cta-stack fade">
-      <a href="#" class="btn-neon" id="main-cta" style="font-size:0.8rem; padding:1rem 2.8rem; cursor:not-allowed; opacity:0.6;" title="Link folgt nach Deployment">
-        Zum Rechner — demnächst verfügbar
-      </a>
-      <span class="cta-note">Kein Abo · Kein Account · Sofort nutzbar</span>
+      <form class="email-form" id="contact-form" action="https://formspree.io/f/xpqorgzp" method="POST">
+        <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+        <button type="submit">Zugang erhalten →</button>
+      </form>
+      <p class="form-success" id="form-success">✓ &nbsp;Eingetragen — wir melden uns beim Launch.</p>
+      <span class="cta-note">Kein Abo · Kein Account · Wir informieren dich beim Launch</span>
     </div>
   </div>
 </section>
@@ -729,7 +753,20 @@
   },{threshold:0.1});
   document.querySelectorAll('.fade').forEach((el,i)=>{el.dataset.d=(i%4)*90;obs.observe(el);});
 
-  // CTA — URL nach Deployment hier eintragen: document.getElementById('main-cta').href = 'https://...';
+  // Formspree AJAX
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  if(form) {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+      if(res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    });
+  }
 </script>
 </body>
 </html>
