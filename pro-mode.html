@@ -286,6 +286,19 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
 .kpi-anim:nth-child(4) { animation-delay: 1.0s; }
 .kpi-anim:nth-child(5) { animation-delay: 1.2s; }
 
+/* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text-2); transition: all 0.25s; border-radius: 1px; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+  .nav-mobile-menu { display: none; position: fixed; top: 58px; left: 0; right: 0; z-index: 99; background: rgba(8,14,11,0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); flex-direction: column; padding: 1.2rem 2rem; gap: 0; }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+  .nav-mobile-menu a:last-child { border-bottom: none; }
+  .nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: var(--neon); }
+  .nav-mobile-menu a.cta-mobile { color: var(--neon); margin-top: 0.5rem; }
+
 @media(max-width: 900px) {
   .features-grid { grid-template-columns: 1fr; }
   .diff-layout { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -296,6 +309,8 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
   .mk-scorecard { display: none; }
   .mk-scenarios { display: none; }
   nav .nav-links { display: none; }
+  nav a.nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
 }
 @media(max-width: 600px) {
   nav { padding: 0 1.25rem; }
@@ -313,8 +328,17 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
     <a href="pro-mode.html" class="active">Pro Mode</a>
     <a href="plaene.html">Pläne</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
   <a href="plaene.html" class="nav-cta">Pläne ansehen</a>
 </nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="index.html">Übersicht</a>
+  <a href="pro-mode.html" class="active">Pro Mode</a>
+  <a href="plaene.html">Pläne</a>
+  <a href="plaene.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -693,6 +717,13 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
 </footer>
 
 <script>
+  // Hamburger menu
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+
+  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
       if(e.isIntersecting) {
