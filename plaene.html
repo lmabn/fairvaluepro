@@ -265,6 +265,7 @@
   .plan-features li.off { color: var(--text-3); }
   .plan-features li.off::before { content: '–'; color: var(--text-3); }
   .plan-features li strong { color: var(--text); font-weight: 500; }
+  .plan-features li:has(details)::before { display: none; }
 
   /* PLAN CTA BUTTONS */
   .btn-plan {
@@ -505,13 +506,13 @@
           <div class="price-annual-note" id="pro-note">&nbsp;</div>
         </div>
         <ul class="plan-features">
-          <li style="display:block; padding:0;">
+          <li style="display:block; padding:0; border-bottom:1px solid var(--border);">
             <details style="margin:0;">
-              <summary style="font-family:var(--sans); font-size:0.87rem; color:var(--text-2); border-bottom:none; padding:0.55rem 0; width:100%; text-transform:none; letter-spacing:0; display:flex; align-items:center; gap:0.7rem;">
-                <span style="color:var(--neon); font-family:var(--mono); font-size:0.75rem; flex-shrink:0;">✓</span>
+              <summary style="font-family:var(--sans); font-size:0.87rem; color:var(--text-2); border-bottom:none; padding:0.55rem 0; width:100%; text-transform:none; letter-spacing:0; display:flex; align-items:center; gap:0.7rem; list-style:none;">
+                <span style="color:var(--neon); font-family:var(--mono); font-size:0.75rem; flex-shrink:0; width:14px; display:inline-block;">✓</span>
                 Alles aus Pro
               </summary>
-              <div style="padding: 0.4rem 0 0.6rem 1.45rem; display:flex; flex-direction:column; gap:0.3rem;">
+              <div style="padding: 0.3rem 0 0.7rem 1.45rem; display:flex; flex-direction:column; gap:0.35rem;">
                 <span style="font-size:0.8rem; color:var(--text-3);">Pro Mode — volles Dashboard</span>
                 <span style="font-size:0.8rem; color:var(--text-3);">DCF, KGV, EV/EBITDA, Szenarien, Charts</span>
                 <span style="font-size:0.8rem; color:var(--text-3);">Erweiterte Einstellungen — WACC, Beta, ERP</span>
