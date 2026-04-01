@@ -145,13 +145,14 @@
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 3rem;
+    align-items: stretch;
   }
 
   .plan {
     background: var(--bg2);
     padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto auto auto 1fr auto;
     position: relative;
     transition: background 0.2s;
   }
@@ -185,6 +186,8 @@
     display: inline-block;
     margin-bottom: 1.2rem;
     align-self: flex-start;
+    height: 1.6rem;
+    line-height: 1.1rem;
   }
   .plan-badge.placeholder { visibility: hidden; }
 
@@ -202,13 +205,14 @@
     color: var(--text-2);
     margin-bottom: 2rem;
     line-height: 1.5;
-    min-height: 2.8rem;
+    min-height: 3.8rem;
   }
 
   .plan-price {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
+    min-height: 7rem;
   }
 
   .price-main {
@@ -482,7 +486,7 @@
         <ul class="plan-features">
           <li><strong>Pro Mode</strong> — volles Dashboard</li>
           <li>DCF, KGV, EV/EBITDA, Szenarien, Charts</li>
-          <li><strong>Erweiterte Einstellungen</strong><br><span style="font-size:0.8rem; color:var(--text-3); font-family:var(--mono);">WACC · Beta · ERP</span></li>
+          <li><strong>Erweiterte Einstellungen</strong> — WACC, Beta, ERP</li>
           <li>Branchen-Presets</li>
           <li>10 Bewertungen pro Tag</li>
           <li class="off">Analysen speichern</li>
@@ -506,26 +510,12 @@
           <div class="price-annual-note" id="pro-note">&nbsp;</div>
         </div>
         <ul class="plan-features">
-          <li style="display:block; padding:0; border-bottom:1px solid var(--border);">
-            <details style="margin:0;">
-              <summary style="font-family:var(--sans); font-size:0.87rem; color:var(--text-2); border-bottom:none; padding:0.55rem 0; width:100%; text-transform:none; letter-spacing:0; display:flex; align-items:center; gap:0.7rem; list-style:none;">
-                <span style="color:var(--neon); font-family:var(--mono); font-size:0.75rem; flex-shrink:0; width:14px; display:inline-block;">✓</span>
-                Alles aus Pro
-              </summary>
-              <div style="padding: 0.3rem 0 0.7rem 1.45rem; display:flex; flex-direction:column; gap:0.35rem;">
-                <span style="font-size:0.8rem; color:var(--text-3);">Pro Mode — volles Dashboard</span>
-                <span style="font-size:0.8rem; color:var(--text-3);">DCF, KGV, EV/EBITDA, Szenarien, Charts</span>
-                <span style="font-size:0.8rem; color:var(--text-3);">Erweiterte Einstellungen — WACC, Beta, ERP</span>
-                <span style="font-size:0.8rem; color:var(--text-3);">Branchen-Presets</span>
-              </div>
-            </details>
-          </li>
+          <li>Alles aus Pro, plus:</li>
           <li><strong>Analysen speichern</strong> — unbegrenzt</li>
           <li><strong>Eigene Presets</strong> speichern &amp; laden</li>
           <li><strong>Suchverlauf</strong> — letzte 15 Suchen</li>
           <li><strong>PDF-Export</strong></li>
           <li>Unbegrenzte Bewertungen/Tag</li>
-          <li style="color:var(--text-3); font-size:0.8rem;">Weitere Features folgen</li>
         </ul>
         <a href="index.html#cta" class="btn-plan primary">Premium starten</a>
       </div>
@@ -562,8 +552,8 @@
         <tr><td class="feature-name">Minimal Mode — 4 Kennzahlen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
         <tr><td class="feature-name">Pro Mode — volles Dashboard</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
         <tr><td class="feature-name">DCF, KGV, EV/EBITDA, Szenarien, Charts</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Erweiterte Einstellungen (WACC, Beta, ERP)</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Branchen-Presets</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Erweiterte Einstellungen (WACC, Beta, ERP)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Branchen-Presets</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
 
         <tr class="cat-row"><td colspan="4">Limits</td></tr>
         <tr><td class="feature-name">Anzahl der Bewertungen</td><td><span class="partial">Unbegrenzt</span></td><td><span class="partial">10 / Tag</span></td><td><span class="partial">Unbegrenzt</span></td></tr>
@@ -643,7 +633,6 @@
     obs.observe(el);
   });
 
-  // Billing toggle
   function setBilling(mode) {
     const btnM = document.getElementById('btn-monthly');
     const btnA = document.getElementById('btn-annual');
