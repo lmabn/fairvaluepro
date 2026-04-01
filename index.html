@@ -42,10 +42,36 @@
     background: rgba(10,15,26,0.90); backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--text); }
+  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--text); text-decoration: none; }
   .nav-logo .dot { color: var(--neon); }
   nav a.cta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.45rem 1.2rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
   nav a.cta:hover { background: var(--neon-dim); }
+
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text-2); transition: all 0.25s; border-radius: 1px; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  .nav-mobile-menu {
+    display: none;
+    position: fixed; top: 58px; left: 0; right: 0; z-index: 99;
+    background: rgba(8,14,11,0.98); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 1.2rem 2rem;
+    gap: 0;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-2); text-decoration: none; padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border); transition: color 0.2s;
+  }
+  .nav-mobile-menu a:last-child { border-bottom: none; }
+  .nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: var(--neon); }
+  .nav-mobile-menu a.cta-mobile { color: var(--neon); margin-top: 0.5rem; }
 
   section { padding: 7rem 2rem; }
   .container { max-width: 900px; margin: 0 auto; }
@@ -59,6 +85,7 @@
   .hero-glow { position: absolute; width: 700px; height: 500px; top: -100px; left: -150px; background: radial-gradient(ellipse, rgba(0,229,160,0.05) 0%, transparent 70%); pointer-events: none; }
   .hero-glow2 { position: absolute; width: 500px; height: 400px; top: 0; right: -100px; background: radial-gradient(ellipse, rgba(0,255,135,0.04) 0%, transparent 70%); pointer-events: none; }
   .hero-eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-2); margin-bottom: 1.5rem; }
+  .mobile-br { display: none; }
   h1.hero-hl { font-family: var(--display); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.6rem; max-width: 780px; }
   h1.hero-hl .n { color: var(--neon); }
   h1.hero-hl .b { color: var(--mid); }
@@ -295,9 +322,12 @@
     section { padding: 4rem 1.25rem; }
     nav { padding: 0 1.25rem; }
     nav a.cta { display:none; }
+    .nav-hamburger { display: flex; }
+    .nav-links { display: none !important; }
 
     h1.hero-hl { font-size: clamp(2rem, 9vw, 2.8rem); }
-    .hl-break::after { content: '\A'; white-space: pre; }
+    .mobile-br { display: block; }
+    .hl-break::after { content: ''; }
     .hero-sub { font-size: 0.97rem; }
     #hero { padding-top: 6rem; padding-bottom: 2.5rem; }
 
@@ -353,9 +383,23 @@
 <body>
 
 <nav>
-  <div class="nav-logo">Fair Value Pro<span class="dot">.</span></div>
-  <a href="#cta" class="cta">Jetzt testen</a>
+  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <div class="nav-links" style="display:flex; align-items:center; gap:2rem;">
+    <a href="index.html" style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--neon); text-decoration:none;">Übersicht</a>
+    <a href="pro-mode.html" style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-2); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-2)'">Pro Mode</a>
+    <a href="plaene.html" style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-2); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-2)'">Pläne</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#cta" class="cta">Zugang erhalten</a>
 </nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="index.html" class="active">Übersicht</a>
+  <a href="pro-mode.html">Pro Mode</a>
+  <a href="plaene.html">Pläne</a>
+  <a href="#cta" class="cta-mobile">Zugang erhalten →</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -364,7 +408,7 @@
   <div class="container">
     <div class="hero-eyebrow fade in" style="text-align:center; justify-content:center;">Aktienanalyse · Fundamental · Transparent</div>
     <h1 class="hero-hl fade in" style="text-align:center; max-width:100%;">
-      Fundamental<span class="hl-break">analyse.</span> <span class="n">Für alle.</span>
+      Fundamentalanalyse.<br class="mobile-br"> <span class="n">Für alle.</span>
     </h1>
     <p class="hero-sub fade in" style="text-align:center; margin-left:auto; margin-right:auto;">
       Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, ohne Umwege.
@@ -517,7 +561,7 @@
         <p>Was wäre dieses Unternehmen wert, wenn deine Annahmen eintreten? Der faire Wert ist keine magische Zahl — er folgt direkt aus deinen eigenen Erwartungen. Transparent, nachvollziehbar, kontrollierbar.</p>
         <div class="oc-metrics">
           <div class="oc-metric"><span>DCF Fair Value</span><span class="mv">$189,60</span></div>
-          <div class="oc-metric"><span>Graham-Zahl</span><span class="mv">$178,20</span></div>
+          <div class="oc-metric"><span>KGV Fairer Wert</span><span class="mv">$178,20</span></div>
           <div class="oc-metric"><span>Aktueller Kurs</span><span class="mv">$214,40</span></div>
           <div class="oc-metric"><span>Margin of Safety</span><span class="mv">− 13,1 %</span></div>
         </div>
@@ -571,7 +615,7 @@
         <div class="formula">
           <div class="formula-part m">
             <div class="fp-val">Bewertungsmodell</div>
-            <div class="fp-label">DCF · Graham · Lynch</div>
+            <div class="fp-label">DCF · KGV · EV/EBITDA</div>
           </div>
           <div class="formula-op">+</div>
           <div class="formula-part a">
@@ -597,7 +641,7 @@
         <div class="tag">Live-Vorschau</div>
         <h2>Sieh, wie es aussieht —<br><span class="n">in Echtzeit.</span></h2>
         <p>Der Rechner läuft direkt im Browser. Keine Installation, kein Account, kein Abo. Einfach Ticker eingeben und loslegen.</p>
-        <p>Alle Modelle gleichzeitig — Graham-Zahl, DCF, Peter-Lynch — auf einen Blick vergleichbar. Qualität und fairer Wert nebeneinander.</p>
+        <p>Alle Modelle gleichzeitig — DCF, KGV, EV/EBITDA — auf einen Blick vergleichbar. Qualität und fairer Wert nebeneinander.</p>
         <p style="margin-top:1.2rem; font-size:0.88rem; color:var(--text-2);">Presets speichern &amp; laden · PDF-Export · Glossar mit 46 Fachbegriffen · Automatischer Datenabruf</p>
       </div>
       <div class="terminal fade">
@@ -625,7 +669,7 @@
           <div class="t-section-head" style="margin-top:1rem;">Fairer Wert</div>
           <div class="t-row"><span>Aktueller Kurs</span><span class="v">$214,40</span></div>
           <div class="t-row"><span>DCF Fair Value</span><span class="v b">$189,60</span></div>
-          <div class="t-row"><span>Graham-Zahl</span><span class="v b">$178,20</span></div>
+          <div class="t-row"><span>KGV Fairer Wert</span><span class="v b">$178,20</span></div>
           <div class="t-row"><span>Margin of Safety</span><span class="v r">− 13,1 %</span></div>
           <div class="t-verdict">
             <div class="t-v-box neon"><div class="vl">Qualität</div><div class="vv">★★★★☆</div></div>
@@ -649,7 +693,7 @@
       <div class="feat-card fade">
         <div class="feat-icon">Σ</div>
         <h3>Mehrere Bewertungsmodelle</h3>
-        <p>Graham-Zahl, DCF und Peter-Lynch gleichzeitig — alle Ergebnisse nebeneinander vergleichbar.</p>
+        <p>DCF, KGV und EV/EBITDA gleichzeitig — alle Ergebnisse nebeneinander vergleichbar.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">↻</div>
@@ -732,6 +776,12 @@
 </footer>
 
 <script>
+  // Hamburger menu
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+
   const tdata=[
     {s:'AAPL',v:'$214.40',c:'+1.2%',u:true},{s:'MSFT',v:'$417.20',c:'+0.8%',u:true},
     {s:'NVDA',v:'$875.50',c:'+2.4%',u:true},{s:'SAP',v:'€189.30',c:'-0.3%',u:false},
