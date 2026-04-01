@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Value Pro — Pläne & Preise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Manrope:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:      #080e0b;
+    --bg2:     #0b1410;
+    --bg3:     #0f1a14;
+    --bg4:     #142019;
+    --neon:    #00ff87;
+    --neon-dim: rgba(0,255,135,0.09);
+    --neon-border: rgba(0,255,135,0.25);
+    --mid:     #00c46a;
+    --mid-dim:    rgba(0,196,106,0.09);
+    --mid-border: rgba(0,196,106,0.22);
+    --muted:   #2a6649;
+    --muted-dim:    rgba(42,102,73,0.25);
+    --muted-border: rgba(42,102,73,0.45);
+    --text:    #c8ddd2;
+    --text-2:  #6a8c7a;
+    --text-3:  #344d3e;
+    --border:  rgba(0,255,135,0.07);
+    --border2: rgba(0,255,135,0.12);
+    --sans:    'Space Grotesk', system-ui, sans-serif;
+    --display: 'Manrope', system-ui, sans-serif;
+    --mono:    'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 58px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    background: rgba(8,14,11,0.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--text); text-decoration: none; }
+  .nav-logo .dot { color: var(--neon); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--neon); }
+  .nav-links a.active { color: var(--neon); }
+  nav a.nav-cta { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.42rem 1.1rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
+  nav a.nav-cta:hover { background: var(--neon-dim); }
+
+  /* LAYOUT */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+  .tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); margin-bottom: 1.2rem; }
+  .tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
+
+  /* HERO */
+  #hero {
+    padding: 9rem 2rem 5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-glow { position: absolute; width: 600px; height: 400px; top: -80px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.05) 0%, transparent 70%); pointer-events: none; }
+
+  #hero .tag { justify-content: center; }
+  #hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+  }
+  #hero h1 .n { color: var(--neon); }
+  #hero p {
+    color: var(--text-2);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+  }
+
+  /* BILLING TOGGLE */
+  .toggle-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 50px;
+    padding: 0.3rem;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  .toggle-btn {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    padding: 0.45rem 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transition: color 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+  .toggle-btn.active { color: var(--bg); }
+  .toggle-pill {
+    position: absolute;
+    top: 0.3rem; bottom: 0.3rem;
+    border-radius: 50px;
+    background: var(--neon);
+    transition: left 0.25s ease, width 0.25s ease;
+    z-index: 0;
+  }
+  .save-badge {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--mid);
+    padding: 0.2rem 0.55rem;
+    border-radius: 50px;
+    margin-left: 0.2rem;
+    vertical-align: middle;
+  }
+
+  /* PRICING GRID */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border2);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .plan {
+    background: var(--bg2);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .plan.featured {
+    background: var(--bg3);
+    border-left: 1px solid var(--neon-border);
+    border-right: 1px solid var(--neon-border);
+    position: relative;
+  }
+  .plan.featured::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  }
+  .plan.featured::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-border), transparent);
+  }
+
+  .plan-badge {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--neon);
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 1.2rem;
+    align-self: flex-start;
+  }
+  .plan-badge.placeholder { visibility: hidden; }
+
+  .plan-name {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .plan-desc {
+    font-size: 0.85rem;
+    color: var(--text-2);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    min-height: 2.8rem;
+  }
+
+  .plan-price {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price-main {
+    font-family: var(--display);
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+  }
+  .price-main.free { color: var(--neon); }
+  .price-main .currency { font-size: 1.4rem; vertical-align: top; margin-top: 0.4rem; display: inline-block; }
+  .price-period {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    margin-top: 0.4rem;
+  }
+  .price-annual-note {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--mid);
+    margin-top: 0.3rem;
+    min-height: 1.1rem;
+  }
+
+  /* FEATURE LIST */
+  .plan-features {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 2rem;
+  }
+  .plan-features li {
+    font-size: 0.87rem;
+    color: var(--text-2);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    line-height: 1.4;
+  }
+  .plan-features li:last-child { border-bottom: none; }
+  .plan-features li::before {
+    content: '✓';
+    color: var(--neon);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    font-family: var(--mono);
+  }
+  .plan-features li.off { color: var(--text-3); }
+  .plan-features li.off::before { content: '–'; color: var(--text-3); }
+  .plan-features li strong { color: var(--text); font-weight: 500; }
+
+  /* PLAN CTA BUTTONS */
+  .btn-plan {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    transition: opacity 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-plan:hover { transform: translateY(-1px); opacity: 0.88; }
+
+  .btn-plan.primary {
+    background: var(--neon);
+    color: var(--bg);
+    font-weight: 700;
+  }
+  .btn-plan.secondary {
+    background: transparent;
+    color: var(--neon);
+    border: 1px solid var(--neon-border);
+  }
+  .btn-plan.secondary:hover { background: var(--neon-dim); }
+  .btn-plan.disabled {
+    background: transparent;
+    color: var(--text-3);
+    border: 1px solid var(--border2);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .btn-plan.disabled:hover { transform: none; opacity: 0.5; }
+
+  /* FEATURE COMPARISON TABLE */
+  #compare { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+
+  .compare-header { text-align: center; margin-bottom: 3.5rem; }
+  .compare-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .compare-header p { color: var(--text-2); font-size: 0.93rem; }
+
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-2); padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border2);
+    font-weight: 400;
+  }
+  .compare-table th:not(:first-child) { text-align: center; }
+  .compare-table th.hl { color: var(--neon); }
+
+  .compare-table td {
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.87rem;
+    color: var(--text-2);
+    vertical-align: middle;
+  }
+  .compare-table td:not(:first-child) { text-align: center; }
+  .compare-table td.feature-name { color: var(--text); font-size: 0.88rem; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: rgba(0,255,135,0.02); }
+
+  .compare-table .cat-row td {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-3); padding: 1.4rem 1.2rem 0.5rem; border-bottom: none;
+  }
+
+  .check { color: var(--neon); font-size: 0.9rem; }
+  .dash { color: var(--text-3); font-size: 0.9rem; }
+  .partial { color: var(--mid); font-size: 0.78rem; font-family: var(--mono); letter-spacing: 0.05em; }
+
+  /* FAQ */
+  #faq { padding: 5rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); }
+  .faq-header { margin-bottom: 2.5rem; }
+  .faq-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .faq-header p { color: var(--text-2); font-size: 0.9rem; }
+
+  .faq-list { max-width: 680px; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item summary {
+    font-size: 0.95rem; font-weight: 500; color: var(--text);
+    padding: 1.2rem 0; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { font-size: 0.88rem; color: var(--text-2); line-height: 1.75; padding-bottom: 1.2rem; }
+
+  /* BOTTOM CTA */
+  #bottom-cta {
+    padding: 6rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  #bottom-cta::before {
+    content: '';
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 350px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(0,255,135,0.06), transparent 70%);
+    pointer-events: none;
+  }
+  #bottom-cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  #bottom-cta h2 .n { color: var(--neon); }
+  #bottom-cta p { color: var(--text-2); max-width: 420px; margin: 0 auto 2rem; font-size: 0.93rem; }
+
+  .btn-neon {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem;
+    border-radius: 3px; text-decoration: none; font-weight: 600; display: inline-block;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-neon:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: var(--display); font-size: 0.9rem; font-weight: 800; color: var(--text-2); }
+  .footer-logo .dot { color: var(--neon); }
+  footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; color: var(--text-3); max-width: 400px; }
+
+  /* ANIMATIONS */
+  .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media(max-width: 860px) {
+    .pricing-grid { grid-template-columns: 1fr; border-radius: 4px; }
+    .compare-table { display: none; }
+    nav .nav-links { display: none; }
+  }
+  @media(max-width: 520px) {
+    nav { padding: 0 1.25rem; }
+    #hero { padding: 7rem 1.25rem 3rem; }
+    .plan { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Übersicht</a>
+    <a href="plaene.html" class="active">Pläne</a>
+  </div>
+  <a href="index.html#cta" class="nav-cta">Zugang erhalten</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag fade in">Freemium</div>
+    <h1 class="fade in">Starte kostenlos.<br>Wachse mit <span class="n">deinen Ansprüchen.</span></h1>
+    <p class="fade in">Drei Pläne — vom schnellen Einstieg ohne Account bis zur vollständigen Analyse-Plattform.</p>
+
+    <!-- BILLING TOGGLE -->
+    <div class="toggle-wrap fade in" id="toggle-wrap">
+      <div class="toggle-pill" id="toggle-pill"></div>
+      <button class="toggle-btn active" id="btn-monthly" onclick="setBilling('monthly')">Monatlich</button>
+      <button class="toggle-btn" id="btn-annual" onclick="setBilling('annual')">
+        Jährlich <span class="save-badge">–20%</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="padding: 0 2rem 5rem; margin-top: -1px;">
+  <div class="container">
+    <div class="pricing-grid fade in">
+
+      <!-- PLAN 1: FREE -->
+      <div class="plan">
+        <span class="plan-badge" style="background:var(--bg4); color:var(--text-2); border:1px solid var(--border2);">Kein Account</span>
+        <div class="plan-name">Free</div>
+        <div class="plan-desc">Schnelle Bewertung ohne Registrierung. Keine gespeicherten Daten.</div>
+        <div class="plan-price">
+          <div class="price-main free">0 <span style="font-size:2rem;">€</span></div>
+          <div class="price-period">für immer kostenlos</div>
+          <div class="price-annual-note">&nbsp;</div>
+        </div>
+        <ul class="plan-features">
+          <li><strong>Minimal Mode</strong> — 4 Kennzahlen</li>
+          <li>Kurs, Fairer Wert, Sicherheitsmarge, Score</li>
+          <li>Suche &amp; Bewertung starten</li>
+          <li>Kein Tageslimit</li>
+          <li class="off">Pro Mode</li>
+          <li class="off">Analysen speichern</li>
+          <li class="off">Eigene Presets</li>
+          <li class="off">Suchverlauf</li>
+          <li class="off">PDF-Export</li>
+        </ul>
+        <a href="index.html#cta" class="btn-plan secondary">Ohne Account starten</a>
+      </div>
+
+      <!-- PLAN 2: PRO (free with account) -->
+      <div class="plan">
+        <span class="plan-badge" style="background:var(--bg4); color:var(--text-2); border:1px solid var(--border2);">Kostenloser Account</span>
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">Volles Dashboard für ernsthafte Analysen. Kostenlos mit Account.</div>
+        <div class="plan-price">
+          <div class="price-main free">0 <span style="font-size:2rem;">€</span></div>
+          <div class="price-period">kostenloser Account · E-Mail erforderlich</div>
+          <div class="price-annual-note">&nbsp;</div>
+        </div>
+        <ul class="plan-features">
+          <li><strong>Pro Mode</strong> — volles Dashboard</li>
+          <li>DCF, KGV, EV/EBITDA, Szenarien, Charts</li>
+          <li><strong>Erweiterte Einstellungen</strong> — WACC, Beta, ERP</li>
+          <li>Branchen-Presets</li>
+          <li>10 Bewertungen pro Tag</li>
+          <li class="off">Analysen speichern</li>
+          <li class="off">Eigene Presets</li>
+          <li class="off">Suchverlauf</li>
+          <li class="off">PDF-Export</li>
+        </ul>
+        <a href="index.html#cta" class="btn-plan secondary">Jetzt registrieren</a>
+      </div>
+
+      <!-- PLAN 3: PREMIUM (paid, highlighted) -->
+      <div class="plan featured">
+        <span class="plan-badge">Premium</span>
+        <div class="plan-name" style="color:var(--neon);">Premium</div>
+        <div class="plan-desc">Für regelmäßige Nutzer — Analysen speichern, Verlauf, PDF-Export.</div>
+        <div class="plan-price">
+          <div class="price-main" style="color:var(--neon);">
+            <span id="pro-old-price" style="font-size:1rem; color:var(--text-3); text-decoration:line-through; display:none; margin-right:0.3rem;">9,99 €</span><span class="currency" style="color:var(--neon);">€</span><span id="pro-price">9,99</span>
+          </div>
+          <div class="price-period" id="pro-period">pro Monat · monatlich kündbar</div>
+          <div class="price-annual-note" id="pro-note">&nbsp;</div>
+        </div>
+        <ul class="plan-features">
+          <li>Alles aus Pro</li>
+          <li><strong>Analysen speichern</strong> — unbegrenzt</li>
+          <li><strong>Eigene Presets</strong> speichern &amp; laden</li>
+          <li><strong>Suchverlauf</strong> — letzte 15 Suchen</li>
+          <li><strong>PDF-Export</strong></li>
+          <li>Unbegrenzte Bewertungen/Tag</li>
+          <li style="color:var(--text-3); font-size:0.8rem;">Weitere Features folgen</li>
+        </ul>
+        <a href="index.html#cta" class="btn-plan primary">Premium starten</a>
+      </div>
+
+    </div>
+
+    <!-- footnote -->
+    <p style="text-align:center; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.06em;">
+      Alle Preise inkl. MwSt. · Jederzeit kündbar · Keine versteckten Kosten
+    </p>
+  </div>
+</section>
+
+<!-- FEATURE COMPARISON TABLE (desktop only) -->
+<section id="compare">
+  <div class="container">
+    <div class="compare-header fade">
+      <div class="tag" style="justify-content:center;">Funktionsvergleich</div>
+      <h2>Was ist in welchem Plan?</h2>
+      <p>Vollständige Übersicht aller Features — für die, die es genau wissen wollen.</p>
+    </div>
+    <table class="compare-table fade">
+      <thead>
+        <tr>
+          <th style="width:40%">Feature</th>
+          <th>Free</th>
+          <th>Pro</th>
+          <th class="hl">Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="4">Bewertung</td></tr>
+        <tr><td class="feature-name">Suche &amp; Datenabruf</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Minimal Mode — 4 Kennzahlen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Pro Mode — volles Dashboard</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">DCF, KGV, EV/EBITDA, Szenarien, Charts</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Erweiterte Einstellungen (WACC, Beta, ERP)</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Branchen-Presets</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+
+        <tr class="cat-row"><td colspan="4">Limits</td></tr>
+        <tr><td class="feature-name">Anzahl der Bewertungen</td><td><span class="partial">Unbegrenzt</span></td><td><span class="partial">10 / Tag</span></td><td><span class="partial">Unbegrenzt</span></td></tr>
+
+        <tr class="cat-row"><td colspan="4">Speichern &amp; Export</td></tr>
+        <tr><td class="feature-name">Analysen speichern</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Eigene Presets speichern &amp; laden</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Suchverlauf (letzte 15)</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">PDF-Export</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+
+        <tr class="cat-row"><td colspan="4">Zugang</td></tr>
+        <tr><td class="feature-name">Account erforderlich</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header fade">
+      <div class="tag">FAQ</div>
+      <h2>Häufige Fragen</h2>
+      <p>Alles, was du vor dem Start wissen solltest.</p>
+    </div>
+    <div class="faq-list fade">
+      <details class="faq-item">
+        <summary>Brauche ich eine Kreditkarte für den kostenlosen Plan?</summary>
+        <p>Nein. Basic und Standard sind vollständig kostenlos — keine Zahlungsdaten, kein Abo, kein Risiko. Der Pro-Plan erfordert eine Zahlungsmethode, ist aber jederzeit kündbar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Was passiert, wenn ich meinen Account lösche?</summary>
+        <p>Alle gespeicherten Presets und Daten werden unwiderruflich gelöscht. Du kannst Fair Value Pro danach weiterhin im Basic-Modus ohne Account nutzen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kann ich jederzeit zwischen Plänen wechseln?</summary>
+        <p>Ja. Du kannst jederzeit upgraden oder downgraden. Bei einem Downgrade vom Pro-Plan hast du bis zum Ende der bezahlten Periode Zugriff auf alle Pro-Features.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wie werden die Finanzdaten bezogen?</summary>
+        <p>Fair Value Pro bezieht Finanzdaten automatisch via Yahoo Finance. Die Daten werden bei jeder Analyse frisch geladen — kein manuelles Eintippen erforderlich.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Ist das eine Anlageberatung?</summary>
+        <p>Nein. Alle Bewertungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Fair Value Pro ersetzt keine professionelle Anlageberatung.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section id="bottom-cta">
+  <div class="container">
+    <h2 class="fade">Starte jetzt —<br><span class="n">kostenlos.</span></h2>
+    <p class="fade">Kein Account, keine Kreditkarte, kein Risiko. Basic ist und bleibt gratis.</p>
+    <a href="index.html#cta" class="btn-neon fade">Zugang erhalten →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p>Keine Anlageberatung. Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), (e.target.dataset.d || 0));
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade').forEach((el, i) => {
+    el.dataset.d = (i % 4) * 80;
+    obs.observe(el);
+  });
+
+  // Billing toggle
+  function setBilling(mode) {
+    const btnM = document.getElementById('btn-monthly');
+    const btnA = document.getElementById('btn-annual');
+    const pill = document.getElementById('toggle-pill');
+    const wrap = document.getElementById('toggle-wrap');
+    const price = document.getElementById('pro-price');
+    const period = document.getElementById('pro-period');
+    const note = document.getElementById('pro-note');
+    const oldPrice = document.getElementById('pro-old-price');
+
+    if(mode === 'monthly') {
+      btnM.classList.add('active'); btnA.classList.remove('active');
+      price.textContent = '9,99';
+      period.textContent = 'pro Monat · monatlich kündbar';
+      note.textContent = '\u00a0';
+      oldPrice.style.display = 'none';
+      const r = btnM.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+      pill.style.left = (r.left - wr.left) + 'px'; pill.style.width = r.width + 'px';
+    } else {
+      btnA.classList.add('active'); btnM.classList.remove('active');
+      price.textContent = '7,49';
+      period.textContent = 'pro Monat · 89,91 € / Jahr';
+      note.textContent = '25 % gespart gegenüber monatlich';
+      oldPrice.style.display = 'inline';
+      const r = btnA.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+      pill.style.left = (r.left - wr.left) + 'px'; pill.style.width = r.width + 'px';
+    }
+  }
+
+  window.addEventListener('load', () => setBilling('monthly'));
+  window.addEventListener('resize', () => {
+    setBilling(document.getElementById('btn-annual').classList.contains('active') ? 'annual' : 'monthly');
+  });
+</script>
+</body>
+</html>
