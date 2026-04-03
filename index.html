@@ -528,8 +528,10 @@
               <li>Ergebnis in Sekunden</li>
               <li>Alle Annahmen sichtbar &amp; frei steuerbar</li>
               <li>Qualität + fairer Wert auf einen Blick</li>
-              <li>Mehrere Modelle gleichzeitig</li>
+              <li>5 Modelle gleichzeitig: DCF · KGV · EV/EBITDA · DDM · PEG</li>
               <li>Automatischer Datenabruf</li>
+              <li>Gordon Growth Model (DDM) für Dividendenaktien — automatisch berechnet</li>
+              <li>PEG-Ratio als Wachstums-Schnellcheck — automatisch berechnet</li>
             </ul>
           </div>
         </div>
@@ -618,7 +620,7 @@
         <div class="formula">
           <div class="formula-part m">
             <div class="fp-val">Bewertungsmodell</div>
-            <div class="fp-label">DCF · KGV · EV/EBITDA · Hist. KGV</div>
+            <div class="fp-label">DCF · KGV · EV/EBITDA · DDM · PEG</div>
           </div>
           <div class="formula-op">+</div>
           <div class="formula-part a">
@@ -644,7 +646,7 @@
         <div class="tag">Live-Vorschau</div>
         <h2>Sieh, wie es aussieht —<br><span class="n">in Echtzeit.</span></h2>
         <p>Der Rechner läuft direkt im Browser. Keine Installation, kein Account, kein Abo. Einfach Ticker eingeben und loslegen.</p>
-        <p>Alle Modelle gleichzeitig — DCF, KGV, EV/EBITDA und historisches Median-KGV — auf einen Blick vergleichbar. Das Ergebnis ist ein gewichteter Komposit-Wert: 50 % DCF, 25 % KGV, 25 % EV/EBITDA.</p>
+        <p>Alle Modelle gleichzeitig — DCF, KGV, EV/EBITDA, DDM und PEG — auf einen Blick vergleichbar. Das Ergebnis ist ein gewichteter Komposit-Wert: 50 % DCF, 25 % KGV, 25 % EV/EBITDA.</p>
         <p style="margin-top:1.2rem; font-size:0.88rem; color:var(--text-2);">Presets speichern &amp; laden · PDF-Export · Glossar mit 46 Fachbegriffen · Automatischer Datenabruf</p>
       </div>
       <div class="terminal fade">
@@ -695,8 +697,8 @@
     <div class="feat-grid">
       <div class="feat-card fade">
         <div class="feat-icon">Σ</div>
-        <h3>Vier Bewertungsmodelle — gewichtet</h3>
-        <p>Two-Stage DCF (50 %), KGV (25 %) und EV/EBITDA (25 %) ergeben einen Komposit-Wert. Das historische Median-KGV dient als zusätzlicher historischer Anker.</p>
+        <h3>Fünf Bewertungsmodelle — gewichtet</h3>
+        <p>Two-Stage DCF (50 %), KGV (25 %) und EV/EBITDA (25 %) ergeben einen Komposit-Wert. Dazu: DDM für Dividendenaktien und PEG als Wachstums-Schnellcheck — automatisch aus Yahoo-Finance-Daten.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">↻</div>
@@ -761,7 +763,7 @@
       <details class="fade" style="border-bottom:1px solid var(--border);">
         <summary>Was unterscheidet euer Tool von anderen Fair-Value-Rechnern?<span class="faq-icon">+</span></summary>
         <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
-          <p style="margin-bottom:0.8rem;">Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro kombiniert vier Methoden zu einem gewichteten Komposit-Urteil: <strong style="color:var(--text);">Two-Stage DCF (50 %), KGV-Methode (25 %), EV/EBITDA (25 %)</strong> — plus das historische 5-Jahres-Median-KGV als unabhängige Referenz.</p>
+          <p style="margin-bottom:0.8rem;">Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro kombiniert fünf Methoden: <strong style="color:var(--text);">Two-Stage DCF (50 %), KGV-Methode (25 %), EV/EBITDA (25 %)</strong> — plus DDM (Gordon Growth Model) für Dividendenaktien und PEG-Ratio als Wachstums-Schnellcheck, beide automatisch aus Yahoo-Finance-Daten berechnet.</p>
           <p style="margin-bottom:0.8rem;">Das Two-Stage-DCF-Modell projiziert Cashflows in zwei Phasen: stabiles Wachstum in den ersten fünf Jahren, dann ein realistischer linearer Übergang zum Terminal Value — genau wie professionelle Analysten es tun.</p>
           <p>Der entscheidende Unterschied: Alle Annahmen sind sichtbar und steuerbar. Andere Tools verstecken ihre Parameter und suggerieren eine Objektivität, die nicht existiert. Bei Fair Value Pro ist das Ergebnis immer dein eigenes Modell — transparent, nachvollziehbar, ehrlich.</p>
         </div>
