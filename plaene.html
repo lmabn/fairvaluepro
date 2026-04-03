@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fair Value Pro — Pläne & Preise</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Manrope:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -27,9 +25,9 @@
     --text-3:  #344d3e;
     --border:  rgba(0,255,135,0.07);
     --border2: rgba(0,255,135,0.12);
-    --sans:    'Space Grotesk', system-ui, sans-serif;
-    --display: 'Manrope', system-ui, sans-serif;
-    --mono:    'JetBrains Mono', monospace;
+    --sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --display: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
   }
 
   html { scroll-behavior: smooth; }
@@ -43,7 +41,7 @@
     background: rgba(8,14,11,0.92); backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--text); text-decoration: none; }
+  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; }
   .nav-logo .dot { color: var(--neon); }
   .nav-links { display: flex; align-items: center; gap: 2rem; }
   .nav-links a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
@@ -69,14 +67,7 @@
   .hero-glow { position: absolute; width: 600px; height: 400px; top: -80px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.05) 0%, transparent 70%); pointer-events: none; }
 
   #hero .tag { justify-content: center; }
-  #hero h1 {
-    font-family: var(--display);
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-    margin-bottom: 1.2rem;
-  }
+  #hero h1 { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
   #hero h1 .n { color: var(--neon); }
   #hero p {
     color: var(--text-2);
@@ -154,8 +145,22 @@
     display: grid;
     grid-template-rows: auto auto auto auto 1fr auto;
     position: relative;
-    transition: background 0.2s;
+    transition: background 0.25s, box-shadow 0.25s;
+    overflow: hidden;
   }
+  .plan::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 200px; height: 120px;
+    background: radial-gradient(ellipse, rgba(0,255,135,0.12) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .plan:hover::before { opacity: 1; }
+  .plan:hover { background: var(--bg3); }
 
   .plan.featured {
     background: var(--bg3);
@@ -163,13 +168,11 @@
     border-right: 1px solid var(--neon-border);
     position: relative;
   }
-  .plan.featured::before {
-    content: '';
+  .plan.featured .plan-top-line {
     position: absolute; top: 0; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, transparent, var(--neon), transparent);
   }
-  .plan.featured::after {
-    content: '';
+  .plan.featured .plan-bottom-line {
     position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg, transparent, var(--neon-border), transparent);
   }
@@ -194,7 +197,7 @@
   .plan-name {
     font-family: var(--display);
     font-size: 1.3rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 0.4rem;
     color: var(--text);
@@ -218,13 +221,16 @@
   .price-main {
     font-family: var(--display);
     font-size: 2.6rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.15rem;
   }
   .price-main.free { color: var(--neon); }
-  .price-main .currency { font-size: 1.4rem; vertical-align: top; margin-top: 0.4rem; display: inline-block; }
+  .price-main .currency { font-size: 1.3rem; margin-top: 0.3rem; }
   .price-period {
     font-family: var(--mono);
     font-size: 0.65rem;
@@ -312,7 +318,7 @@
   #compare { padding: 5rem 2rem; border-top: 1px solid var(--border); }
 
   .compare-header { text-align: center; margin-bottom: 3.5rem; }
-  .compare-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .compare-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
   .compare-header p { color: var(--text-2); font-size: 0.93rem; }
 
   .compare-table { width: 100%; border-collapse: collapse; }
@@ -349,16 +355,16 @@
   /* FAQ */
   #faq { padding: 5rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); }
   .faq-header { margin-bottom: 2.5rem; }
-  .faq-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .faq-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
   .faq-header p { color: var(--text-2); font-size: 0.9rem; }
 
-  .faq-list { max-width: 680px; }
-  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-list { max-width: 100%; }
+  .faq-item { border-bottom: 1px solid var(--border); width: 100%; }
   .faq-item summary {
     font-size: 0.95rem; font-weight: 500; color: var(--text);
     padding: 1.2rem 0; cursor: pointer; list-style: none;
     display: flex; justify-content: space-between; align-items: center;
-    gap: 1rem;
+    gap: 1rem; width: 100%; text-align: left;
   }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
@@ -380,7 +386,7 @@
     background: radial-gradient(ellipse at 50% 100%, rgba(0,255,135,0.06), transparent 70%);
     pointer-events: none;
   }
-  #bottom-cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  #bottom-cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
   #bottom-cta h2 .n { color: var(--neon); }
   #bottom-cta p { color: var(--text-2); max-width: 420px; margin: 0 auto 2rem; font-size: 0.93rem; }
 
@@ -394,7 +400,7 @@
 
   /* FOOTER */
   footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: var(--display); font-size: 0.9rem; font-weight: 800; color: var(--text-2); }
+  .footer-logo { font-family: var(--display); font-size: 0.9rem; font-weight: 700; color: var(--text-2); }
   .footer-logo .dot { color: var(--neon); }
   footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; color: var(--text-3); max-width: 400px; }
 
@@ -481,7 +487,7 @@
         <div class="plan-name">Free</div>
         <div class="plan-desc">Schnelle Bewertung ohne Registrierung. Keine gespeicherten Daten.</div>
         <div class="plan-price">
-          <div class="price-main free">0 <span style="font-size:2rem;">€</span></div>
+          <div class="price-main free"><span class="currency">€</span><span>0</span></div>
           <div class="price-period">für immer kostenlos</div>
           <div class="price-annual-note">&nbsp;</div>
         </div>
@@ -489,6 +495,8 @@
           <li><strong>Minimal Mode</strong> — 4 Kennzahlen</li>
           <li>Kurs, Fairer Wert, Sicherheitsmarge, Score</li>
           <li>Suche &amp; Bewertung starten</li>
+          <li><strong>Erweiterte Einstellungen</strong><br><span style="font-weight:400; font-size:0.82rem; color:var(--text-3);">WACC · Beta · ERP</span></li>
+          <li>Branchen-Presets</li>
           <li>3 Bewertungen / Tag</li>
           <li class="off">Pro Mode</li>
           <li class="off">Analysen speichern</li>
@@ -505,14 +513,14 @@
         <div class="plan-name">Pro</div>
         <div class="plan-desc">Volles Dashboard für ernsthafte Analysen. Kostenlos mit Account.</div>
         <div class="plan-price">
-          <div class="price-main free">0 <span style="font-size:2rem;">€</span></div>
+          <div class="price-main free"><span class="currency">€</span><span>0</span></div>
           <div class="price-period">kostenloser Account · E-Mail erforderlich</div>
           <div class="price-annual-note">&nbsp;</div>
         </div>
         <ul class="plan-features">
           <li><strong>Pro Mode</strong> — volles Dashboard</li>
           <li>DCF, KGV, EV/EBITDA, Szenarien, Charts</li>
-          <li><strong>Erweiterte Einstellungen</strong> — WACC, Beta, ERP</li>
+          <li><strong>Erweiterte Einstellungen</strong><br><span style="font-weight:400; font-size:0.82rem; color:var(--text-3);">WACC · Beta · ERP</span></li>
           <li>Branchen-Presets</li>
           <li>5 Bewertungen / Tag</li>
           <li class="off">Analysen speichern</li>
@@ -525,23 +533,33 @@
 
       <!-- PLAN 3: PREMIUM (paid, highlighted) -->
       <div class="plan featured">
+        <div class="plan-top-line"></div>
+        <div class="plan-bottom-line"></div>
         <span class="plan-badge">Premium</span>
         <div class="plan-name" style="color:var(--neon);">Premium</div>
         <div class="plan-desc">Für regelmäßige Nutzer — Analysen speichern, Verlauf, PDF-Export.</div>
         <div class="plan-price">
           <div class="price-main" style="color:var(--neon);">
-            <span id="pro-old-price" style="font-size:1rem; color:var(--text-3); text-decoration:line-through; display:none; margin-right:0.3rem;">9,99 €</span><span class="currency" style="color:var(--neon);">€</span><span id="pro-price">9,99</span>
+            <span id="pro-old-price" style="font-size:1rem; color:var(--text-3); text-decoration:line-through; display:none; margin-right:0.3rem; margin-top:0.3rem;">9,99</span>
+            <span class="currency" style="color:var(--neon);">€</span><span id="pro-price">9,99</span>
           </div>
           <div class="price-period" id="pro-period">pro Monat · monatlich kündbar</div>
           <div class="price-annual-note" id="pro-note">&nbsp;</div>
         </div>
         <ul class="plan-features">
-          <li>Alles aus Pro, plus:</li>
+          <li>
+            <strong>Alles aus Pro, plus:</strong>
+            <ul style="list-style:none; margin-top:0.4rem; display:flex; flex-direction:column; gap:0.2rem;">
+              <li style="font-size:0.82rem; color:var(--text-3); padding:0; border:none;">Pro Mode · DCF · KGV · EV/EBITDA</li>
+              <li style="font-size:0.82rem; color:var(--text-3); padding:0; border:none;">Szenarien · Sensitivitätstabelle</li>
+              <li style="font-size:0.82rem; color:var(--text-3); padding:0; border:none;">Erweiterte Einstellungen · Branchen-Presets</li>
+            </ul>
+          </li>
           <li><strong>Analysen speichern</strong> — unbegrenzt</li>
           <li><strong>Eigene Presets</strong> speichern &amp; laden</li>
           <li><strong>Suchverlauf</strong> — letzte 15 Suchen</li>
           <li><strong>PDF-Export</strong></li>
-          <li>Unbegrenzte Bewertungen/Tag</li>
+          <li><strong>Unbegrenzte Bewertungen / Tag</strong></li>
         </ul>
         <a href="index.html#cta" class="btn-plan primary">Premium starten</a>
       </div>
@@ -599,6 +617,38 @@
   </div>
 </section>
 
+<!-- COST OF MISTAKE -->
+<section style="padding: 5rem 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div style="max-width: 720px; margin: 0 auto; text-align: center;" class="fade">
+      <div class="tag" style="justify-content:center;">Perspektivwechsel</div>
+      <h2 style="font-family:var(--display); font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; letter-spacing:-0.02em; line-height:1.15; margin-bottom:1.2rem;">
+        Was kostet dich eine <span style="color:var(--neon);">falsche Kaufentscheidung</span>?
+      </h2>
+      <p style="color:var(--text-2); font-size:0.97rem; line-height:1.75; margin-bottom:2.5rem;">
+        Eine Aktie zu 30 % über ihrem fairen Wert zu kaufen bedeutet nicht nur einen schlechten Einstiegskurs — es bedeutet, dass du deutlich länger warten musst, bis du überhaupt in die Gewinnzone kommst. Oder gar nicht.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border2); border:1px solid var(--border2); border-radius:4px; text-align:left;">
+        <div style="background:var(--bg2); padding:1.8rem 1.5rem;">
+          <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); margin-bottom:0.8rem;">Beispiel</div>
+          <div style="font-family:var(--display); font-size:1.6rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; margin-bottom:0.4rem;">− 30 %</div>
+          <div style="font-size:0.85rem; color:var(--text-2); line-height:1.5;">Aktie 30 % über fairem Wert gekauft — du brauchst erst +43 % Kursanstieg, um wieder auf null zu kommen.<br><span style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); margin-top:0.5rem; display:block;">Mathematik: 1/(1−0.3)−1 = 42.9 %</span></div>
+        </div>
+        <div style="background:var(--bg2); padding:1.8rem 1.5rem;">
+          <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); margin-bottom:0.8rem;">Realität</div>
+          <div style="font-family:var(--display); font-size:1.6rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; margin-bottom:0.4rem;">3–5 Jahre</div>
+          <div style="font-size:0.85rem; color:var(--text-2); line-height:1.5;">So lange dauert es im Schnitt, bis ein überbewerteter Kurs zum fairen Wert zurückkehrt — wenn überhaupt.<br><a href="https://www.sciencedirect.com/science/article/abs/pii/0304405X88900219" target="_blank" rel="noopener" style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); margin-top:0.5rem; display:block; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--text-3)'">Quelle: Poterba &amp; Summers (1988), J. of Financial Economics ↗</a></div>
+        </div>
+        <div style="background:var(--bg2); padding:1.8rem 1.5rem;">
+          <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); margin-bottom:0.8rem;">Die Alternative</div>
+          <div style="font-family:var(--display); font-size:1.6rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; margin-bottom:0.4rem;">2 Min.</div>
+          <div style="font-size:0.85rem; color:var(--text-2); line-height:1.5;">So lange dauert eine Bewertung mit Fair Value Pro — bevor du kaufst, nicht danach.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq">
   <div class="container">
@@ -643,7 +693,11 @@
 
 <footer>
   <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
-  <p>Keine Anlageberatung. Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information.</p>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Kein Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Dies ist kein Angebot und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
 </footer>
 
 <script>

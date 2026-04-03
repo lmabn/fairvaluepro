@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fair Value Pro — Aktien rational bewerten</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Manrope:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -28,9 +26,9 @@
     --text-3:  #344d3e;
     --border:  rgba(0,255,135,0.07);
     --border2: rgba(0,255,135,0.12);
-    --sans:    'Space Grotesk', system-ui, sans-serif;
-    --display: 'Manrope', system-ui, sans-serif;
-    --mono:    'JetBrains Mono', monospace;
+    --sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --display: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; overflow-x: hidden; }
@@ -42,7 +40,7 @@
     background: rgba(10,15,26,0.90); backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--text); text-decoration: none; }
+  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; }
   .nav-logo .dot { color: var(--neon); }
   nav a.cta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.45rem 1.2rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
   nav a.cta:hover { background: var(--neon-dim); }
@@ -86,12 +84,12 @@
   .hero-glow2 { position: absolute; width: 500px; height: 400px; top: 0; right: -100px; background: radial-gradient(ellipse, rgba(0,255,135,0.04) 0%, transparent 70%); pointer-events: none; }
   .hero-eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-2); margin-bottom: 1.5rem; }
   .mobile-br { display: none; }
-  h1.hero-hl { font-family: var(--display); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.6rem; max-width: 780px; }
+  h1.hero-hl { font-family: var(--display); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.6rem; max-width: 780px; }
   h1.hero-hl .n { color: var(--neon); }
   h1.hero-hl .b { color: var(--mid); }
   .hero-sub { font-size: 1.08rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-  .btn-neon { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 600; display: inline-block; transition: opacity 0.2s, transform 0.15s; }
+  .btn-neon { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; transition: opacity 0.2s, transform 0.15s; }
   .btn-neon:hover { opacity: 0.88; transform: translateY(-1px); }
   .btn-ghost { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
   .btn-ghost:hover { color: var(--mid); }
@@ -111,7 +109,7 @@
   /* MANIFESTO */
   #manifesto { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 6rem 2rem; }
   .manifesto-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .manifesto-left h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .manifesto-left h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
   .manifesto-left h2 .n { color: var(--neon); }
   .manifesto-left h2 .b { color: var(--mid); }
   .manifesto-left p { color: var(--text-2); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.75; }
@@ -119,7 +117,7 @@
   .stat-row { border-top: 1px solid var(--border); padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
   .stat-row:last-child { border-bottom: 1px solid var(--border); }
   .stat-label { font-size: 0.88rem; color: var(--text-2); max-width: 240px; line-height: 1.4; }
-  .stat-val { font-family: var(--display); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+  .stat-val { font-family: var(--display); font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
   .stat-val.n { color: var(--neon); }
   .stat-val.b { color: var(--mid); }
   .stat-val.r { color: var(--muted); filter: brightness(1.6); }
@@ -128,7 +126,7 @@
   /* PROBLEM ROWS */
   #problem { border-bottom: 1px solid var(--border); }
   .problem-intro { max-width: 680px; margin-bottom: 3.5rem; }
-  .problem-intro h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+  .problem-intro h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
   .problem-intro p { color: var(--text-2); font-size: 0.97rem; }
   .problem-list { list-style: none; margin-bottom: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
   .problem-row {
@@ -174,7 +172,7 @@
   /* OUTPUTS */
   #outputs { background: var(--bg2); border-bottom: 1px solid var(--border); }
   .outputs-header { max-width: 600px; margin-bottom: 3.5rem; }
-  .outputs-header h2 { font-family: var(--display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1rem; }
+  .outputs-header h2 { font-family: var(--display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1rem; }
   .outputs-header p { color: var(--text-2); font-size: 0.97rem; }
   .outputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .output-card { border: 1px solid var(--border2); border-radius: 4px; padding: 2.2rem; background: var(--bg3); position: relative; overflow: hidden; }
@@ -184,7 +182,7 @@
   .oc-icon { font-family: var(--mono); font-size: 1.4rem; margin-bottom: 1.2rem; display: block; }
   .neon-card .oc-icon { color: var(--neon); }
   .blue-card .oc-icon { color: var(--mid); }
-  .output-card h3 { font-family: var(--display); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+  .output-card h3 { font-family: var(--display); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
   .neon-card h3 { color: var(--neon); }
   .blue-card h3 { color: var(--mid); }
   .output-card p { color: var(--text-2); font-size: 0.9rem; line-height: 1.7; }
@@ -198,17 +196,17 @@
   /* HOW */
   #how { border-bottom: 1px solid var(--border); }
   .how-header { text-align: center; margin-bottom: 4rem; }
-  .how-header h2 { font-family: var(--display); font-size: clamp(1.8rem,4vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:0.8rem; }
+  .how-header h2 { font-family: var(--display); font-size: clamp(1.8rem,4vw,2.6rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:0.8rem; }
   .how-header p { color: var(--text-2); max-width: 560px; margin: 0 auto; }
   .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 3rem; }
   .how-step { background: var(--bg); padding: 2.5rem 2rem; text-align: center; }
   .step-n { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; color: var(--text-3); margin-bottom: 1rem; }
-  .how-step h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+  .how-step h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
   .how-step p { font-size: 0.86rem; color: var(--text-2); line-height: 1.65; }
 
   .philosophy-box { border: 1px solid var(--neon-border); border-radius: 4px; background: rgba(0,229,160,0.04); padding: 2.5rem; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; }
   .ph-icon { font-family: var(--mono); font-size: 1.6rem; color: var(--neon); line-height: 1; padding-top: 2px; }
-  .philosophy-box h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; color: var(--neon); margin-bottom: 0.7rem; }
+  .philosophy-box h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; color: var(--neon); margin-bottom: 0.7rem; }
   .philosophy-box p { font-size: 0.92rem; color: var(--text-2); line-height: 1.75; margin-bottom: 0.8rem; }
   .philosophy-box p:last-of-type { margin-bottom: 0; }
   .philosophy-box strong { color: var(--text); font-weight: 500; }
@@ -220,12 +218,12 @@
   .formula-part.a .fp-val { background: var(--neon-dim); color: var(--neon); border: 1px solid var(--neon-border); }
   .formula-part.r .fp-val { color: var(--text); border: 1px solid var(--border2); }
   .fp-label { font-size: 0.62rem; color: var(--text-3); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--mono); }
-  .formula-op { font-family: var(--display); font-size: 1.4rem; color: var(--text-3); font-weight: 800; }
+  .formula-op { font-family: var(--display); font-size: 1.4rem; color: var(--text-3); font-weight: 700; }
 
   /* PRODUCT */
   #product { background: var(--bg2); border-bottom: 1px solid var(--border); }
   .product-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
-  .product-text h2 { font-family:var(--display); font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:1.2rem; line-height:1.15; }
+  .product-text h2 { font-family:var(--display); font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:1.2rem; line-height:1.15; }
   .product-text h2 .n { color: var(--neon); }
   .product-text p { color: var(--text-2); font-size: 0.93rem; margin-bottom: 0.9rem; }
 
@@ -263,13 +261,13 @@
   /* FEATURES */
   #features { border-bottom: 1px solid var(--border); }
   .feat-header { max-width: 600px; margin-bottom: 3.5rem; }
-  .feat-header h2 { font-family:var(--display); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:0.8rem; }
+  .feat-header h2 { font-family:var(--display); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:0.8rem; }
   .feat-header p { color: var(--text-2); }
   .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .feat-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
   .feat-card:hover { background: var(--bg3); }
   .feat-icon { font-family: var(--mono); font-size: 0.8rem; color: var(--neon); border: 1px solid var(--neon-border); display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 3px; margin-bottom: 1.2rem; }
-  .feat-card h3 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
+  .feat-card h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
   .feat-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
 
   /* SOCIAL */
@@ -286,7 +284,7 @@
   #cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 400px; background: radial-gradient(ellipse at 50% 100%, rgba(0,229,160,0.06), transparent 70%); pointer-events: none; }
   #cta::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse at 50% 100%, rgba(0,196,106,0.03), transparent 70%); pointer-events: none; }
   .cta-badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.35rem 1.1rem; border-radius: 50px; margin-bottom: 2rem; }
-  #cta h2 { font-family: var(--display); font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; max-width: 720px; margin: 0 auto 1.5rem; }
+  #cta h2 { font-family: var(--display); font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; max-width: 720px; margin: 0 auto 1.5rem; }
   #cta h2 .n { color: var(--neon); }
   #cta h2 .b { color: var(--mid); }
   #cta .sub { color: var(--text-2); max-width: 480px; margin: 0 auto 2.5rem; font-size: 0.95rem; }
@@ -294,7 +292,7 @@
   .cta-note { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); }
 
   footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family:var(--display); font-size:0.9rem; font-weight:800; color:var(--text-2); }
+  .footer-logo { font-family:var(--display); font-size:0.9rem; font-weight:700; color:var(--text-2); }
   .footer-logo .dot { color:var(--neon); }
   footer p { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); max-width:400px; }
 
@@ -317,6 +315,19 @@
   details .detail-body p { color: var(--text-2); font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.8rem; }
   details .detail-body p:last-child { margin-bottom: 0; }
   details .detail-body strong { color: var(--text); font-weight: 500; }
+
+  /* FAQ overrides — full-width, left-aligned, display font */
+  #faq details { margin-top: 0; }
+  #faq details summary {
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 500;
+    letter-spacing: 0; text-transform: none; color: var(--text);
+    display: flex; width: 100%; justify-content: space-between; align-items: center;
+    padding: 1.2rem 0; border-bottom: none; gap: 1rem;
+  }
+  #faq details summary::before { display: none; }
+  #faq details summary .faq-icon { font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.25s; }
+  #faq details[open] summary .faq-icon { transform: rotate(45deg); }
+  #faq details summary:hover { color: var(--text); }
 
   @media(max-width:720px){
     section { padding: 4rem 1.25rem; }
@@ -369,7 +380,7 @@
   .email-form button[type="submit"] {
     font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
     background: var(--neon); color: var(--bg); border: none; padding: 0.85rem 1.8rem;
-    border-radius: 3px; cursor: pointer; font-weight: 600;
+    border-radius: 3px; cursor: pointer; font-weight: 700;
     transition: opacity 0.2s, transform 0.15s;
   }
   .email-form button[type="submit"]:hover { opacity: 0.88; transform: translateY(-1px); }
@@ -400,7 +411,7 @@
   <div class="container">
     <div class="hero-eyebrow fade in" style="text-align:center; justify-content:center;">Aktienanalyse · Fundamental · Transparent</div>
     <h1 class="hero-hl fade in" style="text-align:center; max-width:100%;">
-      Fundamentalanalyse.<br class="mobile-br"> <span class="n">Für alle.</span>
+      <span class="n">Das Tool.</span> Für deine<br class="mobile-br"> Fundamentalanalyse.
     </h1>
     <p class="hero-sub fade in" style="text-align:center; margin-left:auto; margin-right:auto;">
       Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, ohne Umwege.
@@ -550,12 +561,12 @@
       <div class="output-card blue-card fade">
         <span class="oc-icon">◎</span>
         <h3>Fairer Wert</h3>
-        <p>Was wäre dieses Unternehmen wert, wenn deine Annahmen eintreten? Der faire Wert ist keine magische Zahl — er folgt direkt aus deinen eigenen Erwartungen. Transparent, nachvollziehbar, kontrollierbar.</p>
+        <p>Was wäre dieses Unternehmen wert, wenn deine Annahmen eintreten? Das Ergebnis ist ein gewichteter Komposit aus vier Methoden — kein einzelner Wert, sondern ein ausgewogenes Urteil.</p>
         <div class="oc-metrics">
-          <div class="oc-metric"><span>DCF Fair Value</span><span class="mv">$189,60</span></div>
-          <div class="oc-metric"><span>KGV Fairer Wert</span><span class="mv">$178,20</span></div>
-          <div class="oc-metric"><span>Aktueller Kurs</span><span class="mv">$214,40</span></div>
-          <div class="oc-metric"><span>Margin of Safety</span><span class="mv">− 13,1 %</span></div>
+          <div class="oc-metric"><span>DCF Fair Value <span style="color:var(--text-3);">· 50 %</span></span><span class="mv">$189,60</span></div>
+          <div class="oc-metric"><span>KGV Fairer Wert <span style="color:var(--text-3);">· 25 %</span></span><span class="mv">$178,20</span></div>
+          <div class="oc-metric"><span>EV/EBITDA <span style="color:var(--text-3);">· 25 %</span></span><span class="mv">$183,40</span></div>
+          <div class="oc-metric"><span>Hist. Median-KGV <span style="color:var(--text-3);">· Referenz</span></span><span class="mv">$201,80</span></div>
         </div>
       </div>
     </div>
@@ -607,7 +618,7 @@
         <div class="formula">
           <div class="formula-part m">
             <div class="fp-val">Bewertungsmodell</div>
-            <div class="fp-label">DCF · KGV · EV/EBITDA</div>
+            <div class="fp-label">DCF · KGV · EV/EBITDA · Hist. KGV</div>
           </div>
           <div class="formula-op">+</div>
           <div class="formula-part a">
@@ -633,7 +644,7 @@
         <div class="tag">Live-Vorschau</div>
         <h2>Sieh, wie es aussieht —<br><span class="n">in Echtzeit.</span></h2>
         <p>Der Rechner läuft direkt im Browser. Keine Installation, kein Account, kein Abo. Einfach Ticker eingeben und loslegen.</p>
-        <p>Alle Modelle gleichzeitig — DCF, KGV, EV/EBITDA — auf einen Blick vergleichbar. Qualität und fairer Wert nebeneinander.</p>
+        <p>Alle Modelle gleichzeitig — DCF, KGV, EV/EBITDA und historisches Median-KGV — auf einen Blick vergleichbar. Das Ergebnis ist ein gewichteter Komposit-Wert: 50 % DCF, 25 % KGV, 25 % EV/EBITDA.</p>
         <p style="margin-top:1.2rem; font-size:0.88rem; color:var(--text-2);">Presets speichern &amp; laden · PDF-Export · Glossar mit 46 Fachbegriffen · Automatischer Datenabruf</p>
       </div>
       <div class="terminal fade">
@@ -684,8 +695,8 @@
     <div class="feat-grid">
       <div class="feat-card fade">
         <div class="feat-icon">Σ</div>
-        <h3>Mehrere Bewertungsmodelle</h3>
-        <p>DCF, KGV und EV/EBITDA gleichzeitig — alle Ergebnisse nebeneinander vergleichbar.</p>
+        <h3>Vier Bewertungsmodelle — gewichtet</h3>
+        <p>Two-Stage DCF (50 %), KGV (25 %) und EV/EBITDA (25 %) ergeben einen Komposit-Wert. Das historische Median-KGV dient als zusätzlicher historischer Anker.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">↻</div>
@@ -740,6 +751,47 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" style="padding:5rem 2rem; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="tag fade" style="margin-bottom:1rem;">Häufige Fragen</div>
+    <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:2.5rem;">FAQ</h2>
+    <div style="max-width:680px;">
+
+      <details class="fade" style="border-bottom:1px solid var(--border);">
+        <summary>Was unterscheidet euer Tool von anderen Fair-Value-Rechnern?<span class="faq-icon">+</span></summary>
+        <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
+          <p style="margin-bottom:0.8rem;">Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro kombiniert vier Methoden zu einem gewichteten Komposit-Urteil: <strong style="color:var(--text);">Two-Stage DCF (50 %), KGV-Methode (25 %), EV/EBITDA (25 %)</strong> — plus das historische 5-Jahres-Median-KGV als unabhängige Referenz.</p>
+          <p style="margin-bottom:0.8rem;">Das Two-Stage-DCF-Modell projiziert Cashflows in zwei Phasen: stabiles Wachstum in den ersten fünf Jahren, dann ein realistischer linearer Übergang zum Terminal Value — genau wie professionelle Analysten es tun.</p>
+          <p>Der entscheidende Unterschied: Alle Annahmen sind sichtbar und steuerbar. Andere Tools verstecken ihre Parameter und suggerieren eine Objektivität, die nicht existiert. Bei Fair Value Pro ist das Ergebnis immer dein eigenes Modell — transparent, nachvollziehbar, ehrlich.</p>
+        </div>
+      </details>
+
+      <details class="fade" style="border-bottom:1px solid var(--border);">
+        <summary>Ist das eine Anlageberatung?<span class="faq-icon">+</span></summary>
+        <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
+          <p>Nein. Fair Value Pro ist ein Berechnungswerkzeug. Das Ergebnis hängt direkt von deinen eigenen Annahmen ab — wer andere Wachstumsraten eingibt, bekommt einen anderen Wert. Es handelt sich nicht um eine persönliche Empfehlung und nicht um Anlageberatung im Sinne des WpHG.</p>
+        </div>
+      </details>
+
+      <details class="fade" style="border-bottom:1px solid var(--border);">
+        <summary>Woher kommen die Finanzdaten?<span class="faq-icon">+</span></summary>
+        <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
+          <p>Alle Finanzdaten — Umsatz, freier Cashflow, Gewinne, Schulden, Beta — werden automatisch von Yahoo Finance geladen. Die Vergangenheitsdaten sind nicht manuell editierbar. Was du steuerst, sind ausschließlich deine Zukunftsannahmen.</p>
+        </div>
+      </details>
+
+      <details class="fade" style="border-bottom:1px solid var(--border);">
+        <summary>Funktioniert das auch für nicht-deutsche Aktien?<span class="faq-icon">+</span></summary>
+        <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
+          <p>Ja. Jede Aktie mit einem Yahoo-Finance-Ticker ist nutzbar — US-amerikanische, europäische und internationale Werte. Die Währungsanzeige lässt sich zwischen USD und EUR umschalten.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta">
   <div class="container">
@@ -758,16 +810,31 @@
       </form>
       <p class="form-success" id="form-success">✓ &nbsp;Eingetragen — wir melden uns beim Launch.</p>
       <span class="cta-note">Kein Abo · Kein Account · Wir informieren dich beim Launch</span>
+      <p style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); max-width:420px; line-height:1.6; margin-top:0.4rem;">
+        Mit dem Absenden stimmst du der Speicherung deiner E-Mail-Adresse zur einmaligen Kontaktaufnahme beim Launch zu. Die Verarbeitung erfolgt über Formspree (USA). Weitere Infos in der <a href="datenschutz.html" style="color:var(--text-2); text-decoration:underline;">Datenschutzerklärung</a>.
+      </p>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
-  <p>Keine Anlageberatung. Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information.</p>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Kein Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Dies ist kein Angebot und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren.</p>
+  <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+    <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--text-3)'">Impressum</a>
+    <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--text-3)'">Datenschutz</a>
+  </div>
 </footer>
 
 <script>
+  // FAQ toggles
+  document.querySelectorAll('#faq details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      const icon = d.querySelector('summary span:last-child');
+      if(icon) icon.style.transform = d.open ? 'rotate(45deg)' : 'rotate(0deg)';
+    });
+  });
+
   // Hamburger menu
   const hbg = document.getElementById('hamburger');
   const mmenu = document.getElementById('mobile-menu');
