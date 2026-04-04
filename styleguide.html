@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Value Pro — Styleguide</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:      #080e0b;
+  --bg2:     #0b1410;
+  --bg3:     #0f1a14;
+  --bg4:     #142019;
+  --neon:    #00ff87;
+  --neon-dim: rgba(0,255,135,0.09);
+  --neon-border: rgba(0,255,135,0.25);
+  --mid:     #00c46a;
+  --mid-dim:    rgba(0,196,106,0.09);
+  --mid-border: rgba(0,196,106,0.22);
+  --muted:   #2a6649;
+  --muted-dim:    rgba(42,102,73,0.25);
+  --muted-border: rgba(42,102,73,0.45);
+  --warn:    #8fffcb;
+  --text:    #c8ddd2;
+  --text-2:  #6a8c7a;
+  --text-3:  #344d3e;
+  --border:  rgba(0,255,135,0.07);
+  --border2: rgba(0,255,135,0.12);
+  --sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; }
+
+/* NAV */
+nav { position: fixed; top:0; left:0; right:0; z-index:100; height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 2.5rem; background:rgba(8,14,11,0.95); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
+.nav-logo { font-size:1rem; font-weight:700; color:var(--text); text-decoration:none; }
+.nav-logo .dot { color:var(--neon); }
+.nav-badge { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); border:1px solid var(--border2); padding:0.3rem 0.8rem; border-radius:3px; }
+
+/* LAYOUT */
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+.page { padding-top: 7rem; padding-bottom: 6rem; }
+
+/* SECTION */
+.sg-section { margin-bottom: 5rem; }
+.sg-section-title {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--neon);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.sg-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+.sg-section h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 2rem; color: var(--text); }
+.sg-desc { font-size: 0.88rem; color: var(--text-2); margin-bottom: 2rem; line-height: 1.7; max-width: 620px; }
+
+/* GRID */
+.sg-grid { display: grid; gap: 1rem; }
+.sg-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.sg-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.sg-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.sg-grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+/* CARD */
+.sg-card { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.5rem; }
+.sg-card-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-top: 0.8rem; }
+.sg-card-value { font-family: var(--mono); font-size: 0.75rem; color: var(--text-2); margin-top: 0.2rem; }
+
+/* COLORS */
+.color-swatch {
+  height: 80px;
+  border-radius: 3px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.6rem;
+}
+.color-swatch .hex { font-family: var(--mono); font-size: 0.62rem; opacity: 0.7; }
+
+/* TYPE */
+.type-sample { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; }
+.type-sample:last-child { border-bottom: none; }
+.type-meta { font-family: var(--mono); font-size: 0.62rem; color: var(--text-3); margin-bottom: 0.5rem; letter-spacing: 0.08em; }
+
+/* SPACING */
+.spacing-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+.spacing-bar { background: var(--neon); border-radius: 2px; height: 8px; opacity: 0.7; }
+.spacing-label { font-family: var(--mono); font-size: 0.7rem; color: var(--text-2); min-width: 160px; }
+.spacing-val { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); }
+
+/* RADIUS */
+.radius-demo { width: 80px; height: 80px; background: var(--bg3); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; }
+.radius-label { font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 0.5rem; text-align: center; }
+
+/* BORDERS */
+.border-demo { padding: 1rem 1.2rem; border-radius: 3px; font-size: 0.85rem; color: var(--text-2); margin-bottom: 0.5rem; }
+
+/* COMPONENTS */
+.btn-neon { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+.btn-neon:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-outline { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; display: inline-block; cursor: pointer; transition: background 0.2s; }
+.btn-outline:hover { background: var(--neon-dim); }
+.btn-ghost-demo { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; transition: color 0.2s; background: none; border: none; }
+.btn-ghost-demo:hover { color: var(--neon); }
+.btn-disabled { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--text-3); border: 1px solid var(--border2); padding: 0.9rem 2.2rem; border-radius: 3px; cursor: not-allowed; opacity: 0.5; display: inline-block; }
+
+.tag-demo { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); }
+.tag-demo::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
+
+.badge-neon { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bg); background: var(--neon); padding: 0.25rem 0.7rem; border-radius: 50px; display: inline-block; font-weight: 700; }
+.badge-pill { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.3rem 0.8rem; border-radius: 50px; display: inline-block; }
+.badge-dim { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); border: 1px solid var(--border2); background: var(--bg4); padding: 0.3rem 0.8rem; border-radius: 50px; display: inline-block; }
+
+/* INPUT */
+.input-demo { font-family: var(--mono); font-size: 0.78rem; background: var(--bg3); border: 1px solid var(--neon-border); color: var(--text); padding: 0.85rem 1.2rem; border-radius: 3px; width: 100%; outline: none; transition: border-color 0.2s; }
+.input-demo::placeholder { color: var(--text-3); }
+.input-demo:focus { border-color: var(--neon); }
+
+/* MOTION */
+.motion-demo { width: 100%; height: 48px; display: flex; align-items: center; gap: 1rem; }
+.motion-bar { height: 4px; border-radius: 2px; background: var(--neon); }
+
+/* DO / DONT */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border2); border: 1px solid var(--border2); border-radius: 4px; overflow: hidden; }
+.do { background: var(--bg2); padding: 1.5rem; }
+.dont { background: var(--bg2); padding: 1.5rem; }
+.do-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--neon); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.4rem; }
+.dont-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #e05252; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.4rem; }
+.do-label::before { content: '✓'; }
+.dont-label::before { content: '✕'; }
+.do p, .dont p { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; }
+
+/* ICONS */
+.icon-cell { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1.2rem; background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; }
+.icon-box { font-family: var(--mono); font-size: 0.8rem; color: var(--neon); border: 1px solid var(--neon-border); display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 3px; }
+.icon-name { font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); }
+
+/* LOGO */
+.logo-demo { display: flex; align-items: center; }
+.logo-text { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+.logo-text .dot { color: var(--neon); }
+
+/* HERO PREVIEW */
+.hero-preview {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-preview::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 300px;
+  top: -60px; left: -80px;
+  background: radial-gradient(ellipse, rgba(0,255,135,0.06), transparent 70%);
+  pointer-events: none;
+}
+
+@media(max-width: 720px) {
+  .sg-grid-3, .sg-grid-4, .sg-grid-5 { grid-template-columns: repeat(2, 1fr); }
+  .sg-grid-2 { grid-template-columns: 1fr; }
+  .do-dont { grid-template-columns: 1fr; }
+  nav { padding: 0 1.25rem; }
+}
+@media(max-width: 480px) {
+  .sg-grid-3, .sg-grid-4, .sg-grid-5 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <span class="nav-badge">Brand Styleguide · v1.0</span>
+</nav>
+
+<div class="wrap page">
+
+
+  <!-- BRAND -->
+  <div class="sg-section">
+    <div class="sg-section-title">01 — Marke</div>
+    <h2>Fair Value Pro</h2>
+    <p class="sg-desc">Fair Value Pro ist ein Bewertungstool für Aktien — kein Finanzprodukt, kein Berater. Die Marke steht für Transparenz, Kontrolle und fundierte Eigenverantwortung. Der Tonfall ist sachlich-direkt, ohne Superlative und ohne Versprechen, die nicht eingehalten werden können.</p>
+
+    <div class="sg-grid sg-grid-2" style="margin-bottom:2rem;">
+      <div class="sg-card">
+        <div class="logo-demo"><span class="logo-text">Fair Value Pro<span class="dot">.</span></span></div>
+        <div class="sg-card-label">Primäres Wortlogo</div>
+        <div class="sg-card-value">Systemschrift · 700 · + grüner Punkt</div>
+      </div>
+      <div class="sg-card" style="background:#fff;">
+        <div class="logo-demo"><span class="logo-text" style="color:#080e0b;">Fair Value Pro<span style="color:#00ff87;">.</span></span></div>
+        <div class="sg-card-label" style="color:#888;">Auf hellem Hintergrund (nicht empfohlen)</div>
+        <div class="sg-card-value" style="color:#aaa;">Nur wenn zwingend nötig</div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do">
+        <div class="do-label">Richtig</div>
+        <p>Fair Value Pro. / FVP / Das Tool.<br>Sachlich, werkzeugbetont, ohne Anlageberatungs-Versprechen.</p>
+      </div>
+      <div class="dont">
+        <div class="dont-label">Falsch</div>
+        <p>„Schlägt den Markt" / „Garantierter Gewinn" / „Die beste Aktie finden"<br>Keine Renditeversprechen, keine Superlative.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FARBEN -->
+  <div class="sg-section">
+    <div class="sg-section-title">02 — Farben</div>
+    <h2>Farbpalette</h2>
+    <p class="sg-desc">Das Farbschema ist monochromatisch grün auf tiefem Dunkel-Grün. Neon-Grün ist die einzige Signalfarbe — sie markiert Aktionen, Werte und Highlights. Alle anderen Töne sind Abstufungen desselben Grün-Grau-Spektrums.</p>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Hintergründe</p>
+    <div class="sg-grid sg-grid-4" style="margin-bottom:2rem;">
+      <div>
+        <div class="color-swatch" style="background:#080e0b; border:1px solid var(--border2);"><span class="hex" style="color:#344d3e;">#080e0b</span></div>
+        <div class="sg-card-label">--bg · Haupt-BG</div>
+        <div class="sg-card-value">#080e0b</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#0b1410; border:1px solid var(--border2);"><span class="hex" style="color:#344d3e;">#0b1410</span></div>
+        <div class="sg-card-label">--bg2 · Sections</div>
+        <div class="sg-card-value">#0b1410</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#0f1a14; border:1px solid var(--border2);"><span class="hex" style="color:#344d3e;">#0f1a14</span></div>
+        <div class="sg-card-label">--bg3 · Cards</div>
+        <div class="sg-card-value">#0f1a14</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#142019; border:1px solid var(--border2);"><span class="hex" style="color:#344d3e;">#142019</span></div>
+        <div class="sg-card-label">--bg4 · Tiefste Ebene</div>
+        <div class="sg-card-value">#142019</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Primärfarben — Grün-Spektrum</p>
+    <div class="sg-grid sg-grid-3" style="margin-bottom:2rem;">
+      <div>
+        <div class="color-swatch" style="background:#00ff87;"><span class="hex" style="color:#080e0b;">#00ff87</span></div>
+        <div class="sg-card-label">--neon · Primär-Akzent</div>
+        <div class="sg-card-value">CTAs · Highlights · Logo-Punkt</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#00c46a;"><span class="hex" style="color:#080e0b;">#00c46a</span></div>
+        <div class="sg-card-label">--mid · Sekundär-Akzent</div>
+        <div class="sg-card-value">Secondary buttons · Hover</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#2a6649;"><span class="hex" style="color:#c8ddd2;">#2a6649</span></div>
+        <div class="sg-card-label">--muted · Gedämpft</div>
+        <div class="sg-card-value">Zurückhaltende Elemente</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Texthierarchie</p>
+    <div class="sg-grid sg-grid-3" style="margin-bottom:2rem;">
+      <div>
+        <div class="color-swatch" style="background:#c8ddd2; border-radius:3px;"><span class="hex" style="color:#080e0b;">#c8ddd2</span></div>
+        <div class="sg-card-label">--text · Primärtext</div>
+        <div class="sg-card-value">Headlines · wichtige Inhalte</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#6a8c7a; border-radius:3px;"><span class="hex" style="color:#080e0b;">#6a8c7a</span></div>
+        <div class="sg-card-label">--text-2 · Sekundärtext</div>
+        <div class="sg-card-value">Fließtext · Beschreibungen</div>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#344d3e; border-radius:3px;"><span class="hex" style="color:#c8ddd2;">#344d3e</span></div>
+        <div class="sg-card-label">--text-3 · Tertiärtext</div>
+        <div class="sg-card-value">Labels · Metadaten · Timestamps</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Borders & Overlays</p>
+    <div class="sg-grid sg-grid-2">
+      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.07);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--border · rgba(0,255,135,0.07) · Standard-Trennlinie</span>
+      </div>
+      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.12);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--border2 · rgba(0,255,135,0.12) · Betonte Trennlinie</span>
+      </div>
+      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.25);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--neon-border · rgba(0,255,135,0.25) · Aktive Elemente</span>
+      </div>
+      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.25); background:rgba(0,255,135,0.09);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--neon);">--neon-dim · Hover / Focus-Fläche</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TYPOGRAFIE -->
+  <div class="sg-section">
+    <div class="sg-section-title">03 — Typografie</div>
+    <h2>Schriften</h2>
+    <p class="sg-desc">Drei Schriftrollen, klar getrennt: Systemschrift für alle Fließtexte und Headlines, Monospace für technische Elemente wie Labels, Tags, Codes und Metadaten.</p>
+
+    <div class="type-sample">
+      <div class="type-meta">DISPLAY / HEADLINES — Systemschrift · 700</div>
+      <div style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--text);">Das Tool.<br><span style="color:var(--neon);">Für deine Analyse.</span></div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-weight: 700 · letter-spacing: −0.02em · line-height: 1.1</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">SUBHEADLINES — Systemschrift · 700 · kleinere Größen</div>
+      <div style="font-size:1.6rem; font-weight:700; letter-spacing:-0.01em; color:var(--text);">Wer rechnet, kauft besser.</div>
+      <div style="font-size:1.2rem; font-weight:700; letter-spacing:-0.01em; color:var(--text); margin-top:0.4rem;">So denken professionelle Analysten.</div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-weight: 700 · letter-spacing: −0.01em</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">BODY TEXT — Systemschrift · 400</div>
+      <p style="font-size:1rem; color:var(--text-2); max-width:560px;">Fair Value Pro berechnet, was ein Unternehmen wert wäre, wenn deine Annahmen eintreten. Transparent, nachvollziehbar, kontrollierbar — kein Ergebnis ohne erklärte Grundlage.</p>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-size: 0.93–1.08rem · font-weight: 400 · line-height: 1.75</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">MONOSPACE — Labels, Tags, Code, Metadaten</div>
+      <div style="font-family:var(--mono); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--neon);">AKTIENANALYSE · FUNDAMENTAL · TRANSPARENT</div>
+      <div style="font-family:var(--mono); font-size:0.85rem; color:var(--text-2); margin-top:0.6rem;">DCF · KGV · EV/EBITDA · DDM · PEG</div>
+      <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); margin-top:0.4rem;">Stand: 04/2026 · Kein Abo · Kein Account</div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">ui-monospace / SF Mono / Cascadia Code / Consolas · letter-spacing: 0.08–0.2em</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">TYPOGRAFISCHE HIERARCHIE — Übersicht</div>
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+        <div style="display:flex; align-items:baseline; gap:1rem;"><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); min-width:80px;">H1</span><span style="font-size:clamp(2.8rem,7vw,5rem); font-weight:700; letter-spacing:-0.02em; line-height:1;">Aa</span><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">clamp(2.8rem, 7vw, 5rem) · 700</span></div>
+        <div style="display:flex; align-items:baseline; gap:1rem;"><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); min-width:80px;">H2</span><span style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; letter-spacing:-0.02em; line-height:1;">Aa</span><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">clamp(1.8rem, 4vw, 2.8rem) · 700</span></div>
+        <div style="display:flex; align-items:baseline; gap:1rem;"><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); min-width:80px;">Body</span><span style="font-size:1rem; font-weight:400; line-height:1;">Aa</span><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">1rem / 0.93rem · 400 · line-height 1.75</span></div>
+        <div style="display:flex; align-items:baseline; gap:1rem;"><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); min-width:80px;">Mono</span><span style="font-family:var(--mono); font-size:0.75rem; font-weight:400; line-height:1;">Aa</span><span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">0.62–0.85rem · 400–500</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ABSTÄNDE -->
+  <div class="sg-section">
+    <div class="sg-section-title">04 — Abstände & Raster</div>
+    <h2>Spacing System</h2>
+    <p class="sg-desc">Basierend auf einem 4px-Raster. Vertikaler Rhythm in rem, interne Abstände in px.</p>
+
+    <div style="margin-bottom:2rem;">
+      <div class="spacing-row"><span class="spacing-label">4px · 0.25rem</span><div class="spacing-bar" style="width:4px;"></div><span class="spacing-val">Micro gaps</span></div>
+      <div class="spacing-row"><span class="spacing-label">8px · 0.5rem</span><div class="spacing-bar" style="width:8px;"></div><span class="spacing-val">Icon gaps, inline spacing</span></div>
+      <div class="spacing-row"><span class="spacing-label">12px · 0.75rem</span><div class="spacing-bar" style="width:12px;"></div><span class="spacing-val">Button padding innen</span></div>
+      <div class="spacing-row"><span class="spacing-label">16px · 1rem</span><div class="spacing-bar" style="width:16px;"></div><span class="spacing-val">Card padding · Standard-Gap</span></div>
+      <div class="spacing-row"><span class="spacing-label">24px · 1.5rem</span><div class="spacing-bar" style="width:24px;"></div><span class="spacing-val">Section-interne Abstände</span></div>
+      <div class="spacing-row"><span class="spacing-label">32px · 2rem</span><div class="spacing-bar" style="width:32px;"></div><span class="spacing-val">Horizontale Padding (Sections)</span></div>
+      <div class="spacing-row"><span class="spacing-label">56px · 3.5rem</span><div class="spacing-bar" style="width:56px;"></div><span class="spacing-val">Section-Abstände vertikal</span></div>
+      <div class="spacing-row"><span class="spacing-label">112px · 7rem</span><div class="spacing-bar" style="width:112px;"></div><span class="spacing-val">Section padding top/bottom</span></div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Maximale Breiten</p>
+    <div class="sg-grid sg-grid-2">
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.85rem; color:var(--neon);">900px</div>
+        <div class="sg-card-label">.container — Standardinhalt</div>
+      </div>
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.85rem; color:var(--neon);">1120px</div>
+        <div class="sg-card-label">.wide — Feature-Grids, Tabellen</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FORMEN & RADIEN -->
+  <div class="sg-section">
+    <div class="sg-section-title">05 — Formen & Radien</div>
+    <h2>Border Radius</h2>
+    <p class="sg-desc">Eckige Grundhaltung — minimale Radien. Keine weichen Formen, keine überrundeten Cards. Nur Badges und Pills verwenden 50px.</p>
+
+    <div class="sg-grid sg-grid-4" style="margin-bottom:2rem;">
+      <div style="text-align:center;">
+        <div style="display:flex; justify-content:center;">
+          <div class="radius-demo" style="border-radius:2px;"></div>
+        </div>
+        <div class="radius-label">2px<br>Buttons · Inputs<br>Tags · Mono-Elemente</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="display:flex; justify-content:center;">
+          <div class="radius-demo" style="border-radius:3px;"></div>
+        </div>
+        <div class="radius-label">3px<br>Standard Cards<br>Panels · Boxen</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="display:flex; justify-content:center;">
+          <div class="radius-demo" style="border-radius:6px;"></div>
+        </div>
+        <div class="radius-label">6px<br>Pricing Grid<br>Dashboard Mockup</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="display:flex; justify-content:center;">
+          <div class="radius-demo" style="border-radius:50px;"></div>
+        </div>
+        <div class="radius-label">50px<br>Badges · Pills<br>Toggle · CTA-Badge</div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do">
+        <div class="do-label">Korrekte Radien</div>
+        <p>Buttons: 3px · Cards: 3–6px · Badges: 50px · Nav-CTA: 3px</p>
+      </div>
+      <div class="dont">
+        <div class="dont-label">Nicht verwenden</div>
+        <p>8px, 12px, 16px — zu weich, passt nicht zur Marken-Ästhetik.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- KOMPONENTEN -->
+  <div class="sg-section">
+    <div class="sg-section-title">06 — Komponenten</div>
+    <h2>UI-Elemente</h2>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Buttons</p>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin-bottom:2rem;">
+      <button class="btn-neon">Primär → CTA</button>
+      <button class="btn-outline">Sekundär</button>
+      <button class="btn-ghost-demo">Ghost →</button>
+      <div class="btn-disabled">Deaktiviert</div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Tags & Badges</p>
+    <div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-bottom:2rem; align-items:center;">
+      <div class="tag-demo">Section Label</div>
+      <span class="badge-neon">Premium</span>
+      <span class="badge-pill">Limitierter Beta-Zugang</span>
+      <span class="badge-dim">Kein Account</span>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Eingabefeld</p>
+    <div style="max-width:380px; margin-bottom:2rem;">
+      <input class="input-demo" type="text" placeholder="deine@email.de">
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Feature Icons (Mono-Symbole)</p>
+    <div class="sg-grid sg-grid-5" style="margin-bottom:2rem;">
+      <div class="icon-cell"><div class="icon-box">Σ</div><div class="icon-name">Methoden</div></div>
+      <div class="icon-cell"><div class="icon-box">↻</div><div class="icon-name">Datenabruf</div></div>
+      <div class="icon-cell"><div class="icon-box">⚙</div><div class="icon-name">Einstellungen</div></div>
+      <div class="icon-cell"><div class="icon-box">↓</div><div class="icon-name">Export</div></div>
+      <div class="icon-cell"><div class="icon-box">☆</div><div class="icon-name">Presets</div></div>
+      <div class="icon-cell"><div class="icon-box">?</div><div class="icon-name">Glossar</div></div>
+      <div class="icon-cell"><div class="icon-box">◈</div><div class="icon-name">Qualität</div></div>
+      <div class="icon-cell"><div class="icon-box">◎</div><div class="icon-name">Fair Value</div></div>
+      <div class="icon-cell"><div class="icon-box">↗</div><div class="icon-name">Chart</div></div>
+      <div class="icon-cell"><div class="icon-box">▦</div><div class="icon-name">Tabelle</div></div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Card-Muster</p>
+    <div class="sg-grid sg-grid-2" style="margin-bottom:2rem;">
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); margin-bottom:0.6rem;">Standard Card</div>
+        <div style="font-size:0.9rem; color:var(--text-2);">Hintergrund bg3 · Border border2 · Radius 3px · Padding 2rem</div>
+      </div>
+      <div style="background:var(--bg3); border:1px solid var(--neon-border); border-radius:3px; padding:1.5rem; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, transparent, var(--neon), transparent);"></div>
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--neon); margin-bottom:0.6rem;">Featured / Highlighted Card</div>
+        <div style="font-size:0.9rem; color:var(--text-2);">Neon-Border · Gradient Top-Line · bg3</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Terminal / Mono-Panel</p>
+    <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:6px; overflow:hidden; font-family:var(--mono); font-size:0.73rem; max-width:480px;">
+      <div style="background:var(--bg4); padding:0.65rem 1rem; display:flex; gap:6px; align-items:center; border-bottom:1px solid var(--border);">
+        <div style="width:10px; height:10px; border-radius:50%; background:#ff5370;"></div>
+        <div style="width:10px; height:10px; border-radius:50%; background:#ffc94a;"></div>
+        <div style="width:10px; height:10px; border-radius:50%; background:var(--neon);"></div>
+        <span style="margin-left:0.5rem; color:var(--text-3); font-size:0.6rem; letter-spacing:0.1em;">Fair Value Pro — Terminal Style</span>
+      </div>
+      <div style="padding:1.2rem;">
+        <div style="color:var(--neon);">$ <span style="color:var(--text);">AAPL</span></div>
+        <div style="color:var(--text-2); margin-top:0.6rem;">DCF Fair Value <span style="color:var(--text); float:right;">$189,60</span></div>
+        <div style="color:var(--text-2); border-top:1px solid var(--border); padding-top:0.4rem; margin-top:0.4rem;">Margin of Safety <span style="color:#8fffcb; float:right; opacity:0.7;">−13,1 %</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ANIMATION -->
+  <div class="sg-section">
+    <div class="sg-section-title">07 — Animation & Bewegung</div>
+    <h2>Motion Principles</h2>
+    <p class="sg-desc">Zurückhaltend und funktional. Animationen dienen der Orientierung, nicht der Unterhaltung. Alle Transitions verwenden `ease` mit kurzen Dauern.</p>
+
+    <div class="sg-grid sg-grid-2" style="margin-bottom:2rem;">
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.75rem; color:var(--neon); margin-bottom:0.5rem;">Scroll Reveal</div>
+        <div style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">opacity: 0→1 · translateY(24px→0)<br>duration: 0.65s · ease<br>delay: (index % 4) × 80ms</div>
+      </div>
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.75rem; color:var(--neon); margin-bottom:0.5rem;">Hover States</div>
+        <div style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">background: 0.2s ease<br>opacity: 0.88 on primary CTA<br>translateY(−1px) on buttons</div>
+      </div>
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.75rem; color:var(--neon); margin-bottom:0.5rem;">Cursor Blink</div>
+        <div style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">animation: blink 1.1s step-end infinite<br>@keyframes: 50% opacity: 0<br>Terminal-Elemente</div>
+      </div>
+      <div class="sg-card">
+        <div style="font-family:var(--mono); font-size:0.75rem; color:var(--neon); margin-bottom:0.5rem;">Ticker</div>
+        <div style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">animation: tick 30s linear infinite<br>translateX(0 → −50%)<br>Endlos-Scrolling</div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do">
+        <div class="do-label">Erlaubt</div>
+        <p>Kurze Transitions (0.15–0.65s) · Fade-In beim Scroll · Hover-Feedback · Blinkender Cursor im Terminal</p>
+      </div>
+      <div class="dont">
+        <div class="dont-label">Nicht erlaubt</div>
+        <p>Endlose Bounce-Animationen · Parallax · Ladescreen-Animationen · Bounce/Elastic easings</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SPRACHE & TONALITÄT -->
+  <div class="sg-section">
+    <div class="sg-section-title">08 — Sprache & Tonalität</div>
+    <h2>Voice & Tone</h2>
+
+    <div class="sg-grid sg-grid-2" style="margin-bottom:2rem;">
+      <div class="sg-card">
+        <div style="font-size:0.9rem; font-weight:700; color:var(--text); margin-bottom:1rem;">Marken-Adjektive</div>
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <span style="font-family:var(--mono); font-size:0.75rem; color:var(--neon);">✓ Transparent</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:var(--neon);">✓ Sachlich-direkt</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:var(--neon);">✓ Fundiert</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:var(--neon);">✓ Selbstbestimmt</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:var(--neon);">✓ Professionell-zugänglich</span>
+        </div>
+      </div>
+      <div class="sg-card">
+        <div style="font-size:0.9rem; font-weight:700; color:var(--text); margin-bottom:1rem;">Nie verwenden</div>
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <span style="font-family:var(--mono); font-size:0.75rem; color:#e05252;">✕ „Markt schlagen"</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:#e05252;">✕ Rendite-Versprechen</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:#e05252;">✕ Superlative (bester, einziger)</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:#e05252;">✕ Kaufempfehlungen</span>
+          <span style="font-family:var(--mono); font-size:0.75rem; color:#e05252;">✕ Übertriebene Emotionalität</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do">
+        <div class="do-label">Richtige Formulierungen</div>
+        <p>„Berechne, was eine Aktie wirklich wert ist."<br>„Deine Annahmen. Dein Kursziel."<br>„Wer rechnet, kauft besser."<br>„Starte deine erste Analyse."</p>
+      </div>
+      <div class="dont">
+        <div class="dont-label">Falsche Formulierungen</div>
+        <p>„Finde die beste Aktie."<br>„Schlage jeden Fonds."<br>„Garantierte Rendite."<br>„Kaufe jetzt AAPL."</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- HERO VORSCHAU -->
+  <div class="sg-section">
+    <div class="sg-section-title">09 — Composites</div>
+    <h2>Hero-Pattern</h2>
+    <p class="sg-desc">Das Hero-Muster kombiniert: Eyebrow-Tag (Mono) → H1 (Display, weiß + Neon-Akzent) → Subtext (text-2) → CTA-Buttons → optionaler Ticker.</p>
+
+    <div class="hero-preview">
+      <div style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2); margin-bottom:1.2rem;">Aktienanalyse · Fundamental · Transparent</div>
+      <div style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1.2rem; color:var(--text);">
+        <span style="color:var(--neon);">Das Tool.</span> Für deine Fundamentalanalyse.
+      </div>
+      <p style="font-size:1rem; color:var(--text-2); max-width:500px; line-height:1.75; margin-bottom:2rem;">Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+        <button class="btn-neon">Kostenlos testen →</button>
+        <button class="btn-ghost-demo">Warum das wichtig ist</button>
+      </div>
+    </div>
+  </div>
+
+
+</div><!-- /wrap -->
+
+<footer style="border-top:1px solid var(--border); padding:2rem 2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-top:2rem;">
+  <div style="font-size:0.9rem; font-weight:700; color:var(--text-2);">Fair Value Pro<span style="color:var(--neon);">.</span></div>
+  <span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Brand Styleguide · Stand 04/2026 · Intern</span>
+</footer>
+
+</body>
+</html>
