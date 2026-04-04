@@ -1,0 +1,207 @@
+/*
+ * ============================================================
+ * Fair Value Pro — Typography & Fonts
+ * fonts.css · Stand 04/2026
+ * ============================================================
+ *
+ * SETUP: Manrope font files müssen im Ordner /fonts/ liegen.
+ *
+ * Download (kostenlos, Open Font License):
+ * https://fonts.google.com/specimen/Manrope
+ * → "Download family" klicken
+ * → Folgende .ttf in .woff2 konvertieren oder direkt als .woff2
+ *   von https://gwfh.mranftl.com/fonts/manrope herunterladen
+ *
+ * Benötigte Dateien im Ordner /fonts/:
+ *   manrope-v15-latin-regular.woff2     (400)
+ *   manrope-v15-latin-500.woff2         (500)
+ *   manrope-v15-latin-700.woff2         (700)
+ *   manrope-v15-latin-800.woff2         (800)
+ *
+ * Direkter Download aller Varianten:
+ * https://gwfh.mranftl.com/fonts/manrope?subsets=latin
+ * ============================================================
+ */
+
+/* ── @font-face Definitionen ── */
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/manrope-v15-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/manrope-v15-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/manrope-v15-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('fonts/manrope-v15-latin-800.woff2') format('woff2');
+}
+
+/* ── CSS Custom Properties ── */
+
+:root {
+  /* Schriftfamilien */
+  --display: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --sans:    'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+
+  /* Schriftgewichte */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  /* Schriftgrößen — Headlines */
+  --text-h1:     clamp(2.8rem, 7vw, 5rem);
+  --text-h2:     clamp(1.8rem, 4vw, 2.8rem);
+  --text-h2-sm:  clamp(1.6rem, 3vw, 2.2rem);
+  --text-h3:     1.15rem;
+
+  /* Schriftgrößen — Body */
+  --text-body-lg:  1.08rem;
+  --text-body:     0.97rem;
+  --text-body-sm:  0.88rem;
+
+  /* Schriftgrößen — Mono / UI */
+  --text-mono-lg:  0.85rem;
+  --text-mono:     0.72rem;
+  --text-mono-sm:  0.65rem;
+  --text-mono-xs:  0.6rem;
+
+  /* Letter Spacing */
+  --tracking-tight:  -0.04em;
+  --tracking-snug:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.08em;
+  --tracking-wider:   0.12em;
+  --tracking-widest:  0.2em;
+
+  /* Line Height */
+  --leading-tight:   1.05;
+  --leading-snug:    1.15;
+  --leading-normal:  1.7;
+  --leading-relaxed: 1.75;
+  --leading-loose:   1.8;
+}
+
+/* ── Basis-Typografie ── */
+
+body {
+  font-family: var(--sans);
+  font-weight: var(--weight-regular);
+  font-size: 1rem;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Headline-Stile ── */
+
+h1,
+.text-h1 {
+  font-family: var(--display);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-snug);
+  line-height: var(--leading-tight);
+}
+
+h2,
+.text-h2 {
+  font-family: var(--display);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-snug);
+  line-height: var(--leading-snug);
+}
+
+h3,
+.text-h3 {
+  font-family: var(--display);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+  line-height: var(--leading-snug);
+}
+
+/* ── Body-Stile ── */
+
+p,
+.text-body {
+  font-family: var(--sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+}
+
+.text-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-loose);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Mono / UI-Label-Stile ── */
+
+.text-mono,
+.tag,
+.badge,
+.btn-label,
+.eyebrow {
+  font-family: var(--mono);
+  font-size: var(--text-mono);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.text-mono-sm {
+  font-family: var(--mono);
+  font-size: var(--text-mono-sm);
+  letter-spacing: var(--tracking-wide);
+}
+
+.text-mono-xs {
+  font-family: var(--mono);
+  font-size: var(--text-mono-xs);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ── Utility Classes ── */
+
+.font-display  { font-family: var(--display); }
+.font-sans     { font-family: var(--sans); }
+.font-mono     { font-family: var(--mono); }
+
+.weight-regular { font-weight: var(--weight-regular); }
+.weight-medium  { font-weight: var(--weight-medium); }
+.weight-bold    { font-weight: var(--weight-bold); }
+.weight-black   { font-weight: var(--weight-black); }
+
+.tracking-tight   { letter-spacing: var(--tracking-tight); }
+.tracking-snug    { letter-spacing: var(--tracking-snug); }
+.tracking-wide    { letter-spacing: var(--tracking-wide); }
+.tracking-wider   { letter-spacing: var(--tracking-wider); }
+.tracking-widest  { letter-spacing: var(--tracking-widest); }
