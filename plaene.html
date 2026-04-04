@@ -34,8 +34,7 @@
   }
   .hero-glow { position: absolute; width: 600px; height: 400px; top: -80px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.05) 0%, transparent 70%); pointer-events: none; }
 
-  #hero 
-  #hero h1 { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
+  #hero h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
   #hero h1 .n { color: var(--neon); }
   #hero p {
     color: var(--text-2);
@@ -361,16 +360,6 @@
   
   
 
-  /* FOOTER */
-  
-  
-  
-  
-
-  /* ANIMATIONS */
-  
-  
-
   /* RESPONSIVE */
   
   
@@ -389,10 +378,10 @@
     .pricing-grid { grid-template-columns: 1fr; border-radius: 4px; }
     nav .nav-links { display: none; }
     nav a.nav-cta { display: none; }
-    
     .compare-table { min-width: 560px; }
   }
-  @media(max-width: 520px) {
+  @media(max-width: 600px) {
+    .stat-boxes { grid-template-columns: 1fr !important; }
     nav { padding: 0 1.25rem; }
     #hero { padding: 7rem 1.25rem 3rem; }
     .plan { padding: 2rem 1.5rem; }
@@ -591,7 +580,7 @@
       <p style="color:var(--text-2); font-size:0.97rem; line-height:1.75; margin-bottom:2.5rem;">
         Eine Aktie zu 30 % über ihrem fairen Wert zu kaufen bedeutet nicht nur einen schlechten Einstiegskurs — es bedeutet, dass du deutlich länger warten musst, bis du überhaupt in die Gewinnzone kommst. Oder gar nicht.
       </p>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border2); border:1px solid var(--border2); border-radius:4px; text-align:left;">
+      <div class="stat-boxes" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border2); border:1px solid var(--border2); border-radius:4px; text-align:left;">
         <div style="background:var(--bg2); padding:1.8rem 1.5rem;">
           <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); margin-bottom:0.8rem;">Beispiel</div>
           <div style="font-family:var(--display); font-size:1.6rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; margin-bottom:0.4rem;">− 30 %</div>
