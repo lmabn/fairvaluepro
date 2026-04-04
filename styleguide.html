@@ -3,41 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
 <title>Fair Value Pro — Styleguide</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg:      #080e0b;
-  --bg2:     #0b1410;
-  --bg3:     #0f1a14;
-  --bg4:     #142019;
-  --neon:    #00ff87;
-  --neon-dim: rgba(0,255,135,0.09);
-  --neon-border: rgba(0,255,135,0.25);
-  --mid:     #00c46a;
-  --mid-dim:    rgba(0,196,106,0.09);
-  --mid-border: rgba(0,196,106,0.22);
-  --muted:   #2a6649;
-  --muted-dim:    rgba(42,102,73,0.25);
-  --muted-border: rgba(42,102,73,0.45);
-  --warn:    #8fffcb;
-  --text:    #c8ddd2;
-  --text-2:  #6a8c7a;
-  --text-3:  #344d3e;
-  --border:  rgba(0,255,135,0.07);
-  --border2: rgba(0,255,135,0.12);
-  --sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
-}
-
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; }
-
 /* NAV */
-nav { position: fixed; top:0; left:0; right:0; z-index:100; height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 2.5rem; background:rgba(8,14,11,0.95); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
-.nav-logo { font-size:1rem; font-weight:700; color:var(--text); text-decoration:none; }
-.nav-logo .dot { color:var(--neon); }
-.nav-badge { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-3); border:1px solid var(--border2); padding:0.3rem 0.8rem; border-radius:3px; }
 
 /* LAYOUT */
 .wrap { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
@@ -101,20 +71,8 @@ nav { position: fixed; top:0; left:0; right:0; z-index:100; height:58px; display
 .border-demo { padding: 1rem 1.2rem; border-radius: 3px; font-size: 0.85rem; color: var(--text-2); margin-bottom: 0.5rem; }
 
 /* COMPONENTS */
-.btn-neon { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
-.btn-neon:hover { opacity: 0.88; transform: translateY(-1px); }
-.btn-outline { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; display: inline-block; cursor: pointer; transition: background 0.2s; }
-.btn-outline:hover { background: var(--neon-dim); }
-.btn-ghost-demo { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; transition: color 0.2s; background: none; border: none; }
-.btn-ghost-demo:hover { color: var(--neon); }
+
 .btn-disabled { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--text-3); border: 1px solid var(--border2); padding: 0.9rem 2.2rem; border-radius: 3px; cursor: not-allowed; opacity: 0.5; display: inline-block; }
-
-.tag-demo { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); }
-.tag-demo::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
-
-.badge-neon { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bg); background: var(--neon); padding: 0.25rem 0.7rem; border-radius: 50px; display: inline-block; font-weight: 700; }
-.badge-pill { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.3rem 0.8rem; border-radius: 50px; display: inline-block; }
-.badge-dim { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); border: 1px solid var(--border2); background: var(--bg4); padding: 0.3rem 0.8rem; border-radius: 50px; display: inline-block; }
 
 /* INPUT */
 .input-demo { font-family: var(--mono); font-size: 0.78rem; background: var(--bg3); border: 1px solid var(--neon-border); color: var(--text); padding: 0.85rem 1.2rem; border-radius: 3px; width: 100%; outline: none; transition: border-color 0.2s; }
@@ -194,7 +152,7 @@ nav { position: fixed; top:0; left:0; right:0; z-index:100; height:58px; display
       <div class="sg-card">
         <div class="logo-demo"><span class="logo-text">Fair Value Pro<span class="dot">.</span></span></div>
         <div class="sg-card-label">Primäres Wortlogo</div>
-        <div class="sg-card-value">Systemschrift · 700 · + grüner Punkt</div>
+        <div class="sg-card-value">Manrope · 700 · + grüner Punkt</div>
       </div>
       <div class="sg-card" style="background:#fff;">
         <div class="logo-demo"><span class="logo-text" style="color:#080e0b;">Fair Value Pro<span style="color:#00ff87;">.</span></span></div>
@@ -309,22 +267,22 @@ nav { position: fixed; top:0; left:0; right:0; z-index:100; height:58px; display
     <p class="sg-desc">Drei Schriftrollen, klar getrennt: Systemschrift für alle Fließtexte und Headlines, Monospace für technische Elemente wie Labels, Tags, Codes und Metadaten.</p>
 
     <div class="type-sample">
-      <div class="type-meta">DISPLAY / HEADLINES — Systemschrift · 700</div>
+      <div class="type-meta">DISPLAY / HEADLINES — Manrope · 700</div>
       <div style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--text);">Das Tool.<br><span style="color:var(--neon);">Für deine Analyse.</span></div>
-      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-weight: 700 · letter-spacing: −0.02em · line-height: 1.1</div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">Manrope 700 · letter-spacing: −0.02em · line-height: 1.1</div>
     </div>
 
     <div class="type-sample">
-      <div class="type-meta">SUBHEADLINES — Systemschrift · 700 · kleinere Größen</div>
+      <div class="type-meta">SUBHEADLINES — Manrope · 700 · kleinere Größen</div>
       <div style="font-size:1.6rem; font-weight:700; letter-spacing:-0.01em; color:var(--text);">Wer rechnet, kauft besser.</div>
       <div style="font-size:1.2rem; font-weight:700; letter-spacing:-0.01em; color:var(--text); margin-top:0.4rem;">So denken professionelle Analysten.</div>
-      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-weight: 700 · letter-spacing: −0.01em</div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">Manrope 700 · letter-spacing: −0.01em</div>
     </div>
 
     <div class="type-sample">
-      <div class="type-meta">BODY TEXT — Systemschrift · 400</div>
+      <div class="type-meta">BODY TEXT — Manrope · 400</div>
       <p style="font-size:1rem; color:var(--text-2); max-width:560px;">Fair Value Pro berechnet, was ein Unternehmen wert wäre, wenn deine Annahmen eintreten. Transparent, nachvollziehbar, kontrollierbar — kein Ergebnis ohne erklärte Grundlage.</p>
-      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-size: 0.93–1.08rem · font-weight: 400 · line-height: 1.75</div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">font-size: 0.93–1.08rem · Manrope 400 · line-height: 1.75</div>
     </div>
 
     <div class="type-sample">
@@ -332,7 +290,7 @@ nav { position: fixed; top:0; left:0; right:0; z-index:100; height:58px; display
       <div style="font-family:var(--mono); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--neon);">AKTIENANALYSE · FUNDAMENTAL · TRANSPARENT</div>
       <div style="font-family:var(--mono); font-size:0.85rem; color:var(--text-2); margin-top:0.6rem;">DCF · KGV · EV/EBITDA · DDM · PEG</div>
       <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); margin-top:0.4rem;">Stand: 04/2026 · Kein Abo · Kein Account</div>
-      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">ui-monospace / SF Mono / Cascadia Code / Consolas · letter-spacing: 0.08–0.2em</div>
+      <div style="margin-top:0.8rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">Manrope (400/500/700/800) · ui-monospace für Mono-Elemente · letter-spacing: 0.08–0.2em</div>
     </div>
 
     <div class="type-sample">

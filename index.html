@@ -3,82 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
 <title>Fair Value Pro — Aktien rational bewerten</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg:      #080e0b;
-    --bg2:     #0b1410;
-    --bg3:     #0f1a14;
-    --bg4:     #142019;
-    --neon:    #00ff87;
-    --neon-dim: rgba(0,255,135,0.09);
-    --neon-border: rgba(0,255,135,0.25);
-    --mid:     #00c46a;
-    --mid-dim:    rgba(0,196,106,0.09);
-    --mid-border: rgba(0,196,106,0.22);
-    --muted:   #2a6649;
-    --muted-dim:    rgba(42,102,73,0.25);
-    --muted-border: rgba(42,102,73,0.45);
-    --warn:    #8fffcb;
-    --text:    #c8ddd2;
-    --text-2:  #6a8c7a;
-    --text-3:  #344d3e;
-    --border:  rgba(0,255,135,0.07);
-    --border2: rgba(0,255,135,0.12);
-    --sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --display: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; overflow-x: hidden; }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: 58px; display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem;
-    background: rgba(10,15,26,0.90); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; }
-  .nav-logo .dot { color: var(--neon); }
-  nav a.cta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.45rem 1.2rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
-  nav a.cta:hover { background: var(--neon-dim); }
-
-  /* HAMBURGER */
-  .nav-hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; background: none; border: none; }
-  .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text-2); transition: all 0.25s; border-radius: 1px; }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
-
-  .nav-mobile-menu {
-    display: none;
-    position: fixed; top: 58px; left: 0; right: 0; z-index: 99;
-    background: rgba(8,14,11,0.98); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column;
-    padding: 1.2rem 2rem;
-    gap: 0;
-  }
-  .nav-mobile-menu.open { display: flex; }
-  .nav-mobile-menu a {
-    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--text-2); text-decoration: none; padding: 0.9rem 0;
-    border-bottom: 1px solid var(--border); transition: color 0.2s;
-  }
-  .nav-mobile-menu a:last-child { border-bottom: none; }
-  .nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: var(--neon); }
-  .nav-mobile-menu a.cta-mobile { color: var(--neon); margin-top: 0.5rem; }
-
-  section { padding: 7rem 2rem; }
-  .container { max-width: 900px; margin: 0 auto; }
-  .wide { max-width: 1120px; margin: 0 auto; }
-
-  .tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); margin-bottom: 1.4rem; }
-  .tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
-
-  /* HERO */
+/* HERO */
   #hero { padding-top: 9rem; padding-bottom: 4rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
   .hero-glow { position: absolute; width: 700px; height: 500px; top: -100px; left: -150px; background: radial-gradient(ellipse, rgba(0,229,160,0.05) 0%, transparent 70%); pointer-events: none; }
   .hero-glow2 { position: absolute; width: 500px; height: 400px; top: 0; right: -100px; background: radial-gradient(ellipse, rgba(0,255,135,0.04) 0%, transparent 70%); pointer-events: none; }
@@ -89,10 +18,10 @@
   h1.hero-hl .b { color: var(--mid); }
   .hero-sub { font-size: 1.08rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-  .btn-neon { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; transition: opacity 0.2s, transform 0.15s; }
-  .btn-neon:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-ghost { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
-  .btn-ghost:hover { color: var(--mid); }
+  
+  
+  
+  
 
   .ticker-wrap { margin-top: 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.65rem 0; overflow: hidden; position: relative; }
   .ticker-wrap::before,.ticker-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
@@ -152,7 +81,7 @@
   .pr-body details { margin-top: 0; }
   .pr-body details summary { border-bottom: none; padding: 0.35rem 0 0; width: auto; color: var(--text-3); font-size: 0.62rem; }
   .pr-body details summary:hover { color: var(--text-2); }
-  .pr-body details .detail-body { padding-top: 0.7rem; }
+  .pr-body details .detail-
   .pr-body details .detail-body p { font-size: 0.88rem; }
   .versus-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .versus-side { background: var(--bg2); padding: 2rem; }
@@ -235,7 +164,7 @@
   .t-dot.y { background:#ffc94a; }
   .t-dot.g { background:var(--neon); }
   .t-title { color: var(--text-2); font-size: 0.65rem; letter-spacing: 0.12em; }
-  .t-body { padding: 1.2rem; }
+  .t-
   .t-input-row { display: flex; gap: 0.5rem; margin-bottom: 1.2rem; align-items: center; }
   .t-prompt { color: var(--neon); }
   .t-cursor { display: inline-block; width: 7px; height: 13px; background: var(--neon); animation: blink 1.1s step-end infinite; vertical-align: middle; margin-left: 2px; }
@@ -291,13 +220,13 @@
   .cta-stack { display:flex; flex-direction:column; align-items:center; gap:0.8rem; }
   .cta-note { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); }
 
-  footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family:var(--display); font-size:0.9rem; font-weight:700; color:var(--text-2); }
-  .footer-logo .dot { color:var(--neon); }
-  footer p { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); max-width:400px; }
+  
+  
+  
+  
 
-  .fade { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease, transform 0.65s ease; }
-  .fade.in { opacity:1; transform:translateY(0); }
+  
+  
 
   /* ACCORDION */
   details { margin-top: 1rem; }
@@ -311,7 +240,7 @@
   details summary::before { content: '+'; font-size: 1rem; color: var(--neon); line-height: 1; transition: transform 0.2s; display: inline-block; width: 14px; }
   details[open] summary::before { transform: rotate(45deg); }
   details summary:hover { color: var(--text); }
-  details .detail-body { padding-top: 1.2rem; }
+  details .detail-
   details .detail-body p { color: var(--text-2); font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.8rem; }
   details .detail-body p:last-child { margin-bottom: 0; }
   details .detail-body strong { color: var(--text); font-weight: 500; }
@@ -330,10 +259,10 @@
   #faq details summary:hover { color: var(--text); }
 
   @media(max-width:720px){
-    section { padding: 4rem 1.25rem; }
+    
     nav { padding: 0 1.25rem; }
-    nav a.cta { display:none; }
-    .nav-hamburger { display: flex; }
+    
+    
     .nav-links { display: none !important; }
 
     h1.hero-hl { font-size: clamp(2rem, 9vw, 2.8rem); }
@@ -365,29 +294,19 @@
     #cta h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
 
     .hero-btns { flex-direction: column; align-items: center; }
-    .btn-neon { width: auto; text-align: center; padding-left: 1.8rem; padding-right: 1.8rem; }
+    
   }
   /* FORMSPREE */
-  .email-form { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.8rem; }
-  .email-form input[type="email"] {
-    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em;
-    background: var(--bg3); border: 1px solid var(--neon-border); color: var(--text);
-    padding: 0.85rem 1.2rem; border-radius: 3px; width: 280px; outline: none;
-    transition: border-color 0.2s;
-  }
-  .email-form input[type="email"]::placeholder { color: var(--text-3); }
-  .email-form input[type="email"]:focus { border-color: var(--neon); }
-  .email-form button[type="submit"] {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-    background: var(--neon); color: var(--bg); border: none; padding: 0.85rem 1.8rem;
-    border-radius: 3px; cursor: pointer; font-weight: 700;
-    transition: opacity 0.2s, transform 0.15s;
-  }
-  .email-form button[type="submit"]:hover { opacity: 0.88; transform: translateY(-1px); }
-  .form-success { display: none; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; padding: 1rem 0; color: var(--neon); }
+  
+  
+  
+  
+  
+  
+  
   @media(max-width:480px){
-    .email-form { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
-    .email-form input[type="email"] { width: 100%; }
+    
+    
   }
 </style>
 </head>
