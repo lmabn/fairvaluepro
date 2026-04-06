@@ -205,3 +205,39 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
   .email-form { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
   .email-form input[type="email"] { width: 100%; }
 }
+
+/* ── Pricing / Plan Cards (plaene.html, plaene-beta.html) ── */
+.plan-price {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  min-height: 7rem;
+}
+
+.plan-features {
+  list-style: none;
+  flex: 1;
+  margin-bottom: 2rem;
+}
+.plan-features li {
+  font-size: 0.87rem;
+  color: var(--text-2);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+.plan-features li:last-child { border-bottom: none; }
+.plan-features li::before {
+  content: '✓';
+  color: var(--neon);
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  padding-right: 7px;
+}
+.plan-features li.off { color: var(--text-3); }
+.plan-features li.off::before { content: '–'; color: var(--text-3); }
+.plan-features li strong { color: var(--text); font-weight: 500; }
+.plan-features li:has(details)::before { display: none; }
+
+/* Compare table — hide scrollbar */
+.compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.compare-table-wrap::-webkit-scrollbar { display: none; }

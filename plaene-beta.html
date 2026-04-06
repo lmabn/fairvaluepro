@@ -178,12 +178,6 @@
     min-height: 3.8rem;
   }
 
-  .plan-price {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-    min-height: 7rem;
-  }
-
   .price-main {
     font-family: var(--display);
     font-size: 2.6rem;
@@ -212,32 +206,6 @@
     margin-top: 0.3rem;
     min-height: 1.1rem;
   }
-
-  /* FEATURE LIST */
-  .plan-features {
-    list-style: none;
-    flex: 1;
-    margin-bottom: 2rem;
-  }
-  .plan-features li {
-    font-size: 0.87rem;
-    color: var(--text-2);
-    padding: 0.55rem 0;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.4;
-  }
-  .plan-features li:last-child { border-bottom: none; }
-  .plan-features li::before {
-    content: '✓';
-    color: var(--neon);
-    font-size: 0.75rem;
-    font-family: var(--mono);
-    padding-right: 7px;
-  }
-  .plan-features li.off { color: var(--text-3); }
-  .plan-features li.off::before { content: '–'; color: var(--text-3); }
-  .plan-features li strong { color: var(--text); font-weight: 500; }
-  .plan-features li:has(details)::before { display: none; }
 
   /* PLAN CTA BUTTONS */
   .btn-plan {
@@ -284,8 +252,6 @@
   .compare-header p { color: var(--text-2); font-size: 0.93rem; }
 
   .compare-table { width: 100%; border-collapse: collapse; }
-  .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .compare-table-wrap::-webkit-scrollbar { display: none; }
   .compare-table th {
     font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--text-2); padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border2);
@@ -438,11 +404,6 @@
           <li><strong>Erweiterte Einstellungen</strong><br><span style="font-weight:400; font-size:0.82rem; color:var(--text-3);">WACC · Beta · ERP</span></li>
           <li>Branchen-Presets</li>
           <li>3 Bewertungen / Tag</li>
-          <li class="off">Pro Mode</li>
-          <li class="off">Analysen speichern</li>
-          <li class="off">Eigene Presets</li>
-          <li class="off">Suchverlauf</li>
-          <li class="off">PDF-Export</li>
         </ul>
         <a href="index.html#cta" class="btn-plan secondary">Ohne Account starten</a>
       </div>
@@ -463,10 +424,6 @@
           <li><strong>Erweiterte Einstellungen</strong><br><span style="font-weight:400; font-size:0.82rem; color:var(--text-3);">WACC · Beta · ERP</span></li>
           <li>Branchen-Presets</li>
           <li>5 Bewertungen / Tag</li>
-          <li class="off">Analysen speichern</li>
-          <li class="off">Eigene Presets</li>
-          <li class="off">Suchverlauf</li>
-          <li class="off">PDF-Export</li>
         </ul>
         <a href="index.html#cta" class="btn-plan secondary">Jetzt registrieren</a>
       </div>
@@ -478,9 +435,9 @@
         <span class="plan-badge">Exklusiv</span>
         <div class="plan-name" style="color:var(--neon);">Premium</div>
         <div class="plan-desc">Für regelmäßige Nutzer — Analysen speichern, Verlauf, PDF-Export.</div>
-        <div class="plan-price" style="min-height:7rem; display:flex; flex-direction:column; justify-content:center; border-bottom:1px solid var(--border);">
+        <div class="plan-price" style="min-height:7rem; display:flex; flex-direction:column; justify-content:flex-start; padding-top:0.6rem; border-bottom:1px solid var(--border);">
           <div style="font-family:var(--display); font-size:1.7rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; line-height:1.2;">Auf Anfrage</div>
-          <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); letter-spacing:0.08em; margin-top:0.4rem;">Erweiterter Zugang für Betatester</div>
+          <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); letter-spacing:0.08em; margin-top:1rem;">Erweiterter Zugang für Betatester</div>
         </div>
         <ul class="plan-features">
           <li>
