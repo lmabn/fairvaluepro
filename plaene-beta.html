@@ -180,7 +180,6 @@
 
   .plan-price {
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
     min-height: 7rem;
   }
@@ -225,9 +224,6 @@
     color: var(--text-2);
     padding: 0.55rem 0;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
     line-height: 1.4;
   }
   .plan-features li:last-child { border-bottom: none; }
@@ -235,9 +231,8 @@
     content: '✓';
     color: var(--neon);
     font-size: 0.75rem;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
     font-family: var(--mono);
+    padding-right: 7px;
   }
   .plan-features li.off { color: var(--text-3); }
   .plan-features li.off::before { content: '–'; color: var(--text-3); }
@@ -289,7 +284,8 @@
   .compare-header p { color: var(--text-2); font-size: 0.93rem; }
 
   .compare-table { width: 100%; border-collapse: collapse; }
-  .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .compare-table-wrap::-webkit-scrollbar { display: none; }
   .compare-table th {
     font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--text-2); padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border2);
@@ -482,8 +478,8 @@
         <span class="plan-badge">Exklusiv</span>
         <div class="plan-name" style="color:var(--neon);">Premium</div>
         <div class="plan-desc">Für regelmäßige Nutzer — Analysen speichern, Verlauf, PDF-Export.</div>
-        <div class="plan-price" style="min-height:7rem; display:flex; flex-direction:column; justify-content:center; padding-bottom:2rem; border-bottom:1px solid var(--border);">
-          <div style="font-family:var(--display); font-size:1.4rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; line-height:1.2;">Auf Anfrage</div>
+        <div class="plan-price" style="min-height:7rem; display:flex; flex-direction:column; justify-content:center; border-bottom:1px solid var(--border);">
+          <div style="font-family:var(--display); font-size:1.7rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; line-height:1.2;">Auf Anfrage</div>
           <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); letter-spacing:0.08em; margin-top:0.4rem;">Erweiterter Zugang für Betatester</div>
         </div>
         <ul class="plan-features">
@@ -505,10 +501,6 @@
       </div>
 
     </div>
-
-    <p style="text-align:center; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.06em;">
-      Betatest · Keine Zahlungsdaten erforderlich · Jederzeit kündbar
-    </p>
   </div>
 </section>
 
@@ -610,10 +602,6 @@
         <p>Ja. Du kannst jederzeit zwischen Free und Pro wechseln. Für erweiterte Funktionen melde dich einfach — wir schalten individuell frei.</p>
       </details>
       <details class="faq-item">
-        <summary>Wie werden die Finanzdaten bezogen?</summary>
-        <p>Fair Value Pro bezieht Finanzdaten automatisch via Yahoo Finance. Die Daten werden bei jeder Analyse frisch geladen — kein manuelles Eintippen erforderlich.</p>
-      </details>
-      <details class="faq-item">
         <summary>Ist das eine Anlageberatung?</summary>
         <p>Nein. Alle Bewertungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Fair Value Pro ersetzt keine professionelle Anlageberatung.</p>
       </details>
@@ -624,8 +612,8 @@
 <!-- BOTTOM CTA -->
 <section id="bottom-cta">
   <div class="container">
-    <h2 class="fade">Jetzt starten —<br><span class="n">kostenlos.</span></h2>
-    <p class="fade">Kein Account erforderlich für den ersten Eindruck. Pro-Zugang mit E-Mail-Registrierung — kostenlos im Betatest.</p>
+    <h2 class="fade">Starte deine<br><span class="n">erste Analyse.</span></h2>
+    <p class="fade">Kostenlos zugänglich im Betatest — kein Account für den ersten Eindruck nötig.</p>
     <a href="index.html#cta" class="btn-neon fade">Zugang erhalten →</a>
   </div>
 </section>
