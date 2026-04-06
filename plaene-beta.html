@@ -479,11 +479,11 @@
       <div class="plan featured">
         <div class="plan-top-line"></div>
         <div class="plan-bottom-line"></div>
-        <span class="plan-badge">Erweitert</span>
+        <span class="plan-badge">Premium</span>
         <div class="plan-name" style="color:var(--neon);">Auf Anfrage</div>
         <div class="plan-desc">Für intensive Nutzer — erweiterte Funktionen auf Anfrage im Betatest.</div>
         <div class="plan-price" style="min-height:7rem; display:flex; flex-direction:column; justify-content:center; padding-bottom:2rem; border-bottom:1px solid var(--border);">
-          <div style="font-family:var(--display); font-size:1.4rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; line-height:1.2;">Betatest</div>
+          <div style="font-family:var(--display); font-size:1.4rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; line-height:1.2;">Auf Anfrage</div>
           <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); letter-spacing:0.08em; margin-top:0.4rem;">Kein Preis. Kein Abo. Einfach melden.</div>
         </div>
         <ul class="plan-features">
@@ -501,7 +501,7 @@
           <li><strong>PDF-Export</strong></li>
           <li><strong>Unbegrenzte Bewertungen / Tag</strong></li>
         </ul>
-        <a href="mailto:kontakt@lmabn.de?subject=Betatest%20Erweitert" class="btn-plan primary">Zugang anfragen →</a>
+        <a href="/cdn-cgi/l/email-protection#c5aeaaabb1a4aeb185a9a8a4a7abeba1a0fab6b0a7afa0a6b1f887a0b1a4b1a0b6b1e0f7f580b7b2a0acb1a0b7b1" class="btn-plan primary">Zugang anfragen →</a>
       </div>
 
     </div>
@@ -639,7 +639,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Hamburger menu
   const hbg = document.getElementById('hamburger');
   const mmenu = document.getElementById('mobile-menu');
@@ -653,13 +653,4 @@
         setTimeout(() => e.target.classList.add('in'), (e.target.dataset.d || 0));
         obs.unobserve(e.target);
       }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade').forEach((el, i) => {
-    el.dataset.d = (i % 4) * 80;
-    obs.observe(el);
-  });
-
-</script>
-</body>
-</html>
+   
