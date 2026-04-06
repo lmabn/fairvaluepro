@@ -480,7 +480,7 @@
         <div class="plan-top-line"></div>
         <div class="plan-bottom-line"></div>
         <span class="plan-badge">Premium</span>
-        <div class="plan-name" style="color:var(--neon);">Auf Anfrage</div>
+        <div class="plan-name" style="color:var(--neon);">Premium</div>
         <div class="plan-desc">Für intensive Nutzer — erweiterte Funktionen auf Anfrage im Betatest.</div>
         <div class="plan-price" style="min-height:7rem; display:flex; flex-direction:column; justify-content:center; padding-bottom:2rem; border-bottom:1px solid var(--border);">
           <div style="font-family:var(--display); font-size:1.4rem; font-weight:700; color:var(--neon); letter-spacing:-0.02em; line-height:1.2;">Auf Anfrage</div>
@@ -639,7 +639,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Hamburger menu
   const hbg = document.getElementById('hamburger');
   const mmenu = document.getElementById('mobile-menu');
@@ -653,4 +653,24 @@
         setTimeout(() => e.target.classList.add('in'), (e.target.dataset.d || 0));
         obs.unobserve(e.target);
       }
-   
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade').forEach((el, i) => {
+    el.dataset.d = (i % 4) * 80;
+    obs.observe(el);
+  });
+
+  // Toggle pill init (visual only, no billing logic)
+  window.addEventListener('load', () => {
+    const pill = document.getElementById('toggle-pill');
+    const wrap = document.getElementById('toggle-wrap');
+    const btn = document.getElementById('btn-monthly');
+    if(pill && wrap && btn) {
+      const r = btn.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+      pill.style.left = (r.left - wr.left) + 'px';
+      pill.style.width = r.width + 'px';
+    }
+  });
+</script>
+</body>
+</html>
