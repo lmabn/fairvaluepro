@@ -305,12 +305,20 @@
 
 <nav>
   <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Übersicht</a>
+    <a href="pro-mode-beta.html">Pro Mode</a>
+    <a href="plaene-beta.html">Pläne</a>
+  </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
   </button>
   <a href="#cta" class="cta">Zugang erhalten</a>
 </nav>
 <div class="nav-mobile-menu" id="mobile-menu">
+  <a href="index.html" class="active">Übersicht</a>
+  <a href="pro-mode-beta.html">Pro Mode</a>
+  <a href="plaene-beta.html">Pläne</a>
   <a href="#cta" class="cta-mobile">Zugang erhalten →</a>
 </div>
 
@@ -613,7 +621,7 @@
       <div class="feat-card fade">
         <div class="feat-icon">↻</div>
         <h3>Automatischer Datenabruf</h3>
-        <p>Kein manuelles Eintippen. Finanzdaten werden direkt via Yahoo Finance geladen — aktuell und vollständig.</p>
+        <p>Kein manuelles Eintippen. Finanzdaten werden automatisch aus öffentlichen Quellen geladen — aktuell und vollständig.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">⚙</div>
@@ -673,7 +681,7 @@
       <details class="fade" style="border-bottom:1px solid var(--border);">
         <summary>Was unterscheidet euer Tool von anderen Fair-Value-Rechnern?<span class="faq-icon">+</span></summary>
         <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
-          <p style="margin-bottom:0.8rem;">Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro kombiniert fünf Methoden: <strong style="color:var(--text);">Two-Stage DCF (50 %), KGV-Methode (25 %), EV/EBITDA (25 %)</strong> — plus DDM (Gordon Growth Model) für Dividendenaktien und PEG-Ratio als Wachstums-Schnellcheck, beide automatisch aus Yahoo-Finance-Daten berechnet.</p>
+          <p style="margin-bottom:0.8rem;">Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro kombiniert fünf Methoden: <strong style="color:var(--text);">Two-Stage DCF (50 %), KGV-Methode (25 %), EV/EBITDA (25 %)</strong> — plus DDM (Gordon Growth Model) für Dividendenaktien und PEG-Ratio als Wachstums-Schnellcheck.</p>
           <p style="margin-bottom:0.8rem;">Das Two-Stage-DCF-Modell projiziert Cashflows in zwei Phasen: stabiles Wachstum in den ersten fünf Jahren, dann ein realistischer linearer Übergang zum Terminal Value — genau wie professionelle Analysten es tun.</p>
           <p>Der entscheidende Unterschied: Alle Annahmen sind sichtbar und steuerbar. Andere Tools verstecken ihre Parameter und suggerieren eine Objektivität, die nicht existiert. Bei Fair Value Pro ist das Ergebnis immer dein eigenes Modell — transparent, nachvollziehbar, ehrlich.</p>
         </div>
@@ -687,16 +695,16 @@
       </details>
 
       <details class="fade" style="border-bottom:1px solid var(--border);">
-        <summary>Woher kommen die Finanzdaten?<span class="faq-icon">+</span></summary>
+        <summary>Wie genau ist der berechnete faire Wert?<span class="faq-icon">+</span></summary>
         <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
-          <p>Alle Finanzdaten — Umsatz, freier Cashflow, Gewinne, Schulden, Beta — werden automatisch von Yahoo Finance geladen. Die Vergangenheitsdaten sind nicht manuell editierbar. Was du steuerst, sind ausschließlich deine Zukunftsannahmen.</p>
+          <p>Der faire Wert ist kein objektiver Marktpreis — er ist das rechnerische Ergebnis deiner eigenen Annahmen. Wer eine höhere Wachstumsrate eingibt, bekommt einen höheren Wert. Das ist keine Schwäche, sondern Methode: Genau so arbeiten professionelle Analysten. Das Tool rechnet — die Annahmen verantwortest du.</p>
         </div>
       </details>
 
       <details class="fade" style="border-bottom:1px solid var(--border);">
-        <summary>Funktioniert das auch für nicht-deutsche Aktien?<span class="faq-icon">+</span></summary>
+        <summary>Welche Aktien kann ich bewerten?<span class="faq-icon">+</span></summary>
         <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
-          <p>Ja. Jede Aktie mit einem Yahoo-Finance-Ticker ist nutzbar — US-amerikanische, europäische und internationale Werte. Die Währungsanzeige lässt sich zwischen USD und EUR umschalten.</p>
+          <p>Grundsätzlich alle börsennotierten Unternehmen weltweit — US-amerikanische, europäische und internationale Werte. Einfach Ticker-Kürzel eingeben (z.B. AAPL, SAP, ALV, NVDA) und loslegen. Die Währungsanzeige lässt sich zwischen USD und EUR umschalten.</p>
         </div>
       </details>
 
@@ -722,7 +730,7 @@
       <p class="form-success" id="form-success">✓ &nbsp;Eingetragen — wir melden uns beim Launch.</p>
       <span class="cta-note">Kein Abo · Kein Account · Wir informieren dich beim Launch</span>
       <p style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); max-width:420px; line-height:1.6; margin-top:0.4rem;">
-        Mit dem Absenden stimmst du der Speicherung deiner E-Mail-Adresse zur einmaligen Kontaktaufnahme beim Launch zu. Die Verarbeitung erfolgt über Formspree (USA). Weitere Infos in der <a href="datenschutz.html" style="color:var(--text-2); text-decoration:underline;">Datenschutzerklärung</a>.
+        Mit dem Absenden stimmst du der Speicherung deiner E-Mail-Adresse zur einmaligen Kontaktaufnahme beim Launch zu. Mehr in der <a href="datenschutz.html" style="color:var(--text-2); text-decoration:underline;">Datenschutzerklärung</a>.
       </p>
     </div>
   </div>
