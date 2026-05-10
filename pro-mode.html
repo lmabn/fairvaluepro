@@ -10,7 +10,6 @@
 /* NAV */
 
 .nav-links { display: flex; align-items: center; gap: 2rem; }
-.nav-links a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 nav a.nav-cta { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.42rem 1.1rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
 nav a.nav-cta:hover { background: var(--neon-dim); }
@@ -278,11 +277,18 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <a href="index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
   <div class="nav-links">
-    <a href="index.html">Übersicht</a>
-    <a href="pro-mode.html" class="active">Pro Mode</a>
-    <a href="plaene.html">Pläne</a>
+    <div class="nav-item">
+      <a href="index.html" class="active">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="index.html">Übersicht</a>
+        <a href="pro-mode-beta.html" class="active">Pro Mode</a>
+      </div>
+    </div>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="trading-desk.html">Trading Desk</a>
+    <a href="plaene-beta.html">Pläne</a>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
@@ -290,10 +296,12 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
   <a href="plaene.html" class="nav-cta">Pläne ansehen</a>
 </nav>
 <div class="nav-mobile-menu" id="mobile-menu">
-  <a href="index.html">Übersicht</a>
-  <a href="pro-mode.html" class="active">Pro Mode</a>
-  <a href="plaene.html">Pläne</a>
-  <a href="plaene.html" class="cta-mobile">Pläne ansehen →</a>
+  <a href="index.html">Fair Value Pro</a>
+  <a href="pro-mode-beta.html" class="active" style="padding-left:1.4rem; font-size:0.68rem; color:var(--text-3);">↳ Pro Mode</a>
+  <a href="portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="trading-desk.html">Trading Desk</a>
+  <a href="plaene-beta.html">Pläne</a>
+  <a href="plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
 </div>
 
 <!-- HERO -->
