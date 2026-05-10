@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<title>Fair Value Pro — Trading Desk</title>
+<style>
+/* ACCENT — Trading Desk blau */
+:root {
+  --td:        #5b9cf6;
+  --td-dim:    rgba(91,156,246,0.08);
+  --td-border: rgba(91,156,246,0.25);
+  --td-dark:   #2563eb;
+}
+
+/* NAV */
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--neon); }
+nav a.nav-cta { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.42rem 1.1rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
+nav a.nav-cta:hover { background: var(--neon-dim); }
+
+/* HERO */
+#hero { padding: 9rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+.hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(91,156,246,0.06) 0%, transparent 70%); pointer-events: none; }
+#hero h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
+#hero h1 .td { color: var(--td); }
+#hero p.sub { color: var(--text-2); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.75; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+.plan-pills { display: flex; gap: 0.6rem; justify-content: center; margin-bottom: 3.5rem; }
+.plan-pill { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; border: 1px solid var(--border2); color: var(--text-3); }
+.plan-pill.premium { border-color: var(--td-border); color: var(--td); background: var(--td-dim); }
+.btn-td { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--td); color: #fff; border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+.btn-td:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-outline-td { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--td); border: 1px solid var(--td-border); padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-outline-td:hover { background: var(--td-dim); }
+
+/* MOCKUP */
+.mockup-wrap { position: relative; max-width: 1100px; margin: 0 auto; }
+.mockup-glow { position: absolute; inset: -40px; background: radial-gradient(ellipse at 50% 60%, rgba(91,156,246,0.06), transparent 65%); pointer-events: none; z-index: 0; }
+.mockup { position: relative; z-index: 1; background: #0b1410; border: 1px solid rgba(91,156,246,0.12); border-radius: 8px; overflow: hidden; font-family: var(--mono); font-size: 0.7rem; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+.mk-topbar { background: #080e0b; border-bottom: 1px solid rgba(91,156,246,0.08); padding: 0.55rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.mk-logo { color: var(--td); font-weight: 700; font-family: var(--display); font-size: 0.8rem; }
+.mk-tabs { display: flex; gap: 0.5rem; }
+.mk-tab { font-size: 0.6rem; color: var(--text-3); padding: 0.25rem 0.7rem; border: 1px solid transparent; border-radius: 3px; cursor: default; letter-spacing: 0.05em; }
+.mk-tab.active { color: var(--text); border-color: var(--border2); }
+
+/* MODULE LAYOUT */
+.mk-body { display: grid; grid-template-columns: 1fr 320px; min-height: 480px; }
+.mk-main { padding: 1.5rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.2rem; }
+.mk-side { padding: 1.2rem; display: flex; flex-direction: column; gap: 1rem; }
+
+/* Recovery table */
+.rec-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
+.rec-title { font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.06em; }
+.rec-horizon { font-size: 0.58rem; color: var(--text-3); }
+.rec-horizon strong { color: var(--td); }
+.rec-tbl { width: 100%; border-collapse: collapse; }
+.rec-tbl th { font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; padding: 0 0 0.5rem; text-align: left; }
+.rec-tbl th:not(:first-child) { text-align: right; }
+.rec-tbl td { font-size: 0.65rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); color: var(--text-2); }
+.rec-tbl td:not(:first-child) { text-align: right; }
+.rec-tbl tr:last-child td { border-bottom: none; }
+.rec-ticker { font-weight: 700; color: var(--text); }
+.rec-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 6px; }
+.rec-bar { height: 100%; border-radius: 2px; background: var(--td); }
+.pa-pos { color: var(--td); }
+.pa-neg { color: #e24b4a; }
+
+/* Zinsrechner preview */
+.zins-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; }
+.zins-head { font-size: 0.62rem; color: var(--text-3); letter-spacing: 0.08em; margin-bottom: 0.8rem; }
+.zins-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 0.8rem; }
+.zins-kpi { background: var(--bg2); padding: 0.6rem 0.8rem; }
+.zins-kpi-label { font-size: 0.52rem; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.zins-kpi-val { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--td); }
+.zins-kpi-val.main { font-size: 1.3rem; }
+
+/* Watchlist */
+.watch-list { display: flex; flex-direction: column; gap: 2px; }
+.watch-item { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0.8rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; }
+.watch-ticker { font-weight: 700; font-size: 0.68rem; color: var(--text); }
+.watch-name { font-size: 0.55rem; color: var(--text-3); }
+.watch-price { font-size: 0.65rem; color: var(--text-2); }
+.watch-badge { font-size: 0.52rem; padding: 0.15rem 0.45rem; border-radius: 3px; font-weight: 700; }
+.watch-badge.buy { background: var(--td-dim); color: var(--td); border: 1px solid var(--td-border); }
+.watch-badge.watch { background: var(--bg4); color: var(--text-3); border: 1px solid var(--border2); }
+
+/* Journal preview */
+.journal-entry { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; }
+.journal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+.journal-ticker { font-weight: 700; font-size: 0.72rem; color: var(--text); }
+.journal-date { font-size: 0.55rem; color: var(--text-3); }
+.journal-text { font-size: 0.65rem; color: var(--text-2); line-height: 1.55; margin-bottom: 0.8rem; }
+.journal-bias { background: rgba(91,156,246,0.06); border: 1px solid var(--td-border); border-radius: 3px; padding: 0.6rem 0.8rem; }
+.journal-bias-label { font-size: 0.52rem; color: var(--td); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem; }
+.journal-bias-text { font-size: 0.62rem; color: var(--text-2); line-height: 1.5; }
+
+/* MODULE TABS (hero of the page) */
+.modules-section { padding: 7rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.modules-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 4rem; }
+.module-tab { background: var(--bg); padding: 1.5rem 1.2rem; cursor: default; }
+.module-tab:hover { background: var(--bg2); }
+.module-num { font-family: var(--mono); font-size: 0.55rem; color: var(--td); letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+.module-name { font-family: var(--display); font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
+.module-desc { font-size: 0.75rem; color: var(--text-3); line-height: 1.5; }
+
+/* FEATURES */
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.feat { background: var(--bg); padding: 2rem; }
+.feat-icon { font-size: 1.2rem; margin-bottom: 1rem; color: var(--td); }
+.feat h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+.feat p { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; }
+.feat-tag { display: inline-block; margin-top: 0.8rem; font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--td); background: var(--td-dim); border: 1px solid var(--td-border); border-radius: 50px; padding: 0.15rem 0.55rem; }
+
+/* PAIN SECTION */
+.pain-section { padding: 7rem 2rem; }
+.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.pain-item { background: var(--bg2); padding: 2rem 2.2rem; }
+.pain-q { font-family: var(--display); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.7rem; color: var(--text-2); line-height: 1.4; }
+.pain-q::before { content: '"'; color: var(--td); font-size: 1.4rem; font-family: Georgia, serif; line-height: 0; vertical-align: -0.3rem; margin-right: 0.2rem; }
+.pain-a { font-size: 0.85rem; color: var(--text-3); line-height: 1.65; }
+.pain-a strong { color: var(--text-2); }
+
+/* KI SECTION */
+.ki-section { padding: 7rem 2rem; border-top: 1px solid var(--border); }
+.ki-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.ki-text .tag { --neon: var(--td); }
+.ki-text h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.2rem; }
+.ki-text p { color: var(--text-2); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1rem; }
+.ki-note { background: var(--td-dim); border: 1px solid var(--td-border); border-radius: 4px; padding: 1rem 1.2rem; font-size: 0.82rem; color: var(--text-2); line-height: 1.6; margin-top: 1.5rem; }
+.ki-note strong { color: var(--td); }
+.bias-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.bias-item { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; }
+.bias-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--td); flex-shrink: 0; }
+.bias-name { font-size: 0.8rem; color: var(--text); font-weight: 500; flex: 1; }
+.bias-ex { font-size: 0.72rem; color: var(--text-3); }
+.bias-warn { font-family: var(--mono); font-size: 0.52rem; color: var(--td); background: var(--td-dim); border: 1px solid var(--td-border); border-radius: 3px; padding: 0.1rem 0.4rem; letter-spacing: 0.05em; white-space: nowrap; }
+
+/* CTA */
+#cta { padding: 7rem 2rem; text-align: center; border-top: 1px solid var(--border); }
+#cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+#cta p { color: var(--text-2); max-width: 480px; margin: 0 auto 2rem; font-size: 0.95rem; }
+.cta-note { display: block; margin-top: 1rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-3); }
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .ki-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .modules-grid { grid-template-columns: 1fr 1fr; }
+  .mk-body { grid-template-columns: 1fr; }
+  .mk-side { display: none; }
+  nav .nav-links { display: none; }
+  nav a.nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+}
+@media(max-width: 600px) {
+  nav { padding: 0 1.25rem; }
+  .modules-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Übersicht</a>
+    <a href="pro-mode-beta.html">Pro Mode</a>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="trading-desk.html" class="active">Trading Desk</a>
+    <a href="plaene-beta.html">Pläne</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="index.html">Übersicht</a>
+  <a href="pro-mode-beta.html">Pro Mode</a>
+  <a href="portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="trading-desk.html" class="active">Trading Desk</a>
+  <a href="plaene-beta.html">Pläne</a>
+  <a href="plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag fade in" style="--neon: var(--td); justify-content: center;">Trading Desk</div>
+    <h1 class="fade in">Disziplin statt<br><span class="td">Bauchgefühl.</span></h1>
+    <p class="sub fade in">Fünf Werkzeuge, die deine eigenen Bewertungen und Depot-Daten in bessere Kaufentscheidungen verwandeln. Mit KI-Bias-Coach auf Wunsch.</p>
+    <div class="hero-btns fade in">
+      <a href="plaene-beta.html" class="btn-td">Jetzt starten</a>
+      <a href="#modules" class="btn-outline-td">Fünf Module ansehen</a>
+    </div>
+    <div class="plan-pills fade in">
+      <span class="plan-pill premium">Premium</span>
+      <span class="plan-pill" style="color:var(--text-3);">Betatest für alle Tarife</span>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUP -->
+<section style="padding: 4rem 2rem 5rem; border-bottom: 1px solid var(--border);">
+  <div class="wide">
+    <div class="mockup-wrap fade">
+      <div class="mockup-glow"></div>
+      <div class="mockup">
+        <!-- Topbar -->
+        <div class="mk-topbar">
+          <div class="mk-logo">Trading Desk</div>
+          <div class="mk-tabs">
+            <div class="mk-tab active">Recovery</div>
+            <div class="mk-tab">Zinsrechner</div>
+            <div class="mk-tab">Rebalancing</div>
+            <div class="mk-tab">Watchlist</div>
+            <div class="mk-tab">Journal</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:0.6rem; color:var(--td);">Zeithorizont: <strong>3 Jahre</strong></div>
+        </div>
+
+        <!-- Body -->
+        <div class="mk-body">
+          <!-- Left: Recovery table -->
+          <div class="mk-main">
+            <div class="rec-head">
+              <span class="rec-title">↗ Recovery-Return-Analyse</span>
+              <span class="rec-horizon">Ziel: Fairer Wert (FVP) · <strong>3 J.</strong></span>
+            </div>
+            <table class="rec-tbl">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Akt. Kurs</th>
+                  <th>Zielkurs</th>
+                  <th>Drawdown</th>
+                  <th>Recovery p.a.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="rec-ticker">NOVO B</div></td>
+                  <td>DKK 618</td>
+                  <td>DKK 890</td>
+                  <td class="pa-neg">−30,6 %</td>
+                  <td><span class="rec-bar-wrap"><span class="rec-bar" style="width:62%"></span></span><span class="pa-pos">+12,9 %</span></td>
+                </tr>
+                <tr>
+                  <td><div class="rec-ticker">BRKB</div></td>
+                  <td>$ 420</td>
+                  <td>$ 510</td>
+                  <td class="pa-neg">−17,6 %</td>
+                  <td><span class="rec-bar-wrap"><span class="rec-bar" style="width:35%"></span></span><span class="pa-pos">+6,7 %</span></td>
+                </tr>
+                <tr>
+                  <td><div class="rec-ticker">ALV.DE</div></td>
+                  <td>€ 285</td>
+                  <td>€ 310</td>
+                  <td class="pa-neg">−8,1 %</td>
+                  <td><span class="rec-bar-wrap"><span class="rec-bar" style="width:18%"></span></span><span class="pa-pos">+2,8 %</span></td>
+                </tr>
+                <tr>
+                  <td><div class="rec-ticker">MSFT</div></td>
+                  <td>$ 412</td>
+                  <td>$ 360</td>
+                  <td style="color:var(--mid)">+14,4 %</td>
+                  <td><span style="font-size:0.58rem; color:var(--text-3);">Bereits über Zielkurs</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Zinsrechner mini preview -->
+            <div class="zins-card">
+              <div class="zins-head">▸ Zinsrechner — Sparplan 20 Jahre</div>
+              <div class="zins-kpis">
+                <div class="zins-kpi">
+                  <div class="zins-kpi-label">Endkapital nominal</div>
+                  <div class="zins-kpi-val main">€ 148.420</div>
+                </div>
+                <div class="zins-kpi">
+                  <div class="zins-kpi-label">Realwert (Inflation 2 %)</div>
+                  <div class="zins-kpi-val">€ 99.860</div>
+                </div>
+                <div class="zins-kpi">
+                  <div class="zins-kpi-label">Eingezahlt</div>
+                  <div class="zins-kpi-val" style="color:var(--text-2);">€ 60.000</div>
+                </div>
+                <div class="zins-kpi">
+                  <div class="zins-kpi-label">Zinsgewinn</div>
+                  <div class="zins-kpi-val" style="color:var(--mid);">€ 88.420</div>
+                </div>
+              </div>
+              <div style="font-size:0.58rem; color:var(--text-3);">250 €/Mo · 7 % p.a. · 20 Jahre · Live-Update</div>
+            </div>
+          </div>
+
+          <!-- Right: Watchlist + Journal -->
+          <div class="mk-side">
+            <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Watchlist</div>
+            <div class="watch-list">
+              <div class="watch-item">
+                <div><div class="watch-ticker">SAP.DE</div><div class="watch-name">SAP SE</div></div>
+                <div>
+                  <div class="watch-price">€ 196</div>
+                  <div style="text-align:right; margin-top:2px;"><span class="watch-badge buy">Kaufzone</span></div>
+                </div>
+              </div>
+              <div class="watch-item">
+                <div><div class="watch-ticker">ASML</div><div class="watch-name">ASML Holding</div></div>
+                <div>
+                  <div class="watch-price">€ 644</div>
+                  <div style="text-align:right; margin-top:2px;"><span class="watch-badge watch">Beobachten</span></div>
+                </div>
+              </div>
+              <div class="watch-item">
+                <div><div class="watch-ticker">MUV2.DE</div><div class="watch-name">Munich Re</div></div>
+                <div>
+                  <div class="watch-price">€ 468</div>
+                  <div style="text-align:right; margin-top:2px;"><span class="watch-badge buy">Kaufzone</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Journal entry -->
+            <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-top:0.4rem; margin-bottom:0.4rem;">Trade-Journal</div>
+            <div class="journal-entry">
+              <div class="journal-head">
+                <span class="journal-ticker">NOVO B — Kauf 40 Stk.</span>
+                <span class="journal-date">12. März 2026</span>
+              </div>
+              <div class="journal-text">„Kurs 30 % unter dem FVP-Fair-Value. Starkes Pipeline-Potenzial, Dividende wächst seit 10 Jahren. Langfristige Position."</div>
+              <div class="journal-bias">
+                <div class="journal-bias-label">⚡ KI-Bias-Coach</div>
+                <div class="journal-bias-text">Möglicher <strong style="color:var(--td)">Recency Bias</strong>: „Pipeline-Potenzial" bezieht sich auf aktuelle Nachrichtenlage — prüfe ob das fundamental oder nur medienpräsent ist.</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /mk-body -->
+      </div><!-- /mockup -->
+    </div><!-- /mockup-wrap -->
+  </div>
+</section>
+
+<!-- FIVE MODULES -->
+<section class="modules-section" id="modules">
+  <div class="wide">
+    <div class="tag fade" style="--neon: var(--td); margin-bottom: 2rem;">Fünf Module</div>
+    <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:3rem;">Werkzeuge, die dich besser entscheiden lassen.</h2>
+    <div class="modules-grid fade">
+      <div class="module-tab">
+        <div class="module-num">01</div>
+        <div class="module-name">Recovery-Return</div>
+        <div class="module-desc">Wie viel Wachstum brauchst du, um einen Verlust aufzuholen — und in wie vielen Jahren?</div>
+      </div>
+      <div class="module-tab">
+        <div class="module-num">02</div>
+        <div class="module-name">Zinsrechner</div>
+        <div class="module-desc">Sparplan, Zinseszins, Inflations-Realwert. Live-Update bei jeder Eingabe.</div>
+      </div>
+      <div class="module-tab">
+        <div class="module-num">03</div>
+        <div class="module-name">Rebalancing-Planer</div>
+        <div class="module-desc">Soll- vs. Ist-Gewichtung deiner Depots — mit konkreten Kauf/Verkauf-Vorschlägen in €.</div>
+      </div>
+      <div class="module-tab">
+        <div class="module-num">04</div>
+        <div class="module-name">Watchlist</div>
+        <div class="module-desc">Aktien beobachten, automatisch markieren wenn der Kurs unter den fairen Wert fällt.</div>
+      </div>
+      <div class="module-tab">
+        <div class="module-num">05</div>
+        <div class="module-name">Trade-Journal + KI-Coach</div>
+        <div class="module-desc">Begründungen festhalten — und von der KI auf 16 typische Verzerrungen prüfen lassen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain-section">
+  <div class="wide">
+    <div class="tag fade" style="--neon: var(--td); margin-bottom: 2rem;">Das Problem</div>
+    <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:3rem; max-width:680px;">Wissen, was eine Aktie wert ist, reicht nicht. Du musst auch wissen, wann und warum du kaufst.</h2>
+    <div class="pain-grid fade">
+      <div class="pain-item">
+        <div class="pain-q">Meine Position ist 35 % im Minus — wie lange dauert es, das aufzuholen?</div>
+        <div class="pain-a">Die Recovery-Return-Analyse berechnet das konkret: Drawdown, benötigte Erholung, <strong>jährliche Wachstumsrate die nötig ist</strong> — über einen Zeithorizont von 1 bis 10 Jahren.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-q">Wie viel wird aus meinem Sparplan in 20 Jahren wirklich — nach Inflation?</div>
+        <div class="pain-a">Der Zinsrechner zeigt Endkapital nominal, eingezahlte Summe, Zinsgewinn und <strong>Realwert in heutiger Kaufkraft</strong> — live aktualisiert ohne „Berechnen"-Button.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-q">Meine Asset-Allocation ist aus dem Ruder — was muss ich konkret umschichten?</div>
+        <div class="pain-a">Der Rebalancing-Planer vergleicht Soll- und Ist-Gewichtung und gibt <strong>konkrete Kauf/Verkauf-Beträge in €</strong> — verknüpft direkt mit deinen Tracker-Depots.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-q">Ich mache immer wieder dieselben Fehler beim Kaufen.</div>
+        <div class="pain-a">Das Trade-Journal erzwingt eine Begründung vor dem Kauf — und die KI prüft sie auf <strong>16 dokumentierte Denkfehler</strong> aus der Verhaltensökonomie. Freundlich, konkret, unbequem wenn nötig.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KI BIAS COACH -->
+<section class="ki-section">
+  <div class="wide">
+    <div class="ki-layout">
+      <div class="ki-text fade">
+        <div class="tag" style="--neon: var(--td);">KI-Bias-Coach</div>
+        <h2>Die KI sagt dir nicht was du kaufen sollst. Sie zeigt dir, wie du über deine eigenen Entscheidungen denkst.</h2>
+        <p>Jede Kaufbegründung die du im Trade-Journal hinterlegst, kann freiwillig von einem KI-Modell analysiert werden. Das Ergebnis: kein Rating, keine Empfehlung — sondern der Hinweis auf die Stelle in deiner Begründung, die einem bekannten Denkmuster entspricht.</p>
+        <p>Die Begründung ist nach dem Speichern unveränderlich. Das ist kein Bug — das ist das Prinzip. Kein nachträgliches Umschreiben der Vergangenheit.</p>
+        <div class="ki-note">
+          <strong>Bring Your Own Key.</strong> Der KI-Bias-Coach funktioniert mit deinem eigenen API-Schlüssel — Claude (Anthropic), ChatGPT (OpenAI) oder Gemini (Google). Der Schlüssel wird ausschließlich lokal in deinem Browser gespeichert, nie an unsere Server übertragen. Du trägst die Kosten direkt beim Anbieter — typischerweise Cent-Beträge pro Analyse.
+        </div>
+      </div>
+      <div class="bias-list fade">
+        <div class="bias-item">
+          <div class="bias-dot"></div>
+          <div class="bias-name">Confirmation Bias</div>
+          <div class="bias-ex">Nur Argumente die die Meinung bestätigen</div>
+          <div class="bias-warn">ERKANNT</div>
+        </div>
+        <div class="bias-item">
+          <div class="bias-dot"></div>
+          <div class="bias-name">Recency Bias</div>
+          <div class="bias-ex">Zu viel Gewicht auf aktuelle Nachrichten</div>
+          <div class="bias-warn">ERKANNT</div>
+        </div>
+        <div class="bias-item">
+          <div class="bias-dot" style="background:var(--border2)"></div>
+          <div class="bias-name">Anchoring</div>
+          <div class="bias-ex">Fixierung auf ersten Kurs als Referenz</div>
+          <div class="bias-warn" style="color:var(--text-3); background:transparent; border-color:var(--border2);">–</div>
+        </div>
+        <div class="bias-item">
+          <div class="bias-dot" style="background:var(--border2)"></div>
+          <div class="bias-name">Overconfidence</div>
+          <div class="bias-ex">Zu hohe Sicherheit in die eigene Einschätzung</div>
+          <div class="bias-warn" style="color:var(--text-3); background:transparent; border-color:var(--border2);">–</div>
+        </div>
+        <div class="bias-item">
+          <div class="bias-dot" style="background:var(--border2)"></div>
+          <div class="bias-name">Sunk Cost Fallacy</div>
+          <div class="bias-ex">Halten weil bereits viel investiert</div>
+          <div class="bias-warn" style="color:var(--text-3); background:transparent; border-color:var(--border2);">–</div>
+        </div>
+        <div class="bias-item">
+          <div class="bias-dot" style="background:var(--border2)"></div>
+          <div class="bias-name">Loss Aversion · Hindsight Bias · u.a.</div>
+          <div class="bias-ex">16 Muster insgesamt</div>
+          <div class="bias-warn" style="color:var(--text-3); background:transparent; border-color:var(--border2);">–</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section style="padding: 7rem 2rem; background: var(--bg2); border-top: 1px solid var(--border);">
+  <div class="wide">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="tag fade" style="--neon: var(--td); justify-content:center;">Im Detail</div>
+      <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:0.8rem;">Alles drin. Nichts Überflüssiges.</h2>
+      <p class="fade" style="color:var(--text-2); max-width:480px; margin:0 auto;">Kein Chart-Rauschen, keine Trading-Signale — nur Werkzeuge die den Entscheidungsprozess verbessern.</p>
+    </div>
+    <div class="features-grid fade">
+      <div class="feat">
+        <div class="feat-icon">↺</div>
+        <h3>Recovery-Return-Analyse</h3>
+        <p>Pro Position: Drawdown in %, benötigte Erholung in %, erforderliche jährliche Rendite — als sortierbare Tabelle mit Bar-Visualisierung. Manueller Modus ohne FVP-Anbindung möglich.</p>
+        <span class="feat-tag">Kostenlos nutzbar</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">∑</div>
+        <h3>Zinsrechner</h3>
+        <p>Startkapital, Sparrate, Rendite p.a., Laufzeit, Inflation. Vier KPI-Karten live, Linien-Chart nominal vs. real, Jahrestabelle klappbar. Kein „Berechnen"-Button nötig.</p>
+        <span class="feat-tag">Kostenlos nutzbar</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⊜</div>
+        <h3>Rebalancing-Planer</h3>
+        <p>Ziel-Gewichte pro Depot in % festlegen, Vergleich mit aktuellem Stand aus dem Tracker, Kauf/Verkauf-Vorschläge in €. Direkt verknüpft mit den Tracker-Depots.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">◈</div>
+        <h3>Watchlist mit Live-Preisen</h3>
+        <p>Aktien auf der Beobachtungsliste, Live-Kurs bei Seitenaufruf, automatische Buy-Zone-Markierung wenn der Kurs unter den gespeicherten Fair Value fällt.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">✎</div>
+        <h3>Trade-Journal</h3>
+        <p>Datum, Aktie, Kauf/Verkauf, Begründung. Die Begründung ist nach Speichern unveränderlich. Outcome-Review nach 30/90/365 Tagen. Kein nachträgliches Umdeuten.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚡</div>
+        <h3>Verbunden mit dem Ökosystem</h3>
+        <p>Recovery-Analyse liest Positionen aus dem Portfolio Tracker. Watchlist greift auf FVP-Bewertungen zu. Alles mit demselben Account — kein Datendoppel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2 class="fade">Bessere Entscheidungen.<br><span class="td">Schritt für Schritt.</span></h2>
+    <p class="fade">Im Betatest für alle Tarife zugänglich. Starte jetzt — Recovery-Rechner und Zinsrechner auch ohne Account nutzbar.</p>
+    <a href="plaene-beta.html" class="btn-td fade">Jetzt starten</a>
+    <span class="cta-note fade">Betatest · Recovery &amp; Zinsrechner kostenlos · Premium nach Beta</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Dies ist kein Angebot und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), e.target.dataset.d || 0);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach((el, i) => {
+    el.dataset.d = (i % 5) * 80;
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
