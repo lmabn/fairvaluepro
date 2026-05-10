@@ -554,10 +554,69 @@ body { background: var(--bg); }
   <!-- TECH -->
   <div class="section">
     <div class="section-label">Tech-Stack</div>
-    <h2>Schnell, schlank, sicher.</h2>
-    <p><strong>Architektur:</strong> FastAPI-Backend, SQLite, Vanilla-JS-Frontend — schnelle Iteration, geringe Wartungslast, sub-100ms-Antwortzeiten.</p>
-    <p><strong>Sicherheit:</strong> Strikte Content-Security-Policy, HSTS, Permissions-Policy. Bring-Your-Own-Key und Bring-Your-Own-Data mit Browser-direct-Calls — wir sind nicht in der Datenkette.</p>
-    <p><strong>Mathematik:</strong> TWR und CAGR sauber implementiert, cashflowbereinigte Renditen, Compound-Interest mit Beitragstiming-Konvention die Spar-Apps pixelgenau matcht. Hosted bei Hetzner, Deutschland.</p>
+    <h2>Bewusste Entscheidungen statt Default-Choices.</h2>
+    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Sub-100ms-Antwortzeiten bei normaler Last. Kein Build-Step, kein npm, keine Supply-Chain-Risiken.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:2rem 0;">
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Backend</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · SQLite</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL, 17 Tabellen, HMAC-SHA256-Auth, PBKDF2 mit 600.000 Iterationen</div>
+      </div>
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Frontend</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Vanilla JS · Zero Build</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Kein React, kein Webpack. Chart.js + Flatpickr per CDN, versions-gepinnt</div>
+      </div>
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Infra</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Hetzner · Cloudflare · nginx</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">GitHub Actions CI/CD, systemd, Let's Encrypt, atomic Deploys</div>
+      </div>
+    </div>
+
+    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Sicherheits-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CSP mit strikter connect-src-Whitelist</strong> — Datenexfiltration bei XSS strukturell verhindert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">HSTS</strong> — 1 Jahr, includeSubDomains, erzwungenes HTTPS</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Brute-Force-Schutz</strong> — 10 Versuche/10 Min per IP, verbleibende Versuche in Response</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Permissions-Policy</strong> — Camera, Mic, Geolocation, Payment, USB deaktiviert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">X-Frame-Options: DENY</strong> — Clickjacking-Schutz</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">BYOK für KI</strong> — Schlüssel im Browser, nie auf unserem Server</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CDN-Versions-Pinning</strong> — kein böswilliges Update unterwandert den Stack</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Idempotente Schema-Migrationen</strong> — Live-DB-Updates ohne Downtime</div>
+      </div>
+    </details>
+
+    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Mathematik & Algorithmen <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Zwei-Phasen-DCF</strong> mit Gordon-Growth-Terminal-Value, vollständig user-parametrisiert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">TWR</strong> (Time-Weighted Return) — von Cashflows bereinigt, professioneller Standard</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">EV/EBITDA</strong> Net-Debt-bereinigt — M&A-Praxis-konform</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CAGR</strong> für annualisierte Mehrjahres-Vergleiche</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">DDM</strong> Constant-Growth + Two-Stage für Dividendentitel</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Compound-Interest</strong> nominal r/12 monatlich + vorschüssig — matcht Spar-Apps pixelgenau</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Margin of Safety</strong> nach Graham — prozentualer Discount-Faktor pro Aktie</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Recovery-Return</strong> — Drawdown, p.a.-Wachstum über variablen Zeithorizont</div>
+      </div>
+    </details>
+
+    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Datenbank-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg);">
+        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">17 Tabellen, klar nach Domänen getrennt — 9 Auth, 5 Tracker, 3 Trading Desk, plus Saved Analyses und Bewertungs-Setups. ON DELETE CASCADE durchgängig, PRAGMA foreign_keys = ON explizit aktiviert. Foreign-Key-Beziehungen über Domänen-Grenzen: Trading-Desk-Rebalancing verweist auf Tracker-Depots. Migration zu PostgreSQL jederzeit möglich — bewusst nicht voreilig.</p>
+      </div>
+    </details>
+
+    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">KI-Integration <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.8rem; color:var(--text-2); line-height:1.7;">
+        <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude Haiku 4.5, OpenAI GPT-4o-mini, Google Gemini 2.0 Flash</strong> — bewusst „schnell + günstig"-Klasse, typische Anfragen im Cent-Bereich. Provider-agnostische <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">callAI()</code>-Schnittstelle — Provider ist jederzeit austauschbar.</p>
+        <p>Browser-direkte Calls mit offiziellem <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">anthropic-dangerous-direct-browser-access</code>-Header. Bias-Coach liefert strukturiertes JSON, kein Freitext. 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
+      </div>
+    </details>
   </div>
 
   <!-- KONTAKT -->
@@ -593,5 +652,13 @@ body { background: var(--bg); }
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      const icon = d.querySelector('summary span:last-child');
+      if(icon) icon.textContent = d.open ? '×' : '+';
+    });
+  });
+</script>
 </body>
 </html>

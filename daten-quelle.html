@@ -59,10 +59,10 @@
 
 /* FAQ */
 .faq-section { padding: 5rem 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
-.faq-inner { max-width: 640px; margin: 0 auto; }
+.faq-inner { max-width: 1120px; margin: 0 auto; }
 .faq-inner h2 { font-family: var(--display); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 2rem; }
 .faq-item { border-bottom: 1px solid var(--border); }
-.faq-item summary { font-family: var(--sans); font-size: 0.92rem; font-weight: 500; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; gap: 1rem; transition: color 0.2s; }
+.faq-item summary { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; gap: 1rem; transition: color 0.2s; text-transform: none; letter-spacing: 0; text-align: left; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary .faq-icon { font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
 .faq-item[open] summary .faq-icon { transform: rotate(45deg); }
@@ -141,7 +141,7 @@
   <div class="container">
     <div class="tag fade in" style="justify-content:center;">Daten-Quelle</div>
     <h1 class="fade in">Deine Daten.<br>Dein Anbieter.<br><span class="n">Deine Kontrolle.</span></h1>
-    <p class="lead fade in">Fair Value Pro nutzt Marktdaten von einem Anbieter deiner Wahl. Du schließt einen Plan direkt beim Datenanbieter ab — wir greifen nur mit deinem API-Schlüssel darauf zu. Kein Lock-in, keine versteckten Kosten auf unserer Seite.</p>
+    <p class="lead fade in">Fair Value Pro nutzt Marktdaten von einem unserer geprüften Daten-Partner. Du schließt einen Plan direkt beim Partner ab — wir greifen nur mit deinem API-Schlüssel darauf zu. Kein Lock-in, keine versteckten Kosten auf unserer Seite.</p>
     <a href="#how" class="btn-neon fade in">Wie es funktioniert</a>
   </div>
 </section>
@@ -154,7 +154,7 @@
         <div class="tag">Warum so</div>
         <h2>Wir sind ein Bewertungstool — kein Datenprovider.</h2>
         <p>Die meisten Finanztools kaufen Marktdaten-Lizenzen en gros und reichen die Kosten als Abo-Gebühr weiter. Das schafft Lock-in: du bezahlst den Anbieter doppelt — einmal für die Daten, einmal für das Tool.</p>
-        <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Datenanbieter einen Plan ab — zu marktüblichen Konditionen, ohne unsere Marge darauf. Wir erhalten eine Vermittlungsprovision. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
+        <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
         <p>Dein API-Schlüssel wird in deinem FVP-Account hinterlegt. Datenabrufe laufen direkt zwischen deinem Browser und dem Anbieter — <strong>wir sehen deine Anfragen nicht und speichern keine Marktdaten auf unseren Servern.</strong></p>
       </div>
       <div class="why-visual fade">
@@ -205,7 +205,6 @@
             <div>
               <div class="step-title">API-Schlüssel kopieren</div>
               <div class="step-text">Nach der Registrierung erhältst du einen API-Schlüssel — eine lange Zeichenfolge, die deinen Zugang identifiziert. Du findest ihn im Dashboard deines Anbieters. <strong>Kopiere ihn einmalig</strong> — du brauchst ihn nur für den nächsten Schritt.</div>
-              <span class="step-detail">Tipp: Schlüssel sicher aufbewahren — bei Verlust einfach neu generieren</span>
             </div>
             <div class="step-sidenote">
               <div class="step-sidenote-label">⚡ KI-Features</div>
@@ -218,7 +217,7 @@
         <div class="step-num">3</div>
         <div class="step-body">
           <div class="step-title">Schlüssel in FVP hinterlegen — fertig</div>
-          <div class="step-text">Öffne in deinem FVP-Account den Tab <strong>Daten-Quelle</strong>. Wähle deinen Anbieter, füge den API-Schlüssel ein, klicke Verbinden. Fair Value Pro prüft die Verbindung automatisch. <strong>Ab sofort werden alle Ticker-Anfragen über dein Konto beim Anbieter abgerufen.</strong></div>
+          <div class="step-text">Öffne deinen Account und navigiere zum Tab <strong>API-Schlüssel</strong>. Wähle deinen Daten-Partner, füge den Schlüssel ein, klicke Verbinden. Fair Value Pro prüft die Verbindung automatisch. <strong>Ab sofort werden alle Ticker-Anfragen über dein Konto beim Anbieter abgerufen.</strong></div>
           <span class="step-detail">Dauert: ~1 Minute · Einmalige Einrichtung · Jederzeit wechselbar</span>
         </div>
       </div>
@@ -265,7 +264,7 @@
 
     <details class="faq-item">
       <summary>Warum muss ich selbst einen Plan beim Datenanbieter abschließen?<span class="faq-icon">+</span></summary>
-      <p>Marktdaten-Lizenzen sind teuer — und wenn ein Tool sie für alle User zentral einkauft, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du bezahlst den Anbieter direkt zu dessen Konditionen, wir erhalten eine Vermittlungsprovision. Du hast volle Kontrolle über Plan und Kosten, wir tragen kein Lizenzrisiko.</p>
+      <p>Marktdaten-Lizenzen sind teuer — und wenn ein Tool sie für alle User zentral einkauft, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du bezahlst den Partner direkt zu dessen Konditionen. Du hast volle Kontrolle über Plan und Kosten, wir tragen kein Lizenzrisiko.</p>
     </details>
 
     <details class="faq-item">
@@ -280,7 +279,7 @@
 
     <details class="faq-item">
       <summary>Kann ich den Anbieter wechseln?<span class="faq-icon">+</span></summary>
-      <p>Ja, jederzeit. Im Tab „Daten-Quelle" kannst du den Anbieter und den API-Schlüssel ändern. Deine gespeicherten Analysen und Presets bleiben erhalten — sie sind unabhängig vom Datenanbieter.</p>
+      <p>Ja, jederzeit. Im Account unter <strong>API-Schlüssel</strong> kannst du Partner und Schlüssel jederzeit ändern. Deine gespeicherten Analysen und Presets bleiben erhalten — sie sind unabhängig vom Datenanbieter.</p>
     </details>
 
     <details class="faq-item">
@@ -300,7 +299,7 @@
 <section id="cta">
   <div class="container">
     <h2 class="fade">Bereit?<br><span class="n">Jetzt Daten-Quelle einrichten.</span></h2>
-    <p class="fade">Melde dich an, öffne den Tab „Daten-Quelle" in deinem Account und folge den Schritten. Dauert fünf Minuten.</p>
+    <p class="fade">Melde dich an, öffne deinen Account und folge den Schritten unter API-Schlüssel. Dauert fünf Minuten.</p>
     <a href="plaene-beta.html" class="btn-neon fade">Account erstellen →</a>
     <span class="fade" style="display:block; margin-top:1rem; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em;">Pro-Account kostenlos · Datenanbieter separat</span>
   </div>
