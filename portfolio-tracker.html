@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<title>Fair Value Pro — Portfolio Tracker</title>
+<style>
+/* ACCENT — Tracker lime */
+:root {
+  --pt:        #c8ff00;
+  --pt-dim:    rgba(200,255,0,0.08);
+  --pt-border: rgba(200,255,0,0.22);
+}
+
+/* NAV */
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--neon); }
+nav a.nav-cta { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.42rem 1.1rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
+nav a.nav-cta:hover { background: var(--neon-dim); }
+
+/* HERO */
+#hero { padding: 9rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+.hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(200,255,0,0.05) 0%, transparent 70%); pointer-events: none; }
+#hero h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
+#hero h1 .pt { color: var(--pt); }
+#hero p.sub { color: var(--text-2); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.75; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+.plan-pill { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; border: 1px solid var(--border2); color: var(--text-3); }
+.plan-pills { display: flex; gap: 0.6rem; justify-content: center; margin-bottom: 3.5rem; }
+.plan-pill.premium { border-color: var(--pt-border); color: var(--pt); background: var(--pt-dim); }
+.btn-pt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--pt); color: #0a0e06; border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+.btn-pt:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-outline-pt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--pt); border: 1px solid var(--pt-border); padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-outline-pt:hover { background: var(--pt-dim); }
+
+/* MOCKUP */
+.mockup-wrap { position: relative; max-width: 1100px; margin: 0 auto; }
+.mockup-glow { position: absolute; inset: -40px; background: radial-gradient(ellipse at 50% 60%, rgba(200,255,0,0.06), transparent 65%); pointer-events: none; z-index: 0; }
+.mockup { position: relative; z-index: 1; background: #0b1410; border: 1px solid rgba(200,255,0,0.12); border-radius: 8px; overflow: hidden; font-family: var(--mono); font-size: 0.7rem; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+.mk-topbar { background: #080e0b; border-bottom: 1px solid rgba(200,255,0,0.08); padding: 0.55rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.mk-logo { color: var(--pt); font-weight: 700; font-family: var(--display); font-size: 0.8rem; }
+.mk-tabs { display: flex; gap: 0.5rem; }
+.mk-tab { font-size: 0.6rem; color: var(--text-3); padding: 0.25rem 0.7rem; border: 1px solid transparent; border-radius: 3px; cursor: default; letter-spacing: 0.05em; }
+.mk-tab.active { color: var(--text); border-color: var(--border2); }
+.mk-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+
+/* KPI row */
+.mk-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; }
+.mk-kpi { background: var(--bg2); padding: 1rem 1.2rem; }
+.kpi-label { font-size: 0.58rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem; }
+.kpi-val { font-family: var(--display); font-size: 1.15rem; font-weight: 700; color: var(--text); line-height: 1; }
+.kpi-val.pos { color: var(--pt); }
+.kpi-val.neg { color: #e24b4a; }
+.kpi-sub { font-size: 0.58rem; color: var(--text-3); margin-top: 0.25rem; }
+
+/* Chart area */
+.mk-chart-area { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.2rem; }
+.mk-chart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
+.mk-chart-title { font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.06em; }
+.mk-time-btns { display: flex; gap: 3px; }
+.mk-time-btn { font-size: 0.55rem; padding: 0.15rem 0.45rem; border-radius: 2px; color: var(--text-3); cursor: default; }
+.mk-time-btn.active { background: var(--bg4); color: var(--text); border: 1px solid var(--border2); }
+
+/* SVG chart */
+.chart-svg { width: 100%; height: 90px; }
+
+/* Depot table */
+.mk-depot { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.mk-depot-head { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 0.5rem 1rem; background: var(--bg4); border-bottom: 1px solid var(--border); }
+.mk-depot-head span { font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
+.mk-depot-head span:not(:first-child) { text-align: right; }
+.mk-depot-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); align-items: center; }
+.mk-depot-row:last-child { border-bottom: none; }
+.mk-ticker { font-weight: 700; color: var(--text); font-size: 0.68rem; }
+.mk-name { font-size: 0.58rem; color: var(--text-3); margin-top: 1px; }
+.mk-cell { text-align: right; color: var(--text-2); font-size: 0.65rem; }
+.mk-cell.pos { color: var(--pt); }
+.mk-cell.neg { color: #e24b4a; }
+.mk-verdict { font-size: 0.52rem; padding: 0.15rem 0.45rem; border-radius: 3px; text-align: center; font-weight: 700; letter-spacing: 0.05em; }
+.mk-verdict.under { background: rgba(200,255,0,0.1); color: var(--pt); border: 1px solid var(--pt-border); }
+.mk-verdict.over { background: rgba(226,75,74,0.1); color: #e24b4a; border: 1px solid rgba(226,75,74,0.25); }
+.mk-verdict.fair { background: rgba(0,196,106,0.08); color: var(--mid); border: 1px solid var(--mid-border); }
+
+/* FEATURES */
+.features-section { padding: 7rem 2rem; }
+.features-header { text-align: center; margin-bottom: 4rem; }
+.features-header h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+.features-header p { color: var(--text-2); max-width: 520px; margin: 0 auto; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.feat { background: var(--bg2); padding: 2rem; }
+.feat-icon { font-size: 1.2rem; margin-bottom: 1rem; color: var(--pt); }
+.feat h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+.feat p { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; }
+
+/* PAIN SECTION */
+.pain-section { padding: 7rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.pain-item { background: var(--bg); padding: 2rem 2.2rem; }
+.pain-q { font-family: var(--display); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.7rem; color: var(--text-2); line-height: 1.4; }
+.pain-q::before { content: '"'; color: var(--pt); font-size: 1.4rem; font-family: Georgia, serif; line-height: 0; vertical-align: -0.3rem; margin-right: 0.2rem; }
+.pain-a { font-size: 0.85rem; color: var(--text-3); line-height: 1.65; }
+.pain-a strong { color: var(--text-2); }
+
+/* DIFF SECTION */
+.diff-section { padding: 7rem 2rem; }
+.diff-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.diff-text h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+.diff-text p { color: var(--text-2); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1rem; }
+.diff-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.diff-item { display: flex; gap: 1rem; align-items: flex-start; }
+.diff-icon { width: 32px; height: 32px; border: 1px solid var(--pt-border); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--pt); font-size: 0.9rem; flex-shrink: 0; background: var(--pt-dim); }
+.diff-item-text strong { display: block; font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+.diff-item-text span { font-size: 0.82rem; color: var(--text-3); line-height: 1.5; }
+.diff-visual { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 2rem; }
+.diff-stat { padding: 1.2rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.diff-stat:last-child { border-bottom: none; }
+.diff-stat-label { font-size: 0.78rem; color: var(--text-2); }
+.diff-stat-val { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--pt); }
+
+/* CTA */
+#cta { padding: 7rem 2rem; text-align: center; border-top: 1px solid var(--border); }
+#cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+#cta p { color: var(--text-2); max-width: 480px; margin: 0 auto 2rem; font-size: 0.95rem; }
+.cta-note { display: block; margin-top: 1rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-3); }
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .diff-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .mk-kpis { grid-template-columns: repeat(2, 1fr); }
+  nav .nav-links { display: none; }
+  nav a.nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+}
+@media(max-width: 600px) {
+  nav { padding: 0 1.25rem; }
+  .mk-depot-head, .mk-depot-row { grid-template-columns: 2fr 1fr 1fr; }
+  .mk-depot-head span:nth-child(4),
+  .mk-depot-head span:nth-child(5),
+  .mk-depot-row .mk-cell:nth-child(4),
+  .mk-depot-row .mk-cell:nth-child(5) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Übersicht</a>
+    <a href="pro-mode-beta.html">Pro Mode</a>
+    <a href="portfolio-tracker.html" class="active">Portfolio Tracker</a>
+    <a href="trading-desk.html">Trading Desk</a>
+    <a href="plaene-beta.html">Pläne</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="index.html">Übersicht</a>
+  <a href="pro-mode-beta.html">Pro Mode</a>
+  <a href="portfolio-tracker.html" class="active">Portfolio Tracker</a>
+  <a href="trading-desk.html">Trading Desk</a>
+  <a href="plaene-beta.html">Pläne</a>
+  <a href="plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag fade in" style="--neon: var(--pt); justify-content: center;">Portfolio Tracker</div>
+    <h1 class="fade in">Behalte deine<br>Investments im <span class="pt">Blick.</span></h1>
+    <p class="sub fade in">Mehrere Depots, Snapshot-Tracking pro Monat, cashflowbereinigte Renditen — verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
+    <div class="hero-btns fade in">
+      <a href="plaene-beta.html" class="btn-pt">Jetzt starten</a>
+      <a href="#features" class="btn-outline-pt">Funktionen ansehen</a>
+    </div>
+    <div class="plan-pills fade in">
+      <span class="plan-pill premium">Premium</span>
+      <span class="plan-pill" style="color:var(--text-3);">Betatest für alle Tarife</span>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUP -->
+<section style="padding: 4rem 2rem 5rem; border-bottom: 1px solid var(--border);">
+  <div class="wide">
+    <div class="mockup-wrap fade">
+      <div class="mockup-glow"></div>
+      <div class="mockup">
+        <!-- Topbar -->
+        <div class="mk-topbar">
+          <div class="mk-logo">Portfolio Tracker</div>
+          <div class="mk-tabs">
+            <div class="mk-tab active">Übersicht</div>
+            <div class="mk-tab">Depots</div>
+            <div class="mk-tab">Vergleich</div>
+            <div class="mk-tab">Export</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">1J · 2J · <strong style="color:var(--text)">3J</strong> · 5J · Alle</div>
+        </div>
+
+        <!-- Body -->
+        <div class="mk-body">
+          <!-- KPI row -->
+          <div class="mk-kpis">
+            <div class="mk-kpi">
+              <div class="kpi-label">Gesamtwert</div>
+              <div class="kpi-val">€ 84.320</div>
+              <div class="kpi-sub">3 Depots</div>
+            </div>
+            <div class="mk-kpi">
+              <div class="kpi-label">Wachstum (inkl. CF)</div>
+              <div class="kpi-val pos">+31.420 €</div>
+              <div class="kpi-sub">seit Jan 2022</div>
+            </div>
+            <div class="mk-kpi">
+              <div class="kpi-label">Rendite p.a.</div>
+              <div class="kpi-val pos">+12,4 %</div>
+              <div class="kpi-sub">CAGR über 3 Jahre</div>
+            </div>
+            <div class="mk-kpi">
+              <div class="kpi-label">Marktentwicklung</div>
+              <div class="kpi-val pos">+24.810 €</div>
+              <div class="kpi-sub">exkl. Cashflows</div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div class="mk-chart-area">
+            <div class="mk-chart-head">
+              <span class="mk-chart-title">↗ Depotverlauf</span>
+              <div class="mk-time-btns">
+                <span class="mk-time-btn">1J</span>
+                <span class="mk-time-btn">2J</span>
+                <span class="mk-time-btn active">3J</span>
+                <span class="mk-time-btn">5J</span>
+                <span class="mk-time-btn">Alle</span>
+              </div>
+            </div>
+            <svg class="chart-svg" viewBox="0 0 800 90" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="ptGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c8ff00" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#c8ff00" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Eingezahlt (flache Referenzlinie) -->
+              <path d="M0,72 L800,55" stroke="rgba(200,255,0,0.25)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <!-- Depotverlauf Fläche -->
+              <path d="M0,72 Q80,68 160,62 Q240,55 320,50 Q400,44 480,38 Q560,30 640,22 Q720,16 800,10 L800,90 L0,90 Z" fill="url(#ptGrad)"/>
+              <!-- Depotverlauf Linie -->
+              <path d="M0,72 Q80,68 160,62 Q240,55 320,50 Q400,44 480,38 Q560,30 640,22 Q720,16 800,10" stroke="#c8ff00" stroke-width="2" fill="none"/>
+              <!-- Jahr-Markierungen -->
+              <text x="5" y="88" font-size="7" fill="rgba(200,255,0,0.3)" font-family="monospace">Jan 22</text>
+              <text x="253" y="88" font-size="7" fill="rgba(200,255,0,0.3)" font-family="monospace">Jan 23</text>
+              <text x="510" y="88" font-size="7" fill="rgba(200,255,0,0.3)" font-family="monospace">Jan 24</text>
+              <text x="740" y="88" font-size="7" fill="rgba(200,255,0,0.3)" font-family="monospace">Heute</text>
+            </svg>
+          </div>
+
+          <!-- Depot table -->
+          <div class="mk-depot">
+            <div class="mk-depot-head">
+              <span>Position</span>
+              <span style="text-align:right">Wert</span>
+              <span style="text-align:right">G/V</span>
+              <span style="text-align:right">G/V %</span>
+              <span style="text-align:right">FVP-Verdict</span>
+            </div>
+            <div class="mk-depot-row">
+              <div><div class="mk-ticker">MSFT</div><div class="mk-name">Microsoft Corp.</div></div>
+              <div class="mk-cell">€ 19.840</div>
+              <div class="mk-cell pos">+6.240</div>
+              <div class="mk-cell pos">+45,8 %</div>
+              <div class="mk-cell"><span class="mk-verdict over">Überbewertet</span></div>
+            </div>
+            <div class="mk-depot-row">
+              <div><div class="mk-ticker">NOVO B</div><div class="mk-name">Novo Nordisk</div></div>
+              <div class="mk-cell">€ 14.220</div>
+              <div class="mk-cell pos">+2.180</div>
+              <div class="mk-cell pos">+18,1 %</div>
+              <div class="mk-cell"><span class="mk-verdict under">Kaufzone</span></div>
+            </div>
+            <div class="mk-depot-row">
+              <div><div class="mk-ticker">ALV.DE</div><div class="mk-name">Allianz SE</div></div>
+              <div class="mk-cell">€ 11.660</div>
+              <div class="mk-cell neg">−840</div>
+              <div class="mk-cell neg">−6,7 %</div>
+              <div class="mk-cell"><span class="mk-verdict fair">Fair bewertet</span></div>
+            </div>
+            <div class="mk-depot-row" style="opacity:0.5">
+              <div><div class="mk-ticker">AAPL</div><div class="mk-name">Apple Inc.</div></div>
+              <div class="mk-cell">€ 9.430</div>
+              <div class="mk-cell pos">+1.930</div>
+              <div class="mk-cell pos">+25,7 %</div>
+              <div class="mk-cell"><span class="mk-verdict over">Überbewertet</span></div>
+            </div>
+          </div>
+
+        </div><!-- /mk-body -->
+      </div><!-- /mockup -->
+    </div><!-- /mockup-wrap -->
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain-section" id="pain">
+  <div class="wide">
+    <div class="tag fade" style="--neon: var(--pt); margin-bottom: 2rem;">Das Problem</div>
+    <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:3rem; max-width:680px;">Die meisten Anleger wissen, was sie haben — aber nicht, ob es noch gut ist.</h2>
+    <div class="pain-grid fade">
+      <div class="pain-item">
+        <div class="pain-q">Meine Excel-Tabelle zeigt einen Verlust — aber es war nur eine Einzahlung.</div>
+        <div class="pain-a">Cashflows verfälschen die Renditeberechnung, wenn sie nicht korrekt herausgerechnet werden. <strong>Cashflowbereinigte Renditen</strong> zeigen dir, was der Markt wirklich aus deinem Geld gemacht hat.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-q">Ich habe drei Depots bei verschiedenen Banken — Gesamtüberblick null.</div>
+        <div class="pain-a">Beliebig viele Depots, eine Gesamtansicht. <strong>Alle Depots auf einer Linie</strong> — mit eigener Farbe, sortierbarer Reihenfolge und Zusammenfassung oben.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-q">Ich weiß nicht ob meine Positionen gerade über- oder unterbewertet sind.</div>
+        <div class="pain-a">Pro Position wird der berechnete Fair Value aus dem FVP-Kalkulator automatisch übernommen. <strong>Das Verdict — fair / Kaufzone / überbewertet</strong> — aktualisiert sich bei jedem Tab-Wechsel.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-q">Wie war meine Rendite in den letzten fünf Jahren wirklich?</div>
+        <div class="pain-a">Der Vergleich-Tab zeigt jedes Jahr aufgeklappt: Snapshots, G/V, Rendite. <strong>CAGR und TWR annualisiert</strong> — nicht die verzerrte Durchschnittszahl, die die meisten Apps zeigen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="wide">
+    <div class="features-header fade">
+      <div class="tag" style="--neon: var(--pt); justify-content:center;">Was steckt drin</div>
+      <h2>Fünf Bausteine. Ein Überblick.</h2>
+      <p>Portfolio Tracker kombiniert Depot-Verwaltung, Renditeberechnung und Bewertungs-Kontext in einem Werkzeug.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat fade">
+        <div class="feat-icon">⊞</div>
+        <h3>Depots &amp; Snapshots</h3>
+        <p>Beliebig viele Depots, jeweils mit monatlichem Snapshot — Datum, Wert, Einzahlung, Auszahlung, Notiz. Beim nächsten Snapshot werden Positionen automatisch übernommen, nichts muss neu eingegeben werden.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">≈</div>
+        <h3>Cashflowbereinigte Renditen</h3>
+        <p>Einzahlungen und Auszahlungen werden separat erfasst und korrekt herausgerechnet. Das Ergebnis: eine Rendite die zeigt was der Markt aus deinem Geld gemacht hat — ohne Verzerrung durch Überweisungen.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">↗</div>
+        <h3>Historischer Chart &amp; Vergleich</h3>
+        <p>Kursverlauf mit echter Zeitskalierung, Range-Filter 1J bis Alle. Der Vergleich-Tab zeigt jedes Jahr aufgeklappt mit CAGR und zeitgewichteter Rendite (TWR) pro Depot.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">◎</div>
+        <h3>Fair-Value-Kontext pro Position</h3>
+        <p>Jede Position ist mit dem FVP-Kalkulator verknüpft. Sobald du eine Bewertung gespeichert hast, erscheint das Verdict — Kaufzone, fair bewertet oder überbewertet — direkt in der Depot-Übersicht.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">↓</div>
+        <h3>Excel-Export</h3>
+        <p>Drei Sheets auf einmal: Übersicht mit allen Snapshots und Renditen, flache Datenansicht und letzter Positionsstand mit FVP-Verdict. Direkt in eigene Excel-Auswertungen importierbar.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">⊙</div>
+        <h3>Verbunden mit dem Ökosystem</h3>
+        <p>Die Tracker-Daten fließen in den Trading Desk: Positionen und Zielkurse werden automatisch für die Recovery-Return-Analyse und den Rebalancing-Planer übernommen — kein doppelter Dateneintrag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF SECTION -->
+<section class="diff-section">
+  <div class="wide">
+    <div class="diff-layout">
+      <div class="diff-text fade">
+        <div class="tag" style="--neon: var(--pt);">Warum das anders ist</div>
+        <h2>Nicht eine weitere App. Sondern der fehlende Baustein.</h2>
+        <p>Die meisten Portfolio-Apps zeigen dir Zahlen. Was sie nicht zeigen: ob du zu einem guten Preis gekauft hast, ob deine Rendite korrekt berechnet ist — und was als nächstes zu tun wäre.</p>
+        <p>Portfolio Tracker löst das, weil er Teil eines zusammenhängenden Systems ist: Bewertung (FVP) → Verfolgung (Tracker) → Entscheidung (Trading Desk).</p>
+        <div class="diff-list">
+          <div class="diff-item">
+            <div class="diff-icon">⊕</div>
+            <div class="diff-item-text">
+              <strong>Fair Value direkt in der Depot-Ansicht</strong>
+              <span>Kein Wechsel zwischen Tools — das Verdict aus deiner eigenen Bewertung steht neben jeder Position.</span>
+            </div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon">≋</div>
+            <div class="diff-item-text">
+              <strong>Rendite ohne Buchhalter-Trick</strong>
+              <span>Cashflowbereinigung nach TWR-Methode — dieselbe die Fondsmanager verwenden.</span>
+            </div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon">⊞</div>
+            <div class="diff-item-text">
+              <strong>Made in Germany · Gehostet in Deutschland</strong>
+              <span>Hetzner-Server, DSGVO-konform, keine US-Cloud-Weitergabe.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="diff-visual fade">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.2rem;">Rendite-Überblick · Depot A</div>
+        <div class="diff-stat">
+          <span class="diff-stat-label">Gesamtrendite (inkl. Cashflow)</span>
+          <span class="diff-stat-val">+38,2 %</span>
+        </div>
+        <div class="diff-stat">
+          <span class="diff-stat-label">Marktentwicklung (exkl. Cashflow)</span>
+          <span class="diff-stat-val">+29,6 %</span>
+        </div>
+        <div class="diff-stat">
+          <span class="diff-stat-label">CAGR über 4 Jahre</span>
+          <span class="diff-stat-val">+8,7 % p.a.</span>
+        </div>
+        <div class="diff-stat">
+          <span class="diff-stat-label">Positionen in Kaufzone</span>
+          <span class="diff-stat-val" style="color:var(--mid);">3 von 8</span>
+        </div>
+        <div class="diff-stat">
+          <span class="diff-stat-label">Letzter Snapshot</span>
+          <span class="diff-stat-val" style="font-size:0.85rem; color:var(--text-2);">Apr 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2 class="fade">Deine Investments —<br><span class="pt">vollständig im Blick.</span></h2>
+    <p class="fade">Im Betatest für alle Tarife zugänglich. Kostenlos starten, kein Account für den ersten Eindruck nötig.</p>
+    <a href="plaene-beta.html" class="btn-pt fade">Jetzt starten</a>
+    <span class="cta-note fade">Betatest · Kein Abo erforderlich · Premium nach Beta</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information. Dies ist kein Angebot und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), e.target.dataset.d || 0);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach((el, i) => {
+    el.dataset.d = (i % 5) * 80;
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
