@@ -76,7 +76,7 @@ nav a.back:hover { color: var(--neon); }
 
 /* Navigation — Desktop links */
 .nav-links { display: flex; align-items: center; gap: 2rem; }
-.nav-links a { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+.nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 
 /* Navigation — Dropdown */

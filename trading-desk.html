@@ -17,7 +17,6 @@
 
 /* NAV */
 .nav-links { display: flex; align-items: center; gap: 2rem; }
-.nav-links a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 nav a.nav-cta { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.42rem 1.1rem; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
 nav a.nav-cta:hover { background: var(--neon-dim); }
@@ -231,161 +230,89 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
         </div>
 
         <!-- Body -->
-        <div class="mk-body">
-          <!-- Left: Recovery table -->
-          <div class="mk-main">
-            <div class="rec-head">
-              <span class="rec-title">↗ Recovery-Return-Analyse</span>
-              <span class="rec-horizon">Ziel: Fairer Wert (FVP) · <strong>3 J.</strong></span>
-            </div>
-            <table class="rec-tbl">
+        <div style="padding:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+
+          <!-- Module pills -->
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-family:var(--mono); font-size:0.58rem; color:var(--td); background:var(--td-dim); border:1px solid var(--td-border); padding:0.2rem 0.7rem; border-radius:50px; letter-spacing:0.06em;">Recovery-Return</span>
+            <span style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); background:var(--bg3); border:1px solid var(--border); padding:0.2rem 0.7rem; border-radius:50px; letter-spacing:0.06em;">Zinsrechner</span>
+            <span style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); background:var(--bg3); border:1px solid var(--border); padding:0.2rem 0.7rem; border-radius:50px; letter-spacing:0.06em;">Rebalancing</span>
+            <span style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); background:var(--bg3); border:1px solid var(--border); padding:0.2rem 0.7rem; border-radius:50px; letter-spacing:0.06em;">Watchlist</span>
+            <span style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); background:var(--bg3); border:1px solid var(--border); padding:0.2rem 0.7rem; border-radius:50px; letter-spacing:0.06em;">Trade-Journal</span>
+          </div>
+
+          <!-- Recovery table preview -->
+          <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+            <div style="padding:0.8rem 1rem; border-bottom:1px solid var(--border); font-size:0.62rem; color:var(--text-2); letter-spacing:0.06em;">↗ Recovery-Return · Zeithorizont 3 Jahre</div>
+            <table style="width:100%; border-collapse:collapse; font-family:var(--mono); font-size:0.65rem;">
               <thead>
-                <tr>
-                  <th>Position</th>
-                  <th>Akt. Kurs</th>
-                  <th>Zielkurs</th>
-                  <th>Drawdown</th>
-                  <th>Recovery p.a.</th>
+                <tr style="background:var(--bg4);">
+                  <th style="text-align:left; padding:0.4rem 1rem; color:var(--text-3); font-size:0.55rem; letter-spacing:0.08em; font-weight:400;">Position</th>
+                  <th style="text-align:right; padding:0.4rem 1rem; color:var(--text-3); font-size:0.55rem; letter-spacing:0.08em; font-weight:400;">Zielkurs</th>
+                  <th style="text-align:right; padding:0.4rem 1rem; color:var(--text-3); font-size:0.55rem; letter-spacing:0.08em; font-weight:400;">Erholung nötig</th>
+                  <th style="text-align:right; padding:0.4rem 1rem; color:var(--text-3); font-size:0.55rem; letter-spacing:0.08em; font-weight:400;">p.a. erforderlich</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><div class="rec-ticker">NOVO B</div></td>
-                  <td>DKK 618</td>
-                  <td>DKK 890</td>
-                  <td class="pa-neg">−30,6 %</td>
-                  <td><span class="rec-bar-wrap"><span class="rec-bar" style="width:62%"></span></span><span class="pa-pos">+12,9 %</span></td>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.55rem 1rem; color:var(--text); font-weight:700;">NOVO B</td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--text-2);">DKK 890 <span style="color:var(--text-3); font-size:0.58rem;">(FV)</span></td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--td);">+44,0 %</td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--td); font-weight:700;">+12,9 % p.a.</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.55rem 1rem; color:var(--text); font-weight:700;">ALV.DE</td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--text-2);">€ 340 <span style="color:var(--text-3); font-size:0.58rem;">(ATH)</span></td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--td);">+19,3 %</td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--td); font-weight:700;">+6,1 % p.a.</td>
                 </tr>
                 <tr>
-                  <td><div class="rec-ticker">BRKB</div></td>
-                  <td>$ 420</td>
-                  <td>$ 510</td>
-                  <td class="pa-neg">−17,6 %</td>
-                  <td><span class="rec-bar-wrap"><span class="rec-bar" style="width:35%"></span></span><span class="pa-pos">+6,7 %</span></td>
-                </tr>
-                <tr>
-                  <td><div class="rec-ticker">ALV.DE</div></td>
-                  <td>€ 285</td>
-                  <td>€ 310</td>
-                  <td class="pa-neg">−8,1 %</td>
-                  <td><span class="rec-bar-wrap"><span class="rec-bar" style="width:18%"></span></span><span class="pa-pos">+2,8 %</span></td>
-                </tr>
-                <tr>
-                  <td><div class="rec-ticker">MSFT</div></td>
-                  <td>$ 412</td>
-                  <td>$ 360</td>
-                  <td style="color:var(--mid)">+14,4 %</td>
-                  <td><span style="font-size:0.58rem; color:var(--text-3);">Bereits über Zielkurs</span></td>
+                  <td style="padding:0.55rem 1rem; color:var(--text); font-weight:700;">MSFT</td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--text-2);">$ 360 <span style="color:var(--text-3); font-size:0.58rem;">(FV)</span></td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--text-3);">bereits darüber</td>
+                  <td style="padding:0.55rem 1rem; text-align:right; color:var(--text-3);">–</td>
                 </tr>
               </tbody>
             </table>
+          </div>
 
-            <!-- Zinsrechner mini preview -->
-            <div class="zins-card">
-              <div class="zins-head">▸ Zinsrechner — Sparplan 20 Jahre</div>
-              <div class="zins-kpis">
-                <div class="zins-kpi">
-                  <div class="zins-kpi-label">Endkapital nominal</div>
-                  <div class="zins-kpi-val main">€ 148.420</div>
+          <!-- Journal entry preview -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.9rem 1rem;">
+              <div style="font-size:0.58rem; color:var(--text-3); letter-spacing:0.08em; margin-bottom:0.5rem;">✎ TRADE-JOURNAL</div>
+              <div style="font-size:0.68rem; color:var(--text); font-weight:700; margin-bottom:0.3rem;">NOVO B — Kauf 40 Stk.</div>
+              <div style="font-size:0.62rem; color:var(--text-2); line-height:1.5; margin-bottom:0.6rem;">„Kurs 30 % unter FVP-Fair-Value. Starke Dividendenhistorie, langfristige Position."</div>
+              <div style="background:var(--td-dim); border:1px solid var(--td-border); border-radius:3px; padding:0.5rem 0.7rem;">
+                <div style="font-size:0.52rem; color:var(--td); letter-spacing:0.08em; margin-bottom:0.25rem;">⚡ KI-BIAS-COACH</div>
+                <div style="font-size:0.6rem; color:var(--text-2);">Möglicher <strong style="color:var(--td)">Recency Bias</strong> erkannt — Bezug auf aktuelle Nachrichtenlage.</div>
+              </div>
+            </div>
+            <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.9rem 1rem;">
+              <div style="font-size:0.58rem; color:var(--text-3); letter-spacing:0.08em; margin-bottom:0.5rem;">◈ WATCHLIST</div>
+              <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.4rem 0; border-bottom:1px solid var(--border);">
+                  <span style="font-size:0.68rem; font-weight:700; color:var(--text);">SAP.DE</span>
+                  <span style="font-size:0.52rem; color:var(--td); background:var(--td-dim); border:1px solid var(--td-border); padding:0.1rem 0.4rem; border-radius:3px;">Kaufzone</span>
                 </div>
-                <div class="zins-kpi">
-                  <div class="zins-kpi-label">Realwert (Inflation 2 %)</div>
-                  <div class="zins-kpi-val">€ 99.860</div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.4rem 0; border-bottom:1px solid var(--border);">
+                  <span style="font-size:0.68rem; font-weight:700; color:var(--text);">ASML</span>
+                  <span style="font-size:0.52rem; color:var(--text-3); background:var(--bg4); border:1px solid var(--border2); padding:0.1rem 0.4rem; border-radius:3px;">Beobachten</span>
                 </div>
-                <div class="zins-kpi">
-                  <div class="zins-kpi-label">Eingezahlt</div>
-                  <div class="zins-kpi-val" style="color:var(--text-2);">€ 60.000</div>
-                </div>
-                <div class="zins-kpi">
-                  <div class="zins-kpi-label">Zinsgewinn</div>
-                  <div class="zins-kpi-val" style="color:var(--mid);">€ 88.420</div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.4rem 0;">
+                  <span style="font-size:0.68rem; font-weight:700; color:var(--text);">MUV2.DE</span>
+                  <span style="font-size:0.52rem; color:var(--td); background:var(--td-dim); border:1px solid var(--td-border); padding:0.1rem 0.4rem; border-radius:3px;">Kaufzone</span>
                 </div>
               </div>
-              <div style="font-size:0.58rem; color:var(--text-3);">250 €/Mo · 7 % p.a. · 20 Jahre · Live-Update</div>
             </div>
           </div>
 
-          <!-- Right: Watchlist + Journal -->
-          <div class="mk-side">
-            <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Watchlist</div>
-            <div class="watch-list">
-              <div class="watch-item">
-                <div><div class="watch-ticker">SAP.DE</div><div class="watch-name">SAP SE</div></div>
-                <div>
-                  <div class="watch-price">€ 196</div>
-                  <div style="text-align:right; margin-top:2px;"><span class="watch-badge buy">Kaufzone</span></div>
-                </div>
-              </div>
-              <div class="watch-item">
-                <div><div class="watch-ticker">ASML</div><div class="watch-name">ASML Holding</div></div>
-                <div>
-                  <div class="watch-price">€ 644</div>
-                  <div style="text-align:right; margin-top:2px;"><span class="watch-badge watch">Beobachten</span></div>
-                </div>
-              </div>
-              <div class="watch-item">
-                <div><div class="watch-ticker">MUV2.DE</div><div class="watch-name">Munich Re</div></div>
-                <div>
-                  <div class="watch-price">€ 468</div>
-                  <div style="text-align:right; margin-top:2px;"><span class="watch-badge buy">Kaufzone</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Journal entry -->
-            <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-top:0.4rem; margin-bottom:0.4rem;">Trade-Journal</div>
-            <div class="journal-entry">
-              <div class="journal-head">
-                <span class="journal-ticker">NOVO B — Kauf 40 Stk.</span>
-                <span class="journal-date">12. März 2026</span>
-              </div>
-              <div class="journal-text">„Kurs 30 % unter dem FVP-Fair-Value. Starkes Pipeline-Potenzial, Dividende wächst seit 10 Jahren. Langfristige Position."</div>
-              <div class="journal-bias">
-                <div class="journal-bias-label">⚡ KI-Bias-Coach</div>
-                <div class="journal-bias-text">Möglicher <strong style="color:var(--td)">Recency Bias</strong>: „Pipeline-Potenzial" bezieht sich auf aktuelle Nachrichtenlage — prüfe ob das fundamental oder nur medienpräsent ist.</div>
-              </div>
-            </div>
-          </div>
-        </div><!-- /mk-body -->
+        </div>
       </div><!-- /mockup -->
     </div><!-- /mockup-wrap -->
   </div>
 </section>
 
 <!-- FIVE MODULES -->
-<section class="modules-section" id="modules">
-  <div class="wide">
-    <div class="tag fade" style="--neon: var(--td); margin-bottom: 2rem;">Fünf Module</div>
-    <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:3rem;">Werkzeuge, die dich besser entscheiden lassen.</h2>
-    <div class="modules-grid fade">
-      <div class="module-tab">
-        <div class="module-num">01</div>
-        <div class="module-name">Recovery-Return</div>
-        <div class="module-desc">Wie viel Wachstum brauchst du, um einen Verlust aufzuholen — und in wie vielen Jahren?</div>
-      </div>
-      <div class="module-tab">
-        <div class="module-num">02</div>
-        <div class="module-name">Zinsrechner</div>
-        <div class="module-desc">Sparplan, Zinseszins, Inflations-Realwert. Live-Update bei jeder Eingabe.</div>
-      </div>
-      <div class="module-tab">
-        <div class="module-num">03</div>
-        <div class="module-name">Rebalancing-Planer</div>
-        <div class="module-desc">Soll- vs. Ist-Gewichtung deiner Depots — mit konkreten Kauf/Verkauf-Vorschlägen in €.</div>
-      </div>
-      <div class="module-tab">
-        <div class="module-num">04</div>
-        <div class="module-name">Watchlist</div>
-        <div class="module-desc">Aktien beobachten, automatisch markieren wenn der Kurs unter den fairen Wert fällt.</div>
-      </div>
-      <div class="module-tab">
-        <div class="module-num">05</div>
-        <div class="module-name">Trade-Journal + KI-Coach</div>
-        <div class="module-desc">Begründungen festhalten — und von der KI auf 16 typische Verzerrungen prüfen lassen.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PAIN POINTS -->
 <section class="pain-section">
@@ -395,7 +322,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
     <div class="pain-grid fade">
       <div class="pain-item">
         <div class="pain-q">Meine Position ist 35 % im Minus — wie lange dauert es, das aufzuholen?</div>
-        <div class="pain-a">Die Recovery-Return-Analyse berechnet das konkret: Drawdown, benötigte Erholung, <strong>jährliche Wachstumsrate die nötig ist</strong> — über einen Zeithorizont von 1 bis 10 Jahren.</div>
+        <div class="pain-a">Die Recovery-Return-Analyse zeigt dir, <strong>welche Positionen die höchste Rendite liefern, wenn sie sich nur erholen</strong> — auf ihr ursprüngliches Hoch oder den fairen Wert. Sortiert nach bestem Aufholpotenzial, mit benötigter jährlicher Rendite über deinen Zeithorizont.</div>
       </div>
       <div class="pain-item">
         <div class="pain-q">Wie viel wird aus meinem Sparplan in 20 Jahren wirklich — nach Inflation?</div>
@@ -421,7 +348,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
         <div class="tag" style="--neon: var(--td);">KI-Bias-Coach</div>
         <h2>Die KI sagt dir nicht was du kaufen sollst. Sie zeigt dir, wie du über deine eigenen Entscheidungen denkst.</h2>
         <p>Jede Kaufbegründung die du im Trade-Journal hinterlegst, kann freiwillig von einem KI-Modell analysiert werden. Das Ergebnis: kein Rating, keine Empfehlung — sondern der Hinweis auf die Stelle in deiner Begründung, die einem bekannten Denkmuster entspricht.</p>
-        <p>Die Begründung ist nach dem Speichern unveränderlich. Das ist kein Bug — das ist das Prinzip. Kein nachträgliches Umschreiben der Vergangenheit.</p>
+        <p>Die Begründung ist nach dem Speichern unveränderlich. Kein nachträgliches Umschreiben der Vergangenheit.</p>
         <div class="ki-note">
           <strong>Bring Your Own Key.</strong> Der KI-Bias-Coach funktioniert mit deinem eigenen API-Schlüssel — Claude (Anthropic), ChatGPT (OpenAI) oder Gemini (Google). Der Schlüssel wird ausschließlich lokal in deinem Browser gespeichert, nie an unsere Server übertragen. Du trägst die Kosten direkt beim Anbieter — typischerweise Cent-Beträge pro Analyse.
         </div>
@@ -480,14 +407,12 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
       <div class="feat">
         <div class="feat-icon">↺</div>
         <h3>Recovery-Return-Analyse</h3>
-        <p>Pro Position: Drawdown in %, benötigte Erholung in %, erforderliche jährliche Rendite — als sortierbare Tabelle mit Bar-Visualisierung. Manueller Modus ohne FVP-Anbindung möglich.</p>
-        <span class="feat-tag">Kostenlos nutzbar</span>
+        <p>Welche Aktien in deinem Depot liefern die höchste Rendite, wenn sie sich nur auf ihr ursprüngliches Hoch oder den fairen Wert erholen? Sortierbare Tabelle mit Drawdown, benötigter Erholung und erforderlicher jährlicher Rendite. Manueller Modus ohne FVP-Anbindung möglich.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">∑</div>
         <h3>Zinsrechner</h3>
         <p>Startkapital, Sparrate, Rendite p.a., Laufzeit, Inflation. Vier KPI-Karten live, Linien-Chart nominal vs. real, Jahrestabelle klappbar. Kein „Berechnen"-Button nötig.</p>
-        <span class="feat-tag">Kostenlos nutzbar</span>
       </div>
       <div class="feat">
         <div class="feat-icon">⊜</div>
