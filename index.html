@@ -268,7 +268,7 @@
     .mobile-br { display: block; }
     .hl-break::after { content: ''; }
     .hero-sub { font-size: 0.97rem; }
-    #hero { padding-top: 6rem; padding-bottom: 2.5rem; }
+    #hero { padding-top: 8rem; padding-bottom: 2.5rem; }
 
     .manifesto-layout,.product-layout { grid-template-columns:1fr; gap:2.5rem; }
     .how-steps { grid-template-columns:1fr; }
@@ -304,10 +304,17 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <a href="index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
   <div class="nav-links">
-    <a href="index.html" class="active">Übersicht</a>
-    <a href="pro-mode-beta.html">Pro Mode</a>
+    <div class="nav-item">
+      <a href="index.html" class="active">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="index.html" class="active">Übersicht</a>
+        <a href="pro-mode-beta.html">Pro Mode</a>
+      </div>
+    </div>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="trading-desk.html">Trading Desk</a>
     <a href="plaene-beta.html">Pläne</a>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
@@ -316,8 +323,10 @@
   <a href="#cta" class="cta">Zugang erhalten</a>
 </nav>
 <div class="nav-mobile-menu" id="mobile-menu">
-  <a href="index.html" class="active">Übersicht</a>
-  <a href="pro-mode-beta.html">Pro Mode</a>
+  <a href="index.html" class="active">Fair Value Pro</a>
+  <a href="pro-mode-beta.html" style="padding-left:1.4rem; font-size:0.68rem; color:var(--text-3);">↳ Pro Mode</a>
+  <a href="portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="trading-desk.html">Trading Desk</a>
   <a href="plaene-beta.html">Pläne</a>
   <a href="#cta" class="cta-mobile">Zugang erhalten →</a>
 </div>
@@ -615,8 +624,8 @@
     <div class="feat-grid">
       <div class="feat-card fade">
         <div class="feat-icon">Σ</div>
-        <h3>Fünf Bewertungsmodelle — gewichtet</h3>
-        <p>Two-Stage DCF (50 %), KGV (25 %) und EV/EBITDA (25 %) ergeben einen Komposit-Wert. Dazu: DDM für Dividendenaktien und PEG als Wachstums-Schnellcheck.</p>
+        <h3>Sieben Bewertungsmodelle — gewichtet</h3>
+        <p>DCF, KGV, EV/EBITDA, DDM, PEG, historisches Median-KGV und FCF-Rendite — gleichzeitig berechnet, gewichtet zum Komposit-Fairen-Wert. Kein einzelnes Modell entscheidet.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">↻</div>
@@ -639,11 +648,44 @@
         <p>Eigene Annahmen als Preset speichern und laden. Schnellerer Workflow für wiederkehrende Analysen.</p>
       </div>
       <div class="feat-card fade">
-        <div class="feat-icon">?</div>
-        <h3>Glossar mit 46 Begriffen</h3>
-        <p>Jeder Fachbegriff direkt erklärt — vom KGV bis zum WACC. Kein externes Nachschlagen nötig.</p>
+        <div class="feat-icon">⚡</div>
+        <h3>KI-Analyse — dein eigener Schlüssel</h3>
+        <p>Claude, ChatGPT oder Gemini analysieren deine Trade-Begründungen auf bekannte Denkfehler. Dein API-Schlüssel bleibt lokal im Browser — keine Weitergabe an unsere Server.</p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- TOOLS ECOSYSTEM -->
+<section style="padding:7rem 2rem; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wide">
+    <div class="feat-header fade" style="margin-bottom:3.5rem;">
+      <div class="tag">Drei Werkzeuge, eine Logik</div>
+      <h2>Bewerten. Verfolgen. Entscheiden.</h2>
+      <p>Alle Tools teilen denselben Account und dieselben Daten — kein doppelter Dateneintrag, kein Medienbruch.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+      <div class="fade" style="background:var(--bg); padding:2rem;">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--neon); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Fair Value Pro</div>
+        <h3 style="font-family:var(--display); font-size:1.1rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.01em;">Berechne den fairen Wert.</h3>
+        <p style="font-size:0.88rem; color:var(--text-2); line-height:1.65; margin-bottom:1.2rem;">Sieben Bewertungsmodelle gleichzeitig. Qualitätsscore, Szenarien, Sensitivitätstabelle. Aktien, Krypto, Rohstoffe.</p>
+        <a href="pro-mode-beta.html" style="font-family:var(--mono); font-size:0.62rem; color:var(--neon); text-decoration:none; letter-spacing:0.06em;">Pro Mode ansehen →</a>
+      </div>
+      <div class="fade" style="background:var(--bg); padding:2rem;">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:#c8ff00; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Portfolio Tracker</div>
+        <h3 style="font-family:var(--display); font-size:1.1rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.01em;">Verfolge deine Investments.</h3>
+        <p style="font-size:0.88rem; color:var(--text-2); line-height:1.65; margin-bottom:1.2rem;">Mehrere Depots, cashflowbereinigte Renditen, historischer Chart. Fair-Value-Verdict pro Position direkt aus FVP.</p>
+        <a href="portfolio-tracker.html" style="font-family:var(--mono); font-size:0.62rem; color:#c8ff00; text-decoration:none; letter-spacing:0.06em;">Portfolio Tracker ansehen →</a>
+      </div>
+      <div class="fade" style="background:var(--bg); padding:2rem;">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:#5b9cf6; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Trading Desk</div>
+        <h3 style="font-family:var(--display); font-size:1.1rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.01em;">Triff bessere Entscheidungen.</h3>
+        <p style="font-size:0.88rem; color:var(--text-2); line-height:1.65; margin-bottom:1.2rem;">Recovery-Analyse, Zinsrechner, Rebalancing, Watchlist und Trade-Journal mit KI-Bias-Coach.</p>
+        <a href="trading-desk.html" style="font-family:var(--mono); font-size:0.62rem; color:#5b9cf6; text-decoration:none; letter-spacing:0.06em;">Trading Desk ansehen →</a>
+      </div>
+    </div>
+    <p class="fade" style="text-align:center; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em; margin-top:2rem;">Made in Germany · Gehostet in Deutschland · DSGVO-konform</p>
   </div>
 </section>
 
@@ -667,6 +709,63 @@
         <p class="test-quote">„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Das Glossar hilft dabei enorm. Genau das wollte ich."</p>
         <div class="test-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TIER COMPARISON -->
+<section style="padding:6rem 2rem; background:var(--bg); border-top:1px solid var(--border);">
+  <div class="wide">
+    <div class="feat-header fade" style="margin-bottom:3rem;">
+      <div class="tag">Pläne auf einen Blick</div>
+      <h2>Kostenlos starten.<br>Mehr wenn du bereit bist.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+
+      <!-- FREE -->
+      <div class="fade" style="background:var(--bg2); padding:2rem;">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; border:1px solid var(--border2); display:inline-block; padding:0.2rem 0.6rem; border-radius:50px; margin-bottom:1rem;">Kein Account</div>
+        <div style="font-family:var(--display); font-size:1.2rem; font-weight:700; margin-bottom:0.5rem;">Free</div>
+        <div style="font-family:var(--display); font-size:2rem; font-weight:700; color:var(--neon); margin-bottom:1.5rem;">€ 0</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.82rem; color:var(--text-2);">
+          <div>✓ Fair Value Berechnung</div>
+          <div>✓ Qualitätsscore</div>
+          <div>✓ Drei Bewertungen / Tag</div>
+          <div>✓ Aktien, Krypto, Rohstoffe</div>
+        </div>
+      </div>
+
+      <!-- PRO -->
+      <div class="fade" style="background:var(--bg2); padding:2rem;">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--mid); letter-spacing:0.12em; text-transform:uppercase; border:1px solid var(--mid-border); display:inline-block; padding:0.2rem 0.6rem; border-radius:50px; margin-bottom:1rem;">Mit Registrierung</div>
+        <div style="font-family:var(--display); font-size:1.2rem; font-weight:700; margin-bottom:0.5rem;">Pro</div>
+        <div style="font-family:var(--display); font-size:2rem; font-weight:700; color:var(--neon); margin-bottom:1.5rem;">€ 0</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.82rem; color:var(--text-2);">
+          <div>✓ Alles aus Free</div>
+          <div>✓ Volles Pro-Dashboard</div>
+          <div>✓ Szenarien, Sensitivität</div>
+          <div>✓ Fünf Bewertungen / Tag</div>
+          <div>✓ Branchen-Presets</div>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="fade" style="background:var(--bg3); padding:2rem; border-left:1px solid var(--neon-border);">
+        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; border:1px solid var(--neon-border); background:var(--neon-dim); display:inline-block; padding:0.2rem 0.6rem; border-radius:50px; margin-bottom:1rem;">Premium</div>
+        <div style="font-family:var(--display); font-size:1.2rem; font-weight:700; color:var(--neon); margin-bottom:0.5rem;">Premium</div>
+        <div style="font-family:var(--mono); font-size:0.85rem; color:var(--neon); margin-bottom:1.5rem;">Auf Anfrage</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.82rem; color:var(--text-2);">
+          <div>✓ Alles aus Pro</div>
+          <div>✓ Unbegrenzte Bewertungen</div>
+          <div>✓ Analysen speichern · PDF-Export</div>
+          <div>✓ <strong style="color:var(--text)">Portfolio Tracker</strong></div>
+          <div>✓ <strong style="color:var(--text)">Trading Desk</strong></div>
+          <div>✓ KI-Bias-Coach (BYOK)</div>
+        </div>
+        <a href="plaene-beta.html" style="display:inline-block; margin-top:1.5rem; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--neon); color:var(--bg); padding:0.7rem 1.4rem; border-radius:3px; text-decoration:none; font-weight:700;">Pläne ansehen →</a>
+      </div>
+
     </div>
   </div>
 </section>
