@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<meta name="robots" content="noindex, nofollow">
+<title>LMABN — Partnerprogramm & Vision</title>
+<style>
+/* PAGE LAYOUT */
+body { background: var(--bg); }
+.page-wrap { max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+
+/* HERO */
+.partner-hero { padding: 5rem 0 4rem; border-bottom: 1px solid var(--border); }
+.partner-eyebrow { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem; }
+.partner-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
+.partner-hero h1 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.8rem; }
+.partner-hero h1 em { font-style: normal; color: var(--neon); }
+.partner-hero .lead { font-size: 1.05rem; color: var(--text-2); line-height: 1.8; max-width: 640px; margin-bottom: 2.5rem; }
+.values-bar { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.value-item { flex: 1; padding: 0.7rem 0; text-align: center; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); border-right: 1px solid var(--border); }
+.value-item:last-child { border-right: none; }
+.value-item.hl { color: var(--neon); }
+
+/* SECTIONS */
+.section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.section-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+.section-label::before { content: ''; display: block; width: 16px; height: 1px; background: var(--text-3); }
+.section h2 { font-family: var(--display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+.section p { color: var(--text-2); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+.section p:last-child { margin-bottom: 0; }
+.section p strong { color: var(--text); font-weight: 500; }
+
+/* HONESTY BOX */
+.honesty-box { background: var(--bg2); border: 1px solid var(--border2); border-left: 3px solid var(--neon); border-radius: 0 4px 4px 0; padding: 1.4rem 1.8rem; margin: 2rem 0; }
+.honesty-box p { font-size: 0.9rem; color: var(--text-2); line-height: 1.75; margin-bottom: 0.7rem; }
+.honesty-box p:last-child { margin-bottom: 0; }
+.honesty-box p strong { color: var(--neon); }
+
+/* THREE TOOLS */
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.tool-box { background: var(--bg2); padding: 1.4rem 1.2rem; }
+.tool-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.tool-name { font-family: var(--display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.tool-desc { font-size: 0.78rem; color: var(--text-3); line-height: 1.55; }
+
+/* USP LIST */
+.usp-list { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.usp-item { display: grid; grid-template-columns: 3rem 1fr; gap: 0; border-bottom: 1px solid var(--border); }
+.usp-item:last-child { border-bottom: none; }
+.usp-num { background: var(--bg3); padding: 1.4rem 0; display: flex; align-items: flex-start; justify-content: center; font-family: var(--mono); font-size: 0.55rem; color: var(--text-3); padding-top: 1.6rem; letter-spacing: 0.06em; }
+.usp-body { background: var(--bg2); padding: 1.4rem 1.6rem; }
+.usp-title { font-family: var(--display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.usp-text { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
+.usp-text strong { color: var(--text); font-weight: 500; }
+
+/* COMPETITOR TABLE */
+.comp-table-wrap { overflow-x: auto; margin: 2rem 0; scrollbar-width: none; }
+.comp-table-wrap::-webkit-scrollbar { display: none; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 580px; }
+.comp-table th { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); background: var(--bg3); }
+.comp-table th.hl { color: var(--neon); }
+.comp-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: middle; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table td:first-child { color: var(--text); font-weight: 500; }
+.comp-table .yes { color: var(--neon); }
+.comp-table .no { color: var(--text-3); }
+.comp-table .part { color: var(--mid); }
+.comp-table .hl-col { background: rgba(0,255,135,0.03); }
+.comp-table tr:hover td { background: rgba(0,255,135,0.015); }
+
+/* METHOD GRID */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.method-item { background: var(--bg2); padding: 1.4rem 1.6rem; }
+.method-name { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neon); margin-bottom: 0.5rem; }
+.method-title { font-family: var(--display); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+.method-text { font-size: 0.8rem; color: var(--text-3); line-height: 1.65; }
+
+/* GTM */
+.gtm-quote { font-family: var(--display); font-size: 1.1rem; font-weight: 500; color: var(--text); line-height: 1.6; border-left: 3px solid var(--neon); padding-left: 1.4rem; margin: 2rem 0; }
+
+/* STATUS GRID */
+.status-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.status-item { background: var(--bg2); padding: 1.2rem 1.4rem; }
+.status-label { font-family: var(--mono); font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.status-val { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.status-sub { font-size: 0.75rem; color: var(--text-3); margin-top: 0.2rem; }
+.live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--neon); margin-right: 5px; position: relative; top: -1px; }
+
+/* ROADMAP */
+.roadmap-list { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.roadmap-item { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
+.roadmap-item:last-child { border-bottom: none; }
+.roadmap-q { background: var(--bg3); padding: 1rem 1.2rem; font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.06em; min-width: 80px; display: flex; align-items: flex-start; padding-top: 1.1rem; }
+.roadmap-text { background: var(--bg2); padding: 1rem 1.4rem; font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
+.roadmap-text strong { color: var(--text); font-weight: 500; }
+
+/* WANTED */
+.wanted-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.wanted-item { background: var(--bg2); padding: 1.4rem 1.6rem; }
+.wanted-type { font-family: var(--mono); font-size: 0.55rem; color: var(--td, #5b9cf6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.wanted-title { font-family: var(--display); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+.wanted-text { font-size: 0.8rem; color: var(--text-3); line-height: 1.65; }
+.wanted-not { background: var(--bg3); border-top: 1px solid var(--border); padding: 1.2rem 1.6rem; grid-column: span 2; font-size: 0.82rem; color: var(--text-3); }
+.wanted-not strong { color: var(--text-2); }
+
+/* MARKET STATS */
+.market-row { display: flex; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.market-stat { flex: 1; background: var(--bg2); padding: 1.2rem; text-align: center; }
+.market-num { font-family: var(--display); font-size: 1.6rem; font-weight: 700; color: var(--neon); line-height: 1; margin-bottom: 0.3rem; }
+.market-label { font-size: 0.75rem; color: var(--text-3); line-height: 1.45; }
+
+/* CONTACT */
+.contact-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 2rem; margin: 2rem 0; }
+.contact-box h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+.contact-row { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.6rem; font-size: 0.85rem; }
+.contact-row .clabel { font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; width: 80px; flex-shrink: 0; padding-top: 2px; }
+.contact-row .cval { color: var(--text-2); }
+.contact-row a { color: var(--neon); text-decoration: none; }
+.contact-row a:hover { text-decoration: underline; }
+.placeholder { color: var(--text-3); font-style: italic; }
+
+/* RESPONSIVE */
+@media(max-width: 720px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .method-grid { grid-template-columns: 1fr; }
+  .status-grid { grid-template-columns: 1fr; }
+  .wanted-grid { grid-template-columns: 1fr; }
+  .wanted-not { grid-column: span 1; }
+  .market-row { flex-direction: column; }
+  .values-bar { flex-wrap: wrap; }
+  .value-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
+  .usp-item { grid-template-columns: 2.5rem 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="index.html" class="back">← Zur Website</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="partner-hero">
+    <div class="partner-eyebrow">Für Partner & Unterstützer</div>
+    <h1>Wir befähigen Anleger,<br>selbst fundierte Entscheidungen<br>zu treffen — <em>nicht für sie.</em></h1>
+    <p class="lead">LMABN baut eine Plattform für selbstbestimmte Privatanleger im deutschsprachigen Raum. Drei integrierte Werkzeuge — Bewertungs-Kalkulator, Portfolio Tracker, Trading Desk — geben Anlegern dieselben Methoden und Daten in die Hand, die professionelle Analysten nutzen. Vollständig transparent, vollständig steuerbar.</p>
+    <div class="values-bar">
+      <div class="value-item hl">Bewusstsein</div>
+      <div class="value-item">Bildung</div>
+      <div class="value-item">Souveränität</div>
+      <div class="value-item">Unabhängigkeit</div>
+    </div>
+  </div>
+
+  <!-- WO WIR STEHEN — Honesty first -->
+  <div class="section">
+    <div class="section-label">Wo wir stehen</div>
+    <h2>Ehrlichkeit vor Hochglanz.</h2>
+    <div class="honesty-box">
+      <p>Fair Value Pro ist in der <strong>Produktentwicklungsphase</strong>. Wir haben noch keine öffentlichen User — und das ist Absicht. Bevor wir skalieren, müssen die Grundlagen stimmen: die Bewertungsmodelle, die Mathematik, die Kernfunktionalität. Diese Solidität ist die Voraussetzung, nicht das Versprechen.</p>
+      <p><strong>Wir suchen keine externe Finanzierung.</strong> Das Projekt ist bootstrapped und bleibt es vorerst. Wofür wir offen sind: strategische Partnerschaften mit Daten-Providern, Affiliate-Programme, frühe Unterstützer aus der deutschsprachigen Investment-Community, und Opinion Leaders, die unsere Vision teilen.</p>
+    </div>
+  </div>
+
+  <!-- WARUM -->
+  <div class="section">
+    <div class="section-label">Das Problem</div>
+    <h2>Information Overload statt Klarheit. Drittmeinungen statt eigener Bewertung.</h2>
+    <p>Privatanleger sind heute zwischen widersprüchlichen Signalen gefangen: YouTuber, Podcasts, Influencer, TV-Experten, Coaches, Trading-Apps, Nachrichten. Tools, die mehr verbergen als sie offenlegen. Empfehlungen ohne Methodik. Ratings ohne Transparenz.</p>
+    <p>Wir bauen das Gegenteil. Eine Plattform für <strong>Bewusstsein, Bildung und Souveränität</strong> — mit denselben Methoden und Daten, die professionelle Analysten nutzen. Nicht damit unsere User mehr handeln, sondern damit sie besser verstehen, was sie tun.</p>
+    <p>Das Ziel ist finanzielle Unabhängigkeit durch Wissen. <strong>Selbst bewerten zu können, statt fremden Meinungen zu folgen</strong> — das ist die einzige Form von Anleger-Freiheit, die wirklich trägt.</p>
+  </div>
+
+  <!-- DREI TOOLS -->
+  <div class="section">
+    <div class="section-label">Die Plattform</div>
+    <h2>Drei Werkzeuge, eine Logik.</h2>
+    <p>TradingView ist Charts. Yahoo Finance ist Daten. Morningstar ist Bewertung. Trade Republic ist Broker. Vier getrennte Silos für den ernsthaften Privatanleger. Bei uns sind alle drei Schritte integriert — mit demselben Account, ohne doppelten Dateneintrag.</p>
+    <div class="tools-grid">
+      <div class="tool-box">
+        <div class="tool-label" style="color:var(--neon);">Fair Value Pro</div>
+        <div class="tool-name">Bewerten</div>
+        <div class="tool-desc">Sieben Bewertungsmodelle gleichzeitig — DCF, KGV, EV/EBITDA, DDM, PEG, Hist. Median-KGV, FCF-Rendite. Qualitätsscore, Szenarien, Sensitivitätstabelle.</div>
+      </div>
+      <div class="tool-box">
+        <div class="tool-label" style="color:#c8ff00;">Portfolio Tracker</div>
+        <div class="tool-name">Verfolgen</div>
+        <div class="tool-desc">Mehrere Depots, cashflowbereinigte Renditen (TWR/CAGR), historischer Chart. Fair-Value-Verdict pro Position direkt aus dem Kalkulator.</div>
+      </div>
+      <div class="tool-box">
+        <div class="tool-label" style="color:#5b9cf6;">Trading Desk</div>
+        <div class="tool-name">Entscheiden</div>
+        <div class="tool-desc">Recovery-Return, Zinsrechner, Rebalancing, Watchlist, Trade-Journal mit KI-Bias-Coach — 16 dokumentierte Verzerrungen aus der Verhaltensökonomie.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USPs -->
+  <div class="section">
+    <div class="section-label">Was uns unterscheidet</div>
+    <h2>Sieben Differenzierungsmerkmale.</h2>
+
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Merkmal</th>
+            <th class="hl">LMABN</th>
+            <th>Morningstar</th>
+            <th>Simply Wall St</th>
+            <th>TradingView</th>
+            <th>GuruFocus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Professionelle Datenbreite</td>
+            <td class="part hl-col">Via Partner</td>
+            <td class="yes">Sehr hoch</td>
+            <td class="part">Mittel</td>
+            <td class="yes">Hoch</td>
+            <td class="yes">Hoch</td>
+          </tr>
+          <tr>
+            <td>Charting &amp; Technische Analyse</td>
+            <td class="no hl-col">–</td>
+            <td class="part">Einfach</td>
+            <td class="part">Einfach</td>
+            <td class="yes">Best-in-class</td>
+            <td class="part">Grundlegend</td>
+          </tr>
+          <tr>
+            <td>Automatische Bewertungs-Scores</td>
+            <td class="no hl-col">–</td>
+            <td class="yes">✓ Star-Rating</td>
+            <td class="yes">✓ Snowflake</td>
+            <td class="no">–</td>
+            <td class="yes">✓ GF Score</td>
+          </tr>
+          <tr>
+            <td>Volle Annahmen-Kontrolle</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="part">Teilw.</td>
+          </tr>
+          <tr>
+            <td>7 Bewertungsmodelle gleichzeitig</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">1 (Black-Box)</td>
+            <td class="no">1–2</td>
+            <td class="no">–</td>
+            <td class="part">2–3</td>
+          </tr>
+          <tr>
+            <td>Depot-Monitor integriert</td>
+            <td class="yes hl-col">✓ (PT)</td>
+            <td class="no">–</td>
+            <td class="part">Grundlegend</td>
+            <td class="part">Paper Trading</td>
+            <td class="no">–</td>
+          </tr>
+          <tr>
+            <td>Disziplin-Werkzeuge (Bias-Coach)</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+          </tr>
+          <tr>
+            <td>Bring Your Own Provider / Key</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+          </tr>
+          <tr>
+            <td>Datenschutz / Server-Standort</td>
+            <td class="yes hl-col">DE · Hetzner</td>
+            <td class="no">USA</td>
+            <td class="no">Australien</td>
+            <td class="no">Zypern/USA</td>
+            <td class="no">USA</td>
+          </tr>
+          <tr>
+            <td>Kein separates Tool-Abo</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">Abo nötig</td>
+            <td class="no">Abo nötig</td>
+            <td class="part">Eingeschränkt</td>
+            <td class="part">Eingeschränkt</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Morningstar und TradingView sind starke Tools für ihre Kernaufgabe. Wir ersetzen sie nicht — wir schließen die Lücke: nutzerkontrollierte Bewertung, integriertes Portfolio-Tracking und Entscheidungsdisziplin für den ernsthaften Privatanleger.</p>
+
+    <div class="usp-list">
+      <div class="usp-item">
+        <div class="usp-num">01</div>
+        <div class="usp-body">
+          <div class="usp-title">Volle Transparenz und Steuerbarkeit</div>
+          <div class="usp-text">Andere Tools zeigen einen Score und verbergen die Annahmen dahinter. Bei uns ist jede Annahme sichtbar und veränderbar: Wachstumsraten, WACC, Steuersatz, KGV-Multiple, Terminal Value, Sicherheitsmarge. <strong>Keine versteckten Parameter. Keine suggerierte Objektivität.</strong> Der User kontrolliert das Ergebnis, weil er die Eingaben kontrolliert.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">02</div>
+        <div class="usp-body">
+          <div class="usp-title">Composite Fair Value mit nutzergewichteten Modellen</div>
+          <div class="usp-text">Andere Tools liefern einen einzelnen DCF-Wert oder einen Star-Rating-Score ohne klare Methodik. <strong>Wir gewichten DCF, KGV/PEG und EV/EBITDA mit individuell einstellbaren Gewichten pro Bewertung.</strong> Das Ergebnis ist eine triangulierte Bewertung — kein blinder Vertrauensschuss auf eine Methode.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">03</div>
+        <div class="usp-body">
+          <div class="usp-title">Methoden professioneller Analysten — ohne Vorkenntnisse-Hürde</div>
+          <div class="usp-text">DCF nach Damodaran-Methodik, EV/EBITDA-Multiplikatoren wie bei M&A-Bewertungen, PEG-Ratios wie in der Fund-Research-Praxis. <strong>Dieselbe Mathematik, die in Goldman-Sachs- und BlackRock-Bewertungen verwendet wird</strong> — pädagogisch aufbereitet mit erklärenden Defaults, Tooltips und Methodendokumentation.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">04</div>
+        <div class="usp-body">
+          <div class="usp-title">Disziplin-Werkzeuge statt Trading-Signale</div>
+          <div class="usp-text">Die meisten Tools machen den User aktiver — mehr Signale, mehr Charts, mehr Trades. Statistisch erwiesen: Mehr Aktivität führt zu schlechterer Rendite. <strong>Unser Trading Desk macht den User disziplinierter:</strong> Trade-Journal mit unveränderlicher Begründung, KI-Bias-Coach gegen 16 dokumentierte kognitive Verzerrungen, Recovery-Return zeigt mathematisch wie viel Wachstum ein Verlustausgleich erfordert.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">05</div>
+        <div class="usp-body">
+          <div class="usp-title">Bring Your Own Provider — Daten und KI</div>
+          <div class="usp-text">Andere Tools haben eingebauten Daten-Provider, eingebaute KI, eingebauten Lock-in. <strong>Wir gehen den umgekehrten Weg.</strong> User wählen ihren Marktdaten-Provider selbst (FMP, Alpha Vantage u.a.) über einen geführten Setup-Prozess mit Affiliate-Link. Für KI-Funktionen: Anthropic Claude, OpenAI oder Google Gemini — API-Schlüssel bleibt im Browser, nie auf unserem Server. Kein Lock-in, keine versteckte Datenkette.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">06</div>
+        <div class="usp-body">
+          <div class="usp-title">Setup-Sharing als organischer Distributions-Kanal</div>
+          <div class="usp-text">Analysten und Content-Creator legen ihr persönliches Bewertungs-Setup als Vorlage an — ihre Wachstumsannahmen, Methoden-Gewichtung, Sicherheitsmargen. <strong>Diese Setups können sie öffentlich teilen.</strong> Ihre Community lädt sie mit einem Klick in den eigenen Account. Natürliche Distributions-Logik: Vertrauen statt Performance-Marketing.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">07</div>
+        <div class="usp-body">
+          <div class="usp-title">Made in Germany — strukturell unbedienter Markt</div>
+          <div class="usp-text">Morningstar (USA), Simply Wall St (Australien), TradingView (Zypern/USA), Yahoo Finance (USA). <strong>Wir sind in Deutschland, Server bei Hetzner, Daten in Deutschland.</strong> Der DACH-Privatanleger ist eine datenschutz-empfindliche Käuferschicht — und ein faktisch konkurrenzloser Markt für deutschsprachige Bewertungstools.</div>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">08</div>
+        <div class="usp-body">
+          <div class="usp-title">Drei-Tool-Ökosystem als strategische Retention</div>
+          <div class="usp-text">Der FVP-Kalkulator bringt User auf die Plattform. <strong>Portfolio Tracker und Trading Desk halten sie dort.</strong> Wer monatliche Depot-Snapshots anlegt, seine Positionen gegen Fair-Value-Verdicts prüft und Trade-Begründungen mit KI-Coaching reflektiert, hat einen tiefen Workflow entwickelt — keinen einmaligen Rechner-Besuch. Jedes Tool verstärkt die anderen: eine Bewertung im Kalkulator erscheint automatisch als Zielkurs im Tracker und als Buy-Zone-Markierung in der Watchlist. <strong>Das schafft Gewohnheit, nicht nur Funktion.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHODE -->
+  <div class="section">
+    <div class="section-label">Methodische Grundlage</div>
+    <h2>Triangulation statt Mono-Methodik.</h2>
+    <p>Wir kombinieren drei klassische Bewertungsschulen mit nutzergewichteter Aggregation. Kein einzelnes Modell hat immer recht — deshalb rechnen wir alle gleichzeitig und lassen den User entscheiden, was zählt.</p>
+    <div class="method-grid">
+      <div class="method-item">
+        <div class="method-name">Discounted Cashflow</div>
+        <div class="method-title">Zwei-Phasen-DCF nach Damodaran</div>
+        <div class="method-text">Explizite Wachstumsperiode (5–10 J.) + Terminal Value nach Gordon-Growth-Formel. User steuert Wachstumsraten, WACC, Steuerquote, Re-Investitionsrate.</div>
+      </div>
+      <div class="method-item">
+        <div class="method-name">Relative Bewertung</div>
+        <div class="method-title">KGV / PEG und EV/EBITDA</div>
+        <div class="method-text">Forward-EPS gegen Peer-Group-Median. PEG-Anpassung für Wachstumstitel. EV/EBITDA kapitalstrukturneutral — relevant für M&A-Praxis und verschuldete Unternehmen.</div>
+      </div>
+      <div class="method-item">
+        <div class="method-name">Dividendenmodell</div>
+        <div class="method-title">DDM nach Gordon-Growth</div>
+        <div class="method-text">Constant-Growth für stabile Dividendenzahler, Two-Stage für Wachstumsdividenden mit absehbarer Reifephase. Automatisch aktiviert bei Dividendenhistorie.</div>
+      </div>
+      <div class="method-item">
+        <div class="method-name">Risikopuffer</div>
+        <div class="method-title">Margin of Safety nach Graham</div>
+        <div class="method-text">Prozentualer Discount auf den Composite Fair Value — individuell setzbar, konservative Defaults (15–30 %) in Graham-Tradition. Ergibt klare Buy-Zone und Sell-Zone pro Aktie.</div>
+      </div>
+      <div class="method-item">
+        <div class="method-name">Portfolio-Performance</div>
+        <div class="method-title">TWR und CAGR</div>
+        <div class="method-text">Time-Weighted Return für Cashflow-bereinigte Vergleichbarkeit — professioneller Standard. CAGR für annualisierte Mehrjahres-Vergleiche. Mathematisch sauber, nicht durch Überweisungen verzerrt.</div>
+      </div>
+      <div class="method-item">
+        <div class="method-name">Behavioral Finance</div>
+        <div class="method-title">16-Verzerrungen-Katalog</div>
+        <div class="method-text">Anchoring, Confirmation Bias, Recency Bias, Overconfidence, Loss Aversion, Sunk Cost u.a. — kuratiert aus Kahneman, Thaler, Damodaran. KI-Coach prüft Trade-Begründungen dagegen.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GO TO MARKET -->
+  <div class="section">
+    <div class="section-label">Go-to-Market</div>
+    <h2>Setup-Sharing als Distributions-Kanal.</h2>
+    <div class="gtm-quote">Wir setzen bewusst nicht auf klassisches Performance-Marketing. Stattdessen bauen wir einen organischen Wachstumshebel, der zur Mission passt.</div>
+    <p>In Podcasts und von Finanz-YouTubern hören Anleger täglich Aussagen wie „Aktie X ist bei einem KGV von 22 fair bewertet" oder „bei diesem Wachstumsszenario kommt ein DCF von 180 € raus". Heute können Zuhörer das nicht eigenständig nachvollziehen — sie können nur glauben oder ignorieren.</p>
+    <p><strong>Mit LMABN werden diese Bewertungen nachvollziehbar und übertragbar.</strong> Analysten legen ihr persönliches Setup als Vorlage an — ihre bevorzugten Wachstumsannahmen, Methoden-Gewichtung, Sicherheitsmargen. Diese Setups können sie öffentlich teilen. Ihre Community lädt sie mit einem Klick in den eigenen Account.</p>
+    <p>Wenn Analysten und Content-Creator das Tool nutzen und teilen, kommen die User von selbst — über Vertrauen, nicht über Conversion-Funnels. <strong>Vorlagen exportieren und teilen ist bereits live. Author-Profile mit öffentlicher Setup-Bibliothek folgen in der Roadmap.</strong></p>
+  </div>
+
+  <!-- MARKT -->
+  <div class="section">
+    <div class="section-label">Markt-Opportunity</div>
+    <h2>DACH — wachsend, datenschutzsensibel, faktisch konkurrenzlos.</h2>
+    <div class="market-row">
+      <div class="market-stat">
+        <div class="market-num">17 %</div>
+        <div class="market-label">Aktionärsquote Deutschland 2023 — doppelt so hoch wie vor 10 Jahren</div>
+      </div>
+      <div class="market-stat">
+        <div class="market-num">4+ Mio.</div>
+        <div class="market-label">Trade Republic User in 2024 — Aktiensparen ist im Mainstream</div>
+      </div>
+      <div class="market-stat">
+        <div class="market-num">0</div>
+        <div class="market-label">Direkte DACH-Wettbewerber im Bewertungsmarkt für Privatanleger</div>
+      </div>
+    </div>
+    <p>Aktiensparen als Default-Altersvorsorge der Generation 25–40, stark wachsende Finanz-Content-Szene (Podcasts, YouTube, Newsletter) als natürliche Distributionspartner — und ein Markt, der aus Datenschutzgründen US-Tools systematisch meidet.</p>
+  </div>
+
+  <!-- STAND -->
+  <div class="section">
+    <div class="section-label">Aktueller Stand</div>
+    <h2>Was live ist.</h2>
+    <div class="status-grid">
+      <div class="status-item">
+        <div class="status-label">Status</div>
+        <div class="status-val"><span class="live-dot"></span>Produktentwicklungsphase</div>
+        <div class="status-sub">Kein öffentlicher Launch — Grundlagen vor Wachstum</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Werkzeuge live</div>
+        <div class="status-val">3 integrierte Tools</div>
+        <div class="status-sub">FVP Kalkulator · Portfolio Tracker · Trading Desk</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Trading-Desk-Module</div>
+        <div class="status-val">5 Module live</div>
+        <div class="status-sub">Recovery-Return · Zinsrechner · Rebalancing · Watchlist · Trade-Journal</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">KI-Integration</div>
+        <div class="status-val">3 Provider</div>
+        <div class="status-sub">Anthropic Claude · OpenAI · Google Gemini — BYOK, Browser-direkt</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Bias-Coach-Katalog</div>
+        <div class="status-val">16 Verzerrungen</div>
+        <div class="status-sub">Kuratiert aus Kahneman, Thaler, Damodaran</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Setup-Sharing</div>
+        <div class="status-val">Phase 1 live</div>
+        <div class="status-sub">Lokaler Export · Share-Links in Roadmap</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="section">
+    <div class="section-label">Roadmap</div>
+    <h2>Was kommt.</h2>
+    <div class="roadmap-list">
+      <div class="roadmap-item">
+        <div class="roadmap-q">Nächstes</div>
+        <div class="roadmap-text"><strong>„Daten-Quelle"-Tab</strong> — Bring-Your-Own-Data für Marktdaten-Provider. FMP, Polygon, Alpha Vantage als Setup-Wahl mit geführtem Affiliate-Onboarding. User wählt Provider, Account-Erstellung über FVP-Link.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-q">Folge</div>
+        <div class="roadmap-text"><strong>Setup-Share-Links</strong> — geteilte Bewertungsvorlagen über URL direkt anwendbar, kein Datei-Tausch nötig. Basis für die organische Distribution.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-q">Mittelfristig</div>
+        <div class="roadmap-text"><strong>Author-Profile + öffentliche Setup-Bibliothek</strong> — verifizierte Analysten und Content-Creator mit Follower-Modell, öffentlichen Setups und Co-Branding. Monetization-Schicht für Premium-Setups mit Revenue-Share.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-q">Perspektive</div>
+        <div class="roadmap-text"><strong>Mobile App · Broker-Integrationen</strong> (Trade Republic, Scalable u.a.) sobald APIs verfügbar · <strong>Geschlossene Test-Gruppe</strong> in Vorbereitung.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GESCHÄFTSMODELL -->
+  <div class="section">
+    <div class="section-label">Geschäftsmodell</div>
+    <h2>Kein Abo für den Kalkulator. Daten über Partner. Mehrwert via Stripe.</h2>
+    <p>Das Modell trennt bewusst drei Ebenen — und schafft dadurch eine Erlösstruktur ohne Marktdaten-Lizenzrisiko.</p>
+    <p><strong>Ebene 1 — Kein separates FVP-Abo für den Kalkulator.</strong> Fair Value Pro erhebt keine eigene Lizenzgebühr für das Bewertungswerkzeug. Die Nutzung erfordert jedoch zwingend einen Marktdaten-Plan beim Datenanbieter — ohne Datenzugang ist der Kalkulator nicht vollständig nutzbar. Der Zugang ist damit nicht kostenlos, aber die Kosten bleiben vollständig beim Datenanbieter und transparent für den User.</p>
+    <p><strong>Ebene 2 — Daten via Partner, Provision für uns.</strong> User wählen ihren Marktdaten-Provider (FMP, Alpha Vantage u.a.) über einen geführten Onboarding-Prozess. Die Account-Erstellung beim Partner erfolgt über unseren Affiliate-Link. Für jeden Sign-Up erhalten wir eine Provision — <strong>ein Erlösstrom der mit der Nutzerbasis skaliert, ohne dass wir Marktdaten vorfinanzieren oder Lizenzrisiken tragen.</strong></p>
+    <p><strong>Ebene 3 — Premium-Features über Stripe.</strong> Erweiterte Funktionen — gespeicherte Analysen, eigene Presets, Portfolio Tracker, Trading Desk, unbegrenzte Bewertungen — werden als Premium-Plan direkt über Stripe abgerechnet. Klar definierter Mehrwert, transparente Abrechnung.</p>
+    <p><strong>Setup-Marketplace</strong> (Roadmap) — Revenue-Share mit Analysten und Content-Creators, die Premium-Setups anbieten.</p>
+  </div>
+
+  <!-- WAS WIR SUCHEN -->
+  <div class="section">
+    <div class="section-label">Was wir suchen</div>
+    <h2>Partner, keine Investoren.</h2>
+    <div class="wanted-grid">
+      <div class="wanted-item">
+        <div class="wanted-type" style="color:var(--neon);">Daten-Provider</div>
+        <div class="wanted-title">Strategische Affiliate-Partnerschaften</div>
+        <div class="wanted-text">Daten-Provider mit DACH-relevantem Angebot (FMP, Polygon, Alpha Vantage, Twelve Data o.a.). Gesucht: Affiliate-Programme mit Provision, Preferential-Rates für FVP-User, frühzeitiger Zugang zur Affiliate-Infrastruktur. Unser Risiko liegt komplett auf unserer Seite.</div>
+      </div>
+      <div class="wanted-item">
+        <div class="wanted-type" style="color:#5b9cf6;">Opinion Leaders</div>
+        <div class="wanted-title">Pioniere des Setup-Sharings</div>
+        <div class="wanted-text">Podcaster, YouTuber, Newsletter-Betreiber, Buch-Autoren aus der deutschsprachigen Investment-Community. Pioneer-Programm in Vorbereitung — Co-Branding, Author-Verifikation, exklusive Frühzugänge. Setup-Sharing als natürlicher Distributions-Kanal.</div>
+      </div>
+      <div class="wanted-item">
+        <div class="wanted-type" style="color:#c8ff00;">Entwickler</div>
+        <div class="wanted-title">Programmierer die mitbauen</div>
+        <div class="wanted-text">Entwickler, die bestehende Module erweitern, neue Tools ergänzen oder die Plattform pflegen wollen. FastAPI-Backend, Vanilla-JS-Frontend, SQLite — schlanker Stack, schnelle Iteration. Open für Contributor die eigene Ideen einbringen und umsetzen.</div>
+      </div>
+      <div class="wanted-item">
+        <div class="wanted-type" style="color:var(--mid);">Mathematiker</div>
+        <div class="wanted-title">Berechnungsmethoden verifizieren</div>
+        <div class="wanted-text">Quants und Mathematiker, die unsere Implementierungen prüfen — DCF-Modell, TWR/CAGR-Berechnung, Compound-Interest-Konventionen, Cashflow-Bereinigung. Fehler in der Mathematik sind der schlimmste Fehler den ein Bewertungstool machen kann.</div>
+      </div>
+      <div class="wanted-item">
+        <div class="wanted-type" style="color:#5b9cf6;">Finanzexperten</div>
+        <div class="wanted-title">Analysten & Anlagestrategen</div>
+        <div class="wanted-text">Finanzanalysten und Anlagestrategen, die Usability und Nutzen der Werkzeuge aus der Praxis beurteilen. Was fehlt? Was ist falsch kalibriert? Was würde ein ernsthafter Anleger anders brauchen? Fachliche Perspektive aus dem echten Einsatz.</div>
+      </div>
+      <div class="wanted-item">
+        <div class="wanted-type" style="color:var(--mid);">Beta-Tester</div>
+        <div class="wanted-title">Frühe Unterstützer mit Feedback-Mandat</div>
+        <div class="wanted-text">Ernstzunehmende Privatanleger aus der DACH-Community, die konstruktives Feedback geben und an einem Ambassador-Konzept interessiert sind. Geschlossene Test-Gruppe in Vorbereitung.</div>
+      </div>
+      <div class="wanted-not">
+        <strong>Was wir explizit nicht suchen:</strong> Externe Finanzierung. Das Projekt ist bootstrapped und bleibt es vorerst — die Solidität der Grundlagen hat Priorität vor Wachstumsdruck.
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH -->
+  <div class="section">
+    <div class="section-label">Tech-Stack</div>
+    <h2>Schnell, schlank, sicher.</h2>
+    <p><strong>Architektur:</strong> FastAPI-Backend, SQLite, Vanilla-JS-Frontend — schnelle Iteration, geringe Wartungslast, sub-100ms-Antwortzeiten.</p>
+    <p><strong>Sicherheit:</strong> Strikte Content-Security-Policy, HSTS, Permissions-Policy. Bring-Your-Own-Key und Bring-Your-Own-Data mit Browser-direct-Calls — wir sind nicht in der Datenkette.</p>
+    <p><strong>Mathematik:</strong> TWR und CAGR sauber implementiert, cashflowbereinigte Renditen, Compound-Interest mit Beitragstiming-Konvention die Spar-Apps pixelgenau matcht. Hosted bei Hetzner, Deutschland.</p>
+  </div>
+
+  <!-- KONTAKT -->
+  <div class="section">
+    <div class="section-label">Kontakt</div>
+    <h2>Gespräch aufnehmen.</h2>
+    <p>Ein Walkthrough ist auf Anfrage möglich, sobald der MVP-Stand für eine Live-Vorführung bereit ist. Wir antworten auf konkrete Anfragen — kein generischer Newsletter.</p>
+    <div class="contact-box">
+      <h3>Direkt erreichen</h3>
+      <div class="contact-row">
+        <span class="clabel">E-Mail</span>
+        <span class="cval"><a href="mailto:kontakt@lmabn.de">kontakt@lmabn.de</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="clabel">LinkedIn</span>
+        <span class="cval placeholder">— wird ergänzt</span>
+      </div>
+      <div class="contact-row">
+        <span class="clabel">Walkthrough</span>
+        <span class="cval placeholder">— auf Anfrage per E-Mail</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<footer style="border-top:1px solid var(--border); padding:2rem 2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+  <div class="footer-logo">LMABN<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); letter-spacing:0.04em;">Diese Seite ist nicht öffentlich verlinkt und richtet sich ausschließlich an potenzielle Partner und Unterstützer.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="impressum.html" class="footer-links" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="datenschutz.html" class="footer-links" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+</body>
+</html>
