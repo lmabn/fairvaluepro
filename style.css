@@ -85,7 +85,8 @@ nav a.back:hover { color: var(--neon); }
 .nav-item > a::after { content: '▾'; font-size: 0.5rem; color: var(--text-3); transition: transform 0.2s; }
 .nav-item:hover > a::after { transform: rotate(180deg); color: var(--neon); }
 .nav-item:hover > a { color: var(--neon); }
-.nav-dropdown { display: none; position: absolute; top: calc(100% + 0.8rem); left: 0; min-width: 160px; background: rgba(8,14,11,0.98); border: 1px solid var(--border2); border-radius: 4px; padding: 0.4rem 0; backdrop-filter: blur(14px); z-index: 200; }
+.nav-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 160px; background: rgba(8,14,11,0.98); border: 1px solid var(--border2); border-radius: 4px; padding: 0.8rem 0 0.4rem; backdrop-filter: blur(14px); z-index: 200; }
+.nav-dropdown::before { content: ''; position: absolute; top: -0.8rem; left: 0; right: 0; height: 0.8rem; }
 .nav-item:hover .nav-dropdown { display: block; }
 .nav-dropdown a { display: block; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); text-decoration: none; padding: 0.55rem 1rem; transition: color 0.2s, background 0.2s; white-space: nowrap; }
 .nav-dropdown a:hover, .nav-dropdown a.active { color: var(--neon); background: var(--neon-dim); }
