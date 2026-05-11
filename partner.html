@@ -60,7 +60,9 @@ body { background: var(--bg); }
 /* COMPETITOR TABLE */
 .comp-table-wrap { overflow-x: auto; margin: 2rem 0; scrollbar-width: none; }
 .comp-table-wrap::-webkit-scrollbar { display: none; }
-.comp-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 580px; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 860px; }
+.comp-table th, .comp-table td { white-space: nowrap; min-width: 120px; }
+.comp-table th:first-child, .comp-table td:first-child { min-width: 200px; white-space: normal; }
 .comp-table th { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); background: var(--bg3); }
 .comp-table th.hl { color: var(--neon); }
 .comp-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: middle; }
@@ -224,6 +226,22 @@ body { background: var(--bg); }
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>Fair-Value-Berechnung (steuerbar)</td>
+            <td class="yes hl-col">✓ Eigene Annahmen</td>
+            <td class="part">Analysten-Urteil</td>
+            <td class="part">Automatisch</td>
+            <td class="no">–</td>
+            <td class="part">Teilw.</td>
+          </tr>
+          <tr>
+            <td>Qualitätsscore (unabhängig vom Kurs)</td>
+            <td class="yes hl-col">✓ 10 Kriterien, Note A–D</td>
+            <td class="no">–</td>
+            <td class="part">Vermischt mit Preis</td>
+            <td class="no">–</td>
+            <td class="part">Teilw.</td>
+          </tr>
           <tr>
             <td>Professionelle Datenbreite</td>
             <td class="yes hl-col">Hoch (via Partner)</td>
