@@ -288,6 +288,14 @@ body { background: var(--bg); }
             <td class="no">–</td>
           </tr>
           <tr>
+            <td>KI-Integration (Privatanleger)</td>
+            <td class="yes hl-col">✓ BYOK, Browser-direkt</td>
+            <td class="part">Enterprise only</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+          </tr>
+          <tr>
             <td>Bring Your Own Provider / Key</td>
             <td class="yes hl-col">✓</td>
             <td class="no">–</td>
@@ -366,7 +374,7 @@ body { background: var(--bg); }
         <div class="usp-num">05</div>
         <div class="usp-body">
           <div class="usp-title">Bring Your Own Provider — Daten und KI</div>
-          <div class="usp-text">Andere Tools haben eingebauten Daten-Provider, eingebaute KI, eingebauten Lock-in. <strong>Wir gehen den umgekehrten Weg.</strong> User wählen ihren Marktdaten-Provider selbst (FMP, Alpha Vantage u.a.) über einen geführten Setup-Prozess mit Affiliate-Link. Für KI-Funktionen: Anthropic Claude, OpenAI oder Google Gemini — API-Schlüssel bleibt im Browser, nie auf unserem Server. Kein Lock-in, keine versteckte Datenkette.</div>
+          <div class="usp-text">Andere Tools haben eingebauten Daten-Provider, eingebaute KI, eingebauten Lock-in. <strong>Wir gehen den umgekehrten Weg.</strong> User wählen ihren Marktdaten-Provider selbst (FMP, Alpha Vantage u.a.) über einen geführten Setup-Prozess mit Affiliate-Link. Für KI-Funktionen: Anthropic Claude, OpenAI oder Google Gemini — API-Schlüssel bleibt im Browser, nie auf unserem Server. Morningstar hat KI, aber ausschließlich für institutionelle Nutzer mit Enterprise-Lizenz. <strong>Wir bringen dieselbe KI-Funktionalität zu Privatanlegern — ohne Enterprise-Budget, ohne Lock-in, im Cent-Bereich pro Frage.</strong></div>
         </div>
       </div>
       <div class="usp-item">
@@ -632,8 +640,9 @@ body { background: var(--bg); }
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">KI-Integration <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.8rem; color:var(--text-2); line-height:1.7;">
-        <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude Haiku 4.5, OpenAI GPT-4o-mini, Google Gemini 2.0 Flash</strong> — bewusst „schnell + günstig"-Klasse, typische Anfragen im Cent-Bereich. Provider-agnostische <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">callAI()</code>-Schnittstelle — Provider ist jederzeit austauschbar.</p>
-        <p>Browser-direkte Calls mit offiziellem <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">anthropic-dangerous-direct-browser-access</code>-Header. Bias-Coach liefert strukturiertes JSON, kein Freitext. 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
+        <p style="margin-bottom:0.6rem;"><strong style="color:var(--text);">KI-Assistent direkt im Kalkulator (neu):</strong> Inline-Erklärungen zu DCF, ROIC, KGV und anderen Kennzahlen via „?"-Button. Was-wäre-wenn-Szenarien berechnen live: WACC +1 % → wie ändert sich der DCF-Wert? Der System-Prompt verbietet Kaufempfehlungen technisch — keine Anlageberatung.</p>
+        <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude Haiku 4.5, OpenAI GPT-4o-mini, Google Gemini 2.0 Flash</strong> — bewusst „schnell + günstig"-Klasse, typische Anfragen im Cent-Bereich. Provider-agnostische <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">callAI()</code>-Schnittstelle — Provider jederzeit austauschbar.</p>
+        <p>Browser-direkte Calls — wir sehen weder API-Schlüssel noch Inhalte. Bias-Coach liefert strukturiertes JSON, 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
       </div>
     </details>
   </div>
