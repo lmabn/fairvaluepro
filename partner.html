@@ -70,7 +70,9 @@ body { background: var(--bg); }
 .comp-table .no { color: var(--text-3); }
 .comp-table .part { color: var(--mid); }
 .comp-table .hl-col { background: rgba(0,255,135,0.03); }
-.comp-table tr:hover td { background: rgba(0,255,135,0.015); }
+.comp-table .price-row td { background: rgba(0,255,135,0.04); font-family: var(--display); font-weight: 700; }
+.comp-table .price-row td.hl-col { background: rgba(0,255,135,0.08); color: var(--neon); }
+.comp-table .price-row td:not(.hl-col) { color: var(--text-3); }
 
 /* METHOD GRID */
 .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
@@ -222,6 +224,14 @@ body { background: var(--bg); }
           </tr>
         </thead>
         <tbody>
+          <tr class="price-row">
+            <td>Monatliche Kosten (ca.)</td>
+            <td class="hl-col">ca. 15–30 € ¹</td>
+            <td>ca. 35 $ / Monat</td>
+            <td>ca. 10–20 $ / Monat</td>
+            <td>ca. 15–60 $ / Monat</td>
+            <td>ca. 37 $ / Monat</td>
+          </tr>
           <tr>
             <td>Professionelle Datenbreite</td>
             <td class="part hl-col">Via Partner</td>
@@ -306,6 +316,7 @@ body { background: var(--bg); }
       </table>
     </div>
     <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Morningstar und TradingView sind starke Tools für ihre Kernaufgabe. Wir ersetzen sie nicht — wir schließen die Lücke: nutzerkontrollierte Bewertung, integriertes Portfolio-Tracking und Entscheidungsdisziplin für den ernsthaften Privatanleger.</p>
+    <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.5rem;">¹ Kein separates LMABN-Tool-Abo — Kosten entstehen ausschließlich beim Daten-Partner (ca. 15–30 €/Monat je nach Plan). Dafür voller Zugang zu professionellen Analyse-Werkzeugen und hochwertigen Marktdaten — zu einem Bruchteil der Kosten vergleichbarer Research-Plattformen. Morningstar und GuruFocus ausschließlich als Jahresplan verfügbar. Preisangaben ca. Stand 05/2025, ohne Gewähr.</p>
 
     <div class="usp-list">
       <div class="usp-item">
@@ -647,8 +658,11 @@ body { background: var(--bg); }
   <div class="footer-logo">LMABN<span class="dot">.</span></div>
   <p style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); letter-spacing:0.04em;">Diese Seite ist nicht öffentlich verlinkt und richtet sich ausschließlich an potenzielle Partner und Unterstützer.</p>
   <div style="display:flex; gap:1.5rem;">
+    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Partner</a>
+    <span style="color:var(--border2);">|</span>
     <a href="impressum.html" class="footer-links" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Impressum</a>
     <a href="datenschutz.html" class="footer-links" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+    
   </div>
 </footer>
 

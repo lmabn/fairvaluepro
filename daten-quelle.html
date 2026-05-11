@@ -64,6 +64,7 @@
 .faq-item { border-bottom: 1px solid var(--border); }
 .faq-item summary { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; gap: 1rem; transition: color 0.2s; text-transform: none; letter-spacing: 0; text-align: left; }
 .faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::before { display: none; }
 .faq-item summary .faq-icon { font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
 .faq-item[open] summary .faq-icon { transform: rotate(45deg); }
 .faq-item p { font-size: 0.88rem; color: var(--text-2); line-height: 1.75; padding-bottom: 1.2rem; }
@@ -309,9 +310,10 @@
   <div class="footer-logo">LMABN<span class="dot">.</span></div>
   <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information.</p>
   <div style="display:flex; gap:1.5rem;">
+    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Partner</a>
+    <span style="color:var(--border2); font-size:0.6rem;">|</span>
     <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Impressum</a>
     <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Datenschutz</a>
-    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Partner</a>
   </div>
 </footer>
 
