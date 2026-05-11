@@ -143,8 +143,13 @@
 .cta-note { display: block; margin-top: 1rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-3); }
 
 /* TD Sidebar nav */
-.td-nav-item { display:flex; align-items:center; gap:0.6rem; padding:0.65rem 1rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3); cursor:default; letter-spacing:0.04em; border-left:2px solid transparent; }
+.td-nav-item { display:flex; align-items:center; gap:0.6rem; padding:0.65rem 1rem; font-family:var(--mono); font-size:0.65rem; color:var(--text-3); cursor:default; letter-spacing:0.04em; border-left:2px solid transparent; transition:color 0.3s, background 0.3s, border-color 0.3s; }
 .td-active { color:var(--td); background:rgba(91,156,246,0.08); border-left-color:var(--td); }
+
+/* Content panels */
+.td-panel { display:none; animation:panelIn 0.35s ease; }
+.td-panel.visible { display:flex; flex-direction:column; gap:0.8rem; }
+@keyframes panelIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
 /* Row slide-in animation */
 .td-row { opacity:0; transform:translateX(-8px); }
@@ -214,7 +219,7 @@
     <p class="sub fade in">Fünf Werkzeuge, die deine eigenen Bewertungen und Depot-Daten in bessere Kaufentscheidungen verwandeln. Mit KI-Bias-Coach auf Wunsch.</p>
     <div class="hero-btns fade in">
       <a href="plaene-beta.html" class="btn-td">Jetzt starten</a>
-      <a href="#modules" class="btn-outline-td">Fünf Module ansehen</a>
+      <a href="#features" class="btn-outline-td">Fünf Module ansehen</a>
     </div>
     <div class="plan-pills fade in">
       <span class="plan-pill premium">Premium</span><span class="plan-pill" style="color:var(--text-3);">Betatest für alle Tarife</span></div>
@@ -239,90 +244,134 @@
 
           <!-- SIDEBAR -->
           <div style="background:#060d09; border-right:1px solid rgba(91,156,246,0.1); padding:1rem 0;">
-            <div class="td-nav-item td-active">
+            <div class="td-nav-item td-active" data-panel="recovery">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
               Recovery Return
             </div>
-            <div class="td-nav-item">
+            <div class="td-nav-item" data-panel="watchlist">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="12" y1="10" x2="12" y2="18"/></svg>
               Zinsrechner
             </div>
-            <div class="td-nav-item">
+            <div class="td-nav-item" data-panel="watchlist">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 9l4-4 4 4"/><path d="M17 15l4 4-4 4"/></svg>
               Rebalancing
             </div>
-            <div class="td-nav-item">
+            <div class="td-nav-item" data-panel="watchlist">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
               Watchlist
             </div>
-            <div class="td-nav-item">
+            <div class="td-nav-item" data-panel="watchlist">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Trade Journal
               <span style="margin-left:auto; font-size:0.5rem; background:rgba(255,165,0,0.15); color:#f59e0b; border:1px solid rgba(255,165,0,0.3); padding:0.1rem 0.35rem; border-radius:3px; letter-spacing:0.06em;">KI</span>
             </div>
           </div>
 
-          <!-- MAIN CONTENT: Recovery Return -->
+          <!-- MAIN CONTENT -->
           <div style="padding:1.2rem; display:flex; flex-direction:column; gap:0.8rem;">
-            <div>
-              <div style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.2rem;">Recovery Return</div>
-              <div style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Wie viel Wachstum braucht es, um einen Verlust auszugleichen?</div>
-            </div>
 
-            <!-- Horizon slider -->
-            <div style="display:flex; align-items:center; gap:0.8rem; padding:0.6rem 0.8rem; background:var(--bg3); border:1px solid var(--border); border-radius:4px;">
-              <span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Zeithorizont:</span>
-              <div style="flex:1; height:3px; background:var(--border); border-radius:2px; position:relative;">
-                <div style="width:40%; height:100%; background:var(--td); border-radius:2px;"></div>
-                <div style="width:10px; height:10px; background:var(--td); border-radius:50%; position:absolute; left:40%; top:-3.5px; transform:translateX(-50%);"></div>
+            <!-- PANEL 1: Recovery Return -->
+            <div class="td-panel visible" id="panel-recovery">
+              <div>
+                <div style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.2rem;">Recovery Return</div>
+                <div style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Wie viel Wachstum braucht es, um einen Verlust auszugleichen?</div>
               </div>
-              <span style="font-family:var(--mono); font-size:0.68rem; color:var(--td); font-weight:700;">3 J.</span>
+              <div style="display:flex; align-items:center; gap:0.8rem; padding:0.6rem 0.8rem; background:var(--bg3); border:1px solid var(--border); border-radius:4px;">
+                <span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Zeithorizont:</span>
+                <div style="flex:1; height:3px; background:var(--border); border-radius:2px; position:relative;">
+                  <div style="width:40%; height:100%; background:var(--td); border-radius:2px;"></div>
+                  <div style="width:10px; height:10px; background:var(--td); border-radius:50%; position:absolute; left:40%; top:-3.5px; transform:translateX(-50%);"></div>
+                </div>
+                <span style="font-family:var(--mono); font-size:0.68rem; color:var(--td); font-weight:700;">3 J.</span>
+              </div>
+              <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+                <table style="width:100%; border-collapse:collapse; font-family:var(--mono); font-size:0.63rem;">
+                  <thead>
+                    <tr style="background:#060d09; border-bottom:1px solid var(--border);">
+                      <th style="text-align:left; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">#</th>
+                      <th style="text-align:left; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Ticker</th>
+                      <th style="text-align:right; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Akt. Kurs</th>
+                      <th style="text-align:right; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Fairer Wert</th>
+                      <th style="text-align:right; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Drawdown</th>
+                      <th style="text-align:right; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Recovery</th>
+                      <th style="text-align:right; padding:0.4rem 0.8rem; color:var(--text-3); font-size:0.5rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">p.a.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="td-row" style="border-bottom:1px solid var(--border);">
+                      <td style="padding:0.45rem 0.8rem; color:var(--text-3);">1</td>
+                      <td style="padding:0.45rem 0.8rem;"><span style="font-weight:700; color:var(--text);">ADBE</span> <span style="font-size:0.48rem; background:rgba(91,156,246,0.15); color:var(--td); padding:0.1rem 0.3rem; border-radius:2px; margin-left:2px;">FVP</span></td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--text-2);">€ 253,04</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--text-2);">€ 356,48</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:#e24b4a; font-weight:700;">−29,0 %</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--td);">+40,9 %</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--td); font-weight:700;">+12,1 %</td>
+                    </tr>
+                    <tr class="td-row" style="border-bottom:1px solid var(--border);">
+                      <td style="padding:0.45rem 0.8rem; color:var(--text-3);">2</td>
+                      <td style="padding:0.45rem 0.8rem;"><span style="font-weight:700; color:var(--text);">NOVO B</span> <span style="font-size:0.48rem; background:rgba(91,156,246,0.15); color:var(--td); padding:0.1rem 0.3rem; border-radius:2px; margin-left:2px;">FVP</span></td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--text-2);">DKK 618</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--text-2);">DKK 890</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:#e24b4a; font-weight:700;">−30,6 %</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--td);">+44,0 %</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--td); font-weight:700;">+12,9 %</td>
+                    </tr>
+                    <tr class="td-row">
+                      <td style="padding:0.45rem 0.8rem; color:var(--text-3);">3</td>
+                      <td style="padding:0.45rem 0.8rem;"><span style="font-weight:700; color:var(--text);">ALV.DE</span> <span style="font-size:0.48rem; background:rgba(91,156,246,0.15); color:var(--td); padding:0.1rem 0.3rem; border-radius:2px; margin-left:2px;">FVP</span></td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--text-2);">€ 285</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--text-2);">€ 310</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:#e24b4a; font-weight:700;">−8,1 %</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--td);">+8,8 %</td>
+                      <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--td); font-weight:700;">+2,8 %</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
-            <!-- Recovery table -->
-            <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; overflow:hidden;">
-              <table style="width:100%; border-collapse:collapse; font-family:var(--mono); font-size:0.65rem;">
-                <thead>
-                  <tr style="background:#060d09; border-bottom:1px solid var(--border);">
-                    <th style="text-align:left; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">#</th>
-                    <th style="text-align:left; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Ticker</th>
-                    <th style="text-align:right; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Akt. Kurs</th>
-                    <th style="text-align:right; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Fairer Wert</th>
-                    <th style="text-align:right; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Drawdown</th>
-                    <th style="text-align:right; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">Recovery</th>
-                    <th style="text-align:right; padding:0.45rem 0.9rem; color:var(--text-3); font-size:0.52rem; letter-spacing:0.1em; font-weight:400; text-transform:uppercase;">p.a.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="td-row" style="border-bottom:1px solid var(--border);">
-                    <td style="padding:0.5rem 0.9rem; color:var(--text-3);">1</td>
-                    <td style="padding:0.5rem 0.9rem;"><span style="font-weight:700; color:var(--text);">ADBE</span> <span style="font-size:0.52rem; background:rgba(91,156,246,0.15); color:var(--td); padding:0.1rem 0.3rem; border-radius:2px; margin-left:3px;">FVP</span></td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--text-2);">€ 253,04</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--text-2);">€ 356,48</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:#e24b4a; font-weight:700;">−29,0 %</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--td);">+40,9 %</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--td); font-weight:700;">+12,1 %</td>
-                  </tr>
-                  <tr class="td-row" style="border-bottom:1px solid var(--border);">
-                    <td style="padding:0.5rem 0.9rem; color:var(--text-3);">2</td>
-                    <td style="padding:0.5rem 0.9rem; font-weight:700; color:var(--text);">NOVO B <span style="font-size:0.52rem; background:rgba(91,156,246,0.15); color:var(--td); padding:0.1rem 0.3rem; border-radius:2px; margin-left:3px;">FVP</span></td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--text-2);">DKK 618</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--text-2);">DKK 890</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:#e24b4a; font-weight:700;">−30,6 %</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--td);">+44,0 %</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--td); font-weight:700;">+12,9 %</td>
-                  </tr>
-                  <tr class="td-row">
-                    <td style="padding:0.5rem 0.9rem; color:var(--text-3);">3</td>
-                    <td style="padding:0.5rem 0.9rem; font-weight:700; color:var(--text);">ALV.DE <span style="font-size:0.52rem; background:rgba(91,156,246,0.15); color:var(--td); padding:0.1rem 0.3rem; border-radius:2px; margin-left:3px;">FVP</span></td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--text-2);">€ 285</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--text-2);">€ 310</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:#e24b4a; font-weight:700;">−8,1 %</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--td);">+8,8 %</td>
-                    <td style="padding:0.5rem 0.9rem; text-align:right; color:var(--td); font-weight:700;">+2,8 %</td>
-                  </tr>
-                </tbody>
-              </table>
+            <!-- PANEL 2: Watchlist (matches screenshot) -->
+            <div class="td-panel" id="panel-watchlist">
+              <div>
+                <div style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.2rem;">Watchlist</div>
+                <div style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Aktien beobachten und Alarm bei Buy-Zone (Kurs unter fairem Wert).</div>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.2rem;">
+                <div style="display:flex; align-items:center; gap:0.6rem;">
+                  <span style="font-family:var(--mono); font-size:0.62rem; color:var(--text-2);">Watchlist</span>
+                  <span style="font-family:var(--mono); font-size:0.55rem; background:rgba(255,165,0,0.15); color:#f59e0b; border:1px solid rgba(255,165,0,0.3); padding:0.15rem 0.5rem; border-radius:50px;">1 IN KAUFZONE</span>
+                </div>
+                <div style="display:flex; gap:0.5rem;">
+                  <span style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:3px;">Aktualisieren</span>
+                  <span style="font-family:var(--mono); font-size:0.55rem; color:var(--td); background:var(--td-dim); border:1px solid var(--td-border); padding:0.2rem 0.6rem; border-radius:3px;">+ Eintrag</span>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem;">
+                <!-- AAPL -->
+                <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.8rem;">
+                  <div style="font-weight:700; font-size:0.75rem; margin-bottom:0.5rem; color:var(--text);">AAPL</div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Aktueller Kurs</span><span style="color:var(--text-2);">293 € <span style="font-size:0.5rem; color:var(--neon); background:rgba(0,255,135,0.1); padding:0.05rem 0.3rem; border-radius:2px;">LIVE</span></span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Fairer Wert</span><span style="color:var(--text-2);">185 €</span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.5rem;"><span style="color:var(--text-3);">Status</span><span style="color:#e24b4a; font-size:0.58rem;">58,2 % über FW</span></div>
+                  <div style="text-align:center; font-family:var(--mono); font-size:0.55rem; color:var(--text-3);">Beobachten</div>
+                </div>
+                <!-- MSFT -->
+                <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.8rem;">
+                  <div style="font-weight:700; font-size:0.75rem; margin-bottom:0.5rem; color:var(--text);">MSFT</div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Aktueller Kurs</span><span style="color:var(--text-2);">415 € <span style="font-size:0.5rem; color:var(--neon); background:rgba(0,255,135,0.1); padding:0.05rem 0.3rem; border-radius:2px;">LIVE</span></span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Fairer Wert</span><span style="color:var(--text-2);">342 €</span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.5rem;"><span style="color:var(--text-3);">Status</span><span style="color:#e24b4a; font-size:0.58rem;">21,3 % über FW</span></div>
+                  <div style="text-align:center; font-family:var(--mono); font-size:0.55rem; color:var(--text-3);">Beobachten</div>
+                </div>
+                <!-- ADBE - Kaufzone -->
+                <div style="background:var(--bg3); border:1px solid #f59e0b; border-radius:4px; padding:0.8rem;">
+                  <div style="font-weight:700; font-size:0.75rem; margin-bottom:0.5rem; color:var(--text);">ADBE</div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Aktueller Kurs</span><span style="color:var(--text-2);">253 € <span style="font-size:0.5rem; color:var(--neon); background:rgba(0,255,135,0.1); padding:0.05rem 0.3rem; border-radius:2px;">LIVE</span></span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Fairer Wert</span><span style="color:var(--text-2);">356 €</span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.5rem;"><span style="color:var(--text-3);">Status</span><span style="color:var(--td); font-size:0.58rem;">29,0 % unter FW</span></div>
+                  <div style="text-align:center; font-family:var(--mono); font-size:0.55rem; color:#f59e0b; background:rgba(255,165,0,0.08); border:1px solid rgba(255,165,0,0.25); border-radius:3px; padding:0.25rem;">🔔 Kaufzone erreicht</div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -515,9 +564,43 @@
   // Animate table rows only when mockup is visible while scrolling
   const mockup = document.getElementById('td-mockup');
   if(mockup) {
+    // Module cycling: recovery → watchlist → recovery…
+    const navItems = mockup.querySelectorAll('.td-nav-item');
+    const panels = { recovery: document.getElementById('panel-recovery'), watchlist: document.getElementById('panel-watchlist') };
+    const cycle = ['recovery', 'watchlist'];
+    let step = 0;
+
+    function switchTo(key) {
+      // Update sidebar
+      navItems.forEach(n => {
+        n.classList.remove('td-active');
+        n.querySelector('svg').setAttribute('stroke', 'currentColor');
+      });
+      const activeItem = mockup.querySelector(`[data-panel="${key}"]`);
+      if(activeItem) {
+        activeItem.classList.add('td-active');
+        activeItem.querySelector('svg').setAttribute('stroke', 'var(--td)');
+      }
+      // Switch panel
+      Object.entries(panels).forEach(([k, el]) => { if(el) el.classList.toggle('visible', k === key); });
+      // Re-trigger row animation if recovery
+      if(key === 'recovery') {
+        mockup.querySelectorAll('.td-row').forEach(r => { r.classList.remove('anim'); void r.offsetWidth; r.classList.add('anim'); });
+      }
+    }
+
     const rowObs = new IntersectionObserver(entries => {
       if(entries[0].isIntersecting) {
-        document.querySelectorAll('.td-row').forEach(r => r.classList.add('anim'));
+        // Start row animation
+        mockup.querySelectorAll('.td-row').forEach(r => r.classList.add('anim'));
+        // Start cycling after 2.5s
+        setTimeout(() => {
+          const timer = setInterval(() => {
+            step = (step + 1) % cycle.length;
+            switchTo(cycle[step]);
+          }, 3000);
+          mockup._timer = timer;
+        }, 2500);
         rowObs.unobserve(mockup);
       }
     }, { threshold: 0.4 });
