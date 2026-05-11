@@ -63,6 +63,11 @@
 
 /* SVG chart */
 .chart-svg { width: 100%; height: 90px; }
+.chart-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: drawLine 1.8s cubic-bezier(0.4,0,0.2,1) forwards; }
+.chart-fill { opacity: 0; animation: fadeIn 0.6s ease 1.4s forwards; }
+.chart-ref  { opacity: 0; animation: fadeIn 0.5s ease 1.8s forwards; }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+@keyframes fadeIn   { to { opacity: 1; } }
 
 /* Depot table */
 .mk-depot { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
@@ -250,11 +255,11 @@
                 </linearGradient>
               </defs>
               <!-- Eingezahlt (flache Referenzlinie) -->
-              <path d="M0,72 L800,55" stroke="rgba(200,255,0,0.25)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <path class="chart-ref" d="M0,72 L800,55" stroke="rgba(200,255,0,0.25)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
               <!-- Depotverlauf Fläche -->
-              <path d="M0,72 Q80,68 160,62 Q240,55 320,50 Q400,44 480,38 Q560,30 640,22 Q720,16 800,10 L800,90 L0,90 Z" fill="url(#ptGrad)"/>
+              <path class="chart-fill" d="M0,72 Q80,68 160,62 Q240,55 320,50 Q400,44 480,38 Q560,30 640,22 Q720,16 800,10 L800,90 L0,90 Z" fill="url(#ptGrad)"/>
               <!-- Depotverlauf Linie -->
-              <path d="M0,72 Q80,68 160,62 Q240,55 320,50 Q400,44 480,38 Q560,30 640,22 Q720,16 800,10" stroke="#c8ff00" stroke-width="2" fill="none"/>
+              <path class="chart-line" d="M0,72 Q80,68 160,62 Q240,55 320,50 Q400,44 480,38 Q560,30 640,22 Q720,16 800,10" stroke="#c8ff00" stroke-width="2" fill="none"/>
               <!-- Jahr-Markierungen -->
               <text x="5" y="88" font-size="7" fill="rgba(200,255,0,0.3)" font-family="monospace">Jan 22</text>
               <text x="253" y="88" font-size="7" fill="rgba(200,255,0,0.3)" font-family="monospace">Jan 23</text>
@@ -457,6 +462,24 @@
     el.dataset.d = (i % 5) * 80;
     obs.observe(el);
   });
+
+  // Replay chart animation when mockup scrolls into view
+  const chartLine = document.querySelector('.chart-line');
+  const chartFill = document.querySelector('.chart-fill');
+  const chartRef  = document.querySelector('.chart-ref');
+  if(chartLine) {
+    const chartObs = new IntersectionObserver(entries => {
+      if(entries[0].isIntersecting) {
+        [chartLine, chartFill, chartRef].forEach(el => {
+          el.style.animation = 'none';
+          el.offsetHeight; // reflow
+          el.style.animation = '';
+        });
+        chartObs.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.3 });
+    chartObs.observe(chartLine.closest('svg'));
+  }
 </script>
 </body>
 </html>
