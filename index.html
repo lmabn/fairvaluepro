@@ -83,6 +83,7 @@
   .pr-body details summary:hover { color: var(--text-2); }
   .pr-body details .detail-body { padding-top: 0.7rem; }
   .pr-body details .detail-body p { font-size: 0.88rem; }
+  .vs-details > summary::before { display:none !important; }
   .versus-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .versus-side { background: var(--bg2); padding: 2rem; }
   .vs-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -273,7 +274,8 @@
     .manifesto-layout,.product-layout { grid-template-columns:1fr; gap:2.5rem; }
     .how-steps { grid-template-columns:1fr; }
     .outputs-grid { grid-template-columns:1fr; }
-    .versus-bar { grid-template-columns:1fr; }
+    .vs-details > summary::before { display:none !important; }
+  .versus-bar { grid-template-columns:1fr; }
     .philosophy-box { grid-template-columns:1fr; gap:1rem; }
     .problem-list { grid-template-columns: 1fr; }
     .problem-row:nth-child(2) { border-top: none; }
@@ -339,7 +341,7 @@
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
   <div class="container">
-    <div class="tag fade in" style="justify-content:center; margin-bottom:0.8rem;">Fair Value Pro</div>
+    <div style="text-align:center; margin-bottom:0.8rem;"><div class="tag fade in" style="display:inline-flex;">Fair Value Pro</div></div>
     <div class="hero-eyebrow fade in" style="text-align:center; justify-content:center;">Aktienanalyse · Fundamental · Transparent</div>
     <h1 class="hero-hl fade in" style="text-align:center; max-width:100%;">
       <span class="n">Das Tool.</span> Für deine<br class="mobile-br"> Fundamentalanalyse.
@@ -425,9 +427,9 @@
       </li>
     </ul>
 
-    <details class="fade" style="margin-top:2.5rem; border:1px solid var(--border2); border-radius:4px; overflow:hidden;">
+    <details class="fade vs-details" style="margin-top:2.5rem; border:1px solid var(--border2); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); padding:1rem 1.4rem; background:var(--bg3); text-transform:none; letter-spacing:0; display:flex; justify-content:space-between; align-items:center; cursor:pointer; list-style:none;">
-        <span>Fair Value Pro vs. andere Tools</span><span style="font-family:var(--mono); font-size:0.9rem; color:var(--neon);">+</span>
+        <span style="text-align:left;">Fair Value Pro vs. andere Tools</span><span style="font-family:var(--mono); font-size:0.9rem; color:var(--neon); flex-shrink:0; margin-left:1rem;">+</span>
       </summary>
       <div class="detail-body" style="padding:1.5rem 1.4rem 1.4rem;">
         <div class="versus-bar">
