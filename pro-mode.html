@@ -284,20 +284,23 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
       <div class="nav-dropdown">
         <a href="index.html">Übersicht</a>
         <a href="pro-mode-beta.html" class="active">Pro Mode</a>
+        <a href="daten-quelle.html">Daten-Quelle</a>
       </div>
     </div>
     <a href="portfolio-tracker.html">Portfolio Tracker</a>
     <a href="trading-desk.html">Trading Desk</a>
     <a href="plaene-beta.html">Pläne</a>
   </div>
+  <div class="nav-right">
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-    <span></span><span></span><span></span>
-  </button>
+    <span></span><span></span><span></span></button>
   <a href="plaene.html" class="nav-cta">Pläne ansehen</a>
+  </div>
 </nav>
 <div class="nav-mobile-menu" id="mobile-menu">
   <a href="index.html">Fair Value Pro</a>
   <a href="pro-mode-beta.html" class="active" style="padding-left:1.4rem; font-size:0.68rem; color:var(--text-3);">↳ Pro Mode</a>
+  <a href="daten-quelle.html" style="padding-left:1.4rem; font-size:0.68rem; color:var(--text-3);">↳ Daten-Quelle</a>
   <a href="portfolio-tracker.html">Portfolio Tracker</a>
   <a href="trading-desk.html">Trading Desk</a>
   <a href="plaene-beta.html">Pläne</a>
@@ -316,9 +319,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
       <a href="#features" class="btn-outline">Alle Features</a>
     </div>
     <div class="plan-pills fade in">
-      <span class="plan-pill pro">Pro — kostenlos</span>
-      <span class="plan-pill premium">Premium — ab €7,49 / Mo</span>
-    </div>
+      <span class="plan-pill pro">Pro — kostenlos</span><span class="plan-pill premium">Premium — ab €7,49 / Mo</span></div>
   </div>
 
   <!-- DASHBOARD MOCKUP -->
@@ -336,15 +337,10 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
             Fair Value Pro
           </div>
           <div class="mk-tabs">
-            <span class="mk-tab">Dokumentation</span>
-          </div>
+            <span class="mk-tab">Dokumentation</span></div>
           <div class="mk-actions">
             <div class="mk-status"></div>
-            <span class="mk-status-text">Bewertung mit angepassten Annahmen</span>
-            <span class="mk-btn">↺ Zurücksetzen</span>
-            <span class="mk-btn">Light Mode</span>
-            <span class="mk-btn pro-badge">Pro Mode</span>
-          </div>
+            <span class="mk-status-text">Bewertung mit angepassten Annahmen</span><span class="mk-btn">↺ Zurücksetzen</span><span class="mk-btn">Light Mode</span><span class="mk-btn pro-badge">Pro Mode</span></div>
         </div>
 
         <!-- Body -->
@@ -373,8 +369,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
             </div>
             <div class="mk-cta-btn">✓ Bewertung starten</div>
             <div class="mk-settings">
-              <span>⚙ Erweiterte Einstellungen</span>
-              <div class="mk-dot"></div>
+              <span>⚙ Erweiterte Einstellungen</span><div class="mk-dot"></div>
             </div>
           </div>
 
@@ -384,10 +379,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
             <!-- Ticker header -->
             <div class="mk-ticker-head">
               <h2>Tesla, Inc.</h2>
-              <span class="mk-badge tsla">TSLA</span>
-              <span class="mk-badge">consumer cyclical</span>
-              <span class="mk-badge">EUR</span>
-            </div>
+              <span class="mk-badge tsla">TSLA</span><span class="mk-badge">consumer cyclical</span><span class="mk-badge">EUR</span></div>
 
             <!-- KPIs -->
             <div class="mk-kpis">
@@ -421,21 +413,14 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
             <!-- Verdict -->
             <div class="mk-verdict">
               <div class="v-dot"></div>
-              <span>Stark überbewertet — Kurs liegt 687 % über dem inneren Wert.</span>
-            </div>
+              <span>Stark überbewertet — Kurs liegt 687 % über dem inneren Wert.</span></div>
 
             <!-- Chart + Right panel -->
             <div class="mk-content">
               <div class="mk-chart-box">
                 <div class="mk-chart-head">
-                  <span class="mk-chart-title">↗ Kursverlauf vs Fairer Wert</span>
-                  <div class="mk-time-btns">
-                    <span class="mk-time-btn">1J</span>
-                    <span class="mk-time-btn">3J</span>
-                    <span class="mk-time-btn">5J</span>
-                    <span class="mk-time-btn active">10J</span>
-                    <span class="mk-time-btn">Max</span>
-                  </div>
+                  <span class="mk-chart-title">↗ Kursverlauf vs Fairer Wert</span><div class="mk-time-btns">
+                    <span class="mk-time-btn">1J</span><span class="mk-time-btn">3J</span><span class="mk-time-btn">5J</span><span class="mk-time-btn active">10J</span><span class="mk-time-btn">Max</span></div>
                 </div>
                 <div class="mk-chart-legend">
                   <div class="mk-legend-item"><div class="mk-legend-dot" style="background:#4da8ff;"></div>Börsenkurs</div>
@@ -484,9 +469,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
                   <div class="mk-model-row"><span style="color:var(--text-3);">DDM (Gordon Growth)</span><span class="mv" style="color:var(--text-3);">— kein Dividende</span></div>
                   <div class="mk-model-row"><span style="color:var(--text-3);">PEG-Ratio</span><span class="mv" style="color:var(--text-3);">— kein EPS-Wachstum</span></div>
                   <div class="mk-verdict-pill">
-                    <span>Stark überbewertet</span>
-                    <span style="color:var(--danger); font-size:0.6rem;">▲ 324.20</span>
-                  </div>
+                    <span>Stark überbewertet</span><span style="color:var(--danger); font-size:0.6rem;">▲ 324.20</span></div>
                 </div>
               </div>
             </div>
@@ -514,9 +497,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
               </div>
               <div class="mk-sensi">
                 <div class="mk-sensi-title">
-                  <span>Sensitivitätstabelle</span>
-                  <span style="color:var(--text-3); font-size:0.5rem;">Wachstum × WACC → Fairer Wert</span>
-                </div>
+                  <span>Sensitivitätstabelle</span><span style="color:var(--text-3); font-size:0.5rem;">Wachstum × WACC → Fairer Wert</span></div>
                 <table class="sensi-table">
                   <tr><td class="row-label">g\W</td><td>8%</td><td>9%</td><td>10%</td><td>11%</td><td>12%</td></tr>
                   <tr><td class="row-label">6%</td><td class="low">31.3</td><td class="low">27.2</td><td class="low">24.3</td><td class="low">22.1</td><td class="low">20.4</td></tr>
@@ -530,9 +511,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
             <!-- Scorecard mini -->
             <div class="mk-scorecard">
               <div class="mk-score-head">
-                <span class="mk-score-title">☆ Qualitätsaktien-Scorecard</span>
-                <span class="mk-score-badge">C 4/10</span>
-              </div>
+                <span class="mk-score-title">☆ Qualitätsaktien-Scorecard</span><span class="mk-score-badge">C 4/10</span></div>
               <div class="mk-score-grid">
                 <div class="mk-score-item pass"><div class="si-label">Umsatzwachstum 10J</div><div class="si-val">5.2 %</div></div>
                 <div class="mk-score-item pass"><div class="si-label">Umsatzwachstum 3J</div><div class="si-val">✓</div></div>
@@ -621,46 +600,23 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
       <div class="mode-compare fade">
         <div class="mode-box free">
           <div class="mode-box-head">
-            <span class="mode-name">Free Mode</span>
-            <span class="mode-badge">Kein Account</span>
-          </div>
+            <span class="mode-name">Free Mode</span><span class="mode-badge">Kein Account</span></div>
           <div class="mode-box-body">
-            <span class="mode-tag">Aktueller Kurs</span>
-            <span class="mode-tag">DCF Fairer Wert</span>
-            <span class="mode-tag">Sicherheitsmarge</span>
-            <span class="mode-tag">Qualitätsscore</span>
-          </div>
+            <span class="mode-tag">Aktueller Kurs</span><span class="mode-tag">DCF Fairer Wert</span><span class="mode-tag">Sicherheitsmarge</span><span class="mode-tag">Qualitätsscore</span></div>
         </div>
         <div style="text-align:center; padding:0.4rem 0; font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">+ mit kostenlosem Account freischalten</div>
         <div class="mode-box pro">
           <div class="mode-box-head">
-            <span class="mode-name">Pro Mode</span>
-            <span class="mode-badge">Kostenlos</span>
-          </div>
+            <span class="mode-name">Pro Mode</span><span class="mode-badge">Kostenlos</span></div>
           <div class="mode-box-body">
-            <span class="mode-tag">Kursverlauf 10J</span>
-            <span class="mode-tag">DCF · KGV · EV/EBITDA</span>
-            <span class="mode-tag">Szenarien</span>
-            <span class="mode-tag">Sensitivitätstabelle</span>
-            <span class="mode-tag">WACC-Aufschlüsselung</span>
-            <span class="mode-tag">Scorecard 10 Kriterien</span>
-            <span class="mode-tag">Relative Bewertung</span>
-            <span class="mode-tag">Branchen-Presets</span>
-          </div>
+            <span class="mode-tag">Kursverlauf 10J</span><span class="mode-tag">DCF · KGV · EV/EBITDA</span><span class="mode-tag">Szenarien</span><span class="mode-tag">Sensitivitätstabelle</span><span class="mode-tag">WACC-Aufschlüsselung</span><span class="mode-tag">Scorecard 10 Kriterien</span><span class="mode-tag">Relative Bewertung</span><span class="mode-tag">Branchen-Presets</span></div>
         </div>
         <div style="text-align:center; padding:0.4rem 0; font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">+ mit Premium</div>
         <div class="mode-box premium">
           <div class="mode-box-head">
-            <span class="mode-name">Premium</span>
-            <span class="mode-badge">ab €7,49 / Mo</span>
-          </div>
+            <span class="mode-name">Premium</span><span class="mode-badge">ab €7,49 / Mo</span></div>
           <div class="mode-box-body">
-            <span class="mode-tag">Analysen speichern</span>
-            <span class="mode-tag">Eigene Presets</span>
-            <span class="mode-tag">Suchverlauf</span>
-            <span class="mode-tag">PDF-Export</span>
-            <span class="mode-tag">Unbegrenzte Bewertungen</span>
-          </div>
+            <span class="mode-tag">Analysen speichern</span><span class="mode-tag">Eigene Presets</span><span class="mode-tag">Suchverlauf</span><span class="mode-tag">PDF-Export</span><span class="mode-tag">Unbegrenzte Bewertungen</span></div>
         </div>
       </div>
     </div>
@@ -673,16 +629,17 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
     <h2 class="fade"><span class="n">Pro Mode</span> ist kostenlos.<br>Jetzt freischalten.</h2>
     <p class="fade">Registriere dich mit deiner E-Mail — kein Abo, keine Kreditkarte. Voller Zugriff auf das Dashboard ab dem ersten Login.</p>
     <a href="plaene.html" class="btn-neon fade">Kostenlos registrieren →</a>
-    <span class="cta-note fade">Pro Mode ist kostenlos · Premium ab €7,49/Mo · Jederzeit kündbar</span>
-  </div>
+    <span class="cta-note fade">Pro Mode ist kostenlos · Premium ab €7,49/Mo · Jederzeit kündbar</span></div>
 </section>
 
 <footer>
   <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
   <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Kein Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Dies ist kein Angebot und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren.</p>
   <div style="display:flex; gap:1.5rem;">
+    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Partner</a>
     <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
     <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+    
   </div>
 </footer>
 
