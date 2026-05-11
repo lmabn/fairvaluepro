@@ -250,8 +250,11 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
   
   
 
+.ki-assist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
 @media(max-width: 900px) {
   .features-grid { grid-template-columns: 1fr; }
+  .ki-assist-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .diff-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .mk-body { grid-template-columns: 1fr; }
   .mk-sidebar { display: none; }
@@ -578,12 +581,6 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
         <p>Risikofreier Zins, Beta, ERP, Eigenkapitalkosten, Fremdkapitalkosten — vollständige Transparenz über jeden Parameter des Diskontierungssatzes.</p>
         <div class="feat-plans"><span class="feat-plan-tag pro">Pro</span><span class="feat-plan-tag premium">Premium</span></div>
       </div>
-      <div class="feat fade">
-        <div class="feat-icon">⚡</div>
-        <h3>KI-Assistent im Kalkulator</h3>
-        <p>Inline-Erklärungen zu DCF, ROIC, KGV und anderen Kennzahlen — „?"-Button öffnet einen Chat mit passender Frage direkt im Kalkulator. Was-wäre-wenn-Szenarien: WACC +1 % → DCF ändert sich von X auf Y. Bring-your-own-Key: Claude, ChatGPT oder Gemini. Anfragen gehen direkt vom Browser zum Anbieter, kein Kaufrat — technisch im System-Prompt verankert.</p>
-        <div class="feat-plans"><span class="feat-plan-tag premium">Premium</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -591,7 +588,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
 <!-- KI ASSISTENT SECTION -->
 <section style="padding:6rem 2rem; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
   <div class="wide">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;">
+    <div class="ki-assist-grid">
       <div class="fade">
         <div class="tag" style="margin-bottom:1.2rem;">KI-Assistent · Premium</div>
         <h2 style="font-family:var(--display); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.02em; line-height:1.2; margin-bottom:1.2rem;">Kennzahlen verstehen.<br>Szenarien durchrechnen.</h2>
@@ -693,9 +690,9 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
   <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
   <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Kein Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information. Dies ist kein Angebot und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren.</p>
   <div style="display:flex; gap:1.5rem;">
-    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Partner</a>
-    <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
-    <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+    <a href="partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
     
   </div>
 </footer>
