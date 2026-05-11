@@ -157,25 +157,59 @@
         <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
         <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) gespeichert. Er verlässt deinen Browser nie — auch nicht zu unseren Servern. <strong>Marktdaten-Anfragen gehen direkt vom Browser an den Anbieter.</strong></p>
       </div>
-      <div class="why-visual fade">
-        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.2rem;">Datenfluss</div>
-        <div class="flow-row">
-          <div class="flow-node">Dein Browser</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node hl">Datenanbieter API</div>
-          <div class="flow-note">direkt</div>
-        </div>
-        <div style="margin: 0.4rem 0 0.4rem 1.5rem; font-size:0.72rem; color:var(--text-3);">↑ dein API-Key</div>
-        <div class="flow-row">
-          <div class="flow-node">Dein Browser</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node">FVP-Server</div>
-          <div class="flow-note">nur Bewertungslogik</div>
-        </div>
-        <div style="margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--border); font-size:0.75rem; color:var(--text-3); line-height:1.6;">
-          FVP-Server sehen: Ticker-Anfragen, Berechnungsparameter.<br>
-          FVP-Server sehen <strong style="color:var(--text-2)">nicht</strong>: Rohdaten, Kurse, Bilanzwerte.
-        </div>
+      <div class="why-visual fade" style="padding:1.5rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.2rem;">Datenfluss</div>
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+          <defs>
+            <marker id="arr-green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#00ff87"/>
+            </marker>
+            <marker id="arr-gray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#3a4a3f"/>
+            </marker>
+            <marker id="arr-green-r" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto">
+              <path d="M6,0 L0,3 L6,6 Z" fill="#00ff87"/>
+            </marker>
+            <marker id="arr-gray-r" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto">
+              <path d="M6,0 L0,3 L6,6 Z" fill="#3a4a3f"/>
+            </marker>
+          </defs>
+
+          <!-- BROWSER box (center) -->
+          <rect x="100" y="10" width="80" height="44" rx="4" fill="#0f1a13" stroke="#2a3a2f" stroke-width="1"/>
+          <text x="140" y="28" text-anchor="middle" font-family="monospace" font-size="7" fill="#b0c0b4">Dein Browser</text>
+          <text x="140" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#00ff87">💻</text>
+
+          <!-- DATENANBIETER box (top left) -->
+          <rect x="10" y="95" width="88" height="44" rx="4" fill="#0a1c10" stroke="#00ff87" stroke-width="1" opacity="0.9"/>
+          <text x="54" y="113" text-anchor="middle" font-family="monospace" font-size="7" fill="#00ff87">Datenanbieter</text>
+          <text x="54" y="128" text-anchor="middle" font-family="monospace" font-size="8" fill="#00ff87">🗄️</text>
+
+          <!-- FVP SERVER box (top right) -->
+          <rect x="182" y="95" width="88" height="44" rx="4" fill="#0f1a13" stroke="#2a3a2f" stroke-width="1"/>
+          <text x="226" y="113" text-anchor="middle" font-family="monospace" font-size="7" fill="#4a6a54">FVP-Server</text>
+          <text x="226" y="128" text-anchor="middle" font-family="monospace" font-size="8" fill="#4a6a54">⚙️</text>
+
+          <!-- Arrow Browser → Datenanbieter (green, bidirectional) -->
+          <line x1="120" y1="54" x2="76" y2="95" stroke="#00ff87" stroke-width="1.5" marker-end="url(#arr-green)" marker-start="url(#arr-green-r)" opacity="0.8"/>
+          <!-- Label on green arrow -->
+          <text x="82" y="74" text-anchor="middle" font-family="monospace" font-size="6" fill="#00ff87" transform="rotate(-38,82,74)">Kurse · Bilanzen</text>
+          <text x="92" y="84" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#00c46a" transform="rotate(-38,92,84)">direkt · API-Key</text>
+
+          <!-- Arrow Browser → FVP (gray, bidirectional) -->
+          <line x1="160" y1="54" x2="204" y2="95" stroke="#3a4a3f" stroke-width="1.5" marker-end="url(#arr-gray)" marker-start="url(#arr-gray-r)"/>
+          <!-- Label on gray arrow -->
+          <text x="198" y="74" text-anchor="middle" font-family="monospace" font-size="6" fill="#4a6a54" transform="rotate(38,198,74)">Bewertungslogik</text>
+          <text x="188" y="84" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#3a5a44" transform="rotate(38,188,84)">kein Datenzugriff</text>
+
+          <!-- FVP does NOT connect to Datenanbieter - X barrier -->
+          <line x1="98" y1="117" x2="182" y2="117" stroke="#2a3a2f" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="140" y="113" text-anchor="middle" font-family="monospace" font-size="8" fill="#e24b4a">✕</text>
+          <text x="140" y="125" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#4a3535">keine Verbindung</text>
+
+          <!-- Bottom note -->
+          <text x="140" y="166" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#3a5a44">FVP sieht nie: Kurse · Bilanzen · API-Schlüssel</text>
+        </svg>
       </div>
     </div>
   </div>
@@ -186,49 +220,63 @@
   <div class="container">
     <div class="steps-header fade">
       <div class="tag" style="justify-content:center;">Onboarding</div>
-      <h2>In drei Schritten startklar.</h2>
-      <p>Das Einrichten dauert ca. fünf Minuten. Danach läuft alles automatisch — kein manuelles Eintippen von Kursen oder Bilanzdaten.</p>
+      <h2>In vier Schritten startklar.</h2>
+      <p>Das Einrichten dauert ca. fünf Minuten. Danach läuft alles automatisch.</p>
     </div>
     <div class="steps fade">
+
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">Plan beim Datenanbieter abschließen</div>
-          <div class="step-text">Wähle einen Datenanbieter aus unserer Empfehlungsliste — die Partner-Ankündigungen erfolgen zum Launch.</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin-bottom:0.7rem;">
-            <div style="background:var(--bg3); padding:0.9rem 1rem;">
-              <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Bereits Account vorhanden</div>
-              <div style="font-size:0.82rem; color:var(--text-2); line-height:1.55;">Du hast bereits einen Account bei einem unserer Partner? Dann hast du alles was du brauchst — weiter zu Schritt 2.</div>
-            </div>
-            <div style="background:var(--bg2); padding:0.9rem 1rem;">
-              <div style="font-family:var(--mono); font-size:0.58rem; color:var(--neon); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Noch kein Account</div>
-              <div style="font-size:0.82rem; color:var(--text-2); line-height:1.55;">Einfach über unsere Empfehlungsliste registrieren und den Schritten folgen. Dauert wenige Minuten.</div>
-            </div>
-          </div>
-          <span class="step-detail">Dauert: ~2 Minuten · Kreditkarte beim Anbieter erforderlich</span></div>
+          <div class="step-title">Bei Fair Value Pro registrieren</div>
+          <div class="step-text">Erstelle deinen Account und folge den Schritten im geführten Onboarding-Prozess. Er führt dich durch alle nächsten Schritte — nichts muss separat gesucht werden.</div>
+          <span class="step-detail">Dauert: ~1 Minute · Kostenlos</span>
+        </div>
       </div>
+
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
+          <div class="step-title">Datenanbieter wählen und API-Schlüssel hinterlegen</div>
+          <div class="step-text">Im Onboarding wählst du deinen Daten-Partner und trägst deinen API-Schlüssel ein.</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:0.8rem 0;">
+            <div style="background:var(--bg3); padding:0.85rem 1rem;">
+              <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Bereits Account vorhanden</div>
+              <div style="font-size:0.8rem; color:var(--text-2); line-height:1.55;">Direkt den API-Schlüssel aus deinem Anbieter-Dashboard kopieren und hier eintragen.</div>
+            </div>
+            <div style="background:var(--bg2); padding:0.85rem 1rem;">
+              <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Noch kein Account</div>
+              <div style="font-size:0.8rem; color:var(--text-2); line-height:1.55;">Über unsere Empfehlungsliste registrieren, Plan wählen, API-Schlüssel kopieren — zurück zum Onboarding.</div>
+            </div>
+          </div>
+          <span class="step-detail">Dauert: ~3 Minuten · Kreditkarte beim Anbieter erforderlich</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
           <div class="step-with-note">
             <div>
-              <div class="step-title">API-Schlüssel kopieren</div>
-              <div class="step-text">Nach der Registrierung erhältst du einen API-Schlüssel — eine lange Zeichenfolge, die deinen Zugang identifiziert. Du findest ihn im Dashboard deines Anbieters. <strong>Kopiere ihn einmalig</strong> — du brauchst ihn nur für den nächsten Schritt.</div>
+              <div class="step-title">KI-Assistent einrichten <span style="font-family:var(--mono); font-size:0.65rem; color:var(--text-3); font-weight:400;">optional</span></div>
+              <div class="step-text">Hinterlege einen API-Schlüssel für den KI-Assistenten im Kalkulator — Claude (Anthropic), ChatGPT (OpenAI) oder Gemini (Google). Aktiviert inline Erklärungen und Was-wäre-wenn-Szenarien direkt im Tool. Kann auch später in den Einstellungen ergänzt werden.</div>
             </div>
             <div class="step-sidenote">
-              <div class="step-sidenote-label">⚡ KI-Features</div>
-              <p>Optional: <strong>KI-API-Schlüssel</strong> hinterlegen (Claude, ChatGPT oder Gemini) — aktiviert den KI-Bias-Coach. Auch später unter <strong>Einstellungen → KI-Quelle</strong> möglich.</p>
+              <div class="step-sidenote-label">⚡ Premium</div>
+              <p>Der KI-Assistent ist ein <strong>Premium-Feature</strong>. Schlüssel bleibt ausschließlich im Browser — wir sehen ihn nie.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <div class="step-title">API-Schlüssel im Onboarding hinterlegen — fertig</div>
-          <div class="step-text">Nach der Registrierung bei Fair Value Pro führt dich ein geführter Onboarding-Prozess durch die Einrichtung. Du wählst deinen Daten-Partner, fügst den API-Schlüssel ein und bestätigst die Verbindung. <strong>Ab sofort werden alle Ticker-Anfragen über dein Konto beim Anbieter abgerufen.</strong></div>
-          <span class="step-detail">Dauert: ~1 Minute · Einmalige Einrichtung · Jederzeit wechselbar</span></div>
+
+      <div style="display:flex; align-items:center; gap:1.2rem; padding:1.2rem 1.4rem; background:var(--neon-dim); border-top:1px solid var(--neon-border);">
+        <div style="width:32px; height:32px; border-radius:50%; background:var(--neon); display:flex; align-items:center; justify-content:center; color:var(--bg); font-size:1rem; flex-shrink:0;">✓</div>
+        <div>
+          <div style="font-family:var(--display); font-size:0.95rem; font-weight:700; color:var(--neon); margin-bottom:0.2rem;">Bereit — loslegen.</div>
+          <div style="font-size:0.82rem; color:var(--text-2);">Ticker eingeben, Bewertung starten. Einmalige Einrichtung, jederzeit änderbar.</div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
