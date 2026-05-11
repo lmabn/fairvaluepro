@@ -70,9 +70,7 @@ body { background: var(--bg); }
 .comp-table .no { color: var(--text-3); }
 .comp-table .part { color: var(--mid); }
 .comp-table .hl-col { background: rgba(0,255,135,0.03); }
-.comp-table .price-row td { background: rgba(0,255,135,0.04); font-family: var(--display); font-weight: 700; }
-.comp-table .price-row td.hl-col { background: rgba(0,255,135,0.08); color: var(--neon); }
-.comp-table .price-row td:not(.hl-col) { color: var(--text-3); }
+
 
 /* METHOD GRID */
 .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
@@ -96,7 +94,9 @@ body { background: var(--bg); }
 .roadmap-list { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
 .roadmap-item { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
 .roadmap-item:last-child { border-bottom: none; }
-.roadmap-q { background: var(--bg3); padding: 1rem 1.2rem; font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.06em; min-width: 80px; display: flex; align-items: flex-start; padding-top: 1.1rem; }
+.tech-accordion > summary::before { display: none !important; }
+.tech-accordion > summary { text-align: left; }
+.roadmap-q { background: var(--bg3); padding: 1rem 1.2rem; font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.06em; width: 110px; flex-shrink: 0; display: flex; align-items: flex-start; padding-top: 1.1rem; white-space: nowrap; }
 .roadmap-text { background: var(--bg2); padding: 1rem 1.4rem; font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
 .roadmap-text strong { color: var(--text); font-weight: 500; }
 
@@ -224,29 +224,13 @@ body { background: var(--bg); }
           </tr>
         </thead>
         <tbody>
-          <tr class="price-row">
-            <td>Monatliche Kosten (ca.)</td>
-            <td class="hl-col" style="font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.06em;">Datenpartner ¹</td>
-            <td>ca. 35 $ / Monat</td>
-            <td>ca. 10–20 $ / Monat</td>
-            <td>ca. 15–60 $ / Monat</td>
-            <td>ca. 37 $ / Monat</td>
-          </tr>
           <tr>
             <td>Professionelle Datenbreite</td>
-            <td class="part hl-col">Via Partner</td>
+            <td class="yes hl-col">Hoch (via Partner)</td>
             <td class="yes">Sehr hoch</td>
             <td class="part">Mittel</td>
             <td class="yes">Hoch</td>
             <td class="yes">Hoch</td>
-          </tr>
-          <tr>
-            <td>Charting &amp; Technische Analyse</td>
-            <td class="no hl-col">–</td>
-            <td class="part">Einfach</td>
-            <td class="part">Einfach</td>
-            <td class="yes">Best-in-class</td>
-            <td class="part">Grundlegend</td>
           </tr>
           <tr>
             <td>Automatische Bewertungs-Scores</td>
@@ -298,19 +282,27 @@ body { background: var(--bg); }
           </tr>
           <tr>
             <td>Datenschutz / Server-Standort</td>
-            <td class="yes hl-col">DE · Hetzner</td>
+            <td class="yes hl-col">Deutschland</td>
             <td class="no">USA</td>
             <td class="no">Australien</td>
             <td class="no">Zypern/USA</td>
             <td class="no">USA</td>
           </tr>
           <tr>
-            <td>Kein separates Tool-Abo</td>
-            <td class="yes hl-col">✓</td>
-            <td class="no">Abo nötig</td>
-            <td class="no">Abo nötig</td>
-            <td class="part">Eingeschränkt</td>
-            <td class="part">Eingeschränkt</td>
+            <td>Charting &amp; Technische Analyse</td>
+            <td class="no hl-col">–</td>
+            <td class="part">Einfach</td>
+            <td class="part">Einfach</td>
+            <td class="yes">Best-in-class</td>
+            <td class="part">Grundlegend</td>
+          </tr>
+          <tr style="opacity:0.7;">
+            <td style="font-size:0.75rem;">Monatliche Kosten (ca.)</td>
+            <td class="hl-col" style="font-family:var(--mono); font-size:0.62rem; color:var(--text-3);">Datenpartner ¹</td>
+            <td style="font-size:0.75rem; color:var(--text-3);">ca. 35 $ / Mo</td>
+            <td style="font-size:0.75rem; color:var(--text-3);">ca. 10–20 $ / Mo</td>
+            <td style="font-size:0.75rem; color:var(--text-3);">ca. 15–60 $ / Mo</td>
+            <td style="font-size:0.75rem; color:var(--text-3);">ca. 37 $ / Mo</td>
           </tr>
         </tbody>
       </table>
@@ -368,7 +360,6 @@ body { background: var(--bg); }
           <div class="usp-text">Morningstar (USA), Simply Wall St (Australien), TradingView (Zypern/USA), Yahoo Finance (USA). <strong>Wir sind in Deutschland, Server bei Hetzner, Daten in Deutschland.</strong> Der DACH-Privatanleger ist eine datenschutz-empfindliche Käuferschicht — und ein faktisch konkurrenzloser Markt für deutschsprachige Bewertungstools.</div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 
@@ -580,7 +571,7 @@ body { background: var(--bg); }
       </div>
     </div>
 
-    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Sicherheits-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CSP mit strikter connect-src-Whitelist</strong> — Datenexfiltration bei XSS strukturell verhindert</div>
@@ -594,7 +585,7 @@ body { background: var(--bg); }
       </div>
     </details>
 
-    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Mathematik & Algorithmen <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Zwei-Phasen-DCF</strong> mit Gordon-Growth-Terminal-Value, vollständig user-parametrisiert</div>
@@ -608,14 +599,14 @@ body { background: var(--bg); }
       </div>
     </details>
 
-    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Datenbank-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg);">
         <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">17 Tabellen, klar nach Domänen getrennt — 9 Auth, 5 Tracker, 3 Trading Desk, plus Saved Analyses und Bewertungs-Setups. ON DELETE CASCADE durchgängig, PRAGMA foreign_keys = ON explizit aktiviert. Foreign-Key-Beziehungen über Domänen-Grenzen: Trading-Desk-Rebalancing verweist auf Tracker-Depots. Migration zu PostgreSQL jederzeit möglich — bewusst nicht voreilig.</p>
       </div>
     </details>
 
-    <details style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">KI-Integration <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.8rem; color:var(--text-2); line-height:1.7;">
         <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude Haiku 4.5, OpenAI GPT-4o-mini, Google Gemini 2.0 Flash</strong> — bewusst „schnell + günstig"-Klasse, typische Anfragen im Cent-Bereich. Provider-agnostische <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">callAI()</code>-Schnittstelle — Provider ist jederzeit austauschbar.</p>
