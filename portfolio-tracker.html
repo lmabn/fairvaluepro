@@ -63,9 +63,12 @@
 
 /* SVG chart */
 .chart-svg { width: 100%; height: 90px; }
-.chart-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: drawLine 1.8s cubic-bezier(0.4,0,0.2,1) forwards; }
-.chart-fill { opacity: 0; animation: fadeIn 0.6s ease 1.4s forwards; }
-.chart-ref  { opacity: 0; animation: fadeIn 0.5s ease 1.8s forwards; }
+.chart-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; }
+.chart-fill { opacity: 0; }
+.chart-ref  { opacity: 0; }
+.chart-animate .chart-line { animation: drawLine 1.8s cubic-bezier(0.4,0,0.2,1) forwards; }
+.chart-animate .chart-fill { animation: fadeIn 0.6s ease 1.4s forwards; }
+.chart-animate .chart-ref  { animation: fadeIn 0.5s ease 1.8s forwards; }
 @keyframes drawLine { to { stroke-dashoffset: 0; } }
 @keyframes fadeIn   { to { opacity: 1; } }
 
@@ -463,22 +466,17 @@
     obs.observe(el);
   });
 
-  // Replay chart animation when mockup scrolls into view
+  // Start chart animation only when SVG scrolls into view
   const chartLine = document.querySelector('.chart-line');
-  const chartFill = document.querySelector('.chart-fill');
-  const chartRef  = document.querySelector('.chart-ref');
   if(chartLine) {
+    const svg = chartLine.closest('svg');
     const chartObs = new IntersectionObserver(entries => {
       if(entries[0].isIntersecting) {
-        [chartLine, chartFill, chartRef].forEach(el => {
-          el.style.animation = 'none';
-          el.offsetHeight; // reflow
-          el.style.animation = '';
-        });
-        chartObs.unobserve(entries[0].target);
+        svg.classList.add('chart-animate');
+        chartObs.unobserve(svg);
       }
-    }, { threshold: 0.3 });
-    chartObs.observe(chartLine.closest('svg'));
+    }, { threshold: 0.4 });
+    chartObs.observe(svg);
   }
 </script>
 </body>
