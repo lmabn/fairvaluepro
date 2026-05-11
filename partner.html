@@ -58,11 +58,16 @@ body { background: var(--bg); }
 .usp-text strong { color: var(--text); font-weight: 500; }
 
 /* COMPETITOR TABLE */
-.comp-table-wrap { overflow-x: auto; margin: 2rem 0; scrollbar-width: none; }
-.comp-table-wrap::-webkit-scrollbar { display: none; }
+.comp-table-wrap { overflow-x: auto; margin: 2rem 0; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+.comp-table-wrap::-webkit-scrollbar { height: 6px; }
+.comp-table-wrap::-webkit-scrollbar-track { background: transparent; }
+.comp-table-wrap::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 .comp-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 860px; }
 .comp-table th, .comp-table td { white-space: nowrap; min-width: 120px; }
-.comp-table th:first-child, .comp-table td:first-child { min-width: 200px; white-space: normal; }
+.comp-table th:first-child, .comp-table td:first-child { min-width: 200px; white-space: normal; position: sticky; left: 0; z-index: 1; }
+.comp-table th:first-child { background: var(--bg3); }
+.comp-table td:first-child { background: var(--bg); }
+.comp-table tr:hover td:first-child { background: var(--bg2); }
 .comp-table th { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); background: var(--bg3); }
 .comp-table th.hl { color: var(--neon); }
 .comp-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: middle; }
@@ -155,8 +160,8 @@ body { background: var(--bg); }
   <!-- HERO -->
   <div class="partner-hero">
     <div class="partner-eyebrow">Für Partner & Unterstützer</div>
-    <h1>Das Werkzeug für Anleger,<br>die <em>selbst</em> urteilen wollen.</h1>
-    <p class="lead">LMABN baut eine Plattform für selbstbestimmte Privatanleger im deutschsprachigen Raum. Drei integrierte Werkzeuge — Bewertungs-Kalkulator, Portfolio Tracker, Trading Desk — geben Anlegern dieselben Methoden und Daten in die Hand, die professionelle Analysten nutzen. Vollständig transparent, vollständig steuerbar.</p>
+    <h1>Das Werkzeug für Anleger,<br>die <em>selbst fundiert</em> urteilen wollen.</h1>
+    <p class="lead">LMABN baut eine Plattform für selbstbestimmte Privatanleger im deutschsprachigen Raum. Drei integrierte Werkzeuge — Bewertungs-Kalkulator, Portfolio Tracker, Trading Desk — geben Anlegern dieselben Methoden und Daten in die Hand, die professionelle Analysten nutzen. Vollständig transparent, vollständig steuerbar. Das Ziel: bessere Entscheidungen — und damit langfristig bessere Ergebnisse.</p>
     <div class="values-bar">
       <div class="value-item hl">Bewusstsein</div>
       <div class="value-item hl">Bildung</div>
@@ -325,7 +330,7 @@ body { background: var(--bg); }
         </tbody>
       </table>
     </div>
-    <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Morningstar und TradingView sind starke Tools für ihre Kernaufgabe. Wir ersetzen sie nicht — wir schließen die Lücke: nutzerkontrollierte Bewertung, integriertes Portfolio-Tracking und Entscheidungsdisziplin für den ernsthaften Privatanleger.</p>
+    <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Unser Angebot richtet sich an ernsthafte Privatanleger, die selbst urteilen wollen — nicht an solche, die ein Rating suchen — und bietet daher nutzerkontrollierte Bewertung, integriertes Portfolio-Tracking und Entscheidungsdisziplin.</p>
     <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.5rem;">¹ Für die Nutzung unseres Angebots ist ein Marktdaten-Plan bei einem unserer Partner erforderlich. Die Kosten entstehen direkt beim Partner. Preisangaben der Wettbewerber ca. Stand 05/2025, ohne Gewähr.</p>
 
     <div class="usp-list">
