@@ -120,8 +120,7 @@
     <a href="plaene-beta.html">Pläne</a>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-    <span></span><span></span><span></span>
-  </button>
+    <span></span><span></span><span></span></button>
   <div class="nav-right">
     <a href="plaene-beta.html" class="nav-cta">Pläne ansehen</a>
   </div>
@@ -156,7 +155,7 @@
         <h2>Wir sind ein Bewertungstool — kein Datenprovider.</h2>
         <p>Die meisten Finanztools kaufen Marktdaten-Lizenzen en gros und reichen die Kosten als Abo-Gebühr weiter. Das schafft Lock-in: du bezahlst den Anbieter doppelt — einmal für die Daten, einmal für das Tool.</p>
         <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
-        <p>Dein API-Schlüssel wird in deinem FVP-Account hinterlegt. Datenabrufe laufen direkt zwischen deinem Browser und dem Anbieter — <strong>wir sehen deine Anfragen nicht und speichern keine Marktdaten auf unseren Servern.</strong></p>
+        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) gespeichert. Er verlässt deinen Browser nie — auch nicht zu unseren Servern. <strong>Marktdaten-Anfragen gehen direkt vom Browser an den Anbieter.</strong></p>
       </div>
       <div class="why-visual fade">
         <div style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.2rem;">Datenfluss</div>
@@ -196,8 +195,7 @@
         <div class="step-body">
           <div class="step-title">Plan beim Datenanbieter abschließen</div>
           <div class="step-text">Wähle einen Datenanbieter aus unserer Empfehlungsliste — die Partner-Ankündigungen erfolgen zum Launch. Klicke auf den Registrierungslink und schließe direkt den passenden Plan ab.</div>
-          <span class="step-detail">Dauert: ~2 Minuten · Kreditkarte beim Anbieter erforderlich</span>
-        </div>
+          <span class="step-detail">Dauert: ~2 Minuten · Kreditkarte beim Anbieter erforderlich</span></div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -219,8 +217,7 @@
         <div class="step-body">
           <div class="step-title">Schlüssel in FVP hinterlegen — fertig</div>
           <div class="step-text">Öffne deinen Account und navigiere zum Tab <strong>API-Schlüssel</strong>. Wähle deinen Daten-Partner, füge den Schlüssel ein, klicke Verbinden. Fair Value Pro prüft die Verbindung automatisch. <strong>Ab sofort werden alle Ticker-Anfragen über dein Konto beim Anbieter abgerufen.</strong></div>
-          <span class="step-detail">Dauert: ~1 Minute · Einmalige Einrichtung · Jederzeit wechselbar</span>
-        </div>
+          <span class="step-detail">Dauert: ~1 Minute · Einmalige Einrichtung · Jederzeit wechselbar</span></div>
       </div>
     </div>
   </div>
@@ -239,20 +236,17 @@
         <div class="partner-logo partner-blurred" style="filter:blur(6px); user-select:none; letter-spacing:0.05em; color:var(--text);">████ ██</div>
         <div class="partner-type">Fundamentaldaten · Global</div>
         <div class="partner-desc">Umfangreiche Fundamentaldaten, internationale Abdeckung, einfache API-Integration. Starter-Plan ausreichend für die meisten FVP-Funktionen.</div>
-        <span class="partner-badge recommended">Empfohlen · Bald verfügbar</span>
-      </div>
+        <span class="partner-badge recommended">Empfohlen · Bald verfügbar</span></div>
       <div class="partner-card">
         <div class="partner-logo partner-blurred" style="filter:blur(6px); user-select:none; letter-spacing:0.05em; color:var(--text);">██████ ████</div>
         <div class="partner-type">Marktdaten · US &amp; International</div>
         <div class="partner-desc">Breite Marktdatenabdeckung, Echtzeit-Kurse, kostengünstiger Einstieg. Für internationale Titel je nach Plan eingeschränkt.</div>
-        <span class="partner-badge available">Bald verfügbar</span>
-      </div>
+        <span class="partner-badge available">Bald verfügbar</span></div>
       <div class="partner-card">
         <div class="partner-logo partner-blurred" style="filter:blur(6px); user-select:none; letter-spacing:0.05em; color:var(--text);">███ ████</div>
         <div class="partner-type">Weitere Anbieter</div>
         <div class="partner-desc">Weitere Datenanbieter werden sukzessive ergänzt und freigeschaltet. Auf Anfrage: Onboarding-Support für bestehende API-Zugänge.</div>
-        <span class="partner-badge available">In Vorbereitung</span>
-      </div>
+        <span class="partner-badge available">In Vorbereitung</span></div>
     </div>
     <p class="partner-note fade">Die Wahl des Anbieters beeinflusst Datenbreite, Aktualität und Kosten. FVP funktioniert mit allen gelisteten Anbietern — die Berechnungslogik bleibt dieselbe.</p>
   </div>
@@ -275,7 +269,7 @@
 
     <details class="faq-item">
       <summary>Sieht FVP meine Marktdaten?<span class="faq-icon">+</span></summary>
-      <p>Nein. Datenabrufe laufen direkt zwischen deinem Browser und dem Datenanbieter. FVP sieht welchen Ticker du anfragst — nicht die Rohdaten die zurückkommen. Wir speichern keine Kurse, Bilanzdaten oder Cashflow-Zahlen auf unseren Servern. Dein API-Schlüssel wird verschlüsselt in deinem Account gespeichert.</p>
+      <p>Nein. Datenabrufe laufen direkt zwischen deinem Browser und dem Datenanbieter. FVP sieht welchen Ticker du anfragst — nicht die Rohdaten die zurückkommen. Wir speichern keine Kurse, Bilanzdaten oder Cashflow-Zahlen auf unseren Servern. Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em;">localStorage</code>) gespeichert — er verlässt deinen Browser nie.</p>
     </details>
 
     <details class="faq-item">
@@ -302,16 +296,14 @@
     <h2 class="fade">Bereit?<br><span class="n">Jetzt Daten-Quelle einrichten.</span></h2>
     <p class="fade">Melde dich an, öffne deinen Account und folge den Schritten unter API-Schlüssel. Dauert fünf Minuten.</p>
     <a href="plaene-beta.html" class="btn-neon fade">Account erstellen →</a>
-    <span class="fade" style="display:block; margin-top:1rem; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em;">Pro-Account kostenlos · Datenanbieter separat</span>
-  </div>
+    <span class="fade" style="display:block; margin-top:1rem; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em;">Pro-Account kostenlos · Datenanbieter separat</span></div>
 </section>
 
 <footer>
   <div class="footer-logo">LMABN<span class="dot">.</span></div>
   <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Berechnungen basieren auf nutzerdefinierten Annahmen und dienen ausschließlich zur persönlichen Information.</p>
   <div style="display:flex; gap:1.5rem;">
-    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Partner</a>
-    <span style="color:var(--border2); font-size:0.6rem;">|</span>
+    <a href="partner.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Partner</a>
     <a href="impressum.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Impressum</a>
     <a href="datenschutz.html" style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none;">Datenschutz</a>
   </div>
