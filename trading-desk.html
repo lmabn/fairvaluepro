@@ -16,6 +16,34 @@
   --td-dark:   #2563eb;
 }
 
+/* Light theme — darker blue for readability on cream */
+:root[data-theme="light"] {
+  --td:        #3b82d4;
+  --td-dim:    rgba(59,130,212,0.10);
+  --td-border: rgba(59,130,212,0.40);
+  --td-dark:   #1d4ed8;
+}
+
+/* The product mockup keeps its own dark theme — it depicts the actual UI */
+:root[data-theme="light"] .mockup {
+  --bg:      #080e0b;
+  --bg2:     #0b1410;
+  --bg3:     #0f1a14;
+  --bg4:     #142019;
+  --neon:        #5b9cf6;
+  --neon-dim:    rgba(91,156,246,0.09);
+  --neon-border: rgba(91,156,246,0.25);
+  --text:    #c8ddd2;
+  --text-2:  #6a8c7a;
+  --text-3:  #344d3e;
+  --border:  rgba(91,156,246,0.07);
+  --border2: rgba(91,156,246,0.12);
+  --td:        #5b9cf6;
+  --td-dim:    rgba(91,156,246,0.08);
+  --td-border: rgba(91,156,246,0.25);
+  --td-dark:   #2563eb;
+}
+
 /* NAV */
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-links a:hover, .nav-links a.active { color: var(--neon); }
