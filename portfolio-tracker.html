@@ -15,6 +15,32 @@
   --pt-border: rgba(200,255,0,0.22);
 }
 
+/* Light theme — darker lime for readability on cream */
+:root[data-theme="light"] {
+  --pt:        #7a9100;
+  --pt-dim:    rgba(122,145,0,0.10);
+  --pt-border: rgba(122,145,0,0.40);
+}
+
+/* The product mockup keeps its own dark theme — it depicts the actual UI */
+:root[data-theme="light"] .mockup {
+  --bg:      #080e0b;
+  --bg2:     #0b1410;
+  --bg3:     #0f1a14;
+  --bg4:     #142019;
+  --neon:        #c8ff00;
+  --neon-dim:    rgba(200,255,0,0.09);
+  --neon-border: rgba(200,255,0,0.25);
+  --text:    #c8ddd2;
+  --text-2:  #6a8c7a;
+  --text-3:  #344d3e;
+  --border:  rgba(200,255,0,0.07);
+  --border2: rgba(200,255,0,0.12);
+  --pt:        #c8ff00;
+  --pt-dim:    rgba(200,255,0,0.08);
+  --pt-border: rgba(200,255,0,0.22);
+}
+
 /* NAV */
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-links a:hover, .nav-links a.active { color: var(--neon); }
@@ -29,7 +55,7 @@
 .plan-pill { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; border: 1px solid var(--border2); color: var(--text-3); }
 .plan-pills { display: flex; gap: 0.6rem; justify-content: center; margin-bottom: 3.5rem; }
 .plan-pill.premium { border-color: var(--pt-border); color: var(--pt); background: var(--pt-dim); }
-.btn-pt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--pt); color: #0a0e06; border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+.btn-pt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--pt); color: var(--bg); border: none; padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
 .btn-pt:hover { opacity: 0.88; transform: translateY(-1px); }
 .btn-outline-pt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--pt); border: 1px solid var(--pt-border); padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; display: inline-block; transition: background 0.2s; }
 .btn-outline-pt:hover { background: var(--pt-dim); }
