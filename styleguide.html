@@ -131,20 +131,20 @@
   .sg-grid-3, .sg-grid-4, .sg-grid-5 { grid-template-columns: 1fr 1fr; }
 }
 
-/* THEME TOGGLE */
-.theme-toggle {
+/* PILL TOGGLES */
+.toggles { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.theme-toggle, .product-toggle {
   display: inline-flex;
   background: var(--bg2);
   border: 1px solid var(--border2);
   border-radius: 999px;
   padding: 3px;
-  margin-bottom: 3rem;
   font-family: var(--mono);
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.theme-toggle button {
+.theme-toggle button, .product-toggle button {
   background: transparent;
   color: var(--text-3);
   border: none;
@@ -156,7 +156,7 @@
   font-size: inherit;
   transition: background 0.2s, color 0.2s;
 }
-.theme-toggle button.active {
+.theme-toggle button.active, .product-toggle button.active {
   background: var(--neon-dim);
   color: var(--neon);
 }
@@ -166,7 +166,7 @@ body, nav, .sg-card, .hero-preview, .do, .dont, .icon-cell, .border-demo, .radiu
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-/* LIGHT MODE — komplettes Theme-Override */
+/* LIGHT MODE — komplettes Theme-Override (Default: FVP) */
 body[data-theme="light"] {
   --bg:      #eef2ea;
   --bg2:     #e3e9df;
@@ -186,46 +186,107 @@ body[data-theme="light"] {
 }
 body[data-theme="light"] nav { background: rgba(238,242,234,0.95); }
 body[data-theme="light"] .sg-section-title::after { background: var(--border2); }
+
+/* PRODUCT THEMES — Akzent-Overrides */
+body[data-product="pt"] {
+  --neon:        #c8ff00;
+  --neon-dim:    rgba(200,255,0,0.09);
+  --neon-border: rgba(200,255,0,0.25);
+  --border:  rgba(200,255,0,0.07);
+  --border2: rgba(200,255,0,0.12);
+}
+body[data-product="td"] {
+  --neon:        #5b9cf6;
+  --neon-dim:    rgba(91,156,246,0.09);
+  --neon-border: rgba(91,156,246,0.25);
+  --border:  rgba(91,156,246,0.07);
+  --border2: rgba(91,156,246,0.12);
+}
+body[data-theme="light"][data-product="pt"] {
+  --neon:        #7a9100;
+  --neon-dim:    rgba(122,145,0,0.10);
+  --neon-border: rgba(122,145,0,0.35);
+  --border:  rgba(122,145,0,0.14);
+  --border2: rgba(122,145,0,0.22);
+}
+body[data-theme="light"][data-product="td"] {
+  --neon:        #3b82d4;
+  --neon-dim:    rgba(59,130,212,0.10);
+  --neon-border: rgba(59,130,212,0.35);
+  --border:  rgba(59,130,212,0.14);
+  --border2: rgba(59,130,212,0.22);
+}
+
+/* Product-aware show/hide helpers */
+[data-product-show], [data-product-text] { display: none; }
+body[data-product="fvp"] [data-product-show="fvp"],
+body[data-product="pt"]  [data-product-show="pt"],
+body[data-product="td"]  [data-product-show="td"]  { display: block; }
+body[data-product="fvp"] [data-product-text="fvp"],
+body[data-product="pt"]  [data-product-text="pt"],
+body[data-product="td"]  [data-product-text="td"]  { display: inline; }
 </style>
 </head>
-<body>
+<body data-product="fvp">
+<script>
+  (function(){
+    const p = localStorage.getItem('sg-product');
+    const t = localStorage.getItem('sg-theme');
+    if (p && p !== 'fvp') document.body.setAttribute('data-product', p);
+    if (t === 'light') document.body.setAttribute('data-theme', 'light');
+  })();
+</script>
 
 <nav>
   <a href="index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
-  <span class="nav-badge">Brand Styleguide · Fair Value Pro · v1.0</span>
+  <span class="nav-badge">Brand Styleguide · <span data-product-text="fvp">Fair Value Pro</span><span data-product-text="pt">Portfolio Tracker</span><span data-product-text="td">Trading Desk</span> · v1.0</span>
 </nav>
 
 <div class="wrap page">
 
-  <!-- THEME TOGGLE -->
-  <div class="theme-toggle" role="tablist" aria-label="Theme">
-    <button type="button" data-theme-set="dark" class="active" role="tab" aria-selected="true">Dark</button>
-    <button type="button" data-theme-set="light" role="tab" aria-selected="false">Light</button>
+  <!-- TOGGLES -->
+  <div class="toggles">
+    <div class="theme-toggle" role="tablist" aria-label="Theme">
+      <button type="button" data-theme-set="dark" class="active" role="tab" aria-selected="true">Dark</button>
+      <button type="button" data-theme-set="light" role="tab" aria-selected="false">Light</button>
+    </div>
+    <div class="product-toggle" role="tablist" aria-label="Produkt">
+      <button type="button" data-product-set="fvp" class="active" role="tab" aria-selected="true">Fair Value Pro</button>
+      <button type="button" data-product-set="pt"  role="tab" aria-selected="false">Portfolio Tracker</button>
+      <button type="button" data-product-set="td"  role="tab" aria-selected="false">Trading Desk</button>
+    </div>
   </div>
 
 
   <!-- BRAND -->
   <div class="sg-section">
     <div class="sg-section-title">01 — Marke</div>
-    <h2>Fair Value Pro</h2>
-    <p class="sg-desc">Fair Value Pro ist ein Bewertungstool für Aktien — kein Finanzprodukt, kein Berater. Die Marke steht für Transparenz, Kontrolle und fundierte Eigenverantwortung. Der Tonfall ist sachlich-direkt, ohne Superlative und ohne Versprechen, die nicht eingehalten werden können.</p>
+    <h2><span data-product-text="fvp">Fair Value Pro</span><span data-product-text="pt">Portfolio Tracker</span><span data-product-text="td">Trading Desk</span></h2>
+
+    <p class="sg-desc" data-product-show="fvp">Fair Value Pro ist ein Bewertungstool für Aktien — kein Finanzprodukt, kein Berater. Die Marke steht für Transparenz, Kontrolle und fundierte Eigenverantwortung. Der Tonfall ist sachlich-direkt, ohne Superlative und ohne Versprechen, die nicht eingehalten werden können.</p>
+    <p class="sg-desc" data-product-show="pt">Portfolio Tracker hält deine Investments im Blick — mehrere Depots, cashflowbereinigte Renditen, historische Charts. Die Marke steht für Klarheit über die eigene Performance, ohne Schönfärberei und ohne versteckte Annahmen.</p>
+    <p class="sg-desc" data-product-show="td">Trading Desk gibt dir Werkzeuge für bessere Kaufentscheidungen — Recovery-Analyse, Zinsrechner, Rebalancing, Watchlist und Trade-Journal. Die Marke steht für Disziplin und entscheidungsstarke Klarheit, ohne Hype und ohne Kaufempfehlungen.</p>
 
     <div style="margin-bottom:2rem;">
       <div class="sg-card">
-        <div class="logo-demo"><span class="logo-text">Fair Value Pro<span class="dot">.</span></span></div>
+        <div class="logo-demo"><span class="logo-text"><span data-product-text="fvp">Fair Value Pro</span><span data-product-text="pt">Portfolio Tracker</span><span data-product-text="td">Trading Desk</span><span class="dot">.</span></span></div>
         <div class="sg-card-label">Primäres Wortlogo</div>
-        <div class="sg-card-value">Manrope · 700 · + grüner Punkt</div>
+        <div class="sg-card-value">Manrope · 700 · + farbiger Punkt</div>
       </div>
     </div>
 
     <div class="do-dont">
       <div class="do">
         <div class="do-label">Richtig</div>
-        <p>Fair Value Pro. / FVP / Das Tool.<br>Sachlich, werkzeugbetont, ohne Anlageberatungs-Versprechen.</p>
+        <p data-product-show="fvp">Fair Value Pro. / FVP / Das Tool.<br>Sachlich, werkzeugbetont, ohne Anlageberatungs-Versprechen.</p>
+        <p data-product-show="pt">Portfolio Tracker. / Tracker.<br>Beobachtend, ehrlich, ohne Performance-Versprechen.</p>
+        <p data-product-show="td">Trading Desk. / Decision Desk.<br>Werkzeug-orientiert, disziplinbetont, ohne Kaufrat.</p>
       </div>
       <div class="dont">
         <div class="dont-label">Falsch</div>
-        <p>„Schlägt den Markt" / „Garantierter Gewinn" / „Die beste Aktie finden"<br>Keine Renditeversprechen, keine Superlative.</p>
+        <p data-product-show="fvp">„Schlägt den Markt" / „Garantierter Gewinn" / „Die beste Aktie finden"<br>Keine Renditeversprechen, keine Superlative.</p>
+        <p data-product-show="pt">„Garantierte Outperformance" / „Schlag den Index" / „Endlich Klarheit über alle Trades"<br>Keine Performance-Versprechen, keine Übertreibung.</p>
+        <p data-product-show="td">„Triff die richtige Aktie" / „Sicherer Trade" / „Kaufempfehlung der Woche"<br>Keine Kaufratschläge, keine Sicherheits-Versprechen.</p>
       </div>
     </div>
   </div>
@@ -235,7 +296,9 @@ body[data-theme="light"] .sg-section-title::after { background: var(--border2); 
   <div class="sg-section">
     <div class="sg-section-title">02 — Farben</div>
     <h2>Farbpalette</h2>
-    <p class="sg-desc">Das Farbschema ist monochromatisch grün auf tiefem Dunkel-Grün. Neon-Grün ist die einzige Signalfarbe — sie markiert Aktionen, Werte und Highlights. Alle anderen Töne sind Abstufungen desselben Grün-Grau-Spektrums.</p>
+    <p class="sg-desc" data-product-show="fvp">Das Farbschema ist monochromatisch grün auf tiefem Dunkel-Grün. Neon-Grün ist die einzige Signalfarbe — sie markiert Aktionen, Werte und Highlights. Alle anderen Töne sind Abstufungen desselben Grün-Grau-Spektrums.</p>
+    <p class="sg-desc" data-product-show="pt">Lime-Akzent auf demselben tiefen Dunkel-Grün. Die warme Lime-Note hebt Portfolio-Erträge und Performance-Highlights hervor — bewusst abgegrenzt vom Bewertungs-Grün des FVP.</p>
+    <p class="sg-desc" data-product-show="td">Blauer Akzent auf demselben tiefen Dunkel-Grün. Das kühle Blau signalisiert Werkzeug-Modus und entscheidungsstarke Klarheit — abgesetzt von Bewertung (FVP) und Performance (PT).</p>
 
     <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Hintergründe</p>
     <div class="sg-grid sg-grid-4" style="margin-bottom:2rem;">
@@ -261,22 +324,64 @@ body[data-theme="light"] .sg-section-title::after { background: var(--border2); 
       </div>
     </div>
 
-    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Primärfarben — Grün-Spektrum</p>
-    <div class="sg-grid sg-grid-3" style="margin-bottom:2rem;">
-      <div>
-        <div class="color-swatch" style="background:#00ff87;"><span class="hex" style="color:#080e0b;">#00ff87</span></div>
-        <div class="sg-card-label">--neon · Primär-Akzent</div>
-        <div class="sg-card-value">CTAs · Highlights · Logo-Punkt</div>
+    <div data-product-show="fvp">
+      <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Primärfarben — Grün-Spektrum</p>
+      <div class="sg-grid sg-grid-3" style="margin-bottom:2rem;">
+        <div>
+          <div class="color-swatch" style="background:#00ff87;"><span class="hex" style="color:#080e0b;">#00ff87</span></div>
+          <div class="sg-card-label">--neon · Primär-Akzent</div>
+          <div class="sg-card-value">CTAs · Highlights · Logo-Punkt</div>
+        </div>
+        <div>
+          <div class="color-swatch" style="background:#00c46a;"><span class="hex" style="color:#080e0b;">#00c46a</span></div>
+          <div class="sg-card-label">--mid · Sekundär-Akzent</div>
+          <div class="sg-card-value">Secondary buttons · Hover</div>
+        </div>
+        <div>
+          <div class="color-swatch" style="background:#2a6649;"><span class="hex" style="color:#c8ddd2;">#2a6649</span></div>
+          <div class="sg-card-label">--muted · Gedämpft</div>
+          <div class="sg-card-value">Zurückhaltende Elemente</div>
+        </div>
       </div>
-      <div>
-        <div class="color-swatch" style="background:#00c46a;"><span class="hex" style="color:#080e0b;">#00c46a</span></div>
-        <div class="sg-card-label">--mid · Sekundär-Akzent</div>
-        <div class="sg-card-value">Secondary buttons · Hover</div>
+    </div>
+    <div data-product-show="pt">
+      <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Primärfarben — Lime-Spektrum</p>
+      <div class="sg-grid sg-grid-3" style="margin-bottom:2rem;">
+        <div>
+          <div class="color-swatch" style="background:#c8ff00;"><span class="hex" style="color:#080e0b;">#c8ff00</span></div>
+          <div class="sg-card-label">--neon · Primär-Akzent</div>
+          <div class="sg-card-value">CTAs · Performance · Logo-Punkt</div>
+        </div>
+        <div>
+          <div class="color-swatch" style="background:#a8d600;"><span class="hex" style="color:#080e0b;">#a8d600</span></div>
+          <div class="sg-card-label">--mid · Sekundär-Akzent</div>
+          <div class="sg-card-value">Secondary buttons · Hover</div>
+        </div>
+        <div>
+          <div class="color-swatch" style="background:#5f7300;"><span class="hex" style="color:#eaffae;">#5f7300</span></div>
+          <div class="sg-card-label">--muted · Gedämpft</div>
+          <div class="sg-card-value">Zurückhaltende Elemente</div>
+        </div>
       </div>
-      <div>
-        <div class="color-swatch" style="background:#2a6649;"><span class="hex" style="color:#c8ddd2;">#2a6649</span></div>
-        <div class="sg-card-label">--muted · Gedämpft</div>
-        <div class="sg-card-value">Zurückhaltende Elemente</div>
+    </div>
+    <div data-product-show="td">
+      <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Primärfarben — Blau-Spektrum</p>
+      <div class="sg-grid sg-grid-3" style="margin-bottom:2rem;">
+        <div>
+          <div class="color-swatch" style="background:#5b9cf6;"><span class="hex" style="color:#080e0b;">#5b9cf6</span></div>
+          <div class="sg-card-label">--neon · Primär-Akzent</div>
+          <div class="sg-card-value">CTAs · Decision-Highlights · Logo-Punkt</div>
+        </div>
+        <div>
+          <div class="color-swatch" style="background:#2563eb;"><span class="hex" style="color:#eaf2ff;">#2563eb</span></div>
+          <div class="sg-card-label">--mid · Sekundär-Akzent</div>
+          <div class="sg-card-value">Secondary buttons · Hover</div>
+        </div>
+        <div>
+          <div class="color-swatch" style="background:#1e3a8a;"><span class="hex" style="color:#cfdbff;">#1e3a8a</span></div>
+          <div class="sg-card-label">--muted · Gedämpft</div>
+          <div class="sg-card-value">Zurückhaltende Elemente</div>
+        </div>
       </div>
     </div>
 
@@ -301,16 +406,16 @@ body[data-theme="light"] .sg-section-title::after { background: var(--border2); 
 
     <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Borders & Overlays</p>
     <div class="sg-grid sg-grid-2">
-      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.07);">
-        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--border · rgba(0,255,135,0.07) · Standard-Trennlinie</span>
+      <div class="border-demo" style="border:1px solid var(--border);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--border · Akzent-Alpha 0.07 · Standard-Trennlinie</span>
       </div>
-      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.12);">
-        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--border2 · rgba(0,255,135,0.12) · Betonte Trennlinie</span>
+      <div class="border-demo" style="border:1px solid var(--border2);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--border2 · Akzent-Alpha 0.12 · Betonte Trennlinie</span>
       </div>
-      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.25);">
-        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--neon-border · rgba(0,255,135,0.25) · Aktive Elemente</span>
+      <div class="border-demo" style="border:1px solid var(--neon-border);">
+        <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-3);">--neon-border · Akzent-Alpha 0.25 · Aktive Elemente</span>
       </div>
-      <div class="border-demo" style="border:1px solid rgba(0,255,135,0.25); background:rgba(0,255,135,0.09);">
+      <div class="border-demo" style="border:1px solid var(--neon-border); background:var(--neon-dim);">
         <span style="font-family:var(--mono); font-size:0.7rem; color:var(--neon);">--neon-dim · Hover / Focus-Fläche</span>
       </div>
     </div>
@@ -595,14 +700,32 @@ body[data-theme="light"] .sg-section-title::after { background: var(--border2); 
     <p class="sg-desc">Das Hero-Muster kombiniert: Eyebrow-Tag (Mono) → H1 (Display, weiß + Neon-Akzent) → Subtext (text-2) → CTA-Buttons → optionaler Ticker.</p>
 
     <div class="hero-preview">
-      <div style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2); margin-bottom:1.2rem;">Aktienanalyse · Fundamental · Transparent</div>
-      <div style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1.2rem; color:var(--text);">
-        <span style="color:var(--neon);">Das Tool.</span> Für deine Fundamentalanalyse.
+      <div style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-2); margin-bottom:1.2rem;">
+        <span data-product-text="fvp">Aktienanalyse · Fundamental · Transparent</span>
+        <span data-product-text="pt">Portfolio · Performance · Verlauf</span>
+        <span data-product-text="td">Entscheidung · Disziplin · Werkzeug</span>
       </div>
-      <p style="font-size:1rem; color:var(--text-2); max-width:500px; line-height:1.75; margin-bottom:2rem;">Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden.</p>
+      <div style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1.2rem; color:var(--text);">
+        <span data-product-text="fvp"><span style="color:var(--neon);">Das Tool.</span> Für deine Fundamentalanalyse.</span>
+        <span data-product-text="pt"><span style="color:var(--neon);">Verfolge.</span> Über alle Depots hinweg.</span>
+        <span data-product-text="td"><span style="color:var(--neon);">Entscheide.</span> Vor dem Kauf, nicht danach.</span>
+      </div>
+      <p style="font-size:1rem; color:var(--text-2); max-width:500px; line-height:1.75; margin-bottom:2rem;">
+        <span data-product-text="fvp">Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden.</span>
+        <span data-product-text="pt">Cashflowbereinigte Renditen, historischer Chart, Fair-Value-Verdict pro Position — direkt aus FVP.</span>
+        <span data-product-text="td">Recovery-Analyse, Zinsrechner, Watchlist und Trade-Journal mit KI-Bias-Coach — Disziplin vor dem Trade.</span>
+      </p>
       <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-        <button class="btn-neon">Kostenlos testen →</button>
-        <button class="btn-ghost">Warum das wichtig ist</button>
+        <button class="btn-neon">
+          <span data-product-text="fvp">Kostenlos testen →</span>
+          <span data-product-text="pt">Portfolio anzeigen →</span>
+          <span data-product-text="td">Module ansehen →</span>
+        </button>
+        <button class="btn-ghost">
+          <span data-product-text="fvp">Warum das wichtig ist</span>
+          <span data-product-text="pt">So funktioniert es</span>
+          <span data-product-text="td">Was drin steckt</span>
+        </button>
       </div>
     </div>
   </div>
@@ -618,30 +741,46 @@ body[data-theme="light"] .sg-section-title::after { background: var(--border2); 
 <script>
   (function(){
     const body = document.body;
-    const stored = localStorage.getItem('sg-theme');
-    if (stored === 'light') body.setAttribute('data-theme', 'light');
 
+    // Default product: fvp (set immediately so [data-product-show] resolves on first paint)
+    const storedProduct = localStorage.getItem('sg-product') || 'fvp';
+    body.setAttribute('data-product', storedProduct);
+
+    const storedTheme = localStorage.getItem('sg-theme');
+    if (storedTheme === 'light') body.setAttribute('data-theme', 'light');
+
+    function syncButtons(selector, attr, value) {
+      document.querySelectorAll(selector).forEach(b => {
+        const isActive = b.dataset[attr] === value;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+
+    // Theme toggle
     document.querySelectorAll('.theme-toggle button').forEach(btn => {
       btn.addEventListener('click', () => {
         const theme = btn.dataset.themeSet;
         if (theme === 'light') body.setAttribute('data-theme', 'light');
         else body.removeAttribute('data-theme');
         localStorage.setItem('sg-theme', theme);
-        document.querySelectorAll('.theme-toggle button').forEach(b => {
-          const isActive = b.dataset.themeSet === theme;
-          b.classList.toggle('active', isActive);
-          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
+        syncButtons('.theme-toggle button', 'themeSet', theme);
       });
     });
 
-    if (stored === 'light') {
-      document.querySelectorAll('.theme-toggle button').forEach(b => {
-        const isActive = b.dataset.themeSet === 'light';
-        b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    // Product toggle
+    document.querySelectorAll('.product-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const product = btn.dataset.productSet;
+        body.setAttribute('data-product', product);
+        localStorage.setItem('sg-product', product);
+        syncButtons('.product-toggle button', 'productSet', product);
       });
-    }
+    });
+
+    // Initial sync from persisted state
+    if (storedTheme === 'light') syncButtons('.theme-toggle button', 'themeSet', 'light');
+    syncButtons('.product-toggle button', 'productSet', storedProduct);
   })();
 </script>
 
