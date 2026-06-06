@@ -39,6 +39,10 @@
   --border:  rgba(0,255,135,0.07);
   --border2: rgba(0,255,135,0.12);
 
+  /* Sub-brand accents */
+  --pt-accent: #c8ff00;
+  --td-accent: #5b9cf6;
+
   --display: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --sans:    'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
@@ -281,6 +285,10 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
 
   --border:  rgba(20,207,119,0.16);
   --border2: rgba(20,207,119,0.26);
+
+  /* Sub-brand accents — darker variants for light-mode readability */
+  --pt-accent: #7a9100;
+  --td-accent: #3b82d4;
 }
 :root[data-theme="light"] nav {
   background: rgba(238,242,234,0.92);
@@ -292,17 +300,15 @@ body, nav, footer { transition: background-color 0.25s ease, color 0.25s ease, b
 /* Theme FAB */
 .theme-fab {
   position: fixed;
-  bottom: 1.2rem;
-  right: 1.2rem;
-  width: 42px;
-  height: 42px;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: var(--bg2);
   border: 1px solid var(--border2);
   color: var(--text-2);
-  font-family: var(--mono);
-  font-size: 0.95rem;
-  line-height: 1;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -312,6 +318,7 @@ body, nav, footer { transition: background-color 0.25s ease, color 0.25s ease, b
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+.theme-fab svg { width: 22px; height: 22px; display: block; }
 .theme-fab:hover {
   background: var(--neon-dim);
   color: var(--neon);
@@ -319,5 +326,6 @@ body, nav, footer { transition: background-color 0.25s ease, color 0.25s ease, b
   transform: translateY(-2px);
 }
 @media (max-width: 480px) {
-  .theme-fab { bottom: 0.9rem; right: 0.9rem; width: 38px; height: 38px; }
+  .theme-fab { bottom: 1rem; right: 1rem; width: 46px; height: 46px; }
+  .theme-fab svg { width: 20px; height: 20px; }
 }
