@@ -263,9 +263,9 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
 /* ── Theme: Light Mode Override (MVP) ── */
 :root[data-theme="light"] {
   --bg:      #eef2ea;
-  --bg2:     #e3e9df;
-  --bg3:     #d6dcd2;
-  --bg4:     #c5cdc0;
+  --bg2:     #e7eedd;
+  --bg3:     #ebf8e3;
+  --bg4:     #d8e4c6;
 
   --neon:        #14cf77;
   --neon-dim:    rgba(20,207,119,0.10);
