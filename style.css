@@ -293,6 +293,12 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
 :root[data-theme="light"] nav {
   background: rgba(238,242,234,0.92);
 }
+:root[data-theme="light"] .nav-dropdown {
+  background: rgba(238,242,234,0.98);
+}
+:root[data-theme="light"] .nav-mobile-menu {
+  background: rgba(238,242,234,0.98);
+}
 
 /* Smooth theme transitions on top-level surfaces */
 body, nav, footer { transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease; }
