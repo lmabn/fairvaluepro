@@ -130,16 +130,78 @@
 @media(max-width: 480px) {
   .sg-grid-3, .sg-grid-4, .sg-grid-5 { grid-template-columns: 1fr 1fr; }
 }
+
+/* THEME TOGGLE */
+.theme-toggle {
+  display: inline-flex;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 3rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.theme-toggle button {
+  background: transparent;
+  color: var(--text-3);
+  border: none;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  cursor: pointer;
+  letter-spacing: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle button.active {
+  background: var(--neon-dim);
+  color: var(--neon);
+}
+
+/* Smooth theme transitions */
+body, nav, .sg-card, .hero-preview, .do, .dont, .icon-cell, .border-demo, .radius-demo, .input-demo, footer {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* LIGHT MODE — komplettes Theme-Override */
+body[data-theme="light"] {
+  --bg:      #eef2ea;
+  --bg2:     #e3e9df;
+  --bg3:     #d6dcd2;
+  --bg4:     #c5cdc0;
+
+  --neon:        #00a85a;
+  --neon-dim:    rgba(0,168,90,0.10);
+  --neon-border: rgba(0,168,90,0.35);
+
+  --text:    #080e0b;
+  --text-2:  #4a6258;
+  --text-3:  #8aa093;
+
+  --border:  rgba(0,168,90,0.14);
+  --border2: rgba(0,168,90,0.22);
+}
+body[data-theme="light"] nav { background: rgba(238,242,234,0.95); }
+body[data-theme="light"] .sg-section-title::after { background: var(--border2); }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Fair Value Pro<span class="dot">.</span></a>
+  <a href="index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
   <span class="nav-badge">Brand Styleguide · v1.0</span>
 </nav>
 
 <div class="wrap page">
+
+  <!-- THEME TOGGLE -->
+  <div class="theme-toggle" role="tablist" aria-label="Theme">
+    <button type="button" data-theme-set="dark" class="active" role="tab" aria-selected="true">Dark</button>
+    <button type="button" data-theme-set="light" role="tab" aria-selected="false">Light</button>
+  </div>
 
 
   <!-- BRAND -->
@@ -154,10 +216,10 @@
         <div class="sg-card-label">Primäres Wortlogo</div>
         <div class="sg-card-value">Manrope · 700 · + grüner Punkt</div>
       </div>
-      <div class="sg-card" style="background:#fff;">
-        <div class="logo-demo"><span class="logo-text" style="color:#080e0b;">Fair Value Pro<span style="color:#00ff87;">.</span></span></div>
-        <div class="sg-card-label" style="color:#888;">Auf hellem Hintergrund (nicht empfohlen)</div>
-        <div class="sg-card-value" style="color:#aaa;">Nur wenn zwingend nötig</div>
+      <div class="sg-card" style="background:#eef2ea;">
+        <div class="logo-demo"><span class="logo-text" style="color:#080e0b;">Fair Value Pro<span style="color:#00a85a;">.</span></span></div>
+        <div class="sg-card-label" style="color:#4a6258;">Helle Variante</div>
+        <div class="sg-card-value" style="color:#8aa093;">Manrope · 700 · gedämpfter grüner Punkt (#00a85a)</div>
       </div>
     </div>
 
@@ -551,103 +613,42 @@
   </div>
 
 
-  <!-- LIGHT MODE -->
-  <div class="sg-section">
-    <div class="sg-section-title">10 — Helle Variante</div>
-    <h2>Light Mode</h2>
-    <p class="sg-desc">Für Drucksachen, Onboarding-Materialien und helle Kontexte (Pitch-Decks, Slides, Tutorials). Dunkler Primärtext auf cremefarbenem Untergrund, gedämpftes Akzentgrün (--mid statt --neon) für besseren Kontrast.</p>
-
-    <!-- Primary light wordmark -->
-    <div style="background:#eef2ea; border:1px solid #d6dcd2; border-radius:6px; padding:3.5rem 2.5rem; margin-bottom:1rem;">
-      <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:1rem;">
-        <div style="width:54px; height:54px; background:#080e0b; border-radius:8px; display:flex; align-items:center; justify-content:center;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00c46a" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="19" r="2" fill="#00c46a"/><line x1="5" y1="19" x2="19" y2="5"/><circle cx="19" cy="5" r="2" fill="#00c46a"/></svg>
-        </div>
-        <span style="font-family:var(--display); font-size:clamp(2rem,5vw,3rem); font-weight:700; letter-spacing:-0.02em; color:#080e0b;">Fair Value Pro<span style="color:#00c46a;">.</span></span>
-      </div>
-      <div style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#586d62; padding-left:66px;">Fair Value Pro · Portfolio Tracker · Trading Desk</div>
-    </div>
-    <p style="text-align:center; font-family:var(--mono); font-size:0.65rem; color:var(--text-3); letter-spacing:0.08em; margin-bottom:3rem;">Primäre Markenidentität — helle Variante</p>
-
-    <!-- Product line on light -->
-    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Produktlinie</p>
-    <div class="sg-grid sg-grid-3" style="margin-bottom:3rem;">
-      <div style="background:#eef2ea; border:1px solid #d6dcd2; border-radius:6px; padding:1.4rem; display:flex; align-items:center; gap:1rem;">
-        <div style="width:38px; height:38px; background:#080e0b; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c46a" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="19" r="1.8" fill="#00c46a"/><line x1="5" y1="19" x2="19" y2="5"/><circle cx="19" cy="5" r="1.8" fill="#00c46a"/></svg>
-        </div>
-        <div>
-          <div style="font-family:var(--mono); font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:#00c46a;">FVP</div>
-          <div style="font-family:var(--display); font-size:0.95rem; font-weight:700; color:#080e0b; letter-spacing:-0.01em;">Fair Value Pro</div>
-        </div>
-      </div>
-      <div style="background:#eef2ea; border:1px solid #d6dcd2; border-radius:6px; padding:1.4rem; display:flex; align-items:center; gap:1rem;">
-        <div style="width:38px; height:38px; background:#080e0b; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8c700" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="19" r="1.8" fill="#a8c700"/><line x1="5" y1="19" x2="19" y2="5"/><circle cx="19" cy="5" r="1.8" fill="#a8c700"/></svg>
-        </div>
-        <div>
-          <div style="font-family:var(--mono); font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:#7a9100;">PT</div>
-          <div style="font-family:var(--display); font-size:0.95rem; font-weight:700; color:#080e0b; letter-spacing:-0.01em;">Portfolio Tracker</div>
-        </div>
-      </div>
-      <div style="background:#eef2ea; border:1px solid #d6dcd2; border-radius:6px; padding:1.4rem; display:flex; align-items:center; gap:1rem;">
-        <div style="width:38px; height:38px; background:#080e0b; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b9cf6" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="19" r="1.8" fill="#5b9cf6"/><line x1="5" y1="19" x2="19" y2="5"/><circle cx="19" cy="5" r="1.8" fill="#5b9cf6"/></svg>
-        </div>
-        <div>
-          <div style="font-family:var(--mono); font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:#5b9cf6;">TD</div>
-          <div style="font-family:var(--display); font-size:0.95rem; font-weight:700; color:#080e0b; letter-spacing:-0.01em;">Trading Desk</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Light-mode color tokens -->
-    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Farb-Tokens — Helle Variante</p>
-    <div class="sg-grid sg-grid-4" style="margin-bottom:2rem;">
-      <div>
-        <div class="color-swatch" style="background:#eef2ea; border:1px solid #d6dcd2;"><span class="hex" style="color:#080e0b;">#eef2ea</span></div>
-        <div class="sg-card-label">--bg-light · Haupt-BG hell</div>
-        <div class="sg-card-value">#eef2ea</div>
-      </div>
-      <div>
-        <div class="color-swatch" style="background:#080e0b; border:1px solid #d6dcd2;"><span class="hex" style="color:#c8ddd2;">#080e0b</span></div>
-        <div class="sg-card-label">--text-light · Primärtext</div>
-        <div class="sg-card-value">#080e0b</div>
-      </div>
-      <div>
-        <div class="color-swatch" style="background:#00c46a; border:1px solid #d6dcd2;"><span class="hex" style="color:#080e0b;">#00c46a</span></div>
-        <div class="sg-card-label">--accent-light · Akzent</div>
-        <div class="sg-card-value">#00c46a · gedämpftes Grün</div>
-      </div>
-      <div>
-        <div class="color-swatch" style="background:#586d62; border:1px solid #d6dcd2;"><span class="hex" style="color:#eef2ea;">#586d62</span></div>
-        <div class="sg-card-label">--text-2-light · Sekundär</div>
-        <div class="sg-card-value">#586d62</div>
-      </div>
-    </div>
-
-    <!-- Footer note -->
-    <p style="text-align:center; font-family:var(--mono); font-size:0.7rem; color:var(--text-2); letter-spacing:0.04em; padding:1.2rem; border:1px solid var(--border2); border-radius:3px;">Hell — für Drucksachen, Onboarding, helle Kontexte</p>
-
-    <div class="do-dont" style="margin-top:2rem;">
-      <div class="do">
-        <div class="do-label">Richtig</div>
-        <p>Akzent in <strong style="color:#00c46a;">#00c46a</strong> (--mid) statt #00ff87. Dunkler Text auf hellem Grund. Streak-Icon-Container bleibt dunkel.</p>
-      </div>
-      <div class="dont">
-        <div class="dont-label">Falsch</div>
-        <p>#00ff87 (Neon) auf hellem Grund — flimmert, wirkt billig. Helles Grün als Volltonfläche im Print. Kein direkter Farbsprung Dark → Light ohne Anpassung der Akzentintensität.</p>
-      </div>
-    </div>
-  </div>
-
-
 </div><!-- /wrap -->
 
 <footer style="border-top:1px solid var(--border); padding:2rem 2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-top:2rem;">
-  <div style="font-size:0.9rem; font-weight:700; color:var(--text-2);">Fair Value Pro<span style="color:var(--neon);">.</span></div>
+  <div style="font-size:0.9rem; font-weight:700; color:var(--text-2);">LMABN<span style="color:var(--neon);">.</span></div>
   <span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">Brand Styleguide · Stand 04/2026 · Intern</span>
 </footer>
+
+<script>
+  (function(){
+    const body = document.body;
+    const stored = localStorage.getItem('sg-theme');
+    if (stored === 'light') body.setAttribute('data-theme', 'light');
+
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.themeSet;
+        if (theme === 'light') body.setAttribute('data-theme', 'light');
+        else body.removeAttribute('data-theme');
+        localStorage.setItem('sg-theme', theme);
+        document.querySelectorAll('.theme-toggle button').forEach(b => {
+          const isActive = b.dataset.themeSet === theme;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+      });
+    });
+
+    if (stored === 'light') {
+      document.querySelectorAll('.theme-toggle button').forEach(b => {
+        const isActive = b.dataset.themeSet === 'light';
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
