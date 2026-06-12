@@ -389,7 +389,7 @@ body { background: var(--bg); }
         <div class="usp-num">07</div>
         <div class="usp-body">
           <div class="usp-title">Made in Germany — strukturell unbedienter Markt</div>
-          <div class="usp-text">Morningstar (USA), Simply Wall St (Australien), TradingView (Zypern/USA), Yahoo Finance (USA). <strong>Wir sind in Deutschland, Server bei Hetzner, Daten in Deutschland.</strong> Der DACH-Privatanleger ist eine datenschutz-empfindliche Käuferschicht — und ein faktisch konkurrenzloser Markt für deutschsprachige Bewertungstools.</div>
+          <div class="usp-text">Morningstar (USA), Simply Wall St (Australien), TradingView (Zypern/USA), Yahoo Finance (USA). <strong>Wir sitzen in Deutschland, Hosting und Datenbank in der EU, kein US-Cloud-Routing.</strong> Der DACH-Privatanleger ist eine datenschutz-empfindliche Käuferschicht — und ein faktisch konkurrenzloser Markt für deutschsprachige Bewertungstools.</div>
         </div>
       </div>
     </div>
@@ -556,7 +556,7 @@ body { background: var(--bg); }
       <div class="wanted-item">
         <div class="wanted-type" style="color:var(--pt-accent);">Entwickler</div>
         <div class="wanted-title">Programmierer, die mitbauen</div>
-        <div class="wanted-text">Entwickler, die bestehende Module erweitern, neue Tools ergänzen oder die Plattform pflegen wollen. FastAPI-Backend, Vanilla-JS-Frontend, SQLite — schlanker Stack, schnelle Iteration. Open für Contributor die eigene Ideen einbringen und umsetzen.</div>
+        <div class="wanted-text">Entwickler, die bestehende Module erweitern, neue Tools ergänzen oder die Plattform pflegen wollen. FastAPI-Backend, Vanilla-JS-Frontend, PostgreSQL — schlanker Stack, schnelle Iteration. Open für Contributor die eigene Ideen einbringen und umsetzen.</div>
       </div>
       <div class="wanted-item">
         <div class="wanted-type" style="color:var(--mid);">Mathematiker</div>
@@ -588,8 +588,8 @@ body { background: var(--bg); }
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:2rem 0;">
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Backend</div>
-        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · SQLite</div>
-        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL, 17 Tabellen, HMAC-SHA256-Auth, PBKDF2 mit 600.000 Iterationen</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · PostgreSQL</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL ohne ORM, dual-mode (SQLite lokal / Postgres in Production), eigene Token-Auth mit gehärtetem Hashing</div>
       </div>
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Frontend</div>
@@ -598,8 +598,8 @@ body { background: var(--bg); }
       </div>
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Infra</div>
-        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Hetzner · Cloudflare</div>
-        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">GitHub Actions CI/CD, systemd, Let's Encrypt, atomic Deploys</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Render · Supabase · Cloudflare</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Hosting und Datenbank in der EU, Cloudflare DNS/CDN, Auto-Deploy aus Git</div>
       </div>
     </div>
 
@@ -634,7 +634,7 @@ body { background: var(--bg); }
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Datenbank-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg);">
-        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">17 Tabellen, klar nach Domänen getrennt — 9 Auth, 5 Tracker, 3 Trading Desk, plus Saved Analyses und Bewertungs-Setups. ON DELETE CASCADE durchgängig, PRAGMA foreign_keys = ON explizit aktiviert. Foreign-Key-Beziehungen über Domänen-Grenzen: Trading-Desk-Rebalancing verweist auf Tracker-Depots. Migration zu PostgreSQL jederzeit möglich — bewusst nicht voreilig.</p>
+        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">17 Tabellen, klar nach Domänen getrennt — Auth, Portfolio Tracker, Trading Desk, plus gespeicherte Analysen und Bewertungs-Setups. Cascading Deletes durchgängig, Foreign-Key-Constraints aktiv über Domänen-Grenzen hinweg. <strong style="color:var(--text);">Dual-Mode-DB</strong>: SQLite für schnelle lokale Entwicklung, PostgreSQL via Supabase in Production — selbes Raw-SQL über eine dünne Abstraktionsschicht.</p>
       </div>
     </details>
 
