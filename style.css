@@ -237,11 +237,11 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
   margin-bottom: 2rem;
 }
 .plan-features li {
-  font-size: 0.87rem;
+  font-size: 0.78rem;
   color: var(--text-2);
-  padding: 0.55rem 0;
+  padding: 0.4rem 0;
   border-bottom: 1px solid var(--border);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 .plan-features li:last-child { border-bottom: none; }
 .plan-features li::before {
