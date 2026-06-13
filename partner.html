@@ -133,6 +133,20 @@ body { background: var(--bg); }
 .contact-row a:hover { text-decoration: underline; }
 .placeholder { color: var(--text-3); font-style: italic; }
 
+/* Partner contact form */
+.partner-contact-form { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.partner-contact-form .pcf-label { font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
+.partner-contact-form input, .partner-contact-form textarea {
+  font-family: var(--mono); font-size: 0.82rem; background: var(--bg3); border: 1px solid var(--border2); color: var(--text); padding: 0.7rem 0.9rem; border-radius: 3px; outline: none; transition: border-color 0.2s; resize: vertical;
+}
+.partner-contact-form input::placeholder, .partner-contact-form textarea::placeholder { color: var(--text-3); }
+.partner-contact-form input:focus, .partner-contact-form textarea:focus { border-color: var(--neon-border); }
+.partner-contact-form button {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--neon); color: var(--bg); border: none; padding: 0.7rem 1.4rem; border-radius: 3px; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.15s; align-self: flex-start; margin-top: 0.4rem;
+}
+.partner-contact-form button:hover { opacity: 0.88; transform: translateY(-1px); }
+.pcf-success { font-family: var(--mono); font-size: 0.78rem; color: var(--neon); margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
 /* RESPONSIVE */
 @media(max-width: 720px) {
   .tools-grid { grid-template-columns: 1fr; }
@@ -656,11 +670,19 @@ body { background: var(--bg); }
     <div class="contact-box">
       <h3>Direkt erreichen</h3>
       <div class="contact-row">
-        <span class="clabel">E-Mail</span><span class="cval"><a href="mailto:kontakt@lmabn.de">kontakt@lmabn.de</a></span></div>
-      <div class="contact-row">
         <span class="clabel">LinkedIn</span><span class="cval"><a href="https://www.linkedin.com/in/lmabn/" target="_blank" rel="noopener">linkedin.com/in/lmabn</a></span></div>
       <div class="contact-row">
-        <span class="clabel">Walkthrough</span><span class="cval placeholder">— auf Anfrage per E-Mail</span></div>
+        <span class="clabel">Walkthrough</span><span class="cval placeholder">— auf Anfrage über das Formular</span></div>
+
+      <form class="partner-contact-form" id="partner-contact-form" action="https://formspree.io/f/xpqorgzp" method="POST">
+        <input type="hidden" name="_subject" value="Partner-Anfrage (lmabn)">
+        <label class="pcf-label" for="pcf-email">Deine E-Mail</label>
+        <input type="email" id="pcf-email" name="email" required autocomplete="email" placeholder="dein.name@firma.de">
+        <label class="pcf-label" for="pcf-message">Nachricht</label>
+        <textarea id="pcf-message" name="message" rows="4" required placeholder="Worum geht's? (Walkthrough-Anfrage, Affiliate, Entwickler-Beitrag, …)"></textarea>
+        <button type="submit">Anfrage senden →</button>
+      </form>
+      <p class="pcf-success" id="pcf-success" style="display:none;">✓ &nbsp;Anfrage gesendet — wir melden uns.</p>
     </div>
   </div>
 
@@ -683,6 +705,21 @@ body { background: var(--bg); }
       if(icon) icon.textContent = d.open ? '×' : '+';
     });
   });
+
+  // Partner contact form — Formspree AJAX
+  const pcfForm = document.getElementById('partner-contact-form');
+  const pcfSuccess = document.getElementById('pcf-success');
+  if (pcfForm) {
+    pcfForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const data = new FormData(pcfForm);
+      const res = await fetch(pcfForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        pcfForm.style.display = 'none';
+        pcfSuccess.style.display = 'block';
+      }
+    });
+  }
 </script>
 </body>
 </html>
