@@ -156,37 +156,33 @@
         <h2>Wir sind ein Bewertungstool — kein Datenprovider.</h2>
         <p>Die meisten Finanztools kaufen Marktdaten-Lizenzen en gros und reichen die Kosten als Abo-Gebühr weiter. Das schafft Lock-in: du bezahlst den Anbieter doppelt — einmal für die Daten, einmal für das Tool.</p>
         <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
-        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) gespeichert. Er verlässt deinen Browser nie — auch nicht zu unseren Servern. <strong>Marktdaten-Anfragen gehen direkt vom Browser an den Anbieter.</strong></p>
+        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) persistent gespeichert. Für die automatische Bewertung übergibt Fair Value Pro ihn pro Anfrage transient an den eigenen Server, der ihn ausschließlich für den Abruf beim Datenanbieter verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</p>
       </div>
       <div class="why-visual fade" style="padding:1.5rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.4rem;">Datenfluss</div>
 
         <!-- Node: Browser -->
-        <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.65rem 1rem; text-align:center; font-family:var(--mono); font-size:0.65rem; color:var(--text); margin-bottom:0;">Dein Browser</div>
+        <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.65rem 1rem; text-align:center; font-family:var(--mono); font-size:0.65rem; color:var(--text); margin-bottom:1rem;">Dein Browser</div>
 
-        <!-- Two arrows down -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:0.3rem 0;">
-          <div style="text-align:center;">
-            <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); line-height:2;">↕</div>
-            <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.04em;">Kurse · Bilanzen<br>API-Schlüssel direkt</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); line-height:2;">↕</div>
-            <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.04em;">Ticker · Parameter<br>Bewertungslogik</div>
-          </div>
+        <!-- Path 1: AI keys — direct browser → provider -->
+        <div style="font-family:var(--mono); font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">KI-Anfrage</div>
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem;">
+          <span style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); flex:1; text-align:right;">Schlüssel + Frage</span>
+          <span style="font-family:var(--mono); font-size:0.7rem; color:var(--neon);">→</span>
+          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-family:var(--mono); font-size:0.6rem; color:var(--neon); flex:0 0 auto;">Claude · OpenAI · Gemini</div>
         </div>
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); line-height:1.5; margin-bottom:1.2rem; padding-bottom:1.2rem; border-bottom:1px solid var(--border);">direkt vom Browser zum Provider — FVP nicht beteiligt</div>
 
-        <!-- Two bottom nodes -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.65rem 0.8rem; text-align:center; font-family:var(--mono); font-size:0.65rem; color:var(--neon);">Datenanbieter</div>
-          <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.65rem 0.8rem; text-align:center; font-family:var(--mono); font-size:0.65rem; color:var(--text-3);">FVP-Server</div>
+        <!-- Path 2: FMP / Marktdaten — via FVP server (transient) -->
+        <div style="font-family:var(--mono); font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">Bewertungs-Abruf</div>
+        <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+          <span style="font-family:var(--mono); font-size:0.55rem; color:var(--text-2);">Ticker + Schlüssel</span>
+          <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">→</span>
+          <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-family:var(--mono); font-size:0.6rem; color:var(--text);">FVP-Server (EU)</div>
+          <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">→</span>
+          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-family:var(--mono); font-size:0.6rem; color:var(--neon);">Datenanbieter</div>
         </div>
-
-        <!-- No connection between bottom two -->
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid var(--border);">
-          <span style="color:#e24b4a; font-size:0.75rem; flex-shrink:0;">✕</span>
-          <span style="font-family:var(--mono); font-size:0.58rem; color:var(--text-3); line-height:1.5;">Datenanbieter und FVP-Server kommunizieren nicht. FVP sieht keine Kurse, Bilanzen oder API-Schlüssel.</span>
-        </div>
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); line-height:1.5;">Schlüssel und Antwort werden transient verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</div>
       </div>      </div>
     </div>
   </div>
@@ -296,7 +292,7 @@
 
     <details class="faq-item">
       <summary>Sieht FVP meine Marktdaten?<span class="faq-icon">+</span></summary>
-      <p>Nein. Datenabrufe laufen direkt zwischen deinem Browser und dem Datenanbieter. FVP sieht welchen Ticker du anfragst — nicht die Rohdaten die zurückkommen. Wir speichern keine Kurse, Bilanzdaten oder Cashflow-Zahlen auf unseren Servern. Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em;">localStorage</code>) gespeichert — er verlässt deinen Browser nie.</p>
+      <p>Während des Abrufs ja — die Anfrage läuft transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Wir <strong>speichern Kurse, Bilanzen oder Cashflows aber nicht</strong> in unserer Datenbank und loggen sie nicht. Auch dein API-Schlüssel wird nur für die einzelne Anfrage durchgereicht — er ist ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em;">localStorage</code>) persistent gespeichert, nie auf unseren Servern. KI-Anfragen (Claude/OpenAI/Gemini) laufen weiterhin direkt vom Browser zum Provider — dort sind wir nicht beteiligt.</p>
     </details>
 
     <details class="faq-item">
