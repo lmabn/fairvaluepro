@@ -217,7 +217,7 @@
   <div class="container">
     <div class="tag fade in" style="--neon: var(--pt); justify-content: center;">Portfolio Tracker</div>
     <h1 class="fade in">Behalte deine<br>Investments im <span class="pt">Blick.</span></h1>
-    <p class="sub fade in">Mehrere Depots, Snapshot-Tracking pro Monat, cashflowbereinigte Renditen — verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
+    <p class="sub fade in">KI-gestützter Snapshot-Import per Screenshot, PDF oder CSV — broker-unabhängig. Cashflowbereinigte Renditen (IRR, TWR, CAGR) und Fair-Value-Verdict pro Position, verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
     <div class="hero-btns fade in">
       <a href="plaene-beta.html" class="btn-pt">Jetzt starten</a>
       <a href="#features" class="btn-outline-pt">Funktionen ansehen</a>
@@ -364,44 +364,73 @@
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features-section" id="features">
+<!-- KI-IMPORT -->
+<section class="features-section" id="ki-import" style="padding-bottom:3rem;">
   <div class="wide">
     <div class="features-header fade">
-      <div class="tag" style="--neon: var(--pt); justify-content:center;">Was steckt drin</div>
-      <h2>Fünf Bausteine. Ein Überblick.</h2>
-      <p>Portfolio Tracker kombiniert Depot-Verwaltung, Renditeberechnung und Bewertungs-Kontext in einem Werkzeug.</p>
+      <div class="tag" style="--neon: var(--pt); justify-content:center;">Neu · KI-gestützt</div>
+      <h2>Screenshot rein, Depot fertig.</h2>
+      <p>Der Portfolio Tracker ist jetzt ein KI-gestützter, broker-unabhängiger Depot-Begleiter: Screenshots oder Berichte hochladen, prüfen, fertig — deine Daten bleiben dabei konsequent unter deiner Kontrolle.</p>
     </div>
     <div class="features-grid">
       <div class="feat fade">
-        <div class="feat-icon">⊞</div>
-        <h3>Depots &amp; Snapshots</h3>
-        <p>Beliebig viele Depots, jeweils mit monatlichem Snapshot — Datum, Wert, Einzahlung, Auszahlung, Notiz. Beim nächsten Snapshot werden Positionen automatisch übernommen, nichts muss neu eingegeben werden.</p>
+        <div class="feat-icon">⧉</div>
+        <h3>Universal-Import mit KI</h3>
+        <p>Depotbestände nicht mehr abtippen: Screenshot(s) aus der Broker-App, PDF-Finanzreport, CSV-Export oder kopierter Text. Die KI erkennt Positionen, Depotwert, Ein-/Auszahlungen und Trades automatisch — broker-unabhängig, getestet u. a. mit Comdirect, Scalable Capital und Bitvavo. Deine Korrekturen im Import-Dialog werden lokal gemerkt und verbessern die nächste Erkennung desselben Brokers.</p>
       </div>
+      <div class="feat fade">
+        <div class="feat-icon">▣</div>
+        <h3>Privacy-Layer vor jedem Versand</h3>
+        <p>Bevor irgendetwas den Browser verlässt: ein clientseitiger Privacy-Scrubber entfernt automatisch IBAN, Steuer-ID, Namen, Adressen und Konto-/Depotnummern. Du siehst in einem Vorschau-Modal exakt, was gesendet wird — nichts geht ohne dein OK raus.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">✓</div>
+        <h3>Die KI liest, wir rechnen</h3>
+        <p>Die KI arbeitet als Scanner, nicht als Taschenrechner: Stückzahlen und Einstandswerte berechnet die App deterministisch aus den abgelesenen Werten. Ein Plausibilitäts-Check vergleicht die Positions-Summe mit dem Depotwert und markiert alles Unsichere sichtbar zur Prüfung — keine stillen Fehler im Depot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FEATURES -->
+<section class="features-section" id="features" style="padding-top:3rem;">
+  <div class="wide">
+    <div class="features-header fade">
+      <div class="tag" style="--neon: var(--pt); justify-content:center;">Was steckt drin</div>
+      <h2>Sechs Bausteine. Ein System.</h2>
+      <p>Portfolio Tracker kombiniert Import, Renditeberechnung, Vergleich und Bewertungs-Kontext in einem Werkzeug — mit strikt eigenen Schlüsseln für Marktdaten und KI.</p>
+    </div>
+    <div class="features-grid">
       <div class="feat fade">
         <div class="feat-icon">≈</div>
-        <h3>Cashflowbereinigte Renditen</h3>
-        <p>Einzahlungen und Auszahlungen werden separat erfasst und korrekt herausgerechnet. Das Ergebnis: eine Rendite die zeigt was der Markt aus deinem Geld gemacht hat — ohne Verzerrung durch Überweisungen.</p>
+        <h3>Cashflows sauber getrennt</h3>
+        <p>Ein-/Auszahlungen pro Snapshot, einzelne Cashflow-Buchungen mit Datum und Beschreibung, Kennzeichnung interner Umbuchungen zwischen eigenen Depots und automatische Erkennung von Wertpapier-Überträgen. Ergebnis: Deine Rendite zeigt echte Marktentwicklung — Geldbewegungen verfälschen sie nicht.</p>
       </div>
       <div class="feat fade">
-        <div class="feat-icon">↗</div>
-        <h3>Historischer Chart &amp; Vergleich</h3>
-        <p>Kursverlauf mit echter Zeitskalierung, Range-Filter 1J bis Alle. Der Vergleich-Tab zeigt jedes Jahr aufgeklappt mit CAGR und zeitgewichteter Rendite (TWR) pro Depot.</p>
+        <div class="feat-icon">⌘</div>
+        <h3>Rendite-Kennzahlen wie beim Profi</h3>
+        <p>IRR p. a. (geldgewichtet), TWR (zeitgewichtet) und CAGR — klar beschriftet und konsistent in Karten, Charts und Tabellen. Dazu ein persönliches Jahresziel mit Fortschritts-KPI direkt im Dashboard.</p>
       </div>
       <div class="feat fade">
-        <div class="feat-icon">◎</div>
-        <h3>Fair-Value-Kontext pro Position</h3>
-        <p>Jede Position ist mit dem FVP-Kalkulator verknüpft. Sobald du eine Bewertung gespeichert hast, erscheint das Verdict — Kaufzone, fair bewertet oder überbewertet — direkt in der Depot-Übersicht.</p>
+        <div class="feat-icon">▤</div>
+        <h3>Depot-Vergleich &amp; Cashflow-Übersicht</h3>
+        <p>Excel-artige Vergleichstabelle über alle Depots und Jahre mit aufklappbaren Jahresblöcken. Dazu eine Cashflow-Übersicht mit Umschalter „alle Bewegungen" ↔ „nur externes Kapital".</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">↓</div>
         <h3>Excel-Export</h3>
-        <p>Drei Sheets auf einmal: Übersicht mit allen Snapshots und Renditen, flache Datenansicht und letzter Positionsstand mit FVP-Verdict. Direkt in eigene Excel-Auswertungen importierbar.</p>
+        <p>Komplette Historie als .xlsx — Übersichts-Sheet plus ein eigenes Blatt pro Depot inkl. Ein-/Auszahlungsspalten und Summenzeilen. Direkt in eigene Excel-Auswertungen importierbar.</p>
       </div>
       <div class="feat fade">
-        <div class="feat-icon">⊙</div>
-        <h3>Verbunden mit dem Ökosystem</h3>
-        <p>Die Tracker-Daten fließen in den Trading Desk: Positionen und Zielkurse werden automatisch für die Recovery-Return-Analyse und den Rebalancing-Planer übernommen — kein doppelter Dateneintrag.</p>
+        <div class="feat-icon">◎</div>
+        <h3>Fair-Value-Kontext pro Position</h3>
+        <p>Jede Position zeigt den im FVP-Kalkulator ermittelten fairen Wert direkt im Depot — Kaufzone, fair bewertet oder überbewertet, mit automatischer Aktualisierung beim Tab-Wechsel.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">⌾</div>
+        <h3>Deine Schlüssel, deine Daten</h3>
+        <p>Marktdaten über deinen eigenen FMP-Schlüssel, KI-Import über deinen eigenen Anbieter-Schlüssel (Anthropic, OpenAI oder Google Gemini). Schlüssel bleiben im Browser, werden serverseitig nur transient verwendet — nie gespeichert, nie geloggt. Ein KI-Import kostet bei deinem Anbieter typischerweise unter 0,05 €.</p>
       </div>
     </div>
   </div>
