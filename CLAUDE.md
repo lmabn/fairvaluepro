@@ -9,3 +9,7 @@
   3. Auto-Merge aktivieren (via `mcp__github__enable_pr_auto_merge`, `merge_method: squash`)
 - Direkter Push auf `main` ist serverseitig blockiert (HTTP 403) — immer den PR-Weg gehen.
 - Keine zusätzliche Bestätigung für PR-Erstellung nötig; der Auto-Merge ist die User-Default-Präferenz.
+
+## Offene To-dos
+
+- **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
