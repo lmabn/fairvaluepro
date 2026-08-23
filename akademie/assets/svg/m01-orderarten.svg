@@ -1,0 +1,44 @@
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Die vier Orderarten verteilt zwischen den Polen garantierte Ausführung und garantierter Preis; beides zugleich ist unmöglich.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="400" rx="6"/>
+
+  <line class="axis" x1="120" y1="60" x2="120" y2="330"/>
+  <line class="axis" x1="120" y1="330" x2="660" y2="330"/>
+  <text class="lbl" x="40" y="56">garantierte</text><text class="lbl" x="40" y="70">Ausführung</text>
+  <text class="lbl" x="470" y="352">garantierter Preis</text>
+  <!-- Punkte -->
+  <circle class="neonf" cx="180" cy="90" r="5"/><text class="lbln" x="196" y="94">Market-Order</text>
+  <circle class="neonf" cx="230" cy="150" r="5"/><text class="lbln" x="246" y="154">Stop-Order</text>
+  <circle class="neonf" cx="470" cy="250" r="5"/><text class="lbln" x="330" y="254" text-anchor="end">Stop-Limit-Order</text>
+  <circle class="neonf" cx="560" cy="300" r="5"/><text class="lbln" x="430" y="304" text-anchor="end">Limit-Order</text>
+  <!-- Trade-off-Linie -->
+  <path class="griddash" d="M180,90 L560,300"/>
+  <text class="lbl" x="560" y="110" text-anchor="end" style="fill:var(--text-3)">obere rechte Ecke</text>
+  <text class="lbl" x="560" y="126" text-anchor="end" style="fill:var(--text-3)">(beides zugleich) unmöglich</text>
+
+</svg>

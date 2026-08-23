@@ -1,0 +1,43 @@
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Multiplikative Darstellung: Anlageerfolg ist Methodik mal Psychologie; die Psychologie ist der begrenzende Faktor.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="260" rx="6"/>
+
+  <text class="head" x="360" y="60" text-anchor="middle">Anlageerfolg = Methodik × Psychologie</text>
+  <rect class="boxneon" x="120" y="100" width="150" height="80"/>
+  <text class="lbln" x="195" y="135" text-anchor="middle">Methodik</text>
+  <text class="lbl" x="195" y="158" text-anchor="middle" style="fill:var(--text-3)">der leichte Teil</text>
+  <text class="head" x="305" y="150" text-anchor="middle" style="font-size:22px">×</text>
+  <rect class="boxneon" x="340" y="100" width="150" height="80"/>
+  <text class="lbln" x="415" y="135" text-anchor="middle">Psychologie</text>
+  <text class="lbl" x="415" y="158" text-anchor="middle" style="fill:var(--text-3)">der schwere Teil</text>
+  <text class="head" x="525" y="150" text-anchor="middle" style="font-size:22px">=</text>
+  <rect class="box" x="560" y="100" width="120" height="80"/>
+  <text class="lbl" x="620" y="145" text-anchor="middle" style="fill:var(--text)">Ergebnis</text>
+  <text class="lbl" x="360" y="220" text-anchor="middle" style="fill:var(--text-3)">Die Psychologie ist der begrenzende Faktor.</text>
+
+</svg>

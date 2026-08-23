@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<title>Fair Value Pro — Akademie · Modul 1: Grundlagen</title>
+<style>
+/* HERO */
+#hero { padding: 9rem 2rem 3rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); text-align: center; }
+.hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.06) 0%, transparent 70%); pointer-events: none; }
+#hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.4rem; }
+#hero h1 .n { color: var(--neon); }
+#hero .ak-lead { font-family: var(--display); font-style: italic; color: var(--text-2); font-size: 1.05rem; max-width: 620px; margin: 0 auto; line-height: 1.6; letter-spacing: -0.01em; }
+#hero .ak-lead::before { content: '„'; color: var(--neon); font-style: normal; margin-right: 0.15em; }
+#hero .ak-lead::after { content: '"'; color: var(--neon); font-style: normal; margin-left: 0.15em; }
+
+/* Modul-Leiste */
+.ak-modulnav { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; padding: 1.6rem 2rem; background: var(--bg2); border-bottom: 1px solid var(--border); }
+.ak-modulnav a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); text-decoration: none; padding: 0.45rem 0.9rem; border: 1px solid var(--border2); border-radius: 3px; background: var(--bg3); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+.ak-modulnav a:hover { color: var(--neon); border-color: var(--neon-border); }
+.ak-modulnav a.active { color: var(--neon); border-color: var(--neon-border); background: var(--neon-dim); }
+.ak-modulnav a.upcoming { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+.ak-modulnav a.overview { color: var(--text-2); }
+
+/* Body layout */
+.ak-content { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; }
+.ak-content h2 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin: 4rem 0 1.4rem; color: var(--text); }
+.ak-content h2:first-of-type { margin-top: 0; }
+.ak-content h2 .num { font-family: var(--mono); font-size: 0.75em; letter-spacing: 0.05em; color: var(--neon); font-weight: 700; margin-right: 0.5rem; }
+.ak-content h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; margin: 2rem 0 0.9rem; color: var(--text); }
+.ak-content p { color: var(--text-2); font-size: 0.97rem; line-height: 1.8; margin-bottom: 1.1rem; }
+.ak-content p strong { color: var(--text); font-weight: 500; }
+.ak-content p em { color: var(--text-2); font-style: italic; }
+.ak-content ul, .ak-content ol { color: var(--text-2); font-size: 0.97rem; line-height: 1.8; margin: 0 0 1.2rem 1.4rem; }
+.ak-content li { margin-bottom: 0.5rem; }
+.ak-content li strong { color: var(--text); font-weight: 500; }
+.ak-content ol li { padding-left: 0.3rem; }
+
+/* Lernziele */
+.ak-lernziele { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.8rem 2rem; margin-bottom: 3rem; }
+.ak-lernziele h3 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); margin: 0 0 1.2rem; font-weight: 700; }
+.ak-lernziele ol { list-style: decimal; margin: 0 0 0 1.4rem; }
+.ak-lernziele ol li { color: var(--text-2); font-size: 0.95rem; line-height: 1.7; padding-left: 0.3rem; }
+.ak-lernziele ol li strong { color: var(--text); font-weight: 500; }
+
+/* Merksatz */
+.ak-merksatz { background: var(--neon-dim); border-left: 3px solid var(--neon); padding: 1.2rem 1.4rem; margin: 2rem 0; border-radius: 0 3px 3px 0; }
+.ak-merksatz p { color: var(--text); font-size: 1rem; line-height: 1.65; margin: 0; }
+.ak-merksatz p strong.ak-mtag { color: var(--neon); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; font-weight: 700; }
+
+/* Tabellen */
+.ak-tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; }
+.ak-tbl { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 480px; }
+.ak-tbl th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); padding: 0.7rem 0.9rem; text-align: left; border-bottom: 1px solid var(--border2); background: var(--bg2); font-weight: 400; vertical-align: bottom; }
+.ak-tbl td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; line-height: 1.55; }
+.ak-tbl tr:last-child td { border-bottom: none; }
+.ak-tbl td strong { color: var(--text); font-weight: 500; }
+.ak-tbl th.hl, .ak-tbl td.hl { color: var(--neon); }
+.ak-tbl td.num { font-family: var(--mono); font-size: 0.85rem; text-align: right; }
+.ak-tbl td.check { color: var(--neon); }
+.ak-tbl td.cross { color: #e05252; }
+
+/* Figure / SVG */
+.ak-fig { margin: 2rem 0; background: var(--bg2); border: 1px solid var(--border2); border-radius: 6px; padding: 1.2rem; }
+.ak-fig object, .ak-fig img { display: block; width: 100%; height: auto; }
+.ak-fig figcaption { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--text-3); margin-top: 0.9rem; text-align: center; line-height: 1.5; }
+
+/* ASCII / Pre */
+.ak-pre { font-family: var(--mono); font-size: 0.78rem; background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; overflow-x: auto; color: var(--text-2); line-height: 1.55; white-space: pre; }
+.ak-pre .hl { color: var(--neon); }
+
+/* Formel */
+.ak-formula { font-family: var(--mono); font-size: 0.95rem; background: var(--bg2); border: 1px solid var(--border2); border-left: 3px solid var(--neon); padding: 1rem 1.4rem; margin: 1.4rem 0; color: var(--text); overflow-x: auto; white-space: pre; }
+
+/* Callout (Anfängerfehler etc.) */
+.ak-callout { background: var(--bg3); border: 1px solid var(--border2); border-left: 3px solid var(--warn); border-radius: 0 3px 3px 0; padding: 1rem 1.3rem; margin: 1.5rem 0; }
+.ak-callout p { color: var(--text-2); margin: 0; font-size: 0.92rem; line-height: 1.65; }
+.ak-callout .ak-ctag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warn); font-weight: 700; margin-bottom: 0.4rem; display: block; }
+
+/* Checkliste */
+.ak-check-list { list-style: none; margin: 1.2rem 0 2rem !important; padding: 0; }
+.ak-check-list li { padding: 0.55rem 0 0.55rem 2rem; position: relative; font-size: 0.93rem; color: var(--text-2); line-height: 1.55; border-bottom: 1px solid var(--border); }
+.ak-check-list li:last-child { border-bottom: none; }
+.ak-check-list li::before { content: '☐'; position: absolute; left: 0.4rem; top: 0.55rem; color: var(--neon); font-family: var(--mono); font-size: 1.05rem; line-height: 1; }
+.ak-check-list li strong { color: var(--text); font-weight: 500; }
+
+/* Quiz */
+.ak-quiz { counter-reset: q; list-style: none; margin: 1.5rem 0 !important; padding: 0; }
+.ak-quiz > li { counter-increment: q; padding: 1rem 0 1rem 3rem; position: relative; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text); line-height: 1.65; }
+.ak-quiz > li:last-child { border-bottom: none; }
+.ak-quiz > li::before { content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font-family: var(--mono); font-size: 0.75rem; color: var(--neon); font-weight: 700; }
+.ak-quiz-answers { margin: 2rem 0; border: 1px solid var(--border2); border-radius: 4px; overflow: hidden; }
+.ak-quiz-answers > summary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); background: var(--bg2); padding: 1rem 1.4rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.ak-quiz-answers > summary::before { display: none; }
+.ak-quiz-answers > summary::-webkit-details-marker { display: none; }
+.ak-quiz-answers > summary::after { content: '+'; font-size: 1rem; color: var(--neon); transition: transform 0.2s; }
+.ak-quiz-answers[open] > summary::after { transform: rotate(45deg); }
+.ak-quiz-answers > .ak-quiz-body { padding: 1.6rem 1.6rem 1.2rem; background: var(--bg); }
+.ak-quiz-answers ol { list-style: none; margin: 0; padding: 0; counter-reset: qa; }
+.ak-quiz-answers ol li { counter-increment: qa; padding: 0.9rem 0 0.9rem 2.6rem; position: relative; font-size: 0.92rem; color: var(--text-2); line-height: 1.65; border-bottom: 1px solid var(--border); }
+.ak-quiz-answers ol li:last-child { border-bottom: none; }
+.ak-quiz-answers ol li::before { content: counter(qa, decimal-leading-zero); position: absolute; left: 0; top: 0.9rem; font-family: var(--mono); font-size: 0.7rem; color: var(--neon); font-weight: 700; }
+.ak-quiz-answers ol li strong { color: var(--text); font-weight: 500; }
+.ak-quiz-answers ol li ul { list-style: disc; margin: 0.5rem 0 0 1.2rem; padding: 0; }
+.ak-quiz-answers ol li ul li { padding: 0.2rem 0; border: none; font-size: 0.9rem; }
+.ak-quiz-answers ol li ul li::before { display: none; }
+
+/* Übungen */
+.ak-uebungen { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+.ak-uebung { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.2rem 1.4rem; }
+.ak-uebung h4 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neon); font-weight: 700; margin-bottom: 0.6rem; }
+.ak-uebung p { color: var(--text-2); font-size: 0.9rem; line-height: 1.65; margin-bottom: 0; }
+.ak-uebung p strong { color: var(--text); font-weight: 500; }
+
+/* Weiter-CTA */
+.ak-weiter { padding: 4rem 2rem; text-align: center; border-top: 1px solid var(--border); background: var(--bg2); }
+.ak-weiter p { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem; }
+.ak-weiter h3 { font-family: var(--display); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.4rem; line-height: 1.3; }
+.ak-weiter .btn-outline.disabled { opacity: 0.55; cursor: not-allowed; pointer-events: none; }
+.ak-weiter .upcoming-note { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-3); display: block; margin-top: 0.9rem; }
+
+/* Disclaimer */
+.ak-disclaimer { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; line-height: 1.75; color: var(--text-2); border: 1px solid var(--border2); border-radius: 3px; padding: 1rem 1.2rem; max-width: 780px; margin: 3rem auto 0; }
+.ak-disclaimer strong { color: var(--text); font-weight: 500; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  #hero { padding: 7rem 1.25rem 2.5rem; }
+  .ak-content { padding: 3.5rem 1.25rem; }
+  .ak-content h2 { margin-top: 3rem; }
+  .ak-modulnav { padding: 1.2rem 1rem; gap: 4px; }
+  .ak-modulnav a { padding: 0.4rem 0.7rem; font-size: 0.62rem; }
+  nav .nav-links { display: none !important; }
+  nav a.nav-cta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 1 · Grundlagen</div>
+    <h1>Grundlagen erfolgreicher<br><span class="n">Aktienhändler.</span></h1>
+    <p class="ak-lead">Der Markt ist kein Gegner, den man schlagen muss. Er ist ein Mechanismus, den man verstehen muss, bevor man ihn benutzt.</p>
+  </div>
+</section>
+
+<!-- Modul-Leiste oben -->
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">Übersicht</a>
+  <a href="modul-01-grundlagen.html" class="active">01</a>
+  <a href="modul-02-fundamentalanalyse.html" class="upcoming">02</a>
+  <a href="modul-03-chartanalyse.html" class="upcoming">03</a>
+  <a href="modul-04-einstieg.html" class="upcoming">04</a>
+  <a href="modul-05-risikomanagement.html" class="upcoming">05</a>
+  <a href="modul-06-verkaufsstrategien.html" class="upcoming">06</a>
+  <a href="modul-07-psychologie.html" class="upcoming">07</a>
+  <a href="modul-08-strategie.html" class="upcoming">08</a>
+</nav>
+
+<main class="ak-content">
+
+  <!-- Lernziele -->
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li><strong>erklären</strong>, wodurch sich Investieren und aktiver Aktienhandel unterscheiden — und wo dein eigener Ansatz auf diesem Spektrum liegt;</li>
+      <li><strong>beschreiben</strong>, wie ein Aktienkurs mechanisch zustande kommt und warum Preis und Wert zwei verschiedene Dinge sind;</li>
+      <li><strong>benennen</strong>, wer die anderen Marktteilnehmer sind, welche Vorteile sie haben — und welchen Vorteil ausgerechnet du hast;</li>
+      <li><strong>ein Orderbuch lesen</strong> und Bid, Ask, Spread, Liquidität und Volumen korrekt interpretieren;</li>
+      <li><strong>die passende Orderart</strong> für eine gegebene Situation auswählen und die typischen Fallen vermeiden;</li>
+      <li><strong>den Erwartungswert</strong> eines Handelssystems berechnen und erklären, warum eine Trefferquote von 40 % profitabler sein kann als eine von 70 %;</li>
+      <li><strong>die Asymmetrie von Verlusten</strong> quantifizieren und daraus ableiten, warum Risikomanagement der Aktienauswahl vorgelagert ist;</li>
+      <li><strong>empirisch begründen</strong>, warum die Mehrheit der Privatanleger schlechter abschneidet als der Markt — und welche dieser Ursachen bei dir selbst wirksam sind.</li>
+    </ol>
+  </div>
+
+  <!-- 1.1 -->
+  <h2><span class="num">1.1</span>Investieren oder Handeln? Ein Spektrum, keine Grenze</h2>
+  <p>Die Frage „Bist du Investor oder Trader?" wird oft als Identitätsfrage gestellt. Sie ist in Wahrheit eine Frage nach <strong>drei Parametern</strong>: Haltedauer, Entscheidungstreiber und Ausstiegskriterium.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Passives Investieren</th>
+          <th class="hl">Aktiver Aktienhandel (dieser Kurs)</th>
+          <th>Swing Trading</th>
+          <th>Daytrading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Haltedauer</strong></td><td>Jahrzehnte</td><td class="hl">Monate bis Jahre</td><td>Tage bis Wochen</td><td>Minuten bis Stunden</td></tr>
+        <tr><td><strong>Entscheidungstreiber</strong></td><td>keiner (Sparplan)</td><td class="hl">Unternehmenswert + Kurskontext</td><td>Kursmuster</td><td>Orderfluss, Momentum</td></tr>
+        <tr><td><strong>Ausstiegskriterium</strong></td><td>keines</td><td class="hl">Fair Value erreicht <em>oder</em> These widerlegt</td><td>Kursziel / Stop</td><td>Zeit / Stop</td></tr>
+        <tr><td><strong>Notwendige Kompetenz</strong></td><td>gering</td><td class="hl">hoch</td><td>hoch</td><td>sehr hoch</td></tr>
+        <tr><td><strong>Kostenlast</strong></td><td>minimal</td><td class="hl">niedrig</td><td>mittel</td><td>hoch</td></tr>
+        <tr><td><strong>Wichtigster Gegner</strong></td><td>Ungeduld</td><td class="hl">Selbsttäuschung</td><td>Rauschen</td><td>Kosten &amp; Latenz</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Wo dieser Kurs steht:</strong> Wir kaufen <em>Unternehmen</em>, nicht <em>Kurse</em>. Aber wir kaufen sie nicht blind, sondern nutzen den Kurskontext, um den Einstieg zu optimieren und Ausstiege zu disziplinieren. Der Kurs ist damit das, was man am ehesten <strong>regelbasiertes Quality-Value-Investing mit technischem Timing-Filter</strong> nennen könnte.</p>
+
+  <p>Der entscheidende strukturelle Vorteil dieses Ansatzes ist nicht Intelligenz und nicht Information — beides haben andere in größerem Maße. Es ist <strong>Zeithorizont</strong>. Ein Fondsmanager, der an Quartalszahlen gemessen wird, kann eine Aktie nicht drei Jahre lang halten, während sie unterperformt, selbst wenn er weiß, dass sie unterbewertet ist. Er würde vorher entlassen. Du kannst das. Das ist deine einzige echte Arbitrage — und wenn du sie aufgibst, indem du hektisch handelst, gibst du das Einzige auf, was du hattest.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Dein Vorteil als Privatanleger ist nicht Wissen, sondern Geduld. Wer hektisch handelt, tauscht seinen einzigen Vorteil gegen den Nachteil aller anderen ein.</p>
+  </div>
+
+  <!-- 1.2 -->
+  <h2><span class="num">1.2</span>Wie entsteht ein Aktienkurs?</h2>
+  <h3>Der Kurs ist kein Wert — er ist ein Protokoll</h3>
+  <p>Ein Aktienkurs ist <strong>der Preis, zu dem zuletzt eine Transaktion stattgefunden hat.</strong> Nicht mehr. Er sagt aus: Zu diesem Preis war <em>ein</em> Käufer bereit zu kaufen und <em>ein</em> Verkäufer bereit zu verkaufen.</p>
+  <p>Das hat eine Konsequenz, die man kaum überschätzen kann: <strong>Der Kurs wird vom marginalen Marktteilnehmer gesetzt, nicht von der Mehrheit.</strong> Apple hat rund 15 Milliarden Aktien im Umlauf. An einem normalen Tag wechseln vielleicht 50 Millionen davon den Besitzer — etwa 0,3 %. Der Preis, den <em>alle</em> 15 Milliarden Aktien in diesem Moment „haben", wird also von 0,3 % der Aktionäre bestimmt. Die anderen 99,7 % haben an diesem Tag gar keine Meinung geäußert. Sie haben schlicht nichts getan.</p>
+  <p>Wenn der Kurs an einem Tag um 4 % fällt, bedeutet das <strong>nicht</strong>, dass „der Markt" seine Meinung über Apple um 4 % nach unten korrigiert hat. Es bedeutet, dass unter den wenigen, die an diesem Tag <em>handeln mussten oder wollten</em>, die Verkäufer dringlicher waren als die Käufer.</p>
+
+  <h3>Preisbildung im Detail</h3>
+  <pre class="ak-pre">        VERKÄUFER (Ask / Brief)                    KÄUFER (Bid / Geld)
+        wollen hoch verkaufen                      wollen tief kaufen
+                 │                                          │
+                 ▼                                          ▼
+        ┌────────────────────────────────────────────────────────┐
+        │                    ORDERBUCH                            │
+        │                                                         │
+        │   Ask 214,20  ×  1.200                                  │
+        │   Ask 214,15  ×    800                                  │
+        │   Ask 214,10  ×  2.500   <span class="hl">◄── beste Verkaufsofferte</span>      │
+        │  ─────────────────────────────  <span class="hl">SPREAD = 0,04 €</span>         │
+        │   Bid 214,06  ×  3.100   <span class="hl">◄── beste Kaufofferte</span>          │
+        │   Bid 214,00  ×  5.400                                  │
+        │   Bid 213,95  ×  1.900                                  │
+        └────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+        Ein Käufer akzeptiert 214,10 → Trade! → <span class="hl">NEUER KURS = 214,10</span></pre>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-orderbuch.svg" aria-label="Schematische Darstellung eines Orderbuchs mit Bid, Ask und Spread"></object>
+    <figcaption>Orderbuch — die beste Ask trifft auf die beste Bid; der Spread ist der Zwischenraum</figcaption>
+  </figure>
+
+  <p>Ein Kurs entsteht <strong>ausschließlich dann</strong>, wenn jemand die Preisvorstellung der Gegenseite akzeptiert. Solange sich Bid und Ask nicht berühren, passiert nichts — der Kurs steht still, obwohl beide Seiten voller Meinungen sind.</p>
+
+  <h3>Preis vs. Wert</h3>
+  <p>Benjamin Graham beschrieb den Markt kurzfristig als Abstimmungsmaschine und langfristig als Waage. Kurzfristig gewinnt, wer die meisten Stimmen (= das meiste Kaufinteresse) auf sich zieht — unabhängig von der Substanz. Langfristig setzt sich die tatsächliche Ertragskraft durch.</p>
+  <p>Genau in dieser Lücke arbeitest du:</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-preis-vs-wert.svg" aria-label="Zweikurvenchart: innerer Wert steigt langsam und stetig, der Kurs schwankt stark darum herum"></object>
+    <figcaption>Der Kurs (volatil) schwingt um den inneren Wert (stetig steigend). Grüne Kaufzonen unter der Wertlinie, rote Verkaufszonen darüber.</figcaption>
+  </figure>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>Der Kurs sagt dir, was andere heute bezahlen. Er sagt dir nichts darüber, was das Unternehmen wert ist. Die Differenz zwischen beidem ist dein gesamtes Geschäftsmodell.</p>
+  </div>
+
+  <!-- 1.3 -->
+  <h2><span class="num">1.3</span>Gegen wen handelst du eigentlich?</h2>
+  <p>Wenn du eine Aktie kaufst, verkauft sie dir jemand. Es lohnt sich zu wissen, wer.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead>
+        <tr>
+          <th>Teilnehmer</th>
+          <th>Anteil am Volumen</th>
+          <th>Zeithorizont</th>
+          <th>Motiv</th>
+          <th>Vorteil ggü. dir</th>
+          <th class="hl">Dein Vorteil ggü. ihm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Passive Indexfonds</strong></td><td>sehr hoch</td><td>unendlich</td><td>Index abbilden</td><td>keiner</td><td class="hl">Sie sind preisblind — kaufen teuer, verkaufen billig, wenn Mittel fließen</td></tr>
+        <tr><td><strong>Aktive Fonds</strong></td><td>hoch</td><td>Quartale</td><td>Benchmark schlagen</td><td>Research, Zugang zum Management</td><td class="hl">Karrierezwang → sie müssen kurzfristig performen</td></tr>
+        <tr><td><strong>Hedgefonds</strong></td><td>mittel</td><td>Tage–Jahre</td><td>Absolute Rendite</td><td>Kapital, Hebel, Daten</td><td class="hl">Redemption-Risiko, Hebel zwingt zum Ausstieg</td></tr>
+        <tr><td><strong>Market Maker / HFT</strong></td><td>sehr hoch</td><td>Millisekunden</td><td>Spread verdienen</td><td>Latenz, Technik</td><td class="hl">Sie haben keine Meinung — sie sind kein Gegner</td></tr>
+        <tr><td><strong>Unternehmen selbst</strong></td><td>mittel</td><td>Jahre</td><td>Aktienrückkauf</td><td>Insiderwissen über sich</td><td>—</td></tr>
+        <tr><td><strong>Insider (Vorstand)</strong></td><td>gering</td><td>Jahre</td><td>Vergütung, Überzeugung</td><td>Informationsvorsprung</td><td>—</td></tr>
+        <tr><td><strong>Privatanleger</strong></td><td>gering</td><td>alles</td><td>alles</td><td>keiner</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Zwei Schlussfolgerungen, die den Rest des Kurses prägen:</strong></p>
+  <p><strong>Erstens: Der Versuch, einen Informationsvorsprung zu erlangen, ist aussichtslos.</strong> Du wirst nie vor einem Hedgefonds wissen, wie NVIDIAs Quartal lief. Du wirst nie Satellitenbilder von Costco-Parkplätzen auswerten. Jede Strategie, die auf „ich weiß es früher" beruht, ist für dich strukturell verloren.</p>
+  <p><strong>Zweitens: Der Versuch, einen Zeithorizont-Vorsprung zu nutzen, ist realistisch.</strong> Niemand zwingt dich, quartalsweise Rechenschaft abzulegen. Niemand zieht dir Kapital ab, weil du drei Monate hinter dem S&amp;P 500 liegst. Du kannst eine unterbewertete Aktie kaufen und <strong>warten</strong>. Das kann fast keiner deiner Gegenüber.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Handle nie in der Disziplin, in der andere schneller, besser informiert und besser ausgerüstet sind. Handle in der Disziplin, in der sie strukturell nicht mitspielen dürfen: Geduld.</p>
+  </div>
+
+  <!-- 1.4 -->
+  <h2><span class="num">1.4</span>Orderbuch, Bid/Ask, Spread, Liquidität, Volumen</h2>
+  <p>Diese fünf Begriffe beschreiben ein einziges Phänomen aus fünf Blickwinkeln: <strong>Wie leicht kann ich handeln, ohne den Preis gegen mich zu bewegen?</strong></p>
+
+  <h3>Bid und Ask</h3>
+  <ul>
+    <li><strong>Bid (Geldkurs):</strong> Höchster Preis, den aktuell jemand zu zahlen bereit ist. → <strong>Zu diesem Preis kannst du verkaufen.</strong></li>
+    <li><strong>Ask (Briefkurs):</strong> Niedrigster Preis, zu dem aktuell jemand verkaufen will. → <strong>Zu diesem Preis kannst du kaufen.</strong></li>
+  </ul>
+  <p>Der Anfängerfehler: Man sieht auf einer Website „Kurs: 214,08 €" und glaubt, zu diesem Preis handeln zu können. Der angezeigte Kurs ist aber meist der <strong>letzte Trade</strong> oder die <strong>Mitte</strong> von Bid und Ask. Kaufen kannst du zu 214,10, verkaufen zu 214,06.</p>
+
+  <h3>Spread</h3>
+  <p><strong>Spread = Ask − Bid.</strong> Es ist die Gebühr, die du an den Markt zahlst, unabhängig von der Ordergebühr deines Brokers.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Aktie</th><th>Typischer Kurs</th><th>Typischer Spread</th><th>Spread in %</th><th>Bewertung</th></tr></thead>
+      <tbody>
+        <tr><td>Apple (Nasdaq)</td><td>~215 $</td><td>~0,02 $</td><td class="hl">0,01 %</td><td>vernachlässigbar</td></tr>
+        <tr><td>SAP (Xetra)</td><td>~230 €</td><td>~0,05 €</td><td class="hl">0,02 %</td><td>vernachlässigbar</td></tr>
+        <tr><td>Novo Nordisk (Kopenhagen)</td><td>~600 DKK</td><td>~0,4 DKK</td><td class="hl">0,07 %</td><td>unproblematisch</td></tr>
+        <tr><td>Deutscher Nebenwert (SDAX)</td><td>~30 €</td><td>~0,15 €</td><td class="hl">0,5 %</td><td>spürbar</td></tr>
+        <tr><td>US-Nebenwert außerhalb Handelszeit</td><td>—</td><td>—</td><td class="hl">2–5 %</td><td>inakzeptabel</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85rem; color:var(--text-3); font-style:italic;">Werte illustrativ und tageszeitabhängig.</p>
+
+  <p><strong>Rechenbeispiel — was der Spread kostet:</strong><br>
+  Du kaufst eine Aktie mit 0,5 % Spread und verkaufst sie später wieder. Beim Kauf zahlst du den Ask, beim Verkauf bekommst du den Bid. <strong>Round-Trip-Kosten allein durch den Spread: ca. 0,5 %.</strong></p>
+  <p>Bei einer angestrebten Jahresrendite von 10 % und einer Haltedauer von 3 Jahren: 0,5 % Spread = <strong>0,17 Prozentpunkte pro Jahr</strong>. Verschmerzbar.<br>
+  Bei derselben Aktie und 12 Trades pro Jahr: <strong>6 % Spreadkosten pro Jahr.</strong> Deine gesamte Überrendite ist weg, bevor du eine einzige richtige Entscheidung getroffen hast.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Der Spread ist eine Steuer auf Aktivität. Er skaliert mit der Anzahl deiner Trades, nicht mit deren Qualität.</p>
+  </div>
+
+  <h3>Liquidität</h3>
+  <p>Liquidität ist die <strong>Fähigkeit des Marktes, deine Order aufzunehmen, ohne dass der Preis wegläuft.</strong></p>
+  <p>Ein Beispiel:<br>Du willst Aktien im Wert von 20.000 € kaufen.</p>
+  <p><strong>Fall A — Apple:</strong> Im Orderbuch liegen auf der ersten Preisstufe bereits 2.500 Stück (≈ 535.000 $). Deine Order wird vollständig zum besten Ask ausgeführt. <strong>Marktauswirkung: null.</strong></p>
+  <p><strong>Fall B — Nebenwert mit 30 € Kurs und dünnem Buch:</strong></p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Ask-Stufe</th><th>Preis</th><th>Stück</th><th>Kumuliert (€)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="num">30,00</td><td class="num">100</td><td class="num">3.000</td></tr>
+        <tr><td>2</td><td class="num">30,15</td><td class="num">150</td><td class="num">7.523</td></tr>
+        <tr><td>3</td><td class="num">30,40</td><td class="num">200</td><td class="num">13.603</td></tr>
+        <tr><td>4</td><td class="num">30,90</td><td class="num">250</td><td class="num">21.328</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Deine 20.000-€-Market-Order „frisst" sich durch vier Preisstufen. Dein <strong>Durchschnittskurs liegt bei ca. 30,42 €</strong> statt bei 30,00 €. Du hast <strong>1,4 % verloren, bevor du überhaupt investiert bist</strong> — und wenn du wieder verkaufst, passiert dasselbe in die Gegenrichtung.</p>
+  <p>Dieser Effekt heißt <strong>Slippage</strong> und ist der Grund, warum große Fonds Nebenwerte meiden. Für dich ist er ein Grund, bei illiquiden Titeln <strong>niemals mit Market-Orders zu arbeiten</strong>.</p>
+
+  <h3>Volumen</h3>
+  <p>Das <strong>Volumen</strong> (gehandelte Stückzahl pro Zeiteinheit) ist die wichtigste Bestätigungsgröße der gesamten Chartanalyse — und wir kommen in Modul 3 ausführlich darauf zurück. Für den Moment reichen zwei Merksätze:</p>
+  <ul>
+    <li><strong>Volumen ist Überzeugung.</strong> Eine Kursbewegung mit hohem Volumen wurde von vielen Marktteilnehmern getragen. Eine Bewegung mit niedrigem Volumen wurde von wenigen erzeugt und ist entsprechend leicht umkehrbar.</li>
+    <li><strong>Volumen ist Machbarkeit.</strong> Ein Titel, der täglich 200.000 € umsetzt, ist für ein 50.000-€-Depot mit 10 % Positionsgröße bereits grenzwertig.</li>
+  </ul>
+  <p><strong>Faustregel:</strong> Deine Position sollte <strong>maximal 1 % des durchschnittlichen Tagesvolumens</strong> ausmachen. Sonst bist du nicht Teilnehmer des Marktes, sondern <em>der Markt</em>.</p>
+
+  <!-- 1.5 -->
+  <h2><span class="num">1.5</span>Börsenplätze — wo du tatsächlich handelst</h2>
+  <p>Dieselbe Aktie wird an vielen Plätzen gehandelt. Sie ist überall dieselbe Aktie, aber nicht überall zum selben Preis und nicht überall gleich sicher handelbar.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Handelsplatz</th><th>Typ</th><th>Handelszeiten (MEZ)</th><th>Charakteristik</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Xetra</strong></td><td>Referenzbörse DE</td><td>9:00–17:30</td><td>Höchste Liquidität für deutsche Aktien, echte Orderbuchtiefe</td></tr>
+        <tr><td><strong>Tradegate / Gettex</strong></td><td>Elektronische Handelsplätze</td><td>8:00–22:00</td><td>Market-Maker-basiert, oft gebührenfrei über Neobroker</td></tr>
+        <tr><td><strong>NYSE / Nasdaq</strong></td><td>Referenzbörse US</td><td>15:30–22:00</td><td>Höchste Liquidität weltweit</td></tr>
+        <tr><td><strong>Regionalbörsen (Stuttgart, München …)</strong></td><td>Präsenz/elektronisch</td><td>8:00–22:00</td><td>Geringe Liquidität, breitere Spreads</td></tr>
+        <tr><td><strong>LSE, Euronext, SIX</strong></td><td>Referenzbörsen</td><td>variiert</td><td>Heimatmarkt europäischer Titel</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die drei Regeln zum Handelsplatz</h3>
+  <p><strong>Regel 1: Handle möglichst am Heimatmarkt bzw. zu dessen Handelszeiten.</strong><br>
+  Apple in Frankfurt um 9:00 Uhr zu kaufen bedeutet: Der US-Markt ist geschlossen, der deutsche Market Maker stellt den Preis auf Basis eines <em>geschätzten</em> US-Kurses und lässt sich das Risiko über einen breiteren Spread bezahlen. Kaufe Apple ab 15:30 Uhr — dann ist die Nasdaq offen und der Preis ist real.</p>
+  <p><strong>Regel 2: Meide die ersten und letzten 15 Minuten.</strong><br>
+  Eröffnungs- und Schlussauktionen erzeugen die höchste Volatilität und die breitesten Spreads des Tages. Als langfristiger Anleger hast du keinen Grund, dich dort aufzuhalten.</p>
+  <p><strong>Regel 3: Meide den Handel bei geschlossenem Heimatmarkt vollständig, wenn der Titel illiquide ist.</strong><br>
+  Ein US-Nebenwert, um 8:15 Uhr in Stuttgart gekauft, kann dich problemlos 3 % kosten.</p>
+
+  <div class="ak-callout">
+    <span class="ak-ctag">⚠ Anfängerfehler</span>
+    <p>Eine US-Aktie um 9:00 Uhr morgens „schnell noch" über Tradegate kaufen, weil eine Nachricht kam. Genau in diesem Moment ist der Spread maximal, die Liquidität minimal und der Market Maker im Vorteil.</p>
+  </div>
+
+  <!-- 1.6 -->
+  <h2><span class="num">1.6</span>Orderarten</h2>
+  <p>Die Orderart ist keine technische Nebensache. Sie ist die <strong>Schnittstelle zwischen deiner Entscheidung und dem Markt</strong> — und der Ort, an dem die meisten vermeidbaren Verluste entstehen.</p>
+
+  <h3>Die vier Grundtypen</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Orderart</th><th>Was sie tut</th><th>Garantiert</th><th>Nicht garantiert</th><th>Wofür</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Market</strong></td><td>Kaufe/verkaufe sofort zum nächstbesten Preis</td><td class="hl">Ausführung</td><td>Preis</td><td>Nur bei hoher Liquidität und Dringlichkeit</td></tr>
+        <tr><td><strong>Limit</strong></td><td>Kaufe max. zu X / verkaufe min. zu X</td><td class="hl">Preis</td><td>Ausführung</td><td><strong>Standard für alles in diesem Kurs</strong></td></tr>
+        <tr><td><strong>Stop (Stop-Market)</strong></td><td>Wird zur Market-Order, sobald Kurs X berührt</td><td class="hl">Ausführung (nach Auslösung)</td><td>Preis</td><td>Verlustbegrenzung bei liquiden Titeln</td></tr>
+        <tr><td><strong>Stop-Limit</strong></td><td>Wird zur Limit-Order, sobald Kurs X berührt</td><td class="hl">Preis (nach Auslösung)</td><td>Ausführung</td><td>Verlustbegrenzung bei illiquiden Titeln</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Der zentrale Trade-off</h3>
+  <p>Es gibt <strong>keine Orderart, die dir Preis und Ausführung gleichzeitig garantiert.</strong> Jede Wahl ist eine Entscheidung darüber, welches der beiden Risiken du trägst.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-orderarten.svg" aria-label="Zweiachsiges Diagramm der vier Orderarten nach Ausführungssicherheit und Preissicherheit"></object>
+    <figcaption>Die vier Orderarten auf den Achsen Ausführungssicherheit und Preissicherheit — die obere rechte Ecke ist unmöglich</figcaption>
+  </figure>
+
+  <h3>Die Stop-Loss-Falle</h3>
+  <p>Ein Stop-Loss ist <strong>keine Versicherung</strong>. Er ist ein Auftrag, im Fall der Fälle <em>zu jedem Preis</em> zu verkaufen.</p>
+  <p><strong>Beispiel:</strong><br>
+  Du hältst eine Aktie bei 100 €. Du setzt einen Stop-Loss bei 90 €, „um maximal 10 % zu verlieren".<br>
+  Nach Börsenschluss meldet das Unternehmen eine Gewinnwarnung. Am nächsten Morgen eröffnet die Aktie bei <strong>72 €</strong>.</p>
+  <p>Dein Stop bei 90 € wird ausgelöst — aber es gab zwischen 100 € und 72 € nie einen Handel. Deine Order wird zur Market-Order und <strong>bei 72 € ausgeführt</strong>. Dein Verlust: 28 %, nicht 10 %.</p>
+  <p>Das nennt man <strong>Gap-Risiko</strong>, und kein Stop-Loss der Welt kann es verhindern. Ein Stop-Loss schützt gegen <em>gleitende</em> Abwärtsbewegungen, nicht gegen <em>Sprünge</em>. Das Instrument, das gegen Sprünge schützt, heißt <strong>Positionsgröße</strong> — Modul 5.</p>
+  <p>Der <strong>Flash Crash vom 6. Mai 2010</strong> ist das Lehrbuchbeispiel: Innerhalb weniger Minuten fielen einzelne US-Aktien auf Cent-Beträge, alle Stop-Loss-Orders wurden zu Market-Orders, die Orderbücher waren leer — und Minuten später stand alles wieder auf dem Ausgangsniveau. Wer einen Stop hatte, war ausgestoppt. Wer keinen hatte, hat nichts bemerkt.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Der Stop-Loss begrenzt deinen Verlust nur an Tagen, an denen du ihn nicht wirklich brauchst.</p>
+  </div>
+
+  <h3>Praxisregeln zur Orderausführung (für diesen Kurs verbindlich)</h3>
+  <ol>
+    <li><strong>Immer Limit-Order.</strong> Ausnahmslos beim Kauf. Du hast es nicht eilig.</li>
+    <li><strong>Limit realistisch setzen</strong> — beim aktuellen Ask oder 1–2 Ticks darüber, nicht 3 % darunter „weil es vielleicht noch fällt". Das ist kein Limit, das ist eine unausgesprochene Prognose.</li>
+    <li><strong>Keine Market-Orders in Auktionen</strong> (Eröffnung, Schluss, Volatilitätsunterbrechung).</li>
+    <li><strong>Stop-Loss nur bei liquiden Titeln</strong> und nur, wenn er Teil eines <em>vorher definierten</em> Systems ist — nicht als nachträgliche Beruhigungsmaßnahme.</li>
+    <li><strong>Bei illiquiden Titeln: Stop-Limit</strong> mit ausreichendem Abstand zwischen Stop und Limit, oder gar kein Stop.</li>
+  </ol>
+
+  <!-- 1.7 -->
+  <h2><span class="num">1.7</span>Warum die meisten Privatanleger Geld verlieren</h2>
+  <p>Das ist keine Meinung, sondern einer der am besten belegten Befunde der Finanzmarktforschung. Und es lohnt, die Ursachen einzeln anzusehen, weil <strong>jede einzelne von ihnen abstellbar ist.</strong></p>
+
+  <h3>Der empirische Befund</h3>
+  <p>Die klassische Untersuchung von <strong>Barber und Odean</strong> wertete über 66.000 Depots eines US-Discountbrokers über sechs Jahre aus. Ergebnis: Der durchschnittliche Haushalt blieb spürbar hinter dem Marktindex zurück — und <strong>je häufiger gehandelt wurde, desto größer war der Rückstand.</strong> Das aktivste Fünftel der Anleger schnitt am schlechtesten ab.</p>
+  <p>Eine zweite, oft zitierte Untersuchung derselben Autoren fand, dass Männer häufiger handeln als Frauen und <strong>deshalb</strong> schlechter abschneiden — nicht, weil sie schlechtere Aktien auswählen, sondern weil sie mehr Kosten und mehr Fehler produzieren.</p>
+  <p>Die Auswertungen von <strong>Dalbar</strong> über Fondsanleger zeigen dasselbe Muster aus einer anderen Perspektive: Die Rendite, die Anleger <em>tatsächlich erzielen</em>, liegt systematisch unter der Rendite der Fonds, in die sie investieren. Der Grund ist ausschließlich <strong>Timing</strong> — sie kaufen nach guten Jahren und verkaufen nach schlechten. Diese Lücke nennt man den <strong>Behavior Gap</strong>.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-behavior-gap.svg" aria-label="Balkenvergleich: Fondsrendite gegen tatsächlich vom Anleger erzielte Rendite, die Differenz ist der Behavior Gap"></object>
+    <figcaption>Der Behavior Gap — was Kosten, falsches Timing und Panik von der Fondsrendite abziehen</figcaption>
+  </figure>
+
+  <h3>Die sieben Ursachen</h3>
+  <p><strong>1. Overtrading.</strong> Jeder Trade kostet Spread, Gebühren und — in Deutschland — potenziell Steuern auf realisierte Gewinne. 20 Trades pro Jahr à 0,3 % Gesamtkosten = 6 % Vorsprung, den der Markt gegen dich hat, bevor irgendetwas passiert ist.</p>
+  <p><strong>2. Der Dispositionseffekt.</strong> Anleger realisieren Gewinne zu früh und lassen Verluste zu lange laufen. Der Mechanismus ist psychologisch: Ein realisierter Gewinn fühlt sich wie ein Erfolg an, ein realisierter Verlust wie ein Eingeständnis. Also verkauft man die Gewinner (um sich gut zu fühlen) und behält die Verlierer (um das Eingeständnis zu vermeiden). Das ist <strong>exakt die Umkehrung</strong> dessen, was ökonomisch sinnvoll ist — und obendrein steuerlich nachteilig.</p>
+  <p><strong>3. Steuerliche Reibung.</strong> In Deutschland fallen bei Realisierung von Kursgewinnen 25 % Abgeltungsteuer plus Soli (effektiv ca. 26,375 %, ggf. plus Kirchensteuer) an. Wer alle zwei Jahre umschichtet, versteuert alle zwei Jahre — und der Zinseszins läuft auf einem reduzierten Kapitalstock weiter. Über 20 Jahre ist der Unterschied zwischen einmal versteuern und zehnmal versteuern <strong>erheblich</strong>.</p>
+  <p><strong>4. Home Bias.</strong> Deutsche Anleger halten stark überproportional deutsche Aktien. Deutschland stellt einen kleinen einstelligen Prozentanteil der globalen Marktkapitalisierung. Man konzentriert also freiwillig ein Risiko, ohne dafür bezahlt zu werden.</p>
+  <p><strong>5. Lottery-Präferenz.</strong> Kleine, spekulative, „günstig" wirkende Aktien mit hoher Aufmerksamkeitsdichte (Penny Stocks, Hype-Titel) werden systematisch überkauft und liefern im Durchschnitt eine <em>negative</em> Überrendite. Anleger zahlen einen Aufpreis für die Chance auf einen Lottogewinn.</p>
+  <p><strong>6. Aufmerksamkeitsgetriebenes Kaufen.</strong> Privatanleger kaufen überproportional Aktien, die gerade in den Nachrichten sind — weil das die Aktien sind, die sie <em>sehen</em>. Der Kauf erfolgt damit systematisch <strong>nach</strong> der Kursbewegung.</p>
+  <p><strong>7. Fehlende Ausstiegsregel.</strong> Die meisten Privatanleger haben eine Kaufthese, aber keine Verkaufsthese. Sie wissen, warum sie gekauft haben, aber nicht, unter welchen Umständen sie sich geirrt hätten. Damit ist jede Entscheidung unfalsifizierbar — und ein unfalsifizierbares System kann sich nicht verbessern.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Die Mehrheit der Privatanleger verliert nicht, weil sie die falschen Aktien kauft. Sie verliert, weil sie zu oft, zu spät, zu emotional und ohne Ausstiegsregel handelt. Alle vier Ursachen sind Prozessprobleme — und Prozesse kann man reparieren.</p>
+  </div>
+
+  <!-- 1.8 -->
+  <h2><span class="num">1.8</span>Erwartungswert statt Trefferquote</h2>
+  <p>Dies ist der wichtigste Abschnitt dieses Moduls. Wenn du von Modul 1 nur eine Sache mitnimmst, dann diese.</p>
+
+  <h3>Die falsche Frage</h3>
+  <p>Anfänger fragen: <em>„Wie oft liege ich richtig?"</em><br>
+  Profis fragen: <em>„Wie viel verdiene ich, wenn ich richtig liege — und wie viel verliere ich, wenn ich falsch liege?"</em></p>
+
+  <h3>Die Formel</h3>
+  <div class="ak-formula">EW  =  (p_gewinn × Ø-Gewinn)  −  (p_verlust × Ø-Verlust)</div>
+  <p>Der Erwartungswert ist der <strong>durchschnittliche Ertrag pro Trade über viele Trades hinweg.</strong> Ist er positiv, verdienst du langfristig Geld — egal, wie sich einzelne Trades anfühlen. Ist er negativ, verlierst du langfristig Geld — egal, wie viele einzelne Trades du gewinnst.</p>
+
+  <h3>Zwei Systeme im Vergleich</h3>
+  <p><strong>System A — „Der Sichere":</strong> Trefferquote 70 %. Gewinne werden bei +5 % mitgenommen, Verluste laufen bis −15 %.</p>
+  <div class="ak-formula">EW = (0,70 × 5 %) − (0,30 × 15 %)
+   = 3,5 % − 4,5 %
+   = <span style="color:#e05252;">−1,0 % pro Trade</span></div>
+
+  <p><strong>System B — „Der Unbequeme":</strong> Trefferquote 40 %. Gewinne dürfen bis +25 % laufen, Verluste werden bei −8 % begrenzt.</p>
+  <div class="ak-formula">EW = (0,40 × 25 %) − (0,60 × 8 %)
+   = 10,0 % − 4,8 %
+   = <span style="color:var(--neon);">+5,2 % pro Trade</span></div>
+
+  <p><strong>System A fühlt sich großartig an.</strong> Sieben von zehn Entscheidungen sind richtig. Man erzählt beim Abendessen davon. <strong>Und es ruiniert dich.</strong></p>
+  <p><strong>System B fühlt sich furchtbar an.</strong> Sechs von zehn Entscheidungen sind falsch. Man zweifelt permanent an sich. <strong>Und es macht dich vermögend.</strong></p>
+
+  <h3>Welche Trefferquote brauchst du?</h3>
+  <p>Das <strong>Chance-Risiko-Verhältnis (CRV)</strong> ist der Quotient aus durchschnittlichem Gewinn und durchschnittlichem Verlust. Aus ihm lässt sich direkt ableiten, welche Trefferquote du mindestens für Break-even brauchst:</p>
+  <div class="ak-formula">Mindest-Trefferquote  =  1 / (1 + CRV)</div>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>CRV (Gewinn : Verlust)</th><th>Mindest-Trefferquote für Break-even</th><th>Bei 50 % Trefferquote: EW</th></tr></thead>
+      <tbody>
+        <tr><td>1 : 1</td><td class="hl"><strong>50,0 %</strong></td><td>0 %</td></tr>
+        <tr><td>1,5 : 1</td><td class="hl"><strong>40,0 %</strong></td><td>+0,25 × Risiko</td></tr>
+        <tr><td>2 : 1</td><td class="hl"><strong>33,3 %</strong></td><td>+0,50 × Risiko</td></tr>
+        <tr><td>3 : 1</td><td class="hl"><strong>25,0 %</strong></td><td>+1,00 × Risiko</td></tr>
+        <tr><td>4 : 1</td><td class="hl"><strong>20,0 %</strong></td><td>+1,50 × Risiko</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-crv-trefferquote.svg" aria-label="Hyperbelkurve: CRV auf der X-Achse, benötigte Trefferquote auf der Y-Achse; profitable Fläche über der Kurve"></object>
+    <figcaption>Je höher das CRV, desto niedriger darf die Trefferquote sein — die profitable Region liegt über der Kurve</figcaption>
+  </figure>
+
+  <p><strong>Lies diese Tabelle rückwärts, und du hast das gesamte Geschäftsmodell dieses Kurses:</strong><br>
+  Wenn du nur dann kaufst, wenn die Sicherheitsmarge groß genug für ein CRV von 3:1 ist, darfst du <strong>in drei von vier Fällen falsch liegen</strong> und verdienst trotzdem Geld.</p>
+  <p><strong>Genau darum geht es bei der Sicherheitsmarge in Modul 2.</strong> Sie ist kein moralisches Prinzip — sie ist eine mathematische Notwendigkeit, um die eigene Fehlbarkeit zu finanzieren.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Du wirst dich oft irren. Baue kein System, das darauf angewiesen ist, dass du recht behältst. Baue eines, das überlebt, wenn du dich irrst.</p>
+  </div>
+
+  <!-- 1.9 -->
+  <h2><span class="num">1.9</span>Risiko vs. Rendite — und warum Verluste asymmetrisch sind</h2>
+
+  <h3>Was Risiko <em>nicht</em> ist</h3>
+  <p>Die Finanzindustrie definiert Risiko als <strong>Volatilität</strong> (Standardabweichung der Renditen). Das ist praktisch, weil messbar — aber es beschreibt nicht, was Anleger tatsächlich fürchten.</p>
+  <p>Volatilität ist <strong>Schwankung</strong>. Sie ist symmetrisch: Eine Aktie, die um 40 % <em>steigt</em>, erhöht ihre Volatilität genauso wie eine, die um 40 % fällt.</p>
+  <p>Das tatsächliche Risiko ist <strong>dauerhafter Kapitalverlust</strong>: die Wahrscheinlichkeit, dass Kapital nicht zurückkommt, weil das Unternehmen strukturell beschädigt ist — nicht, weil der Kurs schwankt.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Volatilität</th><th>Dauerhafter Kapitalverlust</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Beispiel</strong></td><td>NVIDIA fällt 2022 um ~50 % und verzehnfacht sich danach</td><td>Wirecard fällt 2020 auf ~0 und kommt nie zurück</td></tr>
+        <tr><td><strong>Für den langfristigen Anleger</strong></td><td class="check">Gelegenheit</td><td class="cross">Ruin</td></tr>
+        <tr><td><strong>Messbar?</strong></td><td>ja, exakt</td><td>nein, nur abschätzbar</td></tr>
+        <tr><td><strong>Womit bekämpfen?</strong></td><td>Geduld, Zeithorizont</td><td>Qualitätsanalyse, Diversifikation, Positionsgröße</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Aber:</strong> Volatilität ist nicht harmlos. Sie wird genau dann zum echten Risiko, wenn sie dich zu einer Handlung zwingt — weil du auf Kredit gekauft hast, weil du das Geld brauchst, oder weil du es psychisch nicht aushältst. Dann verwandelt Volatilität sich in dauerhaften Kapitalverlust. <strong>Das ist der einzige Mechanismus, über den ein langfristiger Anleger an Schwankung zugrunde geht: indem er im falschen Moment verkauft.</strong></p>
+
+  <h3>Die Drawdown-Mathematik</h3>
+  <p>Das ist die unangenehmste Tabelle im gesamten Kurs. Sie beantwortet die Frage: <em>Welche Rendite brauche ich, um einen Verlust wieder aufzuholen?</em></p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Verlust</th><th>Nötiger Gewinn zur Wiederherstellung</th></tr></thead>
+      <tbody>
+        <tr><td>−10 %</td><td class="num">+11,1 %</td></tr>
+        <tr><td>−20 %</td><td class="num">+25,0 %</td></tr>
+        <tr><td>−25 %</td><td class="num">+33,3 %</td></tr>
+        <tr><td>−33 %</td><td class="num">+50,0 %</td></tr>
+        <tr><td class="hl"><strong>−50 %</strong></td><td class="num hl"><strong>+100,0 %</strong></td></tr>
+        <tr><td>−66 %</td><td class="num">+200,0 %</td></tr>
+        <tr><td>−75 %</td><td class="num">+300,0 %</td></tr>
+        <tr><td>−90 %</td><td class="num hl"><strong>+900,0 %</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-drawdown-konvexitaet.svg" aria-label="Exponentiell steigende Kurve: Verlust auf der X-Achse, nötiger Aufholgewinn auf der Y-Achse; Markierung bei minus 50 Prozent gleich plus 100 Prozent"></object>
+    <figcaption>Die Konvexität der Drawdowns: bis −20 % linear, ab −50 % nichtlinear und existenzbedrohend</figcaption>
+  </figure>
+
+  <p><strong>Die Formel:</strong></p>
+  <div class="ak-formula">Nötiger Gewinn  =  1 / (1 − Verlust)  −  1</div>
+
+  <p>Die entscheidende Einsicht ist nicht die Formel. Sie ist die <strong>Konvexität</strong>: Bis −20 % ist der Schaden linear und beherrschbar. Ab −50 % wird er nichtlinear und existenzbedrohend. Deshalb ist das oberste Ziel des Risikomanagements nicht, <em>jeden</em> Verlust zu vermeiden — sondern zu verhindern, dass irgendein Verlust jemals in den nichtlinearen Bereich gerät.</p>
+
+  <h3>Arithmetisches vs. geometrisches Mittel</h3>
+  <p>Ein Depot macht in zwei Jahren: <strong>+50 %</strong>, dann <strong>−50 %</strong>.<br>
+  Das arithmetische Mittel der Renditen ist <strong>0 %</strong>.<br>
+  Der tatsächliche Endstand: 100 € → 150 € → <strong>75 €</strong>. Ein Verlust von <strong>25 %</strong>.</p>
+  <p>Renditen multiplizieren sich, sie addieren sich nicht. Was zählt, ist das <strong>geometrische Mittel</strong> — und das wird von Schwankung <em>bestraft</em>. Zwei Depots mit identischer Durchschnittsrendite, aber unterschiedlicher Schwankung, haben nicht dasselbe Endvermögen. Das schwankungsärmere gewinnt.</p>
+  <p>Das ist der mathematische Kern von Risikomanagement, und er ist der Grund, warum Modul 5 wichtiger ist als Modul 2.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 8</strong>Ein Verlust von 50 % erfordert einen Gewinn von 100 %. Rendite ist eine Frage der Auswahl. Überleben ist eine Frage der Größe.</p>
+  </div>
+
+  <!-- 1.10 -->
+  <h2><span class="num">1.10</span>Die Denkweise professioneller Händler</h2>
+
+  <h3>Prozess statt Ergebnis</h3>
+  <p>Ein einzelner Trade sagt <strong>nichts</strong> über die Qualität der Entscheidung aus, die ihm zugrunde lag. Das ist keine Ausrede, sondern eine Konsequenz der Wahrscheinlichkeit.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Guter Prozess</th><th>Schlechter Prozess</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gutes Ergebnis</strong></td><td class="check">Verdienter Erfolg</td><td class="hl"><strong>Glück</strong> ← gefährlichstes Feld</td></tr>
+        <tr><td><strong>Schlechtes Ergebnis</strong></td><td><strong>Pech</strong> ← notwendig auszuhalten</td><td class="cross">Verdiente Strafe</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m01-prozess-ergebnis.svg" aria-label="Zwei-mal-zwei-Matrix Prozess vs Ergebnis, das Feld Glück hervorgehoben"></object>
+    <figcaption>Die Prozess-Ergebnis-Matrix — „Glück" ist das gefährlichste Feld, weil es schlechte Prozesse belohnt</figcaption>
+  </figure>
+
+  <p>Das gefährlichste Feld ist <strong>„Glück"</strong>: Ein schlechter Prozess wird durch ein gutes Ergebnis belohnt und deshalb wiederholt. Genau so entsteht die Karriere des typischen Anlegers, der nach drei zufälligen Erfolgen die Positionsgröße verdreifacht.</p>
+  <p>Die notwendige Konsequenz: <strong>Bewerte Entscheidungen, nicht Ergebnisse.</strong> Das geht nur, wenn du die Entscheidung <em>vorher</em> dokumentiert hast. Deshalb das Trading-Journal (Modul 7) — es ist kein Tagebuch, es ist das einzige Instrument, das Prozess und Ergebnis überhaupt trennen kann.</p>
+
+  <h3>Die schriftliche These</h3>
+  <p>Vor jedem Kauf beantwortest du schriftlich vier Fragen:</p>
+  <ol>
+    <li><strong>Warum kaufe ich?</strong> (Bewertung, Qualität, Katalysator)</li>
+    <li><strong>Was muss eintreten, damit ich recht behalte?</strong> (Prognostizierte Entwicklung)</li>
+    <li><strong>Woran erkenne ich, dass ich falsch lag?</strong> ← <strong>Das Falsifikationskriterium</strong></li>
+    <li><strong>Wie groß darf die Position sein, wenn ich vollständig falsch liege?</strong></li>
+  </ol>
+  <p>Frage 3 ist die, die fast niemand stellt — und sie ist die wichtigste. Eine These ohne Falsifikationskriterium ist keine These, sondern ein Glaubenssatz. Glaubenssätze lassen sich nicht widerlegen, also lassen sie sich auch nie korrigieren. Man hält sie bis zum Totalverlust.</p>
+  <p>Ein Falsifikationskriterium ist <strong>konkret und im Voraus festgelegt</strong>:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th class="cross">❌ Kein Kriterium</th><th class="check">✅ Falsifikationskriterium</th></tr></thead>
+      <tbody>
+        <tr><td>„Wenn sich die Lage verschlechtert"</td><td>„Wenn die Bruttomarge zwei Quartale in Folge unter 40 % fällt"</td></tr>
+        <tr><td>„Wenn ich das Vertrauen verliere"</td><td>„Wenn der Free Cash Flow ein volles Jahr negativ ist"</td></tr>
+        <tr><td>„Wenn der Kurs zu weit fällt"</td><td>„Wenn der CFO ohne Nachfolgeplan zurücktritt"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Wahrscheinlichkeitsdenken</h3>
+  <p>Professionelle Marktteilnehmer sprechen nicht in Gewissheiten. Sie sprechen in Verteilungen:</p>
+  <ul>
+    <li><span style="color:#e05252;">❌</span> <em>„Die Aktie wird auf 300 steigen."</em></li>
+    <li><span style="color:var(--neon);">✅</span> <em>„Bei meinen Annahmen liegt der faire Wert bei ca. 280. Im Bärenszenario bei 190, im Bullenszenario bei 360. Beim aktuellen Kurs von 200 ist das Chance-Risiko-Verhältnis attraktiv, weil selbst mein Bärenszenario nur knapp unter dem Kurs liegt."</em></li>
+  </ul>
+  <p>Die zweite Aussage ist länger, weniger befriedigend und deutlich wertvoller. Sie ist überprüfbar, sie quantifiziert das Risiko, und sie enthält ein implizites Ausstiegskriterium.</p>
+
+  <h3>„Ich weiß es nicht" ist eine vollständige Antwort</h3>
+  <p>Es gibt keine Verpflichtung zu handeln. Das Fehlen einer Position ist ebenfalls eine Position — und oft die richtige. Ein Fondsmanager muss investiert sein; du nicht.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 9</strong>Nicht zu handeln ist eine Entscheidung. Sie ist kostenlos, jederzeit verfügbar und in der Mehrzahl der Fälle die beste.</p>
+  </div>
+
+  <!-- Anfängerfehler -->
+  <h2>Typische Anfängerfehler in Modul 1</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Market-Order bei illiquiden Titeln</td><td>Slippage von 1–3 % beim Ein- <strong>und</strong> Ausstieg</td><td>Ausnahmslos Limit-Order</td></tr>
+        <tr><td>US-Aktien morgens in Deutschland kaufen</td><td>Breiter Spread, geschätzter Preis</td><td>Erst ab 15:30 Uhr handeln</td></tr>
+        <tr><td>Stop-Loss als „Versicherung" verstehen</td><td>Gap-Risiko schlägt jeden Stop</td><td>Positionsgröße statt Stop als primärer Schutz</td></tr>
+        <tr><td>Trefferquote als Erfolgsmaß</td><td>Führt zu frühem Gewinnmitnehmen und langem Verlustaussitzen</td><td>Erwartungswert berechnen</td></tr>
+        <tr><td>Volatilität mit Risiko gleichsetzen</td><td>Verkauf im Tief, genau dann, wenn man kaufen sollte</td><td>Risiko = dauerhafter Kapitalverlust</td></tr>
+        <tr><td>Kaufen ohne Verkaufskriterium</td><td>Unfalsifizierbare These, kein Lernen möglich</td><td>Falsifikationskriterium vor dem Kauf notieren</td></tr>
+        <tr><td>Häufiges Handeln als „aktiv sein" deuten</td><td>Kosten, Steuern, Fehler skalieren mit Aktivität</td><td>Trades zählen, nicht Ideen</td></tr>
+        <tr><td>Nach Nachrichten kaufen</td><td>Der Kurs hat die Nachricht bereits verarbeitet</td><td>Watchlist vorher aufbauen, Nachricht ist nur Auslöser</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2>Checkliste — vor jeder einzelnen Order</h2>
+  <p><strong>Vor dem Klick:</strong></p>
+  <ul class="ak-check-list">
+    <li>Ich habe eine <strong>schriftliche These</strong> mit Falsifikationskriterium.</li>
+    <li>Ich kenne meinen <strong>fairen Wert</strong> und meine <strong>Sicherheitsmarge</strong>. <em>(→ Modul 2)</em></li>
+    <li>Ich kenne meine <strong>Positionsgröße</strong> und den maximalen Verlust in Euro. <em>(→ Modul 5)</em></li>
+    <li>Ich weiß, <strong>wann ich verkaufe</strong> — im Erfolgsfall <em>und</em> im Fehlerfall. <em>(→ Modul 6)</em></li>
+    <li>Der <strong>Heimatmarkt</strong> des Titels ist geöffnet.</li>
+    <li>Es sind <strong>nicht</strong> die ersten oder letzten 15 Handelsminuten.</li>
+    <li>Ich verwende eine <strong>Limit-Order</strong> mit realistischem Limit.</li>
+    <li>Meine Order ist <strong>&lt; 1 % des durchschnittlichen Tagesvolumens</strong>.</li>
+    <li>Der <strong>Spread</strong> liegt in einem für meine Haltedauer vertretbaren Rahmen.</li>
+    <li>Ich kaufe <strong>nicht</strong>, weil eine Nachricht kam. Der Titel stand vorher schon auf meiner Watchlist.</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2>Zusammenfassung</h2>
+  <ol>
+    <li>Der Kurs ist der Preis der letzten Transaktion — gesetzt vom <strong>marginalen</strong> Marktteilnehmer, nicht von der Mehrheit. Er ist nicht der Wert des Unternehmens.</li>
+    <li>Dein einziger struktureller Vorteil gegenüber professionellen Marktteilnehmern ist der <strong>Zeithorizont</strong>. Alles, was ihn verkürzt, vernichtet ihn.</li>
+    <li><strong>Spread, Liquidität und Volumen</strong> entscheiden darüber, ob eine gute Entscheidung auch ein gutes Ergebnis werden kann. Sie sind Umsetzungsrisiko, nicht Analyserisiko.</li>
+    <li><strong>Limit-Order ist der Standard.</strong> Market-Orders sind Ausnahme, Stop-Loss ist kein Schutz gegen Kurssprünge.</li>
+    <li>Der <strong>Erwartungswert</strong> ist die einzig relevante Erfolgsgröße. Eine hohe Trefferquote mit schlechtem CRV ist ein Verlustsystem mit guten Gefühlen.</li>
+    <li>Verluste sind <strong>konvex</strong>: −50 % erfordert +100 %. Deshalb kommt Risikomanagement vor Aktienauswahl.</li>
+    <li><strong>Volatilität ist Schwankung, Risiko ist Verlust.</strong> Volatilität wird nur dann zum Risiko, wenn sie dich zum Handeln zwingt.</li>
+    <li>Bewerte <strong>Prozesse, nicht Ergebnisse.</strong> Eine These ohne Falsifikationskriterium ist ein Glaubenssatz.</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2>Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Eine Aktie zeigt Bid 49,80 / Ask 50,00. Zu welchem Preis kannst du <strong>kaufen</strong>?</li>
+    <li>Du erwartest, dass eine Aktie in den nächsten Monaten steigt, und möchtest sie zu höchstens 100 € kaufen. Welche Orderart?</li>
+    <li>Ein System hat eine Trefferquote von 60 %, Ø-Gewinn +6 %, Ø-Verlust −10 %. Berechne den Erwartungswert. Ist das System profitabel?</li>
+    <li>Dein Depot verliert 40 %. Welchen prozentualen Gewinn brauchst du, um wieder bei null zu sein?</li>
+    <li>Welches CRV brauchst du mindestens, um bei einer Trefferquote von 30 % Break-even zu erreichen?</li>
+    <li>Warum ist ein Stop-Loss bei 90 € keine Garantie, nicht mehr als 10 % zu verlieren, wenn du bei 100 € gekauft hast?</li>
+    <li>NVIDIA fiel 2022 um rund 50 % und stieg danach auf ein Vielfaches. Wirecard fiel 2020 auf nahezu null. Beide Ereignisse erzeugen hohe Volatilität. Worin unterscheiden sie sich fundamental?</li>
+    <li>Ein Bekannter erzählt dir, er habe mit einer riskanten Wette 300 % gemacht. In welchem Feld der Prozess-Ergebnis-Matrix befindet er sich vermutlich — und warum ist das gefährlich?</li>
+    <li>Warum kaufen Privatanleger systematisch <strong>nach</strong> einer Kursbewegung?</li>
+    <li>Nenne drei konkrete Falsifikationskriterien für eine Kaufthese zu einem Softwareunternehmen.</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li>Zu <strong>50,00 €</strong> (dem Ask). Der Ask ist der Preis, zu dem jemand bereit ist, an dich zu verkaufen. Der angezeigte „Kurs" von z. B. 49,90 € ist nur die Mitte.</li>
+        <li><strong>Limit-Order</strong> mit Limit 100 €. Eine Market-Order würde zum nächstbesten Preis ausgeführt — möglicherweise über 100 €. Der Preis ist dir wichtiger als die sofortige Ausführung, also gibst du die Ausführungsgarantie auf.</li>
+        <li>EW = (0,60 × 6 %) − (0,40 × 10 %) = 3,6 % − 4,0 % = <strong>−0,4 % pro Trade</strong>. <strong>Nicht profitabel</strong> — trotz 60 % Trefferquote. Das CRV von 0,6 : 1 verlangt eine Trefferquote von 1/(1+0,6) = <strong>62,5 %</strong>, um überhaupt break-even zu sein.</li>
+        <li>1 / (1 − 0,40) − 1 = 1 / 0,60 − 1 = <strong>+66,7 %</strong>.</li>
+        <li>Mindest-Trefferquote = 1 / (1 + CRV) → 0,30 = 1 / (1 + CRV) → CRV = <strong>2,33 : 1</strong>. Alles darunter ist bei 30 % Trefferquote ein Verlustsystem.</li>
+        <li>Wegen des <strong>Gap-Risikos</strong>. Der Stop löst eine <em>Market</em>-Order aus, sobald 90 € berührt oder unterschritten wird. Eröffnet die Aktie nach einer Nachricht direkt bei 72 €, wurde nie zu 90 € gehandelt — deine Order wird bei 72 € ausgeführt. Verlust: 28 %.</li>
+        <li>NVIDIA war eine <strong>Schwankung</strong> — die Ertragskraft des Unternehmens blieb intakt, der Kurs kam zurück. Wirecard war ein <strong>dauerhafter Kapitalverlust</strong> — das Unternehmen selbst war zerstört. Volatilität ist reversibel, Kapitalverlust nicht. Nur der zweite Fall ist echtes Risiko.</li>
+        <li>Vermutlich im Feld <strong>„Glück"</strong> (schlechter Prozess, gutes Ergebnis). Gefährlich, weil das Ergebnis den Prozess <em>bestätigt</em> und ihn dadurch verstärkt. Er wird die Wette wiederholen — mit größerem Einsatz. Das Ergebnis wird ihn nur einmal belohnen.</li>
+        <li>Weil Aufmerksamkeit dem Kurs folgt, nicht umgekehrt. Eine Aktie erscheint erst dann in den Nachrichten und im Bewusstsein, <strong>nachdem</strong> sie sich bewegt hat. Wer nur kauft, was er sieht, kauft strukturell zu spät.</li>
+        <li>Beispiele (jeweils konkret und im Voraus messbar):
+          <ul>
+            <li>Der Net Revenue Retention fällt zwei Quartale in Folge unter 100 %.</li>
+            <li>Die Bruttomarge sinkt unter 65 % ohne Erklärung durch einen Produktmix-Wechsel.</li>
+            <li>Der Free Cash Flow wird über ein volles Geschäftsjahr negativ, ohne dass eine benannte Investitionsoffensive vorliegt.</li>
+            <li>Das Umsatzwachstum fällt unter die Rate, die meiner DCF-Annahme zugrunde lag, und zwar für zwei aufeinanderfolgende Quartale.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Praktische Übungen -->
+  <h2>Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Orderbuch lesen (30 Min.)</h4>
+      <p>Öffne bei deinem Broker die Orderbuchansicht (Markttiefe) für Apple und für einen SDAX-Nebenwert deiner Wahl. Notiere jeweils: Bid, Ask, Spread absolut, Spread in %, und die Stückzahl auf den ersten drei Preisstufen beider Seiten. Beantworte: <em>Wie groß dürfte meine Market-Order in jedem der beiden Titel sein, ohne mehr als 0,2 % Slippage zu erzeugen?</em></p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — Deine Kostenbasis (20 Min.)</h4>
+      <p>Rechne für deinen tatsächlichen Broker aus, was ein vollständiger Round Trip (Kauf + Verkauf) einer Position von 5.000 € kostet: Ordergebühr Kauf + Spread + Ordergebühr Verkauf. Ergebnis in Prozent. Multipliziere mit der Anzahl der Trades, die du im letzten Jahr gemacht hast (falls du bereits handelst). Das ist dein jährlicher Vorsprung, den der Markt hat.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Erwartungswert deines bisherigen Handelns (45 Min.)</h4>
+      <p>Falls du bereits gehandelt hast: Trage deine letzten 20 abgeschlossenen Trades in eine Tabelle ein (Gewinn/Verlust in %). Berechne Trefferquote, Ø-Gewinn, Ø-Verlust, CRV und Erwartungswert. Falls du noch nicht gehandelt hast: Definiere die vier Werte, die dein zukünftiges System haben <em>soll</em>, und leite daraus die minimal nötige Trefferquote ab.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — Falsifikation (30 Min.)</h4>
+      <p>Wähle ein Unternehmen, das du gut kennst oder besitzt. Schreibe in maximal fünf Sätzen: (a) Deine Kaufthese. (b) Drei konkrete, messbare Ereignisse, bei deren Eintreten du dich als widerlegt betrachtest. Hebe das Blatt auf. Du wirst es in Modul 8 wieder brauchen.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Der ehrliche Spiegel (15 Min.)</h4>
+      <p>Gehe die sieben Ursachen aus Abschnitt 1.7 durch. Markiere die, die auf dich zutreffen. Sei ehrlich — niemand liest es außer dir. Die Liste ist dein persönlicher Lehrplan für Modul 7.</p>
+    </div>
+  </div>
+
+  <!-- Disclaimer inline -->
+  <div class="ak-disclaimer">
+    <strong>Keine Anlageberatung.</strong> Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Alle genannten Unternehmen und Zahlen sind illustrativ und beziehen sich auf zurückliegende Zeiträume. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Aktien können Totalverluste erleiden. Jede Anlageentscheidung erfolgt eigenverantwortlich.
+  </div>
+
+</main>
+
+<!-- Weiter-CTA -->
+<section class="ak-weiter">
+  <p>Nächstes Modul</p>
+  <h3>Modul 2 — Fundamentalanalyse<br>Was ist ein Unternehmen wert?</h3>
+  <a href="modul-02-fundamentalanalyse.html" class="btn-outline disabled" aria-disabled="true">Modul 2 öffnen →</a>
+  <span class="upcoming-note">Folgt in Kürze</span>
+</section>
+
+<!-- Modul-Leiste unten -->
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">Übersicht</a>
+  <a href="modul-01-grundlagen.html" class="active">01</a>
+  <a href="modul-02-fundamentalanalyse.html" class="upcoming">02</a>
+  <a href="modul-03-chartanalyse.html" class="upcoming">03</a>
+  <a href="modul-04-einstieg.html" class="upcoming">04</a>
+  <a href="modul-05-risikomanagement.html" class="upcoming">05</a>
+  <a href="modul-06-verkaufsstrategien.html" class="upcoming">06</a>
+  <a href="modul-07-psychologie.html" class="upcoming">07</a>
+  <a href="modul-08-strategie.html" class="upcoming">08</a>
+</nav>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+</script>
+</body>
+</html>

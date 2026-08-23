@@ -1,0 +1,44 @@
+<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drei Margenverläufe über die Zeit: stabil hoch, steigend und fallend, mit ihrer jeweiligen Interpretation.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="360" rx="6"/>
+
+  <line class="axis" x1="70" y1="40" x2="70" y2="300"/>
+  <line class="axis" x1="70" y1="300" x2="680" y2="300"/>
+  <text class="tick" x="40" y="44">Marge</text>
+  <text class="tick" x="600" y="320">Zeit</text>
+  <!-- stabil hoch -->
+  <path class="neon" d="M110,100 L200,98 L290,102 L380,99 L470,101 L560,100 L650,100"/>
+  <text class="lbln" x="470" y="90">stabil: Burggraben intakt</text>
+  <!-- steigend -->
+  <path class="mid" d="M110,180 L220,172 L330,158 L440,146 L550,136 L650,128"/>
+  <text class="lbl" x="470" y="128" style="fill:var(--mid)">steigend: Skalen/Preismacht</text>
+  <!-- fallend -->
+  <path class="muted" d="M110,150 L220,168 L330,190 L440,214 L550,236 L650,252" style="stroke-dasharray:5 4"/>
+  <text class="lbl" x="360" y="272" style="fill:var(--text-3)">fallend: Wettbewerbsdruck</text>
+
+</svg>

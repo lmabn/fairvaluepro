@@ -1,0 +1,52 @@
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preis schwankt um den langsam steigenden inneren Wert; Kaufzonen unter dem Wert, Verkaufszonen darüber.">
+  <style>
+    /* Färbung ausschließlich über die Site-Tokens. Fallbacks nur, falls das SVG isoliert geöffnet wird. */
+    .svg-bg    { fill: var(--bg, #080e0b); }
+    .axis      { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .grid      { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; }
+    .value     { stroke: var(--neon, #00ff87); stroke-width: 2.5; fill: none; }
+    .price     { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .buy       { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .sell      { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .lbl       { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbl-neon  { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbl-mut   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 11px; letter-spacing: .04em; }
+    .tick      { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; }
+  </style>
+
+  <rect class="svg-bg" x="0" y="0" width="720" height="380" rx="6"/>
+
+  <!-- Achsen -->
+  <line class="axis" x1="60" y1="40" x2="60" y2="320"/>
+  <line class="axis" x1="60" y1="320" x2="680" y2="320"/>
+  <text class="tick" x="30" y="46">Kurs</text>
+  <text class="tick" x="640" y="340">Zeit</text>
+
+  <!-- Kaufzonen (Preis unter Wert) -->
+  <path class="buy" d="M60,196 L120,208 L180,214 L180,320 L60,320 Z"/>
+  <path class="buy" d="M300,150 L360,182 L420,176 L420,320 L300,320 Z"/>
+  <!-- Verkaufszone (Preis über Wert) -->
+  <path class="sell" d="M480,150 L540,110 L600,132 L600,320 L480,320 Z"/>
+
+  <!-- Innerer Wert: langsam steigende, glatte Linie -->
+  <path class="value" d="M60,210 C200,196 360,172 520,150 C580,142 640,136 680,132"/>
+
+  <!-- Preis: schwingt um die Wertlinie und schneidet sie mehrfach -->
+  <path class="price" d="M60,196
+    C90,150 110,250 140,232
+    C170,214 190,150 220,168
+    C250,186 270,240 300,214
+    C330,188 350,120 380,158
+    C410,196 430,214 460,178
+    C490,142 510,96 540,112
+    C570,128 590,168 620,150
+    C650,132 665,140 680,138"/>
+
+  <!-- Beschriftungen -->
+  <text class="lbl-neon" x="470" y="128">Innerer Wert</text>
+  <text class="lbl-mut" x="470" y="144" style="fill:var(--text-3,#344d3e)">(steigt langsam, stetig)</text>
+  <text class="lbl" x="120" y="360" text-anchor="middle">Kaufzone</text>
+  <text class="lbl" x="360" y="360" text-anchor="middle">Kaufzone</text>
+  <text class="lbl-mut" x="540" y="360" text-anchor="middle">Verkaufszone</text>
+  <text class="lbl" x="150" y="188" style="fill:var(--text-2,#6a8c7a)">Preis</text>
+</svg>

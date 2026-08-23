@@ -1,0 +1,40 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kreislauf aus vier Schritten: Handeln, Dokumentieren, Auswerten, Anpassen; die Anpassung erfolgt selten und bewusst.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="640" height="400" rx="6"/>
+
+  <text class="head" x="320" y="40" text-anchor="middle">Verbesserungszyklus</text>
+  <circle class="boxneon" cx="320" cy="110" r="42"/><text class="lbl" x="320" y="106" text-anchor="middle" style="fill:var(--text)">1 · Handeln</text><text class="tick" x="320" y="122" text-anchor="middle">nach Regelwerk</text>
+  <circle class="boxneon" cx="490" cy="230" r="42"/><text class="lbl" x="490" y="226" text-anchor="middle" style="fill:var(--text)">2 · Doku</text><text class="tick" x="490" y="242" text-anchor="middle">im Journal</text>
+  <circle class="boxneon" cx="320" cy="330" r="42"/><text class="lbl" x="320" y="326" text-anchor="middle" style="fill:var(--text)">3 · Auswerten</text><text class="tick" x="320" y="342" text-anchor="middle">Muster suchen</text>
+  <circle class="boxneon" cx="150" cy="230" r="42"/><text class="lbl" x="150" y="226" text-anchor="middle" style="fill:var(--text)">4 · Anpassen</text><text class="tick" x="150" y="242" text-anchor="middle">selten, bewusst</text>
+  <path class="neon" d="M360,140 A140,140 0 0,1 460,190"/><polygon class="neonf" points="462,192 449,188 456,178"/>
+  <path class="neon" d="M460,270 A140,140 0 0,1 360,320"/><polygon class="neonf" points="358,322 371,318 364,308"/>
+  <path class="neon" d="M280,320 A140,140 0 0,1 180,270"/><polygon class="neonf" points="178,268 191,272 184,282"/>
+  <path class="neon" d="M180,190 A140,140 0 0,1 280,140"/><polygon class="neonf" points="282,138 269,142 276,152"/>
+
+</svg>
