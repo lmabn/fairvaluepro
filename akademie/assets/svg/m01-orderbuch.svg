@@ -1,0 +1,49 @@
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orderbuch mit Ask-Seite oben, Bid-Seite unten und dem Spread als Lücke dazwischen.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="400" rx="6"/>
+
+  <text class="head" x="60" y="46">Orderbuch</text>
+  <!-- Ask-Seite (oben) -->
+  <text class="lbl" x="60" y="78" style="fill:var(--text-2)">Verkäufer · Ask</text>
+  <rect class="box" x="60" y="88" width="360" height="26"/><text class="lbl" x="72" y="105">Ask 214,20</text><text class="lbl" x="330" y="105" style="fill:var(--text-3)">× 1.200</text>
+  <rect class="box" x="60" y="116" width="360" height="26"/><text class="lbl" x="72" y="133">Ask 214,15</text><text class="lbl" x="330" y="133" style="fill:var(--text-3)">× 800</text>
+  <rect class="boxneon" x="60" y="144" width="360" height="26"/><text class="lbln" x="72" y="161">Ask 214,10</text><text class="lbl" x="330" y="161" style="fill:var(--text-3)">× 2.500</text>
+  <text class="lbln" x="440" y="161">◄ beste Verkaufsofferte</text>
+  <!-- Spread -->
+  <line class="griddash" x1="60" y1="184" x2="420" y2="184"/>
+  <text class="lbln-b" x="440" y="188">SPREAD = 0,04 €</text>
+  <!-- Bid-Seite (unten) -->
+  <rect class="boxneon" x="60" y="198" width="360" height="26"/><text class="lbln" x="72" y="215">Bid 214,06</text><text class="lbl" x="330" y="215" style="fill:var(--text-3)">× 3.100</text>
+  <text class="lbln" x="440" y="215">◄ beste Kaufofferte</text>
+  <rect class="box" x="60" y="226" width="360" height="26"/><text class="lbl" x="72" y="243">Bid 214,00</text><text class="lbl" x="330" y="243" style="fill:var(--text-3)">× 5.400</text>
+  <rect class="box" x="60" y="254" width="360" height="26"/><text class="lbl" x="72" y="271">Bid 213,95</text><text class="lbl" x="330" y="271" style="fill:var(--text-3)">× 1.900</text>
+  <text class="lbl" x="60" y="300" style="fill:var(--text-2)">Käufer · Bid</text>
+  <!-- Trade-Hinweis -->
+  <text class="lbl" x="60" y="344">Ein Käufer akzeptiert 214,10  →  Trade  →  neuer Kurs = 214,10</text>
+
+</svg>

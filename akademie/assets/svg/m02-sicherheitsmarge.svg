@@ -1,0 +1,41 @@
+<svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Balken zeigen: je höher die Sicherheitsmarge, desto häufiger darf man falsch liegen und ist trotzdem break-even.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="320" rx="6"/>
+
+  <text class="head" x="60" y="44">Sicherheitsmarge = bezahlte Fehlbarkeit</text>
+  <line class="axis" x1="70" y1="80" x2="70" y2="280"/>
+  <line class="axis" x1="70" y1="280" x2="680" y2="280"/>
+  <text class="tick" x="120" y="300">10%</text><text class="tick" x="280" y="300">25%</text><text class="tick" x="430" y="300">33%</text><text class="tick" x="600" y="300">50%</text>
+  <text class="tick" x="30" y="84">darf falsch</text><text class="tick" x="30" y="96">liegen</text>
+  <rect class="fillneon" x="100" y="220" width="60" height="60" stroke="var(--neon-border,rgba(0,255,135,.25))"/><text class="lbl" x="130" y="200" text-anchor="middle">50%</text>
+  <rect class="fillneon" x="260" y="180" width="60" height="100" stroke="var(--neon-border,rgba(0,255,135,.25))"/><text class="lbl" x="290" y="160" text-anchor="middle">66%</text>
+  <rect class="fillneon" x="410" y="150" width="60" height="130" stroke="var(--neon-border,rgba(0,255,135,.25))"/><text class="lbln" x="440" y="130" text-anchor="middle">75%</text>
+  <rect class="fillneon" x="580" y="120" width="60" height="160" stroke="var(--neon-border,rgba(0,255,135,.25))"/><text class="lbl" x="610" y="100" text-anchor="middle">80%</text>
+  <text class="lbl" x="360" y="316" text-anchor="middle" style="fill:var(--text-3)">Sicherheitsmarge → wie oft du falsch liegen darfst (CRV)</text>
+
+</svg>

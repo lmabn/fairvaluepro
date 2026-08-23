@@ -1,0 +1,42 @@
+<svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Depot vor und nach Rebalancing: die übergroße Position A wird auf ihr Zielgewicht zurückgeführt.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="340" rx="6"/>
+
+  <text class="lbl" x="200" y="46" text-anchor="middle" style="fill:var(--text-2)">Vorher (A gelaufen)</text>
+  <rect class="fillneon" x="80" y="70" width="240" height="30" stroke="var(--neon-border,rgba(0,255,135,.25))"/><text class="lbln" x="90" y="91">A · 28 %</text>
+  <rect class="box" x="80" y="106" width="110" height="26"/><text class="lbl" x="90" y="124">B · 12 %</text>
+  <rect class="box" x="80" y="138" width="90" height="26"/><text class="lbl" x="90" y="156">C · 10 %</text>
+  <text class="lbl" x="200" y="200" text-anchor="middle" style="fill:var(--text-3)">A dominiert → Klumpenrisiko</text>
+  <path class="neon" d="M340,120 L390,120"/><polygon class="neonf" points="395,120 383,114 383,126"/>
+  <text class="lbl" x="530" y="46" text-anchor="middle" style="fill:var(--neon)">Nach Rebalancing</text>
+  <rect class="fillneon" x="420" y="70" width="130" height="30" stroke="var(--neon-border,rgba(0,255,135,.25))"/><text class="lbln" x="430" y="91">A · 15 %</text>
+  <rect class="box" x="420" y="106" width="110" height="26"/><text class="lbl" x="430" y="124">B · 12 %</text>
+  <rect class="box" x="420" y="138" width="120" height="26"/><text class="lbl" x="430" y="156">C · 13 %</text>
+  <text class="lbl" x="530" y="200" text-anchor="middle" style="fill:var(--text-3)">Risikostruktur wiederhergestellt</text>
+
+</svg>

@@ -1,0 +1,43 @@
+<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mehrere Bewertungsverfahren als Balken mit ihren fairen Werten; daraus ein gewichteter Wert und eine Spanne.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .panel  { fill: var(--bg2, #0b1410); }
+    .panel2 { fill: var(--bg3, #0f1a14); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
+    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .warnf  { fill: var(--warn, #8fffcb); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
+    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
+    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
+    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
+    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="360" rx="6"/>
+
+  <text class="head" x="60" y="42">Komposit-Bewertung</text>
+  <line class="axis" x1="200" y1="70" x2="200" y2="300"/>
+  <text class="tick" x="120" y="94">DCF Basis</text><rect class="neonf" x="200" y="86" width="280" height="10"/><text class="lbln" x="490" y="95">174</text>
+  <text class="tick" x="120" y="124">DCF kons.</text><rect class="midf" x="200" y="116" width="200" height="10"/><text class="lbl" x="410" y="125" style="fill:var(--mid)">136</text>
+  <text class="tick" x="120" y="154">KGV×EPS</text><rect class="midf" x="200" y="146" width="248" height="10"/><text class="lbl" x="458" y="155" style="fill:var(--mid)">158</text>
+  <text class="tick" x="120" y="184">EV/EBIT</text><rect class="midf" x="200" y="176" width="262" height="10"/><text class="lbl" x="472" y="185" style="fill:var(--mid)">165</text>
+  <text class="tick" x="120" y="214">Hist. KGV</text><rect class="midf" x="200" y="206" width="298" height="10"/><text class="lbl" x="508" y="215" style="fill:var(--mid)">181</text>
+  <!-- gewichteter Wert + Spanne -->
+  <line class="griddash" x1="466" y1="70" x2="466" y2="260"/>
+  <text class="lbln-b" x="466" y="284" text-anchor="middle">~166 gewichtet</text>
+  <path class="fillneon" d="M400,250 L498,250 L498,260 L400,260 Z"/>
+  <text class="lbl" x="330" y="330" style="fill:var(--text-3)">Spanne 136–181 · enge Spanne = robuste Bewertung</text>
+
+</svg>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<title>Fair Value Pro — Akademie · Professioneller Aktienhandel</title>
+<style>
+/* HERO */
+#hero { padding: 9rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+.hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.06) 0%, transparent 70%); pointer-events: none; }
+#hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
+#hero h1 .n { color: var(--neon); }
+#hero p.sub { color: var(--text-2); font-size: 1.05rem; max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.75; }
+
+/* Meta info row */
+.ak-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.2rem; max-width: 720px; margin: 0 auto; padding-top: 1.5rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-3); text-transform: uppercase; }
+.ak-meta span strong { color: var(--text-2); font-weight: 400; }
+
+/* Section wrappers */
+.ak-section-head { margin-bottom: 2rem; }
+.ak-section-head h2 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.8rem; line-height: 1.2; }
+.ak-section-head p { color: var(--text-2); max-width: 640px; font-size: 0.95rem; line-height: 1.7; }
+.ak-body p { color: var(--text-2); font-size: 0.97rem; line-height: 1.8; margin-bottom: 1rem; }
+.ak-body p strong { color: var(--text); font-weight: 500; }
+
+.ak-kernthese { font-family: var(--display); font-size: clamp(1.15rem, 2.3vw, 1.45rem); font-weight: 700; letter-spacing: -0.01em; color: var(--text); border-left: 2px solid var(--neon); padding: 0.4rem 0 0.4rem 1.4rem; margin: 2rem 0; line-height: 1.4; }
+
+/* Standard Tabellen */
+.ak-tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
+.ak-tbl { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 500px; }
+.ak-tbl th { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border2); background: var(--bg2); font-weight: 400; vertical-align: bottom; }
+.ak-tbl td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; line-height: 1.55; }
+.ak-tbl tr:last-child td { border-bottom: none; }
+.ak-tbl td strong { color: var(--text); font-weight: 500; }
+.ak-tbl td.hl { color: var(--neon); font-family: var(--mono); font-size: 0.85rem; }
+
+/* Modul-Grid */
+#module { padding: 6rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ak-modul-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.5rem; }
+.ak-modul-card { display: block; text-decoration: none; background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; padding: 1.5rem 1.6rem; transition: border-color 0.2s, transform 0.15s, background 0.2s; position: relative; }
+.ak-modul-card:hover { border-color: var(--neon-border); background: var(--bg4); transform: translateY(-2px); }
+.ak-modul-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--neon); margin-bottom: 0.5rem; }
+.ak-modul-h { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+.ak-modul-q { font-size: 0.82rem; color: var(--text-3); line-height: 1.55; font-style: italic; }
+.ak-modul-arrow { position: absolute; top: 1.5rem; right: 1.6rem; font-family: var(--mono); color: var(--text-3); font-size: 1rem; transition: color 0.2s, transform 0.2s; }
+.ak-modul-card:hover .ak-modul-arrow { color: var(--neon); transform: translateX(2px); }
+.ak-modul-card.upcoming { opacity: 0.55; cursor: not-allowed; pointer-events: none; }
+.ak-modul-status { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px solid var(--border); }
+
+/* Roter Faden */
+.ak-thread { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.ak-thread li { padding-left: 1.7rem; position: relative; font-size: 0.95rem; color: var(--text-2); line-height: 1.7; }
+.ak-thread li::before { content: '→'; position: absolute; left: 0; top: 0; color: var(--neon); font-family: var(--mono); }
+.ak-thread li strong { color: var(--text); font-weight: 500; }
+.ak-thread li em { color: var(--text-2); font-style: italic; }
+
+/* Ökosystem */
+.ak-oeko-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-top: 2rem; }
+.ak-oeko-card { display: block; text-decoration: none; background: var(--bg3); padding: 1.6rem 1.8rem; transition: background 0.2s; }
+.ak-oeko-card:hover { background: var(--bg4); }
+.ak-oeko-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.7rem; }
+.ak-oeko-tag.fvp { color: var(--neon); }
+.ak-oeko-tag.pt { color: #c8ff00; }
+.ak-oeko-tag.td { color: #5b9cf6; }
+.ak-oeko-card h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.ak-oeko-card p { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; }
+.ak-oeko-card .ak-arrow { display: inline-block; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-3); transition: color 0.2s; }
+.ak-oeko-card:hover .ak-arrow { color: var(--neon); }
+
+/* Raster-Chips */
+.ak-raster { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.ak-raster li { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; padding: 0.45rem 0.85rem; background: var(--bg2); border: 1px solid var(--border2); border-radius: 3px; color: var(--text-2); }
+
+/* CTA */
+#cta { padding: 7rem 2rem 4rem; text-align: center; border-top: 1px solid var(--border); }
+#cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+#cta > .container > p { color: var(--text-2); max-width: 480px; margin: 0 auto 2rem; font-size: 0.97rem; }
+
+/* Disclaimer */
+.ak-disclaimer { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; line-height: 1.75; color: var(--text-2); border: 1px solid var(--border2); border-radius: 3px; padding: 1rem 1.2rem; max-width: 780px; margin: 3rem auto 0; text-align: left; }
+.ak-disclaimer strong { color: var(--text); font-weight: 500; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  #hero { padding: 7rem 1.25rem 3rem; }
+  #module, .ak-page-section { padding: 4rem 1.25rem; }
+  .ak-modul-grid { grid-template-columns: 1fr; }
+  .ak-oeko-grid { grid-template-columns: 1fr; }
+  .ak-meta { flex-direction: column; align-items: center; gap: 0.5rem; }
+  nav .nav-links { display: none !important; }
+  nav a.nav-cta { display: none; }
+}
+.ak-page-section { padding: 6rem 2rem; }
+.ak-page-section + .ak-page-section { border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag fade in" style="justify-content:center;">Akademie · Kurs</div>
+    <h1 class="fade in">Professioneller<br><span class="n">Aktienhandel.</span></h1>
+    <p class="sub fade in">Ein achtteiliger, regelbasierter Kurs für mittel- bis langfristigen Handel mit Qualitätsaktien. Prozess vor Ergebnis, Wahrscheinlichkeit vor Prognose, Risiko vor Rendite.</p>
+    <div class="ak-meta fade in">
+      <span>Version <strong>1.0</strong></span>
+      <span><strong>8</strong> Module</span>
+      <span>Niveau: <strong>Einsteiger → fortgeschritten</strong></span>
+      <span>Nicht Gegenstand: <strong>Daytrading, CFDs, Hebel, Krypto</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONIERUNG + SÄULEN -->
+<section class="ak-page-section">
+  <div class="container">
+    <div class="ak-section-head fade">
+      <div class="tag">Positionierung</div>
+      <h2>Urteilsfähigkeit statt Signale.</h2>
+    </div>
+    <div class="ak-body">
+      <p class="fade">Dieser Kurs vermittelt einen <strong>regelbasierten, mittel- bis langfristigen Handel mit Qualitätsaktien</strong>. Er ist kein Signaldienst, keine Strategieempfehlung und keine Anlageberatung. Das Ziel ist Urteilsfähigkeit: Am Ende sollst du in der Lage sein, ein Unternehmen selbstständig zu bewerten, einen Einstieg zu begründen, dein Risiko zu quantifizieren und deinen eigenen Prozess zu dokumentieren und zu verbessern.</p>
+    </div>
+    <p class="ak-kernthese fade">Prozess vor Ergebnis, Wahrscheinlichkeit vor Prognose, Risiko vor Rendite.</p>
+
+    <div class="ak-section-head fade" style="margin-top:3.5rem;">
+      <h2 style="font-size:clamp(1.3rem, 2.5vw, 1.7rem);">Die drei Säulen.</h2>
+    </div>
+    <div class="ak-tbl-wrap fade">
+      <table class="ak-tbl">
+        <thead>
+          <tr><th>Säule</th><th>Frage</th><th style="text-align:right;">Module</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Was kaufen?</strong></td><td>Ist das Unternehmen gut und ist es günstig?</td><td class="hl" style="text-align:right;">2</td></tr>
+          <tr><td><strong>Wann kaufen / verkaufen?</strong></td><td>Ist der Zeitpunkt sinnvoll?</td><td class="hl" style="text-align:right;">3, 4, 6</td></tr>
+          <tr><td><strong>Wie viel und wie lange?</strong></td><td>Überlebe ich meine eigenen Fehler?</td><td class="hl" style="text-align:right;">5, 7, 8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--text-3); font-size:0.85rem; margin-top:0.4rem; font-style:italic;" class="fade">Modul 1 legt das Fundament, auf dem alle drei Säulen stehen.</p>
+  </div>
+</section>
+
+<!-- MODULE -->
+<section id="module">
+  <div class="wide">
+    <div class="ak-section-head fade" style="text-align:center; max-width:680px; margin:0 auto;">
+      <div class="tag" style="justify-content:center;">Modulübersicht</div>
+      <h2>Acht Module. Ein durchgehender Argumentationsstrang.</h2>
+      <p style="margin:0 auto;">Jedes Modul enthält: Lernziele, Theorie mit Herleitung, Rechen- und Praxisbeispiele, Grafiken, Merksätze, Anfängerfehler, Checkliste, Zusammenfassung, Quiz mit kommentierten Lösungen und praktische Übungen.</p>
+    </div>
+    <div class="ak-modul-grid">
+      <a href="modul-01-grundlagen.html" class="ak-modul-card fade">
+        <div class="ak-modul-num">Modul 01</div>
+        <div class="ak-modul-h">Grundlagen erfolgreicher Aktienhändler</div>
+        <div class="ak-modul-q">Wie funktioniert der Markt, gegen den ich handle?</div>
+        <span class="ak-modul-arrow">→</span>
+      </a>
+      <a href="modul-02-fundamentalanalyse.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 02</div>
+        <div class="ak-modul-h">Fundamentalanalyse</div>
+        <div class="ak-modul-q">Was ist das Unternehmen wert?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+      <a href="modul-03-chartanalyse.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 03</div>
+        <div class="ak-modul-h">Chartanalyse</div>
+        <div class="ak-modul-q">Was sagt mir der Kursverlauf — und was nicht?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+      <a href="modul-04-einstieg.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 04</div>
+        <div class="ak-modul-h">Den richtigen Einstieg finden</div>
+        <div class="ak-modul-q">Wie verbinde ich Wert und Zeitpunkt?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+      <a href="modul-05-risikomanagement.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 05</div>
+        <div class="ak-modul-h">Risikomanagement</div>
+        <div class="ak-modul-q">Wie überlebe ich eine Serie von Fehlern?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+      <a href="modul-06-verkaufsstrategien.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 06</div>
+        <div class="ak-modul-h">Verkaufsstrategien</div>
+        <div class="ak-modul-q">Wann ist eine These beendet?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+      <a href="modul-07-psychologie.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 07</div>
+        <div class="ak-modul-h">Trading-Psychologie</div>
+        <div class="ak-modul-q">Wie schalte ich meinen größten Gegner aus?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+      <a href="modul-08-strategie.html" class="ak-modul-card upcoming fade" aria-disabled="true">
+        <div class="ak-modul-num">Modul 08</div>
+        <div class="ak-modul-h">Eigene Strategie entwickeln</div>
+        <div class="ak-modul-q">Wie wird daraus ein wiederholbares System?</div>
+        <div class="ak-modul-status">Folgt in Kürze</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ROTER FADEN -->
+<section class="ak-page-section" style="border-top:none;">
+  <div class="container">
+    <div class="ak-section-head fade">
+      <div class="tag">Der rote Faden</div>
+      <h2>Keine Sammlung von Themen — eine Argumentationskette.</h2>
+      <p>Der Kurs verknüpft die Module absichtlich. Diese Verbindungen sind das eigentliche Gerüst:</p>
+    </div>
+    <ul class="ak-thread fade">
+      <li><strong>Erwartungswert (M1) → Sicherheitsmarge (M2) → CRV (M5):</strong> dieselbe Größe aus drei Blickwinkeln. 33 % Sicherheitsmarge ≈ CRV 3 : 1 ≈ man darf in drei von vier Fällen falsch liegen. Die Sicherheitsmarge ist damit keine Value-Doktrin, sondern die mathematische Bezahlung der eigenen Fehlbarkeit.</li>
+      <li><strong>ATR (M3) → Positionsgröße (M5):</strong> Volatilität wird nicht gefürchtet, sondern in Stückzahl übersetzt. Volatiler = kleiner, bei identischem Euro-Risiko.</li>
+      <li><strong>Falsifikationskriterium (M1) → Thesen-Stop (M5) → Verkauf (M6) → Bias-Bekämpfung (M7):</strong> die vorab schriftlich fixierte Ausstiegsregel zieht sich durch den ganzen Kurs.</li>
+      <li><strong>Dispositionseffekt (M1) → Verlustaversion (M7):</strong> der psychologische Befund bekommt in M7 seine Ursache und wird als <em>mathematischer</em> Fehler entlarvt.</li>
+      <li><strong>Eiserne Reihenfolge (M4):</strong> Fundament entscheidet <em>ob</em>, Chart nur <em>wann</em>. Der Chart hat kein Kaufveto nach oben — konsistent über M3, M4, M6.</li>
+      <li><strong>Alles mündet in M8:</strong> das schriftliche, regelbasierte System, das die Emotion aus jeder Einzelentscheidung entfernt.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ÖKOSYSTEM -->
+<section class="ak-page-section" style="background:var(--bg2);">
+  <div class="wide">
+    <div class="ak-section-head fade" style="text-align:center; max-width:680px; margin:0 auto;">
+      <div class="tag" style="justify-content:center;">Anbindung ans Werkzeug-Ökosystem</div>
+      <h2>Der Kurs ist die Nutzungsanleitung.</h2>
+      <p style="margin:0 auto;">Das Ökosystem ist die technische Umsetzung des Kurs-Systems. Jedes Modul zeigt, mit welchem Werkzeug sich die vermittelte Methodik umsetzen lässt.</p>
+    </div>
+    <div class="ak-oeko-grid fade">
+      <a href="../pro-mode-beta.html" class="ak-oeko-card">
+        <div class="ak-oeko-tag fvp">Fair Value Calculator</div>
+        <h3>Bewertung &amp; Kaufzone</h3>
+        <p>Kernfrage aus Modul 2 &amp; 4: Was ist das Unternehmen wert? Wo liegt die Kaufzone? Fair-Value-Verkauf aus Modul 6.</p>
+        <span class="ak-arrow">Pro Mode ansehen →</span>
+      </a>
+      <a href="../portfolio-tracker.html" class="ak-oeko-card">
+        <div class="ak-oeko-tag pt">Portfolio Tracker</div>
+        <h3>Risiko in der Praxis</h3>
+        <p>Risikoregeln, Positions- und Sektorgewichte, Drawdown-Kontrolle aus Modul 5. Der operative Rahmen für das eigene Depot.</p>
+        <span class="ak-arrow">Portfolio Tracker ansehen →</span>
+      </a>
+      <a href="../trading-desk.html" class="ak-oeko-card">
+        <div class="ak-oeko-tag td">Trading Desk</div>
+        <h3>Disziplin &amp; System</h3>
+        <p>Einstiegsplan, Watchlist, Trading-Journal und Bias-Coach aus den Modulen 4, 6, 7 und 8.</p>
+        <span class="ak-arrow">Trading Desk ansehen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- KONVENTIONEN -->
+<section class="ak-page-section" style="border-top:none;">
+  <div class="container">
+    <div class="ak-section-head fade">
+      <div class="tag">Didaktik &amp; Konventionen</div>
+      <h2>Wie du diesen Kurs lesen sollst.</h2>
+    </div>
+    <div class="ak-body">
+      <p class="fade"><strong>Reale Unternehmen als Beispiele:</strong> Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta, ASML, Novo Nordisk, Visa, Costco — ergänzt um bewusst gewählte Negativbeispiele (Wirecard, Intel, Bayer, Nokia), weil Fehlbewertungen mehr lehren als Erfolgsgeschichten.</p>
+      <p class="fade"><strong>Zahlen sind gerundet und illustrativ,</strong> beziehen sich auf zurückliegende Geschäftsjahre und sind vor jeder Verwendung mit aktuellen Daten nachzurechnen — das ist Teil der Übung.</p>
+      <p class="fade"><strong>Rechtlicher Rahmen:</strong> Jedes Modul trägt den Disclaimer. Der Kurs vermittelt Methodik, keine Empfehlungen. Kein Modul nennt konkrete Kauf- oder Verkaufsempfehlungen für einzelne Wertpapiere.</p>
+    </div>
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-top:2.2rem;" class="fade">Didaktisches Raster in jedem Modul</p>
+    <ul class="ak-raster fade">
+      <li>Lernziele</li>
+      <li>Theorie mit Herleitung</li>
+      <li>Rechenbeispiele</li>
+      <li>Praxisbeispiele</li>
+      <li>Grafiken &amp; Tabellen</li>
+      <li>Merksätze</li>
+      <li>Anfängerfehler</li>
+      <li>Checkliste</li>
+      <li>Zusammenfassung</li>
+      <li>Quiz mit Lösungen</li>
+      <li>Praktische Übungen</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2 class="fade">Starte mit <span class="n">Modul 1.</span></h2>
+    <p class="fade">Grundlagen erfolgreicher Aktienhändler — wie der Markt funktioniert, gegen den du handelst.</p>
+    <a href="modul-01-grundlagen.html" class="btn-neon fade">Modul 1 öffnen →</a>
+    <div class="ak-disclaimer fade">
+      <strong>Keine Anlageberatung.</strong> Dieser Kurs dient ausschließlich Bildungszwecken. Er stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Alle Beispiele sind illustrativ. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Jede Anlageentscheidung erfolgt eigenverantwortlich. Aktien können Totalverluste erleiden.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), e.target.dataset.d || 0);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach((el, i) => {
+    el.dataset.d = (i % 5) * 80;
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
