@@ -6,10 +6,11 @@
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../style.css">
 <script src="../theme-toggle.js"></script>
+<script src="inline-svg.js" defer></script>
 <title>Fair Value Pro — Akademie · Modul 1: Grundlagen</title>
 <style>
 /* HERO */
-#hero { padding: 9rem 2rem 3rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); text-align: center; }
+#hero { padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); text-align: center; }
 .hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.06) 0%, transparent 70%); pointer-events: none; }
 #hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.4rem; }
 #hero h1 .n { color: var(--neon); }
@@ -139,7 +140,7 @@
 
 /* Responsive */
 @media (max-width: 720px) {
-  #hero { padding: 7rem 1.25rem 2.5rem; }
+  #hero { padding: 2.5rem 1.25rem 2rem; }
   .ak-content { padding: 3.5rem 1.25rem; }
   .ak-content h2 { margin-top: 3rem; }
   .ak-modulnav { padding: 1.2rem 1rem; gap: 4px; }
@@ -182,19 +183,9 @@
   <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
 </div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-glow"></div>
-  <div class="container">
-    <div class="tag" style="justify-content:center;">Modul 1 · Grundlagen</div>
-    <h1>Grundlagen erfolgreicher<br><span class="n">Aktienhändler.</span></h1>
-    <p class="ak-lead">Der Markt ist kein Gegner, den man schlagen muss. Er ist ein Mechanismus, den man verstehen muss, bevor man ihn benutzt.</p>
-  </div>
-</section>
-
-<!-- Modul-Leiste oben -->
-<nav class="ak-modulnav" aria-label="Modul-Navigation">
-  <a href="index.html" class="overview">Übersicht</a>
+<!-- Modul-Leiste oben (direkt unter Site-Nav) -->
+<nav class="ak-modulnav" style="margin-top: 58px;" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
   <a href="modul-01-grundlagen.html" class="active">01</a>
   <a href="modul-02-fundamentalanalyse.html" class="upcoming">02</a>
   <a href="modul-03-chartanalyse.html" class="upcoming">03</a>
@@ -204,6 +195,16 @@
   <a href="modul-07-psychologie.html" class="upcoming">07</a>
   <a href="modul-08-strategie.html" class="upcoming">08</a>
 </nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 1 · Grundlagen</div>
+    <h1>Grundlagen erfolgreicher<br><span class="n">Aktienhändler.</span></h1>
+    <p class="ak-lead">Der Markt ist kein Gegner, den man schlagen muss. Er ist ein Mechanismus, den man verstehen muss, bevor man ihn benutzt.</p>
+  </div>
+</section>
 
 <main class="ak-content">
 
@@ -818,7 +819,7 @@
 
 <!-- Modul-Leiste unten -->
 <nav class="ak-modulnav" aria-label="Modul-Navigation">
-  <a href="index.html" class="overview">Übersicht</a>
+  <a href="index.html" class="overview">← Übersicht</a>
   <a href="modul-01-grundlagen.html" class="active">01</a>
   <a href="modul-02-fundamentalanalyse.html" class="upcoming">02</a>
   <a href="modul-03-chartanalyse.html" class="upcoming">03</a>
