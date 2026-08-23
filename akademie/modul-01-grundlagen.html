@@ -26,7 +26,7 @@
 .ak-modulnav a.overview { color: var(--text-2); }
 
 /* Body layout */
-.ak-content { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; }
+.ak-content { max-width: 960px; margin: 0 auto; padding: 5rem 2rem; }
 .ak-content h2 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin: 4rem 0 1.4rem; color: var(--text); }
 .ak-content h2:first-of-type { margin-top: 0; }
 .ak-content h2 .num { font-family: var(--mono); font-size: 0.75em; letter-spacing: 0.05em; color: var(--neon); font-weight: 700; margin-right: 0.5rem; }
@@ -52,7 +52,11 @@
 .ak-merksatz p strong.ak-mtag { color: var(--neon); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; font-weight: 700; }
 
 /* Tabellen */
-.ak-tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; }
+.ak-tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+.ak-tbl-wrap::-webkit-scrollbar { height: 6px; }
+.ak-tbl-wrap::-webkit-scrollbar-track { background: transparent; }
+.ak-tbl-wrap::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+.ak-tbl-wrap::-webkit-scrollbar-thumb:hover { background: var(--neon-border); }
 .ak-tbl { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 480px; }
 .ak-tbl th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); padding: 0.7rem 0.9rem; text-align: left; border-bottom: 1px solid var(--border2); background: var(--bg2); font-weight: 400; vertical-align: bottom; }
 .ak-tbl td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; line-height: 1.55; }
@@ -69,11 +73,18 @@
 .ak-fig figcaption { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--text-3); margin-top: 0.9rem; text-align: center; line-height: 1.5; }
 
 /* ASCII / Pre */
-.ak-pre { font-family: var(--mono); font-size: 0.78rem; background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; overflow-x: auto; color: var(--text-2); line-height: 1.55; white-space: pre; }
+.ak-pre { font-family: var(--mono); font-size: 0.78rem; background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; overflow-x: auto; color: var(--text-2); line-height: 1.55; white-space: pre; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+.ak-pre::-webkit-scrollbar { height: 6px; }
+.ak-pre::-webkit-scrollbar-track { background: transparent; }
+.ak-pre::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+.ak-pre::-webkit-scrollbar-thumb:hover { background: var(--neon-border); }
 .ak-pre .hl { color: var(--neon); }
 
 /* Formel */
-.ak-formula { font-family: var(--mono); font-size: 0.95rem; background: var(--bg2); border: 1px solid var(--border2); border-left: 3px solid var(--neon); padding: 1rem 1.4rem; margin: 1.4rem 0; color: var(--text); overflow-x: auto; white-space: pre; }
+.ak-formula { font-family: var(--mono); font-size: 0.95rem; background: var(--bg2); border: 1px solid var(--border2); border-left: 3px solid var(--neon); padding: 1rem 1.4rem; margin: 1.4rem 0; color: var(--text); overflow-x: auto; white-space: pre; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+.ak-formula::-webkit-scrollbar { height: 6px; }
+.ak-formula::-webkit-scrollbar-track { background: transparent; }
+.ak-formula::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
 /* Callout (Anfängerfehler etc.) */
 .ak-callout { background: var(--bg3); border: 1px solid var(--border2); border-left: 3px solid var(--warn); border-radius: 0 3px 3px 0; padding: 1rem 1.3rem; margin: 1.5rem 0; }
