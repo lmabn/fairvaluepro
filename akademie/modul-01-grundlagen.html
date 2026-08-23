@@ -7,148 +7,8 @@
 <link rel="stylesheet" href="../style.css">
 <script src="../theme-toggle.js"></script>
 <script src="inline-svg.js" defer></script>
+<link rel="stylesheet" href="akademie.css">
 <title>Fair Value Pro — Akademie · Modul 1: Grundlagen</title>
-<style>
-/* HERO */
-#hero { padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); text-align: center; }
-.hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.06) 0%, transparent 70%); pointer-events: none; }
-#hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.4rem; }
-#hero h1 .n { color: var(--neon); }
-#hero .ak-lead { font-family: var(--display); font-style: italic; color: var(--text-2); font-size: 1.05rem; max-width: 620px; margin: 0 auto; line-height: 1.6; letter-spacing: -0.01em; }
-#hero .ak-lead::before { content: '„'; color: var(--neon); font-style: normal; margin-right: 0.15em; }
-#hero .ak-lead::after { content: '"'; color: var(--neon); font-style: normal; margin-left: 0.15em; }
-
-/* Modul-Leiste — überschreibt globale nav-Regeln (position:fixed, height:58px, backdrop-filter) aus style.css */
-.ak-modulnav { position: static; height: auto; z-index: auto; backdrop-filter: none; -webkit-backdrop-filter: none; display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; padding: 1.6rem 2rem; background: var(--bg2); border-bottom: 1px solid var(--border); }
-.ak-modulnav a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); text-decoration: none; padding: 0.45rem 0.9rem; border: 1px solid var(--border2); border-radius: 3px; background: var(--bg3); transition: color 0.2s, border-color 0.2s, background 0.2s; }
-.ak-modulnav a:hover { color: var(--neon); border-color: var(--neon-border); }
-.ak-modulnav a.active { color: var(--neon); border-color: var(--neon-border); background: var(--neon-dim); }
-.ak-modulnav a.upcoming { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
-.ak-modulnav a.overview { color: var(--text-2); }
-
-/* Body layout */
-.ak-content { max-width: 960px; margin: 0 auto; padding: 5rem 2rem; }
-.ak-content h2 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin: 4rem 0 1.4rem; color: var(--text); }
-.ak-content h2:first-of-type { margin-top: 0; }
-.ak-content h2 .num { font-family: var(--mono); font-size: 0.75em; letter-spacing: 0.05em; color: var(--neon); font-weight: 700; margin-right: 0.5rem; }
-.ak-content h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; margin: 2rem 0 0.9rem; color: var(--text); }
-.ak-content p { color: var(--text-2); font-size: 0.97rem; line-height: 1.8; margin-bottom: 1.1rem; }
-.ak-content p strong { color: var(--text); font-weight: 500; }
-.ak-content p em { color: var(--text-2); font-style: italic; }
-.ak-content ul, .ak-content ol { color: var(--text-2); font-size: 0.97rem; line-height: 1.8; margin: 0 0 1.2rem 1.4rem; }
-.ak-content li { margin-bottom: 0.5rem; }
-.ak-content li strong { color: var(--text); font-weight: 500; }
-.ak-content ol li { padding-left: 0.3rem; }
-
-/* Lernziele */
-.ak-lernziele { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.8rem 2rem; margin-bottom: 3rem; }
-.ak-lernziele h3 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); margin: 0 0 1.2rem; font-weight: 700; }
-.ak-lernziele ol { list-style: decimal; margin: 0 0 0 1.4rem; }
-.ak-lernziele ol li { color: var(--text-2); font-size: 0.95rem; line-height: 1.7; padding-left: 0.3rem; }
-.ak-lernziele ol li strong { color: var(--text); font-weight: 500; }
-
-/* Merksatz */
-.ak-merksatz { background: var(--neon-dim); border-left: 3px solid var(--neon); padding: 1.2rem 1.4rem; margin: 2rem 0; border-radius: 0 3px 3px 0; }
-.ak-merksatz p { color: var(--text); font-size: 1rem; line-height: 1.65; margin: 0; }
-.ak-merksatz p strong.ak-mtag { color: var(--neon); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; font-weight: 700; }
-
-/* Tabellen */
-.ak-tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
-.ak-tbl-wrap::-webkit-scrollbar { height: 6px; }
-.ak-tbl-wrap::-webkit-scrollbar-track { background: transparent; }
-.ak-tbl-wrap::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-.ak-tbl-wrap::-webkit-scrollbar-thumb:hover { background: var(--neon-border); }
-.ak-tbl { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 480px; }
-.ak-tbl th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); padding: 0.7rem 0.9rem; text-align: left; border-bottom: 1px solid var(--border2); background: var(--bg2); font-weight: 400; vertical-align: bottom; }
-.ak-tbl td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; line-height: 1.55; }
-.ak-tbl tr:last-child td { border-bottom: none; }
-.ak-tbl td strong { color: var(--text); font-weight: 500; }
-.ak-tbl th.hl, .ak-tbl td.hl { color: var(--neon); }
-.ak-tbl td.num { font-family: var(--mono); font-size: 0.85rem; text-align: right; }
-.ak-tbl td.check { color: var(--neon); }
-.ak-tbl td.cross { color: #e05252; }
-
-/* Figure / SVG */
-.ak-fig { margin: 2rem 0; background: var(--bg2); border: 1px solid var(--border2); border-radius: 6px; padding: 1.2rem; }
-.ak-fig object, .ak-fig img { display: block; width: 100%; height: auto; }
-.ak-fig figcaption { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--text-3); margin-top: 0.9rem; text-align: center; line-height: 1.5; }
-
-/* ASCII / Pre */
-.ak-pre { font-family: var(--mono); font-size: 0.78rem; background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; overflow-x: auto; color: var(--text-2); line-height: 1.55; white-space: pre; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
-.ak-pre::-webkit-scrollbar { height: 6px; }
-.ak-pre::-webkit-scrollbar-track { background: transparent; }
-.ak-pre::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-.ak-pre::-webkit-scrollbar-thumb:hover { background: var(--neon-border); }
-.ak-pre .hl { color: var(--neon); }
-
-/* Formel */
-.ak-formula { font-family: var(--mono); font-size: 0.95rem; background: var(--bg2); border: 1px solid var(--border2); border-left: 3px solid var(--neon); padding: 1rem 1.4rem; margin: 1.4rem 0; color: var(--text); overflow-x: auto; white-space: pre; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
-.ak-formula::-webkit-scrollbar { height: 6px; }
-.ak-formula::-webkit-scrollbar-track { background: transparent; }
-.ak-formula::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-
-/* Callout (Anfängerfehler etc.) */
-.ak-callout { background: var(--bg3); border: 1px solid var(--border2); border-left: 3px solid var(--warn); border-radius: 0 3px 3px 0; padding: 1rem 1.3rem; margin: 1.5rem 0; }
-.ak-callout p { color: var(--text-2); margin: 0; font-size: 0.92rem; line-height: 1.65; }
-.ak-callout .ak-ctag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warn); font-weight: 700; margin-bottom: 0.4rem; display: block; }
-
-/* Checkliste */
-.ak-check-list { list-style: none; margin: 1.2rem 0 2rem !important; padding: 0; }
-.ak-check-list li { padding: 0.55rem 0 0.55rem 2rem; position: relative; font-size: 0.93rem; color: var(--text-2); line-height: 1.55; border-bottom: 1px solid var(--border); }
-.ak-check-list li:last-child { border-bottom: none; }
-.ak-check-list li::before { content: '☐'; position: absolute; left: 0.4rem; top: 0.55rem; color: var(--neon); font-family: var(--mono); font-size: 1.05rem; line-height: 1; }
-.ak-check-list li strong { color: var(--text); font-weight: 500; }
-
-/* Quiz */
-.ak-quiz { counter-reset: q; list-style: none; margin: 1.5rem 0 !important; padding: 0; }
-.ak-quiz > li { counter-increment: q; padding: 1rem 0 1rem 3rem; position: relative; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text); line-height: 1.65; }
-.ak-quiz > li:last-child { border-bottom: none; }
-.ak-quiz > li::before { content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font-family: var(--mono); font-size: 0.75rem; color: var(--neon); font-weight: 700; }
-.ak-quiz-answers { margin: 2rem 0; border: 1px solid var(--border2); border-radius: 4px; overflow: hidden; }
-.ak-quiz-answers > summary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); background: var(--bg2); padding: 1rem 1.4rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-.ak-quiz-answers > summary::before { display: none; }
-.ak-quiz-answers > summary::-webkit-details-marker { display: none; }
-.ak-quiz-answers > summary::after { content: '+'; font-size: 1rem; color: var(--neon); transition: transform 0.2s; }
-.ak-quiz-answers[open] > summary::after { transform: rotate(45deg); }
-.ak-quiz-answers > .ak-quiz-body { padding: 1.6rem 1.6rem 1.2rem; background: var(--bg); }
-.ak-quiz-answers ol { list-style: none; margin: 0; padding: 0; counter-reset: qa; }
-.ak-quiz-answers ol li { counter-increment: qa; padding: 0.9rem 0 0.9rem 2.6rem; position: relative; font-size: 0.92rem; color: var(--text-2); line-height: 1.65; border-bottom: 1px solid var(--border); }
-.ak-quiz-answers ol li:last-child { border-bottom: none; }
-.ak-quiz-answers ol li::before { content: counter(qa, decimal-leading-zero); position: absolute; left: 0; top: 0.9rem; font-family: var(--mono); font-size: 0.7rem; color: var(--neon); font-weight: 700; }
-.ak-quiz-answers ol li strong { color: var(--text); font-weight: 500; }
-.ak-quiz-answers ol li ul { list-style: disc; margin: 0.5rem 0 0 1.2rem; padding: 0; }
-.ak-quiz-answers ol li ul li { padding: 0.2rem 0; border: none; font-size: 0.9rem; }
-.ak-quiz-answers ol li ul li::before { display: none; }
-
-/* Übungen */
-.ak-uebungen { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
-.ak-uebung { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 1.2rem 1.4rem; }
-.ak-uebung h4 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neon); font-weight: 700; margin-bottom: 0.6rem; }
-.ak-uebung p { color: var(--text-2); font-size: 0.9rem; line-height: 1.65; margin-bottom: 0; }
-.ak-uebung p strong { color: var(--text); font-weight: 500; }
-
-/* Weiter-CTA */
-.ak-weiter { padding: 4rem 2rem; text-align: center; border-top: 1px solid var(--border); background: var(--bg2); }
-.ak-weiter p { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem; }
-.ak-weiter h3 { font-family: var(--display); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.4rem; line-height: 1.3; }
-.ak-weiter .btn-outline.disabled { opacity: 0.55; cursor: not-allowed; pointer-events: none; }
-.ak-weiter .upcoming-note { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-3); display: block; margin-top: 0.9rem; }
-
-/* Disclaimer */
-.ak-disclaimer { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; line-height: 1.75; color: var(--text-2); border: 1px solid var(--border2); border-radius: 3px; padding: 1rem 1.2rem; max-width: 780px; margin: 3rem auto 0; }
-.ak-disclaimer strong { color: var(--text); font-weight: 500; }
-
-/* Responsive */
-@media (max-width: 720px) {
-  #hero { padding: 2.5rem 1.25rem 2rem; }
-  .ak-content { padding: 3.5rem 1.25rem; }
-  .ak-content h2 { margin-top: 3rem; }
-  .ak-modulnav { padding: 1.2rem 1rem; gap: 4px; }
-  .ak-modulnav a { padding: 0.4rem 0.7rem; font-size: 0.62rem; }
-  nav .nav-links { display: none !important; }
-  nav a.nav-cta { display: none; }
-}
-</style>
 </head>
 <body>
 
@@ -184,20 +44,20 @@
 </div>
 
 <!-- Modul-Leiste oben (direkt unter Site-Nav) -->
-<nav class="ak-modulnav" style="margin-top: 58px;" aria-label="Modul-Navigation">
+<nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
   <a href="index.html" class="overview">← Übersicht</a>
   <a href="modul-01-grundlagen.html" class="active">01</a>
-  <a href="modul-02-fundamentalanalyse.html" class="upcoming">02</a>
-  <a href="modul-03-chartanalyse.html" class="upcoming">03</a>
-  <a href="modul-04-einstieg.html" class="upcoming">04</a>
-  <a href="modul-05-risikomanagement.html" class="upcoming">05</a>
-  <a href="modul-06-verkaufsstrategien.html" class="upcoming">06</a>
-  <a href="modul-07-psychologie.html" class="upcoming">07</a>
-  <a href="modul-08-strategie.html" class="upcoming">08</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section class="ak-hero">
   <div class="hero-glow"></div>
   <div class="container">
     <div class="tag" style="justify-content:center;">Modul 1 · Grundlagen</div>
@@ -813,21 +673,20 @@
 <section class="ak-weiter">
   <p>Nächstes Modul</p>
   <h3>Modul 2 — Fundamentalanalyse<br>Was ist ein Unternehmen wert?</h3>
-  <a href="modul-02-fundamentalanalyse.html" class="btn-outline disabled" aria-disabled="true">Modul 2 öffnen →</a>
-  <span class="upcoming-note">Folgt in Kürze</span>
+  <a href="modul-02-fundamentalanalyse.html" class="btn-outline">Modul 2 öffnen →</a>
 </section>
 
 <!-- Modul-Leiste unten -->
 <nav class="ak-modulnav" aria-label="Modul-Navigation">
   <a href="index.html" class="overview">← Übersicht</a>
   <a href="modul-01-grundlagen.html" class="active">01</a>
-  <a href="modul-02-fundamentalanalyse.html" class="upcoming">02</a>
-  <a href="modul-03-chartanalyse.html" class="upcoming">03</a>
-  <a href="modul-04-einstieg.html" class="upcoming">04</a>
-  <a href="modul-05-risikomanagement.html" class="upcoming">05</a>
-  <a href="modul-06-verkaufsstrategien.html" class="upcoming">06</a>
-  <a href="modul-07-psychologie.html" class="upcoming">07</a>
-  <a href="modul-08-strategie.html" class="upcoming">08</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
 </nav>
 
 <footer>
