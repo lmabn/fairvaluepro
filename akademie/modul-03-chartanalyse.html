@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<script src="inline-svg.js" defer></script>
+<link rel="stylesheet" href="akademie.css">
+<title>Fair Value Pro — Akademie · Modul 3: Chartanalyse</title>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html" class="active">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<section class="ak-hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 3 · Chartanalyse</div>
+    <h1>Was der Kurs dir<br><span class="n">wirklich sagt.</span></h1>
+    <p class="ak-lead">Der Chart sagt dir nicht, was passieren wird. Er sagt dir, was gerade passiert — und das ist eine ganz andere, viel bescheidenere und viel nützlichere Information.</p>
+  </div>
+</section>
+
+<main class="ak-content">
+
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li><strong>einordnen</strong>, was Chartanalyse leisten kann und was nicht — und warum sie in diesem Kurs ein <em>Werkzeug</em>, keine Weltanschauung ist;</li>
+      <li>einen <strong>Trend</strong> in jeder der drei Richtungen und in jeder der drei Zeitebenen identifizieren;</li>
+      <li><strong>Unterstützungen, Widerstände, Trendlinien und Kanäle</strong> einzeichnen und ihre Verlässlichkeit einschätzen;</li>
+      <li><strong>Volumen</strong> als Bestätigungsinstrument lesen — die wichtigste Fähigkeit dieses Moduls;</li>
+      <li><strong>Candlesticks, Gaps und Chartformationen</strong> interpretieren, ohne ihnen mehr Bedeutung zuzuschreiben, als sie verdienen;</li>
+      <li>die vier klassischen Indikatoren — <strong>Moving Averages, RSI, MACD, ATR, Bollinger Bänder</strong> — berechnen, anwenden und ihre systematischen Schwächen benennen;</li>
+      <li>erklären, warum jeder Indikator <strong>rückwärtsgewandt</strong> ist und was das für seine Nutzung bedeutet;</li>
+      <li>Chartanalyse und Fundamentalanalyse zu <strong>einer</strong> Entscheidung zusammenführen — die Brücke zu Modul 4.</li>
+    </ol>
+  </div>
+
+  <!-- 3.0 -->
+  <h2><span class="num">3.0</span>Was Chartanalyse ist — und was sie nicht ist</h2>
+  <p>Dieser Abschnitt ist der wichtigste des Moduls. Ohne ihn richtet der Rest Schaden an.</p>
+
+  <h3>Die drei Denkschulen</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Schule</th><th>Grundthese</th><th>Haltung dieses Kurses</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fundamentalanalyse</strong></td><td>Der Preis folgt langfristig dem Wert</td><td>Das <em>Was</em> und <em>Ob</em></td></tr>
+        <tr><td><strong>Technische Analyse (rein)</strong></td><td>Alle Information steckt bereits im Kurs; Fundamentaldaten sind überflüssig</td><td class="cross">abgelehnt</td></tr>
+        <tr><td><strong>Kombinierter Ansatz</strong></td><td>Fundamentaldaten sagen <em>was</em> zu kaufen, der Chart hilft beim <em>wann</em></td><td class="hl"><strong>unsere Position</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Die reine technische Analyse — die Vorstellung, man könne allein aus dem Kursverlauf zukünftige Kurse ableiten — steht in einem grundsätzlichen Spannungsverhältnis zur <strong>Markteffizienz</strong>. Wenn ein Kursmuster zuverlässig Gewinne vorhersagen würde, würden es alle handeln, und es würde dadurch verschwinden. Die empirische Evidenz für die Prognosekraft klassischer Chartmuster ist bestenfalls schwach und methodisch umstritten.</p>
+
+  <p><strong>Warum wir Chartanalyse trotzdem verwenden</strong>, hat nichts mit Prognose zu tun. Der Chart liefert drei Dinge, die die Fundamentalanalyse nicht liefert:</p>
+  <ol>
+    <li><strong>Kontext für den Einstiegszeitpunkt.</strong> Ein fundamental unterbewertetes Unternehmen im Abwärtstrend kann noch monatelang fallen. Der Chart hilft, nicht ins fallende Messer zu greifen.</li>
+    <li><strong>Disziplin durch vordefinierte Marken.</strong> Unterstützungen und Widerstände geben objektive Punkte, an denen eine These überprüft wird.</li>
+    <li><strong>Ein Bild der Marktpsychologie.</strong> Der Chart ist die Aufzeichnung von Angst und Gier der Marktteilnehmer. Er sagt nicht, was kommt — aber er zeigt, in welcher Stimmung der Markt gerade ist.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Die Chartanalyse beantwortet nie die Frage <em>ob</em>, sondern nur die Frage <em>wann</em>. Wer sie zur <em>Ob</em>-Frage benutzt, hat den ersten und wichtigsten Fehler gemacht.</p>
+  </div>
+
+  <h3>Die goldene Rangordnung</h3>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-rangordnung.svg" aria-label="Zwei gestapelte Blöcke mit Pfeil dazwischen: Fundament entscheidet, Chart optimiert das Timing"></object>
+    <figcaption>Fundamentalanalyse entscheidet <em>ob</em>, Chartanalyse verfeinert <em>wann</em> — nie andersherum</figcaption>
+  </figure>
+
+  <p><strong>Eine Aktie, die den Chart-Test besteht, aber den Fundamental-Test nicht, wird nie gekauft.</strong> Der Chart hat kein Vetorecht nach oben — nur nach unten (ein schöner Chart macht ein schlechtes Unternehmen nicht kaufbar), und ein umgekehrtes Vetorecht beim Timing (ein guter Chart-Kontext macht ein gutes Unternehmen kaufreifer).</p>
+
+  <!-- 3.1 -->
+  <h2><span class="num">3.1</span>Trends</h2>
+  <h3>Definition nach Dow</h3>
+  <p>Ein Trend ist keine Linie, die man mit dem Lineal zieht. Ein Trend ist eine <strong>Abfolge von Hoch- und Tiefpunkten</strong>:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Trend</th><th>Definition</th><th>Merkregel</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Aufwärtstrend</strong></td><td>höhere Hochs <strong>und</strong> höhere Tiefs</td><td>„Higher Highs, Higher Lows"</td></tr>
+        <tr><td><strong>Abwärtstrend</strong></td><td>tiefere Hochs <strong>und</strong> tiefere Tiefs</td><td>„Lower Highs, Lower Lows"</td></tr>
+        <tr><td><strong>Seitwärtstrend</strong></td><td>Hochs und Tiefs auf ähnlichem Niveau</td><td>Range / Konsolidierung</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-trends.svg" aria-label="Drei Miniatur-Charts nebeneinander mit markierten Hoch- und Tiefpunkten: Aufwärts, Abwärts, Seitwärts"></object>
+    <figcaption>Die drei Trendtypen mit markierten Hoch- (H) und Tiefpunkten (T)</figcaption>
+  </figure>
+
+  <p><strong>Der entscheidende Punkt:</strong> Ein Aufwärtstrend ist erst dann gebrochen, wenn ein <strong>tieferes Tief</strong> entsteht — nicht schon bei einem Rücksetzer. Ein einzelner roter Tag ist kein Trendbruch. Diese Unterscheidung trennt panische von disziplinierten Anlegern.</p>
+
+  <h3>Die drei Zeitebenen</h3>
+  <p>Trends existieren gleichzeitig auf mehreren Zeitebenen, und sie können sich widersprechen:</p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Ebene</th><th>Zeitraum</th><th>Für wen relevant</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primärtrend</strong></td><td>Monate bis Jahre</td><td class="hl"><strong>Für uns — der einzig relevante</strong></td></tr>
+        <tr><td><strong>Sekundärtrend</strong></td><td>Wochen bis Monate</td><td>Timing des Einstiegs</td></tr>
+        <tr><td><strong>Tertiärtrend</strong></td><td>Tage</td><td>Rauschen — ignorieren</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Für einen mittel- bis langfristigen Anleger ist die tägliche Kursbewegung fast vollständig <strong>Rauschen</strong>. Wer sie beobachtet, trifft Entscheidungen auf Basis von Zufall.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>„The trend is your friend" — aber nur der Primärtrend. Der Tagestrend ist ein Bekannter, dem man nicht trauen sollte.</p>
+  </div>
+
+  <!-- 3.2 -->
+  <h2><span class="num">3.2</span>Unterstützung und Widerstand</h2>
+  <h3>Das Konzept</h3>
+  <p><strong>Unterstützung</strong> ist ein Kursniveau, an dem historisch genügend Kaufinteresse auftrat, um einen Kursrückgang zu stoppen.<br>
+  <strong>Widerstand</strong> ist das Spiegelbild: ein Niveau, an dem genügend Verkaufsinteresse auftrat, um einen Anstieg zu stoppen.</p>
+
+  <p><strong>Warum funktionieren diese Niveaus?</strong> Nicht wegen Magie, sondern wegen <strong>Erinnerung und Positionierung</strong>:</p>
+  <ul>
+    <li>Wer bei einem bestimmten Kurs gekauft hat und ins Minus geriet, will „bei Plus-Minus-Null" wieder raus → er verkauft, sobald der Kurs dorthin zurückkehrt → das erzeugt Widerstand.</li>
+    <li>Runde Zahlen (100, 500, 1000) wirken als psychologische Marken, an denen Menschen Orders platzieren.</li>
+    <li>Frühere Wendepunkte sind im Bewusstsein der Marktteilnehmer verankert.</li>
+  </ul>
+
+  <h3>Die Polaritätsregel</h3>
+  <p>Das wichtigste Prinzip: <strong>Gebrochener Widerstand wird zur Unterstützung — und umgekehrt.</strong></p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-polaritaet.svg" aria-label="Horizontale Linie, an der der Kurs zweimal von unten abprallt, sie dann durchbricht und von oben darauf zurückfällt und hält"></object>
+    <figcaption>Polaritätsregel — dieselbe Linie wechselt vom Widerstand zur Unterstützung, sobald sie mit Volumen durchbrochen wurde</figcaption>
+  </figure>
+
+  <h3>Verlässlichkeit einschätzen</h3>
+  <p>Ein Unterstützungs-/Widerstandsniveau ist umso belastbarer, je mehr dieser Kriterien es erfüllt:</p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Kriterium</th><th>Schwach</th><th>Stark</th></tr></thead>
+      <tbody>
+        <tr><td>Anzahl der Berührungen</td><td>1</td><td>3+</td></tr>
+        <tr><td>Volumen an den Berührungspunkten</td><td>niedrig</td><td>hoch</td></tr>
+        <tr><td>Zeitspanne, über die es hält</td><td>Tage</td><td>Monate/Jahre</td></tr>
+        <tr><td>Übereinstimmung mit runden Zahlen</td><td>nein</td><td>ja</td></tr>
+        <tr><td>Übereinstimmung mit einem gleitenden Durchschnitt</td><td>nein</td><td>ja (Konfluenz)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Konfluenz</strong> — das Zusammentreffen mehrerer unabhängiger Marken auf demselben Niveau — ist das stärkste Signal der gesamten Chartanalyse. Wenn eine horizontale Unterstützung, ein aufsteigender 200-Tage-Durchschnitt und eine runde Zahl auf demselben Kurs liegen, ist dieses Niveau ernst zu nehmen.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Ein Niveau, das dreimal gehalten hat, ist eine Marke. Ein Niveau, das einmal gehalten hat, ist ein Zufall.</p>
+  </div>
+
+  <h3>Die Grenze</h3>
+  <p>Unterstützungen und Widerstände sind <strong>Zonen, keine Linien</strong>. Wer glaubt, eine Unterstützung liege „exakt bei 148,50 €", überschätzt die Präzision. Rechne mit einem Bereich von einigen Prozent. Und: <strong>Jede Unterstützung bricht irgendwann.</strong> Sie ist keine Garantie, sondern eine erhöhte Wahrscheinlichkeit.</p>
+
+  <!-- 3.3 -->
+  <h2><span class="num">3.3</span>Trendlinien und Kanäle</h2>
+  <h3>Trendlinien</h3>
+  <p>Eine Trendlinie verbindet die relevanten Tiefpunkte (im Aufwärtstrend) oder Hochpunkte (im Abwärtstrend).</p>
+  <p><strong>Regeln für gültige Trendlinien:</strong></p>
+  <ol>
+    <li>Mindestens <strong>zwei</strong> Punkte zum Zeichnen, <strong>drei</strong> zur Bestätigung.</li>
+    <li>Im Aufwärtstrend: <strong>Tiefs</strong> verbinden. Im Abwärtstrend: <strong>Hochs</strong> verbinden.</li>
+    <li>Je flacher die Linie, desto nachhaltiger der Trend. Sehr steile Trendlinien (&gt; 45°) sind selten haltbar.</li>
+    <li>Der Kurs muss die Linie nicht exakt berühren — er soll sie <em>respektieren</em>.</li>
+  </ol>
+
+  <p><strong>Der häufigste Missbrauch:</strong> Man legt die Linie so, dass sie zur gewünschten These passt. Bei genügend Fantasie lässt sich in jeden Chart eine Trendlinie zeichnen, die alles beweist. Eine Trendlinie, die man erst durch Ignorieren mehrerer Punkte konstruieren kann, ist keine.</p>
+
+  <h3>Kanäle</h3>
+  <p>Ein Kanal entsteht, wenn man parallel zur Trendlinie eine zweite Linie durch die Gegenpunkte zieht:</p>
+  <pre class="ak-pre">   Aufwärtskanal
+                              ╱ ← obere Linie (Widerstand)
+              ╱╲       ╱╲    ╱   Verkaufszone / Teilverkauf
+        ╱╲   ╱  ╲    ╱  ╲   ╱
+   ────╱──╲─╱────╲──╱────╲─╱────
+      ╱    ╲╱     ╲╱      ╲╱  ← untere Linie (Unterstützung)
+     ╱                        Kaufzone</pre>
+
+  <p>Kanäle geben einen Rahmen: Am unteren Rand eines intakten Aufwärtskanals ist das Chance-Risiko-Verhältnis für einen Einstieg günstiger als am oberen. Aber auch hier gilt: Kanäle sind Beschreibungen der Vergangenheit, keine Garantien für die Zukunft.</p>
+
+  <!-- 3.4 -->
+  <h2><span class="num">3.4</span>Volumenanalyse</h2>
+  <p><strong>Das ist der wichtigste Abschnitt des gesamten Moduls.</strong> Wenn Chartanalyse überhaupt einen belastbaren Kern hat, dann diesen: Volumen misst die <strong>Überzeugung</strong> hinter einer Bewegung.</p>
+
+  <h3>Das Grundprinzip</h3>
+  <p>Eine Kursbewegung ist so viel wert wie das Volumen, das sie trägt.</p>
+
+  <pre class="ak-pre">   Preisbewegung + HOHES Volumen  →  viele Marktteilnehmer, echte Überzeugung
+                                      → wahrscheinlich nachhaltig
+
+   Preisbewegung + NIEDRIGES Volumen → wenige Teilnehmer, leicht umkehrbar
+                                      → wahrscheinlich Strohfeuer</pre>
+
+  <h3>Die vier Grundkonstellationen</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Kurs</th><th>Volumen</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>steigt</td><td>steigt</td><td class="check"><strong>Gesunder Aufwärtstrend</strong> — Käufer dominieren mit Überzeugung</td></tr>
+        <tr><td>steigt</td><td>fällt</td><td class="hl"><strong>Warnung</strong> — Anstieg verliert Kraft, wenige Käufer treiben ihn</td></tr>
+        <tr><td>fällt</td><td>steigt</td><td><strong>Ausverkauf / Panik</strong> — starker Verkaufsdruck, aber oft Boden nahe</td></tr>
+        <tr><td>fällt</td><td>fällt</td><td><strong>Gesunde Korrektur</strong> — kein Panikverkauf, nur nachlassendes Interesse</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die entscheidende Anwendung: Ausbrüche bestätigen</h3>
+  <p>Der praktisch wichtigste Einsatz von Volumen ist die <strong>Validierung von Ausbrüchen</strong> über einen Widerstand oder unter eine Unterstützung.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-volumen.svg" aria-label="Zwei Panels: Kurs mit Ausbruch über Widerstand und darunter Volumenbalken mit deutlichem Spike zum Ausbruchszeitpunkt"></object>
+    <figcaption>Ausbruch mit Volumen-Spike → glaubwürdig. Ohne Volumen → typischer Fakeout.</figcaption>
+  </figure>
+
+  <ul>
+    <li><strong>Ausbruch mit hohem Volumen</strong> → glaubwürdig. Viele Teilnehmer tragen die neue Richtung.</li>
+    <li><strong>Ausbruch mit niedrigem Volumen</strong> → verdächtig. Häufig ein <strong>„Fakeout"</strong> — der Kurs fällt kurz danach wieder zurück.</li>
+  </ul>
+
+  <h3>Volumen-Divergenz</h3>
+  <p>Wenn der Kurs neue Hochs macht, das Volumen bei jedem neuen Hoch aber <strong>abnimmt</strong>, ist die Aufwärtsbewegung von immer weniger Teilnehmern getragen. Das ist eine der zuverlässigsten Warnungen vor einer Trendwende — deutlich verlässlicher als die meisten Chartformationen.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Der Kurs sagt dir die Richtung. Das Volumen sagt dir, ob es ihm ernst ist. Höre auf beide, aber glaube dem Volumen.</p>
+  </div>
+
+  <h3>Die Grenze</h3>
+  <p>Bei international gehandelten Aktien ist das Volumen über viele Handelsplätze verteilt; das an einer einzelnen Börse gezeigte Volumen ist unvollständig. Und moderne Marktstruktur (Dark Pools, außerbörslicher Handel) macht das öffentlich sichtbare Volumen zu einem Ausschnitt, nicht zum Ganzen. Volumen bleibt aussagekräftig — aber als Größenordnung, nicht als exakte Messung.</p>
+
+  <!-- 3.5 -->
+  <h2><span class="num">3.5</span>Gaps (Kurslücken)</h2>
+  <p>Ein Gap ist eine Lücke im Chart: Der Kurs eröffnet deutlich über oder unter dem Schlusskurs des Vortages, ohne dass dazwischen gehandelt wurde. Gaps entstehen, wenn außerhalb der Handelszeit Information eintrifft — Quartalszahlen, Übernahmen, Gewinnwarnungen.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Gap-Typ</th><th>Kontext</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Breakaway Gap</strong></td><td>am Beginn einer Bewegung, aus einer Konsolidierung heraus</td><td>Beginn eines starken neuen Trends, oft mit hohem Volumen</td></tr>
+        <tr><td><strong>Runaway / Continuation Gap</strong></td><td>in der Mitte eines Trends</td><td>Trend beschleunigt, bestätigt Stärke</td></tr>
+        <tr><td><strong>Exhaustion Gap</strong></td><td>am Ende einer langen Bewegung</td><td>letztes Aufbäumen, oft Vorbote der Wende</td></tr>
+        <tr><td><strong>Common Gap</strong></td><td>im Seitwärtsmarkt</td><td>bedeutungslos, wird meist schnell „geschlossen"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>„Ein Gap schließen"</strong> bedeutet, dass der Kurs später zum Niveau vor dem Gap zurückkehrt. Die verbreitete Regel „Gaps werden immer geschlossen" ist ein Mythos — manche werden es, viele über Jahre nicht.</p>
+
+  <p><strong>Für den langfristigen Anleger</strong> sind Gaps vor allem in einem Kontext relevant: <strong>nach Quartalszahlen.</strong> Ein großes Gap nach unten trotz solider Zahlen kann eine Kaufgelegenheit sein; ein Gap nach oben in eine Überbewertung hinein ist ein Grund zur Vorsicht, kein Kaufsignal.</p>
+
+  <div class="ak-callout">
+    <span class="ak-ctag">⚠ Anfängerfehler</span>
+    <p>Einem Gap nach oben „hinterherkaufen", weil man Angst hat, etwas zu verpassen. Genau nach einem Aufwärts-Gap ist der Spread breit, die Emotion hoch und das Chance-Risiko-Verhältnis am schlechtesten.</p>
+  </div>
+
+  <!-- 3.6 -->
+  <h2><span class="num">3.6</span>Candlesticks</h2>
+  <h3>Aufbau einer Kerze</h3>
+  <p>Jede Kerze verdichtet vier Preise einer Periode:</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-candlestick.svg" aria-label="Anatomie einer Kerze mit beschrifteten Elementen: Open, High, Low, Close, Körper, Docht, Lunte in grüner und roter Variante"></object>
+    <figcaption>Anatomie einer Kerze — Körper zeigt die Spanne Open–Close, Docht und Lunte die Extreme dazwischen</figcaption>
+  </figure>
+
+  <p>Der <strong>Körper</strong> zeigt die Spanne zwischen Eröffnung und Schluss, die <strong>Dochte/Lunten</strong> die Extreme dazwischen. Die Botschaft: <em>Wer hat die Periode gewonnen — Käufer oder Verkäufer, und wie deutlich?</em></p>
+
+  <h3>Die aussagekräftigsten Muster</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Muster</th><th>Aussehen</th><th>Aussage</th><th>Verlässlichkeit</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hammer</strong></td><td>kleiner Körper oben, lange Lunte</td><td>Käufer haben tiefe Kurse zurückgekauft → mögliche Bodenbildung</td><td>mittel</td></tr>
+        <tr><td><strong>Shooting Star</strong></td><td>kleiner Körper unten, langer Docht</td><td>Verkäufer haben hohe Kurse abverkauft → mögliche Topbildung</td><td>mittel</td></tr>
+        <tr><td><strong>Doji</strong></td><td>fast kein Körper</td><td>Unentschieden, Gleichgewicht → mögliche Wende</td><td>niedrig einzeln</td></tr>
+        <tr><td><strong>Bullish/Bearish Engulfing</strong></td><td>große Kerze verschlingt die vorige</td><td>Machtwechsel zwischen Käufern/Verkäufern</td><td>mittel-hoch</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die realistische Einordnung</h3>
+  <p>Es existieren Dutzende benannter Candlestick-Muster mit teils poetischen Namen. Die ehrliche Bewertung:</p>
+  <ul>
+    <li>Ein <strong>einzelnes</strong> Candlestick-Muster hat <strong>kaum</strong> prognostische Kraft. Die statistische Evidenz ist dünn.</li>
+    <li>Candlesticks werden erst nützlich <strong>an einer bereits identifizierten Marke</strong> — ein Hammer an einer starken Unterstützung mit hohem Volumen ist ein Signal; derselbe Hammer mitten im Nirgendwo ist Rauschen.</li>
+    <li>Sie sind ein <strong>Timing-Feinschliff</strong>, keine Entscheidungsgrundlage.</li>
+  </ul>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Eine Kerze allein bedeutet nichts. Eine Kerze an der richtigen Stelle, mit dem richtigen Volumen, bedeutet etwas. Der Kontext ist das Signal, nicht die Kerze.</p>
+  </div>
+
+  <!-- 3.7 -->
+  <h2><span class="num">3.7</span>Chartformationen</h2>
+  <p>Chartformationen sind wiederkehrende Muster, denen eine Fortsetzungs- oder Umkehrbedeutung zugeschrieben wird.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Formation</th><th>Typ</th><th>Zugeschriebene Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kopf-Schulter</strong></td><td>Umkehr</td><td>Ende eines Aufwärtstrends</td></tr>
+        <tr><td><strong>Doppeltop / Doppelboden</strong></td><td>Umkehr</td><td>Zweifacher Fehlversuch → Wende</td></tr>
+        <tr><td><strong>Dreieck (steigend/fallend)</strong></td><td>meist Fortsetzung</td><td>Konsolidierung vor dem nächsten Zug</td></tr>
+        <tr><td><strong>Flagge / Wimpel</strong></td><td>Fortsetzung</td><td>kurze Pause im Trend</td></tr>
+        <tr><td><strong>Tasse mit Henkel</strong></td><td>Fortsetzung</td><td>Basisbildung vor Ausbruch</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die kritische Perspektive</h3>
+  <p>Chartformationen sind der Bereich, in dem Chartanalyse am stärksten in Richtung Wahrsagerei kippt — und der Bereich mit der schwächsten empirischen Grundlage. Zwei Probleme:</p>
+  <ol>
+    <li><strong>Rückschaufehler.</strong> In <em>jedem</em> Chart lassen sich im Nachhinein Formationen finden. Die entscheidende Frage ist nicht, ob man eine Kopf-Schulter-Formation sieht, sondern ob sie <em>vor</em> dem Ausgang zuverlässig identifizierbar und <em>danach</em> profitabel handelbar gewesen wäre. Diese Frage fällt in kontrollierten Tests meist negativ aus.</li>
+    <li><strong>Selbsterfüllung mit Grenzen.</strong> Manche Muster funktionieren teilweise, <em>weil</em> viele Marktteilnehmer sie beobachten und danach handeln. Aber genau das macht sie auch anfällig für Fehlausbrüche, weil professionelle Akteure diese Erwartung ausnutzen.</li>
+  </ol>
+
+  <p><strong>Die Haltung dieses Kurses:</strong> Formationen sind allenfalls ein <em>schwaches, ergänzendes</em> Signal. Sie ersetzen niemals Volumen, Trend und Fundamentaldaten. Wer sein Handeln primär auf Chartformationen stützt, hat den Boden der Evidenz verlassen.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Je hübscher der Name einer Chartformation, desto vorsichtiger solltest du sein. „Tasse mit Henkel" beschreibt die Vergangenheit gut und sagt die Zukunft schlecht voraus.</p>
+  </div>
+
+  <!-- 3.8 -->
+  <h2><span class="num">3.8</span>Moving Averages (Gleitende Durchschnitte)</h2>
+  <h3>Definition</h3>
+  <p>Ein gleitender Durchschnitt glättet den Kursverlauf, indem er den Durchschnittskurs der letzten <em>n</em> Perioden bildet und fortlaufend neu berechnet.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Typ</th><th>Berechnung</th><th>Eigenschaft</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SMA</strong> (einfach)</td><td>arithmetisches Mittel der letzten n Kurse</td><td>träge, gleichgewichtet</td></tr>
+        <tr><td><strong>EMA</strong> (exponentiell)</td><td>gewichtet zugunsten neuerer Kurse</td><td>reagiert schneller</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Die wichtigsten Perioden:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>MA</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>50-Tage</strong></td><td>mittelfristiger Trend</td></tr>
+        <tr><td class="hl"><strong>200-Tage</strong></td><td class="hl"><strong>langfristiger Trend — die wichtigste einzelne Linie für uns</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die 200-Tage-Linie</h3>
+  <p>Für den langfristigen Anleger ist die 200-Tage-Linie der nützlichste einzelne Indikator der gesamten Chartanalyse — nicht als Prognose, sondern als <strong>Zustandsbeschreibung</strong>:</p>
+  <ul>
+    <li><strong>Kurs über steigender 200-Tage-Linie</strong> → das Unternehmen ist in einem langfristigen Aufwärtstrend. Rücksetzer auf die Linie sind oft Einstiegsgelegenheiten.</li>
+    <li><strong>Kurs unter fallender 200-Tage-Linie</strong> → langfristiger Abwärtstrend. Selbst eine fundamental günstige Aktie kann hier lange fallen. Vorsicht mit „fallenden Messern".</li>
+  </ul>
+
+  <h3>Kreuzungssignale — mit Vorsicht</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Signal</th><th>Definition</th><th>Ruf</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Golden Cross</strong></td><td>50-Tage kreuzt 200-Tage von unten nach oben</td><td>„bullisch"</td></tr>
+        <tr><td><strong>Death Cross</strong></td><td>50-Tage kreuzt 200-Tage von oben nach unten</td><td>„bärisch"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Die ehrliche Einordnung:</strong> Diese Kreuzungen sind <strong>stark verzögert</strong>. Ein gleitender Durchschnitt ist per Konstruktion rückwärtsgewandt — er reagiert erst, nachdem sich der Kurs bereits bewegt hat. Ein Golden Cross erscheint oft erst, wenn ein großer Teil der Aufwärtsbewegung bereits gelaufen ist. Als alleiniges Handelssignal sind sie schwach; als grobe Bestätigung der Trendlage sind sie brauchbar.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-golden-cross.svg" aria-label="Kursverlauf mit 50- und 200-Tage-Linie, Kreuzungspunkt als Golden Cross markiert, Hinweis auf verzögertes Signal"></object>
+    <figcaption>Golden Cross — die Kreuzung erscheint erst, nachdem ein großer Teil der Bewegung bereits gelaufen ist</figcaption>
+  </figure>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Ein gleitender Durchschnitt kann die Zukunft nicht kennen — er ist nur ein geglätteter Blick in die Vergangenheit. Er beschreibt den Trend gut und sagt die Wende spät.</p>
+  </div>
+
+  <!-- 3.9 -->
+  <h2><span class="num">3.9</span>RSI (Relative Strength Index)</h2>
+  <h3>Definition und Formel</h3>
+  <p>Der RSI misst die Geschwindigkeit und das Ausmaß jüngster Kursbewegungen und drückt sie auf einer Skala von 0 bis 100 aus. Standardperiode: 14.</p>
+
+  <div class="ak-formula">           100
+RSI = 100 − ─────────
+             1 + RS
+
+RS = Ø Aufwärtsbewegung der letzten n Perioden
+     ────────────────────────────────────────
+     Ø Abwärtsbewegung der letzten n Perioden</div>
+
+  <h3>Interpretation</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>RSI</th><th>Klassische Deutung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>&gt; 70</strong></td><td>„überkauft" — Bewegung könnte sich erschöpfen</td></tr>
+        <tr><td><strong>30–70</strong></td><td>neutral</td></tr>
+        <tr><td><strong>&lt; 30</strong></td><td>„überverkauft" — Bewegung könnte sich erschöpfen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die zwei entscheidenden Warnungen</h3>
+  <p><strong>Warnung 1 — „Überkauft" heißt nicht „Verkaufen".</strong> Eine der teuersten Fehlinterpretationen überhaupt. In einem <strong>starken Aufwärtstrend</strong> kann der RSI wochen- oder monatelang über 70 bleiben, während der Kurs immer weiter steigt. Wer bei RSI 70 verkauft, verkauft die besten Trends viel zu früh. Der RSI ist ein <strong>Momentum</strong>-Indikator, kein Timing-Signal für den Ausstieg.</p>
+
+  <p><strong>Warnung 2 — Der eigentliche Wert liegt in Divergenzen.</strong> Interessanter als absolute Werte ist die <strong>Divergenz</strong>:</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-rsi-divergenz.svg" aria-label="Oberes Panel Kurs mit zwei steigenden Hochs, unteres Panel RSI mit zwei fallenden Hochs — Divergenz hervorgehoben"></object>
+    <figcaption>Klassische bärische RSI-Divergenz — Kurs steigt, Momentum fällt</figcaption>
+  </figure>
+
+  <p>Wenn der Kurs neue Hochs bildet, der RSI aber <strong>niedrigere</strong> Hochs — dann trägt immer weniger Momentum die Bewegung. Das ist ein ernster zu nehmendes Signal als jeder absolute RSI-Wert.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 8</strong>Ein überkaufter RSI in einem starken Trend ist kein Verkaufssignal, sondern ein Stärkesignal. Die Divergenz ist die eigentliche Botschaft des RSI, nicht die Schwelle.</p>
+  </div>
+
+  <!-- 3.10 -->
+  <h2><span class="num">3.10</span>MACD</h2>
+  <h3>Definition</h3>
+  <p>Der MACD (Moving Average Convergence Divergence) misst das Verhältnis zweier exponentieller gleitender Durchschnitte zueinander — also die <strong>Beschleunigung</strong> eines Trends.</p>
+
+  <div class="ak-formula">MACD-Linie   = EMA(12) − EMA(26)
+Signal-Linie = EMA(9) der MACD-Linie
+Histogramm   = MACD-Linie − Signal-Linie</div>
+
+  <h3>Interpretation</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Signal</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td>MACD kreuzt Signal-Linie <strong>nach oben</strong></td><td>bullisches Momentum</td></tr>
+        <tr><td>MACD kreuzt Signal-Linie <strong>nach unten</strong></td><td>bärisches Momentum</td></tr>
+        <tr><td>MACD über null</td><td>Aufwärtstrend intakt</td></tr>
+        <tr><td>MACD unter null</td><td>Abwärtstrend intakt</td></tr>
+        <tr><td><strong>Histogramm schrumpft</strong></td><td>Momentum lässt nach (Frühwarnung)</td></tr>
+        <tr><td><strong>MACD-Divergenz zum Kurs</strong></td><td>mögliche Trendwende</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Einordnung</h3>
+  <p>Der MACD ist im Kern eine verfeinerte Betrachtung gleitender Durchschnitte und teilt deren Grundproblem: <strong>Er ist rückwärtsgewandt.</strong> Sein Mehrwert gegenüber einem simplen MA-Kreuz liegt im Histogramm, das ein <em>nachlassendes</em> Momentum sichtbar macht, bevor die eigentliche Kreuzung erfolgt. Wie beim RSI liegt der aussagekräftigste Einsatz in der <strong>Divergenz</strong> zum Kurs.</p>
+
+  <p>Für den langfristigen Anleger ist der MACD ein <strong>nachrangiger</strong> Indikator — nützlich zur Bestätigung, ungeeignet als Auslöser.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 9</strong>MACD, RSI und gleitende Durchschnitte sagen alle dasselbe auf drei Arten: Wie stark ist das Momentum, und lässt es nach? Drei Indikatoren, die dasselbe messen, sind nicht drei Bestätigungen — sie sind eine.</p>
+  </div>
+
+  <!-- 3.11 -->
+  <h2><span class="num">3.11</span>ATR (Average True Range)</h2>
+  <h3>Definition</h3>
+  <p>Der ATR misst die <strong>durchschnittliche Schwankungsbreite</strong> einer Aktie pro Periode. Er sagt <strong>nichts</strong> über die Richtung — nur über das Ausmaß der Bewegung.</p>
+
+  <div class="ak-formula">True Range = Maximum von:
+    • Hoch − Tief (heute)
+    • |Hoch − Schluss (gestern)|
+    • |Tief  − Schluss (gestern)|
+
+ATR = geglätteter Durchschnitt der True Range über n Perioden (meist 14)</div>
+
+  <h3>Warum ATR für uns wichtiger ist als für die meisten glauben</h3>
+  <p>Der ATR ist kein Signalgeber, sondern ein <strong>Risiko-Kalibrierungswerkzeug</strong> — und damit die direkte Brücke zu Modul 5:</p>
+
+  <p><strong>1. Volatilitätsbewusste Stop-Abstände.</strong> Ein Stop-Loss sollte nicht bei einer runden Zahl liegen („−10 %"), sondern im Verhältnis zur normalen Schwankung der Aktie. Ein Stop, der enger ist als die tägliche Normalschwankung (z. B. 1× ATR), wird durch bloßes Rauschen ausgelöst.</p>
+
+  <pre class="ak-pre">Beispiel:
+Aktie A: Kurs 100 €, ATR 1,50 € → normale Tagesschwankung 1,5 %
+         Ein Stop bei −2 % (98 €) liegt knapp über 1× ATR → wird von Rauschen getroffen
+         Sinnvoller: 2–3× ATR Abstand
+Aktie B: Kurs 100 €, ATR 4,00 € → normale Tagesschwankung 4 %
+         Hier ist ein −2 %-Stop völlig unbrauchbar</pre>
+
+  <p><strong>2. Positionsgrößen-Kalibrierung.</strong> Zwei Aktien mit gleichem Kurs, aber unterschiedlichem ATR tragen unterschiedliches Risiko pro Stück. Der ATR erlaubt, das Risiko zu <strong>vereinheitlichen</strong> — Kern des Risikomanagements in Modul 5.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 10</strong>Der ATR sagt dir nicht, wohin. Er sagt dir, wie weit — und das ist genau die Information, die du für deinen Stop und deine Positionsgröße brauchst.</p>
+  </div>
+
+  <!-- 3.12 -->
+  <h2><span class="num">3.12</span>Bollinger Bänder</h2>
+  <h3>Definition</h3>
+  <p>Bollinger Bänder legen ein Band um einen gleitenden Durchschnitt, dessen Breite sich mit der Volatilität ändert.</p>
+  <div class="ak-formula">Mittelband  = SMA(20)
+Oberes Band = SMA(20) + 2 × Standardabweichung(20)
+Unteres Band= SMA(20) − 2 × Standardabweichung(20)</div>
+
+  <p>Da statistisch ein großer Teil der Kurse innerhalb von zwei Standardabweichungen liegt, verbringt der Kurs die meiste Zeit <strong>innerhalb</strong> der Bänder.</p>
+
+  <h3>Interpretation</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Beobachtung</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td>Kurs berührt oberes Band</td><td>relativ hoch — <strong>nicht</strong> automatisch „verkaufen"</td></tr>
+        <tr><td>Kurs berührt unteres Band</td><td>relativ tief — <strong>nicht</strong> automatisch „kaufen"</td></tr>
+        <tr><td><strong>Squeeze</strong> (Bänder verengen sich)</td><td>niedrige Volatilität → oft Vorbote einer größeren Bewegung</td></tr>
+        <tr><td>Bänder weiten sich stark</td><td>hohe Volatilität, oft während starker Bewegungen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die entscheidende Warnung</h3>
+  <p>Wie beim RSI ist die naive Interpretation gefährlich: In einem starken Trend „reitet" der Kurs am oberen (oder unteren) Band entlang — Band-Berührung ist dann ein <strong>Trendstärke</strong>-Signal, kein Umkehrsignal.</p>
+  <p>Der nützlichste Aspekt ist der <strong>Squeeze</strong>: Eine ausgeprägte Verengung der Bänder zeigt eine Phase niedriger Volatilität an, auf die statistisch oft eine Ausdehnung folgt. Der Squeeze sagt, dass <em>etwas</em> passieren wird — er sagt nicht, in welche <strong>Richtung</strong>. Deshalb braucht er die Bestätigung durch Ausbruch <strong>und Volumen</strong> (Abschnitt 3.4).</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 11</strong>Bollinger Bänder messen relative Höhe, nicht Richtung. Der Squeeze kündigt Bewegung an, nicht ihr Vorzeichen.</p>
+  </div>
+
+  <!-- 3.13 -->
+  <h2><span class="num">3.13</span>Die große Einordnung: Warum alle Indikatoren rückwärtsgewandt sind</h2>
+  <p>Es lohnt sich, den gemeinsamen Nenner aller Werkzeuge dieses Moduls klar auszusprechen:</p>
+  <p><strong>Jeder Indikator ist eine mathematische Umformung vergangener Kurse.</strong> Er kann per Konstruktion keine Information enthalten, die nicht schon im Kurs steckte. Ein gleitender Durchschnitt, ein RSI, ein MACD — sie alle verdichten und glätten die Vergangenheit. Keiner von ihnen kennt die Zukunft.</p>
+  <p>Daraus folgt eine praktische Regel: <strong>Mehr Indikatoren bedeuten nicht mehr Sicherheit.</strong> Wer RSI, MACD, Stochastik und gleitende Durchschnitte gleichzeitig auf den Chart legt, erzeugt keine vier unabhängigen Meinungen, sondern vier Varianten derselben Information — mit dem Effekt, dass sich für <em>jede</em> Entscheidung immer irgendein bestätigendes Signal findet. Das ist Bestätigungsfehler mit technischem Anstrich.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m03-indikatoren.svg" aria-label="Zweispaltige Gegenüberstellung: was Indikatoren können und was sie nicht können"></object>
+    <figcaption>Was Indikatoren können — und was sie ausdrücklich nicht können</figcaption>
+  </figure>
+
+  <p><strong>Die minimalistische Empfehlung dieses Kurses:</strong> Für einen langfristigen Anleger reichen drei Werkzeuge vollständig aus —</p>
+  <ol>
+    <li>die <strong>200-Tage-Linie</strong> (Trendlage),</li>
+    <li>das <strong>Volumen</strong> (Überzeugung),</li>
+    <li><strong>Unterstützung/Widerstand</strong> (Marken für Einstieg und Falsifikation).</li>
+  </ol>
+  <p>Alles Weitere ist Feinschliff, nicht Fundament.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 12</strong>Drei Werkzeuge, die du verstehst, schlagen zwölf, die du nur bedienst.</p>
+  </div>
+
+  <!-- 3.14 -->
+  <h2><span class="num">3.14</span>Die Brücke zu Modul 4: Fundament trifft Chart</h2>
+  <p>Chartanalyse ist in diesem Kurs <strong>niemals</strong> ein eigenständiger Entscheidungsprozess. Sie greift erst, nachdem die Fundamentalanalyse ein Unternehmen als <em>gut und unterbewertet</em> eingestuft hat. Dann — und nur dann — stellt der Chart drei Timing-Fragen:</p>
+  <ol>
+    <li><strong>In welcher Trendlage befindet sich die Aktie?</strong> (200-Tage-Linie)</li>
+    <li><strong>Gibt es eine nahe Unterstützung, die einen günstigen Einstieg und ein objektives Falsifikationsniveau bietet?</strong></li>
+    <li><strong>Bestätigt das Volumen die aktuelle Bewegung — oder widerspricht es ihr?</strong></li>
+  </ol>
+  <p>Die vollständige Verbindung — wie man aus einer fundamentalen Kaufzone und einem chart-technischen Kontext einen konkreten Einstiegsplan macht — ist der Inhalt von Modul 4.</p>
+
+  <!-- Anfängerfehler -->
+  <h2>Typische Anfängerfehler in Modul 3</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Chartanalyse als Prognose behandeln</td><td>Verwechselt <em>wann</em> mit <em>ob</em></td><td>Chart nur nach bestandener Fundamentalanalyse einsetzen</td></tr>
+        <tr><td>Bei RSI &gt; 70 verkaufen</td><td>Verkauft die stärksten Trends zu früh</td><td>RSI als Momentum lesen, auf Divergenzen achten</td></tr>
+        <tr><td>Trendlinie an die eigene These anpassen</td><td>Erzeugt Scheinbestätigung</td><td>3 Punkte verlangen, keine Punkte ignorieren</td></tr>
+        <tr><td>Ausbruch ohne Volumen handeln</td><td>Fakeout-Risiko</td><td>Ausbrüche immer mit Volumen bestätigen</td></tr>
+        <tr><td>Zwölf Indikatoren gleichzeitig</td><td>Bestätigungsfehler, Scheinsicherheit</td><td>Auf 200-Tage, Volumen, S/R reduzieren</td></tr>
+        <tr><td>Gap nach oben hinterherkaufen</td><td>Schlechtestes CRV, breitester Spread</td><td>Auf Rücksetzer warten oder gar nicht</td></tr>
+        <tr><td>Death/Golden Cross als Timing-Signal</td><td>Stark verzögert</td><td>Nur als grobe Trendbestätigung nutzen</td></tr>
+        <tr><td>Candlestick-Muster isoliert deuten</td><td>Kaum prognostische Kraft allein</td><td>Nur an bestätigten Marken mit Volumen</td></tr>
+        <tr><td>Tagestrend beobachten</td><td>Rauschen erzeugt Aktionismus</td><td>Nur Primär- und Sekundärtrend</td></tr>
+        <tr><td>Unterstützung als exakte Linie sehen</td><td>Überschätzte Präzision</td><td>Als Zone denken, einige Prozent Toleranz</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2>Checkliste — Chart-Kontext vor dem Kauf</h2>
+  <p><em>(Erst auszufüllen, nachdem die Fundamental-Checkliste aus Modul 2 bestanden ist.)</em></p>
+  <ul class="ak-check-list">
+    <li><strong>Trendlage</strong> bestimmt: Kurs über oder unter der 200-Tage-Linie? Steigt oder fällt die Linie?</li>
+    <li>Falls Abwärtstrend: Bin ich mir bewusst, dass ich in ein „fallendes Messer" greifen könnte?</li>
+    <li><strong>Nächste Unterstützung</strong> identifiziert und als mögliches Falsifikationsniveau notiert.</li>
+    <li><strong>Nächster Widerstand</strong> identifiziert (mögliche Teilverkaufszone → Modul 6).</li>
+    <li><strong>Volumen</strong> der jüngsten Bewegung geprüft: bestätigt oder widerspricht es?</li>
+    <li>Keine offene, riskante <strong>Kurslücke</strong> direkt über dem Einstieg.</li>
+    <li><strong>RSI-/MACD-Divergenz</strong> geprüft (nur als ergänzende Warnung).</li>
+    <li>Ich handle <strong>nicht</strong> wegen eines einzelnen Candlestick-Musters oder einer hübschen Formation.</li>
+    <li>Mein Einstieg ist <strong>nicht</strong> in den ersten/letzten 15 Handelsminuten (Modul 1).</li>
+    <li>Der Chart hat den <strong>Kauf nicht ausgelöst</strong> — er hat nur das <em>Wann</em> verfeinert.</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2>Zusammenfassung</h2>
+  <ol>
+    <li>Chartanalyse beantwortet <strong>wann</strong>, nie <strong>ob</strong>. Sie ist dem Fundament nachgeordnet und hat kein Kaufveto nach oben.</li>
+    <li>Ein <strong>Trend</strong> ist eine Abfolge von Hochs und Tiefs, kein Strich. Er ist erst gebrochen, wenn ein tieferes Tief entsteht. Nur der Primärtrend zählt.</li>
+    <li><strong>Unterstützung und Widerstand</strong> sind Zonen, keine Linien; gebrochener Widerstand wird zur Unterstützung. <strong>Konfluenz</strong> ist das stärkste Signal.</li>
+    <li><strong>Volumen</strong> ist der belastbarste Teil der Chartanalyse: Es misst die Überzeugung hinter einer Bewegung und validiert Ausbrüche.</li>
+    <li><strong>Candlesticks und Formationen</strong> haben isoliert kaum prognostische Kraft und sind der schwächste, wahrsagerei-anfälligste Bereich — nur im Kontext von Marke und Volumen brauchbar.</li>
+    <li>Die <strong>200-Tage-Linie</strong> ist der nützlichste einzelne Indikator — als Zustandsbeschreibung, nicht als Prognose. Kreuzungssignale sind verzögert.</li>
+    <li><strong>RSI, MACD, Bollinger</strong> messen im Kern dasselbe (Momentum/relative Lage) und sind rückwärtsgewandt. Ihr Wert liegt in <strong>Divergenzen</strong>, nicht in Schwellen. „Überkauft" ist kein Verkaufssignal.</li>
+    <li>Der <strong>ATR</strong> misst nicht Richtung, sondern Ausmaß — und ist damit das Werkzeug zur Kalibrierung von Stops und Positionsgrößen (Brücke zu Modul 5).</li>
+    <li><strong>Mehr Indikatoren = mehr Bestätigungsfehler</strong>, nicht mehr Sicherheit. Drei verstandene Werkzeuge genügen: 200-Tage, Volumen, S/R.</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2>Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Definiere einen Aufwärtstrend präzise. Ab wann genau ist er gebrochen?</li>
+    <li>Eine Aktie prallt zum dritten Mal an der Marke von 200 € nach unten ab, durchbricht sie dann mit hohem Volumen und fällt einige Tage später darauf zurück, ohne sie zu unterschreiten. Was ist bei 200 € passiert, und wie heißt dieses Prinzip?</li>
+    <li>Kurs steigt, Volumen fällt seit drei Wochen. Ist das gesund? Was signalisiert es?</li>
+    <li>Der RSI einer Aktie steht bei 78. Ein Bekannter rät zum Verkauf, „weil überkauft". Warum ist dieser Rat in einem starken Aufwärtstrend gefährlich?</li>
+    <li>Was ist eine RSI-Divergenz, und warum ist sie aussagekräftiger als ein absoluter RSI-Wert?</li>
+    <li>Zwei Aktien kosten je 100 €. Aktie A hat einen ATR von 1,20 €, Aktie B einen ATR von 5,00 €. Du willst bei beiden einen Stop-Loss setzen. Warum wäre derselbe prozentuale Abstand (z. B. −3 %) bei beiden ein Fehler?</li>
+    <li>Warum ist ein Golden Cross ein schwaches Kaufsignal, obwohl es „bullisch" gilt?</li>
+    <li>Du legst RSI, MACD, Stochastik und zwei gleitende Durchschnitte gleichzeitig auf einen Chart. Welchen systematischen Denkfehler riskierst du?</li>
+    <li>Ein Bollinger-Squeeze tritt auf. Was sagt er dir — und was sagt er dir ausdrücklich nicht?</li>
+    <li>Eine fundamental hervorragende, unterbewertete Aktie notiert deutlich unter ihrer fallenden 200-Tage-Linie. Kaufst du sofort? Begründe im Sinne der Modul-3-Logik.</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li>Ein Aufwärtstrend ist eine Abfolge von <strong>höheren Hochs und höheren Tiefs</strong>. Er ist <strong>gebrochen, sobald ein tieferes Tief</strong> entsteht — also wenn der Kurs unter das vorherige relevante Tief fällt. Ein einzelner Rücksetzer, der über dem letzten Tief bleibt, ist <strong>kein</strong> Trendbruch.</li>
+        <li>Bei 200 € lag zunächst ein <strong>Widerstand</strong> (dreimal abgeprallt). Nach dem Ausbruch mit hohem Volumen und dem erfolgreichen Rücktest von oben ist dieselbe Marke nun eine <strong>Unterstützung</strong> geworden. Das Prinzip heißt <strong>Polarität</strong> (gebrochener Widerstand wird zur Unterstützung). Das hohe Ausbruchsvolumen macht den Ausbruch glaubwürdig.</li>
+        <li><strong>Nicht gesund.</strong> Steigende Kurse bei fallendem Volumen bedeuten, dass die Aufwärtsbewegung von immer weniger Marktteilnehmern getragen wird (Volumen-Divergenz). Es signalisiert nachlassende Überzeugung und ein erhöhtes Risiko einer Trendwende.</li>
+        <li>Weil der RSI ein <strong>Momentum</strong>-Indikator ist, kein Ausstiegssignal. In einem starken Aufwärtstrend kann der RSI <strong>wochenlang über 70</strong> bleiben, während der Kurs weiter steigt. Bei RSI 78 zu verkaufen bedeutet, den stärksten Teil des Trends zu verpassen. „Überkauft" in einem starken Trend ist ein <strong>Stärkesignal</strong>, kein Verkaufssignal.</li>
+        <li>Eine RSI-Divergenz liegt vor, wenn der <strong>Kurs neue Hochs</strong> bildet, der <strong>RSI aber tiefere Hochs</strong> (bzw. umgekehrt bei Tiefs). Sie ist aussagekräftiger, weil sie ein <strong>Nachlassen des Momentums</strong> zeigt, das im reinen Kursverlauf noch nicht sichtbar ist — eine Frühwarnung, während der absolute RSI-Wert nur den Ist-Zustand beschreibt.</li>
+        <li>Weil der Stop-Abstand zur <strong>normalen Schwankung</strong> der Aktie passen muss, nicht zu einer festen Prozentzahl. Aktie A schwankt normal ~1,2 %/Tag; ein −3 %-Stop hat hier gut 2× ATR Luft — brauchbar. Aktie B schwankt normal ~5 %/Tag; ein −3 %-Stop liegt <strong>unter</strong> der normalen Tagesschwankung und wird durch bloßes Rauschen ausgelöst, obwohl die These intakt ist. Stops gehören in ATR-Vielfachen gedacht, nicht in runden Prozenten.</li>
+        <li>Weil ein Golden Cross auf der Kreuzung zweier <strong>gleitender Durchschnitte</strong> beruht, die per Konstruktion <strong>rückwärtsgewandt und träge</strong> sind. Das Signal erscheint erst, nachdem ein großer Teil der Aufwärtsbewegung bereits stattgefunden hat. Es bestätigt die Trendlage grob, taugt aber nicht als Einstiegs-Timing.</li>
+        <li>Den <strong>Bestätigungsfehler</strong>: Diese Indikatoren messen weitgehend <strong>dasselbe</strong> (Momentum/Trendlage) und sind alle rückwärtsgewandt. Sie liefern keine vier unabhängigen Meinungen, sondern vier Varianten derselben Information. Effekt: Für jede beliebige Entscheidung findet sich immer <em>irgendein</em> bestätigendes Signal — Scheinsicherheit.</li>
+        <li>Der Squeeze (Verengung der Bänder) signalisiert eine Phase <strong>niedriger Volatilität</strong>, auf die statistisch oft eine größere Bewegung folgt. Er sagt dir, dass <strong>etwas</strong> passieren dürfte — er sagt dir <strong>ausdrücklich nicht die Richtung</strong>. Deshalb braucht er die Bestätigung durch Ausbruch <strong>und Volumen</strong>.</li>
+        <li><strong>Nicht sofort in voller Größe.</strong> Die Modul-3-Logik: Das Fundament sagt <em>ja</em> (gut und unterbewertet) — das hat Vorrang und rechtfertigt grundsätzliches Interesse. Aber der Chart zeigt einen intakten <strong>Abwärtstrend</strong> (Kurs unter fallender 200-Tage-Linie). Das ist ein „fallendes Messer": Die Aktie kann trotz Unterbewertung noch lange weiter fallen. Sinnvolle Reaktion: auf <strong>Stabilisierungssignale</strong> warten (Boden über einer Unterstützung, erstes höheres Tief, Volumen-Trockenlegung auf der Verkäuferseite) und/oder <strong>gestaffelt</strong> einsteigen, statt alles auf einmal. Das Fundament sagt <em>ob</em>, der Chart verfeinert das <em>wann</em> — genau der Fall, für den dieses Modul existiert.</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Übungen -->
+  <h2>Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Trend bestimmen (30 Min.)</h4>
+      <p>Öffne die Wochen-Charts (5 Jahre) von Microsoft, Novo Nordisk und Intel. Bestimme für jede die aktuelle Primärtrendlage anhand der Definition (Hochs/Tiefs) und der 200-Tage-Linie. Notiere für jede: Aufwärts, Abwärts oder Seitwärts — und woran du es festmachst.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — Marken einzeichnen (45 Min.)</h4>
+      <p>Wähle eine Aktie aus deiner Watchlist. Zeichne die drei nächsten Unterstützungen und Widerstände ein. Bewerte jede Marke nach den fünf Verlässlichkeitskriterien (Berührungen, Volumen, Dauer, runde Zahl, MA-Konfluenz). Welche ist die stärkste?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Volumen lesen (45 Min.)</h4>
+      <p>Finde in einem beliebigen Chart einen deutlichen Ausbruch über einen Widerstand. Prüfe das Volumen am Ausbruchstag: bestätigt oder nicht? Suche anschließend gezielt einen <strong>Fakeout</strong> (Ausbruch ohne Volumen, der zurückfiel). Was war im Volumen im Vorfeld anders?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — Die Divergenz-Jagd (45 Min.)</h4>
+      <p>Lege den RSI (14) unter den Chart einer Aktie, die in den letzten zwei Jahren ein deutliches Hoch gemacht hat. Suche eine Divergenz vor einer Trendwende. Fandst du eine? Falls ja: Wie viele Wochen vor der Wende war sie sichtbar?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Der ATR-Stop (30 Min.)</h4>
+      <p>Ermittle für zwei Aktien mit sehr unterschiedlicher Volatilität den aktuellen ATR(14). Berechne für beide einen Stop-Abstand von 2,5× ATR in Prozent des Kurses. Vergleiche: Wie stark unterscheiden sich die prozentualen Abstände? Was bedeutet das für die Positionsgröße (Vorschau Modul 5)?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 6 — Der Minimalismus-Test (30 Min.)</h4>
+      <p>Nimm eine Aktie, die du gut kennst. Triff eine hypothetische Timing-Einschätzung <strong>nur</strong> mit den drei Kernwerkzeugen: 200-Tage-Linie, Volumen, nächste Unterstützung/Widerstand. Notiere sie. Lege dann RSI, MACD und Bollinger dazu. Ändert sich deine Einschätzung — oder bekommst du nur mehr Rauschen?</p>
+    </div>
+  </div>
+
+  <div class="ak-disclaimer">
+    <strong>Keine Anlageberatung.</strong> Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Die genannten Unternehmen dienen der Illustration von Analysemethoden. Technische Indikatoren beruhen auf vergangenen Kursen und besitzen keine gesicherte Prognosekraft. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Jede Anlageentscheidung erfolgt eigenverantwortlich.
+  </div>
+
+</main>
+
+<section class="ak-weiter">
+  <p>Nächstes Modul</p>
+  <h3>Modul 4 — Der richtige Einstieg<br>Fundament und Chart zu einer Entscheidung verbinden.</h3>
+  <a href="modul-04-einstieg.html" class="btn-outline">Modul 4 öffnen →</a>
+</section>
+
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html" class="active">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+</script>
+</body>
+</html>

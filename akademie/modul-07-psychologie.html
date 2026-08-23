@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<script src="inline-svg.js" defer></script>
+<link rel="stylesheet" href="akademie.css">
+<title>Fair Value Pro — Akademie · Modul 7: Trading-Psychologie</title>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html" class="active">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<section class="ak-hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 7 · Trading-Psychologie</div>
+    <h1>Der größte Gegner<br><span class="n">sitzt im Spiegel.</span></h1>
+    <p class="ak-lead">Der Investor hat einen einzigen unbesiegbaren Gegner, dem er an jedem Handelstag gegenübersitzt, dessen Züge er nie ganz vorhersehen kann und der jede seiner Schwächen kennt: sich selbst.</p>
+  </div>
+</section>
+
+<main class="ak-content">
+
+  <h2 style="border-bottom:0;">Warum dieses Modul das eigentliche Zentrum des Kurses ist</h2>
+  <p>Du hast jetzt sechs Module Methodik gelernt: bewerten, timen, dimensionieren, ein- und aussteigen. Und hier ist die unbequeme Wahrheit, die jeder erfahrene Anleger bestätigt: <strong>Die Methodik ist der leichte Teil.</strong> Ein durchschnittlich intelligenter Mensch kann die Inhalte der Module 1–6 in wenigen Monaten verstehen.</p>
+  <p>Was Jahre — manchmal Jahrzehnte — dauert, ist etwas anderes: die Methodik <strong>auch dann anzuwenden, wenn es wehtut.</strong> Wenn der Kurs fällt und jede Faser deines Körpers verkaufen will. Wenn alle euphorisch sind und du dich ausgeschlossen fühlst. Wenn du dich geirrt hast und der Stolz einen sauberen Ausstieg verhindert.</p>
+  <p>Der berühmte Satz von Benjamin Graham bringt es auf den Punkt: <em>„Das Hauptproblem des Anlegers — und sogar sein schlimmster Feind — ist wahrscheinlich er selbst."</em> Die gesamte Behavior-Gap-Forschung aus Modul 1 ist die statistische Bestätigung dieses Satzes. Anleger unterperformen ihre eigenen Fonds — nicht wegen schlechter Auswahl, sondern wegen schlechten Verhaltens.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m07-methodik-psyche.svg" aria-label="Multiplikative Darstellung: selbst eine hohe Methodik wird durch schwache Psychologie zu einem schwachen Gesamtergebnis"></object>
+    <figcaption>Anlageerfolg ist multiplikativ — die Psychologie ist der begrenzende Faktor, nicht die Methodik</figcaption>
+  </figure>
+
+  <p>Deshalb ist dieses Modul das längste und wichtigste. Es macht aus einem Menschen, der weiß, was zu tun ist, einen Menschen, der es auch tut.</p>
+
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li>die <strong>Herkunft</strong> deiner Denkfehler verstehen — warum ein Gehirn, das für die Savanne optimiert ist, am Aktienmarkt systematisch versagt;</li>
+      <li>die <strong>sieben zentralen Verzerrungen</strong> (FOMO, Verlustaversion, Overconfidence, Confirmation Bias, Anchoring, Recency Bias, Herdentrieb) in dir selbst erkennen und gegensteuern;</li>
+      <li>den Unterschied zwischen <strong>Disziplin und Geduld</strong> verstehen und beides trainieren;</li>
+      <li><strong>Routinen</strong> etablieren, die gute Entscheidungen erzwingen und Emotionen aus dem Moment nehmen;</li>
+      <li>ein <strong>Trading-Journal</strong> führen, das Prozess und Ergebnis trennt — das mächtigste Werkzeug dieses Moduls;</li>
+      <li><strong>mit Fehlern umgehen</strong>, ohne in Lähmung oder Rache zu verfallen;</li>
+      <li>deinen <strong>persönlichen Bias-Katalog</strong> erstellen und in konkrete Gegenmaßnahmen übersetzen.</li>
+    </ol>
+  </div>
+
+  <!-- 7.1 -->
+  <h2><span class="num">7.1</span>Warum dein Gehirn am Aktienmarkt versagt</h2>
+  <p>Bevor wir die einzelnen Verzerrungen behandeln, lohnt der Blick auf ihre gemeinsame Wurzel. Denn diese Fehler sind keine Dummheit — sie sind <strong>Merkmale, keine Bugs.</strong> Sie waren über Jahrhunderttausende überlebensnützlich und versagen nur in der sehr speziellen, evolutionär brandneuen Umgebung „Finanzmarkt".</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>In der Savanne nützlich …</th><th>… am Aktienmarkt ruinös</th></tr></thead>
+      <tbody>
+        <tr><td>Der Herde folgen (Sicherheit)</td><td>Herdentrieb (kaufen im Hoch)</td></tr>
+        <tr><td>Verlust vermeiden (Hunger droht)</td><td>Verlustaversion (Verlierer halten)</td></tr>
+        <tr><td>Muster erkennen (Raubtier!)</td><td>Muster im Zufall sehen (Charts)</td></tr>
+        <tr><td>Auf Jüngstes reagieren (Gefahr)</td><td>Recency Bias (Trend fortschreiben)</td></tr>
+        <tr><td>Schnell entscheiden (überleben)</td><td>Overtrading, Aktionismus</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Zwei Denksysteme (nach Kahneman) sind hier im Konflikt:</p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>System 1</th><th>System 2</th></tr></thead>
+      <tbody>
+        <tr><td>schnell, automatisch, emotional</td><td>langsam, bewusst, rational</td></tr>
+        <tr><td>„Der Kurs fällt — VERKAUFEN!"</td><td>„Ist meine These noch intakt?"</td></tr>
+        <tr><td>in der Savanne lebensrettend</td><td>am Markt notwendig</td></tr>
+        <tr><td class="hl"><strong>dominiert unter Stress</strong></td><td class="hl"><strong>wird unter Stress ausgeschaltet</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Das grausame Detail: Genau wenn es am meisten auf System 2 ankäme — in Panik oder Euphorie —, übernimmt System 1. Deshalb funktioniert die Lösung nicht über „mehr Willenskraft im Moment", sondern über <strong>Regeln und Routinen, die im Voraus</strong> (in Ruhe, mit System 2) festgelegt und im Moment nur noch ausgeführt werden. Der gesamte Kurs ist so aufgebaut: Einstiegsplan, Falsifikationskriterium, Verkaufsregeln — alles Werkzeuge, die die Entscheidung aus dem emotionalen Moment herausziehen.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Du kannst deine Emotionen im Moment der Entscheidung nicht besiegen. Also triff die Entscheidung nicht im Moment — triff sie vorher, schriftlich, und führe sie später nur aus.</p>
+  </div>
+
+  <!-- 7.2 -->
+  <h2><span class="num">7.2</span>FOMO — Fear of Missing Out</h2>
+  <h3>Was passiert</h3>
+  <p>FOMO ist die Angst, eine Gelegenheit zu verpassen, während andere profitieren. Sie ist die Emotion, die dich eine Aktie kaufen lässt, <strong>nachdem</strong> sie bereits stark gestiegen ist — genau zum schlechtesten Zeitpunkt.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m07-fomo.svg" aria-label="Kursanstieg mit FOMO-Kaufpunkt am oberen Ende und rationalem Kaufpunkt am unteren, langweiligen Ende"></object>
+    <figcaption>FOMO kauft am Hoch, weil der Kurs im „langweiligen" Tief gar nicht wahrgenommen wurde</figcaption>
+  </figure>
+
+  <p>FOMO ist die direkte Ursache des Befunds aus Modul 1: Privatanleger kaufen aufmerksamkeitsgetrieben, <strong>nach</strong> der Bewegung. Der Hype-Zyklus (Meme-Aktien, jede neue Technologie-Euphorie) lebt von FOMO.</p>
+
+  <h3>Woran du es bei dir erkennst</h3>
+  <ul>
+    <li>Du willst eine Aktie kaufen, die du gestern noch nicht kanntest.</li>
+    <li>Der Auslöser ist eine Nachricht, ein Chart, ein Freund — nicht deine eigene Analyse.</li>
+    <li>Du spürst Dringlichkeit: „jetzt, sofort, sonst ist der Zug weg".</li>
+    <li>Du überspringst deine Checkliste, „weil keine Zeit".</li>
+  </ul>
+
+  <h3>Gegenmaßnahmen</h3>
+  <ol>
+    <li><strong>Die Watchlist-Regel (Modul 4):</strong> Du kaufst nur, was vorher auf deiner Watchlist stand, mit vorher definierter Kaufschwelle. Was du erst heute entdeckst, kaufst du frühestens nach vollständiger Analyse — also nie im FOMO-Moment.</li>
+    <li><strong>Der Zug-Gedanke:</strong> Es fährt immer ein nächster Zug. Am Aktienmarkt kommen die Gelegenheiten in Serie; kein verpasster Trade ist der letzte. Der einzige „Zug", den du nicht verpassen darfst, ist der, in den du schon eingestiegen bist (deine Gewinner laufen lassen, Modul 6).</li>
+    <li><strong>Die 24-Stunden-Regel:</strong> Bei jedem spontanen Kaufimpuls ohne vorherige Analyse: 24 Stunden warten. Verschwindet die Dringlichkeit, war es FOMO. Bleibt das echte Interesse, analysiere es ordentlich.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>Die teuersten Aktien sind die, die man kauft, weil man Angst hat, sie zu verpassen. Es fährt immer ein nächster Zug — und der, den du gerade verpasst zu haben glaubst, war meist gar keiner.</p>
+  </div>
+
+  <!-- 7.3 -->
+  <h2><span class="num">7.3</span>Verlustaversion und der Dispositionseffekt</h2>
+  <h3>Der stärkste aller Bias</h3>
+  <p>Die Forschung von Kahneman und Tversky zeigt: <strong>Ein Verlust schmerzt etwa doppelt so stark, wie ein gleich großer Gewinn erfreut.</strong> Diese Asymmetrie — Verlustaversion — ist der mächtigste Verhaltensfaktor am Markt.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m07-verlustaversion.svg" aria-label="Klassische Wertfunktion der Prospect Theory: im Verlustbereich steiler als im Gewinnbereich"></object>
+    <figcaption>Prospect-Theory-Wertfunktion — die Verlustkurve ist steiler als die Gewinnkurve</figcaption>
+  </figure>
+
+  <h3>Die Folge: der Dispositionseffekt</h3>
+  <p>Weil Verluste so wehtun, tut der Mensch alles, um sie nicht <strong>realisieren</strong> zu müssen (denn ein Buchverlust fühlt sich weniger real an als ein realisierter). Das führt zum Dispositionseffekt aus Modul 1:</p>
+
+  <pre class="ak-pre">   Gewinner:  „Schnell realisieren, bevor der Gewinn wieder weg ist!"
+              → verkauft zu früh (der gute Schmerz-Vermeidung: Gewinn sichern)
+
+   Verlierer: „Ich verkaufe erst, wenn ich wieder bei Null bin."
+              → hält zu lange (der schlechte Schmerz-Vermeidung: Verlust nicht wahrhaben)</pre>
+
+  <p>Das ist die exakte Umkehrung des Richtigen (Modul 6: Gewinner laufen lassen, gebrochene Thesen sofort verkaufen). Verlustaversion <strong>erzwingt</strong> das falsche Verhalten, wenn man ihr nicht mit Regeln begegnet.</p>
+
+  <h3>Der Sunk-Cost-Fehler</h3>
+  <p>Verwandt und ebenso teuer: Der <strong>Sunk-Cost-Fehler</strong> lässt dich an einer Position festhalten, <em>weil</em> du schon viel investiert (oder verloren) hast. „Ich habe schon so lange durchgehalten, jetzt verkaufe ich erst recht nicht." Das bereits verlorene Geld ist aber weg — es ist für die Zukunftsentscheidung irrelevant. Die einzige Frage bleibt: <em>Würde ich heute neu kaufen?</em> (Modul 6).</p>
+
+  <h3>Gegenmaßnahmen</h3>
+  <ol>
+    <li><strong>Das Falsifikationskriterium (Modul 1)</strong> nimmt die Verlustrealisierung aus der Emotion: Du verkaufst, weil eine <em>vorher definierte</em> Regel es sagt, nicht weil du im Moment den Schmerz erträgst.</li>
+    <li><strong>Den Einstandskurs verbergen:</strong> Manche Anleger blenden den Einstandskurs in ihrer Depot-Ansicht bewusst aus, um das Anchoring an „Plus-Minus-Null" zu durchbrechen.</li>
+    <li><strong>Verluste umdeuten:</strong> Ein regelkonformer Verlust ist <strong>kein Fehler</strong> — er ist die Kosten des Geschäfts (Erwartungswert, Modul 1). Von vier Trades dürfen drei verlieren, wenn das CRV stimmt. Ein Verlust nach Plan ist ein <em>erfolgreich</em> ausgeführter Trade.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Der Schmerz eines Verlusts verleitet dich, ihn nicht zu realisieren — und macht ihn dadurch größer. Ein geplanter Verlust ist kein Versagen, sondern eine bezahlte Prämie für die Chance auf den großen Gewinn.</p>
+  </div>
+
+  <!-- 7.4 -->
+  <h2><span class="num">7.4</span>Overconfidence — Selbstüberschätzung</h2>
+  <h3>Was passiert</h3>
+  <p>Die meisten Menschen halten sich für überdurchschnittliche Autofahrer — was statistisch unmöglich ist. Am Aktienmarkt ist dieser Effekt besonders teuer, weil er direkt in <strong>Overtrading</strong> und <strong>zu große Positionen</strong> übersetzt.</p>
+
+  <pre class="ak-pre">   Wenige gute Trades  →  „Ich hab's drauf!"  →  häufiger handeln,
+                                                  größere Positionen,
+                                                  Checkliste überspringen
+                                                       │
+                                                       ▼
+                                              Ein großer Verlust  →  Rückkehr zur Demut
+                                                  (teuer erkauft)</pre>
+
+  <p>Der gefährlichste Auslöser ist das <strong>„Glück"-Feld aus der Prozess-Ergebnis-Matrix (Modul 1):</strong> Ein schlechter Prozess wird durch ein gutes Ergebnis belohnt, der Anleger schreibt den Erfolg seinem Können zu (statt dem Zufall) und erhöht den Einsatz. Der Markt korrigiert diese Illusion irgendwann — meist zum teuersten Zeitpunkt.</p>
+
+  <h3>Der Beleg aus Modul 1</h3>
+  <p>Erinnere dich: Männer handeln häufiger als Frauen und schneiden <strong>deshalb</strong> schlechter ab — nicht wegen schlechterer Auswahl, sondern wegen mehr Aktivität. Overconfidence ist der psychologische Motor dieses Overtradings.</p>
+
+  <h3>Gegenmaßnahmen</h3>
+  <ol>
+    <li><strong>Das Trading-Journal (7.9):</strong> Es trennt Können von Glück. Wer seine Thesen <em>vorher</em> aufschreibt und <em>nachher</em> überprüft, entlarvt gnadenlos, wie viele Erfolge tatsächlich Prozess und wie viele Zufall waren.</li>
+    <li><strong>Die Trade-Zählung:</strong> Führe Buch über die <em>Anzahl</em> deiner Trades. Steigt sie ohne Grund, ist Overconfidence am Werk (Modul 1: Kosten skalieren mit Aktivität, nicht mit Qualität).</li>
+    <li><strong>Positionsgrößen-Disziplin (Modul 5):</strong> Die 1-%-Regel begrenzt den Schaden, den Overconfidence anrichten kann. Sie ist der Airbag gegen die eigene Selbstüberschätzung.</li>
+    <li><strong>Kalibrierung üben:</strong> Schreibe zu jeder Prognose eine Wahrscheinlichkeit („70 % sicher"). Nach 20 Trades siehst du, ob deine „70 %" wirklich 70 % waren — meist sind sie es nicht.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Der Markt ist eine Maschine, die Selbstüberschätzung in Demut umwandelt — und dir die Rechnung dafür schickt. Miss dein Können am Prozess, nie am letzten Ergebnis.</p>
+  </div>
+
+  <!-- 7.5 -->
+  <h2><span class="num">7.5</span>Confirmation Bias — der Bestätigungsfehler</h2>
+  <h3>Was passiert</h3>
+  <p>Sobald du eine Aktie besitzt (oder besitzen willst), sucht dein Gehirn selektiv nach Informationen, die deine These <strong>bestätigen</strong>, und blendet aus, was ihr widerspricht. Du liest die positiven Analysen aufmerksam, überfliegst die negativen. Du findest die bärischen Argumente „nicht überzeugend" — nicht, weil sie schwach sind, sondern weil sie dir unangenehm sind.</p>
+
+  <pre class="ak-pre">   These: „Aktie X ist ein Kauf"
+        │
+        ├─ Positive Nachricht  →  „Sehe ich, wusste ich!"  (aufgenommen)
+        │
+        └─ Negative Nachricht  →  „Übertrieben / kennt sich nicht aus"  (verworfen)
+
+   → Die These wird immunisiert gegen Widerlegung.</pre>
+
+  <p>Der Confirmation Bias ist besonders tückisch, weil er sich wie <strong>sorgfältige Recherche</strong> anfühlt. Man liest viel — aber nur eine Seite.</p>
+
+  <h3>Der Bezug zu Modul 4</h3>
+  <p>Erinnere dich an die „eiserne Reihenfolge": Wer beim Chart beginnt und dann Fundamentaldaten „dazu sucht", betreibt Confirmation Bias in Reinform. Deshalb Fundament zuerst, mit <em>vorher</em> festgelegten Annahmen.</p>
+
+  <h3>Gegenmaßnahmen</h3>
+  <ol>
+    <li><strong>Die Gegenthese erzwingen:</strong> Bevor du kaufst, schreibe die <strong>beste bärische Analyse</strong> auf, die du finden kannst — als wärst du ein Leerverkäufer, der gegen die Aktie wettet. Wenn du die Gegenseite nicht überzeugend darstellen kannst, verstehst du die Aktie nicht gut genug.</li>
+    <li><strong>Das Falsifikationskriterium (Modul 1):</strong> Es ist die institutionalisierte Gegenthese. Indem du <em>vorher</em> festlegst, was dich widerlegen würde, zwingst du dich, widersprechende Information ernst zu nehmen — sie ist dann nicht mehr „Störung", sondern „Signal".</li>
+    <li><strong>Aktiv nach Widerspruch suchen:</strong> Lies gezielt die bärischen Foren, die Short-Reports, die kritischen Analysen. Nicht um dich zu verunsichern, sondern um deine These echten Tests auszusetzen.</li>
+    <li><strong>Der KI-Bias-Coach (Trading Desk):</strong> Ein Werkzeug, das gezielt die Gegenperspektive einspielt, kann den Bestätigungsfehler durchbrechen — vorausgesetzt, du behältst die interpretative Kontrolle (die KI liefert Gegenargumente, du entscheidest).</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Verliebe dich nie in eine Aktie — verliebe dich in die Frage, ob du dich irrst. Die beste Analyse ist die, die am härtesten versucht, die eigene These zu zerstören.</p>
+  </div>
+
+  <!-- 7.6 -->
+  <h2><span class="num">7.6</span>Anchoring — der Ankereffekt</h2>
+  <h3>Was passiert</h3>
+  <p>Das Gehirn klammert sich an die erste Zahl, die es sieht, und bewertet alles Weitere relativ dazu. Am Aktienmarkt ist der stärkste Anker der <strong>Einstandskurs</strong> (Modul 6) — aber es gibt weitere.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Anker</th><th>Fehlerhafter Gedanke</th><th>Warum falsch</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Einstandskurs</strong></td><td>„Bei 100 gekauft, bei 100 verkaufe ich"</td><td>Die Aktie kennt deinen Einstand nicht</td></tr>
+        <tr><td><strong>Alter Höchstkurs</strong></td><td>„War mal 200, jetzt 120 — billig!"</td><td>Der alte Kurs kann falsch bewertet gewesen sein</td></tr>
+        <tr><td><strong>Runde Zahlen</strong></td><td>„Warte, bis sie 100 erreicht"</td><td>Willkürliche psychologische Marke</td></tr>
+        <tr><td><strong>Kaufkurs anderer</strong></td><td>„Analyst sah 250 als Ziel"</td><td>Fremder Anker ohne eigene Analyse</td></tr>
+        <tr><td><strong>52-Wochen-Hoch/Tief</strong></td><td>„Nahe am Tief = günstig"</td><td>Sagt nichts über den fairen Wert</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Der teuerste Anker: der alte Höchstkurs</h3>
+  <p>„Diese Aktie stand mal bei 200 €, jetzt bei 120 € — ein Schnäppchen!" ist einer der verlustreichsten Gedanken überhaupt. Er verwechselt einen <strong>historischen Kurs</strong> mit dem <strong>fairen Wert</strong>. Vielleicht waren die 200 € eine Blase; vielleicht ist das Unternehmen heute strukturell beschädigt (Value-Falle, Modul 2). Der alte Höchstkurs ist als Bewertungsmaßstab wertlos — nur der aktuelle faire Wert zählt.</p>
+
+  <h3>Gegenmaßnahmen</h3>
+  <ol>
+    <li><strong>Nur der faire Wert ankert (Modul 2):</strong> Ersetze jeden psychologischen Anker durch den berechneten fairen Wert. Er ist der einzige legitime Bezugspunkt.</li>
+    <li><strong>Der Heute-neu-kaufen-Test (Modul 6):</strong> „Würde ich diese Aktie heute, zum heutigen Kurs, neu kaufen?" — diese Frage enthält keinen Anker.</li>
+    <li><strong>Zahlen bewusst umkehren:</strong> Wenn du „nahe am 52-Wochen-Tief, also billig" denkst, frage aktiv: „Warum ist sie gefallen? Ist die These noch intakt?" — und lass die Fundamentaldaten antworten, nicht den Chart.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Der einzige legitime Anker ist der berechnete faire Wert. Jeder andere — dein Einstand, das alte Hoch, die runde Zahl — ist eine Zahl, die die Aktie nicht kennt und die dir nur schadet.</p>
+  </div>
+
+  <!-- 7.7 -->
+  <h2><span class="num">7.7</span>Recency Bias und Herdentrieb</h2>
+  <h3>Recency Bias — die Überbewertung des Jüngsten</h3>
+  <p>Das Gehirn gewichtet die jüngste Erfahrung übermäßig stark. Nach drei guten Jahren erscheint der Aufschwung ewig, nach einem Crash erscheint die Erholung unmöglich. Recency Bias ist der Grund, warum Anleger prozyklisch handeln: Sie schreiben den aktuellen Trend in die Zukunft fort — und werden an Wendepunkten regelmäßig auf dem falschen Fuß erwischt.</p>
+
+  <pre class="ak-pre">   Nach langem Bullenmarkt:   „Es geht immer weiter hoch"  →  Kauf im Hoch
+   Nach tiefem Crash:         „Es kommt nie zurück"         →  Verkauf im Tief
+
+   → Recency Bias erzeugt exakt das „hoch kaufen, tief verkaufen"
+      des Behavior Gap (Modul 1).</pre>
+
+  <h3>Herdentrieb — die Sicherheit der Menge</h3>
+  <p>Der Mensch fühlt sich in der Herde sicher — evolutionär sinnvoll, am Markt ruinös. Wenn „alle" kaufen, ist es meist zu spät; wenn „alle" verkaufen, entstehen die besten Gelegenheiten. Der Herdentrieb ist der Motor von Blasen (jeder kauft, weil jeder kauft) und Crashs (jeder verkauft, weil jeder verkauft).</p>
+  <p>Die berühmte Formulierung — <em>„Sei ängstlich, wenn andere gierig sind, und gierig, wenn andere ängstlich sind"</em> — ist leicht zu zitieren und extrem schwer zu leben, weil sie verlangt, gegen den stärksten sozialen Instinkt zu handeln.</p>
+
+  <h3>Gegenmaßnahmen</h3>
+  <ol>
+    <li><strong>Regelbasierung schlägt Stimmung:</strong> Wenn dein Kauf durch eine vorher definierte Kaufschwelle (Watchlist, Modul 4) ausgelöst wird, kaufst du automatisch, wenn die Herde verkauft (dann fallen die Kurse in deine Kaufzone) — und du kaufst nicht im Hype (da liegen die Kurse über der Schwelle).</li>
+    <li><strong>Marktpanik als Kalender-Chance begreifen:</strong> Crashs sind die Zeiten, in denen der antizyklische Anleger seine Watchlist abarbeitet. Wer das <em>vorher</em> verinnerlicht hat, empfindet einen Crash als Gelegenheit, nicht nur als Bedrohung.</li>
+    <li><strong>Medien-Diät:</strong> Die Nachrichtenlage ist am Hoch euphorisch und am Tief apokalyptisch — sie <em>verstärkt</em> Recency Bias und Herdentrieb. Weniger Marktkommentar zu konsumieren ist eine legitime Risikomaßnahme.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Die Herde hat am Hoch die beste Laune und am Tief die schlechteste — und liegt an beiden Wendepunkten falsch. Deine Regeln sind der Ausweg aus der Herde: Sie kaufen, wenn es sich falsch anfühlt.</p>
+  </div>
+
+  <!-- 7.8 -->
+  <h2><span class="num">7.8</span>Disziplin, Geduld und Routinen</h2>
+  <p>Die bisher behandelten Verzerrungen bekämpft man nicht mit Willenskraft im Moment, sondern mit drei strukturellen Eigenschaften, die man <em>trainieren</em> kann.</p>
+
+  <h3>Disziplin ≠ Geduld</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Disziplin</th><th>Geduld</th></tr></thead>
+      <tbody>
+        <tr><td>Definition</td><td>Den Regeln folgen, auch wenn es wehtut</td><td>Warten können, ohne zu handeln</td></tr>
+        <tr><td>Prüfung</td><td>Verkaufst du bei Thesenbruch, obwohl es schmerzt?</td><td>Lässt du Cash liegen, bis der Preis kommt?</td></tr>
+        <tr><td>Gegner</td><td>der Impuls zu handeln</td><td>der Impuls, „endlich etwas zu tun"</td></tr>
+        <tr><td>Trainiert durch</td><td>Regeln und Journal</td><td>Watchlist und Zeithorizont</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Beide sind nötig.</strong> Disziplin ohne Geduld führt zu diszipliniertem Overtrading. Geduld ohne Disziplin führt zu passivem Aussitzen gebrochener Thesen. Der erfolgreiche Anleger hat beides: Er wartet geduldig auf den richtigen Preis (Geduld) und folgt dann konsequent seinem Plan (Disziplin).</p>
+
+  <h3>Warum Routinen mächtiger sind als Motivation</h3>
+  <p>Motivation ist unzuverlässig — sie schwankt mit Stimmung, Schlaf und Marktlage. Routinen sind zuverlässig, weil sie <strong>keine Entscheidung im Moment erfordern.</strong> Eine gute Routine nimmt die Emotion aus dem Prozess, indem sie festlegt, <em>was wann</em> getan wird — unabhängig davon, wie du dich gerade fühlst.</p>
+
+  <h3>Konkrete Routinen für den langfristigen Anleger</h3>
+  <pre class="ak-pre">   TÄGLICH (5–10 Min, optional):
+   • KEIN Blick auf Depotstände nötig (langfristiger Anleger!)
+   • Höchstens: relevante Unternehmensnachrichten der Watchlist überfliegen
+
+   WÖCHENTLICH (30–60 Min):
+   • Watchlist durchgehen: Ist ein Titel in die Kaufzone gefallen?
+   • Neue Ideen sammeln (noch nicht kaufen — erst analysieren)
+
+   BEI QUARTALSZAHLEN je Position (60–90 Min):
+   • Fundamentaldaten prüfen (Modul 2): Bruttomarge, ROIC, Cashflow
+   • Falsifikationskriterien abgleichen: noch intakt?
+   • These aktualisieren, fairen Wert neu berechnen
+
+   BEI JEDEM TRADE:
+   • Einstiegsplan/Verkaufsregel ausfüllen (Modul 4/6)
+   • Journal-Eintrag VOR der Ausführung (7.9)
+
+   JÄHRLICH:
+   • Rebalancing-Check (Modul 6)
+   • Journal-Rückblick: Welche Fehler wiederholen sich? (7.9)
+   • Regelwerk überprüfen und verfeinern (Modul 8)</pre>
+
+  <p><strong>Die wichtigste Routine ist eine Unterlassung:</strong> Der langfristige Anleger schaut <strong>nicht</strong> täglich auf seine Kurse. Häufiges Draufschauen aktiviert Verlustaversion (jeder rote Tag schmerzt) und Handlungsdrang (Modul 1: Overtrading). Wer sein Depot seltener ansieht, trifft nachweislich bessere Entscheidungen.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 8</strong>Verlasse dich nicht auf Motivation, die kommt und geht — verlasse dich auf Routinen, die bleiben. Und die beste Routine des langfristigen Anlegers ist, seltener hinzusehen.</p>
+  </div>
+
+  <!-- 7.9 -->
+  <h2><span class="num">7.9</span>Das Trading-Journal — das mächtigste Werkzeug des Kurses</h2>
+  <h3>Warum das Journal alles verändert</h3>
+  <p>Das Trading-Journal ist keine Buchhaltung und kein Tagebuch. Es ist das <strong>einzige Instrument, das Prozess und Ergebnis trennen kann</strong> (Modul 1) — und damit das einzige, das echtes Lernen ermöglicht.</p>
+  <p>Ohne Journal bewertest du deine Entscheidungen im Nachhinein am Ergebnis: Trade gewonnen = „war gut", verloren = „war schlecht". Das ist der Trugschluss aus der Prozess-Ergebnis-Matrix. Ein gewonnener Glückstrade verstärkt einen schlechten Prozess; ein verlorener Pech-Trade lässt dich einen guten Prozess aufgeben. Nur das Journal, das die These <em>vor</em> dem Ergebnis festhält, macht diese Verwechslung unmöglich.</p>
+
+  <pre class="ak-pre">   OHNE Journal:                     MIT Journal:
+   Ergebnis → Bewertung              These (vorher) → Ergebnis → Prozess-Bewertung
+   „Gewonnen = gut"                  „War die Entscheidung gut,
+   → lernt das Falsche                 unabhängig vom Ergebnis?"
+                                      → lernt das Richtige</pre>
+
+  <h3>Was in einen Journal-Eintrag gehört</h3>
+  <p>Der Eintrag entsteht in <strong>zwei Phasen</strong> — die Trennung ist entscheidend:</p>
+
+  <pre class="ak-pre">   ═══════ PHASE 1: VOR dem Trade (die These festhalten) ═══════
+   Datum:                    __________
+   Unternehmen:              __________
+   Warum kaufe ich? (These)  __________
+   Fairer Wert / Kaufzone:   __________
+   CRV:                      __________
+   Positionsgröße + Begründung: __________
+   Falsifikationskriterien:  1) ____ 2) ____ 3) ____
+   Emotionaler Zustand:      ruhig / gierig / ängstlich / gedrängt?
+   Wie sicher bin ich? (in %) __________
+
+   ═══════ PHASE 2: NACH dem Abschluss (das Ergebnis prüfen) ═══════
+   Verkaufsdatum + Grund:    __________  (Kategorie A oder B, Modul 6)
+   Ergebnis in %:            __________
+   War der PROZESS gut?      ja / nein  ← die eigentliche Frage
+   Prozess-Ergebnis-Feld:    verdient / Glück / Pech / Strafe (Modul 1)
+   Was würde ich wieder so machen? __________
+   Welchen Bias habe ich bemerkt?  __________
+   Lektion:                  __________</pre>
+
+  <p><strong>Der entscheidende Teil ist Phase 1</strong> — und zwar <em>vor</em> der Ausführung geschrieben. Denn nur eine schriftlich fixierte, mit Zeitstempel versehene These lässt sich später nicht nachträglich schönreden (Hindsight Bias: „Das habe ich doch kommen sehen").</p>
+
+  <h3>Der emotionale Zustand ist kein Beiwerk</h3>
+  <p>Die Zeile „emotionaler Zustand" ist eine der wertvollsten. Nach 20–30 Trades erkennst du Muster: <em>„Meine Verlusttrades entstehen fast alle, wenn ich mich gedrängt oder euphorisch gefühlt habe."</em> Das ist eine Erkenntnis, die dir kein Kursbuch geben kann — nur dein eigenes Journal.</p>
+
+  <h3>Der Journal-Rückblick</h3>
+  <p>Einmal im Quartal oder Jahr liest du das Journal als Ganzes. Du suchst nicht nach Gewinnen und Verlusten, sondern nach <strong>wiederkehrenden Mustern</strong>:</p>
+  <ul>
+    <li>Welcher Bias taucht am häufigsten auf?</li>
+    <li>In welchem emotionalen Zustand mache ich die meisten Fehler?</li>
+    <li>Welche Art von These geht überproportional oft auf — welche selten?</li>
+    <li>Handle ich zu viel? (Trade-Zählung, Modul 1)</li>
+  </ul>
+  <p>Das Ergebnis dieses Rückblicks fließt direkt in die Verfeinerung deines Regelwerks (Modul 8). So wird das Journal zur Maschine der kontinuierlichen Verbesserung.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 9</strong>Das Journal ist der einzige ehrliche Spiegel, den ein Anleger hat. Es hält deine These fest, bevor das Ergebnis sie verfälschen kann — und verwandelt Erfahrung in Lernen statt in Selbsttäuschung.</p>
+  </div>
+
+  <!-- 7.10 -->
+  <h2><span class="num">7.10</span>Der Umgang mit Fehlern</h2>
+  <h3>Fehler sind unvermeidlich — und notwendig</h3>
+  <p>Der Erwartungswert (Modul 1) sagt es unmissverständlich: Du wirst dich regelmäßig irren, und das ist eingepreist. Bei einem CRV von 3:1 darfst du in drei von vier Fällen falsch liegen. <strong>Ein Verlust ist im richtigen System kein Fehler — er ist erwartet.</strong></p>
+
+  <p>Die entscheidende Unterscheidung:</p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Prozessfehler</th><th>Ergebnisverlust</th></tr></thead>
+      <tbody>
+        <tr><td>Was ist es?</td><td>Du hast gegen deine Regeln verstoßen</td><td>Du hast dich an die Regeln gehalten, es lief trotzdem schlecht</td></tr>
+        <tr><td>Beispiel</td><td>Ohne Analyse aus FOMO gekauft</td><td>Regelkonform gekauft, unvorhersehbares Ereignis</td></tr>
+        <tr><td>Bewertung</td><td class="cross"><strong>echter Fehler</strong> — daraus lernen</td><td class="check"><strong>kein Fehler</strong> — Kosten des Geschäfts</td></tr>
+        <tr><td>Reaktion</td><td>Regel verschärfen, Ursache verstehen</td><td>akzeptieren, weitermachen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Der häufigste psychologische Fehler ist, <strong>beide zu verwechseln</strong>: sich für einen regelkonformen Verlust zu geißeln (führt zu Lähmung) oder einen echten Prozessfehler als „Pech" abzutun (führt zur Wiederholung).</p>
+
+  <h3>Die zwei destruktiven Reaktionen</h3>
+  <p><strong>1. Revenge Trading (Rachehandel).</strong> Nach einem Verlust will man ihn sofort „zurückholen" — mit einem größeren, unüberlegten Trade. Das ist die gefährlichste Reaktion überhaupt, weil sie Verlustaversion, Overconfidence und Overtrading zugleich aktiviert. Aus einem geplanten kleinen Verlust wird ein ungeplanter großer.</p>
+
+  <p><strong>2. Lähmung (Analysis Paralysis).</strong> Nach einem Verlust traut man sich gar nicht mehr, zu handeln — auch nicht bei einer exzellenten, regelkonformen Gelegenheit. Der Schmerz des letzten Verlusts (Recency Bias + Verlustaversion) blockiert die nächste gute Entscheidung.</p>
+
+  <h3>Der konstruktive Umgang</h3>
+  <pre class="ak-pre">   Nach jedem Verlust:
+   1. Journal-Eintrag abschließen (Phase 2) — OHNE Selbstverurteilung
+   2. Prozessfehler oder Ergebnisverlust? (Tabelle oben)
+   3. Prozessfehler → Regel verschärfen, Ursache notieren
+      Ergebnisverlust → akzeptieren, nichts ändern
+   4. KEIN sofortiger neuer Trade zur „Wiedergutmachung"
+   5. Weitermachen nach Plan — der nächste Trade ist unabhängig vom letzten</pre>
+
+  <h3>Jeder Trade ist unabhängig</h3>
+  <p>Ein zentrales mentales Modell: Der Markt hat <strong>kein Gedächtnis</strong> und schuldet dir nichts. Der nächste Trade weiß nicht, dass der letzte verloren hat. Es gibt keine „Glückssträhne" und keine „Pechsträhne" — es gibt nur eine lange Folge unabhängiger Entscheidungen, deren Qualität sich erst über viele Wiederholungen im Erwartungswert zeigt. Wer das verinnerlicht, ist immun gegen Rache und Lähmung gleichermaßen.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 10</strong>Ein regelkonformer Verlust ist kein Fehler, sondern der Preis der Teilnahme. Der einzige echte Fehler ist, gegen die eigenen Regeln zu handeln — und der zweite, aus Angst vor dem letzten Verlust den nächsten guten Trade nicht zu machen.</p>
+  </div>
+
+  <!-- 7.11 -->
+  <h2><span class="num">7.11</span>Dein persönlicher Bias-Katalog</h2>
+  <p>Die Verzerrungen wirken bei jedem Menschen unterschiedlich stark. Der letzte Schritt dieses Moduls ist, deinen <strong>persönlichen</strong> Katalog zu erstellen — denn nur benannte Biases lassen sich bekämpfen.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m07-bias-katalog.svg" aria-label="Bias-Katalog als Tabelle mit acht Verzerrungen, Bewertungsskala, Warnsignal-Spalte und Gegenmaßnahme-Spalte"></object>
+    <figcaption>Persönlicher Bias-Katalog — nur benannte Biases lassen sich bekämpfen</figcaption>
+  </figure>
+
+  <p>Fülle die Spalte „Trifft mich" ehrlich aus (das Journal aus 7.9 liefert nach einigen Wochen die Daten). Konzentriere deine Gegenmaßnahmen auf die zwei bis drei stärksten Biases — der Versuch, alle gleichzeitig zu bekämpfen, überfordert und verpufft.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 11</strong>Ein Bias, den du benennen kannst, hat schon die Hälfte seiner Macht verloren. Kenne deine zwei größten — und richte deine Regeln gezielt gegen sie.</p>
+  </div>
+
+  <!-- Anfängerfehler -->
+  <h2>Typische Anfängerfehler in Modul 7</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Auf Willenskraft im Moment setzen</td><td>System 1 gewinnt unter Stress</td><td>Entscheidungen vorher schriftlich festlegen</td></tr>
+        <tr><td>Aus FOMO nach der Bewegung kaufen</td><td>Kauf am Hoch</td><td>Watchlist-Regel, 24h-Regel</td></tr>
+        <tr><td>Verlierer bis „Plus-Minus-Null" halten</td><td>Dispositionseffekt, Sunk Cost</td><td>Falsifikationskriterium, Heute-neu-kaufen-Test</td></tr>
+        <tr><td>Erfolge dem Können zuschreiben</td><td>Overconfidence → Overtrading</td><td>Journal trennt Können von Glück</td></tr>
+        <tr><td>Nur bestätigende Info lesen</td><td>Confirmation Bias fühlt sich wie Recherche an</td><td>Gegenthese erzwingen</td></tr>
+        <tr><td>Am alten Höchstkurs ankern</td><td>Verwechselt Historie mit Wert</td><td>Nur fairer Wert als Anker</td></tr>
+        <tr><td>Dem Trend/der Herde folgen</td><td>Recency Bias, kauft hoch/verkauft tief</td><td>Regelbasierte Kaufschwellen</td></tr>
+        <tr><td>Täglich aufs Depot schauen</td><td>Aktiviert Verlustaversion + Handlungsdrang</td><td>Seltener hinsehen, Routinen</td></tr>
+        <tr><td>Kein Journal führen</td><td>Kann Prozess nicht von Glück trennen</td><td>Journal in zwei Phasen (vorher/nachher)</td></tr>
+        <tr><td>Nach Verlust Rache-Trade</td><td>Größter Verlust folgt oft dem ersten</td><td>24h-Regel, nächster Trade ist unabhängig</td></tr>
+        <tr><td>Regelkonformen Verlust als Versagen werten</td><td>Führt zu Lähmung</td><td>Prozessfehler ≠ Ergebnisverlust</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2>Checkliste — psychologische Selbstkontrolle</h2>
+  <p><strong>Vor jedem Trade:</strong></p>
+  <ul class="ak-check-list">
+    <li>Stand dieser Titel vorher auf meiner Watchlist? (gegen FOMO)</li>
+    <li>Habe ich die <strong>beste Gegenthese</strong> geschrieben? (gegen Confirmation Bias)</li>
+    <li>Ankert meine Entscheidung am <strong>fairen Wert</strong> — nicht am Einstand/Hoch/runder Zahl? (gegen Anchoring)</li>
+    <li>In welchem <strong>emotionalen Zustand</strong> bin ich gerade? (gedrängt/euphorisch = warten)</li>
+    <li>Journal-Eintrag <strong>Phase 1</strong> vor der Ausführung geschrieben?</li>
+  </ul>
+
+  <p><strong>Nach jedem Trade:</strong></p>
+  <ul class="ak-check-list">
+    <li>Journal <strong>Phase 2</strong> ausgefüllt — Prozess bewertet, nicht nur Ergebnis?</li>
+    <li>War es ein <strong>Prozessfehler</strong> oder ein <strong>Ergebnisverlust</strong>?</li>
+    <li>Kein <strong>Rache-Trade</strong> — der nächste Trade ist unabhängig vom letzten.</li>
+  </ul>
+
+  <p><strong>Regelmäßig:</strong></p>
+  <ul class="ak-check-list">
+    <li>Journal-Rückblick: Welcher Bias wiederholt sich?</li>
+    <li>Trade-Anzahl geprüft: handle ich zu viel? (gegen Overconfidence/Overtrading)</li>
+    <li>Schaue ich zu oft aufs Depot?</li>
+    <li>Bias-Katalog aktualisiert, Gegenmaßnahmen auf die 2–3 stärksten fokussiert.</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2>Zusammenfassung</h2>
+  <ol>
+    <li><strong>Psychologie ist der begrenzende Faktor, nicht die Methodik.</strong> Die Module 1–6 sind der leichte Teil; sie auch unter Schmerz anzuwenden, ist der schwere.</li>
+    <li>Die Verzerrungen sind <strong>evolutionäre Merkmale</strong>, die am Markt versagen. Unter Stress übernimmt das schnelle, emotionale System 1 — deshalb müssen Entscheidungen <em>vorher</em> mit System 2 festgelegt werden.</li>
+    <li><strong>FOMO</strong> lässt dich nach der Bewegung kaufen. Gegenmittel: Watchlist-Regel, „es fährt immer ein nächster Zug", 24h-Regel.</li>
+    <li><strong>Verlustaversion</strong> (Verluste schmerzen doppelt) erzwingt den Dispositionseffekt. Gegenmittel: Falsifikationskriterium, geplanter Verlust als bezahlte Prämie.</li>
+    <li><strong>Overconfidence</strong> treibt Overtrading und zu große Positionen. Gegenmittel: Journal, Trade-Zählung, 1-%-Regel.</li>
+    <li><strong>Confirmation Bias</strong> fühlt sich wie Recherche an. Gegenmittel: Gegenthese erzwingen, aktiv nach Widerspruch suchen.</li>
+    <li><strong>Anchoring</strong>: Der einzige legitime Anker ist der berechnete faire Wert — nicht Einstand, Hoch oder runde Zahl.</li>
+    <li><strong>Recency Bias und Herdentrieb</strong> erzeugen den Behavior Gap. Gegenmittel: Regelbasierung, Marktpanik als Chance, Medien-Diät.</li>
+    <li><strong>Disziplin</strong> (Regeln folgen) und <strong>Geduld</strong> (warten können) sind verschieden und beide nötig. <strong>Routinen</strong> schlagen Motivation. Die wichtigste Routine: seltener hinsehen.</li>
+    <li>Das <strong>Trading-Journal</strong> in zwei Phasen (These vorher, Prozess nachher) ist das mächtigste Werkzeug — es trennt Können von Glück und verwandelt Erfahrung in Lernen.</li>
+    <li>Ein <strong>regelkonformer Verlust ist kein Fehler.</strong> Prozessfehler ≠ Ergebnisverlust. Die zwei destruktiven Reaktionen — Rache und Lähmung — vermeidet, wer weiß: Jeder Trade ist unabhängig.</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2>Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Warum lassen sich Denkfehler am Markt nicht durch „mehr Willenskraft im Moment" beheben? Was ist die strukturelle Alternative?</li>
+    <li>Ein Kollege kauft eine Aktie, die er gestern nicht kannte, „bevor der Zug abfährt". Welcher Bias, und welche zwei Gegenmaßnahmen greifen?</li>
+    <li>Verluste schmerzen etwa doppelt so stark wie gleich große Gewinne erfreuen. Welches konkrete Fehlverhalten (aus Modul 1/6) erzwingt diese Asymmetrie?</li>
+    <li>Was ist der Sunk-Cost-Fehler, und mit welcher einen Frage entkräftest du ihn?</li>
+    <li>Warum ist der Erfolg aus dem „Glück"-Feld der Prozess-Ergebnis-Matrix psychologisch besonders gefährlich?</li>
+    <li>Ein Anleger liest ausschließlich positive Analysen über seine Aktie und findet die kritischen „nicht überzeugend". Welcher Bias, und was ist die wirksamste Gegenmaßnahme?</li>
+    <li>„Diese Aktie stand mal bei 200 €, jetzt 120 € — ein Schnäppchen." Welcher Bias steckt darin, und warum ist der Gedanke falsch?</li>
+    <li>Erkläre den Unterschied zwischen Disziplin und Geduld an je einem Beispiel.</li>
+    <li>Warum muss der wichtigste Teil des Journal-Eintrags (die These) <em>vor</em> der Ausführung geschrieben werden?</li>
+    <li>Unterscheide Prozessfehler und Ergebnisverlust. Welcher ist ein echter Fehler? Nenne die zwei destruktiven Reaktionen auf einen Verlust.</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li>Weil unter Stress (Panik, Euphorie) das schnelle, emotionale <strong>System 1</strong> die Kontrolle übernimmt und das langsame, rationale <strong>System 2</strong> ausschaltet — genau dann, wenn man es am meisten bräuchte. Willenskraft im Moment kämpft also gegen ein System, das gerade nicht erreichbar ist. Die strukturelle Alternative: Entscheidungen <strong>vorab, in Ruhe, schriftlich</strong> treffen (Einstiegsplan, Falsifikationskriterium, Verkaufsregeln) und im Moment nur noch ausführen.</li>
+        <li><strong>FOMO</strong> (Fear of Missing Out). Gegenmaßnahmen (zwei genügen): (a) <strong>Watchlist-Regel</strong> — gekauft wird nur, was vorher analysiert auf der Watchlist stand, mit definierter Kaufschwelle; (b) <strong>24-Stunden-Regel</strong> — bei spontanem Impuls 24 h warten; verschwindet die Dringlichkeit, war es FOMO. Zusätzlich: „Es fährt immer ein nächster Zug."</li>
+        <li>Den <strong>Dispositionseffekt</strong>: Gewinner werden zu früh realisiert (um den Gewinn schmerz­vermeidend zu „sichern"), Verlierer zu lange gehalten (um den Verlust nicht realisieren zu müssen). Das ist die exakte Umkehrung des Richtigen (Gewinner laufen lassen, gebrochene Thesen sofort verkaufen).</li>
+        <li>Der Sunk-Cost-Fehler ist das Festhalten an einer Position, <em>weil</em> man schon viel investiert oder verloren hat („so lange durchgehalten, jetzt erst recht nicht verkaufen"). Er ist falsch, weil bereits verlorenes Geld weg und für die Zukunftsentscheidung irrelevant ist. Entkräftende Frage: <strong>„Würde ich diese Aktie heute, zum heutigen Kurs, neu kaufen?"</strong></li>
+        <li>Weil ein <strong>schlechter Prozess durch ein gutes Ergebnis belohnt</strong> wird. Der Anleger schreibt den Zufallserfolg seinem Können zu (Overconfidence), erhöht Einsatz und Frequenz — und wiederholt den schlechten Prozess so lange, bis der Markt die Illusion korrigiert, meist zum teuersten Zeitpunkt. Das gute Ergebnis verstärkt genau das falsche Verhalten.</li>
+        <li><strong>Confirmation Bias</strong> (Bestätigungsfehler). Wirksamste Gegenmaßnahme: die <strong>beste Gegenthese erzwingen</strong> — vor dem Kauf die überzeugendste bärische/Short-Analyse selbst aufschreiben. Wer die Gegenseite nicht darstellen kann, versteht die Aktie nicht gut genug. Institutionalisiert wird das durch das vorab definierte <strong>Falsifikationskriterium</strong>.</li>
+        <li><strong>Anchoring</strong> am alten Höchstkurs. Der Gedanke verwechselt einen <strong>historischen Kurs mit dem fairen Wert</strong>: Die 200 € könnten eine Blase gewesen sein, oder das Unternehmen ist heute strukturell beschädigt (Value-Falle). Der alte Kurs sagt nichts über den heutigen Wert — nur der aktuell berechnete faire Wert ist ein legitimer Bezugspunkt.</li>
+        <li><strong>Disziplin</strong> = den Regeln folgen, auch wenn es schmerzt — z. B. eine Position mit gebrochener These sofort verkaufen, obwohl man im Verlust ist. <strong>Geduld</strong> = warten können, ohne zu handeln — z. B. Cash liegen lassen und nicht kaufen, bis ein Titel die vorab definierte Kaufschwelle erreicht. Disziplin bekämpft den Handlungsimpuls beim Ausstieg, Geduld den Impuls, „endlich etwas zu tun".</li>
+        <li>Um <strong>Hindsight Bias</strong> (Rückschaufehler) zu verhindern. Nur eine <em>vor</em> dem Ergebnis mit Zeitstempel fixierte These lässt sich hinterher nicht schönreden („das habe ich doch kommen sehen"). Das ermöglicht die ehrliche Trennung von <strong>Prozess und Ergebnis</strong> (Modul 1): Man kann bewerten, ob die <em>Entscheidung</em> gut war, unabhängig davon, wie sie ausging.</li>
+        <li><strong>Prozessfehler</strong> = Verstoß gegen die eigenen Regeln (z. B. aus FOMO ohne Analyse gekauft) → echter Fehler, daraus lernen, Regel verschärfen. <strong>Ergebnisverlust</strong> = regelkonform gehandelt, trotzdem schlecht gelaufen (unvorhersehbares Ereignis) → <strong>kein Fehler</strong>, sondern Kosten des Geschäfts (Erwartungswert). Echter Fehler ist nur der Prozessfehler. Die zwei destruktiven Reaktionen: <strong>Revenge Trading</strong> (den Verlust mit einem größeren, unüberlegten Trade „zurückholen") und <strong>Lähmung/Analysis Paralysis</strong> (aus Angst vor dem letzten Verlust den nächsten guten Trade nicht machen).</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Übungen -->
+  <h2>Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Dein Bias-Katalog (45 Min.)</h4>
+      <p>Fülle den persönlichen Bias-Katalog aus 7.11 aus. Bewerte jeden der acht Biases ehrlich auf einer Skala von 1–10, wie stark er dich trifft. Wähle die zwei stärksten aus und formuliere für jeden eine konkrete, überprüfbare Gegenmaßnahme.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — Das Journal aufsetzen (30 Min.)</h4>
+      <p>Erstelle dir eine Journal-Vorlage mit den zwei Phasen (vorher/nachher) aus 7.9. Egal ob Tabelle, Notiz-App oder Papier — Hauptsache, du kannst die These <em>vor</em> der Ausführung eintragen. Fülle Phase 1 für deinen nächsten geplanten (oder einen hypothetischen) Trade aus.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Die Gegenthese schreiben (60 Min.)</h4>
+      <p>Wähle eine Aktie, von der du überzeugt bist. Schreibe die <strong>beste bärische Analyse</strong>, die du finden kannst — als wärst du ein Leerverkäufer. Suche gezielt kritische Quellen. Frage dich danach ehrlich: Hat es deine These geschwächt? Falls nicht: Hast du wirklich hart gesucht?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — Der emotionale Rückblick (45 Min.)</h4>
+      <p>Falls du bereits gehandelt hast: Gehe deine letzten 10 Trades durch und notiere zu jedem deinen (erinnerten) emotionalen Zustand beim Kauf. Gibt es ein Muster zwischen Emotion und Ergebnis? Falls du noch nicht gehandelt hast: Erinnere dich an eine frühere Finanzentscheidung (auch außerhalb von Aktien) und analysiere, welcher Bias sie beeinflusst hat.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Deine Routinen definieren (30 Min.)</h4>
+      <p>Erstelle nach dem Muster aus 7.8 deinen persönlichen Routine-Plan (täglich/wöchentlich/quartalsweise/jährlich). Sei realistisch — lieber wenige Routinen, die du einhältst, als viele, die du ignorierst. Lege insbesondere fest: Wie oft schaust du bewusst auf dein Depot?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 6 — Der Fehler-Test (30 Min.)</h4>
+      <p>Denke an einen vergangenen Verlust (Aktien oder anderes). War es ein <strong>Prozessfehler</strong> oder ein <strong>Ergebnisverlust</strong>? Wie hast du damals reagiert — konstruktiv, mit Rache oder mit Lähmung? Formuliere für die Zukunft deine schriftliche „Nach-Verlust-Routine" aus 7.10.</p>
+    </div>
+  </div>
+
+  <div class="ak-disclaimer">
+    <strong>Keine Anlageberatung.</strong> Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Die dargestellten psychologischen Konzepte dienen der Selbstreflexion und ersetzen keine psychologische oder therapeutische Beratung. Alle genannten Unternehmen sind illustrativ. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Jede Anlageentscheidung erfolgt eigenverantwortlich.
+  </div>
+
+</main>
+
+<section class="ak-weiter">
+  <p>Nächstes Modul</p>
+  <h3>Modul 8 — Eigene Strategie entwickeln<br>Aus allen Modulen ein wiederholbares System bauen.</h3>
+  <a href="modul-08-strategie.html" class="btn-outline">Modul 8 öffnen →</a>
+</section>
+
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html" class="active">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+</script>
+</body>
+</html>

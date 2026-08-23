@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<script src="inline-svg.js" defer></script>
+<link rel="stylesheet" href="akademie.css">
+<title>Fair Value Pro — Akademie · Modul 8: Eigene Strategie entwickeln</title>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html" class="active">08</a>
+</nav>
+
+<section class="ak-hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 8 · Eigene Strategie</div>
+    <h1>Aus allen Modulen<br><span class="n">ein System bauen.</span></h1>
+    <p class="ak-lead">Am Ende geht es nicht darum, ein guter Analyst zu sein oder ein disziplinierter Mensch. Es geht darum, aus alledem eine Maschine zu bauen — einen Prozess, der auch dann funktioniert, wenn du müde, ängstlich oder überzeugt bist, dass diesmal alles anders ist.</p>
+  </div>
+</section>
+
+<main class="ak-content">
+
+  <h2 style="border-bottom:0;">Wo dieses Modul steht</h2>
+  <p>Die Module 1 bis 7 haben dir sieben Werkzeugkästen gegeben. Modul 8 gibt dir keinen achten. Es zeigt dir, wie du aus den sieben <strong>ein einziges System</strong> baust — dein persönliches, schriftliches, regelbasiertes Handelssystem.</p>
+  <p>Der Unterschied zwischen jemandem, der „die Inhalte kennt", und jemandem, der <strong>erfolgreich handelt</strong>, ist genau dieser: Der Erste wendet die Werkzeuge situativ und stimmungsabhängig an. Der Zweite hat sie in einen <strong>wiederholbaren Prozess</strong> gegossen, der die Stimmung aus jeder einzelnen Entscheidung entfernt.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m08-werkzeuge-system.svg" aria-label="Verstreute Werkzeuge auf der linken Seite münden auf der rechten Seite in eine geordnete Prozesskette"></object>
+    <figcaption>Werkzeuge kennen ≠ System haben — der Prozess macht den Unterschied</figcaption>
+  </figure>
+
+  <p>Das ist die praktische Verkörperung des Leitgedankens aus Modul 1: <strong>Langfristiger Erfolg entsteht durch einen wiederholbaren, regelbasierten Prozess.</strong> Dieses Modul ist die Bauanleitung dafür.</p>
+
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li>dein <strong>Auswahluniversum</strong> bewusst definieren und begrenzen — deinen Kompetenzkreis;</li>
+      <li>einen <strong>Screening-Prozess</strong> aufsetzen, der Hunderte Titel auf eine handhabbare Kandidatenliste reduziert;</li>
+      <li>deine <strong>Bewertungs-, Einstiegs-, Verkaufs- und Risikokriterien</strong> aus den Modulen 2–6 in konkrete, überprüfbare Regeln übersetzen;</li>
+      <li>dein System <strong>dokumentieren</strong> — als schriftliches Regelwerk, das dein zukünftiges Ich bindet;</li>
+      <li>die <strong>Möglichkeiten und Grenzen des Backtesting</strong> verstehen und die häufigsten Fallstricke vermeiden;</li>
+      <li>einen <strong>Zyklus der kontinuierlichen Verbesserung</strong> etablieren, der das System aus den Journal-Daten (Modul 7) weiterentwickelt;</li>
+      <li>dein vollständiges System in einem <strong>Ein-Seiten-Dokument</strong> zusammenfassen, das du bei jeder Entscheidung anwendest.</li>
+    </ol>
+  </div>
+
+  <!-- 8.1 -->
+  <h2><span class="num">8.1</span>Das Auswahluniversum — dein Kompetenzkreis</h2>
+  <h3>Warum Begrenzung Stärke ist</h3>
+  <p>Es existieren weltweit Zehntausende börsennotierter Unternehmen. Du kannst nicht alle verstehen — und du musst es nicht. Der Kompetenzkreis (nach Buffett/Munger) ist die bewusste Entscheidung, <strong>nur innerhalb dessen zu handeln, was du wirklich verstehst.</strong></p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m08-kompetenzkreis.svg" aria-label="Kleiner Kreis Kompetenzkreis innerhalb eines großen Kreises alle Unternehmen"></object>
+    <figcaption>Die Größe des Kreises ist egal — zu wissen, wo seine Grenze verläuft, ist alles</figcaption>
+  </figure>
+
+  <p>Der entscheidende Satz: <strong>Die Größe deines Kompetenzkreises ist unwichtig. Zu wissen, wo seine Grenze verläuft, ist alles.</strong> Ein kleiner Kreis, dessen Grenzen du kennst, ist einem großen, dessen Grenzen du überschätzt, weit überlegen.</p>
+
+  <h3>Dein Universum konkret definieren</h3>
+  <p>Lege schriftlich fest, was in dein Universum gehört — über mehrere Dimensionen:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Dimension</th><th>Beispielhafte Festlegung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Branchen</strong></td><td>Nur Branchen, deren Geschäftsmodell ich in 4 Sätzen erklären kann (Modul 2.1)</td></tr>
+        <tr><td><strong>Größe</strong></td><td>z. B. nur Unternehmen über einer bestimmten Marktkapitalisierung (Liquidität, Modul 1)</td></tr>
+        <tr><td><strong>Regionen</strong></td><td>z. B. entwickelte Märkte mit verlässlicher Rechnungslegung</td></tr>
+        <tr><td><strong>Ausschlüsse</strong></td><td>z. B. Banken/Versicherungen (andere Bewertungslogik), Frühphasen ohne FCF, extreme Zykliker</td></tr>
+        <tr><td><strong>Qualitätshürde</strong></td><td>z. B. nur Unternehmen mit ROIC &gt; WACC über die letzten Jahre</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Bewusste Ausschlüsse sind so wichtig wie Einschlüsse.</strong> Wenn du Banken nicht sicher bewerten kannst (Modul 2: andere Kennzahlenlogik), gehören sie nicht in dein Universum — egal wie günstig eine erscheint.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Der teuerste Fehler ist nicht, ein gutes Unternehmen zu verpassen, das außerhalb deines Kreises lag. Es ist, ein Unternehmen zu kaufen, von dem du nur glaubtest, es zu verstehen.</p>
+  </div>
+
+  <!-- 8.2 -->
+  <h2><span class="num">8.2</span>Screening — vom Universum zur Kandidatenliste</h2>
+  <h3>Der Zweck des Screenings</h3>
+  <p>Screening ist der grobe Filter, der aus Hunderten Titeln deines Universums eine handhabbare Liste von Kandidaten macht — die dann die volle Fundamentalanalyse (Modul 2) durchlaufen. Screening <strong>ersetzt</strong> die Analyse nicht, es <strong>priorisiert</strong> sie.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m08-screening.svg" aria-label="Trichter von Universum über Kandidaten und Watchlist bis Depot mit den jeweiligen Filterstufen"></object>
+    <figcaption>Vom Universum zum Depot — jede Stufe filtert, die Vollanalyse entscheidet</figcaption>
+  </figure>
+
+  <h3>Sinnvolle Screening-Kriterien</h3>
+  <p>Screening arbeitet mit <strong>groben Ausschlusskriterien</strong>, nicht mit Präzision. Bewährte Filter (an die Modul-2-Logik angelehnt):</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Kriterium</th><th>Grober Filter</th><th>Zweck</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kapitalrendite</strong></td><td>ROIC &gt; X % über mehrere Jahre</td><td>Qualität (Modul 2.9)</td></tr>
+        <tr><td><strong>Margenstabilität</strong></td><td>Bruttomarge stabil/steigend</td><td>Burggraben (Modul 2.7)</td></tr>
+        <tr><td><strong>Verschuldung</strong></td><td>Nettoverschuldung/EBIT &lt; 4×</td><td>Bilanzsolidität (Modul 2.8)</td></tr>
+        <tr><td><strong>Wachstum</strong></td><td>Umsatz-/FCF-CAGR &gt; X %</td><td>Ertragskraft (Modul 2.4)</td></tr>
+        <tr><td><strong>Gewinnqualität</strong></td><td>operativer Cashflow ≈ Nettogewinn</td><td>keine Bilanztricks (Modul 2.5)</td></tr>
+        <tr><td><strong>Bewertung (grob)</strong></td><td>EV/EBIT unter Schwelle ODER unter historischem Median</td><td>erste Preisorientierung (Modul 2.13)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Wichtige Warnung:</strong> Screening-Kriterien sind <strong>Startpunkte, keine Kaufsignale.</strong> Ein niedriges KGV im Screener ist oft eine Value-Falle (Modul 2). Das Screening sagt nur: „Dieser Titel ist es wert, dass du ihn dir <em>ansiehst</em>" — nicht „kaufe ihn".</p>
+
+  <h3>Die Rolle des Fair Value Calculators</h3>
+  <p>Genau hier setzt das Werkzeug an: Der Screener liefert Kandidaten, der Kalkulator liefert für jeden die vollständige, nachvollziehbare Bewertung (DCF, Multiples, Komposit, Sicherheitsmarge) — mit dir als Herr über jede Annahme. Das Screening findet die Kandidaten, die Berechnungskompetenz entscheidet über sie.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>Screening findet Kandidaten, nicht Käufe. Ein Screener, der dir sagt „kauf das", hat dir das Wichtigste abgenommen — die Kontrolle über deine Annahmen.</p>
+  </div>
+
+  <!-- 8.3 -->
+  <h2><span class="num">8.3</span>Deine Kriterien festschreiben</h2>
+  <p>Jetzt übersetzt du die Module 2–6 in <strong>dein persönliches Regelwerk</strong> — konkrete, überprüfbare Schwellen. Der Sinn: Im Moment der Entscheidung gibt es nichts mehr abzuwägen. Du prüfst nur, ob die Regel erfüllt ist.</p>
+
+  <h3>A) Bewertungskriterien (aus Modul 2)</h3>
+  <pre class="ak-pre">   ☐ Ich verstehe das Geschäftsmodell (4-Sätze-Test)
+   ☐ Burggraben benannt und einer der 5 Quellen zugeordnet
+   ☐ ROIC &gt; WACC über die letzten ___ Jahre
+   ☐ Bruttomarge stabil oder steigend
+   ☐ Operativer Cashflow ≈ Nettogewinn
+   ☐ Nettoverschuldung/EBIT &lt; ___ ; Zinsdeckung &gt; ___
+   ☐ Mindestens 3 Bewertungsverfahren gerechnet
+   ☐ DCF mit g ≤ ___ % und begründeter WACC
+   ☐ Reverse DCF: eingepreistes Wachstum ist realistisch
+   ☐ Bewertungsspanne notiert (nicht nur Mittelwert)</pre>
+
+  <h3>B) Einstiegskriterien (aus Modul 4)</h3>
+  <pre class="ak-pre">   ☐ Kurs unter Kaufschwelle (Fair Value × (1 − geforderte MoS ___%))
+   ☐ Einstiegssituation (Feld ①–④) bestimmt
+   ☐ Bei Schwäche: These intakt UND Stabilisierung vorhanden
+   ☐ Chart-Kontext läuft nicht gegen mich (200-Tage, Volumen)
+   ☐ CRV ≥ ___ : 1
+   ☐ Tranchenplan definiert (falls gestaffelt)
+   ☐ Limit-Order, Heimatmarkt offen, nicht in Randminuten</pre>
+
+  <h3>C) Verkaufskriterien (aus Modul 6)</h3>
+  <pre class="ak-pre">   ☐ Fair Value (NEU berechnet) erreicht → geordneter (Teil-)Verkauf
+   ☐ Falsifikationskriterium erfüllt → vollständiger Verkauf
+   ☐ Fundamentaldaten strukturell verschlechtert (nicht Rauschen)
+   ☐ Position über Risiko-Obergrenze → Rebalancing-Teilverkauf
+   ☐ NICHT verkaufen wegen: fallendem Kurs (These intakt),
+      Einstandskurs, willkürlichem Vervielfacher, Langeweile</pre>
+
+  <h3>D) Risikoregeln (aus Modul 5)</h3>
+  <pre class="ak-pre">   ☐ Risiko pro Trade: max. ___ % des Depots
+   ☐ Positionsgröße = Risikobudget ÷ Abstand zum Falsifikationsniveau
+   ☐ Max. Einzelposition: ___ %
+   ☐ Max. Sektorgewicht: ___ %
+   ☐ Korrelations-/Klumpencheck bestanden
+   ☐ Ziel-Positionszahl: ___ bis ___
+   ☐ Max. tolerierbarer Depot-Drawdown: ___ %
+   ☐ Bewusste Cash-Quote: ___ %</pre>
+
+  <h3>E) Psychologische Regeln (aus Modul 7)</h3>
+  <pre class="ak-pre">   ☐ Titel stand vorher auf der Watchlist (gegen FOMO)
+   ☐ Gegenthese geschrieben (gegen Confirmation Bias)
+   ☐ Journal-Eintrag Phase 1 vor Ausführung
+   ☐ Emotionaler Zustand geprüft (gedrängt/euphorisch → warten)
+   ☐ Kein Rache-Trade nach Verlust</pre>
+
+  <p><strong>Die Zahlen in den Lücken sind deine persönliche Entscheidung</strong> — sie hängen von deiner Risikotoleranz, deinem Zeithorizont und deinem Kompetenzkreis ab. Es gibt keine allgemein „richtigen" Werte. Aber sobald du sie festgelegt hast, sind sie <strong>verbindlich</strong>, bis du sie im Rahmen der kontinuierlichen Verbesserung (8.6) bewusst und begründet änderst.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Regeln, die du im Moment der Entscheidung noch verhandelst, sind keine Regeln. Lege die Zahlen in Ruhe fest — und dann verhandle nicht mehr, sondern prüfe nur noch.</p>
+  </div>
+
+  <!-- 8.4 -->
+  <h2><span class="num">8.4</span>Dokumentation — das schriftliche Regelwerk</h2>
+  <h3>Warum Schriftlichkeit alles verändert</h3>
+  <p>Ein System, das nur in deinem Kopf existiert, ist kein System — es ist eine Sammlung von Absichten, die sich im Moment der Emotion auflösen. Erst die <strong>Schriftlichkeit</strong> bindet dein zukünftiges Ich. Das geschriebene Regelwerk ist ein Vertrag zwischen dem ruhigen, rationalen Du (das es verfasst) und dem gestressten, emotionalen Du (das es später befolgen muss).</p>
+
+  <h3>Die drei Dokumente deines Systems</h3>
+  <pre class="ak-pre">   1. DAS REGELWERK (statisch, ändert sich selten)
+      → Universum, Screening-Kriterien, alle Schwellen aus 8.3
+      → dein „Grundgesetz", nur bewusst und begründet änderbar
+
+   2. DER EINSTIEGSPLAN je Position (Modul 4.8)
+      → für jeden einzelnen Trade ausgefüllt
+      → enthält These, Kaufzone, Größe, CRV, Falsifikation
+
+   3. DAS TRADING-JOURNAL (Modul 7.9)
+      → jeder Trade in zwei Phasen (vorher/nachher)
+      → Rohmaterial für die kontinuierliche Verbesserung</pre>
+
+  <h3>Das Ökosystem als Dokumentationswerkzeug</h3>
+  <p>Genau diese drei Dokumente bilden die konzeptionelle Landkarte des Werkzeug-Ökosystems ab: Der <strong>Kalkulator</strong> liefert die Bewertung fürs Regelwerk und den Einstiegsplan. Der <strong>Portfolio Tracker</strong> überwacht die Risikoregeln (Positions-/Sektorgewichte, Drawdown). Der <strong>Trading Desk</strong> hält Einstiegsplan, Watchlist und Journal — inklusive des Bias-Coaches, der die Gegenthese-Routine (Modul 7) unterstützt. Das System dieses Moduls ist die Nutzungsanleitung für dieses Ökosystem, und das Ökosystem ist die technische Umsetzung dieses Systems.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Was nicht aufgeschrieben ist, existiert im Moment der Entscheidung nicht. Dein Regelwerk ist der Vertrag, den dein ruhiges Ich mit deinem panischen Ich schließt.</p>
+  </div>
+
+  <!-- 8.5 -->
+  <h2><span class="num">8.5</span>Backtesting — Möglichkeiten und Grenzen</h2>
+  <h3>Was Backtesting ist</h3>
+  <p>Backtesting bedeutet, deine Regeln auf <strong>historische Daten</strong> anzuwenden, um zu sehen, wie sie in der Vergangenheit funktioniert hätten. Es kann grobe Denkfehler aufdecken und ein Gefühl für das Verhalten des Systems geben.</p>
+
+  <h3>Die Grenzen — und sie sind gravierend</h3>
+  <p>Backtesting ist mit Fallstricken übersät, die zu gefährlich optimistischen Ergebnissen führen. Wer sie nicht kennt, baut ein System, das auf dem Papier glänzt und im Echtgeld versagt.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fallstrick</th><th>Was passiert</th><th>Folge</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Overfitting</strong></td><td>Regeln so lange justiert, bis sie die Vergangenheit perfekt „erklären"</td><td>System passt zur Vergangenheit, nicht zur Zukunft</td></tr>
+        <tr><td><strong>Survivorship Bias</strong></td><td>Nur heute existierende Firmen im Datensatz; Pleiten fehlen</td><td>Rendite systematisch überschätzt</td></tr>
+        <tr><td><strong>Look-Ahead Bias</strong></td><td>Daten verwendet, die zum Zeitpunkt real nicht verfügbar waren</td><td>unrealistisch gute Ergebnisse</td></tr>
+        <tr><td><strong>Ignorierte Kosten</strong></td><td>Spread, Gebühren, Steuern (Modul 1) weggelassen</td><td>reale Rendite deutlich niedriger</td></tr>
+        <tr><td><strong>Regime-Wechsel</strong></td><td>Vergangenes Marktumfeld ≠ zukünftiges</td><td>Strategie funktioniert nur im getesteten Regime</td></tr>
+        <tr><td><strong>Kleine Stichprobe</strong></td><td>zu wenige Trades → Zufall sieht aus wie Können</td><td>Scheinsignifikanz</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die ehrliche Einordnung für den Fundamentalanleger</h3>
+  <p>Für einen langfristigen Quality-Value-Ansatz mit wenigen Positionen und Haltedauern von Jahren ist ein statistisch belastbares Backtesting <strong>kaum durchführbar</strong> — du hättest über ein Anlegerleben schlicht zu wenige Trades für Signifikanz. Anders als bei hochfrequenten quantitativen Strategien fehlt die große Stichprobe.</p>
+
+  <p><strong>Was für dich stattdessen funktioniert:</strong></p>
+  <ol>
+    <li><strong>Plausibilitätsprüfung einzelner Regeln</strong> statt Gesamtsystem-Optimierung: „Hätte mein Verschuldungsfilter mich vor bekannten Pleiten geschützt?" (qualitativ, an Fallbeispielen wie Wirecard, Modul 2).</li>
+    <li><strong>Historische Fallstudien</strong> statt Renditekurven: Nimm 5–10 reale historische Situationen (auch die Negativbeispiele aus Modul 2: Intel, Bayer, Nokia) und prüfe, ob dein Regelwerk sie richtig eingeordnet hätte.</li>
+    <li><strong>Forward-Testing / Papertrading:</strong> Wende das System eine Zeit lang mit fiktivem Geld (oder sehr kleinen Beträgen) in Echtzeit an. Das umgeht Look-Ahead und Survivorship Bias vollständig, weil du nur echte Gegenwart siehst.</li>
+  </ol>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Ein Backtest, der perfekt aussieht, ist meist an die Vergangenheit angepasst, nicht an die Zukunft. Für den langfristigen Anleger sind historische Fallstudien und ehrliches Papertrading wertvoller als jede geglättete Renditekurve.</p>
+  </div>
+
+  <!-- 8.6 -->
+  <h2><span class="num">8.6</span>Kontinuierliche Verbesserung</h2>
+  <h3>Das System ist nie fertig</h3>
+  <p>Dein Regelwerk ist ein lebendes Dokument. Aber — und das ist entscheidend — es wird <strong>nicht ständig</strong> geändert. Es wird in <strong>festen, seltenen Intervallen</strong> überprüft und nur <strong>bewusst und begründet</strong> angepasst. Häufiges Ändern ist selbst ein Bias (Recency Bias, Modul 7): Man reagiert auf die letzten paar Trades statt auf ein belastbares Muster.</p>
+
+  <h3>Der Verbesserungszyklus</h3>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m08-verbesserungszyklus.svg" aria-label="Kreislauf-Diagramm: Handeln, Dokumentieren, Auswerten, Anpassen und wieder zurück, Anpassen als seltener Schritt hervorgehoben"></object>
+    <figcaption>Der Verbesserungszyklus — Handeln, Dokumentieren, Auswerten, Anpassen (selten und bewusst)</figcaption>
+  </figure>
+
+  <h3>Prozess verbessern, nicht Ergebnisse jagen</h3>
+  <p>Die kritische Unterscheidung (aus Modul 1 und 7): Du verbesserst deinen <strong>Prozess</strong>, nicht deine letzten Ergebnisse. Ein verlorener Trade, der regelkonform war (Ergebnisverlust), ist <strong>kein</strong> Anlass, die Regel zu ändern. Ein gewonnener Trade, der gegen die Regeln verstieß (Glück), ist <strong>kein</strong> Grund, den Regelverstoß zu legitimieren.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th class="check">Regel ändern, wenn:</th><th class="cross">Regel NICHT ändern, wenn:</th></tr></thead>
+      <tbody>
+        <tr><td>ein Bias sich systematisch zeigt</td><td>ein einzelner Trade verloren hat</td></tr>
+        <tr><td>eine Regel wiederholt versagt (nicht nur einmal)</td><td>du dich über einen Verlust ärgerst</td></tr>
+        <tr><td>sich dein Kompetenzkreis erweitert</td><td>ein Regelverstoß „mal geklappt" hat</td></tr>
+        <tr><td>ein struktureller Denkfehler entdeckt wurde</td><td>der Markt gerade schlecht läuft / du „ein besseres Gefühl" hast</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die Meta-Regel</h3>
+  <p>Die wichtigste Regel über alle Regeln: <strong>Ändere das System nur außerhalb des Handelns.</strong> Nie mitten in einer Position, nie unter dem Eindruck eines frischen Gewinns oder Verlusts, nie „schnell zwischendurch". Änderungen gehören in den ruhigen Quartals- oder Jahresrückblick — dorthin, wo System 2 die Kontrolle hat (Modul 7).</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Verbessere den Prozess in der Ruhe, nie im Gefecht. Ein System, das du nach jedem Verlust änderst, ist kein System — es ist deine Angst mit einem Regelbuch-Anstrich.</p>
+  </div>
+
+  <!-- 8.7 -->
+  <h2><span class="num">8.7</span>Dein System auf einer Seite</h2>
+  <p>Alles aus diesem Kurs verdichtet sich zu einem einzigen Dokument, das du bei jeder Entscheidung zur Hand hast. Dies ist die Vorlage — die Werte in den Klammern füllst <em>du</em>.</p>
+
+  <pre class="ak-pre">   ═══════════════════════════════════════════════════════════════
+   MEIN HANDELSSYSTEM — [Name] — Version [x] — [Datum]
+   ═══════════════════════════════════════════════════════════════
+
+   ── UNIVERSUM (Modul 8.1) ──────────────────────────────────────
+   Ich handle nur:      [Branchen/Regionen/Größe]
+   Ich schließe aus:    [Banken? Zykliker? Frühphasen?]
+   Qualitätshürde:      ROIC &gt; WACC über [__] Jahre
+
+   ── SCREENING (Modul 8.2) ──────────────────────────────────────
+   Grobfilter:          ROIC &gt; [__] | Netto-Versch./EBIT &lt; [__]
+                        Bruttomarge stabil | Cashflow ≈ Gewinn
+
+   ── KAUFEN (Modul 2+4) ─────────────────────────────────────────
+   Fair Value:          Komposit aus [__] Verfahren, DCF g ≤ [__]%
+   Geforderte MoS:      [__]% (mehr bei höherer Unsicherheit)
+   Kaufzone:            Fair Value × (1 − MoS), an Chart-Unterstützung
+   Mindest-CRV:         [__] : 1
+   Ausführung:          Limit-Order, ggf. [__] Tranchen
+
+   ── GRÖSSE &amp; RISIKO (Modul 5) ──────────────────────────────────
+   Risiko/Trade:        max. [__]% des Depots
+   Positionsgröße:      Risikobudget ÷ Abstand zum Falsifikationsniveau
+   Max. Einzelposition: [__]% | Max. Sektor: [__]%
+   Positionszahl:       [__] bis [__]
+   Max. Drawdown:       [__]% | Cash-Quote: [__]%
+
+   ── VERKAUFEN (Modul 6) ────────────────────────────────────────
+   Erfolg:              Fair Value (neu berechnet) erreicht → (Teil-)Verkauf
+   Fehler:              Falsifikationskriterium erfüllt → Vollverkauf
+   Niemals verkaufen wegen: Kurs allein, Einstand, Vervielfacher, Langeweile
+
+   ── PSYCHE &amp; PROZESS (Modul 1+7) ───────────────────────────────
+   Vor jedem Trade:     Watchlist ✓ | Gegenthese ✓ | Journal Phase 1 ✓
+   Nach jedem Trade:    Journal Phase 2 | Prozess bewerten | kein Rache-Trade
+   Meine 2 Haupt-Biases: [__] und [__]
+   Routinen:            [wöchentlich/quartalsweise/jährlich]
+
+   ── VERBESSERUNG (Modul 8.6) ───────────────────────────────────
+   Systemänderungen nur: im [Quartals-/Jahres]-Rückblick, begründet,
+                         dokumentiert, außerhalb offener Trades
+   ═══════════════════════════════════════════════════════════════</pre>
+
+  <p><strong>Dieses eine Blatt ist das Ziel des gesamten Kurses.</strong> Alles, was du in sieben Modulen gelernt hast, dient dazu, es auszufüllen und dann konsequent anzuwenden.</p>
+
+  <!-- 8.8 -->
+  <h2><span class="num">8.8</span>Die Reise geht weiter</h2>
+  <h3>Was du jetzt hast</h3>
+  <p>Du hast am Anfang dieses Kurses vielleicht erwartet, „die besten Aktien" zu lernen oder „wann der Markt dreht". Stattdessen hast du etwas Wertvolleres bekommen: einen <strong>Prozess</strong>, der unabhängig von einzelnen Aktien und einzelnen Marktphasen funktioniert. Die Leitgedanken des Kurses in ihrer finalen Form:</p>
+
+  <pre class="ak-pre">   • Kein Market Timing, sondern Wahrscheinlichkeiten.        (Modul 1)
+   • Keine Spekulation, sondern strukturierte Entscheidung.   (Modul 2+4)
+   • Fundamentalanalyse und Chartanalyse ergänzen sich.       (Modul 3+4)
+   • Risikomanagement ist wichtiger als Aktienauswahl.        (Modul 5)
+   • Konsistenz schlägt Perfektion.                           (Modul 6+8)
+   • Emotionen sind der größte Gegner.                        (Modul 7)
+   • Erfolg entsteht durch einen wiederholbaren Prozess.      (Modul 8)</pre>
+
+  <h3>Die letzte Wahrheit</h3>
+  <p>Der Markt wird dich weiter testen. Es wird Phasen geben, in denen dein diszipliniertes System hinter einem hektischen Nachbarn zurückbleibt, der „mit einer Aktie reich geworden ist". Es wird Crashs geben, in denen jede Regel sich falsch anfühlt. Es wird lange, langweilige Seitwärtsphasen geben, in denen Nichtstun die richtige und quälendste Antwort ist.</p>
+  <p>In all diesen Phasen ist dein Regelwerk kein Käfig, sondern ein Anker. Es hält dich an dem fest, was du in Ruhe für richtig erkannt hast, wenn der Moment dich zu etwas anderem drängt. <strong>Das ist der ganze Unterschied zwischen jemandem, der mit Aktien handelt, und jemandem, der es beherrscht.</strong></p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Du wirst nicht durch die eine geniale Entscheidung erfolgreich, sondern durch die tausendfache Wiederholung einer soliden. Der Prozess ist die Strategie. Alles Übrige ist Rauschen.</p>
+  </div>
+
+  <!-- Anfängerfehler -->
+  <h2>Typische Anfängerfehler in Modul 8</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Kein schriftliches Regelwerk</td><td>System löst sich im Moment der Emotion auf</td><td>Alles aus 8.3 schriftlich festlegen</td></tr>
+        <tr><td>Kompetenzkreis überschätzen</td><td>Kauf von scheinbar verstandenen Titeln</td><td>Ausschlüsse ehrlich definieren (8.1)</td></tr>
+        <tr><td>Screening-Treffer als Kaufsignal</td><td>Value-Fallen</td><td>Screening priorisiert, Analyse entscheidet</td></tr>
+        <tr><td>Regeln im Moment „nachverhandeln"</td><td>keine echten Regeln</td><td>Zahlen vorab fixieren (8.3)</td></tr>
+        <tr><td>Backtest überoptimieren</td><td>Overfitting, glänzt nur auf Papier</td><td>Fallstudien + Papertrading statt Kurvenfitting</td></tr>
+        <tr><td>System nach jedem Verlust ändern</td><td>Recency Bias, kein Lernen</td><td>Änderungen nur im ruhigen Rückblick</td></tr>
+        <tr><td>Ergebnisverlust mit Prozessfehler verwechseln</td><td>ändert funktionierende Regeln</td><td>Prozess bewerten, nicht Ergebnis (Modul 1/7)</td></tr>
+        <tr><td>System nur einmal bauen, nie auswerten</td><td>keine Verbesserung</td><td>Verbesserungszyklus etablieren (8.6)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2>Checkliste — Ist mein System vollständig?</h2>
+  <ul class="ak-check-list">
+    <li><strong>Universum</strong> schriftlich definiert, inkl. bewusster Ausschlüsse.</li>
+    <li><strong>Screening-Kriterien</strong> festgelegt (grobe Filter, keine Kaufsignale).</li>
+    <li><strong>Bewertungskriterien</strong> mit konkreten Schwellen (Modul 2).</li>
+    <li><strong>Einstiegskriterien</strong> inkl. geforderter MoS und Mindest-CRV (Modul 4).</li>
+    <li><strong>Verkaufskriterien</strong> für Erfolg und Fehler, plus Nicht-Verkaufsgründe (Modul 6).</li>
+    <li><strong>Risikoregeln</strong> mit allen Obergrenzen und max. Drawdown (Modul 5).</li>
+    <li><strong>Psychologische Regeln</strong> und persönlicher Bias-Katalog (Modul 7).</li>
+    <li>Alle drei <strong>Dokumente</strong> aufgesetzt: Regelwerk, Einstiegsplan-Vorlage, Journal (8.4).</li>
+    <li><strong>Backtesting</strong>-Grenzen verstanden; Fallstudien/Papertrading geplant.</li>
+    <li><strong>Verbesserungszyklus</strong> mit festem Intervall definiert (8.6).</li>
+    <li><strong>Ein-Seiten-System</strong> ausgefüllt und griffbereit (8.7).</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2>Zusammenfassung</h2>
+  <ol>
+    <li>Modul 8 gibt kein neues Werkzeug, sondern baut aus den Modulen 1–7 <strong>ein wiederholbares System</strong> — der Unterschied zwischen „Werkzeuge kennen" und „erfolgreich handeln".</li>
+    <li>Das <strong>Auswahluniversum</strong> ist dein Kompetenzkreis. Seine Größe ist egal; zu wissen, wo seine Grenze liegt, ist alles. Ausschlüsse sind so wichtig wie Einschlüsse.</li>
+    <li><strong>Screening</strong> reduziert das Universum auf Kandidaten — es priorisiert die Analyse, ersetzt sie nicht. Treffer sind keine Kaufsignale.</li>
+    <li>Die <strong>Kriterien</strong> aus Modul 2–6 werden zu konkreten, überprüfbaren Schwellen mit persönlich gewählten Zahlen — im Moment der Entscheidung wird nur noch geprüft, nicht verhandelt.</li>
+    <li><strong>Schriftlichkeit</strong> bindet dein zukünftiges Ich. Drei Dokumente: Regelwerk (statisch), Einstiegsplan (je Trade), Journal (Auswertung). Sie bilden das Werkzeug-Ökosystem ab.</li>
+    <li><strong>Backtesting</strong> ist voller Fallstricke (Overfitting, Survivorship, Look-Ahead). Für den langfristigen Anleger sind historische Fallstudien und Papertrading wertvoller als Renditekurven.</li>
+    <li><strong>Kontinuierliche Verbesserung</strong> heißt: Prozess verbessern, nicht Ergebnisse jagen. Regeln werden selten, bewusst und nur außerhalb offener Trades geändert.</li>
+    <li>Das <strong>Ein-Seiten-System</strong> ist das Ziel des gesamten Kurses. Der Prozess ist die Strategie; alles Übrige ist Rauschen.</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2>Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Warum ist die Größe des Kompetenzkreises unwichtig — und was ist stattdessen entscheidend?</li>
+    <li>Ein Screener zeigt dir eine Aktie mit KGV 6. Ist das ein Kaufsignal? Was ist die richtige nächste Handlung?</li>
+    <li>Warum müssen die Zahlen in deinem Regelwerk <em>vor</em> dem Handeln festgelegt werden und dürfen im Moment nicht mehr verhandelt werden?</li>
+    <li>Nenne die drei Dokumente deines Systems und ihre jeweilige Funktion.</li>
+    <li>Was ist Overfitting beim Backtesting, und warum führt es zu gefährlich optimistischen Ergebnissen?</li>
+    <li>Was ist Survivorship Bias, und wie verzerrt er einen Backtest?</li>
+    <li>Warum ist statistisch belastbares Backtesting für einen langfristigen Quality-Value-Anleger kaum durchführbar? Was tritt an seine Stelle?</li>
+    <li>Unter welchen Bedingungen änderst du eine Regel deines Systems — und unter welchen ausdrücklich nicht?</li>
+    <li>Was ist die „Meta-Regel" über alle Regeln bezüglich des Zeitpunkts von Systemänderungen?</li>
+    <li>Fasse in einem Satz zusammen, was der eigentliche Kern eines erfolgreichen Handelssystems ist — gemäß dem Leitgedanken des gesamten Kurses.</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li>Weil ein kleiner, klar abgegrenzter Kompetenzkreis einem großen, dessen Grenzen man überschätzt, überlegen ist. Entscheidend ist nicht, <em>wie viel</em> du verstehst, sondern <strong>zu wissen, wo die Grenze deines Verständnisses verläuft</strong> — damit du nicht Unternehmen kaufst, die du nur zu verstehen <em>glaubst</em>.</li>
+        <li><strong>Kein Kaufsignal.</strong> Ein KGV von 6 im Screener ist häufig eine <strong>Value-Falle</strong> (Modul 2): schrumpfende Gewinne, fallende Marge, ROIC unter WACC. Richtige nächste Handlung: den Titel auf die <strong>Kandidatenliste</strong> setzen und die <strong>vollständige Fundamentalanalyse</strong> (Filterkaskade, Modul 2) durchlaufen lassen — Verständnis, dann Qualität, dann Wert, dann Preis. Das Screening sagt nur „ansehen", nicht „kaufen".</li>
+        <li>Weil im Moment der Entscheidung das emotionale System 1 dominiert (Modul 7). Regeln, die man im Moment noch verhandelt, werden von Gier oder Angst gebogen und sind damit keine Regeln. Werden die Zahlen <em>vorher</em>, in Ruhe, mit System 2 festgelegt, bleibt im Moment nur die Prüfung „erfüllt oder nicht" — die Emotion hat keinen Angriffspunkt.</li>
+        <li>(1) <strong>Regelwerk</strong> — statisch, enthält Universum, Screening und alle Schwellen; das „Grundgesetz", nur bewusst änderbar. (2) <strong>Einstiegsplan</strong> — je Position ausgefüllt, enthält These, Kaufzone, Größe, CRV, Falsifikation. (3) <strong>Trading-Journal</strong> — jeder Trade in zwei Phasen (vorher/nachher), Rohmaterial für die kontinuierliche Verbesserung.</li>
+        <li>Overfitting bedeutet, die Regeln so lange an die historischen Daten anzupassen, bis sie die Vergangenheit (fast) perfekt „erklären". Das ist gefährlich, weil das System dann die <strong>spezifischen Zufälligkeiten der Vergangenheit</strong> abbildet, nicht die zugrundeliegende Struktur — es glänzt im Backtest und versagt in der Zukunft, deren Zufälligkeiten andere sind.</li>
+        <li>Survivorship Bias entsteht, wenn der Datensatz nur <strong>heute noch existierende</strong> Unternehmen enthält und die Pleiten/Delistings der Vergangenheit fehlen. Der Backtest „übersieht" damit genau die Totalverluste, die ein reales Depot getroffen hätten, und <strong>überschätzt die Rendite systematisch</strong>.</li>
+        <li>Weil ein langfristiger Ansatz mit wenigen Positionen und Haltedauern von Jahren über ein ganzes Anlegerleben nur <strong>zu wenige Trades</strong> produziert, um statistische Signifikanz zu erreichen — Zufall ließe sich nicht von Können trennen. An seine Stelle treten: <strong>historische Fallstudien</strong> (hätte mein Regelwerk Intel/Bayer/Wirecard richtig eingeordnet?), <strong>Plausibilitätsprüfung einzelner Regeln</strong> und <strong>Forward-Testing/Papertrading</strong> in Echtzeit (umgeht Look-Ahead und Survivorship Bias).</li>
+        <li><strong>Ändern</strong>, wenn: ein Bias sich <em>systematisch</em> zeigt, eine Regel <em>wiederholt</em> versagt (nicht nur einmal), sich der Kompetenzkreis erweitert oder ein struktureller Denkfehler entdeckt wurde. <strong>Nicht ändern</strong>, wenn: ein einzelner Trade verloren hat (Ergebnisverlust), man sich über einen Verlust ärgert, ein Regelverstoß „mal geklappt" hat (Glück), oder der Markt gerade schlecht läuft.</li>
+        <li>Systemänderungen erfolgen <strong>nur außerhalb des Handelns</strong> — nie mitten in einer offenen Position, nie unter dem frischen Eindruck eines Gewinns oder Verlusts, nie „schnell zwischendurch", sondern ausschließlich im ruhigen Quartals-/Jahresrückblick, wo System 2 die Kontrolle hat.</li>
+        <li><em>Der Prozess ist die Strategie:</em> Langfristiger Erfolg entsteht nicht durch die eine geniale Entscheidung, sondern durch die konsequente, tausendfache Wiederholung eines soliden, regelbasierten und dokumentierten Prozesses, der die Emotion aus jeder einzelnen Entscheidung entfernt.</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Übungen -->
+  <h2>Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Deinen Kompetenzkreis zeichnen (45 Min.)</h4>
+      <p>Schreibe auf, welche Branchen du wirklich verstehst (4-Sätze-Test bestehst). Schreibe daneben, was du bewusst ausschließt und warum. Sei ehrlich: Bei welchen Branchen <em>glaubst</em> du nur, sie zu verstehen? Die gehören auf die Ausschlussliste.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — Screening-Filter definieren (30 Min.)</h4>
+      <p>Lege deine persönlichen Grob-Filter fest (ROIC-Schwelle, Verschuldungsgrenze, Margenkriterium, grobe Bewertung). Wende sie in einem Screener auf dein Universum an. Wie viele Kandidaten bleiben übrig? Ist die Zahl handhabbar (10–30)?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Dein Regelwerk ausfüllen (90 Min.)</h4>
+      <p>Fülle alle fünf Kriterienblöcke aus 8.3 (A–E) mit deinen persönlichen Zahlen. Wo du eine Zahl nicht festlegen kannst, fehlt dir noch eine Entscheidung — triff sie. Das Ergebnis ist die erste Version deines Regelwerks.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — Die historische Fallstudie (60 Min.)</h4>
+      <p>Wähle zwei Negativbeispiele aus dem Kurs (z. B. Wirecard, Intel, Nokia, Bayer). Prüfe: Hätte dein Regelwerk (aus Übung 3) dich vor dem Investment gewarnt oder dich rechtzeitig aussteigen lassen? Welche konkrete Regel hätte gegriffen — oder fehlt eine?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Papertrading starten (laufend)</h4>
+      <p>Wende dein System ab heute mit fiktivem Geld (oder sehr kleinen realen Beträgen) an. Führe für jeden Trade Einstiegsplan und Journal. Nach drei Monaten: erster Auswertungsrückblick nach dem Zyklus aus 8.6.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 6 — Dein Ein-Seiten-System (60 Min.)</h4>
+      <p>Übertrage alles in die Vorlage aus 8.7. Drucke es aus oder speichere es sichtbar. Dies ist das Dokument, das du bei jeder künftigen Entscheidung zur Hand nimmst. Datiere es und versioniere es (v1) — die nächste Version entsteht in deinem ersten Verbesserungsrückblick.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 7 — Der Kursabschluss (30 Min.)</h4>
+      <p>Hole die Notizen aus Übung 4 von Modul 1 (deine erste Kaufthese mit Falsifikationskriterien) und Übung 6 von Modul 4 (dein erster Einstiegsplan) hervor. Vergleiche sie mit dem, was du heute schreiben würdest. Was hat sich verändert? Diese Differenz ist das, was du in diesem Kurs gelernt hast.</p>
+    </div>
+  </div>
+
+  <!-- Kursabschluss -->
+  <h2 style="color:var(--neon);">Kursabschluss</h2>
+  <p>Du hast alle acht Module durchgearbeitet. Du besitzt jetzt kein Geheimnis und keine Formel, die den Markt schlägt — die gibt es nicht. Du besitzt etwas Besseres: einen <strong>vollständigen, schriftlichen, überprüfbaren Prozess</strong>, der dich in die Lage versetzt, eigenständig und rational Entscheidungen am Aktienmarkt zu treffen.</p>
+  <p>Ob dieser Prozess dich erfolgreich macht, hängt nicht mehr vom Kurs ab, sondern von dir — von deiner Bereitschaft, ihn auch dann anzuwenden, wenn es sich falsch anfühlt. Genau das ist die Kompetenz, die keine Software und kein Signaldienst ersetzen kann: die Fähigkeit, deine eigenen, nachvollziehbaren Entscheidungen zu treffen und zu verantworten.</p>
+  <p><strong>Der Kurs endet hier. Deine Praxis beginnt.</strong></p>
+
+  <div class="ak-disclaimer">
+    <strong>Keine Anlageberatung.</strong> Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Alle genannten Unternehmen, Zahlen und Schwellenwerte sind illustrativ. Die vorgestellten Systembausteine sind ein didaktisches Gerüst und keine Garantie für Anlageerfolg. Backtesting-Ergebnisse und historische Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Jede Anlageentscheidung erfolgt eigenverantwortlich und auf eigenes Risiko.
+  </div>
+
+</main>
+
+<section class="ak-weiter">
+  <p>Kurs abgeschlossen</p>
+  <h3>Zurück zur<br>Kursübersicht.</h3>
+  <a href="index.html" class="btn-outline">← Zur Übersicht</a>
+</section>
+
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html" class="active">08</a>
+</nav>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+</script>
+</body>
+</html>

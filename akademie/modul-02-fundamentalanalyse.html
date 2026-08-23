@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<script src="inline-svg.js" defer></script>
+<link rel="stylesheet" href="akademie.css">
+<title>Fair Value Pro — Akademie · Modul 2: Fundamentalanalyse</title>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<!-- Modul-Leiste oben -->
+<nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html" class="active">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<!-- HERO -->
+<section class="ak-hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 2 · Fundamentalanalyse</div>
+    <h1>Was ist ein Unternehmen<br><span class="n">wirklich wert?</span></h1>
+    <p class="ak-lead">Preis ist, was du zahlst. Wert ist, was du bekommst. Der gesamte Rest dieses Moduls beschäftigt sich mit der zweiten Hälfte dieses Satzes.</p>
+  </div>
+</section>
+
+<main class="ak-content">
+
+  <!-- Lernziele -->
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li>ein <strong>Geschäftsmodell in vier Sätzen</strong> beschreiben und beurteilen, ob du es verstanden hast;</li>
+      <li>die <strong>fünf Quellen eines wirtschaftlichen Burggrabens</strong> unterscheiden und in einem konkreten Unternehmen identifizieren;</li>
+      <li><strong>Management</strong> anhand von Kapitalallokation statt anhand von Rhetorik bewerten;</li>
+      <li><strong>Umsatz, Gewinn, Marge, Free Cash Flow, Eigenkapital und Verschuldung</strong> über Zeit lesen und die Muster erkennen, die auf Probleme hindeuten;</li>
+      <li><strong>jede der gängigen Bewertungskennzahlen</strong> korrekt berechnen, interpretieren — und, was wichtiger ist, sagen, <strong>wann sie nicht anwendbar ist</strong>;</li>
+      <li>ein vollständiges <strong>DCF-Modell</strong> aufbauen, seine Annahmen offenlegen und eine Sensitivitätsanalyse dazu rechnen;</li>
+      <li>aus mehreren Verfahren einen <strong>fairen Wert</strong> ableiten und daraus eine <strong>Sicherheitsmarge</strong> bestimmen;</li>
+      <li>erklären, warum ein einzelnes Bewertungsverfahren immer falsch ist und warum sieben gleichzeitig trotzdem nützlich sind.</li>
+    </ol>
+  </div>
+
+  <!-- 2.0 -->
+  <h2><span class="num">2.0</span>Der Ablauf einer Fundamentalanalyse</h2>
+  <p>Die Reihenfolge ist nicht beliebig. Sie ist eine <strong>Filterkaskade</strong>: Jede Stufe darf ein Unternehmen aussortieren, und die teuerste Stufe (die Bewertung) kommt zuletzt.</p>
+
+  <pre class="ak-pre">   ┌─────────────────────────────────────────────────────────┐
+   │ STUFE 1 — VERSTEHE ICH ES?                              │
+   │ Geschäftsmodell · Wertschöpfung · Kunden · Zyklik        │
+   │ ✗ Nein → aussortieren. Ohne Diskussion.                  │
+   └────────────────────────┬────────────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────────────┐
+   │ STUFE 2 — IST ES GUT?                                   │
+   │ Moat · Margen · ROIC · Wachstum · Bilanz · Management    │
+   │ ✗ Nein → aussortieren. Auch wenn es billig ist.          │
+   └────────────────────────┬────────────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────────────┐
+   │ STUFE 3 — WAS IST ES WERT?                              │
+   │ DCF · Multiples · Peer-Vergleich · Historik              │
+   └────────────────────────┬────────────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────────────┐
+   │ STUFE 4 — IST ES GÜNSTIG GENUG?                         │
+   │ Sicherheitsmarge ≥ Schwellenwert?                        │
+   │ ✗ Nein → auf die Watchlist. Nicht kaufen.                │
+   └─────────────────────────────────────────────────────────┘</pre>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-filterkaskade.svg" aria-label="Trichter mit vier Stufen der Fundamentalanalyse, sich nach unten verjüngend"></object>
+    <figcaption>Die Filterkaskade — von 500 Kandidaten bleiben nach vier Stufen typischerweise ein bis zwei</figcaption>
+  </figure>
+
+  <p><strong>Der häufigste Fehler in der Fundamentalanalyse ist, mit Stufe 3 zu beginnen.</strong> Man findet ein niedriges KGV, wird neugierig und rationalisiert anschließend Qualität und Verständnis hinzu. Das ist die Mechanik jeder Value-Falle.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Ein schlechtes Unternehmen wird durch einen niedrigen Preis nicht zu einem guten Investment. Es wird nur zu einem billigen schlechten Unternehmen.</p>
+  </div>
+
+  <h2 style="border-bottom:0; margin-top:4rem; color:var(--neon); letter-spacing:0.04em;">Teil A — Qualitative Analyse</h2>
+
+  <!-- 2.1 -->
+  <h2><span class="num">2.1</span>Das Geschäftsmodell</h2>
+  <h3>Der Vier-Sätze-Test</h3>
+  <p>Du hast ein Geschäftsmodell verstanden, wenn du diese vier Fragen ohne Nachschlagen beantworten kannst:</p>
+  <ol>
+    <li><strong>Womit verdient das Unternehmen konkret Geld?</strong> (Nicht: „mit Software" — sondern: „mit Abonnements für X, die pro Nutzer und Monat Y kosten und im Durchschnitt Z Jahre laufen.")</li>
+    <li><strong>Wer bezahlt, und warum bezahlt er lieber hier als woanders?</strong></li>
+    <li><strong>Was müsste passieren, damit dieser Umsatz wegfällt?</strong></li>
+    <li><strong>Wächst der Umsatz durch mehr Kunden, höhere Preise oder mehr Produkte pro Kunde?</strong></li>
+  </ol>
+
+  <h3>Umsatzqualität — nicht jeder Euro Umsatz ist gleich viel wert</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Umsatztyp</th><th>Merkmal</th><th>Bewertungsaufschlag</th><th>Beispiel</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Wiederkehrend, vertraglich</strong></td><td>Abo, Lizenz, Wartungsvertrag</td><td class="hl">hoch</td><td>Microsoft 365, Adobe</td></tr>
+        <tr><td><strong>Wiederkehrend, verhaltensbasiert</strong></td><td>Kunde kommt aus Gewohnheit wieder</td><td class="hl">hoch</td><td>Costco (Mitgliedschaft), Visa (Transaktionen)</td></tr>
+        <tr><td><strong>Verbrauchsmaterial</strong></td><td>Gerät einmal, Verbrauch immer wieder</td><td class="hl">hoch</td><td>Drucker/Toner, Kaffeekapseln</td></tr>
+        <tr><td><strong>Projektgeschäft</strong></td><td>Jeder Auftrag muss neu gewonnen werden</td><td>mittel</td><td>Bauunternehmen, Beratung</td></tr>
+        <tr><td><strong>Zyklisch</strong></td><td>Nachfrage schwankt mit der Konjunktur</td><td>niedrig</td><td>Autohersteller, Chemie, Stahl</td></tr>
+        <tr><td><strong>Einmalig / transaktional</strong></td><td>Große Anschaffung, dann nichts</td><td>niedrig</td><td>Möbel, Immobilien</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Praxisbeispiel — derselbe Sektor, zwei Umsatzqualitäten:</strong></p>
+  <p><em>Visa</em> verdient an jeder Kartentransaktion einen Bruchteil des Volumens. Das Volumen wächst mit dem globalen Konsum, mit der Inflation und mit der Verdrängung von Bargeld. Visa muss keinen einzigen Kunden neu gewinnen, damit der Umsatz steigt — es genügt, dass bestehende Kunden mehr ausgeben. Die operative Marge liegt in der Größenordnung von 65 %.</p>
+  <p><em>Eine Regionalbank</em> verdient an Zinsdifferenzen. Der Umsatz hängt vom Zinsniveau ab, das sie nicht beeinflusst, und vom Kreditrisiko, das erst mit Verzögerung sichtbar wird. Der Umsatz ist wiederkehrend, aber die Ertragskraft ist es nicht.</p>
+
+  <h3>Zyklik erkennen</h3>
+  <p>Ein zyklisches Unternehmen ist nicht schlechter — aber es wird <strong>anders bewertet</strong>, und es kann mit den Standardkennzahlen nicht sinnvoll analysiert werden. Zykliker haben ihr <strong>höchstes KGV im Tief</strong> (weil der Gewinn eingebrochen ist) und ihr <strong>niedrigstes KGV im Hoch</strong> (weil der Gewinn auf einem nicht haltbaren Niveau steht).</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>Bei Zyklikern ist ein niedriges KGV ein Warnsignal, kein Kaufsignal.</p>
+  </div>
+
+  <p>Erkennungsmerkmale von Zyklik:</p>
+  <ul>
+    <li>Umsatz oder EBIT sind in den letzten 15 Jahren mindestens einmal um über 30 % eingebrochen</li>
+    <li>Das Unternehmen ist Preisnehmer, nicht Preissetzer</li>
+    <li>Das Produkt ist ein Rohstoff, eine Vorleistung oder eine Investitionsgüter-Anschaffung</li>
+  </ul>
+
+  <!-- 2.2 -->
+  <h2><span class="num">2.2</span>Der Burggraben (Economic Moat)</h2>
+  <p>Ein Burggraben ist <strong>kein Vorteil</strong>. Ein Burggraben ist ein <strong>Mechanismus, der einen Vorteil gegen Wettbewerb verteidigt</strong>. Der Unterschied ist entscheidend: Ein Vorteil ohne Verteidigungsmechanismus wird wegkonkurriert. Genau das erwartet die Ökonomie vom Normalfall.</p>
+  <p><strong>Der ökonomische Test:</strong> Ein Unternehmen hat einen Burggraben, wenn es <strong>über einen langen Zeitraum eine Kapitalrendite (ROIC) deutlich über seinen Kapitalkosten (WACC) erzielt, ohne dass diese Rendite von Wettbewerbern eingeholt wird.</strong></p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-roic-wacc.svg" aria-label="Zwei ROIC-Verläufe über zehn Jahre gegen eine horizontale WACC-Linie: einer bleibt stabil hoch, einer konvergiert nach unten"></object>
+    <figcaption>Burggraben (oben, ROIC bleibt hoch) vs. kein Burggraben (unten, ROIC erodiert gegen die WACC)</figcaption>
+  </figure>
+
+  <h3>Die fünf Quellen</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>#</th><th>Quelle</th><th>Mechanismus</th><th>Wie du sie prüfst</th><th>Beispiel</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td><strong>Immaterielle Vermögenswerte</strong></td><td>Marke, Patente, Zulassungen</td><td>Kann das Unternehmen Preise über dem Marktniveau durchsetzen? Laufen Patente aus — wann?</td><td>Novo Nordisk (Patente), Luxusmarken</td></tr>
+        <tr><td><strong>2</strong></td><td><strong>Wechselkosten</strong></td><td>Der Wechsel kostet Geld, Zeit oder Risiko</td><td>Wie lange dauert eine Migration? Was passiert bei einem Fehler?</td><td>SAP, Microsoft (ERP/Office), Banken-Kernsysteme</td></tr>
+        <tr><td><strong>3</strong></td><td><strong>Netzwerkeffekt</strong></td><td>Jeder neue Nutzer erhöht den Wert für alle</td><td>Wird das Produkt besser, wenn mehr Leute es nutzen?</td><td>Visa, Meta, Marktplätze, Börsen</td></tr>
+        <tr><td><strong>4</strong></td><td><strong>Kostenvorteil</strong></td><td>Skalen-, Prozess- oder Standortvorteil</td><td>Ist die Kostenposition strukturell oder nur aktuell?</td><td>Costco (Einkaufsmacht), Amazon (Logistik)</td></tr>
+        <tr><td><strong>5</strong></td><td><strong>Effiziente Skalierung</strong></td><td>Der Markt ist zu klein für einen zweiten Anbieter</td><td>Würde ein zweiter Anbieter beide unprofitabel machen?</td><td>Netzbetreiber, Flughäfen, ASML (faktisch)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Das mächtigste Prüfkriterium: Preissetzungsmacht</h3>
+  <p>Frage: <strong>Könnte dieses Unternehmen seine Preise um 10 % erhöhen, ohne signifikant Kunden zu verlieren?</strong></p>
+  <ul>
+    <li><strong>Ja, mühelos</strong> → starker Burggraben. <em>(ASML: Es gibt keinen zweiten Anbieter für EUV-Lithografie.)</em></li>
+    <li><strong>Ja, mit etwas Reibung</strong> → vorhandener Burggraben. <em>(Costco: Die Mitgliedsgebühr wurde über Jahrzehnte mehrfach erhöht, die Erneuerungsquote blieb bei rund 90 %.)</em></li>
+    <li><strong>Nein</strong> → kein Burggraben, unabhängig davon, was das Management erzählt. <em>(Fluggesellschaften, Bauunternehmen, die meisten Einzelhändler.)</em></li>
+  </ul>
+
+  <h3>Burggräben erodieren</h3>
+  <p><strong>Praxisbeispiel — Intel.</strong> Über Jahrzehnte war Intel das Lehrbuchbeispiel für einen Kostenvorteil durch Fertigungsführerschaft: eigene Fabs, überlegener Fertigungsprozess, x86-Architektur als Quasi-Standard. Bruttomargen über 60 %. Dann verlor Intel den Prozessvorsprung an TSMC, verpasste den Wechsel zu Mobile und später zu KI-Beschleunigern. Der Burggraben war real — und er ist verschwunden. Das Unternehmen schrieb 2024 einen Milliardenverlust.</p>
+  <p>Die Lehre ist nicht „Intel war ein schlechtes Unternehmen". Die Lehre ist: <strong>Ein Burggraben ist eine Momentaufnahme, keine Eigenschaft.</strong> Er muss bei jeder Überprüfung neu belegt werden — das ist ein Teil deines Falsifikationskriteriums aus Modul 1.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Prüfe nicht, ob ein Unternehmen einen Burggraben <em>hat</em>. Prüfe, ob er <strong>breiter oder schmaler wird</strong>.</p>
+  </div>
+
+  <!-- 2.3 -->
+  <h2><span class="num">2.3</span>Management</h2>
+  <p>Management ist der am schwersten zu quantifizierende und am leichtesten zu manipulierende Analysebereich. Deshalb gilt: <strong>Bewerte, was das Management getan hat, nicht was es sagt.</strong></p>
+
+  <h3>Die einzige Frage, die wirklich zählt: Kapitalallokation</h3>
+  <p>Ein CEO hat im Wesentlichen fünf Verwendungen für jeden verdienten Euro:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Verwendung</th><th>Wann sinnvoll</th><th>Warnzeichen</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Reinvestition ins Kerngeschäft</strong></td><td>Wenn ROIC &gt; WACC</td><td>Investition trotz sinkender Kapitalrendite</td></tr>
+        <tr><td><strong>Übernahmen</strong></td><td>Wenn günstig gekauft und integrierbar</td><td>Serienübernahmen, hohe Goodwill-Abschreibungen</td></tr>
+        <tr><td><strong>Aktienrückkäufe</strong></td><td>Wenn die Aktie <strong>unter</strong> dem fairen Wert steht</td><td>Rückkäufe auf Allzeithoch; Rückkäufe, die nur Verwässerung durch Aktienoptionen ausgleichen</td></tr>
+        <tr><td><strong>Dividende</strong></td><td>Wenn keine bessere Verwendung existiert</td><td>Dividende auf Kredit; Dividende trotz Investitionsstau</td></tr>
+        <tr><td><strong>Schulden tilgen</strong></td><td>Wenn die Bilanz angespannt ist</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Praxisbeispiel — Bayer/Monsanto.</strong> Bayer übernahm 2018 Monsanto für rund 63 Mrd. USD. Die Übernahme brachte nicht nur ein Geschäft, sondern auch das Glyphosat-Prozessrisiko. In den Folgejahren führten Rechtsstreitigkeiten und Wertberichtigungen dazu, dass der Konzern über weite Strecken <strong>weniger wert war als der Kaufpreis der Übernahme allein</strong>. Eine einzige Kapitalallokationsentscheidung hat den Aktionärswert eines 150 Jahre alten Konzerns dominiert. Kein Bericht über „Innovationskraft" oder „Nachhaltigkeitsstrategie" hätte das kompensiert.</p>
+
+  <h3>Konkrete, prüfbare Signale</h3>
+  <p><strong>Positiv:</strong></p>
+  <ul>
+    <li>Der CEO hält bedeutende Aktien, die er <strong>gekauft</strong> hat (nicht: die er als Vergütung erhalten hat)</li>
+    <li>Der Geschäftsbericht benennt Fehler explizit</li>
+    <li>Die langfristige Vergütung ist an <strong>ROIC oder Gewinn je Aktie</strong> gekoppelt, nicht an Umsatz oder „adjusted EBITDA"</li>
+    <li>Aktienanzahl sinkt über die Jahre — echte Rückkäufe, nicht nur Kompensation von Optionsprogrammen</li>
+    <li>Geringe Fluktuation im Führungsteam</li>
+  </ul>
+  <p><strong>Negativ:</strong></p>
+  <ul>
+    <li>Vergütung an Umsatzwachstum oder Unternehmensgröße gekoppelt (Anreiz zu wertvernichtenden Übernahmen)</li>
+    <li>Hoher und steigender Anteil aktienbasierter Vergütung, der in den „adjusted"-Kennzahlen herausgerechnet wird</li>
+    <li>Häufiger Wechsel des CFO</li>
+    <li>Die berichteten „bereinigten" Gewinne liegen dauerhaft weit über den ausgewiesenen — und werden Jahr für Jahr um dieselben „einmaligen" Sondereffekte bereinigt</li>
+  </ul>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Wenn eine Belastung jedes Jahr auftritt, ist sie kein Sondereffekt, sondern ein Kostenblock.</p>
+  </div>
+
+  <h2 style="border-bottom:0; margin-top:4rem; color:var(--neon); letter-spacing:0.04em;">Teil B — Die Zahlen lesen</h2>
+
+  <!-- 2.4 -->
+  <h2><span class="num">2.4</span>Umsatzentwicklung</h2>
+  <p><strong>Definition:</strong> Erlöse aus der gewöhnlichen Geschäftstätigkeit, vor allen Kosten. Die oberste Zeile der Gewinn- und Verlustrechnung („Top Line").</p>
+  <p><strong>Formel — Durchschnittliches jährliches Wachstum (CAGR):</strong></p>
+  <div class="ak-formula">CAGR = (Endwert / Anfangswert)^(1/n) − 1</div>
+
+  <p><strong>Interpretation:</strong> Umsatz ist die einzige Zahl in der GuV, die sich nur schwer manipulieren lässt — und selbst das gelingt (Wirecard). Wichtiger als die Höhe des Wachstums ist seine <strong>Zusammensetzung</strong>:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Wachstumsquelle</th><th>Qualität</th><th>Woran erkennbar</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Organisch, Menge</strong></td><td class="check">ausgezeichnet</td><td>Mehr Kunden / mehr Nutzung, ohne Übernahmen</td></tr>
+        <tr><td><strong>Organisch, Preis</strong></td><td class="check">sehr gut — beweist Burggraben</td><td>Umsatz wächst stärker als Menge</td></tr>
+        <tr><td><strong>Übernahmen</strong></td><td>fragwürdig</td><td>Umsatz springt, Goodwill in der Bilanz steigt</td></tr>
+        <tr><td><strong>Währungseffekte</strong></td><td>irrelevant</td><td>Differenz zwischen berichtetem und währungsbereinigtem Wachstum</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Vorteile:</strong> Schwer zu fälschen, gut vergleichbar, früher Indikator.<br>
+  <strong>Nachteile:</strong> Sagt nichts über Profitabilität. Umsatzwachstum, das Kapital vernichtet, ist schädlich, nicht neutral.</p>
+  <p><strong>Wann sinnvoll:</strong> Immer, als erste Zeile jeder Analyse.<br>
+  <strong>Wann ungeeignet:</strong> Als alleiniges Erfolgsmaß. „Umsatz ist Eitelkeit, Gewinn ist Vernunft, Cash ist Realität."</p>
+
+  <p><strong>Praxisbeispiel:</strong> <em>NVIDIA</em> steigerte den Umsatz im Geschäftsjahr 2025 auf rund 130 Mrd. USD, mehr als eine Verdopplung gegenüber dem Vorjahr — getrieben von Rechenzentrums-GPUs, also <strong>organisch und mengengetrieben bei gleichzeitig steigenden Preisen</strong>. Das ist die höchstwertige Form von Wachstum, die es gibt.<br>
+  <em>Amazon</em> wuchs 2024 auf rund 638 Mrd. USD — ebenfalls organisch, aber im margenschwachen Handelsgeschäft. Derselbe Umsatzzuwachs ist bei den beiden Unternehmen wirtschaftlich völlig unterschiedlich viel wert.</p>
+  <p style="font-size:0.85rem; color:var(--text-3); font-style:italic;">Zahlen gerundet und illustrativ. Im Kalkulator mit aktuellen Daten nachrechnen.</p>
+
+  <!-- 2.5 -->
+  <h2><span class="num">2.5</span>Gewinnentwicklung</h2>
+  <p><strong>Definition:</strong> Was nach allen Kosten, Zinsen und Steuern übrig bleibt („Bottom Line", Nettogewinn).</p>
+  <p><strong>Das Problem:</strong> Der Nettogewinn ist die am stärksten manipulierbare Zahl der gesamten Rechnungslegung. Abschreibungsdauern, Rückstellungen, Wertberichtigungen, Umsatzrealisierung — alle enthalten Ermessensspielraum.</p>
+
+  <p><strong>Die Gewinnstufen und was sie taugen:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Stufe</th><th>Was sie enthält</th><th>Manipulierbarkeit</th><th>Nutzen</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Bruttogewinn</strong></td><td>Umsatz − Herstellkosten</td><td>gering</td><td>Zeigt Preissetzungsmacht</td></tr>
+        <tr><td><strong>EBITDA</strong></td><td>vor Zinsen, Steuern, Abschreibungen</td><td class="hl">hoch</td><td>⚠ siehe unten</td></tr>
+        <tr><td><strong>EBIT (operatives Ergebnis)</strong></td><td>vor Zinsen und Steuern</td><td>mittel</td><td><strong>Bester Vergleichsmaßstab über Länder/Kapitalstrukturen</strong></td></tr>
+        <tr><td><strong>Nettogewinn</strong></td><td>nach allem</td><td>mittel–hoch</td><td>Basis für EPS und KGV</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die EBITDA-Warnung</h3>
+  <p>EBITDA rechnet Abschreibungen heraus — mit der Begründung, sie seien „nicht zahlungswirksam". Das stimmt für das laufende Jahr. Es ist trotzdem irreführend: Abschreibungen sind die <strong>buchhalterische Verteilung einer sehr realen Zahlung</strong>, die entweder in der Vergangenheit stattfand oder in der Zukunft wieder stattfinden muss. Eine Maschine, die abgeschrieben ist, muss ersetzt werden.</p>
+  <p>EBITDA ist deshalb bei kapitalintensiven Unternehmen (Telekom, Industrie, Netzbetreiber) <strong>systematisch schmeichelhaft</strong> und wird von genau diesen Unternehmen bevorzugt berichtet. Bei kapitalarmen Unternehmen (Software, Zahlungsdienstleister) ist die Differenz zwischen EBITDA und EBIT klein — dort ist es unproblematisch.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Je lauter ein Unternehmen über EBITDA spricht, desto genauer solltest du dir seine Investitionsausgaben ansehen.</p>
+  </div>
+
+  <h3>Gewinnqualität prüfen</h3>
+  <p>Der schnellste Test: <strong>Vergleiche den Nettogewinn mit dem operativen Cashflow über 5 Jahre.</strong></p>
+
+  <pre class="ak-pre">   Wenn  Operativer Cashflow  ≈  Nettogewinn   →  gesunde Gewinnqualität
+   Wenn  Operativer Cashflow  &lt;  Nettogewinn   →  ⚠ Gewinne sind buchhalterisch,
+                                                    nicht zahlungswirksam</pre>
+
+  <p>Klafft die Lücke dauerhaft, gibt es genau drei Erklärungen: Die Forderungen wachsen schneller als der Umsatz (Kunden zahlen nicht), die Lager wachsen (Ware verkauft sich nicht), oder es wird aggressiv Umsatz realisiert, der noch nicht verdient ist. Alle drei sind schlechte Nachrichten.</p>
+
+  <p><strong>Praxisbeispiel — Wirecard.</strong> Wirecard wies über Jahre steigende Gewinne aus. Die entscheidende Anomalie war nicht in der GuV sichtbar, sondern in der Bilanz und im Cashflow: Ein wachsender Anteil des Vermögens bestand aus Guthaben auf Treuhandkonten in Asien, die niemand extern verifizieren konnte. Der operative Cashflow blieb hinter dem Gewinn zurück. <strong>Die Zahl, die fehlte, war das Geld.</strong></p>
+
+  <!-- 2.6 -->
+  <h2><span class="num">2.6</span>Free Cash Flow</h2>
+  <p><strong>Definition:</strong> Der Zahlungsmittelüberschuss, der nach allen operativen Ausgaben und den Investitionen zur Aufrechterhaltung und Erweiterung des Geschäfts übrig bleibt. Das ist das Geld, das dem Unternehmen tatsächlich <strong>frei zur Verfügung</strong> steht — für Dividenden, Rückkäufe, Schuldentilgung oder Übernahmen.</p>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">Free Cash Flow  =  Operativer Cashflow  −  Investitionen (CapEx)</div>
+
+  <p><strong>Warum FCF wichtiger ist als der Gewinn:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Nettogewinn</th><th>Free Cash Flow</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Beruht auf</strong></td><td>Schätzungen, Periodenabgrenzung, Ermessen</td><td>tatsächlichen Zahlungsströmen</td></tr>
+        <tr><td><strong>Manipulierbar</strong></td><td>ja, erheblich</td><td>schwer, und nie über mehrere Jahre</td></tr>
+        <tr><td><strong>Basis für DCF</strong></td><td>nein</td><td class="check">ja</td></tr>
+        <tr><td><strong>Bezahlt Dividenden</strong></td><td>nein</td><td class="check">ja</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Vorteile:</strong> Die ehrlichste Zahl im Abschluss. Grundlage jeder seriösen Bewertung.<br>
+  <strong>Nachteile:</strong> Schwankt stark (große Einzelinvestitionen verzerren einzelne Jahre). Muss geglättet oder normalisiert werden. Bei stark wachsenden Unternehmen kann er negativ sein, <strong>ohne</strong> dass etwas falsch läuft.</p>
+  <p><strong>Wann sinnvoll:</strong> Bei reifen Unternehmen mit stabilem Investitionsbedarf. Immer über einen Mehrjahresdurchschnitt.<br>
+  <strong>Wann ungeeignet:</strong> Bei jungen, stark investierenden Unternehmen; bei Banken und Versicherungen (dort ist der Cashflow-Begriff strukturell anders); bei Unternehmen mit einem einmaligen Großprojekt im Betrachtungsjahr.</p>
+
+  <h3>Der Stock-Based-Compensation-Fallstrick</h3>
+  <p>Der operative Cashflow rechnet aktienbasierte Vergütung (SBC) als „nicht zahlungswirksamen Aufwand" wieder hinzu. Formal korrekt: Es fließt kein Geld ab. <strong>Wirtschaftlich ist es aber ein sehr realer Kostenblock</strong> — die Altaktionäre werden verwässert, ihr Anteil am Unternehmen sinkt.</p>
+  <p>Bei Technologieunternehmen kann SBC 10–20 % des Umsatzes erreichen. Ein FCF, der SBC ignoriert, ist dort systematisch zu hoch.</p>
+  <p><strong>Prüfe deshalb immer:</strong> Sinkt die Aktienanzahl trotz Rückkaufprogramm <strong>nicht</strong>? Dann werden die Rückkäufe vollständig von der Verwässerung aufgefressen — das Unternehmen kauft keine Aktien zurück, es bezahlt seine Mitarbeiter.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-cashflow-gewinn.svg" aria-label="Zwei Verläufe über mehrere Jahre: Nettogewinn und operativer Cashflow — im gesunden Fall parallel, im Warnfall auseinanderlaufend"></object>
+    <figcaption>Cashflow vs. Gewinn — wo sich die beiden Linien trennen, beginnt die Gewinnqualitätsfrage</figcaption>
+  </figure>
+
+  <p><strong>Praxisbeispiel:</strong> <em>Apple</em> erzielte im Geschäftsjahr 2024 einen Free Cash Flow in der Größenordnung von 109 Mrd. USD bei rund 391 Mrd. USD Umsatz — eine <strong>FCF-Marge von etwa 28 %</strong>. Gleichzeitig sank die Aktienanzahl über die Jahre erheblich. Das ist die Kombination, die man sucht: hohe Cash-Generierung <strong>und</strong> tatsächliche Reduktion der Aktienanzahl.</p>
+  <p style="font-size:0.85rem; color:var(--text-3); font-style:italic;">Zahlen gerundet und illustrativ.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Gewinne sind eine Meinung. Cash ist eine Tatsache.</p>
+  </div>
+
+  <!-- 2.7 -->
+  <h2><span class="num">2.7</span>Margen</h2>
+  <p>Margen messen, <strong>wie viel von jedem Euro Umsatz beim Unternehmen hängen bleibt</strong>. Sie sind der direkteste quantitative Indikator für einen Burggraben.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Marge</th><th>Formel</th><th>Was sie misst</th><th>Aussagekraft</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Bruttomarge</strong></td><td>Bruttogewinn / Umsatz</td><td>Preissetzungsmacht ggü. Kunden und Lieferanten</td><td class="hl"><strong>Höchste</strong> — hier zeigt sich der Moat zuerst</td></tr>
+        <tr><td><strong>Operative Marge (EBIT-Marge)</strong></td><td>EBIT / Umsatz</td><td>Effizienz des Gesamtbetriebs</td><td>Hoch — bester Vergleichsmaßstab</td></tr>
+        <tr><td><strong>Nettomarge</strong></td><td>Nettogewinn / Umsatz</td><td>Was nach allem übrig bleibt</td><td>Mittel — von Steuern &amp; Kapitalstruktur verzerrt</td></tr>
+        <tr><td><strong>FCF-Marge</strong></td><td>FCF / Umsatz</td><td>Wie viel echtes Geld je Umsatz-Euro</td><td>Hoch — die ehrlichste Marge</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Das Niveau ist branchenabhängig — die Richtung ist es nicht</h3>
+  <p>Ein Vergleich der Nettomarge zwischen Costco (~3 %) und Visa (~55 %) ist bedeutungslos. Beide sind exzellente Unternehmen. Sinnvoll sind nur zwei Vergleiche:</p>
+  <ol>
+    <li><strong>Das Unternehmen gegen sich selbst über Zeit</strong> — steigt oder fällt die Marge?</li>
+    <li><strong>Das Unternehmen gegen direkte Wettbewerber</strong> — im selben Geschäftsmodell.</li>
+  </ol>
+
+  <h3>Was Margenentwicklung verrät</h3>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-margen.svg" aria-label="Drei Margenverläufe über zehn Jahre: stabil hoch, steigend, fallend — jeweils mit Interpretationslegende"></object>
+    <figcaption>Drei Muster im Margenverlauf — stabil (Moat intakt), steigend (Skaleneffekte), fallend (Warnsignal)</figcaption>
+  </figure>
+
+  <p><strong>Eine fallende Bruttomarge ist eines der frühesten und zuverlässigsten Warnsignale überhaupt.</strong> Sie bedeutet fast immer: Das Unternehmen kann seine Preise nicht mehr durchsetzen. Sie erscheint typischerweise <strong>Jahre</strong> vor dem Kurseinbruch.</p>
+
+  <p><strong>Praxisbeispiel:</strong> <em>Intel</em> wies über lange Zeit Bruttomargen um 60 % aus. Mit dem Verlust der Fertigungsführerschaft und steigenden Fab-Investitionen brach die Bruttomarge deutlich ein. Wer nur den Kurs beobachtete, sah lange nichts. Wer die Bruttomarge beobachtete, sah es früh.</p>
+
+  <p><strong>Praxisbeispiel — hohe Marge als Moat-Beweis:</strong> <em>NVIDIA</em> erreichte in der KI-Hochphase Bruttomargen um 75 %. Eine Bruttomarge von 75 % bei Hardware ist ökonomisch nur erklärbar, wenn es faktisch keinen gleichwertigen Wettbewerber gibt. Genau das ist die Aussage der Zahl — und genau deshalb ist ihre künftige Entwicklung das wichtigste Falsifikationskriterium für jede NVIDIA-These.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Die Bruttomarge ist das Fieberthermometer des Burggrabens. Sie fällt, bevor der Kurs fällt.</p>
+  </div>
+
+  <!-- 2.8 -->
+  <h2><span class="num">2.8</span>Eigenkapital und Verschuldung</h2>
+  <h3>Eigenkapital</h3>
+  <p><strong>Definition:</strong> Vermögen minus Schulden. Der buchhalterische Anteil der Aktionäre.</p>
+  <p><strong>Wichtiger Vorbehalt:</strong> Das bilanzielle Eigenkapital sagt bei modernen Unternehmen <strong>fast nichts</strong> über den Wert aus. Der Wert von Apple liegt nicht in Gebäuden, sondern in Marke, Ökosystem und Kundenbindung — und die stehen nicht in der Bilanz. Umgekehrt kann das Eigenkapital durch <strong>Goodwill</strong> aus teuren Übernahmen künstlich aufgebläht sein.</p>
+  <p><strong>Prüfe deshalb immer:</strong></p>
+  <div class="ak-formula">Materielles Eigenkapital  =  Eigenkapital  −  Goodwill  −  immaterielle VG</div>
+  <p>Ist das materielle Eigenkapital negativ, während das bilanzielle positiv ist, besteht ein großer Teil der Bilanz aus Kaufpreisen für Übernahmen, die noch nicht abgeschrieben wurden. Das ist ein Abschreibungsrisiko.</p>
+  <p><strong>Negatives Eigenkapital</strong> ist nicht automatisch ein Alarmsignal: Unternehmen mit hohen Aktienrückkäufen (z. B. Starbucks, zeitweise auch andere) können ein negatives bilanzielles Eigenkapital haben, weil zurückgekaufte Aktien das Eigenkapital mindern. Bei einem hochprofitablen, cashstarken Unternehmen ist das eine Kapitalstrukturentscheidung, kein Insolvenzrisiko. <strong>Bei einem unprofitablen Unternehmen ist es genau das.</strong></p>
+
+  <h3>Verschuldung</h3>
+  <p><strong>Die relevante Kennzahl ist nicht die absolute Schuldenhöhe, sondern die Tragfähigkeit.</strong></p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Kennzahl</th><th>Formel</th><th>Schwellenwert (Faustregel)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Nettoverschuldung</strong></td><td>Finanzschulden − liquide Mittel</td><td>—</td></tr>
+        <tr><td><strong>Nettoverschuldung / EBITDA</strong></td><td>—</td><td>≤ 3× unkritisch · &gt; 4× angespannt</td></tr>
+        <tr><td><strong>Nettoverschuldung / EBIT</strong></td><td>—</td><td>≤ 4× (strenger, im FVP-Qualitätsscore verwendet)</td></tr>
+        <tr><td><strong>Zinsdeckungsgrad</strong></td><td>EBIT / Zinsaufwand</td><td>≥ 5× solide · &lt; 2× <strong>gefährlich</strong></td></tr>
+        <tr><td><strong>Eigenkapitalquote</strong></td><td>Eigenkapital / Bilanzsumme</td><td>branchenabhängig, &gt; 30 % meist solide</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Der Zinsdeckungsgrad ist die wichtigste dieser Kennzahlen.</strong> Er beantwortet: <em>Wie oft könnte das Unternehmen seine Zinsen aus dem operativen Ergebnis bezahlen?</em> Ein Zinsdeckungsgrad unter 2 bedeutet: Ein einziges schlechtes Jahr, und das Unternehmen kann seine Zinsen nicht mehr bedienen.</p>
+  <p><strong>Verschuldung ist ein Verstärker, kein Risiko an sich.</strong> Sie erhöht die Eigenkapitalrendite in guten Zeiten und vernichtet das Unternehmen in schlechten. Ein zyklisches Unternehmen mit hoher Verschuldung ist die gefährlichste Kombination in der gesamten Aktienanalyse — weil beide Risiken <strong>gleichzeitig</strong> eintreten.</p>
+  <p>Nicht zu vergessen: <strong>Leasingverbindlichkeiten und Pensionsrückstellungen</strong> sind wirtschaftlich Schulden, auch wenn sie manchmal nicht als solche präsentiert werden. Bei Einzelhändlern (Leasing) und deutschen Industriekonzernen (Pensionen) sind sie erheblich.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 8</strong>Schulden töten Unternehmen nicht wegen ihrer Höhe, sondern wegen ihres Zeitpunkts. Sie werden immer dann fällig, wenn es am ungünstigsten ist.</p>
+  </div>
+
+  <!-- 2.9 -->
+  <h2><span class="num">2.9</span>Kapitalrendite: ROE, ROIC, ROCE</h2>
+  <p>Dies ist die <strong>wichtigste Kennzahlengruppe der gesamten Fundamentalanalyse.</strong> Sie beantwortet die Frage, um die es im Kapitalismus ausschließlich geht: <em>Wie viel verdient dieses Unternehmen mit dem Geld, das man ihm anvertraut?</em></p>
+
+  <h3>ROE — Eigenkapitalrendite</h3>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">ROE = Nettogewinn / Eigenkapital</div>
+  <p><strong>Interpretation:</strong> Rendite auf das Kapital der Aktionäre.</p>
+  <p><strong>Der große Nachteil:</strong> ROE ist durch <strong>Verschuldung und Aktienrückkäufe manipulierbar</strong>. Beides senkt das Eigenkapital (den Nenner) und erhöht damit den ROE, ohne dass das Unternehmen operativ besser geworden wäre.</p>
+  <p><strong>Praxisbeispiel — die ROE-Falle:</strong> <em>Apple</em> weist eine Eigenkapitalrendite in der Größenordnung von <strong>150 %</strong> aus. Das ist keine Aussage über Apples operative Qualität, sondern im Wesentlichen eine Folge jahrelanger massiver Aktienrückkäufe, die das bilanzielle Eigenkapital auf einen kleinen Rest zusammengeschrumpft haben. Der Nenner ist winzig. Ein direkter ROE-Vergleich zwischen Apple (~150 %) und Microsoft (~33 %) sagt <strong>nichts</strong> darüber aus, welches Unternehmen besser wirtschaftet.</p>
+
+  <p><strong>Die DuPont-Zerlegung</strong> entlarvt das:</p>
+  <div class="ak-formula">ROE  =  Nettomarge  ×  Kapitalumschlag  ×  Finanzhebel
+        └─ Profit ─┘   └─ Effizienz ─┘   └─ Leverage ─┘</div>
+  <p>Steigt der ROE nur, weil der dritte Faktor steigt, ist das keine gute Nachricht — es ist mehr Risiko.</p>
+
+  <h3>ROIC — Return on Invested Capital ⭐</h3>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">ROIC = NOPAT / Investiertes Kapital
+
+NOPAT                = EBIT × (1 − Steuersatz)
+Investiertes Kapital = Eigenkapital + verzinsliche Schulden − liquide Mittel</div>
+
+  <p><strong>Warum ROIC die beste Kennzahl ist:</strong> Sie misst die Rendite auf <strong>das gesamte eingesetzte Kapital</strong>, unabhängig davon, ob es von Aktionären oder Gläubigern kommt. Der Finanzhebel-Trick funktioniert hier nicht.</p>
+
+  <h3>Die zentrale Gleichung</h3>
+  <div class="ak-formula">ROIC  &gt;  WACC     →   Wachstum schafft Wert.   Reinvestieren!
+ROIC  =  WACC     →   Wachstum ist wertneutral.
+ROIC  &lt;  WACC     →   Wachstum ZERSTÖRT Wert.  Nicht wachsen — ausschütten!</div>
+
+  <p>Das ist die wichtigste Zeile in diesem Modul.</p>
+  <p>Ein Unternehmen mit einem ROIC von 8 % und Kapitalkosten von 10 %, das seinen Umsatz verdoppelt, <strong>vernichtet Geld doppelt so schnell</strong>. Wachstum ist kein Selbstzweck. Es ist nur dann gut, wenn die Rendite auf das dafür eingesetzte Kapital über den Kapitalkosten liegt.</p>
+  <p><strong>Das ist der Grund, warum viele Wachstumsstorys scheitern</strong>, und der Grund, warum ein langweiliges Unternehmen mit 25 % ROIC und 4 % Wachstum ein besseres Investment sein kann als ein spannendes mit 6 % ROIC und 30 % Wachstum.</p>
+
+  <h3>Orientierungswerte</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>ROIC</th><th>Bewertung</th></tr></thead>
+      <tbody>
+        <tr><td class="hl"><strong>&gt; 20 %</strong></td><td>Exzellent — starker Burggraben sehr wahrscheinlich</td></tr>
+        <tr><td><strong>12–20 %</strong></td><td>Gut — Wert wird geschaffen</td></tr>
+        <tr><td><strong>8–12 %</strong></td><td>Grenzbereich — knapp über/unter den Kapitalkosten</td></tr>
+        <tr><td><strong>&lt; 8 %</strong></td><td>Kritisch — Wachstum vernichtet vermutlich Wert</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Wann ROIC ungeeignet ist:</strong> Bei Banken und Versicherungen (dort ist „investiertes Kapital" begrifflich anders definiert; dort ist ROE die passende Kennzahl). Bei Unternehmen mit riesigem Goodwill aus Übernahmen (das investierte Kapital enthält dann Kaufpreise, nicht produktives Vermögen — beide Varianten, mit und ohne Goodwill, betrachten).</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 9</strong>ROIC über WACC ist die einzige Definition von unternehmerischem Erfolg, die keiner Interpretation bedarf.</p>
+  </div>
+
+  <h2 style="border-bottom:0; margin-top:4rem; color:var(--neon); letter-spacing:0.04em;">Teil C — Bewertung</h2>
+
+  <!-- 2.10 -->
+  <h2><span class="num">2.10</span>EPS — Gewinn je Aktie</h2>
+  <p><strong>Definition:</strong> Der Nettogewinn, aufgeteilt auf die ausstehenden Aktien.</p>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">EPS = (Nettogewinn − Vorzugsdividenden) / durchschnittliche Aktienanzahl (verwässert)</div>
+  <p><strong>Immer die verwässerte (diluted) Anzahl verwenden</strong> — sie berücksichtigt Aktienoptionen und Wandelanleihen, die künftig zu neuen Aktien werden.</p>
+
+  <p><strong>Der entscheidende Punkt:</strong> Das EPS kann steigen, <strong>ohne dass der Gewinn steigt</strong> — nämlich durch Aktienrückkäufe (der Nenner sinkt). Das ist nicht per se schlecht: Wenn das Unternehmen eigene Aktien <strong>unter</strong> ihrem fairen Wert zurückkauft, ist das die beste denkbare Kapitalverwendung. Kauft es sie <strong>über</strong> dem fairen Wert zurück, vernichtet es Wert — und lässt das EPS trotzdem gut aussehen.</p>
+
+  <p><strong>Prüfe daher immer beide Zeilen nebeneinander:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Szenario A</th><th>Szenario B</th></tr></thead>
+      <tbody>
+        <tr><td>Nettogewinn</td><td>+10 %</td><td>−5 %</td></tr>
+        <tr><td>Aktienanzahl</td><td>unverändert</td><td>−12 %</td></tr>
+        <tr><td><strong>EPS</strong></td><td class="hl"><strong>+10 %</strong></td><td class="hl"><strong>+8 %</strong></td></tr>
+        <tr><td>Bewertung</td><td>echtes Wachstum</td><td><strong>Finanzkosmetik</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Wann ungeeignet:</strong> Bei Verlusten (EPS negativ, KGV nicht definiert). Bei stark schwankenden Sondereffekten.</p>
+
+  <!-- 2.11 -->
+  <h2><span class="num">2.11</span>KGV (Kurs-Gewinn-Verhältnis / P/E)</h2>
+  <p><strong>Definition:</strong> Wie viele Jahresgewinne du für eine Aktie bezahlst.</p>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">KGV = Kurs je Aktie / EPS        (äquivalent: Marktkapitalisierung / Nettogewinn)</div>
+
+  <p><strong>Interpretation:</strong> Ein KGV von 20 bedeutet: Du bezahlst 20 € für 1 € aktuellen Jahresgewinn. Der Kehrwert ist die <strong>Gewinnrendite</strong>: 1/20 = <strong>5 %</strong>. Diese Betrachtung ist oft hilfreicher — sie macht die Aktie direkt mit einer Anleihe vergleichbar.</p>
+
+  <p><strong>Varianten:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Variante</th><th>Basis</th><th>Nutzen</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Trailing KGV (TTM)</strong></td><td>letzte 12 Monate, tatsächlich</td><td>Fakt, aber rückwärtsgewandt</td></tr>
+        <tr><td><strong>Forward KGV</strong></td><td>Analystenschätzung nächstes Jahr</td><td>Zukunftsbezogen, aber Schätzungen sind oft zu optimistisch</td></tr>
+        <tr><td><strong>Shiller-KGV (CAPE)</strong></td><td>10-Jahres-Durchschnittsgewinn, inflationsbereinigt</td><td>Glättet Zyklen — für Indizes und Zykliker</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Vorteile:</strong> Universell bekannt, sofort berechenbar, gut vergleichbar innerhalb einer Branche.</p>
+  <p><strong>Nachteile:</strong></p>
+  <ul>
+    <li>Ignoriert <strong>Wachstum</strong> vollständig (KGV 30 bei 25 % Wachstum kann billiger sein als KGV 12 bei 0 %)</li>
+    <li>Ignoriert <strong>Verschuldung</strong> vollständig (zwei Unternehmen mit identischem KGV, eines schuldenfrei, eines hochverschuldet — das KGV sieht identisch aus)</li>
+    <li>Beruht auf dem manipulierbaren Nettogewinn</li>
+    <li>Bei Verlusten nicht definiert</li>
+  </ul>
+
+  <p><strong>Wann sinnvoll:</strong> Reife, profitable, stabile Unternehmen. Vergleich innerhalb einer Branche. Vergleich mit der eigenen Historie.</p>
+  <p><strong>Wann ungeeignet:</strong> ⚠ Bei <strong>Zyklikern</strong> (siehe 2.1 — niedriges KGV im Hoch ist eine Falle). Bei Verlustunternehmen. Bei Unternehmen mit stark unterschiedlicher Verschuldung. Bei einmaligen Sondereffekten im Gewinn.</p>
+
+  <p><strong>Praxisbeispiel — warum der Vergleich zweier KGVs oft sinnlos ist:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Unternehmen X</th><th>Unternehmen Y</th></tr></thead>
+      <tbody>
+        <tr><td>KGV</td><td>12</td><td>28</td></tr>
+        <tr><td>Gewinnwachstum p.a.</td><td>−2 %</td><td>+18 %</td></tr>
+        <tr><td>ROIC</td><td>7 %</td><td>28 %</td></tr>
+        <tr><td>Nettoverschuldung/EBIT</td><td>4,5×</td><td>−1,0× (Nettocash)</td></tr>
+        <tr><td><strong>Welches ist teurer?</strong></td><td colspan="2" style="text-align:center; color:var(--text-3); font-style:italic;">Das KGV allein reicht für keine Antwort.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Das KGV allein sagt: X ist billig. Alle übrigen Zeilen sagen: X ist eine Value-Falle, und Y ist möglicherweise ein Schnäppchen. <strong>Ein KGV ist erst dann eine Information, wenn du weißt, was daneben steht.</strong></p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 10</strong>Ein niedriges KGV ist keine Antwort. Es ist eine Frage: <em>Warum ist das so billig?</em> Meistens gibt es einen Grund — und meistens ist er gut.</p>
+  </div>
+
+  <!-- 2.12 -->
+  <h2><span class="num">2.12</span>PEG-Ratio</h2>
+  <p><strong>Definition:</strong> Setzt das KGV ins Verhältnis zum Gewinnwachstum. Der Versuch, den größten Schwachpunkt des KGV zu reparieren.</p>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">PEG = KGV / erwartetes Gewinnwachstum in % p.a.</div>
+
+  <p><strong>Interpretation (Peter-Lynch-Faustregel):</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>PEG</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>&lt; 1,0</strong></td><td class="check">Wachstum ist im Preis noch nicht eingepreist</td></tr>
+        <tr><td><strong>≈ 1,0</strong></td><td>Fair bewertet</td></tr>
+        <tr><td><strong>&gt; 2,0</strong></td><td class="cross">Wachstum ist bereits vollständig (oder mehr als vollständig) bezahlt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Rechenbeispiel:</strong><br>
+  Unternehmen A: KGV 30, Wachstum 30 % → PEG = <strong>1,0</strong><br>
+  Unternehmen B: KGV 15, Wachstum 5 % → PEG = <strong>3,0</strong></p>
+  <p>Trotz des halb so hohen KGV ist B nach PEG dreimal so teuer wie A.</p>
+
+  <p><strong>Vorteile:</strong> Einfach. Macht Wachstums- und Value-Titel überhaupt erst vergleichbar. Intuitiv.</p>
+  <p><strong>Nachteile — und sie sind erheblich:</strong></p>
+  <ul>
+    <li>Die Wachstumsrate ist eine <strong>Schätzung</strong>. Das PEG erbt die gesamte Unsicherheit dieser Schätzung und verkleidet sie als Präzision.</li>
+    <li>Es ignoriert Verschuldung und Kapitalrendite komplett. Ein PEG von 0,8 bei 5 % ROIC ist wertlos.</li>
+    <li>Es unterstellt implizit einen <strong>linearen</strong> Zusammenhang zwischen Wachstum und fairem Multiple. Der ist theoretisch nicht begründet.</li>
+    <li>Es bricht bei sehr niedrigem oder negativem Wachstum vollständig zusammen (Division durch nahe null).</li>
+  </ul>
+
+  <p><strong>Wann sinnvoll:</strong> Als <strong>schneller Vorfilter</strong> beim Screening wachsender, profitabler Unternehmen. Als Plausibilitätscheck.</p>
+  <p><strong>Wann ungeeignet:</strong> Als Grundlage einer Kaufentscheidung. Bei zyklischen, schrumpfenden oder verlustträchtigen Unternehmen. Als einzige Kennzahl.</p>
+
+  <div class="ak-callout">
+    <span class="ak-ctag">Hinweis</span>
+    <p>Das PEG wird von Teilen der Fachwelt kritisch gesehen — zu Recht, wenn man es isoliert verwendet. Es wird in diesem Kurs (und im Fair Value Calculator) <strong>bewusst beibehalten</strong>, aber ausschließlich als eine von mehreren parallelen Perspektiven, nie als alleinige Entscheidungsgrundlage. Genau darin liegt seine Berechtigung: Es zwingt dazu, das KGV nie ohne Wachstumskontext zu betrachten.</p>
+  </div>
+
+  <!-- 2.13 -->
+  <h2><span class="num">2.13</span>EV/EBIT und EV/EBITDA</h2>
+  <h3>Enterprise Value — der Übernahmepreis</h3>
+  <p><strong>Definition:</strong> Was es kosten würde, das gesamte Unternehmen zu kaufen — inklusive der Übernahme seiner Schulden, abzüglich des Bargelds, das man mitkauft.</p>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">Enterprise Value (EV) = Marktkapitalisierung
+                      + Finanzschulden
+                      + Minderheitenanteile
+                      + Pensionsverpflichtungen (netto)
+                      − liquide Mittel</div>
+
+  <p><strong>Warum EV besser ist als die Marktkapitalisierung:</strong> Es berücksichtigt die Kapitalstruktur. Zwei Unternehmen mit identischer Marktkapitalisierung sind nicht gleich teuer, wenn eines 50 Mrd. Schulden hat und das andere 50 Mrd. Bargeld.</p>
+
+  <h3>EV/EBIT ⭐</h3>
+  <p><strong>Formel:</strong> <code>EV / EBIT</code></p>
+  <p><strong>Interpretation:</strong> Wie viele Jahre operatives Ergebnis kostet das gesamte Unternehmen?</p>
+  <p><strong>Das ist die sauberste Bewertungskennzahl für den Vergleich über Kapitalstrukturen und Länder hinweg</strong>, weil weder Verschuldung noch Steuersätze das Ergebnis verzerren.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>EV/EBIT</th><th>Grobe Einordnung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>&lt; 10×</strong></td><td>günstig (Grund prüfen!)</td></tr>
+        <tr><td><strong>10–15×</strong></td><td>normal</td></tr>
+        <tr><td><strong>15–25×</strong></td><td>anspruchsvoll — Wachstum muss geliefert werden</td></tr>
+        <tr><td><strong>&gt; 25×</strong></td><td>teuer — nur bei außergewöhnlicher Qualität + Wachstum rechtfertigbar</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85rem; color:var(--text-3); font-style:italic;">Orientierungswerte, stark branchenabhängig.</p>
+
+  <h3>EV/EBITDA</h3>
+  <p><strong>Formel:</strong> <code>EV / EBITDA</code></p>
+  <p><strong>Vorteile:</strong> Vergleichbar über Länder mit unterschiedlichen Abschreibungsregeln. Standard bei Übernahmen und in der Private-Equity-Welt. Anwendbar auch bei Unternehmen mit hohen Abschreibungen, die netto noch keinen Gewinn ausweisen.</p>
+  <p><strong>Nachteile:</strong> ⚠ Ignoriert Investitionsbedarf — siehe die EBITDA-Warnung in Abschnitt 2.5. Bei kapitalintensiven Unternehmen ist EV/EBITDA <strong>systematisch zu schmeichelhaft</strong>.</p>
+
+  <p><strong>Faustregel für die Auswahl:</strong></p>
+  <pre class="ak-pre">   Kapitalintensiv (Industrie, Telekom, Netze)?  →  EV/EBIT verwenden
+   Kapitalarm (Software, Zahlung, Marken)?       →  beide fast identisch, egal
+   Unternehmen betont selbst EBITDA?             →  ⚠ EV/EBIT prüfen</pre>
+
+  <p><strong>Wann beide ungeeignet:</strong> Bei Banken und Versicherungen (der EV-Begriff ist dort nicht sinnvoll definierbar, weil Schulden zum Geschäftsmodell gehören). Bei Verlustunternehmen auf EBIT-Ebene.</p>
+
+  <!-- 2.14 -->
+  <h2><span class="num">2.14</span>Price/Sales (KUV)</h2>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">P/S = Marktkapitalisierung / Umsatz</div>
+
+  <p><strong>Interpretation:</strong> Wie viel bezahlst du für einen Euro Umsatz?</p>
+  <p><strong>Vorteile:</strong> Funktioniert auch bei Verlustunternehmen. Umsatz ist schwer zu manipulieren. Nützlich bei jungen Wachstumsunternehmen, deren Gewinne noch durch Investitionen verdeckt sind.</p>
+  <p><strong>Nachteile — der zentrale:</strong> Das P/S <strong>ignoriert die Marge vollständig.</strong> Und die Marge ist der Unterschied zwischen einem großartigen und einem wertlosen Geschäft.</p>
+
+  <p><strong>Praxisbeispiel — warum P/S für sich genommen bedeutungslos ist:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Costco</th><th>Visa</th></tr></thead>
+      <tbody>
+        <tr><td>Nettomarge (ca.)</td><td>3 %</td><td>55 %</td></tr>
+        <tr><td>P/S bei identischem KGV von 30</td><td class="hl"><strong>0,9</strong></td><td class="hl"><strong>16,5</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Costco sieht nach P/S 18-mal „billiger" aus als Visa — bei identischer Gewinnbewertung. Die Zahl misst hier nichts außer der Marge.</p>
+
+  <p><strong>Nur sinnvoll:</strong></p>
+  <ol>
+    <li>Beim Vergleich von Unternehmen <strong>im selben Geschäftsmodell mit ähnlichen Margen</strong></li>
+    <li>Beim Vergleich eines Unternehmens <strong>mit seiner eigenen Historie</strong></li>
+    <li>Bei Unternehmen, die noch keine Gewinne ausweisen — dann aber <strong>immer</strong> zusammen mit der Bruttomarge</li>
+  </ol>
+
+  <p><strong>Wann ungeeignet:</strong> Branchenübergreifende Vergleiche. Als alleiniges Kriterium. Immer.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 11</strong>Price/Sales ohne Margenkontext ist keine Bewertung, sondern eine Zahl.</p>
+  </div>
+
+  <!-- 2.15 -->
+  <h2><span class="num">2.15</span>Price/Book (KBV)</h2>
+  <p><strong>Formel:</strong></p>
+  <div class="ak-formula">P/B = Marktkapitalisierung / Eigenkapital</div>
+
+  <p><strong>Interpretation:</strong> Wie viel bezahlst du für einen Euro Buchwert?</p>
+  <p><strong>Historisch war das die zentrale Value-Kennzahl.</strong> Benjamin Graham suchte Unternehmen unter Buchwert. Das funktionierte in einer Wirtschaft aus Fabriken, Maschinen und Lagerbeständen — Vermögen, das in der Bilanz steht und im Zweifel verkauft werden kann.</p>
+  <p><strong>Warum es heute meist nicht mehr funktioniert:</strong> Der Wert moderner Unternehmen liegt in Software, Marken, Patenten, Netzwerken, Kundendaten und Mitarbeitern. <strong>Nichts davon steht in der Bilanz.</strong> Forschung und Entwicklung wird sofort als Aufwand verbucht, nicht aktiviert. Eine Marke, die über Jahrzehnte aufgebaut wurde, hat einen Buchwert von null.</p>
+  <p>Ergebnis: Softwareunternehmen haben strukturell hohe P/B-Werte, und das sagt nichts über ihre Bewertung aus.</p>
+
+  <p><strong>Wo P/B weiterhin funktioniert:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Branche</th><th>Warum</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Banken</strong></td><td>Das Vermögen <em>ist</em> die Bilanz (Kredite, Wertpapiere) — P/B ist hier die <strong>Hauptkennzahl</strong></td></tr>
+        <tr><td><strong>Versicherungen</strong></td><td>dito</td></tr>
+        <tr><td><strong>Immobiliengesellschaften</strong></td><td>Vermögen ist real und bewertbar (NAV)</td></tr>
+        <tr><td><strong>Kapitalintensive Industrie</strong></td><td>Nennenswerter Anteil des Werts steckt in Sachanlagen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Bei Banken gilt zusätzlich die Kopplung an den ROE:</strong></p>
+  <div class="ak-formula">Faires P/B  ≈  (ROE − Wachstum) / (Eigenkapitalkosten − Wachstum)</div>
+  <p>Eine Bank mit einem ROE unter ihren Eigenkapitalkosten <strong>muss</strong> unter Buchwert notieren — das ist kein Schnäppchen, sondern die korrekte Bewertung eines Geschäfts, das Wert vernichtet.</p>
+
+  <p><strong>Wann ungeeignet:</strong> Technologie, Software, Marken, Pharma, Dienstleistungen — also der Großteil der interessanten Unternehmen. Und immer, wenn viel Goodwill in der Bilanz steht.</p>
+
+  <!-- 2.16 -->
+  <h2><span class="num">2.16</span>Discounted Cash Flow (DCF)</h2>
+  <p>Alles bisher Behandelte waren <strong>relative</strong> Verfahren: Sie vergleichen ein Unternehmen mit anderen oder mit sich selbst. Der DCF ist das einzige <strong>absolute</strong> Verfahren — es leitet einen Wert aus dem Unternehmen selbst her, ohne Bezug auf den Markt.</p>
+
+  <h3>Das Grundprinzip</h3>
+  <p><strong>Der Wert eines Unternehmens ist die Summe aller Zahlungsströme, die es in seiner Zukunft erwirtschaften wird, abgezinst auf heute.</strong></p>
+  <p>Das ist keine Meinung, sondern eine Definition. Alles andere — KGV, EV/EBIT, P/B — sind Abkürzungen, die diesen Gedanken approximieren.</p>
+
+  <h3>Warum abzinsen?</h3>
+  <p>1.000 € heute sind mehr wert als 1.000 € in zehn Jahren. Erstens, weil du sie heute anlegen könntest. Zweitens, weil die Zahlung in zehn Jahren unsicher ist. Der <strong>Diskontsatz</strong> bepreist beides.</p>
+
+  <h3>Die Formel</h3>
+  <div class="ak-formula">             n
+            ───     FCF_t                    Terminal Value
+Wert  =     ╲    ───────────      +      ────────────────────
+            ╱      (1 + r)^t                  (1 + r)^n
+            ───
+            t=1</div>
+
+  <h3>Der Diskontsatz: WACC</h3>
+  <div class="ak-formula">WACC =  E/(D+E) × Eigenkapitalkosten  +  D/(D+E) × Fremdkapitalkosten × (1 − Steuersatz)
+
+Eigenkapitalkosten (CAPM) = risikofreier Zins  +  Beta × Marktrisikoprämie</div>
+
+  <p><strong>Typische Größenordnungen:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Unternehmenstyp</th><th>WACC (grob)</th></tr></thead>
+      <tbody>
+        <tr><td>Stabiler Blue Chip, geringe Verschuldung</td><td>7–9 %</td></tr>
+        <tr><td>Durchschnittliches Industrieunternehmen</td><td>8–10 %</td></tr>
+        <tr><td>Wachstumsunternehmen, höheres Beta</td><td>10–13 %</td></tr>
+        <tr><td>Zykliker, hochverschuldet</td><td>12–15 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Der Terminal Value — das Problem</h3>
+  <p>Der Terminal Value (Restwert nach der Prognoseperiode) macht in typischen DCF-Modellen <strong>60–80 % des Gesamtwerts</strong> aus. Das heißt: Der größte Teil deiner Bewertung hängt an einer Annahme über die ewige Zukunft.</p>
+
+  <p><strong>Gordon-Growth-Modell:</strong></p>
+  <div class="ak-formula">Terminal Value  =  FCF_n × (1 + g)  /  (WACC − g)</div>
+
+  <p><strong>Die eiserne Regel für g (ewiges Wachstum):</strong></p>
+  <div class="ak-formula">g  ≤  langfristiges nominales BIP-Wachstum   (also ca. 2–3 %)</div>
+
+  <p><strong>Warum?</strong> Wenn ein Unternehmen ewig schneller wächst als die Weltwirtschaft, wird es irgendwann größer als die Weltwirtschaft. Das ist mathematisch möglich und ökonomisch unmöglich. Jedes DCF mit g = 5 % ist ein DCF, das behauptet, dieses Unternehmen werde eines Tages alles sein, was existiert.</p>
+  <p><strong>Zusätzlich:</strong> Der Nenner ist (WACC − g). Je näher g an WACC rückt, desto kleiner der Nenner und desto explosiver der Terminal Value. Bei WACC 8 % und g 7 % ist der Nenner 1 % — der Terminal Value geht durch die Decke. <strong>Das ist keine Bewertung mehr, das ist eine Division durch fast null.</strong></p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-dcf-terminal.svg" aria-label="Balkendarstellung eines DCF-Werts: kleiner Anteil aus explizit prognostizierten Jahren, überwiegender Anteil aus dem Terminal Value"></object>
+    <figcaption>Der Terminal Value dominiert jeden DCF — 60–80 % des Werts hängen an einer Annahme über die ewige Zukunft</figcaption>
+  </figure>
+
+  <h3>Sensitivität — die wichtigste Tabelle im DCF</h3>
+  <p>Ein DCF liefert <strong>keine Zahl</strong>. Er liefert eine <strong>Landkarte von Zahlen</strong>. Man rechnet ihn nicht, um ein Ergebnis zu bekommen, sondern um zu sehen, <strong>wovon das Ergebnis abhängt</strong>.</p>
+
+  <p><strong>Beispiel — fairer Wert je Aktie in Abhängigkeit von WACC und g:</strong></p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>g = 1,5 %</th><th>g = 2,0 %</th><th>g = 2,5 %</th><th>g = 3,0 %</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WACC 7 %</strong></td><td class="num">178</td><td class="num">195</td><td class="num">218</td><td class="num hl">249</td></tr>
+        <tr><td><strong>WACC 8 %</strong></td><td class="num">149</td><td class="num">160</td><td class="num">174</td><td class="num">192</td></tr>
+        <tr><td><strong>WACC 9 %</strong></td><td class="num">128</td><td class="num">136</td><td class="num">146</td><td class="num">158</td></tr>
+        <tr><td><strong>WACC 10 %</strong></td><td class="num hl">112</td><td class="num">118</td><td class="num">125</td><td class="num">134</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85rem; color:var(--text-3); font-style:italic;">Illustrative Zahlen.</p>
+
+  <p><strong>Was diese Tabelle sagt:</strong> Eine Änderung von zwei Annahmen um jeweils 1,5 Prozentpunkte verändert den fairen Wert von <strong>112 auf 249</strong> — er verdoppelt sich mehr als. Und <em>keine</em> dieser Annahmen ist beweisbar falsch.</p>
+
+  <p><strong>Die richtige Schlussfolgerung ist nicht, den DCF zu verwerfen.</strong> Die richtige Schlussfolgerung ist:</p>
+  <ol>
+    <li>Verwende <strong>konservative</strong> Annahmen — nicht die, bei denen dir das Ergebnis gefällt.</li>
+    <li>Betrachte eine <strong>Spanne</strong>, keinen Punkt.</li>
+    <li>Verlange eine <strong>Sicherheitsmarge</strong>, die genau diese Unsicherheit bezahlt.</li>
+  </ol>
+
+  <h3>Die Rückwärtsrechnung (Reverse DCF) — der ehrlichste Einsatz</h3>
+  <p>Statt zu fragen <em>„Was ist die Aktie wert?"</em>, fragst du:</p>
+  <div class="ak-merksatz" style="font-style:italic;">
+    <p>„Welches Wachstum muss dieses Unternehmen liefern, damit der heutige Kurs gerechtfertigt ist?"</p>
+  </div>
+  <p>Dann beurteilst du <strong>nicht die Bewertung, sondern die Erwartung</strong>. Und darüber kannst du sehr viel qualifizierter urteilen.</p>
+
+  <p><strong>Beispiel:</strong> Der Reverse DCF ergibt, dass der aktuelle Kurs ein FCF-Wachstum von 22 % p.a. über zehn Jahre unterstellt. Jetzt lautet die Frage nicht mehr „Ist die Aktie teuer?", sondern: <em>„Halte ich 22 % Wachstum über zehn Jahre für dieses Unternehmen für realistisch?"</em> Das ist eine Frage, auf die du eine begründete Antwort geben kannst.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 12</strong>Ein DCF ist kein Werkzeug zur Berechnung des Werts. Er ist ein Werkzeug zur Offenlegung deiner Annahmen. Wer ihn benutzt, um eine Zahl zu bekommen, benutzt ihn falsch.</p>
+  </div>
+
+  <p><strong>Wann DCF ungeeignet:</strong> Bei Banken und Versicherungen (dort stattdessen Dividend-Discount- oder Residualgewinn-Modelle). Bei Unternehmen mit unvorhersehbaren, stark schwankenden Cashflows. Bei Frühphasenunternehmen ohne positiven FCF. Bei extremen Zyklikern.</p>
+
+  <!-- 2.17 -->
+  <h2><span class="num">2.17</span>Der faire Wert</h2>
+  <h3>Warum ein einziges Verfahren immer falsch ist</h3>
+  <p>Jedes Bewertungsverfahren hat einen blinden Fleck:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Verfahren</th><th>Blinder Fleck</th></tr></thead>
+      <tbody>
+        <tr><td>DCF</td><td>extreme Sensitivität gegenüber WACC und g</td></tr>
+        <tr><td>KGV</td><td>ignoriert Wachstum und Verschuldung</td></tr>
+        <tr><td>PEG</td><td>erbt die Unsicherheit der Wachstumsschätzung</td></tr>
+        <tr><td>EV/EBIT</td><td>Vergangenheitsbezug, kein Wachstum</td></tr>
+        <tr><td>P/S</td><td>ignoriert die Marge</td></tr>
+        <tr><td>P/B</td><td>ignoriert immaterielles Vermögen</td></tr>
+        <tr><td>Historisches Multiple</td><td>unterstellt, dass die Vergangenheit fair bewertet war</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Die Lösung ist nicht, das beste Verfahren zu finden.</strong> Es gibt keines. Die Lösung ist, <strong>mehrere Verfahren gleichzeitig zu rechnen und ihre Streuung als Information zu behandeln.</strong></p>
+
+  <h3>Der Komposit-Ansatz</h3>
+  <pre class="ak-pre">   Verfahren               Fairer Wert     Gewicht
+   ───────────────────────────────────────────────
+   DCF (Basis)               174 €          40 %
+   DCF (konservativ)         136 €          10 %
+   KGV × normalisiertes EPS  158 €          20 %
+   EV/EBIT (Peer-Median)     165 €          15 %
+   Historisches Median-KGV   181 €          15 %
+   ───────────────────────────────────────────────
+   GEWICHTETER FAIRER WERT   ~166 €
+   SPANNE                    136 € – 181 €</pre>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-komposit.svg" aria-label="Balkendarstellung mehrerer Bewertungsverfahren mit fairen Werten und einer gewichteten Mittellinie"></object>
+    <figcaption>Der Komposit-Ansatz — mehrere Verfahren nebeneinander, ihre Spanne ist die eigentliche Information</figcaption>
+  </figure>
+
+  <p><strong>Die Spanne ist wichtiger als der Mittelwert.</strong></p>
+  <ul>
+    <li><strong>Enge Spanne</strong> (z. B. 160–175) → Die Verfahren sind sich einig. Deine Bewertung ist robust.</li>
+    <li><strong>Weite Spanne</strong> (z. B. 90–260) → Die Verfahren widersprechen sich fundamental. Das bedeutet nicht, dass eines falsch ist — es bedeutet, dass die <strong>Zukunft dieses Unternehmens hochgradig unbestimmt</strong> ist. Entweder verlangst du eine deutlich höhere Sicherheitsmarge, oder du legst das Unternehmen weg.</li>
+  </ul>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 13</strong>Wenn sich deine Bewertungsverfahren nicht einig sind, ist das kein Fehler deiner Analyse. Es ist ihr wichtigstes Ergebnis.</p>
+  </div>
+
+  <!-- 2.18 -->
+  <h2><span class="num">2.18</span>Sicherheitsmarge (Margin of Safety)</h2>
+  <h3>Definition</h3>
+  <div class="ak-formula">Sicherheitsmarge = (Fairer Wert − Kurs) / Fairer Wert</div>
+
+  <p><strong>Beispiel:</strong> Fairer Wert 166 €, Kurs 116 € → MoS = (166 − 116) / 166 = <strong>30,1 %</strong></p>
+
+  <h3>Wofür sie tatsächlich da ist</h3>
+  <p>Die Sicherheitsmarge wird oft als „Puffer" oder „Rabatt" beschrieben. Das trifft es nicht. Sie ist <strong>die Bezahlung für die Unsicherheit deiner eigenen Analyse.</strong></p>
+  <p>Du <strong>wirst</strong> dich irren. Deine Wachstumsannahme wird zu hoch sein. Deine WACC wird zu niedrig sein. Ein Wettbewerber wird auftauchen, den du nicht auf dem Radar hattest. Die Sicherheitsmarge ist der Betrag, um den du falsch liegen darfst, ohne Geld zu verlieren.</p>
+
+  <h3>Die Verbindung zu Modul 1</h3>
+  <p>Erinnere dich an den Erwartungswert:</p>
+  <div class="ak-formula">Mindest-Trefferquote  =  1 / (1 + CRV)</div>
+  <p>Die Sicherheitsmarge <strong>ist</strong> das CRV. Sie ist die Antwort auf die Frage, wie oft du falsch liegen darfst.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Sicherheitsmarge</th><th>Implizites CRV (grob)</th><th>Du darfst falsch liegen in …</th></tr></thead>
+      <tbody>
+        <tr><td>10 %</td><td>~1 : 1</td><td>50 % der Fälle</td></tr>
+        <tr><td>25 %</td><td>~2 : 1</td><td>66 % der Fälle</td></tr>
+        <tr><td class="hl"><strong>33 %</strong></td><td class="hl"><strong>~3 : 1</strong></td><td class="hl"><strong>75 % der Fälle</strong></td></tr>
+        <tr><td>50 %</td><td>~4 : 1</td><td>80 % der Fälle</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m02-sicherheitsmarge.svg" aria-label="Balkendiagramm: fairer Wert, aktueller Kurs und der Zwischenraum als Sicherheitsmarge"></object>
+    <figcaption>Die Sicherheitsmarge ist der Abstand zwischen fairem Wert und Kurs — sie bezahlt deine Fehlbarkeit</figcaption>
+  </figure>
+
+  <p><strong>Das ist der Moment, in dem Modul 1 und Modul 2 zusammenfallen.</strong> Die Sicherheitsmarge ist kein Value-Investing-Dogma und kein Stilelement. Sie ist die <strong>mathematische Voraussetzung dafür, dass ein Anlagesystem die Fehlbarkeit seines Anwenders überleben kann.</strong></p>
+
+  <h3>Wie groß muss sie sein?</h3>
+  <p>Sie skaliert mit der <strong>Unsicherheit</strong>, nicht mit dem Optimismus:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Situation</th><th>Geforderte Sicherheitsmarge</th></tr></thead>
+      <tbody>
+        <tr><td>Sehr stabiles Unternehmen, enge Bewertungsspanne, starker Moat, schuldenfrei</td><td class="hl"><strong>20–25 %</strong></td></tr>
+        <tr><td>Normales Qualitätsunternehmen</td><td class="hl"><strong>30 %</strong></td></tr>
+        <tr><td>Zykliker, hohe Verschuldung, oder weite Bewertungsspanne</td><td class="hl"><strong>40–50 %</strong></td></tr>
+        <tr><td>Geschäftsmodell nicht vollständig verstanden</td><td class="cross"><strong>kein Kauf.</strong> Keine Marge ist groß genug.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die Value-Falle — und wie du sie erkennst</h3>
+  <p>Eine hohe Sicherheitsmarge ist <strong>kein Kaufsignal</strong>, wenn der faire Wert selbst falsch berechnet ist.</p>
+
+  <div class="ak-callout">
+    <span class="ak-ctag">⚠ Value-Falle</span>
+    <p>Die typische Value-Falle sieht so aus:</p>
+    <ul>
+      <li>KGV 8, „günstig"</li>
+      <li>Der Gewinn schrumpft seit Jahren</li>
+      <li>Die Bruttomarge fällt</li>
+      <li>Der ROIC liegt unter der WACC</li>
+      <li>Der Markt selbst schrumpft strukturell</li>
+    </ul>
+    <p>Dein DCF, gefüttert mit der <em>historischen</em> Gewinnhöhe, wird einen hohen fairen Wert und damit eine riesige Sicherheitsmarge ausweisen. <strong>Und er wird falsch sein</strong>, weil die historische Gewinnhöhe nie wiederkehrt.</p>
+  </div>
+
+  <p><strong>Deshalb steht die Qualitätsprüfung (Stufe 2) vor der Bewertung (Stufe 3).</strong> Die Sicherheitsmarge schützt dich vor Schätzfehlern. Sie schützt dich <strong>nicht</strong> vor der Bewertung eines sterbenden Geschäfts.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 14</strong>Die Sicherheitsmarge ist eine Versicherung gegen deine Rechenfehler. Sie ist keine Versicherung gegen dein Urteilsvermögen.</p>
+  </div>
+
+  <!-- Anfängerfehler -->
+  <h2>Typische Anfängerfehler in Modul 2</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Mit der Bewertung beginnen statt mit dem Verständnis</td><td>Value-Falle</td><td>Filterkaskade einhalten (2.0)</td></tr>
+        <tr><td>KGVs branchenübergreifend vergleichen</td><td>Vergleicht Unvergleichbares</td><td>Nur innerhalb der Branche und gegen die eigene Historie</td></tr>
+        <tr><td>Niedriges KGV bei Zyklikern als Chance lesen</td><td>Höchster Gewinn = höchstes Risiko</td><td>Shiller-KGV oder Mittelzyklus-Gewinn verwenden</td></tr>
+        <tr><td>ROE als Qualitätsmaß nehmen</td><td>Durch Schulden und Rückkäufe manipulierbar</td><td>ROIC verwenden, DuPont zerlegen</td></tr>
+        <tr><td>DCF mit g = 4–5 % rechnen</td><td>Unterstellt ewiges Über-BIP-Wachstum</td><td>g ≤ 2,5 %, immer</td></tr>
+        <tr><td>Nur ein Bewertungsverfahren rechnen</td><td>Kein Gefühl für die Unsicherheit</td><td>Komposit + Spanne</td></tr>
+        <tr><td>Annahmen so lange drehen, bis das Ergebnis „passt"</td><td>Bestätigungsfehler in Reinform</td><td>Annahmen <strong>vor</strong> dem Blick auf den Kurs festlegen</td></tr>
+        <tr><td>Wachstum grundsätzlich für gut halten</td><td>Bei ROIC &lt; WACC vernichtet Wachstum Wert</td><td>ROIC gegen WACC prüfen</td></tr>
+        <tr><td>EBITDA als Gewinnmaß nehmen</td><td>Ignoriert den realen Investitionsbedarf</td><td>EBIT und FCF prüfen</td></tr>
+        <tr><td>Aktienbasierte Vergütung ignorieren</td><td>FCF systematisch zu hoch, Verwässerung übersehen</td><td>Aktienanzahl über 5 Jahre prüfen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2>Checkliste — Fundamentalanalyse</h2>
+
+  <p><strong>Stufe 1 — Verständnis</strong></p>
+  <ul class="ak-check-list">
+    <li>Ich kann das Geschäftsmodell in vier Sätzen erklären.</li>
+    <li>Ich weiß, wer bezahlt und warum.</li>
+    <li>Ich weiß, ob das Geschäft zyklisch ist.</li>
+  </ul>
+
+  <p><strong>Stufe 2 — Qualität</strong></p>
+  <ul class="ak-check-list">
+    <li>Der Burggraben ist benannt und einer der fünf Quellen zugeordnet.</li>
+    <li>Er wird <strong>breiter</strong>, nicht schmaler.</li>
+    <li>Bruttomarge über 10 Jahre: stabil oder steigend.</li>
+    <li>ROIC &gt; WACC, und zwar über mehrere Jahre.</li>
+    <li>Operativer Cashflow ≈ Nettogewinn (keine Lücke).</li>
+    <li>Nettoverschuldung/EBIT ≤ 4×, Zinsdeckung ≥ 5×.</li>
+    <li>Aktienanzahl sinkt oder ist stabil.</li>
+    <li>Kapitalallokation des Managements über 5 Jahre geprüft.</li>
+    <li>Keine wiederkehrenden „Sondereffekte".</li>
+  </ul>
+
+  <p><strong>Stufe 3 — Bewertung</strong></p>
+  <ul class="ak-check-list">
+    <li>Mindestens <strong>drei</strong> Verfahren gerechnet.</li>
+    <li>DCF: g ≤ 2,5 %, WACC begründet, Sensitivitätstabelle vorhanden.</li>
+    <li>Reverse DCF: Welches Wachstum preist der Markt ein? Halte ich es für realistisch?</li>
+    <li>Bewertungsspanne notiert, nicht nur der Mittelwert.</li>
+    <li>Annahmen wurden <strong>vor</strong> dem Blick auf den Kurs festgelegt.</li>
+  </ul>
+
+  <p><strong>Stufe 4 — Sicherheitsmarge</strong></p>
+  <ul class="ak-check-list">
+    <li>Geforderte MoS <strong>vorher</strong> festgelegt (abhängig von der Unsicherheit).</li>
+    <li>Tatsächliche MoS ≥ geforderte MoS.</li>
+    <li>Falls MoS hoch: Ich habe explizit geprüft, ob es eine <strong>Value-Falle</strong> ist.</li>
+    <li>Falsifikationskriterien notiert (aus Modul 1).</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2>Zusammenfassung</h2>
+  <ol>
+    <li>Die Analyse folgt einer <strong>Filterkaskade</strong>: Verstehen → Qualität → Wert → Preis. Wer bei „Wert" beginnt, landet in der Value-Falle.</li>
+    <li>Der <strong>Burggraben</strong> ist kein Vorteil, sondern ein Verteidigungsmechanismus. Er zeigt sich quantitativ in einem dauerhaften <strong>ROIC über WACC</strong>.</li>
+    <li><strong>Management wird an Kapitalallokation gemessen</strong>, nicht an Rhetorik.</li>
+    <li><strong>Free Cash Flow</strong> ist ehrlicher als der Gewinn. Die Lücke zwischen operativem Cashflow und Nettogewinn ist eines der wichtigsten Warnsignale.</li>
+    <li>Die <strong>Bruttomarge</strong> ist das Fieberthermometer des Burggrabens — sie fällt vor dem Kurs.</li>
+    <li><strong>ROIC &gt; WACC</strong> ist die einzige eindeutige Definition wirtschaftlichen Erfolgs. Wachstum bei ROIC &lt; WACC vernichtet Wert.</li>
+    <li><strong>Jedes Multiple hat einen blinden Fleck.</strong> KGV ignoriert Wachstum und Schulden, P/S ignoriert die Marge, P/B ignoriert Immaterielles, EBITDA ignoriert Investitionen.</li>
+    <li>Der <strong>DCF</strong> ist kein Rechenwerkzeug, sondern ein Werkzeug zur Offenlegung von Annahmen. Der Reverse DCF ist seine ehrlichste Anwendungsform.</li>
+    <li>Der <strong>faire Wert ist eine Spanne</strong>, kein Punkt. Die Breite der Spanne ist selbst eine Information.</li>
+    <li>Die <strong>Sicherheitsmarge</strong> ist die mathematische Bezahlung deiner eigenen Fehlbarkeit — und damit die direkte Fortsetzung des Erwartungswerts aus Modul 1.</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2>Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Ein Unternehmen hat einen ROIC von 7 % und Kapitalkosten von 10 %. Das Management kündigt an, den Umsatz in fünf Jahren zu verdoppeln. Ist das eine gute Nachricht? Begründe.</li>
+    <li>Apple weist eine Eigenkapitalrendite von rund 150 % aus, Microsoft rund 33 %. Ist Apple viereinhalbmal so gut? Was ist der eigentliche Grund für die Differenz, und welche Kennzahl solltest du stattdessen verwenden?</li>
+    <li>Berechne den Enterprise Value: Marktkapitalisierung 80 Mrd. €, Finanzschulden 25 Mrd. €, liquide Mittel 10 Mrd. €, keine Minderheiten.</li>
+    <li>Unternehmen A: KGV 28, Wachstum 20 %. Unternehmen B: KGV 12, Wachstum 3 %. Berechne beide PEG-Werte. Welches ist nach PEG günstiger? Nenne zwei Gründe, warum diese Antwort trotzdem falsch sein könnte.</li>
+    <li>Ein DCF ergibt bei WACC 8 % und g 2 % einen fairen Wert von 160 €. Bei WACC 8 % und g 3 % ergibt er 192 €. Was sagt dir dieser Unterschied über die Verlässlichkeit deiner Bewertung?</li>
+    <li>Der operative Cashflow eines Unternehmens liegt seit vier Jahren konstant 30 % unter dem ausgewiesenen Nettogewinn. Nenne die drei möglichen Ursachen und beurteile jede.</li>
+    <li>Warum ist ein niedriges KGV bei einem Autohersteller im Konjunkturhoch ein Warnsignal?</li>
+    <li>Ein Softwareunternehmen hat ein P/B von 18. Ein Bankhaus hat ein P/B von 0,6. Welches ist teurer?</li>
+    <li>Fairer Wert 200 €, Kurs 140 €. Berechne die Sicherheitsmarge. Bei welcher impliziten Trefferquote wärst du bei diesem CRV noch break-even?</li>
+    <li>Deine Bewertungsverfahren ergeben faire Werte zwischen 85 € und 240 €. Der Kurs steht bei 90 €. Kaufst du?</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li><strong>Nein — es ist eine schlechte Nachricht.</strong> Bei ROIC (7 %) &lt; WACC (10 %) vernichtet jeder zusätzlich investierte Euro Wert. Eine Verdopplung des Umsatzes verdoppelt die Geschwindigkeit der Wertvernichtung. Die wertsteigernde Maßnahme wäre hier: <strong>nicht wachsen, sondern Kapital an die Aktionäre zurückgeben.</strong></li>
+        <li><strong>Nein.</strong> Der Grund ist der <strong>Nenner</strong>: Apple hat über Jahre massiv eigene Aktien zurückgekauft, was das bilanzielle Eigenkapital drastisch reduziert hat. Ein kleiner Nenner erzeugt einen riesigen ROE — ohne dass das operative Geschäft dadurch besser geworden wäre. Verwende stattdessen den <strong>ROIC</strong>, der den Finanzhebel-Effekt neutralisiert, und zerlege den ROE nach <strong>DuPont</strong>, um zu sehen, welcher Faktor ihn treibt.</li>
+        <li>EV = 80 + 25 − 10 = <strong>95 Mrd. €</strong>.</li>
+        <li>PEG(A) = 28/20 = <strong>1,4</strong>. PEG(B) = 12/3 = <strong>4,0</strong>. Nach PEG ist <strong>A</strong> deutlich günstiger. Zwei Gründe, warum das trotzdem falsch sein kann: (a) Die 20 % Wachstum bei A sind eine <strong>Schätzung</strong> — trifft sie nicht ein, kollabiert das PEG. (b) Das PEG ignoriert <strong>ROIC und Verschuldung</strong> vollständig; A könnte hoch verschuldet sein und mit einem ROIC unter WACC wachsen, was das Wachstum wertlos macht.</li>
+        <li>Eine Änderung der ewigen Wachstumsrate um <strong>einen einzigen Prozentpunkt</strong> verändert den fairen Wert um <strong>20 %</strong>. Da g nicht beobachtbar, sondern eine reine Annahme ist, bedeutet das: <strong>Dein DCF hat eine Ergebnisunsicherheit von mindestens ±20 %, allein aus dieser einen Annahme.</strong> Konsequenz: Betrachte eine Spanne, nicht einen Punkt — und verlange eine Sicherheitsmarge, die diese Unsicherheit übersteigt.</li>
+        <li>(a) <strong>Forderungen wachsen schneller als der Umsatz</strong> — die Kunden zahlen nicht oder werden mit langen Zahlungszielen zum Kauf bewegt. Schlecht. (b) <strong>Lagerbestände wachsen</strong> — die Ware verkauft sich nicht, ein Abschreibungsrisiko baut sich auf. Schlecht. (c) <strong>Aggressive Umsatzrealisierung</strong> — Umsatz wird gebucht, bevor er verdient und bezahlt ist. Am schlechtesten. Eine über vier Jahre konstante Lücke von 30 % ist mit keinem harmlosen Sondereffekt erklärbar und ist ein ernstes Warnsignal für die Gewinnqualität.</li>
+        <li>Weil im Konjunkturhoch der <strong>Gewinn</strong> (der Nenner) auf einem zyklischen Maximum steht, das nicht nachhaltig ist. Das KGV erscheint dadurch künstlich niedrig. Fällt der Gewinn im nächsten Abschwung um 60 %, steigt das KGV bei gleichem Kurs auf das 2,5-fache — und der Kurs wird fallen. Bei Zyklikern ist das <strong>höchste</strong> KGV (im Tief) das Kaufsignal, nicht das niedrigste.</li>
+        <li><strong>Die Frage ist nicht beantwortbar.</strong> P/B ist bei Softwareunternehmen bedeutungslos, weil deren Vermögen (Code, Marke, Kundenbeziehungen) nicht in der Bilanz steht. Bei der Bank ist P/B dagegen die zentrale Kennzahl — aber ein P/B von 0,6 ist nur dann günstig, wenn der ROE der Bank <strong>über</strong> ihren Eigenkapitalkosten liegt. Liegt er darunter, ist 0,6 der korrekte Preis für ein Geschäft, das Wert vernichtet.</li>
+        <li>MoS = (200 − 140) / 200 = <strong>30 %</strong>. Ein CRV von rund 2,3 : 1. Mindest-Trefferquote = 1/(1+2,3) ≈ <strong>30 %</strong>. Du darfst also in <strong>rund 70 % der Fälle falsch liegen</strong> und bist immer noch break-even.</li>
+        <li><strong>Nein — jedenfalls nicht auf dieser Grundlage.</strong> Die Spanne von 85 bis 240 € (Faktor 2,8) bedeutet, dass deine Verfahren sich fundamental widersprechen. Das ist keine Bewertung, das ist ein Eingeständnis, dass die Zukunft dieses Unternehmens unbestimmt ist. Der Kurs von 90 € liegt zudem <strong>innerhalb</strong> der Spanne, sogar nahe am unteren Ende — es gibt gar keine belastbare Sicherheitsmarge. Richtige Reaktion: <strong>Zurück zu Stufe 1.</strong> Verstehe zuerst, <em>warum</em> die Verfahren so weit auseinanderliegen. Wenn du das nicht auflösen kannst, gehört das Unternehmen auf die Watchlist, nicht ins Depot.</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Praktische Übungen -->
+  <h2>Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Vier Sätze (30 Min.)</h4>
+      <p>Wähle ein Unternehmen aus deinem Depot oder deiner Watchlist. Beschreibe das Geschäftsmodell in genau vier Sätzen, ohne nachzuschlagen. Schlage anschließend im Geschäftsbericht nach. Was hast du falsch angenommen?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — Der Moat-Test (45 Min.)</h4>
+      <p>Wähle drei Unternehmen aus der Liste (Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta, ASML, Novo Nordisk, Visa, Costco). Ordne für jedes die Hauptquelle des Burggrabens einer der fünf Kategorien zu und beantworte die Preissetzungsfrage: <em>Könnte es die Preise um 10 % erhöhen?</em> Begründe in je drei Sätzen.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Die Margenkurve (45 Min.)</h4>
+      <p>Zeichne für ein Unternehmen deiner Wahl die Bruttomarge der letzten zehn Jahre. Beschreibe die Richtung. Falls sie fällt: Finde im Geschäftsbericht die Erklärung des Managements. Findest du sie überzeugend?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — ROIC vs. WACC (60 Min.)</h4>
+      <p>Berechne für ein Unternehmen: NOPAT, investiertes Kapital, ROIC. Schätze die WACC. Ist ROIC &gt; WACC? Und wenn ja: Wie groß ist der Abstand, und war er vor fünf Jahren größer oder kleiner?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Sensitivität (60 Min.)</h4>
+      <p>Baue ein DCF für ein Unternehmen deiner Wahl. Erstelle eine 4×4-Sensitivitätstabelle (WACC 7–10 %, g 1,5–3,0 %). Notiere die Bandbreite der fairen Werte. Frage dich: <em>Welche Zelle dieser Tabelle halte ich für die wahrscheinlichste — und warum genau die?</em></p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 6 — Reverse DCF (45 Min.)</h4>
+      <p>Nimm dasselbe Unternehmen. Drehe die Rechnung um: Welches FCF-Wachstum über zehn Jahre rechtfertigt den heutigen Kurs bei deiner WACC? Beurteile diese Wachstumsrate — nicht die Bewertung.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 7 — Die Value-Falle finden (60 Min.)</h4>
+      <p>Suche mit einem Screener ein Unternehmen mit KGV unter 8. Arbeite die Qualitätscheckliste (Stufe 2) ab. Beantworte: <em>Ist das ein Schnäppchen oder ein sterbendes Geschäft?</em> Notiere deine Begründung — und schau in einem Jahr wieder darauf.</p>
+    </div>
+  </div>
+
+  <!-- Disclaimer inline -->
+  <div class="ak-disclaimer">
+    <strong>Keine Anlageberatung.</strong> Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Alle genannten Unternehmen dienen der Illustration von Analysemethoden und stellen keine Kauf- oder Verkaufsempfehlung dar. Sämtliche Finanzkennzahlen sind gerundet, beziehen sich auf zurückliegende Geschäftsjahre und sind vor jeder Verwendung mit aktuellen Daten zu verifizieren. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Jede Anlageentscheidung erfolgt eigenverantwortlich.
+  </div>
+
+</main>
+
+<!-- Weiter-CTA -->
+<section class="ak-weiter">
+  <p>Nächstes Modul</p>
+  <h3>Modul 3 — Chartanalyse<br>Was der Kurs dir wirklich sagt.</h3>
+  <a href="modul-03-chartanalyse.html" class="btn-outline">Modul 3 öffnen →</a>
+</section>
+
+<!-- Modul-Leiste unten -->
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html" class="active">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+</script>
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme-toggle.js"></script>
+<script src="inline-svg.js" defer></script>
+<link rel="stylesheet" href="akademie.css">
+<title>Fair Value Pro — Akademie · Modul 5: Risikomanagement</title>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="../index.html">Fair Value Pro</a>
+      <div class="nav-dropdown">
+        <a href="../index.html">Übersicht</a>
+        <a href="../pro-mode-beta.html">Pro Mode</a>
+        <a href="../daten-quelle.html">Daten-Quelle</a>
+      </div>
+    </div>
+    <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="../trading-desk.html">Trading Desk</a>
+    <a href="../plaene-beta.html">Pläne</a>
+    <a href="index.html" class="active">Akademie</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span></button>
+    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="../index.html">Fair Value Pro</a>
+  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+  <a href="../trading-desk.html">Trading Desk</a>
+  <a href="../plaene-beta.html">Pläne</a>
+  <a href="index.html" class="active">Akademie</a>
+  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+</div>
+
+<nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html" class="active">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<section class="ak-hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="tag" style="justify-content:center;">Modul 5 · Risikomanagement</div>
+    <h1>Erst überleben,<br><span class="n">dann verdienen.</span></h1>
+    <p class="ak-lead">Amateure denken über Rendite nach. Profis denken über Risiko nach. Überlebende denken über Ruin nach.</p>
+  </div>
+</section>
+
+<main class="ak-content">
+
+  <h2 style="border-bottom:0;">Warum dieses Modul vor dem Einstieg steht</h2>
+  <p>In der Nummerierung ist Risikomanagement Modul 5. In der Wichtigkeit ist es das erste. Deshalb behandeln wir es in der Praxis <strong>vor</strong> jedem konkreten Einstieg.</p>
+  <p>Der Grund ist die Mathematik aus Modul 1: Verluste sind <strong>konvex</strong>. Ein Verlust von 50 % erfordert einen Gewinn von 100 %, um ihn auszugleichen. Renditen multiplizieren sich, sie addieren sich nicht. Daraus folgt eine Rangordnung, die dem Instinkt widerspricht:</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m05-prioritaeten.svg" aria-label="Zwei umgekehrte Prioritätslisten: die meisten Anleger optimieren Auswahl zuerst, erfolgreiche Anleger optimieren Größe zuerst"></object>
+    <figcaption>Die Reihenfolge der Prioritäten trennt Amateure von Profis</figcaption>
+  </figure>
+
+  <p>Die Aktienauswahl bestimmt deine Rendite in den Jahren, in denen du recht hast. Das Risikomanagement bestimmt, ob du in den Jahren, in denen du falsch liegst, <strong>noch im Spiel bist</strong>. Und da du dich — siehe Erwartungswert, Modul 1 — regelmäßig irren wirst, entscheidet das zweite über das erste.</p>
+
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li>die <strong>Positionsgröße</strong> aus einem definierten Risiko pro Trade berechnen — die wichtigste Rechnung deines gesamten Anlegerlebens;</li>
+      <li><strong>Diversifikation</strong> so gestalten, dass sie Risiko senkt, ohne in „Diworsification" zu kippen;</li>
+      <li>ein <strong>Depot strukturieren</strong> — nach Positionszahl, Korrelation und Gewichtung;</li>
+      <li><strong>Stop-Loss</strong> sinnvoll (und volatilitätsbewusst über ATR) einsetzen — und wissen, wann <em>keiner</em> besser ist;</li>
+      <li>das <strong>Chance-Risiko-Verhältnis</strong> vor jedem Trade quantifizieren und mit der Sicherheitsmarge verbinden;</li>
+      <li>das <strong>Portfolio-Risiko</strong> als Ganzes betrachten, inklusive versteckter Klumpenrisiken durch Korrelation;</li>
+      <li>deinen <strong>maximalen Depotverlust (Drawdown)</strong> vorab festlegen und in konkrete Regeln übersetzen;</li>
+      <li><strong>Volatilität</strong> korrekt einordnen — als Kalibrierungsgröße, nicht als Feind.</li>
+    </ol>
+  </div>
+
+  <!-- 5.1 -->
+  <h2><span class="num">5.1</span>Positionsgröße — die wichtigste Rechnung überhaupt</h2>
+  <h3>Der Paradigmenwechsel</h3>
+  <p>Die Frage lautet <strong>nicht</strong>: <em>„Wie viel Geld will ich in diese Aktie stecken?"</em><br>
+  Die Frage lautet: <em>„Wie viel Geld bin ich bereit zu verlieren, wenn diese These vollständig scheitert?"</em></p>
+  <p>Aus der Antwort auf die zweite Frage ergibt sich die Positionsgröße — nicht umgekehrt. Das ist die zentrale Umkehrung dieses Moduls.</p>
+
+  <h3>Die 1-%-Regel (Risiko pro Trade)</h3>
+  <p>Das professionelle Fundament: <strong>Riskiere pro Einzelposition nicht mehr als 1 % (maximal 2 %) deines Gesamtdepots.</strong></p>
+  <p>„Riskieren" meint hier nicht den investierten Betrag, sondern den Betrag, den du <strong>verlierst, wenn dein Stop bzw. dein Falsifikationsniveau erreicht wird.</strong></p>
+
+  <div class="ak-formula">                    Depot × Risiko-pro-Trade (%)
+Positionsgröße  =  ───────────────────────────────
+                    Einstieg − Stop  (in %)</div>
+
+  <h3>Rechenbeispiel 1 — die Grundrechnung</h3>
+  <pre class="ak-pre">   Depot:                        100.000 €
+   Risiko pro Trade:             1 %  →  1.000 € maximaler Verlust
+   Einstiegskurs:                200 €
+   Stop / Falsifikationsniveau:  170 €   (−15 %)
+
+   Risiko pro Aktie:  200 − 170 = 30 €
+
+   Anzahl Aktien   =  1.000 € / 30 € = 33 Aktien
+   Positionsgröße  =  33 × 200 € = 6.600 €   (6,6 % des Depots)</pre>
+
+  <p>Wenn der Stop bei 170 € greift, verlierst du 33 × 30 € = <strong>990 €</strong> ≈ 1 % des Depots. Genau wie geplant.</p>
+
+  <h3>Rechenbeispiel 2 — warum der Stop-Abstand die Größe bestimmt</h3>
+  <p>Dieselbe 1-%-Regel, aber ein <strong>engerer</strong> Stop:</p>
+  <pre class="ak-pre">   Depot 100.000 €, Risiko 1 % = 1.000 €
+   Einstieg 200 €, Stop 190 €  (−5 %)
+
+   Risiko pro Aktie:  10 €
+   Anzahl:            1.000 / 10 = 100 Aktien
+   Positionsgröße:    100 × 200 = 20.000 €   (20 % des Depots)</pre>
+
+  <p><strong>Dieselbe 1-%-Regel führt zu einer dreimal so großen Position</strong> — weil der Stop enger sitzt. Das ist die entscheidende Einsicht: Nicht die „Überzeugung" bestimmt die Positionsgröße, sondern der <strong>Abstand zum Falsifikationsniveau</strong>. Enger Stop → große Position, weiter Stop → kleine Position, <strong>bei identischem Risiko in Euro.</strong></p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Deine Positionsgröße ist keine Frage der Zuversicht, sondern eine Division: Risikobudget geteilt durch Abstand zum Ausstieg.</p>
+  </div>
+
+  <h3>Die Verbindung zum ATR (aus Modul 3)</h3>
+  <p>Ein fester prozentualer Stop ignoriert, wie stark eine Aktie normal schwankt. Besser: Der Stop-Abstand orientiert sich am <strong>ATR</strong>.</p>
+
+  <h3>Rechenbeispiel 3 — ATR-basierte Positionsgröße</h3>
+  <pre class="ak-pre">   Depot 100.000 €, Risiko 1 % = 1.000 €
+
+   Aktie A:  Kurs 200 €, ATR(14) = 3 €   → Stop 2,5 × ATR = 7,50 € Abstand
+             Anzahl = 1.000 / 7,50 = 133 Aktien → Position 26.600 €
+
+   Aktie B:  Kurs 200 €, ATR(14) = 9 €   → Stop 2,5 × ATR = 22,50 € Abstand
+             Anzahl = 1.000 / 22,50 = 44 Aktien → Position 8.900 €</pre>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m05-atr-position.svg" aria-label="Zwei Balken: ruhige Aktie mit großer Position, volatile Aktie mit kleiner Position, beide bei identischem Euro-Risiko"></object>
+    <figcaption>Zwei Aktien, gleiches Euro-Risiko — die volatilere bekommt automatisch die kleinere Position</figcaption>
+  </figure>
+
+  <p>Die volatilere Aktie B bekommt automatisch eine <strong>kleinere</strong> Position — obwohl beide gleich viel kosten und das Risiko in Euro identisch ist. So wird Volatilität <strong>kalibriert statt gefürchtet</strong>. Genau dafür existiert der ATR.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>Eine volatile Aktie ist nicht gefährlicher als eine ruhige — solange du sie kleiner dimensionierst. Gefährlich ist nur, beide gleich groß zu kaufen.</p>
+  </div>
+
+  <!-- 5.2 -->
+  <h2><span class="num">5.2</span>Diversifikation</h2>
+  <h3>Das einzige „kostenlose Mittagessen"</h3>
+  <p>Diversifikation ist der einzige Mechanismus in der Geldanlage, der <strong>Risiko senkt, ohne die erwartete Rendite zu senken</strong> — sofern die Positionen nicht perfekt miteinander korrelieren. Der Grund ist statistisch: Wenn Position A fällt, während B steigt, glätten sich die Ausschläge des Gesamtdepots.</p>
+
+  <h3>Wie viele Positionen?</h3>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m05-diversifikation.svg" aria-label="Fallende Kurve: Portfolio-Risiko über Anzahl Positionen, die sich asymptotisch dem Marktrisiko nähert"></object>
+    <figcaption>Der größte Diversifikationsnutzen entsteht zwischen 1 und 15 Positionen — darüber flacht die Kurve ab</figcaption>
+  </figure>
+
+  <p>Der Risikoabbau durch zusätzliche Titel ist <strong>stark abnehmend</strong>: Der Sprung von 1 auf 10 Positionen eliminiert den Großteil des unternehmensspezifischen Risikos. Der Sprung von 20 auf 40 bringt fast nichts mehr — außer mehr Arbeit und dem Zwang, schlechtere Ideen aufzunehmen.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Positionen</th><th>Einordnung</th></tr></thead>
+      <tbody>
+        <tr><td>1–4</td><td class="cross">gefährlich konzentriert — ein Fehler kann das Depot ruinieren</td></tr>
+        <tr><td>5–9</td><td>konzentriert, für erfahrene Anleger mit hoher Analysetiefe vertretbar</td></tr>
+        <tr><td class="hl"><strong>10–20</strong></td><td class="hl"><strong>Sweet Spot für die meisten aktiven Anleger</strong></td></tr>
+        <tr><td>25–40</td><td>breit gestreut, aber jede Idee muss überzeugen</td></tr>
+        <tr><td>&gt; 40</td><td class="cross">„Diworsification" — du besitzt faktisch einen teuren, schlechten Indexfonds</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Diworsification — zu viel des Guten</h3>
+  <p>Ab einem gewissen Punkt kehrt sich der Nutzen um. Wer 60 Einzelaktien hält, hat:</p>
+  <ul>
+    <li>den Rendite-Vorteil guter Auswahl verwässert (die 30. beste Idee zieht die 5. beste herunter),</li>
+    <li>den Analyseaufwand vervielfacht (60 Unternehmen ernsthaft zu verfolgen ist unmöglich),</li>
+    <li>und trotzdem nur die Marktrendite — bei höheren Kosten als ein ETF.</li>
+  </ul>
+  <p>Wenn du so viele Positionen brauchst, dass du sie nicht mehr einzeln begründen kannst, ist ein Indexfonds die ehrlichere und billigere Wahl.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Diversifiziere gegen Irrtum, nicht gegen Faulheit. Zehn Unternehmen, die du verstehst, streuen besser als fünfzig, die du nur besitzt.</p>
+  </div>
+
+  <!-- 5.3 -->
+  <h2><span class="num">5.3</span>Korrelation — die versteckte Falle</h2>
+  <p><strong>Diversifikation nach Anzahl ist wertlos, wenn die Positionen dasselbe Risiko tragen.</strong></p>
+
+  <h3>Das Klumpenrisiko, das wie Streuung aussieht</h3>
+  <p>Ein Depot aus zehn Aktien <em>fühlt</em> sich diversifiziert an. Wenn es aber aus Apple, Microsoft, NVIDIA, Alphabet, Meta, Amazon, ASML, Broadcom, Adobe und Salesforce besteht, ist es <strong>kein diversifiziertes Depot</strong> — es ist eine einzige große Wette auf US-Technologie. Fällt der Tech-Sektor, fällt alles gleichzeitig.</p>
+
+  <figure class="ak-fig">
+    <object type="image/svg+xml" data="assets/svg/m05-korrelation.svg" aria-label="Zwei Depot-Kacheln: links alle Kacheln in derselben Farbe, rechts verschiedene Sektoren"></object>
+    <figcaption>Scheinbar diversifiziert (links) vs. tatsächlich diversifiziert (rechts) — Anzahl reicht nicht</figcaption>
+  </figure>
+
+  <h3>Diversifikationsdimensionen</h3>
+  <p>Echte Streuung berücksichtigt mehrere Achsen gleichzeitig:</p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Dimension</th><th>Frage</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sektor</strong></td><td>Nicht mehr als X % in einer Branche</td></tr>
+        <tr><td><strong>Geografie</strong></td><td>Nicht ausschließlich ein Wirtschaftsraum</td></tr>
+        <tr><td><strong>Währung</strong></td><td>Fremdwährungsanteil bewusst wählen</td></tr>
+        <tr><td><strong>Geschäftsmodell-Treiber</strong></td><td>Zinssensitiv? Konsumsensitiv? Rohstoffsensitiv?</td></tr>
+        <tr><td><strong>Zyklik</strong></td><td>Nicht nur Zykliker (die alle gemeinsam einbrechen)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Faustregel für Konzentration:</strong> Kein Sektor über ~25–30 %, keine Einzelposition über ~10 % beim Einstieg (Ausnahmen für sehr defensive Werte möglich, aber bewusst).</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Zähle nicht deine Aktien, zähle deine Wetten. Zehn Aktien können eine einzige Wette sein.</p>
+  </div>
+
+  <!-- 5.4 -->
+  <h2><span class="num">5.4</span>Depotaufbau</h2>
+  <h3>Kernpositionen und Satelliten</h3>
+  <p>Ein bewährtes Strukturmodell trennt das Depot in zwei Ebenen:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Ebene</th><th>Anteil (Orientierung)</th><th>Merkmale</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kern</strong></td><td>60–80 %</td><td>Höchste Qualität, breite Moats, geringere Volatilität, längste Haltedauer. Costco, Microsoft, Visa-Typ.</td></tr>
+        <tr><td><strong>Satelliten</strong></td><td>20–40 %</td><td>Höheres Chancen-/Risikoprofil, engere These, aktiveres Management. Kleinere Positionen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Der Kern trägt das Depot durch Krisen; die Satelliten liefern Zusatzchancen, dürfen aber einzeln nie groß genug sein, um das Depot zu gefährden.</p>
+
+  <h3>Positionsgrößen-Staffelung</h3>
+  <p>Nicht jede Position ist gleich groß. Die Größe skaliert mit <strong>Überzeugung × Sicherheit</strong>, gedeckelt durch die Risikoregeln:</p>
+  <pre class="ak-pre">   Höchste Qualität + große Sicherheitsmarge + niedrige Vola  →  größte Position (bis ~8–10 %)
+   Gute These, normale Sicherheitsmarge                       →  mittlere Position (~4–6 %)
+   Spekulativere Satelliten-These, höhere Vola                →  kleine Position (~2–3 %)</pre>
+  <p>Aber <strong>immer</strong> gilt die 1-%-Risikoregel als Obergrenze. Die Staffelung bewegt sich <em>innerhalb</em> dieser Grenze.</p>
+
+  <h3>Cash ist eine Position</h3>
+  <p>Cash ist keine „Untätigkeit" — es ist strategische Feuerkraft. Wer immer voll investiert ist, kann in einem Crash nicht kaufen, wenn die besten Gelegenheiten entstehen. Eine bewusste Cash-Quote (z. B. 5–15 %, situativ höher) ist Teil des Risikomanagements, nicht sein Gegenteil.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Voll investiert zu sein fühlt sich produktiv an und beraubt dich der Fähigkeit, in Panik zu kaufen — dann, wenn Kaufen am meisten wert ist.</p>
+  </div>
+
+  <!-- 5.5 -->
+  <h2><span class="num">5.5</span>Stop-Loss — sinnvoll einsetzen (und wann nicht)</h2>
+  <h3>Die ehrliche Ausgangslage (aus Modul 1)</h3>
+  <p>Ein Stop-Loss ist <strong>keine Versicherung</strong>. Er ist ein Auftrag, im Auslösefall zu jedem Preis zu verkaufen. Das <strong>Gap-Risiko</strong> (Modul 1) kann ihn aushebeln: Eröffnet eine Aktie nach einer Gewinnwarnung mit −28 %, wird dein Stop bei −10 % erst dort ausgeführt.</p>
+
+  <p>Zusätzlich gibt es eine <strong>philosophische Spannung</strong> für den Fundamentalanleger:</p>
+  <pre class="ak-pre">   Wenn du eine Aktie kaufst, WEIL sie unterbewertet ist —
+   warum solltest du sie verkaufen, wenn sie NOCH billiger wird?</pre>
+
+  <p>Ein fallender Kurs bei intakter Fundamentalthese macht die Aktie <em>attraktiver</em>, nicht unattraktiver. Ein mechanischer Stop-Loss würde dich genau am Tiefpunkt aus einer guten Position werfen.</p>
+
+  <h3>Die Auflösung: Zwei Arten von „Ausstieg"</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Kurs-Stop (Stop-Loss)</th><th>Thesen-Stop (Falsifikation)</th></tr></thead>
+      <tbody>
+        <tr><td>Auslöser</td><td>Kurs erreicht Marke</td><td>Fundamentaldaten widerlegen die These</td></tr>
+        <tr><td>Beispiel</td><td>Kurs −25 %</td><td>Bruttomarge bricht ein, FCF wird negativ</td></tr>
+        <tr><td>Für uns</td><td>nachrangig / optional</td><td class="hl"><strong>primär</strong></td></tr>
+        <tr><td>Aus Modul</td><td>1, 3</td><td>1, 2, 6</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Für den langfristigen Fundamentalanleger ist der Thesen-Stop das eigentliche Instrument.</strong> Du steigst aus, wenn deine Kaufbegründung widerlegt ist — nicht, wenn der Kurs fällt. Der Kurs-Stop ist bestenfalls ein grober Notausgang gegen die Situation, dass sich deine These als katastrophal falsch erweist und du es zu spät bemerkst.</p>
+
+  <h3>Wenn du einen Kurs-Stop verwendest: volatilitätsbewusst (ATR)</h3>
+  <p>Aus Modul 3: Ein Stop, der enger ist als die normale Schwankung, wird durch Rauschen ausgelöst. Deshalb in <strong>ATR-Vielfachen</strong> denken.</p>
+
+  <h3>Rechenbeispiel 4 — der ATR-Stop in der Praxis</h3>
+  <pre class="ak-pre">   Aktie: Kurs 100 €, ATR(14) = 2,50 € (Tagesschwankung ~2,5 %)
+
+   ❌ Naiver Stop bei −3 % (97 €):  Abstand = 1,2 × ATR
+       → wird durch normales Rauschen getroffen, obwohl These intakt
+
+   ✓ ATR-Stop bei 3 × ATR (92,50 €): Abstand 7,5 %
+       → toleriert normale Schwankung, löst nur bei echtem Bruch aus</pre>
+
+  <p><strong>Trailing Stop:</strong> Ein nachgezogener Stop (der mit steigendem Kurs mit nach oben wandert, aber nie zurück) ist ein Kompromiss: Er lässt Gewinne laufen und schützt aufgelaufene Gewinne. Auch er sollte in ATR-Abständen gesetzt werden, nicht in runden Prozenten. Mehr dazu in Modul 6.</p>
+
+  <h3>Wann gar kein Stop besser ist</h3>
+  <ul>
+    <li>Bei sehr <strong>illiquiden</strong> Titeln (Stop wird zur Market-Order in ein leeres Buch → Slippage).</li>
+    <li>Bei <strong>hochvolatilen</strong> Titeln, wo jeder sinnvolle Stop-Abstand so groß wäre, dass die Positionsgröße ohnehin klein sein muss — dann übernimmt die <strong>kleine Positionsgröße</strong> die Schutzfunktion.</li>
+    <li>Bei <strong>Kernpositionen höchster Qualität</strong>, die du bewusst durch Volatilität hindurch halten willst — hier schützt der Thesen-Stop, nicht der Kurs.</li>
+  </ul>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Der beste Schutz vor einem einzelnen Totalverlust ist nicht der Stop-Loss. Es ist die Positionsgröße, die den Totalverlust verkraftbar macht.</p>
+  </div>
+
+  <!-- 5.6 -->
+  <h2><span class="num">5.6</span>Chance-Risiko-Verhältnis (CRV)</h2>
+  <h3>Definition</h3>
+  <div class="ak-formula">           möglicher Gewinn (bis Zielkurs / Fair Value)
+CRV  =  ───────────────────────────────────────────────
+           möglicher Verlust (bis Stop / Falsifikation)</div>
+
+  <p>Das CRV verbindet Chartanalyse (Zielzone, Stopzone), Fundamentalanalyse (Fair Value) und den Erwartungswert aus Modul 1 in einer einzigen Zahl.</p>
+
+  <h3>Rechenbeispiel 5 — CRV bestimmen</h3>
+  <pre class="ak-pre">   Einstieg:        150 €
+   Fair Value:      210 €   → möglicher Gewinn: 60 € (+40 %)
+   Falsifikation:   130 €   → möglicher Verlust: 20 € (−13 %)
+
+   CRV = 60 / 20 = 3,0  →  Chance-Risiko-Verhältnis 3 : 1</pre>
+
+  <h3>Die Verbindung zum Erwartungswert (Modul 1)</h3>
+  <p>Erinnere dich an die Formel aus Modul 1:</p>
+  <div class="ak-formula">Mindest-Trefferquote für Break-even  =  1 / (1 + CRV)</div>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>CRV</th><th>Mindest-Trefferquote</th><th>Du darfst falsch liegen in …</th></tr></thead>
+      <tbody>
+        <tr><td>1 : 1</td><td>50,0 %</td><td>50 % der Fälle</td></tr>
+        <tr><td>2 : 1</td><td>33,3 %</td><td>66 % der Fälle</td></tr>
+        <tr><td class="hl"><strong>3 : 1</strong></td><td class="hl"><strong>25,0 %</strong></td><td class="hl"><strong>75 % der Fälle</strong></td></tr>
+        <tr><td>4 : 1</td><td>20,0 %</td><td>80 % der Fälle</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Die Regel dieses Kurses:</strong> Handle nur, wenn das CRV <strong>mindestens 2,5 : 1</strong>, besser 3 : 1 beträgt. Dann darfst du dich in drei von vier Fällen irren und verdienst trotzdem Geld. Das ist keine Vorsicht — es ist die mathematische Voraussetzung, um deine eigene Fehlbarkeit zu finanzieren.</p>
+
+  <h3>CRV und Sicherheitsmarge sind dasselbe von zwei Seiten</h3>
+  <p>Die Sicherheitsmarge aus Modul 2 <em>erzeugt</em> das günstige CRV: Je größer der Abstand zwischen Kurs und Fair Value, desto größer der mögliche Gewinn im Zähler — und desto besser das CRV. Ein Kauf mit 33 % Sicherheitsmarge und einem nahen Falsifikationsniveau ergibt fast automatisch ein CRV von 3:1.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Kaufe nie, ohne das CRV zu kennen. Ein Trade ohne bekanntes Chance-Risiko-Verhältnis ist keine Entscheidung, sondern eine Hoffnung.</p>
+  </div>
+
+  <!-- 5.7 -->
+  <h2><span class="num">5.7</span>Portfolio-Risiko als Ganzes</h2>
+  <p>Einzelrisiken zu managen genügt nicht. Das Depot muss <strong>als System</strong> betrachtet werden, denn Risiken addieren sich nicht einfach — sie können sich in der Krise <strong>verstärken</strong>.</p>
+
+  <h3>Das Gesamtrisiko-Budget</h3>
+  <p>Wenn du pro Position 1 % riskierst und 15 Positionen hältst, riskierst du theoretisch 15 % — <strong>aber nur, wenn alle gleichzeitig scheitern.</strong> Ob das realistisch ist, hängt von der Korrelation ab:</p>
+
+  <pre class="ak-pre">   Niedrig korreliertes Depot:
+      Verluste treten zeitlich verteilt auf → Gesamtrisiko deutlich &lt; Summe
+
+   Hoch korreliertes Depot (z. B. alles Tech):
+      Verluste treten GEMEINSAM auf → Gesamtrisiko ≈ Summe (oder schlimmer)</pre>
+
+  <p>Deshalb ist die Korrelationsprüfung (5.3) kein Nebenaspekt, sondern der Kern des Portfolio-Risikos.</p>
+
+  <h3>Das Faktor-Klumpenrisiko</h3>
+  <p>Prüfe dein Depot auf <strong>versteckte gemeinsame Treiber</strong>:</p>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Verborgener Faktor</th><th>Beispiel eines unbeabsichtigten Klumpens</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Zinssensitivität</strong></td><td>Wachstumsaktien, REITs und langlaufende Anleihen fallen alle bei steigenden Zinsen</td></tr>
+        <tr><td><strong>Ein Endmarkt</strong></td><td>Halbleiter-Zulieferer, Chip-Designer und Ausrüster hängen alle am selben Zyklus</td></tr>
+        <tr><td><strong>Ein Kunde</strong></td><td>Mehrere Zulieferer desselben Großkonzerns</td></tr>
+        <tr><td><strong>Eine Währung / Region</strong></td><td>Gesamtes Depot in einem Wirtschaftsraum</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Stresstest statt Prognose</h3>
+  <p>Du kannst die nächste Krise nicht vorhersagen. Du kannst aber dein Depot <strong>stresstesten</strong>: <em>Was passiert mit meinem Gesamtdepot, wenn …</em></p>
+  <ul>
+    <li>… der Technologiesektor 30 % verliert?</li>
+    <li>… die Zinsen um 2 Prozentpunkte steigen?</li>
+    <li>… der Euro/Dollar sich um 15 % bewegt?</li>
+    <li>… meine größte Position auf null geht?</li>
+  </ul>
+  <p>Wenn eine einzige dieser Fragen dein Depot um mehr als deinen vorab definierten Maximalverlust (5.8) bewegt, ist dein Depot nicht diversifiziert — es ist konzentriert und du hast es nur nicht gemerkt.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 8</strong>Frage nicht, wie viel du verdienen kannst, wenn alles gut geht. Frage, ob du überlebst, wenn dein größtes verstecktes Klumpenrisiko gleichzeitig eintritt.</p>
+  </div>
+
+  <!-- 5.8 -->
+  <h2><span class="num">5.8</span>Maximaler Depotverlust (Drawdown)</h2>
+  <h3>Vorab definieren, nicht im Fallen entscheiden</h3>
+  <p>Der <strong>maximale Drawdown</strong>, den du zu ertragen bereit bist, muss <strong>vorher</strong> festgelegt werden — in Ruhe, nicht in Panik. Ein im Absturz getroffener Entschluss ist keine Entscheidung, sondern eine Reaktion.</p>
+
+  <h3>Die Drawdown-Mathematik (Wiederholung mit Nachdruck)</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Drawdown</th><th>Nötiger Gewinn zur Erholung</th></tr></thead>
+      <tbody>
+        <tr><td>−10 %</td><td class="num">+11 %</td></tr>
+        <tr><td>−20 %</td><td class="num">+25 %</td></tr>
+        <tr><td>−30 %</td><td class="num">+43 %</td></tr>
+        <tr><td class="hl"><strong>−50 %</strong></td><td class="num hl"><strong>+100 %</strong></td></tr>
+        <tr><td>−75 %</td><td class="num">+300 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Diese Konvexität ist der ganze Grund für dieses Modul. Ein Depot, das nie mehr als 20 % verliert, braucht +25 % zur Erholung — machbar in ein, zwei guten Jahren. Ein Depot, das 50 % verliert, braucht eine Verdopplung — das kann ein Jahrzehnt dauern, wenn es überhaupt gelingt.</p>
+
+  <h3>Vom Depot-Drawdown zur Positionsregel</h3>
+  <p>Dein maximaler Depot-Drawdown ist kein abstrakter Wert — er lässt sich in konkrete Regeln rückübersetzen:</p>
+  <pre class="ak-pre">   Beispielhafte Kette:
+   Max. tolerierbarer Depot-Drawdown:   25 %
+   ↓
+   Selbst im Korrelations-Ernstfall soll das nicht überschritten werden
+   ↓
+   → Risiko pro Position:               max. 1 %
+   → Max. Sektorgewicht:                ~25 %
+   → Max. Einzelposition:               ~10 %
+   → Bewusste Cash-Reserve:             Puffer + Feuerkraft</pre>
+
+  <h3>Der psychologische Drawdown ist kleiner als der finanzielle</h3>
+  <p>Ein oft übersehener Punkt: Die meisten Menschen <strong>überschätzen</strong>, wie viel Drawdown sie aushalten. Im Fragebogen kreuzen sie „−40 % kein Problem" an; bei tatsächlichen −25 % verkaufen sie panisch im Tief. Der reale Drawdown, den du <strong>verhaltensmäßig</strong> durchstehst, ist typischerweise kleiner als der, den du dir theoretisch zutraust.</p>
+
+  <p><strong>Konsequenz:</strong> Dimensioniere dein Risiko so, dass der wahrscheinliche Drawdown <strong>unter</strong> deiner emotionalen Schmerzgrenze bleibt — nicht an ihr. Denn ein Depot, das dich zum Verkaufen im Tief zwingt, verwandelt Volatilität in dauerhaften Kapitalverlust (Modul 1). Das ist der teuerste aller Fehler.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 9</strong>Der maximale Verlust, den dein Depot verträgt, ist nicht der, den deine Bilanz aushält — sondern der, den dein Schlaf aushält. Plane für den zweiten.</p>
+  </div>
+
+  <!-- 5.9 -->
+  <h2><span class="num">5.9</span>Volatilität — richtig einordnen</h2>
+  <h3>Volatilität ist nicht Risiko (Wiederholung aus Modul 1)</h3>
+  <ul>
+    <li><strong>Volatilität</strong> = Schwankung. Symmetrisch, reversibel, messbar.</li>
+    <li><strong>Risiko</strong> = dauerhafter Kapitalverlust. Nicht reversibel.</li>
+  </ul>
+  <p>Für den langfristigen Anleger ist Volatilität überwiegend <strong>Gelegenheit</strong>: Sie erzeugt die Kaufzonen (Preis unter Wert) und die Verkaufszonen (Preis über Wert), von denen der ganze Ansatz lebt.</p>
+
+  <h3>Wann Volatilität doch zum Risiko wird</h3>
+  <p>Volatilität verwandelt sich in echtes Risiko genau in <strong>drei</strong> Situationen:</p>
+  <ol>
+    <li><strong>Hebel.</strong> Wer auf Kredit kauft (Margin), kann bei Volatilität einen Margin Call bekommen und wird zum Verkauf im Tief gezwungen. → Dieser Kurs verwendet keinen Hebel.</li>
+    <li><strong>Liquiditätsbedarf.</strong> Wer das Geld zu einem festen Zeitpunkt braucht, kann nicht auf die Erholung warten. → Investiere nur Geld, das du 5+ Jahre nicht brauchst.</li>
+    <li><strong>Psyche.</strong> Wer die Schwankung nicht aushält und im Tief verkauft. → Positionsgröße so wählen, dass Punkt 3 nicht eintritt (5.8).</li>
+  </ol>
+  <p>Alle drei haben eines gemeinsam: Volatilität wird zum Risiko, wenn sie dich zum <strong>Handeln zwingt</strong>. Solange du frei entscheiden kannst zu warten, ist sie harmlos.</p>
+
+  <h3>Volatilität als Kalibrierungsgröße</h3>
+  <p>Der konstruktive Umgang: Volatilität ist der <strong>Input für deine Positionsgröße</strong>, nicht ein Grund zur Angst. Über den ATR (5.1, Rechenbeispiel 3) übersetzt du Volatilität direkt in Stückzahl. Eine doppelt so volatile Aktie bekommt eine halb so große Position — und trägt damit dasselbe Risiko. So wird aus einem gefürchteten Phänomen eine Rechengröße.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 10</strong>Volatilität ist die Miete, die du für die Rendite des Aktienmarktes zahlst. Wer sie nicht zahlen will, bekommt die Rendite nicht.</p>
+  </div>
+
+  <!-- Anfängerfehler -->
+  <h2>Typische Anfängerfehler in Modul 5</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Positionsgröße nach „Überzeugung" wählen</td><td>Ignoriert das tatsächliche Risiko</td><td>Aus Risikobudget ÷ Stop-Abstand berechnen</td></tr>
+        <tr><td>Alle Positionen gleich groß</td><td>Ignoriert unterschiedliche Volatilität</td><td>ATR-basiert dimensionieren</td></tr>
+        <tr><td>Zehn Tech-Aktien für Diversifikation halten</td><td>Ein Risiko, zehnmal gekauft</td><td>Korrelation prüfen, nicht Anzahl</td></tr>
+        <tr><td>40+ Positionen halten</td><td>Diworsification, teurer Index</td><td>Auf 10–20 begründbare Ideen fokussieren</td></tr>
+        <tr><td>Festen %-Stop setzen</td><td>Rauschen löst ihn aus</td><td>ATR-Vielfache verwenden</td></tr>
+        <tr><td>Stop-Loss für Sicherheit halten</td><td>Gap-Risiko hebelt ihn aus</td><td>Positionsgröße als primären Schutz</td></tr>
+        <tr><td>Bei intakter These wegen Kursfall verkaufen</td><td>Verkauft im Tief, verwandelt Vola in Verlust</td><td>Thesen-Stop statt Kurs-Stop</td></tr>
+        <tr><td>Immer voll investiert sein</td><td>Keine Feuerkraft im Crash</td><td>Cash als Position begreifen</td></tr>
+        <tr><td>Ohne CRV kaufen</td><td>Hoffnung statt Entscheidung</td><td>CRV ≥ 2,5:1 vor jedem Kauf</td></tr>
+        <tr><td>Max. Drawdown im Fallen festlegen</td><td>Panikreaktion statt Plan</td><td>Vorab definieren, in Regeln übersetzen</td></tr>
+        <tr><td>Eigene Verlusttoleranz überschätzen</td><td>Panikverkauf im realen Tief</td><td>Konservativer dimensionieren als „theoretisch" nötig</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2>Checkliste — Risikomanagement vor und nach dem Kauf</h2>
+  <p><strong>Vor jedem einzelnen Kauf:</strong></p>
+  <ul class="ak-check-list">
+    <li>Risiko pro Trade festgelegt (max. 1 %, absolut 2 %).</li>
+    <li>Falsifikations-/Stop-Niveau bestimmt (fundamental und/oder ATR-basiert).</li>
+    <li>Positionsgröße <strong>berechnet</strong>: Risikobudget ÷ Abstand zum Stop.</li>
+    <li>CRV bestimmt und ≥ 2,5 : 1.</li>
+    <li>Position verletzt keine Obergrenze (Einzelposition, Sektor).</li>
+    <li>Korrelation zu bestehenden Positionen geprüft — kein verstecktes Klumpenrisiko.</li>
+  </ul>
+
+  <p><strong>Auf Depotebene (regelmäßig):</strong></p>
+  <ul class="ak-check-list">
+    <li>Kein Sektor über ~25–30 %.</li>
+    <li>Keine Einzelposition über ~10 %.</li>
+    <li>Versteckte gemeinsame Treiber (Zins, Endmarkt, Währung) geprüft.</li>
+    <li>Stresstest gerechnet: Übersteht das Depot den Ausfall der größten Position / einen Sektorcrash?</li>
+    <li>Maximaler tolerierbarer Drawdown definiert und eingehalten.</li>
+    <li>Cash-Quote bewusst gewählt.</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2>Zusammenfassung</h2>
+  <ol>
+    <li><strong>Risikomanagement steht vor der Aktienauswahl.</strong> Weil Verluste konvex sind, entscheidet die Größe über das Überleben und das Überleben über die Rendite.</li>
+    <li>Die <strong>Positionsgröße</strong> ist eine Division: Risikobudget ÷ Abstand zum Falsifikationsniveau. Nicht die Zuversicht bestimmt sie, sondern der Stop-Abstand.</li>
+    <li>Der <strong>ATR</strong> übersetzt Volatilität in Stückzahl: volatiler → kleiner, bei identischem Euro-Risiko.</li>
+    <li><strong>Diversifikation</strong> senkt Risiko ohne Renditeverzicht — bis etwa 10–20 Positionen. Danach beginnt Diworsification.</li>
+    <li><strong>Korrelation schlägt Anzahl.</strong> Zehn hoch korrelierte Aktien sind eine Wette. Zähle Wetten, nicht Titel.</li>
+    <li>Der <strong>Stop-Loss</strong> ist keine Versicherung (Gap-Risiko). Für den Fundamentalanleger ist der <strong>Thesen-Stop</strong> das primäre Instrument.</li>
+    <li>Das <strong>CRV</strong> verbindet Chart, Fundament und Erwartungswert. Regel: ≥ 2,5 : 1 — dann darfst du in 3 von 4 Fällen falsch liegen.</li>
+    <li>Das <strong>Portfolio-Risiko</strong> entsteht aus Korrelation und versteckten Faktoren. Stresstesten statt prognostizieren.</li>
+    <li>Der <strong>maximale Drawdown</strong> wird vorab definiert und in Positionsregeln übersetzt. Plane für deine emotionale, nicht deine bilanzielle Schmerzgrenze.</li>
+    <li><strong>Volatilität ist Kalibrierungsgröße, nicht Feind</strong> — außer sie zwingt dich zum Handeln (Hebel, Liquiditätsbedarf, Psyche).</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2>Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Depot 50.000 €, Risiko pro Trade 1 %. Einstieg 80 €, Stop 68 €. Wie viele Aktien kaufst du, und wie groß ist die Position in Euro?</li>
+    <li>Dieselbe 1-%-Regel, dasselbe Depot. Aktie X: Einstieg 100 €, Stop 95 €. Aktie Y: Einstieg 100 €, Stop 80 €. Welche Position wird größer und warum?</li>
+    <li>Zwei Aktien kosten je 60 €. Aktie A hat ATR 1 €, Aktie B ATR 3 €. Du setzt Stops bei 3× ATR. Bei welcher wird die Position (bei gleichem Risikobudget) größer?</li>
+    <li>Ein Anleger hält Apple, Microsoft, NVIDIA, Alphabet, Meta, Amazon, ASML und Adobe und nennt das „gut diversifiziert mit acht Titeln". Was übersieht er?</li>
+    <li>Ab welcher ungefähren Positionszahl bringt zusätzliche Diversifikation kaum noch Risikoreduktion, und wie heißt das Phänomen, wenn man es übertreibt?</li>
+    <li>Warum ist ein Stop-Loss bei −10 % keine Garantie, maximal 10 % zu verlieren?</li>
+    <li>Nenne den Unterschied zwischen einem Kurs-Stop und einem Thesen-Stop. Welcher ist für den Fundamentalanleger primär?</li>
+    <li>Einstieg 120 €, Fair Value 180 €, Falsifikationsniveau 100 €. Berechne das CRV. Bei welcher Mindest-Trefferquote wärst du break-even?</li>
+    <li>Dein maximal tolerierbarer Depot-Drawdown ist 25 %. Warum solltest du dein Risiko trotzdem so wählen, dass der <em>wahrscheinliche</em> Drawdown deutlich darunter liegt?</li>
+    <li>In welchen drei Situationen verwandelt sich harmlose Volatilität in echtes, dauerhaftes Risiko?</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li>Risikobudget = 1 % × 50.000 = 500 €. Risiko pro Aktie = 80 − 68 = 12 €. Anzahl = 500 / 12 = <strong>41 Aktien</strong>. Position = 41 × 80 = <strong>3.280 €</strong> (6,6 % des Depots).</li>
+        <li><strong>Aktie X wird viermal so groß.</strong> X: Risiko/Aktie 5 € → 100 Aktien → 10.000 €. Y: Risiko/Aktie 20 € → 25 Aktien → 2.500 €. Grund: Der <strong>engere Stop</strong> bei X erlaubt bei identischem Euro-Risiko eine größere Stückzahl. Die Positionsgröße folgt dem Stop-Abstand, nicht der Überzeugung.</li>
+        <li>Bei <strong>Aktie A</strong>. A: Stop-Abstand 3 × 1 = 3 € → mehr Aktien pro Risikobudget. B: Stop-Abstand 3 × 3 = 9 € → dreimal weniger Aktien. Die ruhigere Aktie A bekommt die größere Position — die volatilere B wird automatisch kleiner dimensioniert, trägt aber dasselbe Risiko.</li>
+        <li>Er übersieht die <strong>Korrelation</strong>. Alle acht Titel sind US-(Mega-Cap-)Technologie und hängen an ähnlichen Treibern (Tech-Zyklus, US-Zinsen, KI-Erwartung). Sie fallen im Stress <strong>gemeinsam</strong>. Es sind nicht acht Wetten, sondern <strong>eine Wette, achtmal gekauft</strong>. Diversifikation nach Anzahl ohne Korrelationsprüfung ist wertlos.</li>
+        <li>Ab etwa <strong>10–20 Positionen</strong> ist der Grenznutzen sehr gering — der Großteil des unternehmensspezifischen Risikos ist bereits eliminiert. Übertreibt man es (&gt;40), spricht man von <strong>„Diworsification"</strong>: mehr Aufwand, verwässerte Rendite, faktisch ein teurer Indexfonds.</li>
+        <li>Wegen des <strong>Gap-Risikos</strong>. Der Stop bei −10 % löst eine <em>Market</em>-Order aus, sobald die Marke berührt wird. Springt der Kurs über Nacht (z. B. Gewinnwarnung) direkt unter die Marke — etwa auf −28 % —, wurde bei −10 % nie gehandelt; die Order wird zum ersten verfügbaren Kurs (−28 %) ausgeführt. Der Stop schützt gegen gleitende, nicht gegen springende Bewegungen.</li>
+        <li>Ein <strong>Kurs-Stop</strong> löst bei Erreichen einer Kursmarke aus (rein preisbasiert). Ein <strong>Thesen-Stop</strong> löst aus, wenn die fundamentale Kaufbegründung widerlegt ist (z. B. Bruttomarge bricht ein, FCF wird dauerhaft negativ). Für den Fundamentalanleger ist der <strong>Thesen-Stop primär</strong> — man steigt aus, wenn man sich in der Sache geirrt hat, nicht wenn der Kurs schwankt.</li>
+        <li>Möglicher Gewinn = 180 − 120 = 60 €. Möglicher Verlust = 120 − 100 = 20 €. <strong>CRV = 60/20 = 3,0 (3:1).</strong> Mindest-Trefferquote = 1/(1+3) = <strong>25 %</strong>. Du darfst in 75 % der Fälle falsch liegen und bist immer noch break-even.</li>
+        <li>Weil die <strong>verhaltensmäßige</strong> Schmerzgrenze niedriger liegt als die theoretisch angegebene. Die meisten überschätzen ihre Verlusttoleranz und verkaufen bei realen −25 % panisch im Tief — was Volatilität in dauerhaften Kapitalverlust verwandelt. Wer sein Risiko unter der emotionalen Grenze ansetzt, vermeidet den erzwungenen Panikverkauf und bleibt handlungsfähig.</li>
+        <li>(1) <strong>Hebel/Margin</strong> — Volatilität kann einen Margin Call und Zwangsverkauf auslösen. (2) <strong>Liquiditätsbedarf</strong> — wer das Geld zu einem festen Termin braucht, kann die Erholung nicht abwarten. (3) <strong>Psyche</strong> — wer die Schwankung nicht aushält und im Tief verkauft. Gemeinsamer Nenner: Volatilität wird zum Risiko, sobald sie zum <strong>Handeln zwingt</strong>.</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Übungen -->
+  <h2>Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Deine persönliche Positionsgrößen-Formel (30 Min.)</h4>
+      <p>Lege dein reales (oder geplantes) Depotvolumen zugrunde. Bestimme dein Risiko pro Trade (1 % empfohlen). Berechne für drei Aktien deiner Watchlist die konkrete Positionsgröße mit jeweils individuellem Stop-Abstand. Notiere die Formel als Vorlage für alle künftigen Käufe.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — ATR-Dimensionierung (45 Min.)</h4>
+      <p>Ermittle für drei Aktien mit unterschiedlicher Volatilität den ATR(14). Berechne für jede die Positionsgröße bei 1 % Risiko und 2,5× ATR Stop. Vergleiche die resultierenden Positionsgrößen. Was fällt dir auf?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Der Korrelations-Check (45 Min.)</h4>
+      <p>Liste dein aktuelles Depot (oder deine Watchlist) auf. Ordne jede Position einem Sektor, einer Region und einem Haupttreiber (Zins/Konsum/Rohstoff/Tech-Zyklus) zu. Identifiziere versteckte Klumpen: Welcher Faktor taucht am häufigsten auf? Wie viel Prozent des Depots hängt an ihm?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — Diversifikations-Diagnose (30 Min.)</h4>
+      <p>Zähle deine Positionen. Zähle dann deine <strong>Wetten</strong> (Gruppen hoch korrelierter Positionen). Ist die zweite Zahl deutlich kleiner als die erste? Formuliere eine Regel, die dein größtes Klumpenrisiko begrenzt.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Der Stresstest (45 Min.)</h4>
+      <p>Rechne für dein Depot vier Szenarien durch: (a) größte Position −100 %, (b) dein Hauptsektor −30 %, (c) alle Positionen −20 %, (d) deine drei größten Positionen gleichzeitig −40 %. Übersteigt eines davon deinen maximalen tolerierbaren Drawdown? Wenn ja: Welche konkrete Änderung reduziert das?</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 6 — Dein Drawdown-Vertrag (30 Min.)</h4>
+      <p>Schreibe schriftlich fest: (a) den maximalen Depot-Drawdown, den du emotional durchstehst; (b) die daraus abgeleiteten Regeln (Risiko/Trade, max. Sektor, max. Einzelposition); (c) was du konkret tust, wenn dieser Drawdown eintritt (Hinweis: idealerweise nichts, oder nachkaufen). Unterschreibe es. Du wirst es in Modul 7 wiederbrauchen.</p>
+    </div>
+  </div>
+
+  <div class="ak-disclaimer">
+    <strong>Keine Anlageberatung.</strong> Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Alle Zahlen und Unternehmen sind illustrativ. Rechenbeispiele dienen der Methodenvermittlung und stellen keine Renditeversprechen dar. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Jede Anlageentscheidung erfolgt eigenverantwortlich.
+  </div>
+
+</main>
+
+<section class="ak-weiter">
+  <p>Nächstes Modul</p>
+  <h3>Modul 6 — Verkaufsstrategien<br>Wann ist eine These beendet?</h3>
+  <a href="modul-06-verkaufsstrategien.html" class="btn-outline">Modul 6 öffnen →</a>
+</section>
+
+<nav class="ak-modulnav" aria-label="Modul-Navigation">
+  <a href="index.html" class="overview">← Übersicht</a>
+  <a href="modul-01-grundlagen.html">01</a>
+  <a href="modul-02-fundamentalanalyse.html">02</a>
+  <a href="modul-03-chartanalyse.html">03</a>
+  <a href="modul-04-einstieg.html">04</a>
+  <a href="modul-05-risikomanagement.html" class="active">05</a>
+  <a href="modul-06-verkaufsstrategien.html">06</a>
+  <a href="modul-07-psychologie.html">07</a>
+  <a href="modul-08-strategie.html">08</a>
+</nav>
+
+<footer>
+  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
+  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
+    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
+    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
+  if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
+</script>
+</body>
+</html>
