@@ -105,11 +105,13 @@
 .ak-check-list li::before { content: '☐'; position: absolute; left: 0.4rem; top: 0.55rem; color: var(--neon); font-family: var(--mono); font-size: 1.05rem; line-height: 1; }
 .ak-check-list li strong { color: var(--text); font-weight: 500; }
 
-/* ── Quiz — Grid-basierte Nummerierung (kein Overlap) ─ */
-.ak-quiz { counter-reset: q; list-style: none; margin: 1.5rem 0 !important; padding: 0; }
-.ak-quiz > li { counter-increment: q; display: grid; grid-template-columns: 2.5rem 1fr; column-gap: 0.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text); line-height: 1.65; }
-.ak-quiz > li:last-child { border-bottom: none; }
-.ak-quiz > li::before { content: counter(q, decimal-leading-zero); font-family: var(--mono); font-size: 0.75rem; color: var(--neon); font-weight: 700; padding-top: 0.35rem; }
+/* ── Quiz — Nummer absolut positioniert, Text als normaler Inline-Flow
+   (Grid brach bei <strong> in der Frage — jedes Kind wurde eigenes Grid-Item).
+   Specificity ak-content ol.ak-quiz > li (0,2,2) schlägt .ak-content ol li. */
+.ak-content ol.ak-quiz { counter-reset: q; list-style: none; margin: 1.5rem 0 !important; padding: 0; }
+.ak-content ol.ak-quiz > li { counter-increment: q; display: block; position: relative; padding: 1rem 0 1rem 3rem; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text); line-height: 1.65; margin-bottom: 0; }
+.ak-content ol.ak-quiz > li:last-child { border-bottom: none; }
+.ak-content ol.ak-quiz > li::before { content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font-family: var(--mono); font-size: 0.75rem; color: var(--neon); font-weight: 700; padding-top: 0.35rem; }
 
 .ak-quiz-answers { margin: 2rem 0; border: 1px solid var(--border2); border-radius: 4px; overflow: hidden; }
 .ak-quiz-answers > summary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); background: var(--bg2); padding: 1rem 1.4rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -118,14 +120,14 @@
 .ak-quiz-answers > summary::after { content: '+'; font-size: 1rem; color: var(--neon); transition: transform 0.2s; }
 .ak-quiz-answers[open] > summary::after { transform: rotate(45deg); }
 .ak-quiz-answers > .ak-quiz-body { padding: 1.2rem 1.6rem; background: var(--bg); }
-.ak-quiz-answers ol { list-style: none; margin: 0 !important; padding: 0; counter-reset: qa; }
-.ak-quiz-answers ol > li { counter-increment: qa; display: grid; grid-template-columns: 2.2rem 1fr; column-gap: 0.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; color: var(--text-2); line-height: 1.65; }
-.ak-quiz-answers ol > li:last-child { border-bottom: none; }
-.ak-quiz-answers ol > li::before { content: counter(qa, decimal-leading-zero); font-family: var(--mono); font-size: 0.7rem; color: var(--neon); font-weight: 700; padding-top: 0.25rem; }
-.ak-quiz-answers ol > li strong { color: var(--text); font-weight: 500; }
-.ak-quiz-answers ol > li ul { list-style: disc; margin: 0.5rem 0 0 1.2rem; padding: 0; }
-.ak-quiz-answers ol > li ul li { padding: 0.2rem 0; border: none; font-size: 0.9rem; display: list-item; }
-.ak-quiz-answers ol > li ul li::before { display: none; content: none; }
+.ak-content .ak-quiz-answers ol { list-style: none; margin: 0 !important; padding: 0; counter-reset: qa; }
+.ak-content .ak-quiz-answers ol > li { counter-increment: qa; display: block; position: relative; padding: 0.9rem 0 0.9rem 2.7rem; border-bottom: 1px solid var(--border); font-size: 0.92rem; color: var(--text-2); line-height: 1.65; margin-bottom: 0; }
+.ak-content .ak-quiz-answers ol > li:last-child { border-bottom: none; }
+.ak-content .ak-quiz-answers ol > li::before { content: counter(qa, decimal-leading-zero); position: absolute; left: 0; top: 0.9rem; font-family: var(--mono); font-size: 0.7rem; color: var(--neon); font-weight: 700; padding-top: 0.25rem; }
+.ak-content .ak-quiz-answers ol > li strong { color: var(--text); font-weight: 500; }
+.ak-content .ak-quiz-answers ol > li ul { list-style: disc; margin: 0.5rem 0 0 1.2rem; padding: 0; }
+.ak-content .ak-quiz-answers ol > li ul li { padding: 0.2rem 0; border: none; font-size: 0.9rem; display: list-item; }
+.ak-content .ak-quiz-answers ol > li ul li::before { display: none; content: none; }
 
 /* ── Übungen ──────────────────────────────────────────── */
 .ak-uebungen { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
@@ -152,8 +154,8 @@
   .ak-content h2 { margin-top: 3rem; }
   .ak-modulnav { padding: 1.2rem 1rem; gap: 4px; }
   .ak-modulnav a { padding: 0.4rem 0.7rem; font-size: 0.62rem; }
-  .ak-quiz > li { grid-template-columns: 2rem 1fr; }
-  .ak-quiz-answers ol > li { grid-template-columns: 2rem 1fr; }
+  .ak-content ol.ak-quiz > li { padding-left: 2.4rem; }
+  .ak-content .ak-quiz-answers ol > li { padding-left: 2.2rem; }
   nav .nav-links { display: none !important; }
   nav a.nav-cta { display: none; }
 }
