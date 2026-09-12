@@ -34,8 +34,8 @@
   <!-- Punkte -->
   <circle class="neonf" cx="180" cy="90" r="5"/><text class="lbln" x="196" y="94">Market-Order</text>
   <circle class="neonf" cx="230" cy="150" r="5"/><text class="lbln" x="246" y="154">Stop-Order</text>
-  <circle class="neonf" cx="470" cy="250" r="5"/><text class="lbln" x="330" y="254" text-anchor="end">Stop-Limit-Order</text>
-  <circle class="neonf" cx="560" cy="300" r="5"/><text class="lbln" x="430" y="304" text-anchor="end">Limit-Order</text>
+  <circle class="neonf" cx="470" cy="250" r="5"/><text class="lbln" x="486" y="254">Stop-Limit-Order</text>
+  <circle class="neonf" cx="560" cy="300" r="5"/><text class="lbln" x="576" y="304">Limit-Order</text>
   <!-- Trade-off-Linie -->
   <path class="griddash" d="M180,90 L560,300"/>
   <text class="lbl" x="560" y="110" text-anchor="end" style="fill:var(--text-3)">obere rechte Ecke</text>

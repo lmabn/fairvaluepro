@@ -126,25 +126,6 @@
   <p>Wenn der Kurs an einem Tag um 4 % fällt, bedeutet das <strong>nicht</strong>, dass „der Markt" seine Meinung über Apple um 4 % nach unten korrigiert hat. Es bedeutet, dass unter den wenigen, die an diesem Tag <em>handeln mussten oder wollten</em>, die Verkäufer dringlicher waren als die Käufer.</p>
 
   <h3>Preisbildung im Detail</h3>
-  <pre class="ak-pre">        VERKÄUFER (Ask / Brief)                    KÄUFER (Bid / Geld)
-        wollen hoch verkaufen                      wollen tief kaufen
-                 │                                          │
-                 ▼                                          ▼
-        ┌────────────────────────────────────────────────────────┐
-        │                    ORDERBUCH                            │
-        │                                                         │
-        │   Ask 214,20  ×  1.200                                  │
-        │   Ask 214,15  ×    800                                  │
-        │   Ask 214,10  ×  2.500   <span class="hl">◄── beste Verkaufsofferte</span>      │
-        │  ─────────────────────────────  <span class="hl">SPREAD = 0,04 €</span>         │
-        │   Bid 214,06  ×  3.100   <span class="hl">◄── beste Kaufofferte</span>          │
-        │   Bid 214,00  ×  5.400                                  │
-        │   Bid 213,95  ×  1.900                                  │
-        └────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-        Ein Käufer akzeptiert 214,10 → Trade! → <span class="hl">NEUER KURS = 214,10</span></pre>
-
   <figure class="ak-fig">
     <object type="image/svg+xml" data="assets/svg/m01-orderbuch.svg" aria-label="Schematische Darstellung eines Orderbuchs mit Bid, Ask und Spread"></object>
     <figcaption>Orderbuch — die beste Ask trifft auf die beste Bid; der Spread ist der Zwischenraum</figcaption>
