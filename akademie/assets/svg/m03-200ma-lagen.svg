@@ -1,0 +1,29 @@
+<svg viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zwei Beispiel-Charts nebeneinander: links Kurs über einer steigenden 200-Tage-Linie (Aufwärtstrend), rechts Kurs unter einer fallenden 200-Tage-Linie (Abwärtstrend).">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .madash { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; stroke-dasharray: 6 5; }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .tag    { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .04em; }
+  </style>
+  <rect class="bg" x="0" y="0" width="800" height="330" rx="6"/>
+
+  <!-- Panel-Titel -->
+  <text class="lbl" x="200" y="30" text-anchor="middle">Kurs über steigender 200-Tage-Linie</text>
+  <text class="lbl" x="600" y="30" text-anchor="middle">Kurs unter fallender 200-Tage-Linie</text>
+
+  <!-- Panel A: Aufwärtstrend — 200-MA steigt, Kurs bleibt darüber -->
+  <path class="madash" d="M40,250 L360,155"/>
+  <text class="tag"   x="230" y="212" text-anchor="middle">200-Tage-Linie</text>
+  <path class="neon"  d="M60,225 L110,170 L160,200 L210,140 L260,170 L310,110 L360,130"/>
+
+  <!-- Panel B: Abwärtstrend — 200-MA fällt, Kurs bleibt darunter -->
+  <path class="madash" d="M440,155 L760,250"/>
+  <text class="tag"   x="600" y="180" text-anchor="middle">200-Tage-Linie</text>
+  <path class="muted" d="M460,180 L510,240 L560,210 L610,265 L660,235 L710,285 L760,265"/>
+
+  <!-- Fußnoten -->
+  <text class="tag" x="200" y="308" text-anchor="middle">Rücksetzer auf die Linie oft Einstiegs­gelegenheit</text>
+  <text class="tag" x="600" y="308" text-anchor="middle">Vorsicht vor „fallenden Messern"</text>
+</svg>
