@@ -111,40 +111,48 @@ Positionsgröße  =  ───────────────────�
   <pre class="ak-pre">   Depot:                        100.000 €
    Risiko pro Trade:             1 %  →  1.000 € maximaler Verlust
    Einstiegskurs:                200 €
-   Stop / Falsifikationsniveau:  170 €   (−15 %)
+   Falsifikationsniveau:         170 €   (−15 %) — hier wäre die These widerlegt
+                                                    (nicht: normale Schwankung)
 
    Risiko pro Aktie:  200 − 170 = 30 €
 
    Anzahl Aktien   =  1.000 € / 30 € = 33 Aktien
    Positionsgröße  =  33 × 200 € = 6.600 €   (6,6 % des Depots)</pre>
 
-  <p>Wenn der Stop bei 170 € greift, verlierst du 33 × 30 € = <strong>990 €</strong> ≈ 1 % des Depots. Genau wie geplant.</p>
+  <p>Falls sich deine These fundamental als falsch erweist und du dann bei 170 € verkaufst, verlierst du 33 × 30 € = <strong>990 €</strong> ≈ 1 % des Depots. Genau wie geplant.</p>
 
-  <h3>Rechenbeispiel 2 — warum der Stop-Abstand die Größe bestimmt</h3>
-  <p>Dieselbe 1-%-Regel, aber ein <strong>engerer</strong> Stop:</p>
+  <div class="ak-callout">
+    <span class="ak-ctag">Wichtig — kein mechanischer Kurs-Stop</span>
+    <p>Die 170 € sind <strong>nicht</strong> der Kurs, bei dem du „automatisch bei −15 % verkaufst". Als langfristiger Anleger verkaufst du nicht, nur weil der Kurs fällt — ein Rückgang bei intakter These macht die Aktie eher <em>attraktiver</em> (siehe Abschnitt 5.5 und Modul 6). Die 170 € sind dein <strong>Falsifikationsniveau</strong>: der Punkt, an dem deine Kaufbegründung widerlegt wäre — etwa weil die Aktie nur dann so tief stünde, wenn sich die Fundamentaldaten wirklich verschlechtert haben (Burggraben bricht, Marge kollabiert, das Unternehmen ist ernsthaft beschädigt).</p>
+    <p>Die Positionsgröße beantwortet also die Frage: <em>„Wie viel verliere ich, wenn sich herausstellt, dass ich mich fundamental geirrt habe — und ich meine gebrochene These verkaufe?"</em> Nicht: <em>„Wie viel verliere ich bei der nächsten normalen Schwankung?"</em> Genau deshalb sorgt die 1-%-Regel dafür, dass der seltene, echte Thesenbruch dich nur rund 1 % des Depots kostet — während normale Kursschwankungen dich gar nicht zum Verkauf zwingen.</p>
+  </div>
+
+  <h3>Rechenbeispiel 2 — warum der Abstand zum Falsifikationsniveau die Größe bestimmt</h3>
+  <p>Dieselbe 1-%-Regel, aber ein <strong>engeres</strong> Falsifikationsniveau (Definition wie in Rechenbeispiel 1 — kein mechanischer Kurs-Stop):</p>
   <pre class="ak-pre">   Depot 100.000 €, Risiko 1 % = 1.000 €
-   Einstieg 200 €, Stop 190 €  (−5 %)
+   Einstieg 200 €, Falsifikationsniveau 190 €  (−5 %)
 
    Risiko pro Aktie:  10 €
    Anzahl:            1.000 / 10 = 100 Aktien
    Positionsgröße:    100 × 200 = 20.000 €   (20 % des Depots)</pre>
 
-  <p><strong>Dieselbe 1-%-Regel führt zu einer dreimal so großen Position</strong> — weil der Stop enger sitzt. Das ist die Kern-Einsicht: Nicht die „Überzeugung" bestimmt die Positionsgröße, sondern der <strong>Abstand zum Falsifikationsniveau</strong>. Enger Stop → große Position, weiter Stop → kleine Position, <strong>bei identischem Risiko in Euro.</strong></p>
+  <p><strong>Dieselbe 1-%-Regel führt zu einer dreimal so großen Position</strong> — weil das Falsifikationsniveau enger sitzt. Das ist die Kern-Einsicht: Nicht die „Überzeugung" bestimmt die Positionsgröße, sondern der <strong>Abstand zum Falsifikationsniveau</strong>. Enger Abstand → große Position, weiter Abstand → kleine Position, <strong>bei identischem Risiko in Euro.</strong></p>
 
   <div class="ak-merksatz">
     <p><strong class="ak-mtag">Merksatz 1</strong>Deine Positionsgröße ist keine Frage der Zuversicht, sondern eine Division: Risikobudget geteilt durch Abstand zum Ausstieg.</p>
   </div>
 
   <h3>Die Verbindung zum ATR (aus Modul 3)</h3>
-  <p>Ein fester prozentualer Stop ignoriert, wie stark eine Aktie normal schwankt. Besser: Der Stop-Abstand orientiert sich am <strong>ATR</strong>.</p>
+  <p>Ein festes prozentuales Falsifikationsniveau ignoriert, wie stark eine Aktie normal schwankt — ein Niveau, das enger sitzt als das normale Tagesrauschen, würde als „widerlegt" gelten, obwohl die These noch längst nicht gebrochen ist. Besser: Der Abstand orientiert sich am <strong>ATR</strong>. Wer einen begleitenden Kurs-Stop nutzt (Abschnitt 5.5, optional), setzt ihn nach derselben Logik.</p>
 
   <h3>Rechenbeispiel 3 — ATR-basierte Positionsgröße</h3>
+  <p>Der Abstand zum Falsifikationsniveau wird volatilitätsbewusst gesetzt (Definition wie oben — Falsifikation, nicht mechanischer Kurs-Stop):</p>
   <pre class="ak-pre">   Depot 100.000 €, Risiko 1 % = 1.000 €
 
-   Aktie A:  Kurs 200 €, ATR(14) = 3 €   → Stop 2,5 × ATR = 7,50 € Abstand
+   Aktie A:  Kurs 200 €, ATR(14) = 3 €   → Falsifikations-Abstand 2,5 × ATR = 7,50 €
              Anzahl = 1.000 / 7,50 = 133 Aktien → Position 26.600 €
 
-   Aktie B:  Kurs 200 €, ATR(14) = 9 €   → Stop 2,5 × ATR = 22,50 € Abstand
+   Aktie B:  Kurs 200 €, ATR(14) = 9 €   → Falsifikations-Abstand 2,5 × ATR = 22,50 €
              Anzahl = 1.000 / 22,50 = 44 Aktien → Position 8.800 €</pre>
 
   <figure class="ak-fig">
