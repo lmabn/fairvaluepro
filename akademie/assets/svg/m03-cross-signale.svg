@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zwei Kurscharts nebeneinander: links Golden Cross (50-Tage-Linie kreuzt 200-Tage-Linie von unten nach oben), rechts Death Cross (50-Tage-Linie kreuzt 200-Tage-Linie von oben nach unten). Beide Kreuzungssignale erscheinen erst, nachdem sich der Kurs bereits deutlich bewegt hat.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2.2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .midf   { fill: var(--mid, #00c46a); }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 2.2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .madash { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; stroke-dasharray: 6 5; }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lblneon { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    .lblmid  { fill: var(--mid, #00c46a); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+    .lblmut  { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+  </style>
+  <rect class="bg" x="0" y="0" width="800" height="340" rx="6"/>
+
+  <!-- ═══════ Panel A: Golden Cross ═══════ -->
+  <text class="lblneon" x="70" y="30">Golden Cross</text>
+
+  <!-- Achsen -->
+  <line class="axis" x1="40" y1="50"  x2="40"  y2="290"/>
+  <line class="axis" x1="40" y1="290" x2="390" y2="290"/>
+  <text class="tick" x="15"  y="54">Kurs</text>
+  <text class="tick" x="360" y="310">Zeit</text>
+
+  <!-- 200-Tage (dashed, muted) — steigt leicht -->
+  <path class="madash" d="M50,235 L370,175"/>
+  <text class="lbl" x="378" y="178">200-Tage</text>
+
+  <!-- 50-Tage (solid, mid) — kommt von unten, kreuzt aufwärts -->
+  <path class="mid" d="M50,265 L200,220 L370,105"/>
+  <text class="lblmid" x="378" y="108">50-Tage</text>
+
+  <!-- Kreuzungspunkt bei (227, 202) — mathematisch berechnet -->
+  <circle class="neonf" cx="227" cy="202" r="5"/>
+  <text class="lblneon" x="235" y="225">Golden Cross</text>
+  <text class="tick"    x="235" y="240">(Signal erscheint verzögert)</text>
+
+  <!-- ═══════ Panel B: Death Cross ═══════ -->
+  <text class="lblmut" x="480" y="30">Death Cross</text>
+
+  <!-- Achsen -->
+  <line class="axis" x1="450" y1="50"  x2="450" y2="290"/>
+  <line class="axis" x1="450" y1="290" x2="790" y2="290"/>
+  <text class="tick" x="425" y="54">Kurs</text>
+  <text class="tick" x="760" y="310">Zeit</text>
+
+  <!-- 200-Tage (dashed, muted) — steigt noch leicht (typisch: 200 ist langsam) -->
+  <path class="madash" d="M470,235 L770,175"/>
+  <text class="lbl" x="778" y="178">200-Tage</text>
+
+  <!-- 50-Tage (solid, muted) — kommt von oben, kreuzt abwärts -->
+  <path class="muted" d="M470,105 L620,220 L770,260"/>
+  <text class="lbl" x="778" y="263">50-Tage</text>
+
+  <!-- Kreuzungspunkt bei (604, 208) — mathematisch berechnet -->
+  <circle class="mutedf" cx="604" cy="208" r="5"/>
+  <text class="lblmut" x="612" y="232">Death Cross</text>
+  <text class="tick"   x="612" y="247">(Signal erscheint verzögert)</text>
+</svg>
