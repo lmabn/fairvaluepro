@@ -50,14 +50,14 @@
 
   <!-- 200-Tage (dashed, muted) — steigt noch leicht (typisch: 200 ist langsam) -->
   <path class="madash" d="M470,235 L770,175"/>
-  <text class="lbl" x="778" y="178">200-Tage</text>
+  <text class="lbl" x="765" y="170" text-anchor="end">200-Tage</text>
 
   <!-- 50-Tage (solid, muted) — kommt von oben, kreuzt abwärts -->
   <path class="muted" d="M470,105 L620,220 L770,260"/>
-  <text class="lbl" x="778" y="263">50-Tage</text>
+  <text class="lbl" x="765" y="278" text-anchor="end">50-Tage</text>
 
   <!-- Kreuzungspunkt bei (604, 208) — mathematisch berechnet -->
   <circle class="mutedf" cx="604" cy="208" r="5"/>
-  <text class="lblmut" x="612" y="232">Death Cross</text>
-  <text class="tick"   x="612" y="247">(Signal erscheint verzögert)</text>
+  <text class="lblmut" x="612" y="260">Death Cross</text>
+  <text class="tick"   x="612" y="275">(Signal erscheint verzögert)</text>
 </svg>
