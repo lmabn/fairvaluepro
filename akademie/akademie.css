@@ -147,6 +147,35 @@
 .ak-disclaimer { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; line-height: 1.75; color: var(--text-2); border: 1px solid var(--border2); border-radius: 3px; padding: 1rem 1.2rem; max-width: 780px; margin: 3rem auto 0; }
 .ak-disclaimer strong { color: var(--text); font-weight: 500; }
 
+/* ── Light-Mode: Kontrast-Fix für Tag/Label-Texte ─────────
+   Im Light-Mode ist var(--neon) = #14cf77 und var(--warn) = #8fffcb.
+   Beide sind auf hell getönten Box-Hintergründen (--bg2, --bg3, --neon-dim)
+   nicht ausreichend lesbar (Kontrast < 2:1). Für alle Tag-, Label-, Zähler-
+   und Highlight-Texte, die auf solchen Boxen sitzen, wird stattdessen ein
+   dunkleres Grün (#0a6a3b) verwendet — WCAG-AA-tauglich gegen --bg2/--bg3.
+   Betrifft nur Text-/Symbolfarben; Hintergrund-Tints und Akzentlinien bleiben. */
+:root[data-theme="light"] .ak-content h2 .num,
+:root[data-theme="light"] .ak-lernziele h3,
+:root[data-theme="light"] .ak-merksatz p .ak-mtag,
+:root[data-theme="light"] .ak-callout .ak-ctag,
+:root[data-theme="light"] .ak-uebung h4,
+:root[data-theme="light"] .ak-quiz-answers > summary,
+:root[data-theme="light"] .ak-quiz-answers > summary::after,
+:root[data-theme="light"] .ak-content ol.ak-quiz > li::before,
+:root[data-theme="light"] .ak-content .ak-quiz-answers ol > li::before,
+:root[data-theme="light"] .ak-check-list li::before,
+:root[data-theme="light"] .ak-tbl th.hl,
+:root[data-theme="light"] .ak-tbl td.hl,
+:root[data-theme="light"] .ak-tbl td.check,
+:root[data-theme="light"] .ak-pre .hl,
+:root[data-theme="light"] .ak-formula .pos {
+  color: #0a6a3b;
+}
+/* Callout-Akzentlinie war im Light-Mode fast unsichtbar (Warn = #8fffcb). */
+:root[data-theme="light"] .ak-callout {
+  border-left-color: #0a6a3b;
+}
+
 /* ── Responsive ───────────────────────────────────────── */
 @media (max-width: 720px) {
   .ak-hero { padding: 2.5rem 1.25rem 2rem; }
