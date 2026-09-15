@@ -286,9 +286,9 @@ footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; 
   --border:  rgba(20,207,119,0.16);
   --border2: rgba(20,207,119,0.26);
 
-  /* Sub-brand accents — darker variants for light-mode readability */
-  --pt-accent: #7a9100;
-  --td-accent: #3b82d4;
+  /* Sub-brand accents — darker variants for light-mode readability (WCAG-AA gegen --bg2/--bg3) */
+  --pt-accent: #5a6b00;
+  --td-accent: #1c5cb8;
 }
 :root[data-theme="light"] nav {
   background: rgba(238,242,234,0.92);
