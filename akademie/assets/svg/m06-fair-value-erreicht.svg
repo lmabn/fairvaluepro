@@ -1,0 +1,47 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart: Der Kurs steigt vom Einstieg (30 % unter Fair Value) bis zum Fair Value. Zwischen Kurspfad und Fair-Value-Linie liegt die Sicherheitsmarge, die sich mit steigendem Kurs aufzehrt. Am Kreuzungspunkt mit dem Fair Value ist die These erfüllt und der Grund für den Kauf entfallen.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
+    .fv     { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; stroke-dasharray: 6 5; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.6; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .mutedf { fill: var(--text-2, #6a8c7a); }
+    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: none; }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lblneon { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    .lblmid { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,monospace); font-size: 11px; font-style: italic; letter-spacing: .04em; }
+    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
+    .foot   { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
+  </style>
+  <rect class="bg" x="0" y="0" width="800" height="340" rx="6"/>
+
+  <!-- Achsen -->
+  <line class="axis" x1="60" y1="45"  x2="60"  y2="280"/>
+  <line class="axis" x1="60" y1="280" x2="750" y2="280"/>
+  <text class="tick" x="30" y="52">Kurs €</text>
+  <text class="tick" x="716" y="298">Zeit →</text>
+
+  <!-- Sicherheitsmarge-Fläche: Wedge zwischen Kurspfad (unten) und Fair-Value-Linie (oben) — schrumpft nach rechts auf null -->
+  <path class="fillneon" d="M110,90 L660,90 L600,112 L550,130 L500,148 L450,160 L400,178 L350,195 L300,208 L250,220 L200,245 L155,235 L110,250 Z"/>
+  <text class="lblmid" x="330" y="175" text-anchor="middle">Sicherheitsmarge (schrumpft)</text>
+
+  <!-- Fair-Value-Linie (dashed) -->
+  <line class="fv" x1="60" y1="90" x2="740" y2="90"/>
+  <text class="lbl" x="68" y="82">Fair Value</text>
+
+  <!-- Kursverlauf (neon steigend, zigzag) -->
+  <path class="neon" d="M110,250 L155,235 L200,245 L250,220 L300,208 L350,195 L400,178 L450,160 L500,148 L550,130 L600,112 L660,90"/>
+
+  <!-- Einstiegspunkt -->
+  <circle class="mutedf" cx="110" cy="250" r="5"/>
+  <text class="lbl" x="122" y="254">Einstieg</text>
+  <text class="tick" x="122" y="268">30 % unter Fair Value</text>
+
+  <!-- Fair-Value-Kreuzungspunkt (Ziel erreicht) -->
+  <circle class="neonf" cx="660" cy="90" r="6"/>
+  <text class="lblneon" x="652" y="82" text-anchor="end">These erfüllt</text>
+  <text class="tick"    x="652" y="68" text-anchor="end">Sicherheitsmarge aufgezehrt</text>
+
+  <!-- Fußnote -->
+  <text class="foot" x="400" y="322" text-anchor="middle">→ Bei Erreichen des Fair Value ist der Grund für den Kauf entfallen.</text>
+</svg>
