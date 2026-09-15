@@ -1,44 +1,48 @@
-<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drei Miniatur-Charts nebeneinander: Aufwärtstrend mit höheren Hochs und Tiefs, Abwärtstrend, und Seitwärtsbewegung.">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drei Miniatur-Charts nebeneinander: Aufwärtstrend mit höheren Hochs und höheren Tiefs, Abwärtstrend mit tieferen Hochs und tieferen Tiefs, Seitwärtsbewegung mit ähnlichen Hochs und Tiefs.">
   <style>
     .bg     { fill: var(--bg, #080e0b); }
-    .panel  { fill: var(--bg2, #0b1410); }
-    .panel2 { fill: var(--bg3, #0f1a14); }
-    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
-    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
-    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
-    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
     .neonf  { fill: var(--neon, #00ff87); }
-    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
-    .midf   { fill: var(--mid, #00c46a); }
-    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
+    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
     .mutedf { fill: var(--text-2, #6a8c7a); }
-    .warnf  { fill: var(--warn, #8fffcb); }
-    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
-    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
-    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
-    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
-    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
-    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
     .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
-    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
-    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
     .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
-    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .ptlbl  { font-family: var(--mono, ui-monospace,monospace); font-size: 9px; font-weight: 700; letter-spacing: .02em; }
+    .ptlblg { fill: var(--neon, #00ff87); }
+    .ptlblm { fill: var(--text-2, #6a8c7a); }
   </style>
   <rect class="bg" x="0" y="0" width="720" height="300" rx="6"/>
 
+  <!-- Panel-Titel -->
   <text class="lbl" x="130" y="40" text-anchor="middle">Aufwärtstrend</text>
   <text class="lbl" x="360" y="40" text-anchor="middle">Abwärtstrend</text>
   <text class="lbl" x="590" y="40" text-anchor="middle">Seitwärts</text>
-  <!-- up -->
-  <path class="neon" d="M50,220 L90,180 L75,200 L120,150 L105,175 L160,120"/>
-  <path class="neon" d="M50,220 L120,150 L160,120"/>
-  <text class="tick" x="130" y="260" text-anchor="middle">H2&gt;H1, T2&gt;T1</text>
-  <!-- down -->
-  <path class="muted" d="M280,120 L320,160 L305,140 L350,190 L335,168 L400,210"/>
-  <text class="tick" x="360" y="260" text-anchor="middle">H2&lt;H1, T2&lt;T1</text>
-  <!-- side -->
-  <path class="muted" d="M510,150 L540,180 L570,150 L600,180 L630,150 L660,180"/>
-  <text class="tick" x="590" y="260" text-anchor="middle">H≈H, T≈T</text>
 
+  <!-- Aufwärtstrend: T1 → H1 → T2 (höher als T1) → H2 (höher als H1) — von links nach rechts -->
+  <path class="neon" d="M55,220 L100,160 L145,195 L190,120 L215,150"/>
+  <circle class="neonf" cx="55"  cy="220" r="3"/>
+  <circle class="neonf" cx="100" cy="160" r="3"/>
+  <circle class="neonf" cx="145" cy="195" r="3"/>
+  <circle class="neonf" cx="190" cy="120" r="3"/>
+  <text class="ptlbl ptlblg" x="55"  y="238" text-anchor="middle">T1</text>
+  <text class="ptlbl ptlblg" x="100" y="150" text-anchor="middle">H1</text>
+  <text class="ptlbl ptlblg" x="145" y="213" text-anchor="middle">T2</text>
+  <text class="ptlbl ptlblg" x="190" y="110" text-anchor="middle">H2</text>
+  <text class="tick" x="130" y="270" text-anchor="middle">H2&gt;H1, T2&gt;T1</text>
+
+  <!-- Abwärtstrend: H1 → T1 → H2 (tiefer als H1) → T2 (tiefer als T1) — von links nach rechts -->
+  <path class="muted" d="M285,115 L330,170 L375,148 L420,205 L445,175"/>
+  <circle class="mutedf" cx="285" cy="115" r="3"/>
+  <circle class="mutedf" cx="330" cy="170" r="3"/>
+  <circle class="mutedf" cx="375" cy="148" r="3"/>
+  <circle class="mutedf" cx="420" cy="205" r="3"/>
+  <text class="ptlbl ptlblm" x="285" y="105" text-anchor="middle">H1</text>
+  <text class="ptlbl ptlblm" x="330" y="188" text-anchor="middle">T1</text>
+  <text class="ptlbl ptlblm" x="375" y="138" text-anchor="middle">H2</text>
+  <text class="ptlbl ptlblm" x="420" y="223" text-anchor="middle">T2</text>
+  <text class="tick" x="360" y="270" text-anchor="middle">H2&lt;H1, T2&lt;T1</text>
+
+  <!-- Seitwärts: Hochs und Tiefs jeweils auf ähnlichem Niveau -->
+  <path class="muted" d="M510,150 L540,180 L570,150 L600,180 L630,150 L660,180"/>
+  <text class="tick" x="590" y="270" text-anchor="middle">H≈H, T≈T</text>
 </svg>
