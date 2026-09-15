@@ -1,0 +1,41 @@
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aufwärtskanal: zwei parallele, nach oben steigende Linien mit einem Zickzack-Kurs zwischen ihnen; obere Linie ist Widerstand und Verkaufszone, untere Linie ist Unterstützung und Kaufzone.">
+  <style>
+    .bg     { fill: var(--bg, #080e0b); }
+    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .neonf  { fill: var(--neon, #00ff87); }
+    .muteddash { stroke: var(--text-2, #6a8c7a); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+    .zoneup   { fill: var(--neon, #00ff87); opacity: 0.07; }
+    .zonedown { fill: var(--neon, #00ff87); opacity: 0.07; }
+    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
+    .lblneon { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="800" height="380" rx="6"/>
+
+  <!-- Titel oben links -->
+  <text class="lbl" x="30" y="32">Aufwärtskanal</text>
+
+  <!-- Verkaufszone: schmales Band knapp unterhalb der oberen Kanallinie -->
+  <path class="zoneup"   d="M60,190 L680,110 L680,150 L60,230 Z"/>
+  <!-- Kaufzone: schmales Band knapp oberhalb der unteren Kanallinie -->
+  <path class="zonedown" d="M60,280 L680,200 L680,240 L60,320 Z"/>
+
+  <!-- Obere Kanallinie (Widerstand) -->
+  <path class="muteddash" d="M60,190 L680,110"/>
+  <!-- Untere Kanallinie (Unterstützung) -->
+  <path class="muteddash" d="M60,320 L680,240"/>
+
+  <!-- Zickzack-Kurs: alternierend Berührung unten (T) → oben (H) → unten → oben … -->
+  <path class="neon" d="M100,315 L200,172 L300,289 L400,146 L500,263 L600,120 L650,192"/>
+
+  <!-- Berührungspunkte -->
+  <circle class="neonf" cx="100" cy="315" r="3.5"/>
+  <circle class="neonf" cx="200" cy="172" r="3.5"/>
+  <circle class="neonf" cx="300" cy="289" r="3.5"/>
+  <circle class="neonf" cx="400" cy="146" r="3.5"/>
+  <circle class="neonf" cx="500" cy="263" r="3.5"/>
+  <circle class="neonf" cx="600" cy="120" r="3.5"/>
+
+  <!-- Zonen-Labels über/unter dem Kanal (fassen „Widerstand / Verkaufszone" und „Unterstützung / Kaufzone" zusammen) -->
+  <text class="lblneon" x="400" y="80"  text-anchor="middle">Obere Linie · Widerstand · Verkaufszone / Teilverkauf</text>
+  <text class="lblneon" x="400" y="360" text-anchor="middle">Untere Linie · Unterstützung · Kaufzone</text>
+</svg>
