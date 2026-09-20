@@ -9,34 +9,42 @@
 <title>Fair Value Pro — Aktien rational bewerten</title>
 <style>
 /* HERO */
-  #hero { padding-top: 9rem; padding-bottom: 4rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
-  .hero-glow { position: absolute; width: 700px; height: 500px; top: -100px; left: -150px; background: radial-gradient(ellipse, rgba(0,229,160,0.05) 0%, transparent 70%); pointer-events: none; }
-  .hero-glow2 { position: absolute; width: 500px; height: 400px; top: 0; right: -100px; background: radial-gradient(ellipse, rgba(0,255,135,0.04) 0%, transparent 70%); pointer-events: none; }
-  .hero-eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-2); margin-bottom: 1.5rem; }
+  /* HERO — Layout B: full-width, dunkel (theme-unabhängig), Motiv als Hintergrund mit Fade nach links */
+  #hero { padding: 0; position: relative; overflow: hidden; border-bottom: 1px solid rgba(0,255,135,0.08); background: #060a08; color: #d8e6de; }
+  .hero-glow, .hero-glow2 { display: none; }
   .mobile-br { display: none; }
-  h1.hero-hl { font-family: var(--display); font-size: clamp(2.2rem, 4.8vw, 3.8rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; max-width: 620px; text-wrap: balance; }
-  h1.hero-hl .n { color: var(--neon); }
-  h1.hero-hl .b { color: var(--mid); }
-  .hero-sub { font-size: 1.05rem; color: var(--text-2); max-width: 540px; line-height: 1.75; margin-bottom: 2.2rem; }
+  .hero-grid { display: block; max-width: 1240px; margin: 0 auto; padding: 9rem 2rem 5rem; position: static; }
+  .hero-left { position: relative; z-index: 3; max-width: 540px; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #93ad9f; margin-bottom: 1.5rem; }
+  h1.hero-hl { font-family: var(--display); font-size: clamp(2.2rem, 4.8vw, 3.8rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; max-width: 540px; text-wrap: balance; color: #d8e6de; }
+  h1.hero-hl .n { color: #00ff87; }
+  h1.hero-hl .b { color: #00c46a; }
+  .hero-sub { font-size: 1.05rem; color: #93ad9f; max-width: 540px; line-height: 1.75; margin-bottom: 2.2rem; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.2rem; align-items: center; }
-  .hero-left { max-width: 620px; }
-  .hero-right { position: relative; }
-  .hero-media { position: relative; width: 100%; aspect-ratio: 5 / 6; border-radius: 8px; overflow: hidden; border: 1px solid var(--border2); background: var(--bg2); box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,255,135,0.03) inset; }
-  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .hero-media img.motif-woman { object-position: 92% 35%; }
-  .hero-media img.motif-man   { object-position: 78% 32%; }
-  .hero-media::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.35) 100%); }
-  :root[data-theme="light"] .hero-media { box-shadow: 0 30px 60px -30px rgba(20,50,30,0.35), 0 0 0 1px rgba(20,207,119,0.06) inset; }
+  .hero-right { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; margin: 0; pointer-events: none; }
+  .hero-media { position: absolute; inset: 0; border: none; border-radius: 0; box-shadow: none; background: transparent; aspect-ratio: auto; overflow: hidden; }
+  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 78% 40%; animation: heroReveal 2.4s cubic-bezier(.22,.61,.36,1) both; }
+  .hero-media img.motif-woman-1 { object-position: 92% 35%; }
+  .hero-media img.motif-man-1   { object-position: 78% 32%; }
+  .hero-media img.motif-woman-2 { object-position: 85% 30%; }
+  .hero-media img.motif-man-2   { object-position: 85% 28%; }
+  .hero-media::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; background:
+      linear-gradient(90deg, #060a08 0%, rgba(6,10,8,0.92) 18%, rgba(6,10,8,0.72) 32%, rgba(6,10,8,0.35) 52%, rgba(6,10,8,0.08) 75%, transparent 100%),
+      linear-gradient(180deg, transparent 60%, rgba(6,10,8,0.45) 100%); }
+  @keyframes heroReveal { 0% { opacity: 0; transform: scale(1.08); filter: brightness(0.7); } 40% { opacity: 1; } 100% { opacity: 1; transform: scale(1); filter: brightness(1); } }
+  #hero .btn-ghost { color: #93ad9f; border-color: rgba(0,255,135,0.18); background: rgba(6,10,8,0.35); backdrop-filter: blur(4px); }
+  #hero .btn-ghost:hover { color: #d8e6de; border-color: rgba(0,255,135,0.35); }
+  #hero .tag { background: rgba(0,255,135,0.06); border-color: rgba(0,255,135,0.20); color: #93ad9f; }
+  @media (prefers-reduced-motion: reduce) { .hero-media img { animation: none; transform: none; filter: none; } }
   
   
   
   
 
-  .ticker-wrap { margin-top: 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.65rem 0; overflow: hidden; position: relative; }
+  .ticker-wrap { margin-top: 0; border-top: 1px solid rgba(0,255,135,0.08); border-bottom: 1px solid rgba(0,255,135,0.08); padding: 0.65rem 0; overflow: hidden; position: relative; z-index: 3; background: #060a08; }
   .ticker-wrap::before,.ticker-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
-  .ticker-wrap::before { left:0; background:linear-gradient(90deg,var(--bg),transparent); }
-  .ticker-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg),transparent); }
+  .ticker-wrap::before { left:0; background:linear-gradient(90deg,#060a08,transparent); }
+  .ticker-wrap::after { right:0; background:linear-gradient(-90deg,#060a08,transparent); }
   .ticker-inner { display:flex; gap:2.5rem; animation:tick 30s linear infinite; width:max-content; }
   .ti { font-family:var(--mono); font-size:0.7rem; display:flex; align-items:center; gap:0.6rem; white-space:nowrap; }
   .ti .s { color:var(--text); font-weight:500; }
@@ -279,7 +287,12 @@
     .mobile-br { display: block; }
     .hl-break::after { content: ''; }
     .hero-sub { font-size: 0.97rem; }
-    #hero { padding-top: 8rem; padding-bottom: 2.5rem; }
+    .hero-grid { padding: 6rem 1.25rem 3rem; }
+    .hero-left { padding-top: 18rem; }
+    .hero-media::after {
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(6,10,8,0.30) 28%, rgba(6,10,8,0.85) 60%, #060a08 88%);
+    }
 
     .manifesto-layout,.product-layout { grid-template-columns:1fr; gap:2.5rem; }
     .how-steps { grid-template-columns:1fr; }
@@ -307,9 +320,7 @@
 
     .hero-btns { flex-direction: column; align-items: stretch; }
     .hero-btns .btn-neon, .hero-btns .btn-ghost { text-align: center; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2.2rem; }
     .hero-left { max-width: 100%; }
-    .hero-media { aspect-ratio: 16 / 11; }
   }
   @media(max-width:480px){
     
@@ -356,26 +367,24 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="wide">
-    <div class="hero-grid">
-      <div class="hero-left">
-        <div class="tag fade in" style="display:inline-flex; margin-bottom:0.9rem;">Fair Value Pro</div>
-        <div class="hero-eyebrow fade in">Aktienanalyse · Fundamental · Transparent</div>
-        <h1 class="hero-hl fade in">
-          <span class="n">Das Tool.</span> Für deine<br class="mobile-br"> Fundamentalanalyse.
-        </h1>
-        <p class="hero-sub fade in">
-          Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, direkt im Browser.
-        </p>
-        <div class="hero-btns fade in">
-          <a href="#cta" class="btn-neon">Kostenlos testen →</a>
-          <a href="#manifesto" class="btn-ghost">Warum das wichtig ist</a>
-        </div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="tag fade in" style="display:inline-flex; margin-bottom:0.9rem;">Fair Value Pro</div>
+      <div class="hero-eyebrow fade in">Aktienanalyse · Fundamental · Transparent</div>
+      <h1 class="hero-hl fade in">
+        <span class="n">Das Tool.</span> Für deine<br class="mobile-br"> Fundamentalanalyse.
+      </h1>
+      <p class="hero-sub fade in">
+        Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, direkt im Browser.
+      </p>
+      <div class="hero-btns fade in">
+        <a href="#cta" class="btn-neon">Kostenlos testen →</a>
+        <a href="#manifesto" class="btn-ghost">Warum das wichtig ist</a>
       </div>
-      <div class="hero-right">
-        <div class="hero-media fade in" aria-hidden="true">
-          <img id="hero-img" alt="" decoding="async" fetchpriority="high">
-        </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-media" aria-hidden="true">
+        <img id="hero-img" alt="" decoding="async" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -386,8 +395,10 @@
 <script>
   (function(){
     var motifs = [
-      { src: 'assets/hero/hero-woman.webp', cls: 'motif-woman' },
-      { src: 'assets/hero/hero-man.webp',   cls: 'motif-man' }
+      { src: 'assets/hero/hero-woman.webp',   cls: 'motif-woman-1' },
+      { src: 'assets/hero/hero-man.webp',     cls: 'motif-man-1' },
+      { src: 'assets/hero/hero-woman-2.webp', cls: 'motif-woman-2' },
+      { src: 'assets/hero/hero-man-2.webp',   cls: 'motif-man-2' }
     ];
     var pick = motifs[Math.floor(Math.random() * motifs.length)];
     var img = document.getElementById('hero-img');
