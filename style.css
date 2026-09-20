@@ -194,8 +194,27 @@ details .detail-body strong { color: var(--text); font-weight: 500; }
 .email-form button[type="submit"]:hover { opacity: 0.88; transform: translateY(-1px); }
 .form-success { display: none; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; padding: 1rem 0; color: var(--neon); }
 
-/* ── Footer ── */
-footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+/* ── Footer (theme-unabhängig dunkel — rahmt jede Seite unten) ── */
+footer {
+  border-top: 1px solid rgba(0,255,135,0.08);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  background: #060a08;
+  color: #c8ddd2;
+  --bg:      #060a08;
+  --bg2:     #0b1410;
+  --bg3:     #0f1a14;
+  --bg4:     #142019;
+  --neon:        #00ff87;
+  --neon-dim:    rgba(0,255,135,0.09);
+  --neon-border: rgba(0,255,135,0.25);
+  --mid:         #00c46a;
+  --text:        #c8ddd2;
+  --text-2:      #93ad9f;
+  --text-3:      #4a6b57;
+  --border:      rgba(0,255,135,0.07);
+  --border2:     rgba(0,255,135,0.14);
+}
 .footer-logo { font-family: var(--display); font-size: 0.9rem; font-weight: 700; color: var(--text-2); }
 .footer-logo .dot { color: var(--neon); }
 footer p { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; color: var(--text-3); max-width: 400px; }
