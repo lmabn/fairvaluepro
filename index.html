@@ -14,11 +14,20 @@
   .hero-glow2 { position: absolute; width: 500px; height: 400px; top: 0; right: -100px; background: radial-gradient(ellipse, rgba(0,255,135,0.04) 0%, transparent 70%); pointer-events: none; }
   .hero-eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-2); margin-bottom: 1.5rem; }
   .mobile-br { display: none; }
-  h1.hero-hl { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.6rem; max-width: 780px; }
+  h1.hero-hl { font-family: var(--display); font-size: clamp(2.2rem, 4.8vw, 3.8rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; max-width: 620px; text-wrap: balance; }
   h1.hero-hl .n { color: var(--neon); }
   h1.hero-hl .b { color: var(--mid); }
-  .hero-sub { font-size: 1.08rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem; }
-  .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .hero-sub { font-size: 1.05rem; color: var(--text-2); max-width: 540px; line-height: 1.75; margin-bottom: 2.2rem; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.2rem; align-items: center; }
+  .hero-left { max-width: 620px; }
+  .hero-right { position: relative; }
+  .hero-media { position: relative; width: 100%; aspect-ratio: 5 / 6; border-radius: 8px; overflow: hidden; border: 1px solid var(--border2); background: var(--bg2); box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,255,135,0.03) inset; }
+  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-media img.motif-woman { object-position: 92% 35%; }
+  .hero-media img.motif-man   { object-position: 78% 32%; }
+  .hero-media::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.35) 100%); }
+  :root[data-theme="light"] .hero-media { box-shadow: 0 30px 60px -30px rgba(20,50,30,0.35), 0 0 0 1px rgba(20,207,119,0.06) inset; }
   
   
   
@@ -296,8 +305,11 @@
 
     #cta h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
 
-    .hero-btns { flex-direction: column; align-items: center; }
-    
+    .hero-btns { flex-direction: column; align-items: stretch; }
+    .hero-btns .btn-neon, .hero-btns .btn-ghost { text-align: center; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+    .hero-left { max-width: 100%; }
+    .hero-media { aspect-ratio: 16 / 11; }
   }
   @media(max-width:480px){
     
@@ -344,24 +356,44 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="container">
-    <div style="text-align:center; margin-bottom:0.8rem;"><div class="tag fade in" style="display:inline-flex;">Fair Value Pro</div></div>
-    <div class="hero-eyebrow fade in" style="text-align:center; justify-content:center;">Aktienanalyse · Fundamental · Transparent</div>
-    <h1 class="hero-hl fade in" style="text-align:center; max-width:100%;">
-      <span class="n">Das Tool.</span> Für deine<br class="mobile-br"> Fundamentalanalyse.
-    </h1>
-    <p class="hero-sub fade in" style="text-align:center; margin-left:auto; margin-right:auto;">
-      Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, direkt im Browser.
-    </p>
-    <div class="hero-btns fade in" style="justify-content:center;">
-      <a href="#cta" class="btn-neon">Kostenlos testen →</a>
-      <a href="#manifesto" class="btn-ghost">Warum das wichtig ist</a>
+  <div class="wide">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="tag fade in" style="display:inline-flex; margin-bottom:0.9rem;">Fair Value Pro</div>
+        <div class="hero-eyebrow fade in">Aktienanalyse · Fundamental · Transparent</div>
+        <h1 class="hero-hl fade in">
+          <span class="n">Das Tool.</span> Für deine<br class="mobile-br"> Fundamentalanalyse.
+        </h1>
+        <p class="hero-sub fade in">
+          Berechne, was eine Aktie wirklich wert ist — mit denselben Methoden, die professionelle Analysten verwenden. Transparent, steuerbar, direkt im Browser.
+        </p>
+        <div class="hero-btns fade in">
+          <a href="#cta" class="btn-neon">Kostenlos testen →</a>
+          <a href="#manifesto" class="btn-ghost">Warum das wichtig ist</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-media fade in" aria-hidden="true">
+          <img id="hero-img" alt="" decoding="async" fetchpriority="high">
+        </div>
+      </div>
     </div>
   </div>
   <div class="ticker-wrap">
     <div class="ticker-inner" id="ticker"></div>
   </div>
 </section>
+<script>
+  (function(){
+    var motifs = [
+      { src: 'assets/hero/hero-woman.webp', cls: 'motif-woman' },
+      { src: 'assets/hero/hero-man.webp',   cls: 'motif-man' }
+    ];
+    var pick = motifs[Math.floor(Math.random() * motifs.length)];
+    var img = document.getElementById('hero-img');
+    if (img) { img.className = pick.cls; img.src = pick.src; }
+  })();
+</script>
 
 <!-- MANIFESTO -->
 <section id="manifesto">
