@@ -49,3 +49,62 @@
 @media (max-width: 720px) {
   :root { --web-section-home: 96px; --web-section-product: 80px; --web-gutter: 20px; --web-hero-home: 640px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+ * KOMPONENTE · Schaltfläche (Design-System v1.0)
+ * Vier Varianten × fünf Zustände × drei Größen.
+ * Primär trägt Fläche in Tinte bzw. Off-White, nie farbig.
+ * ═══════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-sans); font-size: 14px; font-weight: 500; line-height: 1;
+  height: var(--control-h-m, 40px); padding: 0 20px;
+  border-radius: var(--radius-2, 4px);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none; white-space: nowrap; user-select: none; cursor: pointer;
+  transition:
+    background var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
+    color      var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
+    border-color var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
+    box-shadow  var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
+    transform   120ms var(--motion-ease, cubic-bezier(0.2,0,0,1));
+}
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.btn:disabled, .btn[aria-disabled="true"] { cursor: not-allowed; }
+
+/* Größen */
+.btn--sm { height: var(--control-h-s, 32px); padding: 0 14px; font-size: 13px; }
+.btn--lg { height: var(--control-h-l, 48px); padding: 0 24px; font-size: 15px; }
+
+/* ── Primär · Hauptaktion ── */
+.btn--primary { background: var(--color-text); color: var(--color-text-inverse); border-color: var(--color-text); }
+.btn--primary:hover { background: var(--color-text-muted); border-color: var(--color-text-muted); color: var(--color-text-inverse); }
+.btn--primary:active { background: var(--color-text-muted); border-color: var(--color-text-muted); color: var(--color-text-inverse); box-shadow: inset 0 1px 3px rgba(0,0,0,0.35); }
+.btn--primary:disabled, .btn--primary[aria-disabled="true"] { background: var(--color-surface-2); border-color: var(--color-surface-2); color: var(--color-text-disabled); }
+
+/* ── Sekundär · Weitere Aktionen ── */
+.btn--secondary { background: transparent; color: var(--color-text); border-color: var(--color-border-strong); }
+.btn--secondary:hover { background: var(--color-surface-2); color: var(--color-text); border-color: var(--color-border-strong); }
+.btn--secondary:active { background: var(--color-surface-2); color: var(--color-text); border-color: var(--color-text); }
+.btn--secondary:disabled, .btn--secondary[aria-disabled="true"] { background: transparent; color: var(--color-text-disabled); border-color: var(--color-border); }
+
+/* ── Tertiär · leise Aktionen ── */
+.btn--tertiary { background: transparent; color: var(--color-text-muted); border-color: transparent; }
+.btn--tertiary:hover { background: var(--color-surface-2); color: var(--color-text); }
+.btn--tertiary:active { background: var(--color-surface-2); color: var(--color-text); }
+.btn--tertiary:disabled, .btn--tertiary[aria-disabled="true"] { background: transparent; color: var(--color-text-disabled); }
+
+/* ── Entfernen · immer mit Rückfrage ── */
+.btn--destroy { background: transparent; color: var(--color-warning); border-color: var(--color-warning); }
+.btn--destroy:hover { background: var(--color-surface-2); color: var(--color-warning); border-color: var(--color-warning); }
+.btn--destroy:active { background: var(--color-surface-2); color: var(--color-warning); border-color: var(--color-warning); box-shadow: inset 0 1px 3px rgba(0,0,0,0.35); }
+.btn--destroy:disabled, .btn--destroy[aria-disabled="true"] { background: transparent; color: var(--color-text-disabled); border-color: var(--color-border); }
+
+/* ── Loading-Zustand (mit Doppelpunkt-Ladeanzeige davor) ── */
+.btn.is-loading::before { content: '∶ '; margin-right: 4px; opacity: 0.9; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
