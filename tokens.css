@@ -1,0 +1,241 @@
+/*
+ * GO:BETTER — Design Tokens
+ * tokens.css · v1.0 · Website und Fair Value Pro
+ *
+ * Einbindung: NACH style.css laden.
+ *   <link rel="stylesheet" href="style.css">
+ *   <link rel="stylesheet" href="tokens.css">
+ *
+ * Dunkel ist Standard. Hell über <html data-theme="light"> —
+ * dasselbe Attribut, das theme-toggle.js bereits setzt.
+ * Alle Größen in px, unabhängig von der Wurzelschriftgröße (style.css: 112.5 %).
+ * Keine externen Abhängigkeiten: Schriften liegen in /fonts/.
+ */
+
+/* ── Schriften (selbst gehostet, SIL Open Font License) ── */
+/* Latin subset. Variable-Weight-Datei je Familie — dieselbe Datei-URL für alle deklarierten Weights. */
+@font-face { font-family: 'Geist'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/geist-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/geist-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/geist-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/geist-mono-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/geist-mono-latin.woff2') format('woff2'); }
+
+:root {
+  /* ════ FARBE · Rollen · Dunkel (Standard) ════ */
+
+  /* Grundflächen */
+  --color-bg:              #0B0D10;  /* Seitenhintergrund */
+  --color-surface:         #12151A;  /* Karte, Panel, Tabellenkopf */
+  --color-surface-2:       #191D23;  /* Hover, Auswahl, eingelassene Felder */
+  --color-bg-translucent:  rgba(11,13,16,0.92); /* fixierte Navigation */
+  --color-overlay:         rgba(5,6,8,0.64);    /* hinter Dialogen */
+
+  /* Rahmen */
+  --color-border:          #262B33;  /* Trennlinien, Tabellenzeilen (dekorativ) */
+  --color-border-strong:   #68707B;  /* Rahmen von Eingabefeldern, ≥ 3:1 */
+
+  /* Text · alle ≥ 4,5:1 auf bg, surface und surface-2 */
+  --color-text:            #ECEDEF;  /* 14,4:1 */
+  --color-text-muted:      #9A9FA7;  /* 6,4:1 — Beschriftungen, Sekundärtext */
+  --color-text-disabled:   #5A6068;  /* nur für deaktivierte Elemente (ausgenommen von 4,5:1) */
+  --color-text-inverse:    #0B0D10;  /* Text auf --color-text als Fläche */
+
+  /* Akzent · Produktfarbe des aktiven Werkzeugs. Orientierung, keine Bedeutung. */
+  --color-accent:          #2EE59D;  /* Linien, Punkte, aktive Markierung */
+  --color-accent-text:     #2EE59D;  /* Akzent als Schrift, ≥ 4,5:1 */
+  --color-accent-soft:     rgba(46,229,157,0.12);
+  --color-accent-border:   rgba(46,229,157,0.40);
+  --color-accent-contrast: #0B0D10;  /* Text auf Akzentfläche */
+
+  /* Produkte */
+  --color-product-fvp:      #2EE59D;
+  --color-product-fvp-text: #2EE59D;
+  --color-product-pt:       #F0B42A;
+  --color-product-pt-text:  #F0B42A;
+  --color-product-td:       #5B8CFF;
+  --color-product-td-text:  #5B8CFF;
+
+  /* Datenbedeutung · nur auf Daten, immer mit Symbol oder Text */
+  --color-positive:        #7FC0A2;  /* Anstieg ▲   8,0:1 */
+  --color-negative:        #EF7B72;  /* Rückgang ▼  6,2:1 */
+  --color-warning:         #EDA15F;  /* Prüfhinweis !  7,9:1 */
+  --color-neutral:         #9A9FA7;  /* unverändert ±, Feststellung */
+  --color-info:            #9FB0C8;  /* Hinweis i   7,7:1 */
+
+  /* Fokus */
+  --color-focus:           #ECEDEF;
+  --focus-ring:            0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+
+  /* Diagramme */
+  --chart-series-1:  #ECEDEF;  /* Hauptreihe, durchgezogen */
+  --chart-series-2:  #8FB3E6;  /* gestrichelt 6 4 */
+  --chart-series-3:  #D8B878;  /* gepunktet 2 3 */
+  --chart-series-4:  #B4A1DC;  /* strichpunkt 8 3 2 3 */
+  --chart-series-5:  #9A9FA7;  /* Vergleich, Benchmark, dünn */
+  --chart-grid:      #1E2229;
+  --chart-axis:      #3A4049;
+  --chart-reference: #68707B;  /* Fair Value, Kaufschwelle */
+  --chart-estimate-opacity: 0.55;
+
+  /* ════ TYPOGRAFIE ════ */
+  --font-sans:      'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:      'Geist Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  --font-numeric:   var(--font-mono);  /* alle Zahlen in Kacheln, Tabellen, Diagrammen */
+  --font-numeric-features: "tnum" 1, "lnum" 1, "zero" 1;  /* gleich breite Ziffern, geschlitzte Null */
+
+  /*                size  / line  / weight / tracking */
+  --type-display-size: 64px; --type-display-line: 1.02; --type-display-weight: 600; --type-display-track: -0.04em;
+  --type-h1-size:      44px; --type-h1-line:      1.08; --type-h1-weight:      600; --type-h1-track:      -0.035em;
+  --type-h2-size:      30px; --type-h2-line:      1.18; --type-h2-weight:      500; --type-h2-track:      -0.025em;
+  --type-h3-size:      22px; --type-h3-line:      1.28; --type-h3-weight:      500; --type-h3-track:      -0.015em;
+  --type-h4-size:      17px; --type-h4-line:      1.4;  --type-h4-weight:      500; --type-h4-track:      -0.005em;
+  --type-body-l-size:  18px; --type-body-l-line:  1.6;
+  --type-body-size:    15px; --type-body-line:    1.6;
+  --type-body-s-size:  13px; --type-body-s-line:  1.5;
+  --type-label-size:   11px; --type-label-line:   1.4;  --type-label-track:   0.08em;  /* Mono, Versalien */
+  --type-data-size:    14px; --type-data-line:    1.4;   /* Tabellen · font-numeric */
+  --type-data-l-size:  28px; --type-data-l-line:  1.1;  --type-data-l-track:  -0.02em; /* Kennzahlen · font-numeric */
+
+  /* ════ ABSTÄNDE · 4er-Leiter ════ */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px; --space-5: 24px;
+  --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+
+  /* ════ ECKRADIEN ════ */
+  --radius-0:    0;
+  --radius-1:    2px;   /* Abzeichen, Checkbox */
+  --radius-2:    4px;   /* Schaltfläche, Feld, Reiter, Karte */
+  --radius-3:    6px;   /* Dialog, Screenshot-Rahmen */
+  --radius-full: 999px; /* Punkte, Regler-Griff */
+
+  /* ════ SCHATTEN · nur für schwebende Ebenen ════ */
+  --shadow-0: none;                                                    /* alles, was im Fluss liegt */
+  --shadow-1: 0 4px 16px rgba(0,0,0,0.40), 0 0 0 1px var(--color-border); /* Auswahlliste, Kurzmeldung */
+  --shadow-2: 0 16px 48px rgba(0,0,0,0.55), 0 0 0 1px var(--color-border); /* Dialog */
+
+  /* ════ BEWEGUNG ════ */
+  --motion-fast: 120ms; --motion-base: 200ms; --motion-slow: 320ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ════ STEUERELEMENTE ════ */
+  --control-h-s: 32px; --control-h-m: 40px; --control-h-l: 48px;   /* 48 = Mindestmaß Touch */
+  --border-w: 1px; --border-w-strong: 2px;
+}
+
+/* Produktwechsel: data-product am <body> setzt den Akzent */
+[data-product="pt"] { --color-accent: var(--color-product-pt); --color-accent-text: var(--color-product-pt-text); --color-accent-soft: rgba(240,180,42,0.12); --color-accent-border: rgba(240,180,42,0.40); }
+[data-product="td"] { --color-accent: var(--color-product-td); --color-accent-text: var(--color-product-td-text); --color-accent-soft: rgba(91,140,255,0.12); --color-accent-border: rgba(91,140,255,0.40); }
+
+/* ════ HELL ════ */
+:root[data-theme="light"] {
+  --color-bg:              #F7F8FA;
+  --color-surface:         #FFFFFF;
+  --color-surface-2:       #EEF0F3;
+  --color-bg-translucent:  rgba(247,248,250,0.92);
+  --color-overlay:         rgba(17,19,23,0.32);
+
+  --color-border:          #DEE1E6;
+  --color-border-strong:   #7E858F;
+
+  --color-text:            #111317;  /* 16,3:1 */
+  --color-text-muted:      #555A62;  /* 6,1:1 */
+  --color-text-disabled:   #A3A8AF;
+  --color-text-inverse:    #F7F8FA;
+
+  --color-accent:          #10C27F;
+  --color-accent-text:     #0A7A52;  /* 4,7:1 — Akzentgrün ist als Schrift zu hell */
+  --color-accent-soft:     rgba(16,194,127,0.12);
+  --color-accent-border:   rgba(16,194,127,0.55);
+  --color-accent-contrast: #0B0D10;
+
+  --color-product-fvp:      #10C27F;
+  --color-product-fvp-text: #0A7A52;
+  --color-product-pt:       #F0B42A;
+  --color-product-pt-text:  #8A5F00;
+  --color-product-td:       #3B7BFF;
+  --color-product-td-text:  #2459D6;
+
+  --color-positive:        #2A7453;
+  --color-negative:        #B8352D;
+  --color-warning:         #9E4A12;
+  --color-neutral:         #555A62;
+  --color-info:            #4F5F77;
+
+  --color-focus:           #111317;
+
+  --chart-series-1:  #111317;
+  --chart-series-2:  #2F5E9E;
+  --chart-series-3:  #8A6414;
+  --chart-series-4:  #6A4FA3;
+  --chart-series-5:  #7E858F;
+  --chart-grid:      #E9EBEF;
+  --chart-axis:      #C4C9D0;
+  --chart-reference: #7E858F;
+
+  --shadow-1: 0 4px 16px rgba(17,19,23,0.08), 0 0 0 1px var(--color-border);
+  --shadow-2: 0 16px 48px rgba(17,19,23,0.14), 0 0 0 1px var(--color-border);
+}
+:root[data-theme="light"] [data-product="pt"] { --color-accent-soft: rgba(240,180,42,0.16); --color-accent-border: rgba(176,125,0,0.55); }
+:root[data-theme="light"] [data-product="td"] { --color-accent-soft: rgba(59,123,255,0.10); --color-accent-border: rgba(59,123,255,0.50); }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fast: 0ms; --motion-base: 0ms; --motion-slow: 0ms; }
+}
+
+/* ════════════════════════════════════════════════════════════
+ * BRÜCKE ZUM BESTAND
+ * Bildet die Variablen aus style.css auf die Rollen ab. Bestehende
+ * Seiten übernehmen damit Farben und Schrift, ohne dass HTML geändert
+ * wird. Neue Arbeit verwendet nur die Rollen-Tokens oben.
+ * ════════════════════════════════════════════════════════════ */
+:root, :root[data-theme="light"] {
+  --bg:  var(--color-bg);
+  --bg2: var(--color-surface);
+  --bg3: var(--color-surface-2);
+  --bg4: var(--color-surface-2);
+
+  --neon:        var(--color-accent);
+  --neon-dim:    var(--color-accent-soft);
+  --neon-border: var(--color-accent-border);
+  --mid:         var(--color-accent-text);
+  --mid-dim:     var(--color-accent-soft);
+  --mid-border:  var(--color-accent-border);
+  --muted:        var(--color-text-muted);
+  --muted-dim:    var(--color-surface-2);
+  --muted-border: var(--color-border);
+  --warn:        var(--color-warning);
+
+  --text:   var(--color-text);
+  --text-2: var(--color-text-muted);
+  --text-3: var(--color-text-muted);   /* war 2,1:1 — angehoben */
+
+  --border:  var(--color-border);
+  --border2: var(--color-border);
+
+  --pt-accent: var(--color-product-pt-text);
+  --td-accent: var(--color-product-td-text);
+
+  --display: var(--font-sans);
+  --sans:    var(--font-sans);
+  --mono:    var(--font-mono);
+}
+nav, :root[data-theme="light"] nav { background: var(--color-bg-translucent); }
+.nav-dropdown, .nav-mobile-menu,
+:root[data-theme="light"] .nav-dropdown,
+:root[data-theme="light"] .nav-mobile-menu { background: var(--color-bg); }
+.nav-links a.active, .nav-links a:hover, .nav-dropdown a.active, .nav-dropdown a:hover { color: var(--color-text); }
+/* Primärschaltfläche nach CI: Tinte statt Grün */
+.btn-neon, .email-form button[type="submit"] { background: var(--color-text); color: var(--color-text-inverse); }
+.btn-neon:hover, .email-form button[type="submit"]:hover { opacity: 1; transform: none; background: var(--color-text-muted); }
+.btn-outline { color: var(--color-text); border-color: var(--color-border-strong); }
+.btn-outline:hover { background: var(--color-surface-2); }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-2); }
+td, th, .kpi-val, .stat-val, .status-val { font-variant-numeric: tabular-nums; font-feature-settings: var(--font-numeric-features); }
+.kpi-val, .stat-val, .status-val { font-family: var(--font-numeric); }
+/* Zahlenzellen in Tabellen: class="num" setzen, damit Titelspalten in Geist bleiben */
+td.num, th.num, .num { font-family: var(--font-numeric); text-align: right; }
+footer {
+  --bg: #0B0D10; --bg2: #12151A; --bg3: #191D23; --bg4: #191D23;
+  --neon: #2EE59D; --mid: #2EE59D; --text: #ECEDEF; --text-2: #9A9FA7; --text-3: #9A9FA7;
+  --border: #262B33; --border2: #262B33;
+  background: #0B0D10; color: #ECEDEF; border-top-color: #262B33;
+}
