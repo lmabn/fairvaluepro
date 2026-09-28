@@ -250,7 +250,14 @@ body[data-product="td"]  [data-product-text="td"]  { display: inline; }
         <span aria-hidden="true">BETTER</span>
       </a>
       <div class="gb-nav-links">
-        <a href="fair-value-pro.html">Fair Value Pro</a>
+        <div class="gb-nav-item">
+          <a href="fair-value-pro.html">Fair Value Pro</a>
+          <div class="gb-nav-dropdown">
+            <a href="fair-value-pro.html">Übersicht</a>
+            <a href="pro-mode.html">Pro Mode</a>
+            <a href="daten-quelle.html">Daten-Quelle</a>
+          </div>
+        </div>
         <a href="portfolio-tracker.html">Portfolio Tracker</a>
         <a href="trading-desk.html">Trading Desk</a>
       </div>
@@ -266,6 +273,8 @@ body[data-product="td"]  [data-product-text="td"]  { display: inline; }
   </div>
   <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
     <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="pro-mode.html" class="sub">↳ Pro Mode</a>
+    <a href="daten-quelle.html" class="sub">↳ Daten-Quelle</a>
     <a href="portfolio-tracker.html">Portfolio Tracker</a>
     <a href="trading-desk.html">Trading Desk</a>
     <a href="plaene.html">Pläne</a>
@@ -580,12 +589,36 @@ body[data-product="td"]  [data-product-text="td"]  { display: inline; }
     <div class="sg-section-title">06 — Komponenten</div>
     <h2>UI-Elemente</h2>
 
-    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Buttons</p>
-    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin-bottom:2rem;">
-      <button class="btn-neon">Primär → CTA</button>
-      <button class="btn-outline">Sekundär</button>
-      <button class="btn-ghost">Ghost →</button>
-      <div class="btn-disabled">Deaktiviert</div>
+    <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Schaltflächen · Design v2</p>
+    <p class="sg-desc" style="margin-bottom:1.5rem;">Zwei Varianten (Primär gefüllt, Sekundär im Umriss), zwei Größen (m 40 px · l 52 px, auf Mobile beide 48 px). Farben folgen dem umgebenden <code>data-ground</code> (dark · light · color); ohne Attribut gilt <em>dark</em>. Sekundär auf Foto-Untergrund bekommt zusätzlich <code>.on-photo</code>.</p>
+
+    <p style="font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:0.6rem;">Größen · Primär</p>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin-bottom:1.8rem;">
+      <button class="btn btn--primary btn--l">Kostenlos testen</button>
+      <button class="btn btn--primary btn--m">Zugang erhalten</button>
+      <button class="btn btn--primary btn--m" disabled>Deaktiviert</button>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:0.6rem;">Größen · Sekundär</p>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; margin-bottom:1.8rem;">
+      <button class="btn btn--secondary btn--l">Die Werkzeuge</button>
+      <button class="btn btn--secondary btn--m">Alle Pläne</button>
+      <button class="btn btn--secondary btn--m" disabled>Deaktiviert</button>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:0.6rem;">Sekundär · <code>.on-photo</code> — für Bildhintergründe</p>
+    <div style="position:relative; padding:2rem 1.4rem; margin-bottom:1.8rem; background:linear-gradient(135deg,#242424 0%,#0e1a12 45%,#0a1015 100%); border-radius:4px; overflow:hidden;">
+      <div style="position:absolute; inset:0; opacity:0.35; background:radial-gradient(1200px 400px at 20% 30%, rgba(46,229,157,0.30), transparent), radial-gradient(800px 400px at 80% 70%, rgba(240,180,42,0.20), transparent);"></div>
+      <div style="position:relative; display:flex; flex-wrap:wrap; gap:1rem;">
+        <button class="btn btn--secondary btn--l on-photo">Die Werkzeuge</button>
+        <button class="btn btn--secondary btn--m on-photo">Mehr sehen</button>
+      </div>
+    </div>
+
+    <p style="font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:0.6rem;">Ground-Kontext · Farbfläche (<code>data-ground="color"</code>)</p>
+    <div data-ground="color" style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin-bottom:2rem; background:var(--web-field-fvp, #2EE59D); padding:1.4rem; border-radius:4px;">
+      <button class="btn btn--primary btn--m">Primär auf Farbe</button>
+      <button class="btn btn--secondary btn--m">Sekundär auf Farbe</button>
     </div>
 
     <p style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text-3); text-transform:uppercase; margin-bottom:1rem;">Tags & Badges</p>
@@ -772,8 +805,6 @@ body[data-product="td"]  [data-product-text="td"]  { display: inline; }
     </div>
     <div class="gb-foot-links">
       <a href="fair-value-pro.html">Fair Value Pro</a>
-      <a href="pro-mode.html">Pro Mode</a>
-      <a href="daten-quelle.html">Daten-Quelle</a>
       <a href="portfolio-tracker.html">Portfolio Tracker</a>
       <a href="trading-desk.html">Trading Desk</a>
       <a href="akademie/index.html">Akademie</a>
