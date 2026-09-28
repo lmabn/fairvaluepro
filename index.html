@@ -13,7 +13,40 @@
 <style>
 /* ══════ HOMEPAGE · GO:BETTER ══════ */
 
-body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans); margin: 0; -webkit-font-smoothing: antialiased; }
+/* Startseite ist theme-unabhängig: dunkel ist Standard, „Selbst anlegen"-Sektion hell.
+   Lokale Token-Kaskade lockt alle Farb-Rollen auf ihre Dark-Werte, damit die Seite im
+   Light-Mode nicht kollabiert. Nav, Hero, Werkzeuge, Haltung, Abschluss, Footer bleiben
+   dunkel; nur .gb-section.light kippt lokal wieder auf helle Werte. */
+body[data-level="home"] {
+  background: #0B0D10;
+  color: #ECEDEF;
+  --color-bg:              #0B0D10;
+  --color-surface:         #12151A;
+  --color-surface-2:       #191D23;
+  --color-border:          #262B33;
+  --color-border-strong:   #68707B;
+  --color-text:            #ECEDEF;
+  --color-text-muted:      #9A9FA7;
+  --color-text-disabled:   #5A6068;
+  --color-text-inverse:    #0B0D10;
+  --color-accent:          #2EE59D;
+  --color-accent-text:     #2EE59D;
+}
+body[data-level="home"] .gb-section.light {
+  background: #F7F8FA;
+  color: #111317;
+  --color-bg:              #F7F8FA;
+  --color-surface:         #FFFFFF;
+  --color-surface-2:       #EEF0F3;
+  --color-border:          #DEE1E6;
+  --color-border-strong:   #7E858F;
+  --color-text:            #111317;
+  --color-text-muted:      #555A62;
+  --color-text-disabled:   #A3A8AF;
+  --color-text-inverse:    #F7F8FA;
+}
+
+body { margin: 0; -webkit-font-smoothing: antialiased; font-family: var(--font-sans); }
 a { color: inherit; text-decoration: none; }
 
 /* ── Wortmarke ── */
