@@ -56,23 +56,52 @@ a { color: inherit; text-decoration: none; }
 .gb-wm svg circle { fill: currentColor; }
 
 /* ── Nav ── */
-.gb-nav-wrap { background: var(--color-bg); border-bottom: 1px solid var(--color-border); position: relative; z-index: 5; }
+.gb-nav-wrap { background: var(--color-bg); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; }
 .gb-nav { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .gb-nav-left { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
 .gb-nav-wm { font-size: 19px; padding: 22px 0; }
 .gb-nav-links { display: flex; gap: 22px; align-self: stretch; flex-wrap: wrap; }
-.gb-nav-links a { display: flex; align-items: center; font-size: 14px; color: var(--color-text-muted); box-shadow: inset 0 -2px 0 transparent; transition: color 200ms var(--motion-ease); }
-.gb-nav-links a:hover { color: var(--color-text); }
+.gb-nav-links > a, .gb-nav-item > a { display: flex; align-items: center; font-size: 14px; color: var(--color-text-muted); box-shadow: inset 0 -2px 0 transparent; transition: color 200ms var(--motion-ease); }
+.gb-nav-links > a:hover, .gb-nav-item > a:hover { color: var(--color-text); }
+.gb-nav-item { position: relative; align-self: stretch; display: flex; align-items: center; }
+.gb-nav-item > a::after { content: '⌄'; font-size: 12px; margin-left: 4px; color: var(--color-text-disabled); transition: transform 200ms var(--motion-ease); display: inline-block; }
+.gb-nav-item:hover > a::after { transform: rotate(180deg); color: var(--color-text); }
+.gb-nav-dropdown { display: none; position: absolute; top: 100%; left: -16px; min-width: 180px; background: #12151A; border: 1px solid var(--color-border); border-radius: 4px; padding: 6px 0; z-index: 110; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.gb-nav-item:hover .gb-nav-dropdown, .gb-nav-item:focus-within .gb-nav-dropdown { display: block; }
+.gb-nav-dropdown::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+.gb-nav-dropdown a { display: block; padding: 10px 16px; font-size: 14px; color: var(--color-text-muted); text-decoration: none; transition: color 150ms, background 150ms; }
+.gb-nav-dropdown a:hover { color: var(--color-text); background: var(--color-surface-2); }
 .gb-nav-right { display: flex; align-items: center; gap: 20px; padding: 14px 0; margin-left: auto; }
-.gb-nav-right a { font-size: 14px; color: var(--color-text-muted); }
+.gb-nav-right a:not(.btn) { font-size: 14px; color: var(--color-text-muted); }
 .gb-nav-right a:not(.btn):hover { color: var(--color-text); }
 
-/* Burger + Mobile-Menü */
-.gb-nav-burger { display: none; background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-text); width: 44px; height: 40px; border-radius: var(--radius-2, 4px); align-items: center; justify-content: center; cursor: pointer; padding: 0; }
-.gb-nav-burger:hover { background: var(--color-surface-2); }
+/* Burger + Mobile-Menü — .gb-nav-mobile ist ein <nav>-Element und braucht
+ * harte Resets gegen style.css's globale nav-Regel (fixed, height:58px,
+ * translucent bg mit backdrop-filter, display:grid). */
+.gb-nav-burger { display: none; background: transparent; border: none; color: var(--color-text); width: 44px; height: 40px; border-radius: var(--radius-2, 4px); align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.gb-nav-burger:hover { color: var(--color-accent); }
 .gb-nav-burger svg { display: block; }
-.gb-nav-mobile { display: none; padding: 8px 20px 20px; border-top: 1px solid var(--color-border); background: #0B0D10; flex-direction: column; }
-.gb-nav-mobile a { color: var(--color-text-muted); font-size: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-border); }
+.gb-nav-mobile {
+  display: none;
+  position: static; top: auto; left: auto; right: auto; z-index: auto;
+  height: auto;
+  padding: 8px 20px 20px;
+  border-top: 1px solid var(--color-border); border-bottom: none;
+  background: #0B0D10; backdrop-filter: none;
+  flex-direction: column;
+  grid-template-columns: none;
+  align-items: stretch;
+  font-family: var(--font-sans);
+}
+.gb-nav-mobile a {
+  display: block;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 400;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+}
+.gb-nav-mobile a.sub { padding-left: 20px; font-size: 14px; color: var(--color-text-disabled); }
 .gb-nav-mobile a:last-child { border-bottom: none; }
 .gb-nav-mobile a:hover { color: var(--color-text); }
 .gb-nav-mobile-sep { display: none; }
@@ -82,12 +111,18 @@ a { color: inherit; text-decoration: none; }
 .gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; }
 .gb-hero-img.motif-b { object-position: 60% 40%; }
 .gb-hero-overlay { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(11,13,16,0.72) 0%, rgba(11,13,16,0.45) 38%, rgba(11,13,16,0) 62%), linear-gradient(180deg, rgba(11,13,16,0) 58%, #0B0D10 100%); }
-.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 136px 32px 40px; display: flex; flex-direction: column; gap: 40px; min-height: calc(100vh + 180px); }
+.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 96px 32px 56px; display: flex; flex-direction: column; gap: 32px; min-height: calc(100dvh - 68px); }
 .gb-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #B9BCC0; text-transform: uppercase; }
 .gb-h1-home { margin: 0; font-size: clamp(56px, 8vw, 116px); line-height: 0.98; font-weight: 600; letter-spacing: -0.05em; max-width: 980px; text-wrap: balance; }
 .gb-hero-sub { margin: 0; font-size: 22px; line-height: 1.5; color: #B9BCC0; max-width: 560px; }
-.gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: auto; padding-bottom: 0; }
+.gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: auto; }
+
+/* Tiles-Section · direkt unter dem Hero-Fold, eigene Section damit
+   der Hero-Wrap genau am Viewport-Ende endet (mit Buttons ans untere Ende
+   dank margin-top:auto) und Tiles komplett unter dem Fold liegen. */
+.gb-tiles-section { background: var(--color-bg); padding: 64px 0 0; }
+.gb-tiles-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; }
 .gb-tile { border-radius: var(--radius-3); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 196px; color: var(--web-field-ink); transition: transform 200ms var(--motion-ease); }
 .gb-tile:hover { transform: translateY(-2px); }
 .gb-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -198,13 +233,12 @@ a { color: inherit; text-decoration: none; }
   .gb-nav-mobile.is-open { display: flex; }
   .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
   .gb-hero-sub { font-size: 17px; }
-  .gb-hero-wrap { padding: 220px 20px 0; min-height: 460px; gap: 18px; }
-  .gb-hero-img { height: 340px; object-position: 74% 45%; }
-  .gb-hero-img.motif-b { object-position: 75% 40%; }
-  .gb-hero-overlay { height: 340px; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
+  .gb-hero-wrap { padding: 40px 20px 32px; min-height: calc(100dvh - 68px); gap: 20px; }
+  .gb-hero-overlay { background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
   .btn { padding-left: 16px; padding-right: 16px; }
   .btn--lg { padding-left: 18px; padding-right: 18px; font-size: 14px; height: 44px; }
-  .gb-hero-tiles { margin-top: 48px; padding-bottom: 56px; }
+  .gb-tiles-section { padding-top: 48px; }
+  .gb-tiles-inner { padding: 0 20px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
   .gb-section-inner.pad-marken { padding-top: 96px; padding-bottom: 96px; gap: 48px; }
   .gb-section-inner.pad-light { gap: 48px; }
@@ -229,7 +263,14 @@ a { color: inherit; text-decoration: none; }
         <span aria-hidden="true">BETTER</span>
       </a>
       <div class="gb-nav-links">
-        <a href="fair-value-pro.html">Fair Value Pro</a>
+        <div class="gb-nav-item">
+          <a href="fair-value-pro.html">Fair Value Pro</a>
+          <div class="gb-nav-dropdown">
+            <a href="fair-value-pro.html">Übersicht</a>
+            <a href="pro-mode.html">Pro Mode</a>
+            <a href="daten-quelle.html">Daten-Quelle</a>
+          </div>
+        </div>
         <a href="portfolio-tracker.html">Portfolio Tracker</a>
         <a href="trading-desk.html">Trading Desk</a>
       </div>
@@ -245,6 +286,8 @@ a { color: inherit; text-decoration: none; }
   </div>
   <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
     <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="pro-mode.html" class="sub">↳ Pro Mode</a>
+    <a href="daten-quelle.html" class="sub">↳ Daten-Quelle</a>
     <a href="portfolio-tracker.html">Portfolio Tracker</a>
     <a href="trading-desk.html">Trading Desk</a>
     <a href="plaene.html">Pläne</a>
@@ -262,8 +305,14 @@ a { color: inherit; text-decoration: none; }
     <p class="gb-hero-sub">Better tools for independent investors.</p>
     <div class="gb-hero-btns">
       <a href="fair-value-pro.html#cta" class="btn btn--primary btn--lg">Kostenlos testen</a>
-      <a href="#werkzeuge" class="btn btn--secondary btn--lg">Die Werkzeuge</a>
+      <a href="#werkzeuge" class="btn btn--secondary btn--lg on-photo">Die Werkzeuge</a>
     </div>
+  </div>
+</section>
+
+<!-- TILES · direkt unter dem Hero-Fold -->
+<section class="gb-tiles-section">
+  <div class="gb-tiles-inner">
     <div class="gb-hero-tiles">
       <a href="fair-value-pro.html" class="gb-tile fvp">
         <div class="gb-tile-head"><span class="gb-tile-label">FAIR VALUE PRO</span><span class="gb-tile-arrow">→</span></div>
@@ -422,8 +471,6 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="gb-foot-links">
       <a href="fair-value-pro.html">Fair Value Pro</a>
-      <a href="pro-mode.html">Pro Mode</a>
-      <a href="daten-quelle.html">Daten-Quelle</a>
       <a href="portfolio-tracker.html">Portfolio Tracker</a>
       <a href="trading-desk.html">Trading Desk</a>
       <a href="akademie/index.html">Akademie</a>

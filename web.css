@@ -1,12 +1,13 @@
 /*
  * GO:BETTER — Website-Ebene
- * web.css · v1.0 · lädt NACH tokens.css
+ * web.css · v1.1 · lädt NACH tokens.css
  *
  * Drei Intensitätsstufen, ein System:
  *   data-level="home"     Startseite   → expressiv   · Marke erleben
  *   data-level="product"  Produktseite → ausgewogen  · Produkt verstehen
  *   (Tool)                tokens.css   → zurückhaltend · konzentriert arbeiten
  * Produktstimmung über data-product="fvp" | "pt" | "td" am <body>.
+ * Button-Grundfarben folgen data-ground="dark|light|color" (Design v2).
  */
 
 :root {
@@ -22,14 +23,17 @@
   --web-h1-product: clamp(44px, 6vw, 80px);
   --web-h2-home:    clamp(44px, 5.6vw, 72px);
   --web-h2-product: 52px;
-  --web-statement:  clamp(36px, 4.4vw, 60px);   /* Doppelpunkt-Kette, Zitat */
+  --web-statement:  clamp(36px, 4.4vw, 60px);
 
   /* Raum je Ebene */
   --web-section-home:    152px;
   --web-section-product: 128px;
-  --web-hero-home:       880px;  /* Mindesthöhe */
+  --web-hero-home:       880px;
   --web-maxw:            1280px;
   --web-gutter:          32px;
+
+  /* Nav-Höhe (Referenzwert für hero min-height Berechnungen) */
+  --nav-h: 68px;
 }
 
 /* Produktstimmung · Akzent + Vollfläche */
@@ -37,12 +41,7 @@
 [data-product="pt"]  { --web-mood: var(--web-field-pt);  --web-mood-muted: var(--web-field-pt-muted);  --web-mood-light: #F0B42A; }
 [data-product="td"]  { --web-mood: var(--web-field-td);  --web-mood-muted: var(--web-field-td-muted);  --web-mood-light: #3B7BFF; }
 
-/* Regeln für Vollfarbflächen (.web-field)
- * 1. Text: --web-field-ink, Sekundärtext: --web-mood-muted. Nie Off-White.
- * 2. Keine semantischen Farben auf Farbflächen. Veränderungen in Tinte mit ▲ ▼ ±.
- * 3. Keine Diagramme direkt auf der Fläche, nur eingelegte dunkle UI-Panels.
- * 4. Höchstens eine Vollfläche pro Produktseite; auf der Startseite alle drei gemeinsam.
- */
+/* Regeln für Vollfarbflächen (.web-field) */
 .web-field { background: var(--web-mood); color: var(--web-field-ink); }
 .web-field .muted { color: var(--web-mood-muted); }
 
@@ -51,58 +50,85 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
- * KOMPONENTE · Schaltfläche (Design-System v1.0)
- * Vier Varianten × fünf Zustände × drei Größen.
- * Primär trägt Fläche in Tinte bzw. Off-White, nie farbig.
+ * KOMPONENTE · Schaltfläche · Design v2 (WEBSITE.md §9)
+ *
+ * Vier Bereiche:
+ *   --btn-p-*   Primär (gefüllt)
+ *   --btn-s-*   Sekundär (Umriss)
+ *   --btn-dis-* Deaktiviert
+ *   --btn-focus Fokus-Kontur
+ *
+ * Werte kommen aus dem umgebenden data-ground (dark/light/color).
+ * Ohne data-ground gilt "dark" als Default — passt zu unserer
+ * dunklen Standardpalette und weicht nur auf Light-Sections ab.
  * ═══════════════════════════════════════════════════════════ */
+
+:root,
+[data-ground="dark"] {
+  --btn-p-bg:#ECEDEF; --btn-p-fg:#0B0D10; --btn-p-hover:#9A9FA7;
+  --btn-s-bd:#9A9FA7; --btn-s-fg:#ECEDEF; --btn-s-hover-bg:#191D23; --btn-s-hover-bd:#ECEDEF; --btn-s-active:#262B33;
+  --btn-focus:#ECEDEF;
+  --btn-dis-bg:#191D23; --btn-dis-fg:#5A6068; --btn-dis-bd:#262B33;
+}
+:root[data-theme="light"],
+[data-ground="light"] {
+  --btn-p-bg:#111317; --btn-p-fg:#F7F8FA; --btn-p-hover:#555A62;
+  --btn-s-bd:#7E858F; --btn-s-fg:#111317; --btn-s-hover-bg:#EEF0F3; --btn-s-hover-bd:#111317; --btn-s-active:#DEE1E6;
+  --btn-focus:#111317;
+  --btn-dis-bg:#EEF0F3; --btn-dis-fg:#A3A8AF; --btn-dis-bd:#DEE1E6;
+}
+[data-ground="color"] {
+  --btn-p-bg:#0B0D10; --btn-p-fg:#ECEDEF; --btn-p-hover:#2A2D33;
+  --btn-s-bd:#0B0D10; --btn-s-fg:#0B0D10; --btn-s-hover-bg:rgba(11,13,16,.1); --btn-s-hover-bd:#0B0D10; --btn-s-active:rgba(11,13,16,.18);
+  --btn-focus:#0B0D10;
+}
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  font-family: var(--font-sans); font-size: 14px; font-weight: 500; line-height: 1;
-  height: var(--control-h-m, 40px); padding: 0 20px;
-  border-radius: var(--radius-2, 4px);
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--color-text);
-  text-decoration: none; white-space: nowrap; user-select: none; cursor: pointer;
+  border-radius: 4px; border: 1px solid transparent;
+  font-family: var(--font-sans); font-weight: 500; line-height: 1;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
   transition:
-    background var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-    color      var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-    border-color var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-    box-shadow  var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-    transform   120ms var(--motion-ease, cubic-bezier(0.2,0,0,1));
+    background-color 120ms cubic-bezier(.2,0,0,1),
+    border-color 120ms cubic-bezier(.2,0,0,1),
+    color 120ms cubic-bezier(.2,0,0,1),
+    box-shadow 120ms cubic-bezier(.2,0,0,1);
 }
-.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-.btn:disabled, .btn[aria-disabled="true"] { cursor: not-allowed; }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--btn-focus); }
+.btn:disabled, .btn[aria-disabled="true"] { cursor: not-allowed; background: var(--btn-dis-bg); color: var(--btn-dis-fg); border-color: var(--btn-dis-bd); }
 
-/* Größen */
-.btn--sm { height: var(--control-h-s, 32px); padding: 0 14px; font-size: 13px; }
-.btn--lg { height: var(--control-h-l, 48px); padding: 0 24px; font-size: 15px; }
+/* Größen (Design v2) */
+.btn--m { height: 40px; padding: 0 18px; font-size: 14px; }
+.btn--l { height: 52px; padding: 0 28px; font-size: 15px; }
+/* Legacy-Aliase — HTML kann btn--sm/--lg weiter verwenden */
+.btn--sm { height: 32px; padding: 0 14px; font-size: 13px; }
+.btn--lg { height: 52px; padding: 0 28px; font-size: 15px; }
+@media (max-width: 719px) {
+  .btn--m, .btn--l, .btn--lg { min-height: 48px; height: 48px; padding: 0 18px; font-size: 14px; }
+}
 
-/* ── Primär · Hauptaktion ── */
-.btn--primary { background: var(--color-text); color: var(--color-text-inverse); border-color: var(--color-text); }
-.btn--primary:hover { background: var(--color-text-muted); border-color: var(--color-text-muted); color: var(--color-text-inverse); }
-.btn--primary:active { background: var(--color-text-muted); border-color: var(--color-text-muted); color: var(--color-text-inverse); box-shadow: inset 0 1px 3px rgba(0,0,0,0.35); }
-.btn--primary:disabled, .btn--primary[aria-disabled="true"] { background: var(--color-surface-2); border-color: var(--color-surface-2); color: var(--color-text-disabled); }
+/* Primär · Hauptaktion */
+.btn--primary { background: var(--btn-p-bg); color: var(--btn-p-fg); border-color: var(--btn-p-bg); }
+.btn--primary:hover:not(:disabled) { background: var(--btn-p-hover); border-color: var(--btn-p-hover); }
+.btn--primary:active:not(:disabled) { box-shadow: inset 0 1px 3px rgba(0,0,0,.35); }
 
-/* ── Sekundär · Weitere Aktionen ── */
-.btn--secondary { background: transparent; color: var(--color-text); border-color: var(--color-border-strong); }
-.btn--secondary:hover { background: var(--color-surface-2); color: var(--color-text); border-color: var(--color-border-strong); }
-.btn--secondary:active { background: var(--color-surface-2); color: var(--color-text); border-color: var(--color-text); }
-.btn--secondary:disabled, .btn--secondary[aria-disabled="true"] { background: transparent; color: var(--color-text-disabled); border-color: var(--color-border); }
+/* Sekundär · Umriss */
+.btn--secondary { background: transparent; color: var(--btn-s-fg); border-color: var(--btn-s-bd); }
+.btn--secondary:hover:not(:disabled) { background: var(--btn-s-hover-bg); border-color: var(--btn-s-hover-bd); }
+.btn--secondary:active:not(:disabled) { background: var(--btn-s-active); }
+/* Auf Foto-Untergrund: dunkle Rückwand für Lesbarkeit über Bildmotiven */
+.btn--secondary.on-photo { background: rgba(11,13,16,.4); backdrop-filter: blur(6px); }
+.btn--secondary.on-photo:hover:not(:disabled) { background: rgba(11,13,16,.6); }
 
-/* ── Tertiär · leise Aktionen ── */
+/* Tertiär · leise Aktion (nicht Teil v2, weiter geführt für Legacy) */
 .btn--tertiary { background: transparent; color: var(--color-text-muted); border-color: transparent; }
-.btn--tertiary:hover { background: var(--color-surface-2); color: var(--color-text); }
-.btn--tertiary:active { background: var(--color-surface-2); color: var(--color-text); }
-.btn--tertiary:disabled, .btn--tertiary[aria-disabled="true"] { background: transparent; color: var(--color-text-disabled); }
+.btn--tertiary:hover:not(:disabled) { background: var(--btn-s-hover-bg); color: var(--btn-s-fg); }
 
-/* ── Entfernen · immer mit Rückfrage ── */
+/* Entfernen · immer mit Rückfrage */
 .btn--destroy { background: transparent; color: var(--color-warning); border-color: var(--color-warning); }
-.btn--destroy:hover { background: var(--color-surface-2); color: var(--color-warning); border-color: var(--color-warning); }
-.btn--destroy:active { background: var(--color-surface-2); color: var(--color-warning); border-color: var(--color-warning); box-shadow: inset 0 1px 3px rgba(0,0,0,0.35); }
-.btn--destroy:disabled, .btn--destroy[aria-disabled="true"] { background: transparent; color: var(--color-text-disabled); border-color: var(--color-border); }
+.btn--destroy:hover:not(:disabled) { background: var(--btn-s-hover-bg); }
 
-/* ── Loading-Zustand (mit Doppelpunkt-Ladeanzeige davor) ── */
+/* Loading-Zustand */
 .btn.is-loading::before { content: '∶ '; margin-right: 4px; opacity: 0.9; }
 
 @media (prefers-reduced-motion: reduce) {
