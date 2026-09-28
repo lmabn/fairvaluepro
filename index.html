@@ -67,7 +67,9 @@ a { color: inherit; text-decoration: none; }
 .gb-nav-right a { font-size: 14px; color: var(--color-text-muted); }
 .gb-nav-right a:hover { color: var(--color-text); }
 .gb-btn-primary { display: inline-block; background: var(--color-text); color: var(--color-text-inverse); font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-2); }
-.gb-btn-primary:hover { background: var(--color-text-muted); }
+.gb-btn-primary:hover { background: var(--color-text-muted); color: var(--color-text-inverse); }
+.gb-nav-right a.gb-btn-primary { color: var(--color-text-inverse); }
+.gb-nav-right a.gb-btn-primary:hover { color: var(--color-text-inverse); }
 .gb-btn-secondary { display: inline-block; border: 1px solid var(--color-border-strong); background: transparent; color: var(--color-text); font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-2); }
 .gb-btn-secondary:hover { background: var(--color-surface-2); }
 
@@ -187,11 +189,14 @@ a { color: inherit; text-decoration: none; }
   .gb-nav-links { display: none; }
   .gb-nav-right { gap: 12px; }
   .gb-nav-right > a:not(.gb-btn-primary) { display: none; }
-  .gb-hero-wrap { padding: 380px 20px 0; min-height: 640px; gap: 24px; }
-  .gb-hero-img { height: 560px; object-position: 74% 45%; }
+  .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
+  .gb-hero-sub { font-size: 17px; }
+  .gb-hero-wrap { padding: 280px 20px 0; min-height: 520px; gap: 18px; }
+  .gb-hero-img { height: 420px; object-position: 74% 45%; }
   .gb-hero-img.motif-b { object-position: 75% 40%; }
-  .gb-hero-overlay { height: 560px; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
-  .gb-hero-tiles { margin-top: 64px; padding-bottom: 64px; }
+  .gb-hero-overlay { height: 420px; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
+  .gb-btn-hero-primary, .gb-btn-hero-secondary { padding: 14px 22px; font-size: 14px; }
+  .gb-hero-tiles { margin-top: 56px; padding-bottom: 64px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
   .gb-stance { padding-top: 96px; padding-bottom: 96px; gap: 32px; }
   .gb-cta-close img { object-position: 62% 50%; }
