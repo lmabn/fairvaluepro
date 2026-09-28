@@ -1,0 +1,89 @@
+/*
+ * GO:BETTER — Shell (Nav + Footer)
+ * gb-shell.css · v1.0 · lädt NACH tokens.css und web.css
+ *
+ * Globale Kopfzeile und Fußzeile für alle Nicht-Startseiten.
+ * Startseite hat ihre eigene, inline gehaltene Fassung — die hier greift auf
+ * allen anderen Seiten (Produkt, Legal, Akademie, Beta, Styleguide).
+ * Farben stammen aus tokens.css; die Shell ist theme-neutral: sie folgt der
+ * aktiven Palette der Seite. Auf Seiten die dark bleiben (z. B. Product-Seiten
+ * mit data-level="product") sitzen Nav und Footer im dunklen Guss;
+ * auf Seiten die im Light-Mode laufen, kippen sie automatisch mit.
+ */
+
+/* ── Wortmarke ── */
+.gb-wm { display: inline-flex; align-items: baseline; font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1; color: var(--color-text); text-decoration: none; }
+.gb-wm .k { margin-right: -0.01em; }
+.gb-wm svg { display: block; height: 0.71em; width: 0.33em; margin: 0 0.045em 0 0.055em; }
+.gb-wm svg circle { fill: currentColor; }
+
+/* ── Nav ──
+ * fixed positioniert: die Bestandsseiten reservieren im Content-padding-top
+ * bereits Platz für eine fest oben stehende Leiste (alte `nav { position: fixed }`).
+ * Sitzt die neue Shell im Flow, verdoppelt sich der Freiraum oben.
+ */
+.gb-nav-wrap { background: var(--color-bg); border-bottom: 1px solid var(--color-border); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+.gb-nav { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.gb-nav-left { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+.gb-nav-wm { font-size: 19px; padding: 22px 0; }
+.gb-nav-links { display: flex; gap: 22px; align-self: stretch; flex-wrap: wrap; }
+.gb-nav-links a { display: flex; align-items: center; font-size: 14px; color: var(--color-text-muted); box-shadow: inset 0 -2px 0 transparent; transition: color 200ms var(--motion-ease, cubic-bezier(0.2,0,0,1)); text-decoration: none; }
+.gb-nav-links a:hover { color: var(--color-text); }
+.gb-nav-right { display: flex; align-items: center; gap: 20px; padding: 14px 0; margin-left: auto; }
+.gb-nav-right a:not(.btn) { font-size: 14px; color: var(--color-text-muted); text-decoration: none; }
+.gb-nav-right a:not(.btn):hover { color: var(--color-text); }
+
+/* Burger + Mobile-Menü */
+.gb-nav-burger { display: none; background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-text); width: 44px; height: 40px; border-radius: var(--radius-2, 4px); align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.gb-nav-burger:hover { background: var(--color-surface-2); }
+.gb-nav-burger svg { display: block; }
+/* .gb-nav-mobile ist ein <nav>-Element und darf NICHTS aus dem alten
+ * nav-Reset in style.css (fixed, grid, height 58px, backdrop-filter) erben.
+ * Alle betroffenen Properties werden explizit auf sinnvolle Werte gesetzt.
+ */
+.gb-nav-mobile {
+  display: none;
+  position: static; top: auto; left: auto; right: auto; z-index: auto;
+  height: auto;
+  padding: 8px 20px 20px;
+  border-top: 1px solid var(--color-border); border-bottom: none;
+  background: var(--color-bg); backdrop-filter: none;
+  flex-direction: column;
+  grid-template-columns: none;
+  align-items: stretch;
+  font-family: var(--font-sans);
+}
+.gb-nav-mobile a {
+  display: block;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 400;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+}
+.gb-nav-mobile a:last-child { border-bottom: none; }
+.gb-nav-mobile a:hover { color: var(--color-text); }
+
+/* ── Footer ── */
+.gb-foot-wrap { background: var(--color-bg); border-top: 1px solid var(--color-border); }
+.gb-foot { max-width: 1280px; margin: 0 auto; padding: 48px 32px; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+.gb-foot-bar { display: flex; gap: 4px; height: 4px; width: 120px; }
+.gb-foot-bar span { flex: 1; }
+.gb-foot-bar span.fvp { background: var(--web-field-fvp, #2EE59D); }
+.gb-foot-bar span.pt  { background: var(--web-field-pt, #F0B42A); }
+.gb-foot-bar span.td  { background: var(--web-field-td, #5B8CFF); }
+.gb-foot-links { display: flex; gap: 28px; font-size: 13px; color: var(--color-text-muted); flex-wrap: wrap; }
+.gb-foot-links a { color: var(--color-text-muted); text-decoration: none; }
+.gb-foot-links a:hover { color: var(--color-text); }
+.gb-foot-note { font-size: 12px; color: var(--color-text-muted); max-width: 360px; line-height: 1.5; }
+
+/* Responsive */
+@media (max-width: 719px) {
+  .gb-nav { padding: 0 20px; gap: 16px; }
+  .gb-nav-links { display: none; }
+  .gb-nav-right { gap: 10px; }
+  .gb-nav-right > a:not(.btn) { display: none; }
+  .gb-nav-burger { display: inline-flex; }
+  .gb-nav-mobile.is-open { display: flex; }
+  .gb-foot { padding: 32px 20px; }
+}

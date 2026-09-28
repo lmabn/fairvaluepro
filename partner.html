@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="web.css">
+<link rel="stylesheet" href="gb-shell.css">
 <script src="theme-toggle.js"></script>
 <meta name="robots" content="noindex, nofollow">
 <title>LMABN — Partnerprogramm & Vision</title>
@@ -165,12 +166,38 @@ body { background: var(--bg); }
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
-  <div class="nav-right">
-    <a href="index.html" class="back">← Zur Website</a>
+<!-- NAV · GO:BETTER Shell -->
+<div class="gb-nav-wrap">
+  <div class="gb-nav">
+    <div class="gb-nav-left">
+      <a href="index.html" class="gb-wm gb-nav-wm" aria-label="GO:BETTER">
+        <span aria-hidden="true"><span class="k">G</span>O</span>
+        <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg>
+        <span aria-hidden="true">BETTER</span>
+      </a>
+      <div class="gb-nav-links">
+        <a href="fair-value-pro.html">Fair Value Pro</a>
+        <a href="portfolio-tracker.html">Portfolio Tracker</a>
+        <a href="trading-desk.html">Trading Desk</a>
+      </div>
+    </div>
+    <div class="gb-nav-right">
+      <a href="plaene.html">Pläne</a>
+      <a href="akademie/index.html">Akademie</a>
+      <a href="fair-value-pro.html#cta" class="btn btn--primary">Zugang erhalten</a>
+      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
-</nav>
+  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
+    <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="trading-desk.html">Trading Desk</a>
+    <a href="plaene.html">Pläne</a>
+    <a href="akademie/index.html">Akademie</a>
+  </nav>
+</div>
 
 <div class="page-wrap">
 
@@ -690,15 +717,23 @@ body { background: var(--bg); }
 
 </div><!-- /page-wrap -->
 
-<footer style="border-top:1px solid var(--border); padding:2rem 2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-  <div class="footer-logo">LMABN<span class="dot">.</span></div>
-  <div style="display:flex; gap:1.5rem;">
-    <a href="partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
-    <a href="impressum.html" class="footer-links" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none;">Impressum</a>
-    <a href="datenschutz.html" class="footer-links" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none;">Datenschutz</a>
-    
+<!-- FOOTER · GO:BETTER Shell -->
+<div class="gb-foot-wrap">
+  <div class="gb-foot">
+    <div class="gb-foot-bar" aria-hidden="true">
+      <span class="fvp"></span><span class="pt"></span><span class="td"></span>
+    </div>
+    <div class="gb-foot-links">
+      <a href="fair-value-pro.html">Fair Value Pro</a>
+      <a href="portfolio-tracker.html">Portfolio Tracker</a>
+      <a href="trading-desk.html">Trading Desk</a>
+      <a href="akademie/index.html">Akademie</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <span class="gb-foot-note">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen. <span style="opacity:0.75;">· Bildmotive KI-generiert.</span></span>
   </div>
-</footer>
+</div>
 
 <script>
   document.querySelectorAll('details').forEach(d => {
@@ -723,5 +758,6 @@ body { background: var(--bg); }
     });
   }
 </script>
+<script src="gb-shell.js" defer></script>
 </body>
 </html>

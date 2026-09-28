@@ -10,39 +10,42 @@
 <script src="../theme-toggle.js"></script>
 <script src="inline-svg.js" defer></script>
 <link rel="stylesheet" href="akademie.css">
+<link rel="stylesheet" href="../gb-shell.css">
 <title>Fair Value Pro — Akademie · Modul 4: Der richtige Einstieg</title>
 </head>
 <body>
 
-<nav>
-  <a href="../index.html" class="nav-logo">LMABN<span class="dot">.</span></a>
-  <div class="nav-links">
-    <div class="nav-item">
-      <a href="../fair-value-pro.html">Fair Value Pro</a>
-      <div class="nav-dropdown">
-        <a href="../fair-value-pro.html">Übersicht</a>
-        <a href="../pro-mode-beta.html">Pro Mode</a>
-        <a href="../daten-quelle.html">Daten-Quelle</a>
+<!-- NAV · GO:BETTER Shell -->
+<div class="gb-nav-wrap">
+  <div class="gb-nav">
+    <div class="gb-nav-left">
+      <a href="../index.html" class="gb-wm gb-nav-wm" aria-label="GO:BETTER">
+        <span aria-hidden="true"><span class="k">G</span>O</span>
+        <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg>
+        <span aria-hidden="true">BETTER</span>
+      </a>
+      <div class="gb-nav-links">
+        <a href="../fair-value-pro.html">Fair Value Pro</a>
+        <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+        <a href="../trading-desk.html">Trading Desk</a>
       </div>
     </div>
+    <div class="gb-nav-right">
+      <a href="../plaene.html">Pläne</a>
+      <a href="../akademie/index.html">Akademie</a>
+      <a href="../fair-value-pro.html#cta" class="btn btn--primary">Zugang erhalten</a>
+      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
+    <a href="../fair-value-pro.html">Fair Value Pro</a>
     <a href="../portfolio-tracker.html">Portfolio Tracker</a>
     <a href="../trading-desk.html">Trading Desk</a>
-    <a href="../plaene-beta.html">Pläne</a>
-    <a href="index.html" class="active">Akademie</a>
-  </div>
-  <div class="nav-right">
-    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-      <span></span><span></span><span></span></button>
-    <a href="../plaene-beta.html" class="nav-cta">Pläne ansehen</a>
-  </div>
-</nav>
-<div class="nav-mobile-menu" id="mobile-menu">
-  <a href="../fair-value-pro.html">Fair Value Pro</a>
-  <a href="../portfolio-tracker.html">Portfolio Tracker</a>
-  <a href="../trading-desk.html">Trading Desk</a>
-  <a href="../plaene-beta.html">Pläne</a>
-  <a href="index.html" class="active">Akademie</a>
-  <a href="../plaene-beta.html" class="cta-mobile">Pläne ansehen →</a>
+    <a href="../plaene.html">Pläne</a>
+    <a href="../akademie/index.html">Akademie</a>
+  </nav>
 </div>
 
 <nav class="ak-modulnav ak-modulnav-top" aria-label="Modul-Navigation">
@@ -549,15 +552,23 @@
   <a href="modul-08-strategie.html">08</a>
 </nav>
 
-<footer>
-  <div class="footer-logo">Fair Value Pro<span class="dot">.</span></div>
-  <p style="font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--text-2); border:1px solid var(--border2); border-radius:3px; padding:0.6rem 1rem; max-width:560px;"><strong style="color:var(--text);">Keine Anlageberatung.</strong> Alle Darstellungen basieren auf nutzerdefinierten Daten und dienen ausschließlich zur persönlichen Information.</p>
-  <div style="display:flex; gap:1.5rem;">
-    <a href="../partner.html" style="font-family:var(--mono); font-size:0.75rem; color:var(--text-3); text-decoration:none; padding-right:1rem; border-right:1px solid var(--border2); margin-right:0.5rem;">Für Partner</a>
-    <a href="../impressum.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Impressum</a>
-    <a href="../datenschutz.html" style="font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-3); text-decoration:none;">Datenschutz</a>
+<!-- FOOTER · GO:BETTER Shell -->
+<div class="gb-foot-wrap">
+  <div class="gb-foot">
+    <div class="gb-foot-bar" aria-hidden="true">
+      <span class="fvp"></span><span class="pt"></span><span class="td"></span>
+    </div>
+    <div class="gb-foot-links">
+      <a href="../fair-value-pro.html">Fair Value Pro</a>
+      <a href="../portfolio-tracker.html">Portfolio Tracker</a>
+      <a href="../trading-desk.html">Trading Desk</a>
+      <a href="../akademie/index.html">Akademie</a>
+      <a href="../impressum.html">Impressum</a>
+      <a href="../datenschutz.html">Datenschutz</a>
+    </div>
+    <span class="gb-foot-note">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen. <span style="opacity:0.75;">· Bildmotive KI-generiert.</span></span>
   </div>
-</footer>
+</div>
 
 <script>
   const hbg = document.getElementById('hamburger');
@@ -565,5 +576,6 @@
   if(hbg) hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mmenu.classList.toggle('open'); });
   if(mmenu) mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mmenu.classList.remove('open'); }));
 </script>
+<script src="../gb-shell.js" defer></script>
 </body>
 </html>
