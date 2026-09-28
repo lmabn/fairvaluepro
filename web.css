@@ -1,0 +1,51 @@
+/*
+ * GO:BETTER — Website-Ebene
+ * web.css · v1.0 · lädt NACH tokens.css
+ *
+ * Drei Intensitätsstufen, ein System:
+ *   data-level="home"     Startseite   → expressiv   · Marke erleben
+ *   data-level="product"  Produktseite → ausgewogen  · Produkt verstehen
+ *   (Tool)                tokens.css   → zurückhaltend · konzentriert arbeiten
+ * Produktstimmung über data-product="fvp" | "pt" | "td" am <body>.
+ */
+
+:root {
+  /* Vollfarbflächen: Produktfarben in CI-Stärke, Schrift darauf immer Tinte */
+  --web-field-fvp: #2EE59D;  --web-field-fvp-muted: #16392B;
+  --web-field-pt:  #F0B42A;  --web-field-pt-muted:  #4A3606;
+  --web-field-td:  #5B8CFF;  --web-field-td-muted:  #101C3F;
+  --web-field-ink: #0B0D10;
+  --web-field-line: rgba(11,13,16,0.20);
+
+  /* Maßstab je Ebene */
+  --web-h1-home:    clamp(56px, 8vw, 120px);
+  --web-h1-product: clamp(44px, 6vw, 80px);
+  --web-h2-home:    clamp(44px, 5.6vw, 72px);
+  --web-h2-product: 52px;
+  --web-statement:  clamp(36px, 4.4vw, 60px);   /* Doppelpunkt-Kette, Zitat */
+
+  /* Raum je Ebene */
+  --web-section-home:    152px;
+  --web-section-product: 128px;
+  --web-hero-home:       880px;  /* Mindesthöhe */
+  --web-maxw:            1280px;
+  --web-gutter:          32px;
+}
+
+/* Produktstimmung · Akzent + Vollfläche */
+[data-product="fvp"] { --web-mood: var(--web-field-fvp); --web-mood-muted: var(--web-field-fvp-muted); --web-mood-light: #10C27F; }
+[data-product="pt"]  { --web-mood: var(--web-field-pt);  --web-mood-muted: var(--web-field-pt-muted);  --web-mood-light: #F0B42A; }
+[data-product="td"]  { --web-mood: var(--web-field-td);  --web-mood-muted: var(--web-field-td-muted);  --web-mood-light: #3B7BFF; }
+
+/* Regeln für Vollfarbflächen (.web-field)
+ * 1. Text: --web-field-ink, Sekundärtext: --web-mood-muted. Nie Off-White.
+ * 2. Keine semantischen Farben auf Farbflächen. Veränderungen in Tinte mit ▲ ▼ ±.
+ * 3. Keine Diagramme direkt auf der Fläche, nur eingelegte dunkle UI-Panels.
+ * 4. Höchstens eine Vollfläche pro Produktseite; auf der Startseite alle drei gemeinsam.
+ */
+.web-field { background: var(--web-mood); color: var(--web-field-ink); }
+.web-field .muted { color: var(--web-mood-muted); }
+
+@media (max-width: 720px) {
+  :root { --web-section-home: 96px; --web-section-product: 80px; --web-gutter: 20px; --web-hero-home: 640px; }
+}
