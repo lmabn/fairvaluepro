@@ -82,12 +82,12 @@ a { color: inherit; text-decoration: none; }
 .gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; }
 .gb-hero-img.motif-b { object-position: 60% 40%; }
 .gb-hero-overlay { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(11,13,16,0.72) 0%, rgba(11,13,16,0.45) 38%, rgba(11,13,16,0) 62%), linear-gradient(180deg, rgba(11,13,16,0) 58%, #0B0D10 100%); }
-.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 136px 32px 0; display: flex; flex-direction: column; gap: 40px; min-height: var(--web-hero-home, 880px); }
+.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 136px 32px 40px; display: flex; flex-direction: column; gap: 40px; min-height: calc(100vh + 180px); }
 .gb-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #B9BCC0; text-transform: uppercase; }
 .gb-h1-home { margin: 0; font-size: clamp(56px, 8vw, 116px); line-height: 0.98; font-weight: 600; letter-spacing: -0.05em; max-width: 980px; text-wrap: balance; }
 .gb-hero-sub { margin: 0; font-size: 22px; line-height: 1.5; color: #B9BCC0; max-width: 560px; }
 .gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: 96px; padding-bottom: 64px; }
+.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: auto; padding-bottom: 0; }
 .gb-tile { border-radius: var(--radius-3); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 196px; color: var(--web-field-ink); transition: transform 200ms var(--motion-ease); }
 .gb-tile:hover { transform: translateY(-2px); }
 .gb-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -387,8 +387,8 @@ a { color: inherit; text-decoration: none; }
   <div class="gb-section-inner gb-stance pad-stance">
     <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
     <div class="gb-stance-text">
-      <p class="gb-stance-quote">Nicht die Software entscheidet für den Anleger. Sie gibt ihm bessere Werkzeuge, um selbst fundierter zu entscheiden.</p>
-      <span class="gb-stance-attr">DIE HALTUNG VON GO:BETTER</span>
+      <p class="gb-stance-quote">Wir glauben an Anleger, die verstehen wollen, was sie tun – und selbst entscheiden, was zu ihnen passt.</p>
+      <span class="gb-stance-attr">UNSERE HALTUNG</span>
     </div>
   </div>
 </section>
@@ -422,9 +422,12 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="gb-foot-links">
       <a href="fair-value-pro.html">Fair Value Pro</a>
+      <a href="pro-mode.html">Pro Mode</a>
+      <a href="daten-quelle.html">Daten-Quelle</a>
       <a href="portfolio-tracker.html">Portfolio Tracker</a>
       <a href="trading-desk.html">Trading Desk</a>
       <a href="akademie/index.html">Akademie</a>
+      <a href="partner.html">Für Partner</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
     </div>
