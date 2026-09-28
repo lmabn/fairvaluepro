@@ -67,9 +67,19 @@ a { color: inherit; text-decoration: none; }
 .gb-nav-right a { font-size: 14px; color: var(--color-text-muted); }
 .gb-nav-right a:not(.btn):hover { color: var(--color-text); }
 
+/* Burger + Mobile-Menü */
+.gb-nav-burger { display: none; background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-text); width: 44px; height: 40px; border-radius: var(--radius-2, 4px); align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.gb-nav-burger:hover { background: var(--color-surface-2); }
+.gb-nav-burger svg { display: block; }
+.gb-nav-mobile { display: none; padding: 8px 20px 20px; border-top: 1px solid var(--color-border); background: #0B0D10; flex-direction: column; }
+.gb-nav-mobile a { color: var(--color-text-muted); font-size: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-border); }
+.gb-nav-mobile a:last-child { border-bottom: none; }
+.gb-nav-mobile a:hover { color: var(--color-text); }
+.gb-nav-mobile-sep { display: none; }
+
 /* ── Hero ── */
 .gb-hero { position: relative; overflow: hidden; background: var(--color-bg); }
-.gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 40%; display: block; }
+.gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; }
 .gb-hero-img.motif-b { object-position: 60% 40%; }
 .gb-hero-overlay { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(11,13,16,0.72) 0%, rgba(11,13,16,0.45) 38%, rgba(11,13,16,0) 62%), linear-gradient(180deg, rgba(11,13,16,0) 58%, #0B0D10 100%); }
 .gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 136px 32px 0; display: flex; flex-direction: column; gap: 40px; min-height: var(--web-hero-home, 880px); }
@@ -77,7 +87,7 @@ a { color: inherit; text-decoration: none; }
 .gb-h1-home { margin: 0; font-size: clamp(56px, 8vw, 116px); line-height: 0.98; font-weight: 600; letter-spacing: -0.05em; max-width: 980px; text-wrap: balance; }
 .gb-hero-sub { margin: 0; font-size: 22px; line-height: 1.5; color: #B9BCC0; max-width: 560px; }
 .gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: 120px; padding-bottom: 96px; }
+.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: 96px; padding-bottom: 64px; }
 .gb-tile { border-radius: var(--radius-3); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 196px; color: var(--web-field-ink); transition: transform 200ms var(--motion-ease); }
 .gb-tile:hover { transform: translateY(-2px); }
 .gb-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -92,6 +102,9 @@ a { color: inherit; text-decoration: none; }
 /* ── Sektionen ── */
 .gb-section { background: var(--color-bg); }
 .gb-section-inner { max-width: 1280px; margin: 0 auto; padding: 152px 32px; display: flex; flex-direction: column; gap: 64px; }
+.gb-section-inner.pad-marken   { padding-top: 128px; padding-bottom: 152px; gap: 72px; }
+.gb-section-inner.pad-light    { gap: 72px; }
+.gb-section-inner.pad-stance   { padding-top: 0; padding-bottom: 0; }
 .gb-section.line { border-top: 1px solid var(--color-border); }
 .gb-section.light { background: #F7F8FA; color: #111317; }
 
@@ -179,18 +192,23 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 719px) {
   .gb-nav { padding: 0 20px; gap: 16px; }
   .gb-nav-links { display: none; }
-  .gb-nav-right { gap: 12px; }
+  .gb-nav-right { gap: 10px; }
   .gb-nav-right > a:not(.btn) { display: none; }
+  .gb-nav-burger { display: inline-flex; }
+  .gb-nav-mobile.is-open { display: flex; }
   .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
   .gb-hero-sub { font-size: 17px; }
-  .gb-hero-wrap { padding: 280px 20px 0; min-height: 520px; gap: 18px; }
-  .gb-hero-img { height: 420px; object-position: 74% 45%; }
+  .gb-hero-wrap { padding: 220px 20px 0; min-height: 460px; gap: 18px; }
+  .gb-hero-img { height: 340px; object-position: 74% 45%; }
   .gb-hero-img.motif-b { object-position: 75% 40%; }
-  .gb-hero-overlay { height: 420px; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
+  .gb-hero-overlay { height: 340px; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
   .btn { padding-left: 16px; padding-right: 16px; }
-  .btn--lg { padding-left: 18px; padding-right: 18px; font-size: 14px; }
-  .gb-hero-tiles { margin-top: 56px; padding-bottom: 64px; }
+  .btn--lg { padding-left: 18px; padding-right: 18px; font-size: 14px; height: 44px; }
+  .gb-hero-tiles { margin-top: 48px; padding-bottom: 56px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
+  .gb-section-inner.pad-marken { padding-top: 96px; padding-bottom: 96px; gap: 48px; }
+  .gb-section-inner.pad-light { gap: 48px; }
+  .gb-section-inner.pad-stance { padding-top: 0; padding-bottom: 0; }
   .gb-stance { padding-top: 96px; padding-bottom: 96px; gap: 32px; }
   .gb-cta-close img { object-position: 62% 50%; }
   .gb-cta-close .ovr { background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0.7) 50%, rgba(11,13,16,0.9) 100%); }
@@ -220,8 +238,18 @@ a { color: inherit; text-decoration: none; }
       <a href="plaene.html">Pläne</a>
       <a href="akademie/index.html">Akademie</a>
       <a href="fair-value-pro.html#cta" class="btn btn--primary">Zugang erhalten</a>
+      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </div>
+  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
+    <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="trading-desk.html">Trading Desk</a>
+    <a href="plaene.html">Pläne</a>
+    <a href="akademie/index.html">Akademie</a>
+  </nav>
 </div>
 
 <!-- HERO -->
@@ -258,7 +286,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- MARKENIDEE -->
 <section class="gb-section">
-  <div class="gb-section-inner" style="padding-top:168px;padding-bottom:152px;gap:72px;">
+  <div class="gb-section-inner pad-marken">
     <div class="gb-chain">
       <span>Daten</span>
       <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
@@ -325,7 +353,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- SELBST ANLEGEN (hell) -->
 <section class="gb-section light">
-  <div class="gb-section-inner" style="gap:72px;">
+  <div class="gb-section-inner pad-light">
     <div class="gb-light-head">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <span class="gb-label-dot"><span class="dot"></span>SELBSTBESTIMMT ANLEGEN</span>
@@ -356,7 +384,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- HALTUNG -->
 <section class="gb-section">
-  <div class="gb-section-inner gb-stance" style="padding-top:0;padding-bottom:0;">
+  <div class="gb-section-inner gb-stance pad-stance">
     <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
     <div class="gb-stance-text">
       <p class="gb-stance-quote">Nicht die Software entscheidet für den Anleger. Sie gibt ihm bessere Werkzeuge, um selbst fundierter zu entscheiden.</p>
@@ -413,6 +441,20 @@ a { color: inherit; text-decoration: none; }
       img.src = 'assets/photo/workspace-laptop.webp';
       img.classList.add('motif-b');
     }
+  })();
+  // Burger-Menü toggle
+  (function(){
+    var burger = document.getElementById('gb-burger');
+    var menu = document.getElementById('gb-mobile-menu');
+    if (!burger || !menu) return;
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); });
+    });
   })();
 </script>
 
