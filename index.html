@@ -92,6 +92,9 @@ a { color: inherit; text-decoration: none; }
 /* ── Sektionen ── */
 .gb-section { background: var(--color-bg); }
 .gb-section-inner { max-width: 1280px; margin: 0 auto; padding: 152px 32px; display: flex; flex-direction: column; gap: 64px; }
+.gb-section-inner.pad-marken   { padding-top: 168px; padding-bottom: 152px; gap: 72px; }
+.gb-section-inner.pad-light    { gap: 72px; }
+.gb-section-inner.pad-stance   { padding-top: 0; padding-bottom: 0; }
 .gb-section.line { border-top: 1px solid var(--color-border); }
 .gb-section.light { background: #F7F8FA; color: #111317; }
 
@@ -191,6 +194,9 @@ a { color: inherit; text-decoration: none; }
   .btn--lg { padding-left: 18px; padding-right: 18px; font-size: 14px; }
   .gb-hero-tiles { margin-top: 56px; padding-bottom: 64px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
+  .gb-section-inner.pad-marken { padding-top: 96px; padding-bottom: 96px; gap: 48px; }
+  .gb-section-inner.pad-light { gap: 48px; }
+  .gb-section-inner.pad-stance { padding-top: 0; padding-bottom: 0; }
   .gb-stance { padding-top: 96px; padding-bottom: 96px; gap: 32px; }
   .gb-cta-close img { object-position: 62% 50%; }
   .gb-cta-close .ovr { background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0.7) 50%, rgba(11,13,16,0.9) 100%); }
@@ -258,7 +264,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- MARKENIDEE -->
 <section class="gb-section">
-  <div class="gb-section-inner" style="padding-top:168px;padding-bottom:152px;gap:72px;">
+  <div class="gb-section-inner pad-marken">
     <div class="gb-chain">
       <span>Daten</span>
       <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
@@ -325,7 +331,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- SELBST ANLEGEN (hell) -->
 <section class="gb-section light">
-  <div class="gb-section-inner" style="gap:72px;">
+  <div class="gb-section-inner pad-light">
     <div class="gb-light-head">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <span class="gb-label-dot"><span class="dot"></span>SELBSTBESTIMMT ANLEGEN</span>
@@ -356,7 +362,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- HALTUNG -->
 <section class="gb-section">
-  <div class="gb-section-inner gb-stance" style="padding-top:0;padding-bottom:0;">
+  <div class="gb-section-inner gb-stance pad-stance">
     <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
     <div class="gb-stance-text">
       <p class="gb-stance-quote">Nicht die Software entscheidet für den Anleger. Sie gibt ihm bessere Werkzeuge, um selbst fundierter zu entscheiden.</p>
