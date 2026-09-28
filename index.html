@@ -65,13 +65,7 @@ a { color: inherit; text-decoration: none; }
 .gb-nav-links a:hover { color: var(--color-text); }
 .gb-nav-right { display: flex; align-items: center; gap: 20px; padding: 14px 0; margin-left: auto; }
 .gb-nav-right a { font-size: 14px; color: var(--color-text-muted); }
-.gb-nav-right a:hover { color: var(--color-text); }
-.gb-btn-primary { display: inline-block; background: var(--color-text); color: var(--color-text-inverse); font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-2); }
-.gb-btn-primary:hover { background: var(--color-text-muted); color: var(--color-text-inverse); }
-.gb-nav-right a.gb-btn-primary { color: var(--color-text-inverse); }
-.gb-nav-right a.gb-btn-primary:hover { color: var(--color-text-inverse); }
-.gb-btn-secondary { display: inline-block; border: 1px solid var(--color-border-strong); background: transparent; color: var(--color-text); font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-2); }
-.gb-btn-secondary:hover { background: var(--color-surface-2); }
+.gb-nav-right a:not(.btn):hover { color: var(--color-text); }
 
 /* ── Hero ── */
 .gb-hero { position: relative; overflow: hidden; background: var(--color-bg); }
@@ -83,8 +77,6 @@ a { color: inherit; text-decoration: none; }
 .gb-h1-home { margin: 0; font-size: clamp(56px, 8vw, 116px); line-height: 0.98; font-weight: 600; letter-spacing: -0.05em; max-width: 980px; text-wrap: balance; }
 .gb-hero-sub { margin: 0; font-size: 22px; line-height: 1.5; color: #B9BCC0; max-width: 560px; }
 .gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.gb-btn-hero-primary { background: var(--color-text); color: var(--color-text-inverse); font-size: 15px; font-weight: 500; padding: 16px 28px; border-radius: var(--radius-2); }
-.gb-btn-hero-secondary { border: 1px solid var(--color-text-muted); background: rgba(11,13,16,0.4); color: var(--color-text); font-size: 15px; font-weight: 500; padding: 16px 28px; border-radius: var(--radius-2); }
 .gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: 120px; padding-bottom: 96px; }
 .gb-tile { border-radius: var(--radius-3); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 196px; color: var(--web-field-ink); transition: transform 200ms var(--motion-ease); }
 .gb-tile:hover { transform: translateY(-2px); }
@@ -188,14 +180,15 @@ a { color: inherit; text-decoration: none; }
   .gb-nav { padding: 0 20px; gap: 16px; }
   .gb-nav-links { display: none; }
   .gb-nav-right { gap: 12px; }
-  .gb-nav-right > a:not(.gb-btn-primary) { display: none; }
+  .gb-nav-right > a:not(.btn) { display: none; }
   .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
   .gb-hero-sub { font-size: 17px; }
   .gb-hero-wrap { padding: 280px 20px 0; min-height: 520px; gap: 18px; }
   .gb-hero-img { height: 420px; object-position: 74% 45%; }
   .gb-hero-img.motif-b { object-position: 75% 40%; }
   .gb-hero-overlay { height: 420px; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
-  .gb-btn-hero-primary, .gb-btn-hero-secondary { padding: 14px 22px; font-size: 14px; }
+  .btn { padding-left: 16px; padding-right: 16px; }
+  .btn--lg { padding-left: 18px; padding-right: 18px; font-size: 14px; }
   .gb-hero-tiles { margin-top: 56px; padding-bottom: 64px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
   .gb-stance { padding-top: 96px; padding-bottom: 96px; gap: 32px; }
@@ -226,7 +219,7 @@ a { color: inherit; text-decoration: none; }
     <div class="gb-nav-right">
       <a href="plaene.html">Pläne</a>
       <a href="akademie/index.html">Akademie</a>
-      <a href="fair-value-pro.html#cta" class="gb-btn-primary">Zugang erhalten</a>
+      <a href="fair-value-pro.html#cta" class="btn btn--primary">Zugang erhalten</a>
     </div>
   </div>
 </div>
@@ -240,8 +233,8 @@ a { color: inherit; text-decoration: none; }
     <h1 class="gb-h1-home">The Investment Workspace.</h1>
     <p class="gb-hero-sub">Better tools for independent investors.</p>
     <div class="gb-hero-btns">
-      <a href="fair-value-pro.html#cta" class="gb-btn-hero-primary">Kostenlos testen</a>
-      <a href="#werkzeuge" class="gb-btn-hero-secondary">Die Werkzeuge</a>
+      <a href="fair-value-pro.html#cta" class="btn btn--primary btn--lg">Kostenlos testen</a>
+      <a href="#werkzeuge" class="btn btn--secondary btn--lg">Die Werkzeuge</a>
     </div>
     <div class="gb-hero-tiles">
       <a href="fair-value-pro.html" class="gb-tile fvp">
@@ -387,8 +380,8 @@ a { color: inherit; text-decoration: none; }
       <span class="gb-cta-sub">Better tools for independent investors.</span>
     </div>
     <div class="gb-hero-btns">
-      <a href="fair-value-pro.html#cta" class="gb-btn-hero-primary">Kostenlos testen</a>
-      <a href="plaene.html" class="gb-btn-hero-secondary">Pläne ansehen</a>
+      <a href="fair-value-pro.html#cta" class="btn btn--primary btn--lg">Kostenlos testen</a>
+      <a href="plaene.html" class="btn btn--secondary btn--lg">Pläne ansehen</a>
     </div>
   </div>
 </section>
