@@ -201,19 +201,13 @@
   .test-author { font-family: var(--mono); font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.05em; }
   .test-author span { color: var(--text-3); display: block; margin-top: 0.2rem; }
 
-  /* CTA — theme-unabhängig dunkel + atmosphärisches Bild-Backdrop mit schwarzem Verlauf */
-  /* CTA-Section · GO:BETTER Design v3 · dunkler Grund mit sanftem Bild-Wash */
+  /* CTA-Section · GO:BETTER Design v3 · reiner dunkler Grund, kein Bild */
   #cta {
     text-align: center; position: relative; overflow: hidden;
     color: var(--color-text);
-    background-color: var(--color-bg);
-    background-image:
-      radial-gradient(ellipse at 50% 45%, rgba(11,13,16,0.55) 0%, rgba(11,13,16,0.82) 60%, rgba(11,13,16,0.95) 100%),
-      url("assets/hero/cta-bg.webp");
-    background-repeat: no-repeat, no-repeat;
-    background-position: center, center;
-    background-size: cover, cover;
+    background: var(--color-bg);
     padding: 128px 32px;
+    border-top: 1px solid var(--color-border);
   }
   #cta > .container { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 24px; }
   .cta-badge { display: inline-flex; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--web-field-fvp); border: 1px solid var(--web-field-fvp); padding: 6px 14px; border-radius: 999px; margin: 0; }
