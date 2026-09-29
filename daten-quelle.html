@@ -22,7 +22,7 @@
 .why-visual { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 2rem; }
 .flow-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
 .flow-row:last-child { margin-bottom: 0; }
-.flow-node { background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; padding: 0.6rem 1rem; font-family: var(--mono); font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.04em; flex-shrink: 0; }
+.flow-node { background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; padding: 0.6rem 1rem; font-family: var(--font-sans); font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.04em; flex-shrink: 0; }
 .flow-node.hl { border-color: var(--neon-border); color: var(--neon); background: var(--neon-dim); }
 .flow-arrow { color: var(--text-3); font-size: 0.8rem; }
 .flow-note { font-size: 0.72rem; color: var(--text-3); }
@@ -40,7 +40,7 @@
 .step-title { font-family: var(--display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
 .step-text { font-size: 0.88rem; color: var(--text-2); line-height: 1.7; margin-bottom: 0.7rem; }
 .step-text strong { color: var(--text); font-weight: 500; }
-.step-detail { font-family: var(--mono); font-size: 0.68rem; color: var(--text-3); background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 0.8rem; display: inline-block; letter-spacing: 0.04em; }
+.step-detail { font-family: var(--font-sans); font-size: 0.68rem; color: var(--text-3); background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 0.8rem; display: inline-block; letter-spacing: 0.04em; }
 
 /* PARTNER SECTION */
 .partner-section { padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
@@ -50,9 +50,9 @@
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; max-width: 720px; margin: 0 auto 2rem; }
 .partner-card { background: var(--bg2); padding: 1.8rem 1.4rem; text-align: center; }
 .partner-logo { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-.partner-type { font-family: var(--mono); font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
+.partner-type { font-family: var(--font-sans); font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
 .partner-desc { font-size: 0.78rem; color: var(--text-3); line-height: 1.55; margin-bottom: 1rem; }
-.partner-badge { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; display: inline-block; }
+.partner-badge { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; display: inline-block; }
 .partner-badge.recommended { color: var(--neon); background: var(--neon-dim); border: 1px solid var(--neon-border); }
 .partner-badge.available { color: var(--text-3); background: var(--bg3); border: 1px solid var(--border2); }
 .partner-note { text-align: center; font-size: 0.8rem; color: var(--text-3); max-width: 500px; margin: 0 auto; }
@@ -65,7 +65,7 @@
 .faq-item summary { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; gap: 1rem; transition: color 0.2s; text-transform: none; letter-spacing: 0; text-align: left; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::before { display: none; }
-.faq-item summary .faq-icon { font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item summary .faq-icon { font-family: var(--font-sans); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
 .faq-item[open] summary .faq-icon { transform: rotate(45deg); }
 .faq-item p { font-size: 0.88rem; color: var(--text-2); line-height: 1.75; padding-bottom: 1.2rem; }
 
@@ -81,7 +81,7 @@
 /* KI SIDE NOTE */
 .step-with-note { display: grid; grid-template-columns: 1fr 220px; gap: 1.5rem; align-items: start; }
 .step-sidenote { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.1rem; margin-top: 0.3rem; }
-.step-sidenote-label { font-family: var(--mono); font-size: 0.52rem; color: var(--neon); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.step-sidenote-label { font-family: var(--font-sans); font-size: 0.52rem; color: var(--neon); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
 .step-sidenote p { font-size: 0.75rem; color: var(--text-3); line-height: 1.6; margin: 0; }
 .step-sidenote p strong { color: var(--text-2); font-weight: 500; }
 @media(max-width: 720px) {
@@ -165,33 +165,33 @@
         <h2>Wir sind ein Bewertungstool — kein Datenprovider.</h2>
         <p>Die meisten Finanztools kaufen Marktdaten-Lizenzen en gros und reichen die Kosten als Abo-Gebühr weiter. Das schafft Lock-in: du bezahlst den Anbieter doppelt — einmal für die Daten, einmal für das Tool.</p>
         <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
-        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) persistent gespeichert. Für die automatische Bewertung übergibt Fair Value Pro ihn pro Anfrage transient an den eigenen Server, der ihn ausschließlich für den Abruf beim Datenanbieter verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</p>
+        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) persistent gespeichert. Für die automatische Bewertung übergibt Fair Value Pro ihn pro Anfrage transient an den eigenen Server, der ihn ausschließlich für den Abruf beim Datenanbieter verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</p>
       </div>
       <div class="why-visual fade" style="padding:1.5rem;">
-        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.4rem;">Datenfluss</div>
+        <div style="font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.4rem;">Datenfluss</div>
 
         <!-- Node: Browser -->
-        <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.65rem 1rem; text-align:center; font-family:var(--mono); font-size:0.65rem; color:var(--text); margin-bottom:1rem;">Dein Browser</div>
+        <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.65rem 1rem; text-align:center; font-size:0.65rem; color:var(--text); margin-bottom:1rem;">Dein Browser</div>
 
         <!-- Path 1: AI keys — direct browser → provider -->
-        <div style="font-family:var(--mono); font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">KI-Anfrage</div>
+        <div style="font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">KI-Anfrage</div>
         <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem;">
-          <span style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); flex:1; text-align:right;">Schlüssel + Frage</span>
-          <span style="font-family:var(--mono); font-size:0.7rem; color:var(--neon);">→</span>
-          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-family:var(--mono); font-size:0.6rem; color:var(--neon); flex:0 0 auto;">Claude · OpenAI · Gemini</div>
+          <span style="font-size:0.55rem; color:var(--neon); flex:1; text-align:right;">Schlüssel + Frage</span>
+          <span style="font-size:0.7rem; color:var(--neon);">→</span>
+          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-size:0.6rem; color:var(--neon); flex:0 0 auto;">Claude · OpenAI · Gemini</div>
         </div>
-        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); line-height:1.5; margin-bottom:1.2rem; padding-bottom:1.2rem; border-bottom:1px solid var(--border);">direkt vom Browser zum Provider — FVP nicht beteiligt</div>
+        <div style="font-size:0.55rem; color:var(--text-3); line-height:1.5; margin-bottom:1.2rem; padding-bottom:1.2rem; border-bottom:1px solid var(--border);">direkt vom Browser zum Provider — FVP nicht beteiligt</div>
 
         <!-- Path 2: FMP / Marktdaten — via FVP server (transient) -->
-        <div style="font-family:var(--mono); font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">Bewertungs-Abruf</div>
+        <div style="font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">Bewertungs-Abruf</div>
         <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.4rem; flex-wrap:wrap;">
-          <span style="font-family:var(--mono); font-size:0.55rem; color:var(--text-2);">Ticker + Schlüssel</span>
-          <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">→</span>
-          <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-family:var(--mono); font-size:0.6rem; color:var(--text);">FVP-Server (EU)</div>
-          <span style="font-family:var(--mono); font-size:0.7rem; color:var(--text-2);">→</span>
-          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-family:var(--mono); font-size:0.6rem; color:var(--neon);">Datenanbieter</div>
+          <span style="font-size:0.55rem; color:var(--text-2);">Ticker + Schlüssel</span>
+          <span style="font-size:0.7rem; color:var(--text-2);">→</span>
+          <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-size:0.6rem; color:var(--text);">FVP-Server (EU)</div>
+          <span style="font-size:0.7rem; color:var(--text-2);">→</span>
+          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-size:0.6rem; color:var(--neon);">Datenanbieter</div>
         </div>
-        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); line-height:1.5;">Schlüssel und Antwort werden transient verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</div>
+        <div style="font-size:0.55rem; color:var(--text-3); line-height:1.5;">Schlüssel und Antwort werden transient verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</div>
       </div>      </div>
     </div>
   </div>
@@ -223,11 +223,11 @@
           <div class="step-text">Im Onboarding wählst du deinen Daten-Partner und trägst deinen API-Schlüssel ein.</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:0.8rem 0;">
             <div style="background:var(--bg3); padding:0.85rem 1rem;">
-              <div style="font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Bereits Account vorhanden</div>
+              <div style="font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Bereits Account vorhanden</div>
               <div style="font-size:0.8rem; color:var(--text-2); line-height:1.55;">Direkt den API-Schlüssel aus deinem Anbieter-Dashboard kopieren und hier eintragen.</div>
             </div>
             <div style="background:var(--bg2); padding:0.85rem 1rem;">
-              <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Noch kein Account</div>
+              <div style="font-size:0.55rem; color:var(--neon); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Noch kein Account</div>
               <div style="font-size:0.8rem; color:var(--text-2); line-height:1.55;">Über unsere Empfehlungsliste registrieren, Plan wählen, API-Schlüssel kopieren — zurück zum Onboarding.</div>
             </div>
           </div>
@@ -238,7 +238,7 @@
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-<div class="step-title">KI-Assistent einrichten <span style="font-family:var(--mono); font-size:0.6rem; color:var(--text-3); font-weight:400; background:var(--bg3); border:1px solid var(--border2); padding:0.1rem 0.4rem; border-radius:3px;">optional · Premium</span></div>
+<div class="step-title">KI-Assistent einrichten <span style="font-size:0.6rem; color:var(--text-3); font-weight:400; background:var(--bg3); border:1px solid var(--border2); padding:0.1rem 0.4rem; border-radius:3px;">optional · Premium</span></div>
               <div class="step-text">Hinterlege einen API-Schlüssel von Claude (Anthropic), ChatGPT (OpenAI) oder Gemini (Google) — der KI-Assistent erklärt Kennzahlen und rechnet Szenarien direkt im Kalkulator.</div>
         </div>
       </div>
@@ -301,7 +301,7 @@
 
     <details class="faq-item">
       <summary>Sieht FVP meine Marktdaten?<span class="faq-icon">+</span></summary>
-      <p>Während des Abrufs ja — die Anfrage läuft transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Wir <strong>speichern Kurse, Bilanzen oder Cashflows aber nicht</strong> in unserer Datenbank und loggen sie nicht. Auch dein API-Schlüssel wird nur für die einzelne Anfrage durchgereicht — er ist ausschließlich in deinem Browser (<code style="font-family:var(--mono); font-size:0.85em;">localStorage</code>) persistent gespeichert, nie auf unseren Servern. KI-Anfragen (Claude/OpenAI/Gemini) laufen weiterhin direkt vom Browser zum Provider — dort sind wir nicht beteiligt.</p>
+      <p>Während des Abrufs ja — die Anfrage läuft transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Wir <strong>speichern Kurse, Bilanzen oder Cashflows aber nicht</strong> in unserer Datenbank und loggen sie nicht. Auch dein API-Schlüssel wird nur für die einzelne Anfrage durchgereicht — er ist ausschließlich in deinem Browser (<code style="font-size:0.85em;">localStorage</code>) persistent gespeichert, nie auf unseren Servern. KI-Anfragen (Claude/OpenAI/Gemini) laufen weiterhin direkt vom Browser zum Provider — dort sind wir nicht beteiligt.</p>
     </details>
 
     <details class="faq-item">
@@ -328,7 +328,7 @@
     <h2 class="fade">Bereit?<br><span class="n">Jetzt Daten-Quelle einrichten.</span></h2>
     <p class="fade">Melde dich an, öffne deinen Account und folge den Schritten unter API-Schlüssel. Dauert fünf Minuten.</p>
     <a href="plaene-beta.html" class="gb-btn gb-btn--m gb-btn--primary fade">Account erstellen →</a>
-    <span class="fade" style="display:block; margin-top:1rem; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em;">Pro-Account kostenlos · Datenanbieter separat</span></div>
+    <span class="fade" style="display:block; margin-top:1rem; font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em;">Pro-Account kostenlos · Datenanbieter separat</span></div>
 </section>
 
 <!-- FOOTER · GO:BETTER Shell -->
