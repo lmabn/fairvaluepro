@@ -107,12 +107,15 @@ a { color: inherit; text-decoration: none; }
 .gb-nav-mobile-sep { display: none; }
 
 /* ── Hero ── */
-/* padding:0 nur für Hero + Tiles-Section — dort berechnet der Wrap
- * viewport-genaue Höhen, und das globale `section { padding: 7rem 2rem }`
- * aus style.css würde ihn 72 px nach unten schieben.
- * Die Markenidee-, Werkzeuge-, Selbst-anlegen-, Haltung- und Abschluss-
- * Sektionen behalten das globale Section-Padding als äußeren Rahmen. */
-section.gb-hero, section.gb-tiles-section { padding: 0; }
+/* .gb-tiles-section immer padding:0 — sitzt unmittelbar unter dem Hero.
+ * Die anderen GB-Sections (Markenidee, Werkzeuge, Selbst-anlegen, Haltung,
+ * Abschluss) behalten global das section{padding:7rem 2rem} aus style.css.
+ * Für .gb-hero das padding:0-Override nur auf Mobile — dort berechnet der
+ * Wrap mit calc(100svh - --nav-h) die viewport-exakte Höhe und darf keinen
+ * Extra-Section-Padding-Top bekommen. Auf Desktop behält .gb-hero das
+ * globale Section-Padding (~112 px oben) als vertikale Positionierung
+ * der Headline-Gruppe (wie in PR#98). */
+section.gb-tiles-section { padding: 0; }
 .gb-hero { position: relative; overflow: hidden; background: var(--color-bg); }
 .gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; }
 .gb-hero-img.motif-b { object-position: 60% 40%; }
@@ -237,13 +240,11 @@ section.gb-hero, section.gb-tiles-section { padding: 0; }
   .gb-nav-right > a:not(.gb-btn) { display: none; }
   .gb-nav-burger { display: inline-flex; }
   .gb-nav-mobile.is-open { display: flex; }
+  /* Auf Mobile: kein Section-Padding — der Wrap rechnet mit
+     calc(100svh - --nav-h) die viewport-exakte Höhe. */
+  section.gb-hero { padding: 0; }
   .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
   .gb-hero-sub { font-size: 17px; }
-  /* Content-Gruppe unten am Fold, Bild dominiert oben (75 %). 100svh
-     statt 100dvh: garantiert den KLEINSTEN Viewport (iOS-Chrome mit-
-     gerechnet) — Wrap ist damit nie größer als das aktuell Sichtbare,
-     Cards liegen verlässlich unter dem Fold. --nav-h per JS gesetzt,
-     Fallback 77 px = gemessener Mobile-Wert. */
   .gb-hero-wrap { padding: 40px 20px 32px; min-height: calc(100svh - var(--nav-h, 77px)); gap: 20px; justify-content: flex-end; }
   .gb-hero-img { height: 75%; object-position: 75% 40%; }
   .gb-hero-img.motif-b { height: 75%; object-position: 75% 40%; }
