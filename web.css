@@ -1,13 +1,12 @@
 /*
  * GO:BETTER — Website-Ebene
- * web.css · v1.1 · lädt NACH tokens.css
+ * web.css · v1.2 · lädt NACH tokens.css
  *
  * Drei Intensitätsstufen, ein System:
  *   data-level="home"     Startseite   → expressiv   · Marke erleben
  *   data-level="product"  Produktseite → ausgewogen  · Produkt verstehen
  *   (Tool)                tokens.css   → zurückhaltend · konzentriert arbeiten
  * Produktstimmung über data-product="fvp" | "pt" | "td" am <body>.
- * Button-Grundfarben folgen data-ground="dark|light|color" (Design v2).
  */
 
 :root {
@@ -31,9 +30,6 @@
   --web-hero-home:       880px;
   --web-maxw:            1280px;
   --web-gutter:          32px;
-
-  /* Nav-Höhe (Referenzwert für hero min-height Berechnungen) */
-  --nav-h: 68px;
 }
 
 /* Produktstimmung · Akzent + Vollfläche */
@@ -41,7 +37,6 @@
 [data-product="pt"]  { --web-mood: var(--web-field-pt);  --web-mood-muted: var(--web-field-pt-muted);  --web-mood-light: #F0B42A; }
 [data-product="td"]  { --web-mood: var(--web-field-td);  --web-mood-muted: var(--web-field-td-muted);  --web-mood-light: #3B7BFF; }
 
-/* Regeln für Vollfarbflächen (.web-field) */
 .web-field { background: var(--web-mood); color: var(--web-field-ink); }
 .web-field .muted { color: var(--web-mood-muted); }
 
@@ -49,89 +44,56 @@
   :root { --web-section-home: 96px; --web-section-product: 80px; --web-gutter: 20px; --web-hero-home: 640px; }
 }
 
-/* ═══════════════════════════════════════════════════════════
- * KOMPONENTE · Schaltfläche · Design v2 (WEBSITE.md §9)
- *
- * Vier Bereiche:
- *   --btn-p-*   Primär (gefüllt)
- *   --btn-s-*   Sekundär (Umriss)
- *   --btn-dis-* Deaktiviert
- *   --btn-focus Fokus-Kontur
- *
- * Werte kommen aus dem umgebenden data-ground (dark/light/color).
- * Ohne data-ground gilt "dark" als Default — passt zu unserer
- * dunklen Standardpalette und weicht nur auf Light-Sections ab.
- * ═══════════════════════════════════════════════════════════ */
+/* ---------- Schaltflächen · Website (WEBSITE.md §9, Design v3) ----------
+ * Präfix gb- vermeidet Kollisionen mit Alt-Klassen (.btn, .btn-neon,
+ * .btn-outline) aus style.css. Dunkler Grund ist Standard; helle und
+ * farbige Abschnitte setzen data-ground="light" bzw. "color" am Abschnitt.
+ * Feste Hex-Werte, unabhängig von data-theme. */
 
-:root,
-[data-ground="dark"] {
-  --btn-p-bg:#ECEDEF; --btn-p-fg:#0B0D10; --btn-p-hover:#9A9FA7;
-  --btn-s-bd:#9A9FA7; --btn-s-fg:#ECEDEF; --btn-s-hover-bg:#191D23; --btn-s-hover-bd:#ECEDEF; --btn-s-active:#262B33;
-  --btn-focus:#ECEDEF;
-  --btn-dis-bg:#191D23; --btn-dis-fg:#5A6068; --btn-dis-bd:#262B33;
+:root, [data-ground="dark"] {
+  --gb-p-bg:#ECEDEF; --gb-p-fg:#0B0D10; --gb-p-hover:#9A9FA7;
+  --gb-s-bg:transparent; --gb-s-bd:#9A9FA7; --gb-s-fg:#ECEDEF; --gb-s-hover-bg:#191D23; --gb-s-hover-bd:#ECEDEF; --gb-s-active:#262B33;
+  --gb-focus:#ECEDEF; --gb-dis-bg:#191D23; --gb-dis-fg:#5A6068; --gb-dis-bd:#262B33;
 }
-:root[data-theme="light"],
 [data-ground="light"] {
-  --btn-p-bg:#111317; --btn-p-fg:#F7F8FA; --btn-p-hover:#555A62;
-  --btn-s-bd:#7E858F; --btn-s-fg:#111317; --btn-s-hover-bg:#EEF0F3; --btn-s-hover-bd:#111317; --btn-s-active:#DEE1E6;
-  --btn-focus:#111317;
-  --btn-dis-bg:#EEF0F3; --btn-dis-fg:#A3A8AF; --btn-dis-bd:#DEE1E6;
+  --gb-p-bg:#111317; --gb-p-fg:#F7F8FA; --gb-p-hover:#555A62;
+  --gb-s-bg:transparent; --gb-s-bd:#7E858F; --gb-s-fg:#111317; --gb-s-hover-bg:#EEF0F3; --gb-s-hover-bd:#111317; --gb-s-active:#DEE1E6;
+  --gb-focus:#111317; --gb-dis-bg:#EEF0F3; --gb-dis-fg:#A3A8AF; --gb-dis-bd:#DEE1E6;
 }
 [data-ground="color"] {
-  --btn-p-bg:#0B0D10; --btn-p-fg:#ECEDEF; --btn-p-hover:#2A2D33;
-  --btn-s-bd:#0B0D10; --btn-s-fg:#0B0D10; --btn-s-hover-bg:rgba(11,13,16,.1); --btn-s-hover-bd:#0B0D10; --btn-s-active:rgba(11,13,16,.18);
-  --btn-focus:#0B0D10;
+  --gb-p-bg:#0B0D10; --gb-p-fg:#ECEDEF; --gb-p-hover:#2A2D33;
+  --gb-s-bg:transparent; --gb-s-bd:#0B0D10; --gb-s-fg:#0B0D10; --gb-s-hover-bg:rgba(11,13,16,.1); --gb-s-hover-bd:#0B0D10; --gb-s-active:rgba(11,13,16,.18);
+  --gb-focus:#0B0D10;
 }
 
-.btn {
+.gb-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: 40px; padding: 0 18px;
+  box-sizing: border-box;
   border-radius: 4px; border: 1px solid transparent;
-  font-family: var(--font-sans); font-weight: 500; font-size: 14px; line-height: 1;
+  font-family: 'Geist', system-ui, sans-serif; font-weight: 500; line-height: 1; letter-spacing: 0;
   text-decoration: none; cursor: pointer; white-space: nowrap;
-  transition:
-    background-color 120ms cubic-bezier(.2,0,0,1),
-    border-color 120ms cubic-bezier(.2,0,0,1),
-    color 120ms cubic-bezier(.2,0,0,1),
-    box-shadow 120ms cubic-bezier(.2,0,0,1);
+  opacity: 1; transform: none; box-shadow: none;
+  transition: background-color 120ms cubic-bezier(.2,0,0,1), border-color 120ms cubic-bezier(.2,0,0,1), color 120ms cubic-bezier(.2,0,0,1);
 }
-.btn:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--btn-focus); }
-.btn:disabled, .btn[aria-disabled="true"] { cursor: not-allowed; background: var(--btn-dis-bg); color: var(--btn-dis-fg); border-color: var(--btn-dis-bd); }
+.gb-btn--m { height: 40px; padding: 0 18px; font-size: 14px; }
+.gb-btn--l { height: 52px; padding: 0 28px; font-size: 15px; }
+@media (max-width: 719px) { .gb-btn--m, .gb-btn--l { min-height: 48px; } }
 
-/* Größen (Design v2) — Default ist Medium; --m ist deshalb ein No-Op-Alias.
- * Legacy .btn--sm/--lg bleiben lesbar erhalten für bestehende HTML-Referenzen. */
-.btn--m { height: 40px; padding: 0 18px; font-size: 14px; }
-.btn--l { height: 52px; padding: 0 28px; font-size: 15px; }
-.btn--sm { height: 32px; padding: 0 14px; font-size: 13px; }
-.btn--lg { height: 52px; padding: 0 28px; font-size: 15px; }
-@media (max-width: 719px) {
-  .btn, .btn--m, .btn--l, .btn--lg { min-height: 48px; height: 48px; padding: 0 18px; font-size: 14px; }
-}
+.gb-btn--primary, .gb-btn--primary:visited { background-color: var(--gb-p-bg); color: var(--gb-p-fg); border-color: var(--gb-p-bg); }
+.gb-btn--primary:hover { background-color: var(--gb-p-hover); border-color: var(--gb-p-hover); color: var(--gb-p-fg); }
+.gb-btn--primary:active { box-shadow: inset 0 1px 3px rgba(0,0,0,.35); }
 
-/* Primär · Hauptaktion */
-.btn--primary { background: var(--btn-p-bg); color: var(--btn-p-fg); border-color: var(--btn-p-bg); }
-.btn--primary:hover:not(:disabled) { background: var(--btn-p-hover); border-color: var(--btn-p-hover); }
-.btn--primary:active:not(:disabled) { box-shadow: inset 0 1px 3px rgba(0,0,0,.35); }
+.gb-btn--secondary, .gb-btn--secondary:visited { background-color: var(--gb-s-bg); color: var(--gb-s-fg); border-color: var(--gb-s-bd); }
+.gb-btn--secondary.on-photo { background-color: rgba(11,13,16,.4); backdrop-filter: blur(6px); }
+.gb-btn--secondary:hover { background-color: var(--gb-s-hover-bg); border-color: var(--gb-s-hover-bd); color: var(--gb-s-fg); }
+.gb-btn--secondary:active { background-color: var(--gb-s-active); }
 
-/* Sekundär · Umriss */
-.btn--secondary { background: transparent; color: var(--btn-s-fg); border-color: var(--btn-s-bd); }
-.btn--secondary:hover:not(:disabled) { background: var(--btn-s-hover-bg); border-color: var(--btn-s-hover-bd); }
-.btn--secondary:active:not(:disabled) { background: var(--btn-s-active); }
-/* Auf Foto-Untergrund: dunkle Rückwand für Lesbarkeit über Bildmotiven */
-.btn--secondary.on-photo { background: rgba(11,13,16,.4); backdrop-filter: blur(6px); }
-.btn--secondary.on-photo:hover:not(:disabled) { background: rgba(11,13,16,.6); }
+.gb-btn:focus-visible { outline: 2px solid var(--gb-focus); outline-offset: 2px; }
+.gb-btn--primary:disabled, .gb-btn--primary[aria-disabled="true"] { background-color: var(--gb-dis-bg); border-color: var(--gb-dis-bg); color: var(--gb-dis-fg); cursor: not-allowed; box-shadow: none; }
+.gb-btn--secondary:disabled, .gb-btn--secondary[aria-disabled="true"] { background-color: transparent; border-color: var(--gb-dis-bd); color: var(--gb-dis-fg); cursor: not-allowed; }
 
-/* Tertiär · leise Aktion (nicht Teil v2, weiter geführt für Legacy) */
-.btn--tertiary { background: transparent; color: var(--color-text-muted); border-color: transparent; }
-.btn--tertiary:hover:not(:disabled) { background: var(--btn-s-hover-bg); color: var(--btn-s-fg); }
-
-/* Entfernen · immer mit Rückfrage */
-.btn--destroy { background: transparent; color: var(--color-warning); border-color: var(--color-warning); }
-.btn--destroy:hover:not(:disabled) { background: var(--btn-s-hover-bg); }
-
-/* Loading-Zustand */
-.btn.is-loading::before { content: '∶ '; margin-right: 4px; opacity: 0.9; }
+.gb-btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn { transition: none; }
+  .gb-btn { transition: none; }
 }
