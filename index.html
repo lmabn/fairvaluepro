@@ -116,13 +116,7 @@ section.gb-hero, section.gb-tiles-section, section.gb-section, section.gb-cta-cl
 .gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; }
 .gb-hero-img.motif-b { object-position: 60% 40%; }
 .gb-hero-overlay { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(11,13,16,0.72) 0%, rgba(11,13,16,0.45) 38%, rgba(11,13,16,0) 62%), linear-gradient(180deg, rgba(11,13,16,0) 58%, #0B0D10 100%); }
-/* Desktop-Wrap: mindestens 880 px, aber mindestens die Viewport-Höhe
- * plus 180 px Puffer, damit die Tiles auf jeder üblichen Bildschirmhöhe
- * (bis ~1440 p) verlässlich unter dem Fold liegen und erst beim Scrollen
- * hereinkommen. Content sitzt oben im Flow (Buttons direkt unter dem
- * Sub-Text — kein margin-top:auto auf Desktop). Mobile-Media unten
- * überschreibt Höhe und Layout. */
-.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 96px 32px 96px; display: flex; flex-direction: column; gap: 32px; min-height: max(var(--web-hero-home, 880px), calc(100dvh - var(--nav-h, 68px) + 180px)); }
+.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 96px 32px 96px; display: flex; flex-direction: column; gap: 32px; min-height: var(--web-hero-home, 880px); }
 .gb-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #B9BCC0; text-transform: uppercase; }
 .gb-h1-home { margin: 0; font-size: clamp(56px, 8vw, 116px); line-height: 0.98; font-weight: 600; letter-spacing: -0.05em; max-width: 980px; text-wrap: balance; }
 .gb-hero-sub { margin: 0; font-size: 22px; line-height: 1.5; color: #B9BCC0; max-width: 560px; }
