@@ -223,13 +223,20 @@ nav, :root[data-theme="light"] nav { background: var(--color-bg-translucent); }
 :root[data-theme="light"] .nav-dropdown,
 :root[data-theme="light"] .nav-mobile-menu { background: var(--color-bg); }
 .nav-links a.active, .nav-links a:hover, .nav-dropdown a.active, .nav-dropdown a:hover { color: var(--color-text); }
-/* Primärschaltfläche nach CI: Tinte statt Grün, mit vollem Zustandsapparat */
+/* Legacy-Buttons (.btn-neon / .btn-outline) und die Form-Submit-Buttons
+ * werden auf den GO:BETTER-gb-btn-Look gebridged — Geist statt Mono,
+ * keine Uppercase, keine letter-spacing, gb-btn-Höhen. Damit sehen die
+ * verbliebenen Legacy-Buttons und alle .email-form-Submits automatisch
+ * wie das aktuelle gb-btn-System aus, ohne HTML-Anpassung.
+ */
 .btn-neon, .email-form button[type="submit"] {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 18px;
   background: var(--color-text); color: var(--color-text-inverse); border: 1px solid var(--color-text);
-  transition: background var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-              color var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-              border-color var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-              box-shadow var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1));
+  border-radius: 4px;
+  font-family: var(--font-sans); font-weight: 500; font-size: 14px; line-height: 1; letter-spacing: 0; text-transform: none;
+  cursor: pointer; text-decoration: none;
+  transition: background-color 120ms cubic-bezier(.2,0,0,1), border-color 120ms cubic-bezier(.2,0,0,1);
 }
 .btn-neon:hover, .email-form button[type="submit"]:hover {
   opacity: 1; transform: none;
@@ -243,10 +250,13 @@ nav, :root[data-theme="light"] nav { background: var(--color-bg-translucent); }
   background: var(--color-surface-2); border-color: var(--color-surface-2); color: var(--color-text-disabled); cursor: not-allowed;
 }
 .btn-outline {
-  color: var(--color-text); border-color: var(--color-border-strong); background: transparent;
-  transition: background var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-              color var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1)),
-              border-color var(--motion-base, 200ms) var(--motion-ease, cubic-bezier(0.2,0,0,1));
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 18px;
+  color: var(--color-text); border: 1px solid var(--color-border-strong); background: transparent;
+  border-radius: 4px;
+  font-family: var(--font-sans); font-weight: 500; font-size: 14px; line-height: 1; letter-spacing: 0; text-transform: none;
+  cursor: pointer; text-decoration: none;
+  transition: background-color 120ms cubic-bezier(.2,0,0,1), color 120ms cubic-bezier(.2,0,0,1), border-color 120ms cubic-bezier(.2,0,0,1);
 }
 .btn-outline:hover { background: var(--color-surface-2); color: var(--color-text); border-color: var(--color-border-strong); }
 .btn-outline:active { background: var(--color-surface-2); color: var(--color-text); border-color: var(--color-text); }
