@@ -208,12 +208,32 @@ section.gb-band-color {
   background: var(--web-mood, var(--color-accent)); color: #0B0D10;
   --color-bg: var(--web-mood, var(--color-accent));
   --color-surface: rgba(11,13,16,0.06); --color-surface-2: rgba(11,13,16,0.10);
-  --color-text: #0B0D10; --color-text-muted: rgba(11,13,16,0.7); --color-text-disabled: rgba(11,13,16,0.4);
-  --color-border: rgba(11,13,16,0.15); --color-border-strong: #0B0D10;
+  --color-text: #0B0D10; --color-text-muted: rgba(11,13,16,0.78); --color-text-disabled: rgba(11,13,16,0.55);
+  --color-border: rgba(11,13,16,0.20); --color-border-strong: #0B0D10;
   --bg: var(--web-mood, var(--color-accent)); --bg2: rgba(11,13,16,0.06); --bg3: rgba(11,13,16,0.10);
-  --text: #0B0D10; --text-2: rgba(11,13,16,0.72); --text-3: rgba(11,13,16,0.55);
+  --text: #0B0D10; --text-2: rgba(11,13,16,0.78); --text-3: rgba(11,13,16,0.60);
   --neon: #0B0D10; --mid: #0B0D10;
-  --border: rgba(11,13,16,0.15); --border2: rgba(11,13,16,0.22);
+  --border: rgba(11,13,16,0.20); --border2: rgba(11,13,16,0.28);
+  /* Product-Aliase auf Tinte biegen, damit Legacy-Klassen mit color:var(--pt|--td|--fvp)
+     auf dem Product-Band nicht in der Hintergrundfarbe verschwinden. */
+  --fvp: #0B0D10; --fvp-dim: rgba(11,13,16,0.10); --fvp-border: rgba(11,13,16,0.28);
+  --pt:  #0B0D10; --pt-dim:  rgba(11,13,16,0.10); --pt-border:  rgba(11,13,16,0.28);
+  --td:  #0B0D10; --td-dim:  rgba(11,13,16,0.10); --td-border:  rgba(11,13,16,0.28);
+}
+/* TD-Product-Blau (#5B8CFF) ist zu hell für WCAG-taugliche schwarze Tinte.
+ * Der TD-Color-Band bekommt deshalb einen dunkleren Blauton und weiße Tinte. */
+[data-product="td"] section.gb-band-color,
+section.gb-band-color[data-product="td"] {
+  background: #2E5CE0; color: #FFFFFF;
+  --color-bg: #2E5CE0;
+  --color-surface: rgba(255,255,255,0.10); --color-surface-2: rgba(255,255,255,0.16);
+  --color-text: #FFFFFF; --color-text-muted: rgba(255,255,255,0.85); --color-text-disabled: rgba(255,255,255,0.60);
+  --color-border: rgba(255,255,255,0.24); --color-border-strong: #FFFFFF;
+  --bg: #2E5CE0; --bg2: rgba(255,255,255,0.10); --bg3: rgba(255,255,255,0.16);
+  --text: #FFFFFF; --text-2: rgba(255,255,255,0.85); --text-3: rgba(255,255,255,0.68);
+  --neon: #FFFFFF; --mid: #FFFFFF;
+  --border: rgba(255,255,255,0.24); --border2: rgba(255,255,255,0.34);
+  --td: #FFFFFF; --td-dim: rgba(255,255,255,0.15); --td-border: rgba(255,255,255,0.40);
 }
 /* Der Wechsel zwischen dark und color-Sektionen bekommt keinen Border
  * (sonst zwei Linien im Farbkontrast); die light-Sektion bekommt einen
