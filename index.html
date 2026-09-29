@@ -250,7 +250,12 @@ section.gb-hero, section.gb-tiles-section, section.gb-section, section.gb-cta-cl
      und ist deshalb ~77 px hoch, nicht 68). Falls JS nicht läuft:
      Fallback auf 96 px, damit Buttons trotzdem im Viewport bleiben. */
   .gb-hero-wrap { padding: 40px 20px 32px; min-height: calc(100dvh - var(--nav-h, 96px)); gap: 20px; justify-content: flex-end; }
-  .gb-hero-overlay { background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
+  /* Bild nur oberer Bereich: nimmt 75 % der Hero-Höhe ein, der Rest bleibt
+     schwarz und trägt den Content. Ausschnitt so, dass die Person rechts
+     im Bild sichtbar bleibt. */
+  .gb-hero-img { height: 75%; object-position: 75% 40%; }
+  .gb-hero-img.motif-b { height: 75%; object-position: 75% 40%; }
+  .gb-hero-overlay { height: 75%; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
   .gb-btn { padding-left: 16px; padding-right: 16px; }
   .gb-btn--l { padding-left: 18px; padding-right: 18px; font-size: 14px; height: 44px; }
   .gb-tiles-section { padding-top: 48px; }
