@@ -223,10 +223,18 @@ section.gb-band-color {
   --pt:  #0B0D10; --pt-dim:  rgba(11,13,16,0.10); --pt-border:  rgba(11,13,16,0.28);
   --td:  #0B0D10; --td-dim:  rgba(11,13,16,0.10); --td-border:  rgba(11,13,16,0.28);
 }
+/* PT-Color-Band: Text bleibt schwarz (Base-Regel), aber die Karten-/
+ * Surface-Hintergründe kippen auf weiß-transparent — auf dem PT-Gelb
+ * wirken schwarze Card-Overlays matschig, weiße Overlays heben die
+ * Karten sichtbar ab. */
+[data-product="pt"] section.gb-band-color,
+section.gb-band-color[data-product="pt"] {
+  --color-surface: rgba(255,255,255,0.18); --color-surface-2: rgba(255,255,255,0.28);
+  --bg2: rgba(255,255,255,0.18); --bg3: rgba(255,255,255,0.28);
+}
 /* TD-Color-Band: Product-Farbe als Hintergrund bleibt erhalten,
  * die Tinte wechselt auf Weiß (auf dem hellen Blau besser lesbar als
- * Schwarz). PT bleibt bei der Base-Regel (schwarze Tinte auf Gelb),
- * FVP-Grün ebenso. */
+ * Schwarz). FVP-Grün bleibt bei der Base-Regel (schwarze Tinte). */
 [data-product="td"] section.gb-band-color,
 section.gb-band-color[data-product="td"] {
   color: #FFFFFF;
