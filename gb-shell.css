@@ -116,7 +116,12 @@ section.gb-hero-product { padding: 0; }
  * (FVP/PT/TD/pro-mode/daten-quelle setzen .gb-hero-product--breathe).
  * plaene und akademie behalten die kompakte Default-Variante. */
 @media (max-width: 719px) {
-  .gb-hero-product--breathe .gb-hero-inner { padding: 96px 20px 88px; gap: 28px; }
+  .gb-hero-product--breathe .gb-hero-inner {
+    padding: 128px 20px 120px;
+    gap: 32px;
+    min-height: calc(100dvh - var(--nav-h, 68px));
+    justify-content: center;
+  }
   .gb-hero-product--breathe h1.gb-h1-product { font-size: clamp(36px, 9vw, 48px); line-height: 1.06; }
   .gb-hero-product--breathe .gb-hero-sub { font-size: 17px; line-height: 1.55; }
   .gb-hero-product--breathe .gb-hero-btns { width: 100%; }
