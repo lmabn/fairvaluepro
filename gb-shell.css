@@ -108,9 +108,11 @@ section.gb-hero-product { padding: 0; }
 .gb-hero-product .gb-hero-pill { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); padding: 6px 12px; border: 1px solid var(--color-border); border-radius: 999px; }
 .gb-hero-product .gb-hero-pill.is-active { color: var(--web-mood, var(--color-accent)); border-color: var(--web-mood, var(--color-accent)); }
 @media (max-width: 719px) {
-  .gb-hero-product .gb-hero-inner { padding: 80px 20px 56px; gap: 20px; }
-  .gb-hero-product h1.gb-h1-product { font-size: clamp(36px, 10vw, 52px); }
-  .gb-hero-product .gb-hero-sub { font-size: 17px; }
+  .gb-hero-product .gb-hero-inner { padding: 96px 20px 88px; gap: 28px; }
+  .gb-hero-product h1.gb-h1-product { font-size: clamp(36px, 9vw, 48px); line-height: 1.06; }
+  .gb-hero-product .gb-hero-sub { font-size: 17px; line-height: 1.55; }
+  .gb-hero-product .gb-hero-btns { width: 100%; }
+  .gb-hero-product .gb-hero-btns .gb-btn { flex: 1 1 100%; }
 }
 
 /* ── Split-Hero (Haupt-Produktseiten FVP · PT · TD) ── */
