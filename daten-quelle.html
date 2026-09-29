@@ -12,10 +12,7 @@
 <title>Fair Value Pro — Daten-Quelle einrichten</title>
 <style>
 /* HERO */
-#hero { padding: 9rem 2rem 5rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-.hero-glow { position: absolute; width: 700px; height: 400px; top: -80px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.05) 0%, transparent 70%); pointer-events: none; }
-#hero h1 { font-family: var(--display); font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
-#hero .lead { color: var(--text-2); font-size: 1rem; max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.8; }
+/* HERO · GO:BETTER Design v3 — Komponente kommt aus gb-shell.css */
 
 /* WHY SECTION */
 .why-section { padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
@@ -106,7 +103,7 @@
 }
 </style>
 </head>
-<body>
+<body data-product="fvp" data-level="product">
 
 <!-- NAV · GO:BETTER Shell -->
 <div class="gb-nav-wrap">
@@ -149,13 +146,14 @@
 </div>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-glow"></div>
-  <div class="container">
-    <div class="tag fade in" style="justify-content:center;">Daten-Quelle</div>
-    <h1 class="fade in">Deine Daten.<br>Dein Anbieter.<br><span class="n">Deine Kontrolle.</span></h1>
-    <p class="lead fade in">Fair Value Pro nutzt Marktdaten von einem unserer geprüften Daten-Partner. Du schließt einen Plan direkt beim Partner ab — wir greifen nur mit deinem API-Schlüssel darauf zu. Kein Lock-in, keine versteckten Kosten auf unserer Seite.</p>
-    <a href="#how" class="gb-btn gb-btn--m gb-btn--primary fade in">Wie es funktioniert</a>
+<section id="hero" class="gb-hero-product" data-product="fvp" data-level="product">
+  <div class="gb-hero-inner">
+    <span class="gb-eyebrow fade in">Daten-Quelle · Broker-unabhängig · Transparent</span>
+    <h1 class="gb-h1-product fade in">Deine Daten. Dein Anbieter.<br class="mobile-br"> <span class="accent">Deine Kontrolle.</span></h1>
+    <p class="gb-hero-sub fade in">Fair Value Pro nutzt Marktdaten von einem unserer geprüften Daten-Partner. Du schließt einen Plan direkt beim Partner ab — wir greifen nur mit deinem API-Schlüssel darauf zu. Kein Lock-in, keine versteckten Kosten auf unserer Seite.</p>
+    <div class="gb-hero-btns fade in">
+      <a href="#how" class="gb-btn gb-btn--l gb-btn--primary">Wie es funktioniert</a>
+    </div>
   </div>
 </section>
 
