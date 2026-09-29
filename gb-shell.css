@@ -214,34 +214,31 @@ section.gb-band-color {
   --text: #0B0D10; --text-2: rgba(11,13,16,0.78); --text-3: rgba(11,13,16,0.60);
   --neon: #0B0D10; --mid: #0B0D10;
   --border: rgba(11,13,16,0.20); --border2: rgba(11,13,16,0.28);
-  /* Product-Aliase auf Tinte biegen, damit Legacy-Klassen mit color:var(--pt|--td|--fvp)
-     auf dem Product-Band nicht in der Hintergrundfarbe verschwinden. */
+  /* Product-Aliase und accent-Tokens auf Tinte biegen, damit Legacy-Klassen
+     mit color:var(--pt|--td|--fvp) oder color:var(--color-accent) auf dem
+     Product-Band nicht in der Hintergrundfarbe verschwinden. */
+  --color-accent: #0B0D10; --color-accent-text: #0B0D10;
+  --color-accent-soft: rgba(11,13,16,0.10); --color-accent-border: rgba(11,13,16,0.30);
   --fvp: #0B0D10; --fvp-dim: rgba(11,13,16,0.10); --fvp-border: rgba(11,13,16,0.28);
   --pt:  #0B0D10; --pt-dim:  rgba(11,13,16,0.10); --pt-border:  rgba(11,13,16,0.28);
   --td:  #0B0D10; --td-dim:  rgba(11,13,16,0.10); --td-border:  rgba(11,13,16,0.28);
 }
-/* PT- und TD-Color-Band: Product-Farbe als Hintergrund bleibt erhalten,
- * nur die Tinte wechselt auf Weiß (auf Gelb und Blau besser lesbar als
- * schwarzer Text). FVP-Grün bleibt weiterhin mit schwarzer Tinte. */
-[data-product="pt"] section.gb-band-color,
-section.gb-band-color[data-product="pt"],
+/* TD-Color-Band: Product-Farbe als Hintergrund bleibt erhalten,
+ * die Tinte wechselt auf Weiß (auf dem hellen Blau besser lesbar als
+ * Schwarz). PT bleibt bei der Base-Regel (schwarze Tinte auf Gelb),
+ * FVP-Grün ebenso. */
 [data-product="td"] section.gb-band-color,
 section.gb-band-color[data-product="td"] {
   color: #FFFFFF;
   --color-surface: rgba(255,255,255,0.10); --color-surface-2: rgba(255,255,255,0.16);
   --color-text: #FFFFFF; --color-text-muted: rgba(255,255,255,0.88); --color-text-disabled: rgba(255,255,255,0.65);
   --color-border: rgba(255,255,255,0.28); --color-border-strong: #FFFFFF;
+  --color-accent: #FFFFFF; --color-accent-text: #FFFFFF;
+  --color-accent-soft: rgba(255,255,255,0.15); --color-accent-border: rgba(255,255,255,0.40);
   --bg2: rgba(255,255,255,0.10); --bg3: rgba(255,255,255,0.16);
   --text: #FFFFFF; --text-2: rgba(255,255,255,0.88); --text-3: rgba(255,255,255,0.72);
   --neon: #FFFFFF; --mid: #FFFFFF;
   --border: rgba(255,255,255,0.28); --border2: rgba(255,255,255,0.38);
-}
-[data-product="pt"] section.gb-band-color,
-section.gb-band-color[data-product="pt"] {
-  --pt: #FFFFFF; --pt-dim: rgba(255,255,255,0.15); --pt-border: rgba(255,255,255,0.40);
-}
-[data-product="td"] section.gb-band-color,
-section.gb-band-color[data-product="td"] {
   --td: #FFFFFF; --td-dim: rgba(255,255,255,0.15); --td-border: rgba(255,255,255,0.40);
 }
 /* Der Wechsel zwischen dark und color-Sektionen bekommt keinen Border
