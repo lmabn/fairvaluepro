@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="web.css">
 <link rel="stylesheet" href="gb-shell.css">
 <script src="theme-toggle.js"></script>
-<title>Fair Value Pro — Pro Mode</title>
+<title>Fair Value Pro — Pro Mode · Betatest</title>
 <style>
 /* NAV */
 
@@ -280,8 +280,11 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
   
   
 
+.ki-assist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
 @media(max-width: 900px) {
   .features-grid { grid-template-columns: 1fr; }
+  .ki-assist-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .diff-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .mk-body { grid-template-columns: 1fr; }
   .mk-sidebar { display: none; }
@@ -358,7 +361,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
       <a href="#features" class="btn-outline">Alle Features</a>
     </div>
     <div class="plan-pills fade in">
-      <span class="plan-pill pro">Pro — kostenlos</span><span class="plan-pill premium">Premium — ab €7,49 / Mo</span></div>
+      <span class="plan-pill pro">Pro — kostenlos</span><span class="plan-pill premium">Auf Anfrage</span></div>
   </div>
 
   <!-- DASHBOARD MOCKUP -->
@@ -621,7 +624,58 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
   </div>
 </section>
 
-<!-- DIFF SECTION -->
+<!-- KI ASSISTENT SECTION -->
+<section style="padding:6rem 2rem; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wide">
+    <div class="ki-assist-grid">
+      <div class="fade">
+        <div class="tag" style="margin-bottom:1.2rem;">KI-Assistent · Premium</div>
+        <h2 style="font-family:var(--display); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.02em; line-height:1.2; margin-bottom:1.2rem;">Kennzahlen verstehen.<br>Szenarien durchrechnen.</h2>
+        <p style="color:var(--text-2); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">Ein optionaler KI-Assistent ist direkt in den Kalkulator integriert. An jeder Kennzahl — DCF, ROIC, KGV, EV/EBITDA, Qualitätsscore — öffnet ein „?"-Button ein Chat-Panel mit vorausgefüllter Frage. Der Assistent erklärt die Methodik in normaler Sprache und rechnet Was-wäre-wenn-Szenarien durch.</p>
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:28px; height:28px; border:1px solid var(--neon-border); border-radius:3px; background:var(--neon-dim); display:flex; align-items:center; justify-content:center; color:var(--neon); font-size:0.75rem; flex-shrink:0;">?</div>
+            <div><strong style="font-size:0.88rem; color:var(--text); display:block; margin-bottom:0.2rem;">Inline-Erklärungen</strong><span style="font-size:0.82rem; color:var(--text-3);">„?"-Button an DCF, ROIC, KGV, EV/EBITDA, Qualitätsscore — öffnet Chat mit passender Frage</span></div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:28px; height:28px; border:1px solid var(--neon-border); border-radius:3px; background:var(--neon-dim); display:flex; align-items:center; justify-content:center; color:var(--neon); font-size:0.75rem; flex-shrink:0;">↔</div>
+            <div><strong style="font-size:0.88rem; color:var(--text); display:block; margin-bottom:0.2rem;">Was-wäre-wenn-Szenarien</strong><span style="font-size:0.82rem; color:var(--text-3);">„Wenn WACC um 1 % steigt — wie ändert sich der faire Wert?" — live berechnet</span></div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="width:28px; height:28px; border:1px solid var(--neon-border); border-radius:3px; background:var(--neon-dim); display:flex; align-items:center; justify-content:center; color:var(--neon); font-size:0.75rem; flex-shrink:0;">⚡</div>
+            <div><strong style="font-size:0.88rem; color:var(--text); display:block; margin-bottom:0.2rem;">Bring-your-own-Key</strong><span style="font-size:0.82rem; color:var(--text-3);">Claude, ChatGPT oder Gemini — Anfragen gehen direkt vom Browser zum Anbieter, typisch im einstelligen Cent-Bereich</span></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="fade" style="background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; font-family:var(--mono); font-size:0.7rem;">
+        <div style="background:var(--bg3); border-bottom:1px solid var(--border); padding:0.7rem 1rem; display:flex; align-items:center; justify-content:space-between;">
+          <span style="color:var(--neon); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;">KI-Assistent</span>
+          <span style="color:var(--text-3); font-size:0.58rem;">Claude Haiku · ~0,01 €</span>
+        </div>
+        <div style="padding:1rem; display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.7rem 0.9rem;">
+            <div style="font-size:0.58rem; color:var(--text-3); margin-bottom:0.3rem; letter-spacing:0.08em;">DEINE FRAGE</div>
+            <div style="color:var(--text-2); font-size:0.72rem; line-height:1.5;">Was bedeutet ein ROIC von 8,4 % — und ist das gut für ein Industrieunternehmen?</div>
+          </div>
+          <div style="background:var(--bg2); border:1px solid var(--neon-border); border-radius:4px; padding:0.7rem 0.9rem;">
+            <div style="font-size:0.58rem; color:var(--neon); margin-bottom:0.3rem; letter-spacing:0.08em;">ANTWORT</div>
+            <div style="color:var(--text-2); font-size:0.72rem; line-height:1.6;">ROIC (Return on Invested Capital) misst wie effizient das Unternehmen investiertes Kapital in Gewinn verwandelt. 8,4 % liegt für Industrieunternehmen im soliden Mittelfeld — der Vergleich mit dem WACC (hier 7,2 %) zeigt: das Unternehmen schafft Wert, aber mit geringem Puffer.</div>
+          </div>
+          <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:0.7rem 0.9rem;">
+            <div style="font-size:0.58rem; color:var(--text-3); margin-bottom:0.3rem; letter-spacing:0.08em;">WAS-WÄRE-WENN</div>
+            <div style="color:var(--text-2); font-size:0.72rem; line-height:1.5;">Wenn ich den WACC von 7,2 % auf 8,2 % erhöhe — wie ändert sich der DCF-Fairer-Wert?</div>
+          </div>
+          <div style="background:var(--bg2); border:1px solid var(--neon-border); border-radius:4px; padding:0.7rem 0.9rem;">
+            <div style="font-size:0.58rem; color:var(--neon); margin-bottom:0.3rem; letter-spacing:0.08em;">SZENARIO</div>
+            <div style="color:var(--text-2); font-size:0.72rem; line-height:1.6;">Bei WACC 8,2 % (statt 7,2 %) sinkt der DCF-Fairer-Wert von <strong style="color:var(--text);">€ 142,30</strong> auf <strong style="color:var(--text);">€ 127,80</strong> — ein Rückgang von 10,2 %. Höherer Diskontierungssatz reduziert den Barwert zukünftiger Cashflows.</div>
+          </div>
+          <div style="font-size:0.68rem; color:var(--text-2); padding:0.5rem 0; border-top:1px solid var(--border); text-align:center; letter-spacing:0.04em;">Keine Anlageberatung · Keine Kaufempfehlungen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="diff-section">
   <div class="container">
     <div class="diff-layout">
@@ -653,7 +707,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
         <div style="text-align:center; padding:0.4rem 0; font-family:var(--mono); font-size:0.6rem; color:var(--text-3);">+ mit Premium</div>
         <div class="mode-box premium">
           <div class="mode-box-head">
-            <span class="mode-name">Premium</span><span class="mode-badge">ab €7,49 / Mo</span></div>
+            <span class="mode-name">Premium</span><span class="mode-badge">Auf Anfrage</span></div>
           <div class="mode-box-body">
             <span class="mode-tag">Analysen speichern</span><span class="mode-tag">Eigene Presets</span><span class="mode-tag">Suchverlauf</span><span class="mode-tag">PDF-Export</span><span class="mode-tag">Unbegrenzte Bewertungen</span></div>
         </div>
@@ -668,7 +722,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
     <h2 class="fade"><span class="n">Pro Mode</span> ist kostenlos.<br>Jetzt freischalten.</h2>
     <p class="fade">Registriere dich mit deiner E-Mail — kein Abo, keine Kreditkarte. Voller Zugriff auf das Dashboard ab dem ersten Login.</p>
     <a href="plaene.html" class="btn-neon fade">Kostenlos registrieren →</a>
-    <span class="cta-note fade">Pro Mode ist kostenlos · Premium ab €7,49/Mo · Jederzeit kündbar</span></div>
+    <span class="cta-note fade">Pro Mode ist kostenlos · Erweiterte Funktionen auf Anfrage</span></div>
 </section>
 
 <!-- FOOTER · GO:BETTER Shell -->
