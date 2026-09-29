@@ -72,8 +72,8 @@ a { color: inherit; text-decoration: none; }
 .gb-nav-dropdown a { display: block; padding: 10px 16px; font-size: 14px; color: var(--color-text-muted); text-decoration: none; transition: color 150ms, background 150ms; }
 .gb-nav-dropdown a:hover { color: var(--color-text); background: var(--color-surface-2); }
 .gb-nav-right { display: flex; align-items: center; gap: 20px; padding: 14px 0; margin-left: auto; }
-.gb-nav-right a:not(.btn) { font-size: 14px; color: var(--color-text-muted); }
-.gb-nav-right a:not(.btn):hover { color: var(--color-text); }
+.gb-nav-right a:not(.gb-btn) { font-size: 14px; color: var(--color-text-muted); }
+.gb-nav-right a:not(.gb-btn):hover { color: var(--color-text); }
 
 /* Burger + Mobile-Menü — .gb-nav-mobile ist ein <nav>-Element und braucht
  * harte Resets gegen style.css's globale nav-Regel (fixed, height:58px,
@@ -228,7 +228,7 @@ a { color: inherit; text-decoration: none; }
   .gb-nav { padding: 0 20px; gap: 16px; }
   .gb-nav-links { display: none; }
   .gb-nav-right { gap: 10px; }
-  .gb-nav-right > a:not(.btn) { display: none; }
+  .gb-nav-right > a:not(.gb-btn) { display: none; }
   .gb-nav-burger { display: inline-flex; }
   .gb-nav-mobile.is-open { display: flex; }
   .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
@@ -237,8 +237,8 @@ a { color: inherit; text-decoration: none; }
      komplett unter dem Fold (dank eigener Tiles-Section darunter). */
   .gb-hero-wrap { padding: 40px 20px 32px; min-height: calc(100dvh - 68px); gap: 20px; justify-content: flex-end; }
   .gb-hero-overlay { background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
-  .btn { padding-left: 16px; padding-right: 16px; }
-  .btn--lg { padding-left: 18px; padding-right: 18px; font-size: 14px; height: 44px; }
+  .gb-btn { padding-left: 16px; padding-right: 16px; }
+  .gb-btn--l { padding-left: 18px; padding-right: 18px; font-size: 14px; height: 44px; }
   .gb-tiles-section { padding-top: 48px; }
   .gb-tiles-inner { padding: 0 20px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
@@ -279,7 +279,7 @@ a { color: inherit; text-decoration: none; }
     <div class="gb-nav-right">
       <a href="plaene.html">Pläne</a>
       <a href="akademie/index.html">Akademie</a>
-      <a href="fair-value-pro.html#cta" class="btn btn--primary">Zugang erhalten</a>
+      <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--primary">Zugang erhalten</a>
       <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </button>
@@ -305,8 +305,8 @@ a { color: inherit; text-decoration: none; }
     <h1 class="gb-h1-home">The Investment Workspace.</h1>
     <p class="gb-hero-sub">Better tools for independent investors.</p>
     <div class="gb-hero-btns">
-      <a href="fair-value-pro.html#cta" class="btn btn--primary btn--lg">Kostenlos testen</a>
-      <a href="#werkzeuge" class="btn btn--secondary btn--lg on-photo">Die Werkzeuge</a>
+      <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--primary gb-btn--l">Kostenlos testen</a>
+      <a href="#werkzeuge" class="gb-btn gb-btn--secondary gb-btn--l on-photo">Die Werkzeuge</a>
     </div>
   </div>
 </section>
@@ -458,8 +458,8 @@ a { color: inherit; text-decoration: none; }
       <span class="gb-cta-sub">Better tools for independent investors.</span>
     </div>
     <div class="gb-hero-btns">
-      <a href="fair-value-pro.html#cta" class="btn btn--primary btn--lg">Kostenlos testen</a>
-      <a href="plaene.html" class="btn btn--secondary btn--lg">Pläne ansehen</a>
+      <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--primary gb-btn--l">Kostenlos testen</a>
+      <a href="plaene.html" class="gb-btn gb-btn--secondary gb-btn--l">Pläne ansehen</a>
     </div>
   </div>
 </section>
