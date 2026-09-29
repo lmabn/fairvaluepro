@@ -102,6 +102,9 @@ details .detail-body strong { color: var(--color-text); font-weight: 500; }
 .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .compare-table-wrap::-webkit-scrollbar { display: none; }
 
+/* Email-Form Success-Message — versteckt bis JS sie einblendet */
+.form-success { display: none; font-family: var(--font-sans); font-size: 0.85rem; padding: 1rem 0; color: var(--color-accent); }
+
 /* ── Responsive ── */
 @media (max-width: 720px) {
   section { padding: 4rem 1.25rem; }
