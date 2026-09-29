@@ -220,6 +220,22 @@ section.gb-band-color {
   --pt:  #0B0D10; --pt-dim:  rgba(11,13,16,0.10); --pt-border:  rgba(11,13,16,0.28);
   --td:  #0B0D10; --td-dim:  rgba(11,13,16,0.10); --td-border:  rgba(11,13,16,0.28);
 }
+/* PT-Product-Gelb (#F0B42A) hat mit schwarzer Tinte nur ~3:1 Kontrast.
+ * Der PT-Color-Band bekommt deshalb einen dunkleren Amber-Ton und weiße
+ * Tinte für WCAG-AA-Lesbarkeit. */
+[data-product="pt"] section.gb-band-color,
+section.gb-band-color[data-product="pt"] {
+  background: #A86818; color: #FFFFFF;
+  --color-bg: #A86818;
+  --color-surface: rgba(255,255,255,0.10); --color-surface-2: rgba(255,255,255,0.16);
+  --color-text: #FFFFFF; --color-text-muted: rgba(255,255,255,0.85); --color-text-disabled: rgba(255,255,255,0.60);
+  --color-border: rgba(255,255,255,0.24); --color-border-strong: #FFFFFF;
+  --bg: #A86818; --bg2: rgba(255,255,255,0.10); --bg3: rgba(255,255,255,0.16);
+  --text: #FFFFFF; --text-2: rgba(255,255,255,0.85); --text-3: rgba(255,255,255,0.68);
+  --neon: #FFFFFF; --mid: #FFFFFF;
+  --border: rgba(255,255,255,0.24); --border2: rgba(255,255,255,0.34);
+  --pt: #FFFFFF; --pt-dim: rgba(255,255,255,0.15); --pt-border: rgba(255,255,255,0.40);
+}
 /* TD-Product-Blau (#5B8CFF) ist zu hell für WCAG-taugliche schwarze Tinte.
  * Der TD-Color-Band bekommt deshalb einen dunkleren Blauton und weiße Tinte. */
 [data-product="td"] section.gb-band-color,
