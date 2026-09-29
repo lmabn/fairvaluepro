@@ -229,8 +229,10 @@ section.gb-band-color {
  * Karten sichtbar ab. */
 [data-product="pt"] section.gb-band-color,
 section.gb-band-color[data-product="pt"] {
-  --color-surface: rgba(255,255,255,0.18); --color-surface-2: rgba(255,255,255,0.28);
-  --bg2: rgba(255,255,255,0.18); --bg3: rgba(255,255,255,0.28);
+  --color-surface: rgba(255,255,255,0.35); --color-surface-2: rgba(255,255,255,0.50);
+  --color-border: rgba(255,255,255,0.35); --color-border-strong: rgba(255,255,255,0.55);
+  --bg: rgba(255,255,255,0.35); --bg2: rgba(255,255,255,0.35); --bg3: rgba(255,255,255,0.50);
+  --border: rgba(255,255,255,0.35); --border2: rgba(255,255,255,0.50);
 }
 /* TD-Color-Band: Product-Farbe als Hintergrund bleibt erhalten,
  * die Tinte wechselt auf Weiß (auf dem hellen Blau besser lesbar als
