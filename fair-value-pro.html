@@ -203,40 +203,39 @@
   .test-author span { color: var(--text-3); display: block; margin-top: 0.2rem; }
 
   /* CTA — theme-unabhängig dunkel + atmosphärisches Bild-Backdrop mit schwarzem Verlauf */
+  /* CTA-Section · GO:BETTER Design v3 · dunkler Grund mit sanftem Bild-Wash */
   #cta {
     text-align: center; position: relative; overflow: hidden;
-    color: #c8ddd2;
-    background-color: #060a08;
+    color: var(--color-text);
+    background-color: var(--color-bg);
     background-image:
-      radial-gradient(ellipse at 50% 45%, rgba(6,10,8,0.30) 0%, rgba(6,10,8,0.55) 55%, rgba(6,10,8,0.82) 100%),
+      radial-gradient(ellipse at 50% 45%, rgba(11,13,16,0.55) 0%, rgba(11,13,16,0.82) 60%, rgba(11,13,16,0.95) 100%),
       url("assets/hero/cta-bg.webp");
     background-repeat: no-repeat, no-repeat;
     background-position: center, center;
     background-size: cover, cover;
-    --bg:      #060a08;
-    --bg2:     #0b1410;
-    --bg3:     #0f1a14;
-    --bg4:     #142019;
-    --neon:        #00ff87;
-    --neon-dim:    rgba(0,255,135,0.09);
-    --neon-border: rgba(0,255,135,0.25);
-    --mid:         #00c46a;
-    --text:        #c8ddd2;
-    --text-2:      #93ad9f;
-    --text-3:      #4a6b57;
-    --border:      rgba(0,255,135,0.07);
-    --border2:     rgba(0,255,135,0.14);
+    padding: 128px 32px;
   }
-  #cta > .container { position: relative; z-index: 2; }
-  #cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 400px; background: radial-gradient(ellipse at 50% 100%, rgba(0,229,160,0.06), transparent 70%); pointer-events: none; z-index: 0; }
-  #cta::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse at 50% 100%, rgba(0,196,106,0.03), transparent 70%); pointer-events: none; z-index: 0; }
-  .cta-badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.35rem 1.1rem; border-radius: 50px; margin-bottom: 2rem; }
-  #cta h2 { font-family: var(--display); font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; max-width: 720px; margin: 0 auto 1.5rem; }
-  #cta h2 .n { color: var(--neon); }
-  #cta h2 .b { color: var(--mid); }
-  #cta .sub { color: var(--text-2); max-width: 480px; margin: 0 auto 2.5rem; font-size: 0.95rem; }
-  .cta-stack { display:flex; flex-direction:column; align-items:center; gap:0.8rem; }
-  .cta-note { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; color:var(--text-3); }
+  #cta > .container { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .cta-badge { display: inline-flex; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--web-field-fvp); border: 1px solid var(--web-field-fvp); padding: 6px 14px; border-radius: 999px; margin: 0; }
+  #cta > .container > p:first-of-type { font-family: var(--font-sans) !important; font-size: 20px !important; font-weight: 500 !important; letter-spacing: 0 !important; color: var(--color-text-muted) !important; margin: 0 !important; }
+  #cta h2 { font-family: var(--font-sans); font-size: clamp(44px, 6vw, 72px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.04; max-width: 720px; margin: 0; color: var(--color-text); }
+  #cta h2 .n { color: var(--web-field-fvp); }
+  #cta h2 .b { color: var(--web-field-fvp); }
+  #cta .sub { color: var(--color-text-muted); max-width: 520px; margin: 0; font-family: var(--font-sans); font-size: 17px; line-height: 1.55; }
+  .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; max-width: 480px; }
+  .cta-stack .email-form { display: flex; gap: 8px; width: 100%; }
+  .cta-stack .email-form input[type="email"] { flex: 1; height: 48px; padding: 0 16px; border-radius: 4px; border: 1px solid var(--color-border-strong); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 15px; }
+  .cta-stack .email-form input[type="email"]::placeholder { color: var(--color-text-muted); }
+  .cta-stack .email-form input[type="email"]:focus { outline: none; border-color: var(--color-text); }
+  .cta-stack .email-form button[type="submit"] { height: 48px; padding: 0 22px; font-family: var(--font-sans); font-size: 15px; font-weight: 500; background: var(--web-field-fvp); color: #0B0D10; border: none; border-radius: 4px; cursor: pointer; transition: background 120ms ease; }
+  .cta-stack .email-form button[type="submit"]:hover { background: #10C27F; }
+  .cta-note { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--color-text-muted); }
+  @media (max-width: 719px) {
+    #cta { padding: 80px 20px; }
+    .cta-stack .email-form { flex-direction: column; }
+    .cta-stack .email-form input[type="email"], .cta-stack .email-form button[type="submit"] { width: 100%; }
+  }
 
   
   
@@ -330,7 +329,7 @@
   }
 </style>
 </head>
-<body>
+<body data-product="fvp" data-level="product">
 
 <!-- NAV · GO:BETTER Shell -->
 <div class="gb-nav-wrap">
