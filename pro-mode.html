@@ -21,18 +21,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
 .btn-outline { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--neon); border: 1px solid var(--neon-border); padding: 0.9rem 2.2rem; border-radius: 3px; text-decoration: none; display: inline-block; transition: background 0.2s; }
 .btn-outline:hover { background: var(--neon-dim); }
 
-/* HERO */
-#hero { padding: 9rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
-.hero-glow { position: absolute; width: 800px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,255,135,0.06) 0%, transparent 70%); pointer-events: none; }
-#hero h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
-#hero h1 .n { color: var(--neon); }
-#hero h1 .d { color: var(--text-2); }
-#hero p.sub { color: var(--text-2); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.75; }
-.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
-.plan-pills { display: flex; gap: 0.6rem; justify-content: center; margin-bottom: 3.5rem; }
-.plan-pill { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; border: 1px solid var(--border2); color: var(--text-3); }
-.plan-pill.pro { border-color: var(--mid-border); color: var(--mid); }
-.plan-pill.premium { border-color: var(--neon-border); color: var(--neon); background: var(--neon-dim); }
+/* HERO · GO:BETTER Design v3 — Komponente kommt aus gb-shell.css */
 
 /* ─── DASHBOARD MOCKUP ─── */
 .mockup-wrap { position: relative; max-width: 1160px; margin: 0 auto; }
@@ -42,8 +31,9 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
   background: #0b1410;
   border: 1px solid rgba(0,255,135,0.15);
   border-radius: 8px; overflow: hidden;
-  font-family: var(--mono); font-size: 0.7rem;
+  font-family: var(--font-sans); font-size: 0.72rem;
   box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  /* Zahlen und Codeblöcke im Mockup weiter Mono für konsistente Ziffernbreite */
   /* Mockup ist theme-unabhängig dunkel — Token-Kaskade auf Dark-Werte locken,
      sonst kollabieren Text-Farben im Light-Mode auf schwarz gegen dunklen mockup-bg */
   --bg:      #080e0b;
@@ -307,7 +297,7 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
 }
 </style>
 </head>
-<body>
+<body data-product="fvp" data-level="product">
 
 <!-- NAV · GO:BETTER Shell -->
 <div class="gb-nav-wrap">
@@ -350,18 +340,19 @@ nav a.nav-cta:hover { background: var(--neon-dim); }
 </div>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-glow"></div>
-  <div class="container">
-    <div class="tag fade in">Pro &amp; Premium</div>
-    <h1 class="fade in">Das <span class="n">vollständige</span><br><span class="d">Analyse-Dashboard.</span></h1>
-    <p class="sub fade in">Mehr als ein Rechner — ein komplettes Bewertungs-Cockpit. Szenarien, Sensitivitäten, Qualitäts-Scorecard und historische Kursverläufe in einem Interface.</p>
-    <div class="hero-btns fade in">
-      <a href="plaene.html" class="btn-neon">Jetzt freischalten →</a>
-      <a href="#features" class="btn-outline">Alle Features</a>
+<section id="hero" class="gb-hero-product" data-product="fvp" data-level="product">
+  <div class="gb-hero-inner">
+    <span class="gb-eyebrow fade in">Pro &amp; Premium</span>
+    <h1 class="gb-h1-product fade in">Das <span class="accent">vollständige</span><br class="mobile-br"> Analyse-Dashboard.</h1>
+    <p class="gb-hero-sub fade in">Mehr als ein Rechner — ein komplettes Bewertungs-Cockpit. Szenarien, Sensitivitäten, Qualitäts-Scorecard und historische Kursverläufe in einem Interface.</p>
+    <div class="gb-hero-btns fade in">
+      <a href="plaene.html" class="gb-btn gb-btn--l gb-btn--primary">Jetzt freischalten</a>
+      <a href="#features" class="gb-btn gb-btn--l gb-btn--secondary">Alle Features</a>
     </div>
-    <div class="plan-pills fade in">
-      <span class="plan-pill pro">Pro — kostenlos</span><span class="plan-pill premium">Auf Anfrage</span></div>
+    <div class="gb-hero-pills fade in" style="margin-top: 20px;">
+      <span class="gb-hero-pill is-active">Pro — kostenlos</span>
+      <span class="gb-hero-pill">Auf Anfrage</span>
+    </div>
   </div>
 
   <!-- DASHBOARD MOCKUP -->
