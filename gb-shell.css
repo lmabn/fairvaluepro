@@ -89,9 +89,12 @@
 .gb-foot-note { font-size: 12px; color: var(--color-text-muted); max-width: 360px; line-height: 1.5; }
 
 /* ── Product-Hero (Fair Value Pro, Portfolio Tracker, Trading Desk) ──
- * Textbasiert, zentriert, kein Bild. Accent-Farbe kommt aus
- * data-product="fvp|pt|td" am Section-Element (via web.css → --web-mood).
- * Content 1:1 aus den alten Product-Hero-Blöcken.
+ * Zwei Ausprägungen:
+ *   Default (Sub-Seiten pro-mode, daten-quelle, akademie, plaene): textbasiert,
+ *   zentriert, ohne Card.
+ *   Split (die drei Haupt-Produktseiten): asymmetrisch — links Text-Block,
+ *   rechts Product-Card mit Mockup, Product-Farb-Streifen unten.
+ * Accent-Farbe kommt aus data-product="fvp|pt|td" via web.css → --web-mood.
  */
 .gb-hero-product { background: var(--color-bg); color: var(--color-text); padding: 0; position: relative; border-bottom: 1px solid var(--color-border); overflow: hidden; }
 section.gb-hero-product { padding: 0; }
@@ -109,6 +112,54 @@ section.gb-hero-product { padding: 0; }
   .gb-hero-product h1.gb-h1-product { font-size: clamp(36px, 10vw, 52px); }
   .gb-hero-product .gb-hero-sub { font-size: 17px; }
 }
+
+/* ── Split-Hero (Haupt-Produktseiten FVP · PT · TD) ── */
+.gb-hero-split { position: relative; background: var(--color-bg); color: var(--color-text); overflow: hidden; border-bottom: 1px solid var(--color-border); }
+.gb-hero-split .gb-hero-inner-split { max-width: 1280px; margin: 0 auto; padding: 128px 32px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: end; text-align: left; }
+.gb-hero-split .gb-hero-left { display: flex; flex-direction: column; gap: 28px; padding-bottom: 128px; }
+.gb-hero-split .gb-eyebrows { display: flex; flex-direction: column; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-muted); }
+.gb-hero-split .gb-eyebrow-brand { color: var(--web-mood, var(--color-accent)); display: inline-flex; align-items: center; gap: 8px; }
+.gb-hero-split .gb-eyebrow-brand::before { content: ''; width: 6px; height: 6px; border-radius: 999px; background: var(--web-mood, var(--color-accent)); }
+.gb-hero-split h1.gb-h1-product { font-family: var(--font-sans); font-size: clamp(44px, 5.4vw, 72px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; margin: 0; text-wrap: balance; color: var(--color-text); }
+.gb-hero-split .gb-hero-sub { font-family: var(--font-sans); font-size: 18px; line-height: 1.5; color: var(--color-text-muted); max-width: 520px; margin: 0; }
+.gb-hero-split .gb-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Rechte Card mit Product-Farb-Rahmen und Mockup-Karte innen */
+.gb-hero-split .gb-hero-card-frame { background: var(--web-mood, var(--color-accent)); padding: 40px 24px 0; margin-bottom: -1px; }
+.gb-hero-split .gb-hero-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 6px; padding: 20px 22px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); font-family: var(--font-sans); }
+.gb-hero-split .gb-mockup-topbar { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 20px; }
+.gb-hero-split .gb-mockup-topbar-brand { color: var(--web-mood, var(--color-accent)); display: inline-flex; align-items: center; gap: 8px; }
+.gb-hero-split .gb-mockup-topbar-brand::before { content: ''; width: 5px; height: 5px; border-radius: 999px; background: var(--web-mood, var(--color-accent)); }
+.gb-hero-split .gb-mockup-title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.gb-hero-split .gb-mockup-title { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+.gb-hero-split .gb-mockup-meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); text-align: right; }
+.gb-hero-split .gb-mockup-sub { font-size: 12px; color: var(--color-text-muted); margin-bottom: 8px; }
+.gb-hero-split .gb-mockup-value { font-family: var(--font-mono); font-size: 40px; font-weight: 500; letter-spacing: -0.01em; color: var(--color-text); margin-bottom: 20px; }
+.gb-hero-split .gb-mockup-chart { position: relative; height: 96px; margin: 8px 0 20px; }
+.gb-hero-split .gb-mockup-chart svg { display: block; width: 100%; height: 100%; }
+.gb-hero-split .gb-mockup-kpi { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--color-border); font-size: 13px; }
+.gb-hero-split .gb-mockup-kpi:last-child { border-bottom: 1px solid var(--color-border); }
+.gb-hero-split .gb-mockup-kpi-label { color: var(--color-text-muted); }
+.gb-hero-split .gb-mockup-kpi-val { font-family: var(--font-mono); color: var(--color-text); font-variant-numeric: tabular-nums; }
+.gb-hero-split .gb-mockup-kpi-val.up { color: #2EE59D; }
+.gb-hero-split .gb-mockup-kpi-val.down { color: #F87171; }
+
+/* Farb-Streifen unter dem Hero: schmaler Balken in Product-Farbe */
+.gb-hero-split::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: var(--web-mood, var(--color-accent)); }
+
+/* Mobile: Split kollabiert zu Stack */
+@media (max-width: 899px) {
+  .gb-hero-split .gb-hero-inner-split { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px 0; }
+  .gb-hero-split .gb-hero-left { padding-bottom: 32px; gap: 20px; }
+  .gb-hero-split h1.gb-h1-product { font-size: clamp(36px, 9vw, 52px); }
+  .gb-hero-split .gb-hero-card-frame { padding: 24px 16px 0; }
+  .gb-hero-split .gb-mockup-value { font-size: 32px; }
+  .gb-hero-split::after { height: 14px; }
+}
+
+/* Nav-Aktiv-Indikator: farbiger Unterstrich in Product-Farbe */
+.gb-nav-links > a.is-active,
+.gb-nav-item.is-active > a { color: var(--color-text); box-shadow: inset 0 -2px 0 var(--web-mood, var(--color-accent)); }
 
 /* Responsive */
 @media (max-width: 719px) {
