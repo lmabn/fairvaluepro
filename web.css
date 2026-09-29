@@ -88,7 +88,15 @@
 .gb-btn--secondary:hover { background-color: var(--gb-s-hover-bg); border-color: var(--gb-s-hover-bd); color: var(--gb-s-fg); }
 .gb-btn--secondary:active { background-color: var(--gb-s-active); }
 
-.gb-btn:focus-visible { outline: 2px solid var(--gb-focus); outline-offset: 2px; }
+/* Fokus-Verhalten: bei Mouse-Klick kein Ring (:focus). Nur bei
+ * Tastatur-Navigation (:focus-visible) ein subtiler Inset-Ring —
+ * bleibt innerhalb der Buttonfläche, wirkt nicht wie ein doppelter
+ * äußerer Rahmen und tritt nicht in Screenshots als Artefakt auf. */
+.gb-btn { outline: none; }
+.gb-btn:focus { outline: none; box-shadow: none; }
+.gb-btn--primary:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--gb-p-fg); }
+.gb-btn--secondary:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--gb-s-fg); }
+
 .gb-btn--primary:disabled, .gb-btn--primary[aria-disabled="true"] { background-color: var(--gb-dis-bg); border-color: var(--gb-dis-bg); color: var(--gb-dis-fg); cursor: not-allowed; box-shadow: none; }
 .gb-btn--secondary:disabled, .gb-btn--secondary[aria-disabled="true"] { background-color: transparent; border-color: var(--gb-dis-bd); color: var(--gb-dis-fg); cursor: not-allowed; }
 
