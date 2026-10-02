@@ -194,14 +194,6 @@
   .feat-card h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
   .feat-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
 
-  #social { background: var(--bg2); border-bottom: 1px solid var(--border); }
-  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .test-card { background: var(--bg2); padding: 2rem; }
-  .test-stars { color: var(--neon); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
-  .test-quote { font-size: 0.93rem; color: var(--text); line-height: 1.7; margin-bottom: 1.3rem; font-style: italic; }
-  .test-author { font-family: var(--mono); font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.05em; }
-  .test-author span { color: var(--text-3); display: block; margin-top: 0.2rem; }
-
   /* CTA-Section · GO:BETTER Design v3 · reiner dunkler Grund, kein Bild */
   #cta {
     text-align: center; position: relative; overflow: hidden;
@@ -305,8 +297,6 @@
     .stat-label { font-size: 0.82rem; }
 
     .feat-grid { grid-template-columns: 1fr; }
-    .test-grid { grid-template-columns: 1fr; }
-    .tools-eco { grid-template-columns: 1fr !important; }
 
     .formula { flex-direction: column; gap: 0.6rem; }
     .formula-op { transform: rotate(90deg); }
@@ -677,64 +667,6 @@
     </div>
   </div>
 </section>
-
-
-<!-- TOOLS ECOSYSTEM -->
-<section style="padding:7rem 2rem; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-  <div class="wide">
-    <div class="feat-header fade" style="margin-bottom:3.5rem;">
-      <div class="tag">Drei Werkzeuge, eine Logik</div>
-      <h2>Bewerten. Verfolgen. Entscheiden.</h2>
-      <p>Alle Tools teilen denselben Account und dieselben Daten — kein doppelter Dateneintrag, kein Medienbruch.</p>
-    </div>
-    <div class="tools-eco" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden;">
-      <div class="fade" style="background:var(--bg); padding:2rem;">
-        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--neon); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Fair Value Pro</div>
-        <h3 style="font-family:var(--display); font-size:1.1rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.01em;">Berechne den fairen Wert.</h3>
-        <p style="font-size:0.88rem; color:var(--text-2); line-height:1.65; margin-bottom:1.2rem;">Sieben Bewertungsmodelle gleichzeitig. Qualitätsscore, Szenarien, Sensitivitätstabelle. Aktien, Krypto, Rohstoffe.</p>
-        <a href="pro-mode.html" style="font-family:var(--mono); font-size:0.62rem; color:var(--neon); text-decoration:none; letter-spacing:0.06em;">Pro Mode ansehen →</a>
-      </div>
-      <div class="fade" style="background:var(--bg); padding:2rem;">
-        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--pt-accent); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Portfolio Tracker</div>
-        <h3 style="font-family:var(--display); font-size:1.1rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.01em;">Verfolge deine Investments.</h3>
-        <p style="font-size:0.88rem; color:var(--text-2); line-height:1.65; margin-bottom:1.2rem;">KI-Import per Screenshot, PDF oder CSV. Cashflowbereinigte Renditen (IRR · TWR · CAGR) und Fair-Value-Verdict pro Position — direkt aus FVP.</p>
-        <a href="portfolio-tracker.html" style="font-family:var(--mono); font-size:0.62rem; color:var(--pt-accent); text-decoration:none; letter-spacing:0.06em;">Portfolio Tracker ansehen →</a>
-      </div>
-      <div class="fade" style="background:var(--bg); padding:2rem;">
-        <div style="font-family:var(--mono); font-size:0.58rem; color:var(--td-accent); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem;">Trading Desk</div>
-        <h3 style="font-family:var(--display); font-size:1.1rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.01em;">Triff bessere Entscheidungen.</h3>
-        <p style="font-size:0.88rem; color:var(--text-2); line-height:1.65; margin-bottom:1.2rem;">Recovery-Analyse, Zinsrechner, Rebalancing, Watchlist und Trade-Journal mit KI-Bias-Coach.</p>
-        <a href="trading-desk.html" style="font-family:var(--mono); font-size:0.62rem; color:var(--td-accent); text-decoration:none; letter-spacing:0.06em;">Trading Desk ansehen →</a>
-      </div>
-    </div>
-    <p class="fade" style="text-align:center; font-family:var(--mono); font-size:0.62rem; color:var(--text-3); letter-spacing:0.08em; margin-top:2rem;">Made in Germany · Gehostet in der EU · DSGVO-konform</p>
-  </div>
-</section>
-
-<!-- SOCIAL PROOF -->
-<section id="social">
-  <div class="wide">
-    <div class="tag fade" style="margin-bottom:2rem;">Frühe Nutzer</div>
-    <div class="test-grid">
-      <div class="test-card fade">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</p>
-        <div class="test-author">Michael R.<span>Privatanleger · München</span></div>
-      </div>
-      <div class="test-card fade">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</p>
-        <div class="test-author">Sarah K.<span>Ingenieurin &amp; Privatanlegerin · Berlin</span></div>
-      </div>
-      <div class="test-card fade">
-        <div class="test-stars">★★★★☆</div>
-        <p class="test-quote">„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Das Glossar hilft dabei enorm. Genau das wollte ich."</p>
-        <div class="test-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 
 <!-- FAQ -->
