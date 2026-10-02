@@ -126,17 +126,29 @@ section.gb-tiles-section { padding: 0; }
 .gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .gb-hero-note { margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.5; letter-spacing: 0.02em; color: #B9BCC0; max-width: 560px; }
 
-/* Stimmen · Frühe Nutzer */
-#stimmen { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-#stimmen .gb-section-inner { padding: 72px 32px; gap: 24px; }
-@media (max-width: 719px) { #stimmen .gb-section-inner { padding: 56px 20px; } }
-.gb-stimmen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; }
-.gb-stimme { background: var(--color-surface-2); padding: 2rem; margin: 0; }
-.gb-stimme-stars { color: var(--color-accent); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
-.gb-stimme-quote { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text); line-height: 1.65; margin: 0 0 1.3rem; font-style: italic; }
-.gb-stimme-author { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-text-muted); letter-spacing: 0.05em; }
-.gb-stimme-author span { color: var(--color-text-disabled); display: block; margin-top: 0.25rem; }
-@media (max-width: 719px) { .gb-stimmen-grid { grid-template-columns: 1fr; } }
+/* Frühe Nutzer · Social Proof · Typografische Trennung ohne Karten */
+.proof { border-top: 1px solid #262B33; }
+.proof .gb-section-inner { padding: 72px 32px; gap: 40px; }
+.proof__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #9A9FA7; text-transform: uppercase; margin: 0; }
+.proof__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.proof figure { margin: 0; display: flex; flex-direction: column; gap: 20px; padding-top: 24px; border-top: 1px solid #262B33; }
+.proof__stars { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em; line-height: 1; color: #ECEDEF; }
+.proof blockquote { margin: 0; font-family: var(--font-sans); font-size: 18px; line-height: 1.55; font-weight: 400; letter-spacing: -0.01em; color: #ECEDEF; text-wrap: pretty; }
+.proof figcaption { margin-top: auto; display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; }
+.proof figcaption span:first-child { color: #ECEDEF; }
+.proof figcaption span:last-child { color: #9A9FA7; }
+@media (min-width: 720px) {
+  .proof .gb-section-inner { gap: 48px; }
+  .proof__grid { max-width: 680px; }
+  .proof blockquote { font-size: 20px; }
+  .proof figure { gap: 24px; padding-top: 28px; }
+  .proof__stars { font-size: 14px; }
+}
+@media (min-width: 1100px) {
+  .proof .gb-section-inner { padding: 96px 32px; gap: 56px; }
+  .proof__grid { max-width: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
+}
+@media (max-width: 719px) { .proof .gb-section-inner { padding: 56px 20px; } }
 
 /* Tiles-Section · direkt unter dem Hero-Fold, eigene Section damit
    der Hero-Wrap genau am Viewport-Ende endet (mit Buttons ans untere Ende
@@ -221,6 +233,16 @@ section.gb-tiles-section { padding: 0; }
 .gb-cta-close .ovr { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,13,16,0.7) 0%, rgba(11,13,16,0.4) 45%, rgba(11,13,16,0) 75%); }
 .gb-cta-close-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 176px 32px; display: flex; flex-direction: column; gap: 32px; }
 .gb-wm-huge { font-size: clamp(72px, 11vw, 164px); letter-spacing: -0.045em; }
+
+/* Abschluss · Doppelpunkt-Animation 1a „Übergang" (WEBSITE.md §14) */
+@keyframes gbWmMove { 0% { transform: translateY(0) scale(1); opacity: 0; } 12% { opacity: 1; } 62% { transform: translateY(54px) scale(1.43); opacity: 1; } 72%, 100% { transform: translateY(54px) scale(1.43); opacity: 0; } }
+@keyframes gbWmPulse { 0%, 58% { transform: scale(1); } 68% { transform: scale(1.12); } 88%, 100% { transform: scale(1); } }
+.gb-cta-close .gb-wm-huge svg { overflow: visible; }
+.gb-cta-close .gb-wm-huge svg circle { transform-box: fill-box; transform-origin: center; }
+.gb-cta-close .gb-wm-huge svg .wm-move { opacity: 0; }
+.gb-cta-close.is-playing .gb-wm-huge svg .wm-move { animation: gbWmMove 2.4s cubic-bezier(.5, 0, .3, 1) 3; }
+.gb-cta-close.is-playing .gb-wm-huge svg .wm-bot { animation: gbWmPulse 2.4s cubic-bezier(.5, 0, .3, 1) 3; }
+@media (prefers-reduced-motion: reduce) { .gb-cta-close .gb-wm-huge svg circle { animation: none !important; } }
 .gb-cta-taglines { display: flex; flex-direction: column; gap: 8px; }
 .gb-cta-tagline { font-size: 28px; font-weight: 500; letter-spacing: -0.02em; }
 .gb-cta-sub { font-size: 19px; color: #B9BCC0; }
@@ -474,26 +496,26 @@ section.gb-tiles-section { padding: 0; }
   </div>
 </section>
 
-<!-- STIMMEN · Frühe Nutzer -->
-<section class="gb-section" id="stimmen">
-  <div class="gb-section-inner" style="max-width: 1120px;">
-    <span class="gb-eyebrow" style="color:var(--color-text-muted); display:block;">FRÜHE NUTZER</span>
-    <div class="gb-stimmen-grid">
-      <article class="gb-stimme">
-        <div class="gb-stimme-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p class="gb-stimme-quote">„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</p>
-        <div class="gb-stimme-author">Michael R.<span>Privatanleger · München</span></div>
-      </article>
-      <article class="gb-stimme">
-        <div class="gb-stimme-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p class="gb-stimme-quote">„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</p>
-        <div class="gb-stimme-author">Sarah K.<span>Ingenieurin &amp; Privatanlegerin · Berlin</span></div>
-      </article>
-      <article class="gb-stimme">
-        <div class="gb-stimme-stars" aria-label="4 von 5 Sternen">★★★★☆</div>
-        <p class="gb-stimme-quote">„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Dass der Portfolio Tracker meine echte Rendite cashflowbereinigt zeigt und jede Position gegen den fairen Wert spiegelt, hat Klarheit in mein Depot gebracht. Genau das wollte ich."</p>
-        <div class="gb-stimme-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></div>
-      </article>
+<!-- FRÜHE NUTZER · Social Proof -->
+<section class="gb-section proof" id="stimmen">
+  <div class="gb-section-inner">
+    <p class="proof__label">Frühe Nutzer</p>
+    <div class="proof__grid">
+      <figure>
+        <div class="proof__stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</blockquote>
+        <figcaption><span>Michael R.</span><span>Privatanleger · München</span></figcaption>
+      </figure>
+      <figure>
+        <div class="proof__stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</blockquote>
+        <figcaption><span>Sarah K.</span><span>Ingenieurin &amp; Privatanlegerin · Berlin</span></figcaption>
+      </figure>
+      <figure>
+        <div class="proof__stars" role="img" aria-label="4 von 5 Sternen">★★★★☆</div>
+        <blockquote>„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Dass der Portfolio Tracker meine echte Rendite cashflowbereinigt zeigt und jede Position gegen den fairen Wert spiegelt, hat Klarheit in mein Depot gebracht. Genau das wollte ich."</blockquote>
+        <figcaption><span>Jonas M.</span><span>Masterstudent Wirtschaft · Hamburg</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -505,7 +527,7 @@ section.gb-tiles-section { padding: 0; }
   <div class="gb-cta-close-wrap">
     <a href="index.html" class="gb-wm gb-wm-huge" aria-label="GO:BETTER">
       <span aria-hidden="true"><span class="k">G</span>O</span>
-      <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle cx="15" cy="61" r="10"/></svg>
+      <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle class="wm-move" cx="15" cy="7" r="7"/><circle class="wm-bot" cx="15" cy="61" r="10"/></svg>
       <span aria-hidden="true">BETTER</span>
     </a>
     <div class="gb-cta-taglines">
@@ -560,6 +582,17 @@ section.gb-tiles-section { padding: 0; }
     setNavH();
     window.addEventListener('resize', setNavH);
     if (window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
+  })();
+  // Abschluss-Wortmarke: Doppelpunkt-Animation 1a „Übergang" beim Sichtbarwerden
+  (function(){
+    var cta = document.querySelector('.gb-cta-close');
+    if (!cta || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { cta.classList.remove('is-playing'); void cta.offsetWidth; cta.classList.add('is-playing'); }
+        else cta.classList.remove('is-playing');
+      });
+    }, { threshold: 0.5 }).observe(cta);
   })();
   // Burger-Menü toggle
   (function(){
