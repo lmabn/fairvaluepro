@@ -126,6 +126,15 @@ section.gb-tiles-section { padding: 0; }
 .gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .gb-hero-note { margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.5; letter-spacing: 0.02em; color: #B9BCC0; max-width: 560px; }
 
+/* Stimmen · Frühe Nutzer */
+.gb-stimmen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; }
+.gb-stimme { background: var(--color-surface); padding: 2rem; margin: 0; }
+.gb-stimme-stars { color: var(--color-accent); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+.gb-stimme-quote { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text); line-height: 1.65; margin: 0 0 1.3rem; font-style: italic; }
+.gb-stimme-author { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-text-muted); letter-spacing: 0.05em; }
+.gb-stimme-author span { color: var(--color-text-disabled); display: block; margin-top: 0.25rem; }
+@media (max-width: 719px) { .gb-stimmen-grid { grid-template-columns: 1fr; } }
+
 /* Tiles-Section · direkt unter dem Hero-Fold, eigene Section damit
    der Hero-Wrap genau am Viewport-Ende endet (mit Buttons ans untere Ende
    dank margin-top:auto) und Tiles komplett unter dem Fold liegen. */
@@ -458,6 +467,30 @@ section.gb-tiles-section { padding: 0; }
     <div class="gb-stance-text">
       <p class="gb-stance-quote">Wir glauben an Anleger, die verstehen wollen, was sie tun – und selbst entscheiden, was zu ihnen passt.</p>
       <span class="gb-stance-attr">UNSERE HALTUNG</span>
+    </div>
+  </div>
+</section>
+
+<!-- STIMMEN · Frühe Nutzer -->
+<section class="gb-section" id="stimmen">
+  <div class="gb-section-inner" style="max-width: 1120px;">
+    <span class="gb-eyebrow" style="color:var(--color-text-muted); display:block; margin-bottom:1.5rem;">FRÜHE NUTZER</span>
+    <div class="gb-stimmen-grid">
+      <article class="gb-stimme fade">
+        <div class="gb-stimme-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <p class="gb-stimme-quote">„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</p>
+        <footer class="gb-stimme-author">Michael R.<span>Privatanleger · München</span></footer>
+      </article>
+      <article class="gb-stimme fade">
+        <div class="gb-stimme-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <p class="gb-stimme-quote">„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</p>
+        <footer class="gb-stimme-author">Sarah K.<span>Ingenieurin &amp; Privatanlegerin · Berlin</span></footer>
+      </article>
+      <article class="gb-stimme fade">
+        <div class="gb-stimme-stars" aria-label="4 von 5 Sternen">★★★★☆</div>
+        <p class="gb-stimme-quote">„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Das Glossar hilft dabei enorm. Genau das wollte ich."</p>
+        <footer class="gb-stimme-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></footer>
+      </article>
     </div>
   </div>
 </section>
