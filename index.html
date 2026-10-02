@@ -128,6 +128,8 @@ section.gb-tiles-section { padding: 0; }
 
 /* Stimmen · Frühe Nutzer */
 #stimmen { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+#stimmen .gb-section-inner { padding: 72px 32px; gap: 24px; }
+@media (max-width: 719px) { #stimmen .gb-section-inner { padding: 56px 20px; } }
 .gb-stimmen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; }
 .gb-stimme { background: var(--color-surface-2); padding: 2rem; margin: 0; }
 .gb-stimme-stars { color: var(--color-accent); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
@@ -475,22 +477,22 @@ section.gb-tiles-section { padding: 0; }
 <!-- STIMMEN · Frühe Nutzer -->
 <section class="gb-section" id="stimmen">
   <div class="gb-section-inner" style="max-width: 1120px;">
-    <span class="gb-eyebrow" style="color:var(--color-text-muted); display:block; margin-bottom:1.5rem;">FRÜHE NUTZER</span>
+    <span class="gb-eyebrow" style="color:var(--color-text-muted); display:block;">FRÜHE NUTZER</span>
     <div class="gb-stimmen-grid">
       <article class="gb-stimme">
         <div class="gb-stimme-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         <p class="gb-stimme-quote">„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</p>
-        <footer class="gb-stimme-author">Michael R.<span>Privatanleger · München</span></footer>
+        <div class="gb-stimme-author">Michael R.<span>Privatanleger · München</span></div>
       </article>
       <article class="gb-stimme">
         <div class="gb-stimme-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         <p class="gb-stimme-quote">„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</p>
-        <footer class="gb-stimme-author">Sarah K.<span>Ingenieurin &amp; Privatanlegerin · Berlin</span></footer>
+        <div class="gb-stimme-author">Sarah K.<span>Ingenieurin &amp; Privatanlegerin · Berlin</span></div>
       </article>
       <article class="gb-stimme">
         <div class="gb-stimme-stars" aria-label="4 von 5 Sternen">★★★★☆</div>
         <p class="gb-stimme-quote">„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Das Glossar hilft dabei enorm. Genau das wollte ich."</p>
-        <footer class="gb-stimme-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></footer>
+        <div class="gb-stimme-author">Jonas M.<span>Masterstudent Wirtschaft · Hamburg</span></div>
       </article>
     </div>
   </div>
