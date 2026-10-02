@@ -87,7 +87,7 @@ details .detail-body strong { color: var(--color-text); font-weight: 500; }
 #faq details[open] { border-bottom: 1px solid var(--color-border); }
 #faq details summary:hover { color: var(--color-text); }
 
-/* ── Pricing-Plan-Cards (plaene.html, plaene-beta.html) ── */
+/* ── Pricing-Plan-Cards (plaene.html) ── */
 .plan-price { margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); min-height: 7rem; }
 .plan-features { list-style: none; flex: 1; margin-bottom: 2rem; }
 .plan-features li { font-size: 0.78rem; color: var(--color-text-muted); padding: 0.4rem 0; border-bottom: 1px solid var(--color-border); line-height: 1.45; }
