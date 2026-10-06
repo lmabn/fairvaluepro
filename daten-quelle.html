@@ -61,6 +61,8 @@
 .partner-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; max-width: 720px; margin: 0 auto 2rem; }
 .partner-card { background: var(--bg2); padding: 1.8rem 1.4rem; text-align: center; }
 .partner-logo { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+.partner-logo-patch { background: #FFFFFF; border-radius: 4px; padding: 18px 24px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; max-width: 220px; }
+.partner-logo-patch img { height: 32px; width: auto; display: block; max-width: 100%; }
 .partner-type { font-family: var(--font-sans); font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
 .partner-desc { font-size: 0.78rem; color: var(--text-3); line-height: 1.55; margin-bottom: 1rem; }
 .partner-badge { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; display: inline-block; }
@@ -261,9 +263,8 @@
     </div>
     <div class="partner-grid fade">
       <div class="partner-card">
-        <div class="partner-logo">
-          <!-- FMP-Logo wird eingesetzt, sobald Original-Asset aus FMP-Brand-Kit vorliegt -->
-          <span class="partner-name">Financial Modeling Prep</span>
+        <div class="partner-logo-patch">
+          <img src="assets/brand/fmp-logo.webp" alt="Financial Modeling Prep">
         </div>
         <div class="partner-type">Fundamentaldaten · Global</div>
         <div class="partner-desc">Breite Fundamentaldaten, internationale Abdeckung. Eigener FMP-Plan erforderlich.</div>
