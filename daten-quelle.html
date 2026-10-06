@@ -21,6 +21,16 @@
 .why-text p { color: var(--text-2); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
 .why-text p strong { color: var(--text); font-weight: 500; }
 .why-visual { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 2rem; }
+.flow { display: flex; align-items: stretch; gap: 0.75rem; margin-top: 0.5rem; }
+.flow__node { flex: 1 1 0; background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; padding: 1.1rem 0.9rem; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 0.3rem; }
+.flow__node strong { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
+.flow__node small { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
+.flow__arrow { display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--text-3); flex: 0 0 auto; }
+.flow__note { margin-top: 1.2rem; font-size: 0.78rem; color: var(--text-2); line-height: 1.6; text-align: center; }
+@media (max-width: 640px) {
+  .flow { flex-direction: column; gap: 0.5rem; }
+  .flow__arrow { transform: rotate(90deg); padding: 0.1rem 0; }
+}
 .flow-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
 .flow-row:last-child { margin-bottom: 0; }
 .flow-node { background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; padding: 0.6rem 1rem; font-family: var(--font-sans); font-size: 0.65rem; color: var(--text-2); letter-spacing: 0.04em; flex-shrink: 0; }
@@ -168,31 +178,16 @@
         <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
         <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) persistent gespeichert. Für die automatische Bewertung übergibt Fair Value Pro ihn pro Anfrage transient an den eigenen Server, der ihn ausschließlich für den Abruf beim Datenanbieter verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</p>
       </div>
-      <div class="why-visual fade" style="padding:1.5rem;">
-        <div style="font-size:0.55rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.4rem;">Datenfluss</div>
-
-        <!-- Node: Browser -->
-        <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.65rem 1rem; text-align:center; font-size:0.65rem; color:var(--text); margin-bottom:1rem;">Dein Browser</div>
-
-        <!-- Path 1: AI keys — direct browser → provider -->
-        <div style="font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">KI-Anfrage</div>
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem;">
-          <span style="font-size:0.55rem; color:var(--neon); flex:1; text-align:right;">Schlüssel + Frage</span>
-          <span style="font-size:0.7rem; color:var(--neon);">→</span>
-          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-size:0.6rem; color:var(--neon); flex:0 0 auto;">Claude · OpenAI · Gemini</div>
+      <div class="why-visual fade">
+        <div style="font-size:0.6rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase;">Bewertungs-Abruf</div>
+        <div class="flow">
+          <div class="flow__node"><strong>Browser</strong><small>Schlüssel liegt lokal</small></div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><strong>FVP-Server (EU)</strong><small>transient</small></div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><strong>Datenanbieter</strong><small>FMP u. a.</small></div>
         </div>
-        <div style="font-size:0.55rem; color:var(--text-3); line-height:1.5; margin-bottom:1.2rem; padding-bottom:1.2rem; border-bottom:1px solid var(--border);">direkt vom Browser zum Provider — FVP nicht beteiligt</div>
-
-        <!-- Path 2: FMP / Marktdaten — via FVP server (transient) -->
-        <div style="font-size:0.5rem; color:var(--text-3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">Bewertungs-Abruf</div>
-        <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.4rem; flex-wrap:wrap;">
-          <span style="font-size:0.55rem; color:var(--text-2);">Ticker + Schlüssel</span>
-          <span style="font-size:0.7rem; color:var(--text-2);">→</span>
-          <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-size:0.6rem; color:var(--text);">FVP-Server (EU)</div>
-          <span style="font-size:0.7rem; color:var(--text-2);">→</span>
-          <div style="background:var(--neon-dim); border:1px solid var(--neon-border); border-radius:4px; padding:0.45rem 0.6rem; text-align:center; font-size:0.6rem; color:var(--neon);">Datenanbieter</div>
-        </div>
-        <div style="font-size:0.55rem; color:var(--text-3); line-height:1.5;">Schlüssel und Antwort werden transient verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</div>
+        <p class="flow__note">Schlüssel und Antwort werden nur für die einzelne Anfrage verwendet — nicht gespeichert, nicht geloggt.</p>
       </div>      </div>
     </div>
   </div>
