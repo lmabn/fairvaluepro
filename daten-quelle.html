@@ -289,27 +289,32 @@
 
     <details class="faq-item">
       <summary>Warum muss ich selbst einen Plan beim Datenanbieter abschließen?<span class="faq-icon">+</span></summary>
-      <p>Marktdaten-Lizenzen sind teuer — und wenn ein Tool sie für alle User zentral einkauft, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du bezahlst den Partner direkt zu dessen Konditionen. Du hast volle Kontrolle über Plan und Kosten, wir tragen kein Lizenzrisiko.</p>
+      <p>Marktdaten-Lizenzen sind teuer — kauft ein Tool sie zentral für alle Nutzer ein, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du schließt deinen Plan direkt beim Datenanbieter zu dessen Konditionen ab und behältst volle Kontrolle über Plan und Kosten; wir tragen kein Lizenzrisiko. Für Registrierungen über unseren Link erhalten wir eine Vermittlungsprovision vom Anbieter — für dich entstehen dadurch keine Mehrkosten, im Gegenteil: du erhältst 25 % Rabatt.</p>
     </details>
 
     <details class="faq-item">
       <summary>Was kostet ein Plan beim Datenanbieter typischerweise?<span class="faq-icon">+</span></summary>
-      <p>Das hängt vom Anbieter und deinem Nutzungsverhalten ab. Die aktuellen Konditionen siehst du direkt auf der Anbieter-Website. Wichtig: <strong>Wähle einen Plan für persönliche Nutzung</strong> — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt; Business- oder Commercial-Pläne sind für die Nutzung über FVP weder erforderlich noch zulässig. Die Kosten variieren und können sich ändern; wir haben keinen Einfluss auf die Preisgestaltung der Anbieter.</p>
+      <p>Das hängt vom Anbieter und deinem Nutzungsverhalten ab; die aktuellen Konditionen siehst du direkt auf der Anbieter-Website. Wichtig: <strong>Wähle einen Plan für die persönliche Nutzung</strong> — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt. Business- oder Commercial-Pläne sind für die Nutzung über uns weder erforderlich noch zulässig. Preise können sich ändern; auf die Preisgestaltung der Anbieter haben wir keinen Einfluss.</p>
     </details>
 
     <details class="faq-item">
       <summary>Sieht FVP meine Marktdaten?<span class="faq-icon">+</span></summary>
-      <p>Während des Abrufs ja — die Anfrage läuft transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Wir <strong>speichern Kurse, Bilanzen oder Cashflows aber nicht</strong> in unserer Datenbank und loggen sie nicht. Auch dein API-Schlüssel wird nur für die einzelne Anfrage durchgereicht — er ist ausschließlich in deinem Browser (<code style="font-size:0.85em;">localStorage</code>) persistent gespeichert, nie auf unseren Servern. KI-Anfragen (Claude/OpenAI/Gemini) laufen weiterhin direkt vom Browser zum Provider — dort sind wir nicht beteiligt.</p>
+      <p>Während des Abrufs läuft deine Anfrage transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Die <strong>Marktdaten (Kurse, Bilanzen, Cashflows) speichern wir nicht dauerhaft</strong> in unserer Datenbank und protokollieren sie nicht. Dein API-Schlüssel wird nur für die jeweilige Anfrage verwendet und ist ausschließlich in deinem Browser gespeichert, nie auf unseren Servern. KI-Anfragen (Claude/OpenAI/Gemini) laufen direkt von deinem Browser zum jeweiligen Anbieter.</p>
     </details>
 
     <details class="faq-item">
       <summary>Kann ich den Anbieter wechseln?<span class="faq-icon">+</span></summary>
-      <p>Ja, jederzeit. Im Account unter <strong>API-Schlüssel</strong> kannst du Partner und Schlüssel jederzeit ändern. Deine gespeicherten Analysen und Presets bleiben erhalten — sie sind unabhängig vom Datenanbieter.</p>
+      <p>Derzeit ist <strong>Financial Modeling Prep (FMP)</strong> der Datenanbieter. Sollten weitere Anbieter hinzukommen, kannst du wechseln — deine gespeicherten Analysen und Presets bleiben erhalten, da sie unabhängig vom Datenanbieter sind. Deinen eigenen API-Schlüssel kannst du jederzeit im Account unter <strong>API-Schlüssel</strong> ändern.</p>
     </details>
 
     <details class="faq-item">
       <summary>Was passiert, wenn mein API-Schlüssel das Request-Limit erreicht?<span class="faq-icon">+</span></summary>
-      <p>Fair Value Pro zeigt einen Hinweis und pausiert automatische Datenabfragen. Du kannst entweder auf den nächsten Tag warten (die meisten Pläne haben tägliche Limits die sich zurücksetzen) oder auf einen höheren Plan beim Anbieter upgraden. Bereits abgerufene Daten bleiben während der Session in deinem Browser verfügbar; identische Abfragen können serverseitig bis zu 5 Minuten pro Nutzer-Schlüssel im Arbeitsspeicher zwischengespeichert werden, ohne persistente Speicherung.</p>
+      <p>Fair Value Pro zeigt einen Hinweis und pausiert automatische Abfragen. Du kannst auf den nächsten Tag warten (die meisten Pläne haben tägliche Limits, die sich zurücksetzen) oder beim Anbieter auf einen höheren Plan upgraden. Bereits abgerufene Daten bleiben während deiner Session verfügbar.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Wie weit komme ich mit dem kostenlosen Plan des Datenanbieters?<span class="faq-icon">+</span></summary>
+      <p>Zum Ausprobieren eignet sich der kostenlose Plan gut: Du kannst Fair Value Pro mit deinem eigenen Schlüssel testen und einige Werte durchrechnen. Er ist aber in zweierlei Hinsicht begrenzt — in der Zahl der Abfragen und vor allem in der Abdeckung: Kostenlose Pläne enthalten meist nur eine kleine Auswahl an Beispielwerten (oft nur US-Titel) und reichen nicht für den vollen Funktionsumfang, etwa europäische Aktien. Die jeweils aktuellen Werte und Limits findest du auf der Website des Anbieters. Für den regulären Einsatz empfiehlt sich ein kostenpflichtiger Plan.</p>
     </details>
 
     <details class="faq-item">
