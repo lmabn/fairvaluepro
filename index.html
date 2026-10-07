@@ -122,8 +122,10 @@ a { color: inherit; text-decoration: none; }
  * der Headline-Gruppe (wie in PR#98). */
 section.gb-tiles-section { padding: 0; }
 .gb-hero { position: relative; overflow: hidden; background: var(--color-bg); }
-.gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; }
+.gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; transform-origin: center center; animation: gbHeroDrift 24s ease-in-out infinite alternate; }
 .gb-hero-img.motif-b { object-position: 60% 40%; }
+@keyframes gbHeroDrift { 0% { transform: scale(1.00); } 100% { transform: scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { .gb-hero-img { animation: none; } }
 .gb-hero-overlay { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(11,13,16,0.72) 0%, rgba(11,13,16,0.45) 38%, rgba(11,13,16,0) 62%), linear-gradient(180deg, rgba(11,13,16,0) 58%, #0B0D10 100%); }
 .gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 96px 32px 96px; display: flex; flex-direction: column; gap: 32px; min-height: var(--web-hero-home, 880px); }
 .gb-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #B9BCC0; text-transform: uppercase; }
