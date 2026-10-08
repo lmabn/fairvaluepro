@@ -30,6 +30,70 @@
 <link rel="stylesheet" href="web.css">
 <link rel="stylesheet" href="gb-shell.css">
 <title>Daten-Quelle · GO:BETTER</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Warum muss ich selbst einen Plan beim Datenanbieter abschließen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Marktdaten-Lizenzen sind teuer — kauft ein Tool sie zentral für alle Nutzer ein, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du schließt deinen Plan direkt beim Datenanbieter zu dessen Konditionen ab und behältst volle Kontrolle über Plan und Kosten; wir tragen kein Lizenzrisiko. Für Registrierungen über unseren Link erhalten wir eine Vermittlungsprovision vom Anbieter — für dich entstehen dadurch keine Mehrkosten, im Gegenteil: du erhältst 25 % Rabatt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet ein Plan beim Datenanbieter typischerweise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das hängt vom Anbieter und deinem Nutzungsverhalten ab; die aktuellen Konditionen siehst du direkt auf der Anbieter-Website. Wichtig: Wähle einen Plan für die persönliche Nutzung — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt. Business- oder Commercial-Pläne sind für die Nutzung über uns weder erforderlich noch zulässig."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sieht FVP meine Marktdaten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Während des Abrufs läuft deine Anfrage transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Die Marktdaten (Kurse, Bilanzen, Cashflows) speichern wir nicht dauerhaft und protokollieren sie nicht. Dein API-Schlüssel wird nur für die jeweilige Anfrage verwendet und ist ausschließlich in deinem Browser gespeichert, nie auf unseren Servern. KI-Anfragen laufen direkt von deinem Browser zum jeweiligen Anbieter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich den Anbieter wechseln?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Derzeit ist Financial Modeling Prep (FMP) der Datenanbieter. Sollten weitere Anbieter hinzukommen, kannst du wechseln — deine gespeicherten Analysen und Presets bleiben erhalten, da sie unabhängig vom Datenanbieter sind. Deinen eigenen API-Schlüssel kannst du jederzeit im Account unter API-Schlüssel ändern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert, wenn mein API-Schlüssel das Request-Limit erreicht?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fair Value Pro zeigt einen Hinweis und pausiert automatische Abfragen. Du kannst auf den nächsten Tag warten (die meisten Pläne haben tägliche Limits, die sich zurücksetzen) oder beim Anbieter auf einen höheren Plan upgraden. Bereits abgerufene Daten bleiben während deiner Session verfügbar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie weit komme ich mit dem kostenlosen Plan des Datenanbieters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zum Ausprobieren eignet sich der kostenlose Plan gut: Du kannst Fair Value Pro mit deinem eigenen Schlüssel testen und einige Werte durchrechnen. Er ist aber in zweierlei Hinsicht begrenzt — in der Zahl der Abfragen und vor allem in der Abdeckung: Kostenlose Pläne enthalten meist nur eine kleine Auswahl an Beispielwerten (oft nur US-Titel) und reichen nicht für den vollen Funktionsumfang, etwa europäische Aktien. Für den regulären Einsatz empfiehlt sich ein kostenpflichtiger Plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brauche ich einen Datenanbieter für alle FVP-Funktionen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für die automatische Datenabfrage ja. Du kannst Bewertungen auch vollständig manuell durchführen — alle Parameter sind überschreibbar. Ohne Datenanbieter-Anbindung musst du Kennzahlen wie Free Cashflow, Umsatz oder Beta selbst eintragen."
+      }
+    }
+  ]
+}
+</script>
 <style>
 /* HERO */
 /* HERO · GO:BETTER Design v3 — Komponente kommt aus gb-shell.css */
