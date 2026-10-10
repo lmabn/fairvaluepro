@@ -102,17 +102,13 @@
     line-height: 1.75;
   }
 
-  /* BILLING TOGGLE */
+  /* BILLING TOGGLE — Hintergrund direkt auf .active, keine absolute Pill mehr */
   .toggle-wrap {
     display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
     background: var(--bg3);
     border: 1px solid var(--border2);
     border-radius: 50px;
-    padding: 0.3rem;
-    margin-bottom: 4rem;
-    position: relative;
+    padding: 4px;
   }
   .toggle-btn {
     font-family: var(--mono);
@@ -120,27 +116,21 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-2);
-    padding: 0.45rem 1.1rem;
+    padding: 0 1.1rem;
+    height: 2rem;
     border-radius: 50px;
     cursor: pointer;
     border: none;
     background: transparent;
-    transition: color 0.2s;
-    position: relative;
-    z-index: 1;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     line-height: 1;
+    transition: color 0.2s, background 0.25s ease;
   }
-  .toggle-btn.active { color: var(--bg); }
-  .toggle-pill {
-    position: absolute;
-    top: 0.3rem; bottom: 0.3rem;
-    border-radius: 50px;
+  .toggle-btn.active {
+    color: var(--bg);
     background: var(--neon);
-    transition: left 0.25s ease, width 0.25s ease;
-    z-index: 0;
   }
   .save-badge {
     font-family: var(--mono);
@@ -521,7 +511,6 @@
         <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 1.1rem 0 1.1rem;">
           <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
           <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
-          <span class="toggle-pill" id="toggle-pill" aria-hidden="true"></span>
         </div>
         <ul class="plan-features">
           <li>
@@ -716,19 +705,10 @@
   (function() {
     const btnMonthly = document.getElementById('btn-monthly');
     const btnYearly  = document.getElementById('btn-yearly');
-    const pill       = document.getElementById('toggle-pill');
-    const wrap       = document.getElementById('toggle-wrap');
     const priceVal   = document.getElementById('max-price-value');
     const priceNote  = document.getElementById('max-price-note');
     const cta        = document.getElementById('max-cta');
-    if (!btnMonthly || !btnYearly || !pill || !wrap || !priceVal || !priceNote || !cta) return;
-
-    const positionPill = (activeBtn) => {
-      const r  = activeBtn.getBoundingClientRect();
-      const wr = wrap.getBoundingClientRect();
-      pill.style.left  = (r.left - wr.left) + 'px';
-      pill.style.width = r.width + 'px';
-    };
+    if (!btnMonthly || !btnYearly || !priceVal || !priceNote || !cta) return;
 
     const setMode = (mode) => {
       const activeBtn   = mode === 'yearly' ? btnYearly  : btnMonthly;
@@ -745,18 +725,10 @@
         priceNote.textContent = 'oder 89,91 € im Jahr · 25 % gespart';
       }
       cta.href = 'https://app.gobetter.trade/fairvalue?checkout=max&billing=' + mode;
-      positionPill(activeBtn);
     };
 
     btnMonthly.addEventListener('click', () => setMode('monthly'));
     btnYearly.addEventListener('click',  () => setMode('yearly'));
-
-    // Pill-Position initialisieren + bei Resize nachführen
-    window.addEventListener('load',   () => positionPill(btnMonthly));
-    window.addEventListener('resize', () => {
-      const active = wrap.querySelector('.toggle-btn.active');
-      if (active) positionPill(active);
-    });
   })();
 </script>
 <script src="gb-shell.js" defer></script>
