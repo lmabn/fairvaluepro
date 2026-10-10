@@ -10,6 +10,20 @@
 - Direkter Push auf `main` ist serverseitig blockiert (HTTP 403) — immer den PR-Weg gehen.
 - Keine zusätzliche Bestätigung für PR-Erstellung nötig; der Auto-Merge ist die User-Default-Präferenz.
 
+## Pages-Deploy-Check nach Merge
+
+Nach jedem Merge auf `main` **vor** jedem Purge-Hinweis an den User:
+
+1. `gh api "repos/lmabn/fairvaluepro/actions/runs?per_page=5"` **ohne** `status`-Filter aufrufen.
+2. In der Antwort nach dem Merge-Commit-SHA suchen.
+3. Erst wenn `conclusion: success` für diesen SHA bestätigt ist, Purge-Hinweis geben.
+4. Falls `status: queued` oder `in_progress` → warten und erneut prüfen; falls > 2 min hängend → User informieren. Ein `queued`-Lauf lässt sich **nicht** per „Re-run" neu anstoßen (nur „Cancel"); Weg ist dann abbrechen und einen trivialen Commit (z. B. `sitemap.xml` lastmod-Bump) nachschieben, der einen frischen Build triggert.
+5. Falls **kein** Run existiert → max. 30 s warten (Trigger-Delay), sonst Alarm.
+
+Hintergrund: Der Pages-Workflow ist GitHubs auto-generierter `pages build and deployment` (keine `.github/workflows/`-Datei im Repo, kein eigener Pfadfilter, kein eigenes concurrency-Setup). Wenn ein Build in `queued` hängt und nicht durchstartet, ist die Ursache **vermutlich** eine transiente GitHub-Infrastructure-Verzögerung (nicht belegt — reine Hypothese); Pages hat eine built-in Deployment-Concurrency, mehr nicht.
+
+**Allgemeine Lehre (nicht nur Pages):** Ein Filter, der etwas ausblendet, erzeugt einen Fehlschluss, der wie ein Befund aussieht. „Keinen abgeschlossenen Lauf gefunden" ist nicht „kein Lauf gestartet". Wer eine Abfrage einschränkt, muss beim Auswerten denselben Vorbehalt mitführen. Das gilt für jede Suche, nicht nur für Workflow-Runs.
+
 ## Offene To-dos
 
 - **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
