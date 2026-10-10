@@ -368,8 +368,8 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
               Watchlist
             </div>
-            <div class="td-nav-item" data-key="position">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 7h18"/><path d="M8 7l-4 7a4 4 0 0 0 8 0z"/><path d="M16 7l4 7a4 4 0 0 1-8 0z"/></svg>
+            <div class="td-nav-item td-active" data-key="position">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 7h18"/><path d="M8 7l-4 7a4 4 0 0 0 8 0z"/><path d="M16 7l4 7a4 4 0 0 1-8 0z"/></svg>
               Positionsgröße
             </div>
             <div class="td-nav-item" data-key="einstieg">
@@ -380,8 +380,8 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
               Verkaufsprüfung
             </div>
-            <div class="td-nav-item td-active" data-key="recovery">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <div class="td-nav-item" data-key="recovery">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
               Recovery Return
             </div>
             <div class="td-nav-item" data-key="zins">
@@ -403,7 +403,7 @@
           <div style="padding:1.2rem; display:flex; flex-direction:column; gap:0.8rem;">
 
             <!-- PANEL 1: Recovery Return -->
-            <div class="td-panel visible" id="panel-recovery">
+            <div class="td-panel" id="panel-recovery">
               <div>
                 <div style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.2rem;">Recovery Return</div>
                 <div style="font-size:0.6rem; color:var(--text-3);">Wie viel Wachstum braucht es, um einen Verlust auszugleichen?</div>
@@ -506,8 +506,8 @@
               </div>
             </div>
 
-            <!-- PANEL 3: Positionsgröße -->
-            <div class="td-panel" id="panel-position">
+            <!-- PANEL 3: Positionsgröße (Startpanel) -->
+            <div class="td-panel visible" id="panel-position">
               <div>
                 <div style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.2rem;">Positionsgröße</div>
                 <div style="font-size:0.6rem; color:var(--text-3);">Wie viele Stück, bei welchem Risiko?</div>
@@ -796,14 +796,40 @@
   // Animate table rows only when mockup is visible while scrolling
   const mockup = document.getElementById('td-mockup');
   if(mockup) {
-    // Module cycling: recovery → watchlist → recovery…
+    // Module cycling: position → watchlist → recovery → position…
     const navItems = mockup.querySelectorAll('.td-nav-item');
-    const panels = { recovery: document.getElementById('panel-recovery'), watchlist: document.getElementById('panel-watchlist') };
-    const cycle = ['recovery', 'watchlist'];
+    const panels = {
+      position:  document.getElementById('panel-position'),
+      watchlist: document.getElementById('panel-watchlist'),
+      recovery:  document.getElementById('panel-recovery')
+    };
+    const cycle = ['position', 'watchlist', 'recovery'];
     let step = 0;
 
+    // Mindesthöhe am Panel-Container: Maximum aller Panel-Höhen,
+    // damit beim Wechsel nichts springt (Container würde sonst mit
+    // dem jeweils aktiven Panel schrumpfen/wachsen).
+    const container = panels.position && panels.position.parentElement;
+    if (container) {
+      let maxH = 0;
+      Object.values(panels).forEach(p => {
+        if (!p) return;
+        const prev = { display: p.style.display, visibility: p.style.visibility, position: p.style.position, width: p.style.width };
+        p.style.display = 'flex';
+        p.style.visibility = 'hidden';
+        p.style.position = 'absolute';
+        p.style.width = '100%';
+        maxH = Math.max(maxH, p.offsetHeight);
+        p.style.display = prev.display;
+        p.style.visibility = prev.visibility;
+        p.style.position = prev.position;
+        p.style.width = prev.width;
+      });
+      if (maxH > 0) container.style.minHeight = Math.ceil(maxH) + 'px';
+    }
+
     // panel key → sidebar key mapping
-    const sidebarKey = { recovery: 'recovery', watchlist: 'watchlist' };
+    const sidebarKey = { position: 'position', watchlist: 'watchlist', recovery: 'recovery' };
 
     function switchTo(key) {
       // Update sidebar: highlight the matching data-key item
