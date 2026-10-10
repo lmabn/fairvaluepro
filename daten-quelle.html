@@ -40,7 +40,7 @@
       "name": "Warum muss ich selbst einen Plan beim Datenanbieter abschließen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Marktdaten-Lizenzen sind teuer — kauft ein Tool sie zentral für alle Nutzer ein, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du schließt deinen Plan direkt beim Datenanbieter zu dessen Konditionen ab und behältst volle Kontrolle über Plan und Kosten; wir tragen kein Lizenzrisiko. Für Registrierungen über unseren Link erhalten wir eine Vermittlungsprovision vom Anbieter — für dich entstehen dadurch keine Mehrkosten, im Gegenteil: du erhältst 25 % Rabatt."
+        "text": "Marktdaten-Lizenzen sind teuer — kauft ein Tool sie zentral für alle Nutzer ein, stecken die Kosten versteckt im Abo-Preis. Unser Ansatz ist transparenter: Du schließt deinen Plan direkt beim Datenanbieter zu dessen Konditionen ab und behältst volle Kontrolle über Plan und Kosten; wir tragen kein Lizenzrisiko. Für Registrierungen über unseren Link erhalten wir eine Vermittlungsprovision vom Anbieter — für dich entstehen dadurch keine Mehrkosten, im Gegenteil: du erhältst 25 % Rabatt (wird im Bezahlvorgang abgezogen)."
       }
     },
     {
@@ -48,7 +48,7 @@
       "name": "Was kostet ein Plan beim Datenanbieter typischerweise?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Das hängt vom Anbieter und deinem Nutzungsverhalten ab. Die aktuellen FMP-Preise siehst du mit 25 % Rabatt über unseren Partner-Link. Wichtig: Wähle einen Plan für die persönliche Nutzung — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt. Business- oder Commercial-Pläne sind für die Nutzung über uns weder erforderlich noch zulässig."
+        "text": "Das hängt vom Anbieter und deinem Nutzungsverhalten ab. Die aktuellen FMP-Preise siehst du mit 25 % Rabatt über unseren Partner-Link — der Rabatt wird im Bezahlvorgang abgezogen. Wichtig: Wähle einen Plan für die persönliche Nutzung — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt. Business- oder Commercial-Pläne sind für die Nutzung über uns weder erforderlich noch zulässig."
       }
     },
     {
@@ -80,7 +80,7 @@
       "name": "Wie weit komme ich mit dem kostenlosen Plan des Datenanbieters?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Zum Ausprobieren eignet sich der kostenlose Plan gut: Du kannst Fair Value Pro mit deinem eigenen Schlüssel testen und einige Werte durchrechnen. Er ist aber in zweierlei Hinsicht begrenzt — in der Zahl der Abfragen und vor allem in der Abdeckung: Kostenlose Pläne enthalten meist nur eine kleine Auswahl an Beispielwerten (oft nur US-Titel) und reichen nicht für den vollen Funktionsumfang, etwa europäische Aktien. Die jeweils aktuellen Werte und Limits findest du bei FMP. Für den regulären Einsatz empfiehlt sich ein kostenpflichtiger Plan — mit unserem Partner-Link 25 % günstiger."
+        "text": "Zum Ausprobieren eignet sich der kostenlose Plan gut: Du kannst Fair Value Pro mit deinem eigenen Schlüssel testen und einige Werte durchrechnen. Er ist aber in zweierlei Hinsicht begrenzt — in der Zahl der Abfragen und vor allem in der Abdeckung: Kostenlose Pläne enthalten meist nur eine kleine Auswahl an Beispielwerten (oft nur US-Titel) und reichen nicht für den vollen Funktionsumfang, etwa europäische Aktien. Die jeweils aktuellen Werte und Limits findest du bei FMP. Für den regulären Einsatz empfiehlt sich ein kostenpflichtiger Plan — mit unserem Partner-Link 25 % günstiger (wird im Bezahlvorgang abgezogen)."
       }
     },
     {
@@ -161,8 +161,10 @@
 .partner-badge { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; display: inline-block; }
 .partner-badge.recommended { color: var(--neon); background: var(--neon-dim); border: 1px solid var(--neon-border); }
 .partner-badge.available { color: var(--text-3); background: var(--bg3); border: 1px solid var(--border2); }
-.partner-cta { margin: 0 0 1rem; }
+.partner-cta { margin: 0 0 0.4rem; }
+.partner-cta-hint { font-size: 0.7rem; color: var(--text-3); display: block; margin-bottom: 1rem; }
 .step-cta { margin-top: 0.8rem; align-self: flex-start; }
+.step-cta-hint { font-size: 0.7rem; color: var(--text-3); display: block; margin-top: 0.4rem; }
 .partner-note { text-align: center; font-size: 0.8rem; color: var(--text-3); max-width: 500px; margin: 0 auto; }
 
 /* FAQ */
@@ -313,7 +315,7 @@
         <div class="step-num">1</div>
         <div class="step-body">
           <div class="step-title">Registrieren</div>
-          <div class="step-text">Erstelle deinen Account und folge dem geführten Onboarding — nichts muss separat gesucht werden. <strong>25 % Rabatt auf jeden FMP-Plan bekommst du über unseren Partner-Link.</strong></div>
+          <div class="step-text">Erstelle deinen Account und folge dem geführten Onboarding — nichts muss separat gesucht werden. <strong>25 % Rabatt bekommst du über unseren Partner-Link — wird im Bezahlvorgang abgezogen.</strong></div>
           <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener" class="gb-btn gb-btn--m gb-btn--primary step-cta">Zum FMP-Plan mit 25 % Rabatt</a>
           <span class="step-detail">Dauert: ~1 Minute · Kostenlos</span>
         </div>
@@ -326,7 +328,7 @@
           <div class="step-text">Im Onboarding wählst du deinen Daten-Partner und trägst deinen API-Schlüssel ein.</div>
           <ul class="step-options">
             <li><strong>Mit Account:</strong> API-Schlüssel aus deinem Anbieter-Dashboard kopieren und hier eintragen.</li>
-            <li class="alt"><strong>Noch keinen:</strong> Bei FMP registrieren, Plan wählen, API-Schlüssel kopieren — und zurück zum Onboarding. <strong>25 % Rabatt bekommst du über unseren Partner-Link.</strong></li>
+            <li class="alt"><strong>Noch keinen:</strong> Bei FMP registrieren, Plan wählen, API-Schlüssel kopieren — und zurück zum Onboarding. <strong>25 % Rabatt bekommst du über unseren Partner-Link — wird im Bezahlvorgang abgezogen.</strong></li>
           </ul>
           <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener" class="gb-btn gb-btn--m gb-btn--secondary step-cta">Zu FMP mit 25 % Rabatt</a>
           <span class="step-detail">Dauert: ~3 Minuten · Kreditkarte beim Anbieter erforderlich</span>
@@ -366,6 +368,7 @@
         <div class="partner-type">Fundamentaldaten · Global</div>
         <div class="partner-desc">Breite Fundamentaldaten, internationale Abdeckung. Eigener FMP-Plan erforderlich.</div>
         <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener" class="gb-btn gb-btn--m gb-btn--secondary partner-cta">Zum Plan mit 25 % Rabatt</a>
+        <span class="partner-cta-hint">Rabatt wird im Bezahlvorgang abgezogen</span>
         <span class="partner-badge recommended">Verfügbar</span></div>
       <div class="partner-card">
         <div class="partner-logo partner-blurred" style="filter:blur(6px); user-select:none; letter-spacing:0.05em; color:var(--text);">██████ ████</div>
@@ -389,7 +392,7 @@
 
     <details class="faq-item">
       <summary>Was kostet ein Plan beim Datenanbieter typischerweise?<span class="faq-icon">+</span></summary>
-      <p>Das hängt vom Anbieter und deinem Nutzungsverhalten ab. <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener">Aktuelle FMP-Preise mit 25 % Rabatt →</a>. Wichtig: <strong>Wähle einen Plan für die persönliche Nutzung</strong> — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt. Business- oder Commercial-Pläne sind für die Nutzung über uns weder erforderlich noch zulässig. Preise können sich ändern; auf die Preisgestaltung der Anbieter haben wir keinen Einfluss.</p>
+      <p>Das hängt vom Anbieter und deinem Nutzungsverhalten ab. <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener">Aktuelle FMP-Preise mit 25 % Rabatt →</a> — der Rabatt wird im Bezahlvorgang abgezogen. Wichtig: <strong>Wähle einen Plan für die persönliche Nutzung</strong> — Fair Value Pro ist auf Bring-Your-Own-Key mit eigenem Personal-Zugang ausgelegt. Business- oder Commercial-Pläne sind für die Nutzung über uns weder erforderlich noch zulässig. Preise können sich ändern; auf die Preisgestaltung der Anbieter haben wir keinen Einfluss.</p>
     </details>
 
     <details class="faq-item">
@@ -409,7 +412,7 @@
 
     <details class="faq-item">
       <summary>Wie weit komme ich mit dem kostenlosen Plan des Datenanbieters?<span class="faq-icon">+</span></summary>
-      <p>Zum Ausprobieren eignet sich der kostenlose Plan gut: Du kannst Fair Value Pro mit deinem eigenen Schlüssel testen und einige Werte durchrechnen. Er ist aber in zweierlei Hinsicht begrenzt — in der Zahl der Abfragen und vor allem in der Abdeckung: Kostenlose Pläne enthalten meist nur eine kleine Auswahl an Beispielwerten (oft nur US-Titel) und reichen nicht für den vollen Funktionsumfang, etwa europäische Aktien. Die jeweils aktuellen Werte und Limits <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener">findest du bei FMP →</a>. Für den regulären Einsatz empfiehlt sich ein kostenpflichtiger Plan — <strong>mit unserem Partner-Link 25 % günstiger</strong>.</p>
+      <p>Zum Ausprobieren eignet sich der kostenlose Plan gut: Du kannst Fair Value Pro mit deinem eigenen Schlüssel testen und einige Werte durchrechnen. Er ist aber in zweierlei Hinsicht begrenzt — in der Zahl der Abfragen und vor allem in der Abdeckung: Kostenlose Pläne enthalten meist nur eine kleine Auswahl an Beispielwerten (oft nur US-Titel) und reichen nicht für den vollen Funktionsumfang, etwa europäische Aktien. Die jeweils aktuellen Werte und Limits <a href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener">findest du bei FMP →</a>. Für den regulären Einsatz empfiehlt sich ein kostenpflichtiger Plan — <strong>mit unserem Partner-Link 25 % günstiger</strong> (wird im Bezahlvorgang abgezogen).</p>
     </details>
 
     <details class="faq-item">
