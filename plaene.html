@@ -10,19 +10,19 @@
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0B0D10">
 <link rel="canonical" href="https://gobetter.trade/plaene.html">
-<meta name="description" content="GO:BETTER in drei Plänen — GO und PRO kostenlos für alle drei Werkzeuge, MAX ab 7,49 €/Monat mit vollem Funktionsumfang, Speicherfunktionen und PDF-Export.">
+<meta name="description" content="GO:BETTER in drei Plänen — GO und PRO kostenlos für alle drei Werkzeuge, MAX für 9,99 €/Monat mit vollem Funktionsumfang, Speicherfunktionen und PDF-Export.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GO:BETTER">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Pläne &amp; Preise · GO:BETTER">
-<meta property="og:description" content="GO:BETTER in drei Plänen — GO und PRO kostenlos für alle drei Werkzeuge, MAX ab 7,49 €/Monat mit vollem Funktionsumfang, Speicherfunktionen und PDF-Export.">
+<meta property="og:description" content="GO:BETTER in drei Plänen — GO und PRO kostenlos für alle drei Werkzeuge, MAX für 9,99 €/Monat mit vollem Funktionsumfang, Speicherfunktionen und PDF-Export.">
 <meta property="og:url" content="https://gobetter.trade/plaene.html">
 <meta property="og:image" content="https://gobetter.trade/assets/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pläne &amp; Preise · GO:BETTER">
-<meta name="twitter:description" content="GO:BETTER in drei Plänen — GO und PRO kostenlos für alle drei Werkzeuge, MAX ab 7,49 €/Monat mit vollem Funktionsumfang, Speicherfunktionen und PDF-Export.">
+<meta name="twitter:description" content="GO:BETTER in drei Plänen — GO und PRO kostenlos für alle drei Werkzeuge, MAX für 9,99 €/Monat mit vollem Funktionsumfang, Speicherfunktionen und PDF-Export.">
 <meta name="twitter:image" content="https://gobetter.trade/assets/brand/og-image.png">
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="style.css">
@@ -40,7 +40,7 @@
       "name": "Brauche ich eine Kreditkarte für den kostenlosen Plan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nein. GO und PRO sind vollständig kostenlos — keine Zahlungsdaten, kein Abo, kein Risiko. MAX wird monatlich oder jährlich bezahlt (ab 7,49 €/Monat bei Jahreszahlung); die Buchung läuft direkt in der App. Die Marktdaten laufen über deinen eigenen Anbieter-Schlüssel (eigener Plan beim Datenanbieter, oft mit kostenloser Stufe) — unabhängig vom GO:BETTER-Plan."
+        "text": "Nein. GO und PRO sind vollständig kostenlos — keine Zahlungsdaten, kein Abo, kein Risiko. MAX kostet 9,99 €/Monat; die Buchung läuft direkt in der App, Jahreszahlung ist dort ebenfalls möglich. Die Marktdaten laufen über deinen eigenen Anbieter-Schlüssel (eigener Plan beim Datenanbieter, oft mit kostenloser Stufe) — unabhängig vom GO:BETTER-Plan."
       }
     },
     {
@@ -433,7 +433,7 @@
     <div class="gb-nav-right">
       <a href="plaene.html">Pläne</a>
       <a href="akademie/index.html">Akademie</a>
-      <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--primary gb-btn--m">Zugang erhalten</a>
+      <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--primary gb-btn--m">Jetzt starten</a>
       <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </button>
@@ -455,7 +455,7 @@
   <div class="gb-hero-inner">
     <span class="gb-eyebrow fade in">Pläne</span>
     <h1 class="gb-h1-product fade in">Jetzt<br class="mobile-br"> <span class="accent">starten.</span></h1>
-    <p class="gb-hero-sub fade in">GO und PRO kostenlos — alle drei Werkzeuge, ohne Kreditkarte, ohne Verpflichtung. MAX ab 7,49 €/Monat mit vollem Funktionsumfang.</p>
+    <p class="gb-hero-sub fade in">GO und PRO kostenlos — alle drei Werkzeuge, ohne Kreditkarte, ohne Verpflichtung. MAX für 9,99 €/Monat mit vollem Funktionsumfang.</p>
   </div>
 </section>
 
@@ -501,16 +501,21 @@
         <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--m gb-btn--secondary">Jetzt registrieren</a>
       </div>
 
-      <!-- PLAN 3: AUF ANFRAGE -->
+      <!-- PLAN 3: MAX -->
       <div class="plan featured">
         <div class="plan-top-line"></div>
         <div class="plan-bottom-line"></div>
         <span class="plan-badge">Empfohlen</span><div class="plan-name" style="color:var(--neon);">MAX</div>
         <div class="plan-desc">Für regelmäßige Nutzer — alle Werkzeuge, Analysen speichern, Verlauf, PDF-Export.</div>
+        <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 0.4rem 0 1.1rem;">
+          <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
+          <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
+          <span class="toggle-pill" id="toggle-pill" aria-hidden="true"></span>
+        </div>
         <div class="plan-price">
-          <div class="price-main"><span class="currency">€</span><span>9,99</span></div>
-          <div class="price-period">pro Monat</div>
-          <div class="price-annual-note">oder 89,91 € im Jahr · 7,49 €/Monat · 25 % gespart</div>
+          <div class="price-main"><span class="currency">€</span><span id="max-price-value">9,99</span></div>
+          <div class="price-period" id="max-price-period">pro Monat</div>
+          <div class="price-annual-note" id="max-price-note">oder 89,91 € im Jahr · 7,49 €/Monat · 25 % gespart</div>
         </div>
         <ul class="plan-features">
           <li>
@@ -529,10 +534,7 @@
           <li><strong>Portfolio Tracker</strong></li>
           <li><strong>Investment Planner</strong></li>
         </ul>
-        <div style="display:flex; flex-direction:column; gap:0.6rem;">
-          <a href="https://app.gobetter.trade/fairvalue?checkout=max&amp;billing=monthly" class="gb-btn gb-btn--m gb-btn--primary">Monatlich · 9,99 € →</a>
-          <a href="https://app.gobetter.trade/fairvalue?checkout=max&amp;billing=yearly" class="gb-btn gb-btn--m gb-btn--secondary">Jährlich · 25 % sparen →</a>
-        </div>
+        <a id="max-cta" href="https://app.gobetter.trade/fairvalue?checkout=max&amp;billing=monthly" class="gb-btn gb-btn--m gb-btn--primary">MAX wählen →</a>
       </div>
 
     </div>
@@ -640,7 +642,7 @@
     <div class="faq-list fade">
       <details class="faq-item">
         <summary>Brauche ich eine Kreditkarte für den kostenlosen Plan?</summary>
-        <p>Nein. GO und PRO sind vollständig kostenlos — keine Zahlungsdaten, kein Abo, kein Risiko. MAX wird monatlich oder jährlich bezahlt (ab 7,49 €/Monat bei Jahreszahlung); die Buchung läuft direkt in der App. Die Marktdaten laufen über deinen eigenen Anbieter-Schlüssel (eigener Plan beim Datenanbieter, oft mit kostenloser Stufe) — unabhängig vom GO:BETTER-Plan.</p>
+        <p>Nein. GO und PRO sind vollständig kostenlos — keine Zahlungsdaten, kein Abo, kein Risiko. MAX kostet 9,99 €/Monat; die Buchung läuft direkt in der App, Jahreszahlung ist dort ebenfalls möglich. Die Marktdaten laufen über deinen eigenen Anbieter-Schlüssel (eigener Plan beim Datenanbieter, oft mit kostenloser Stufe) — unabhängig vom GO:BETTER-Plan.</p>
       </details>
       <details class="faq-item">
         <summary>Was passiert, wenn ich meinen Account lösche?</summary>
@@ -663,7 +665,7 @@
   <div class="container">
     <h2 class="fade">Starte deine<br><span class="n">erste Analyse.</span></h2>
     <p class="fade">Starte mit GO ohne Account — oder registriere dich für PRO und MAX.</p>
-    <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--m gb-btn--primary fade">Zugang erhalten →</a>
+    <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--m gb-btn--primary fade">Jetzt starten →</a>
   </div>
 </section>
 
@@ -707,17 +709,52 @@
     obs.observe(el);
   });
 
-  // Toggle pill init (visual only, no billing logic)
-  window.addEventListener('load', () => {
-    const pill = document.getElementById('toggle-pill');
-    const wrap = document.getElementById('toggle-wrap');
-    const btn = document.getElementById('btn-monthly');
-    if(pill && wrap && btn) {
-      const r = btn.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
-      pill.style.left = (r.left - wr.left) + 'px';
+  // MAX billing toggle — Monat/Jahr Umschalter in der MAX-Karte
+  (function() {
+    const btnMonthly = document.getElementById('btn-monthly');
+    const btnYearly  = document.getElementById('btn-yearly');
+    const pill       = document.getElementById('toggle-pill');
+    const wrap       = document.getElementById('toggle-wrap');
+    const priceVal   = document.getElementById('max-price-value');
+    const priceNote  = document.getElementById('max-price-note');
+    const cta        = document.getElementById('max-cta');
+    if (!btnMonthly || !btnYearly || !pill || !wrap || !priceVal || !priceNote || !cta) return;
+
+    const positionPill = (activeBtn) => {
+      const r  = activeBtn.getBoundingClientRect();
+      const wr = wrap.getBoundingClientRect();
+      pill.style.left  = (r.left - wr.left) + 'px';
       pill.style.width = r.width + 'px';
-    }
-  });
+    };
+
+    const setMode = (mode) => {
+      const activeBtn   = mode === 'yearly' ? btnYearly  : btnMonthly;
+      const inactiveBtn = mode === 'yearly' ? btnMonthly : btnYearly;
+      activeBtn.classList.add('active');
+      activeBtn.setAttribute('aria-selected', 'true');
+      inactiveBtn.classList.remove('active');
+      inactiveBtn.setAttribute('aria-selected', 'false');
+      if (mode === 'yearly') {
+        priceVal.textContent  = '7,49';
+        priceNote.textContent = '89,91 € im Jahr · 25 % gespart';
+      } else {
+        priceVal.textContent  = '9,99';
+        priceNote.textContent = 'oder 89,91 € im Jahr · 7,49 €/Monat · 25 % gespart';
+      }
+      cta.href = 'https://app.gobetter.trade/fairvalue?checkout=max&billing=' + mode;
+      positionPill(activeBtn);
+    };
+
+    btnMonthly.addEventListener('click', () => setMode('monthly'));
+    btnYearly.addEventListener('click',  () => setMode('yearly'));
+
+    // Pill-Position initialisieren + bei Resize nachführen
+    window.addEventListener('load',   () => positionPill(btnMonthly));
+    window.addEventListener('resize', () => {
+      const active = wrap.querySelector('.toggle-btn.active');
+      if (active) positionPill(active);
+    });
+  })();
 </script>
 <script src="gb-shell.js" defer></script>
 </body>
