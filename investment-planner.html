@@ -201,7 +201,13 @@
 .module-desc { font-size: 0.75rem; color: var(--text-3); line-height: 1.5; }
 
 /* FEATURES */
-.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.features-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.features-grid .feat h3 { font-size: 0.95rem; }
+.ecosystem-block { margin-top: 2rem; padding: 1.8rem 2rem; display: flex; gap: 1.4rem; align-items: flex-start; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); }
+.ecosystem-block .eco-icon { flex: 0 0 auto; width: 44px; height: 44px; border: 1px solid var(--td-border); border-radius: 6px; background: var(--td-dim); display: flex; align-items: center; justify-content: center; }
+.ecosystem-block h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+.ecosystem-block p { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; margin: 0; }
+@media (max-width: 960px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
 .feat { background: var(--bg); padding: 2rem; }
 .feat-icon { font-size: 1.2rem; margin-bottom: 1rem; color: var(--td); }
 .feat h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
@@ -320,10 +326,10 @@
   <div class="gb-hero-inner">
     <span class="gb-eyebrow fade in">Investment Planner · Positionsgröße · Einstieg · Ausstieg · Bias-Coach</span>
     <h1 class="gb-h1-product fade in">Disziplin statt<br class="mobile-br"> <span class="accent">Bauchgefühl.</span></h1>
-    <p class="gb-hero-sub fade in">Fünf Werkzeuge, mit denen aus deinen Bewertungen und Depot-Daten ein Plan wird: Positionsgröße, Einstieg, Ausstieg. Mit KI-Bias-Coach auf Wunsch.</p>
+    <p class="gb-hero-sub fade in">Zehn Werkzeuge, mit denen aus deinen Bewertungen und Depot-Daten ein Plan wird: Positionsgröße, Einstieg, Ausstieg. Mit KI-Bias-Coach auf Wunsch.</p>
     <div class="gb-hero-btns fade in">
       <a href="plaene.html" class="gb-btn gb-btn--l gb-btn--primary">Jetzt starten</a>
-      <a href="#features" class="gb-btn gb-btn--l gb-btn--secondary">Fünf Module ansehen</a>
+      <a href="#features" class="gb-btn gb-btn--l gb-btn--secondary">Zehn Module ansehen</a>
     </div>
     <div class="gb-hero-pills fade in">
       <span class="gb-hero-pill is-active">MAX</span>
@@ -440,7 +446,7 @@
             <div class="td-panel" id="panel-watchlist">
               <div>
                 <div style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.2rem;">Watchlist</div>
-                <div style="font-size:0.6rem; color:var(--text-3);">Aktien beobachten und Alarm bei Buy-Zone (Kurs unter fairem Wert).</div>
+                <div style="font-size:0.6rem; color:var(--text-3);">Aktien beobachten — der Titel landet in der Kaufzone, sobald er die Sicherheitsmarge erreicht.</div>
               </div>
               <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.2rem;">
                 <div style="display:flex; align-items:center; gap:0.6rem;">
@@ -475,7 +481,7 @@
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Aktueller Kurs</span><span style="color:var(--text-2);">253 € <span style="font-size:0.5rem; color:var(--neon); background:rgba(0,255,135,0.1); padding:0.05rem 0.3rem; border-radius:2px;">LIVE</span></span></div>
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.25rem;"><span style="color:var(--text-3);">Fairer Wert</span><span style="color:var(--text-2);">356 €</span></div>
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.5rem;"><span style="color:var(--text-3);">Status</span><span style="color:var(--td); font-size:0.58rem;">29,0 % unter FW</span></div>
-                  <div style="text-align:center; font-size:0.55rem; color:#f59e0b; background:rgba(255,165,0,0.08); border:1px solid rgba(255,165,0,0.25); border-radius:3px; padding:0.25rem;">🔔 Kaufzone erreicht</div>
+                  <div style="text-align:center; font-size:0.55rem; color:#f59e0b; background:rgba(255,165,0,0.08); border:1px solid rgba(255,165,0,0.25); border-radius:3px; padding:0.25rem;">Kaufzone erreicht</div>
                 </div>
               </div>
             </div>
@@ -497,7 +503,7 @@
     <div class="pain-grid fade">
       <div class="pain-item">
         <div class="pain-q">Welche meiner Positionen bringt die höchste Rendite, wenn sie sich nur auf den fairen Wert erholt?</div>
-        <div class="pain-a">Die Recovery-Return-Analyse rankt deine Positionen nach Aufholpotenzial: Drawdown, benötigte Erholung in %, erforderliche Jahresrendite. <strong>Du siehst sofort, wo dein Kapital am härtesten für dich arbeitet</strong> — ohne dass du auf neue Gewinne spekulierst.</div>
+        <div class="pain-a">Die Recovery-Return-Analyse rankt deine gespeicherten Bewertungen nach Aufholpotenzial: Drawdown, benötigte Erholung in %, erforderliche Jahresrendite. <strong>Du siehst sofort, wo dein Kapital am härtesten für dich arbeitet</strong> — ohne dass du auf neue Gewinne spekulierst.</div>
       </div>
       <div class="pain-item">
         <div class="pain-q">Wie viel wird aus meinem Sparplan in 20 Jahren wirklich — nach Inflation?</div>
@@ -523,50 +529,98 @@
     <div style="text-align:center; margin-bottom:3rem;">
       <div class="tag fade" style="--neon: var(--td); justify-content:center;">Im Detail</div>
       <h2 class="fade" style="font-family:var(--display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.02em; margin-bottom:0.8rem;">Alles drin. Nichts Überflüssiges.</h2>
-      <p class="fade" style="color:var(--text-2); max-width:480px; margin:0 auto;">Kein Chart-Rauschen, keine Trading-Signale — nur Werkzeuge die den Entscheidungsprozess verbessern.</p>
+      <p class="fade" style="color:var(--text-2); max-width:480px; margin:0 auto;">Kein Chart-Rauschen, keine Trading-Signale — nur Werkzeuge, die den Entscheidungsprozess verbessern.</p>
     </div>
     <div class="features-grid fade">
+      <!-- 1. Meine Richtwerte -->
+      <div class="feat">
+        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <h3>Meine Richtwerte</h3>
+        <p>Deine Grenzen, einmal festgelegt: maximaler Rückgang in Euro, Cash-Korridor. Alles andere rechnet dagegen.</p>
+      </div>
+      <!-- 2. Stresstest -->
+      <div class="feat">
+        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Stresstest</h3>
+        <p>Was kostet der schlechte Tag? Größter Sektor minus 30 %, größte Position auf null, Krypto halbiert — in Euro, gegen deine Grenze gestellt.</p>
+      </div>
+      <!-- 3. Watchlist -->
+      <div class="feat">
+        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Watchlist</h3>
+        <p>Beobachten statt hinterherlaufen. Rutscht ein Titel unter deine Sicherheitsmarge, ist er beim nächsten Blick markiert.</p>
+      </div>
+      <!-- 4. Positionsgröße -->
+      <div class="feat">
+        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 7h18"/><path d="M8 7l-4 7a4 4 0 0 0 8 0z"/><path d="M16 7l4 7a4 4 0 0 1-8 0z"/></svg>
+        </div>
+        <h3>Positionsgröße</h3>
+        <p>Wie viele Stück? Aus Depotwert, Risiko je Position und dem Kurs, an dem deine These widerlegt wäre. Mit Prüfung des Chance-Risiko-Verhältnisses.</p>
+      </div>
+      <!-- 5. Einstiegsplan -->
+      <div class="feat">
+        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-4h4v-4h4v-4h4"/><path d="M4 20V8"/></svg>
+        </div>
+        <h3>Einstiegsplan</h3>
+        <p>Vor dem Kauf festhalten: in wie vielen Tranchen, zu welchen Kursen, und was eintreten müsste, damit die These aufgeht.</p>
+      </div>
+      <!-- 6. Verkaufsprüfung -->
+      <div class="feat">
+        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Verkaufsprüfung</h3>
+        <p>Verkaufen oder aushalten? Deine damalige These gegen den heutigen Kurs. Ein Kursrückgang allein ist kein Grund.</p>
+      </div>
+      <!-- 7. Recovery Return -->
       <div class="feat">
         <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
-        <h3>Recovery-Return-Analyse</h3>
-        <p>Welche Aktien in deinem Depot liefern die höchste Rendite, wenn sie sich nur auf ihr ursprüngliches Hoch oder den fairen Wert erholen? Sortierbare Tabelle mit Drawdown, benötigter Erholung und erforderlicher jährlicher Rendite. Manueller Modus ohne FVP-Anbindung möglich.</p>
+        <h3>Recovery Return</h3>
+        <p>Wo arbeitet dein Kapital am härtesten? Abstand vom Hoch, nötige Erholung, erforderliche Jahresrendite — nach Potenzial sortiert.</p>
       </div>
+      <!-- 8. Zinsrechner -->
       <div class="feat">
         <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="12" y1="10" x2="12" y2="18"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="2.5"/><path d="M4 6v4c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V6"/><path d="M4 10v4c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-4"/><path d="M4 14v4c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-4"/></svg>
         </div>
         <h3>Zinsrechner</h3>
-        <p>Startkapital, Sparrate, Rendite p.a., Laufzeit, Inflation. Vier KPI-Karten live, Linien-Chart nominal vs. real, Jahrestabelle klappbar. Kein „Berechnen"-Button nötig.</p>
+        <p>Endkapital nominal und in heutiger Kaufkraft. Live bei jeder Eingabe, mit Verlauf und Jahrestabelle.</p>
       </div>
+      <!-- 9. Rebalancing -->
       <div class="feat">
         <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 9l4-4 4 4"/><path d="M17 15l4 4-4 4"/><line x1="7" y1="5" x2="7" y2="19"/><line x1="17" y1="5" x2="17" y2="19"/></svg>
         </div>
-        <h3>Rebalancing-Planer</h3>
-        <p>Ziel-Gewichte pro Depot in % festlegen, Vergleich mit aktuellem Stand aus dem Tracker, Kauf/Verkauf-Vorschläge in €. Direkt verknüpft mit den Tracker-Depots.</p>
+        <h3>Rebalancing</h3>
+        <p>Soll gegen Ist über alle Depots, mit konkreten Beträgen in Euro: was aufstocken, was kürzen.</p>
       </div>
-      <div class="feat">
-        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
-        </div>
-        <h3>Watchlist mit Buy-Zone-Alarm</h3>
-        <p>Aktien auf der Beobachtungsliste mit Kurs- und Fair-Value-Stand aus deiner letzten Bewertung. Automatische Buy-Zone-Markierung, sobald der Kurs unter den gespeicherten Fair Value fällt.</p>
-      </div>
+      <!-- 10. Trade Journal -->
       <div class="feat">
         <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
-        <h3>Trade-Journal</h3>
-        <p>Datum, Aktie, Kauf/Verkauf, Begründung. Die Begründung ist nach Speichern unveränderlich. Outcome-Review nach 30/90/365 Tagen. Kein nachträgliches Umdeuten.</p>
+        <h3>Trade Journal</h3>
+        <p>Jede Entscheidung mit Begründung, nach dem Speichern unveränderlich. Auf Wunsch prüft die KI sie auf 16 Denkfehler.</p>
       </div>
-      <div class="feat">
-        <div class="feat-icon-wrap" style="width:44px;height:44px;border:1px solid var(--td-border);border-radius:6px;background:var(--td-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        </div>
+    </div>
+    <!-- Ökosystem-Block (Abschluss, kein Modul) -->
+    <div class="ecosystem-block fade">
+      <div class="eco-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--td)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </div>
+      <div>
         <h3>Verbunden mit dem Ökosystem</h3>
-        <p>Recovery-Analyse liest Positionen aus dem Portfolio Tracker. Watchlist greift auf FVP-Bewertungen zu. Alles mit demselben Account — kein Datendoppel.</p>
+        <p>Watchlist, Verkaufsprüfung und Recovery Return greifen auf deine gespeicherten FVP-Bewertungen zu. Rebalancing nutzt die Depot-Daten aus dem Portfolio Tracker. Alles mit demselben Account — kein Datendoppel.</p>
       </div>
     </div>
   </div>

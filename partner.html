@@ -260,7 +260,7 @@ body { background: var(--bg); }
       <div class="tool-box">
         <div class="tool-label" style="color:var(--pt-accent);">Portfolio Tracker</div>
         <div class="tool-name">Verfolgen</div>
-        <div class="tool-desc">Mehrere Depots, cashflowbereinigte Renditen (TWR/CAGR), historischer Chart. Fair-Value-Verdict pro Position direkt aus dem Kalkulator.</div>
+        <div class="tool-desc">Mehrere Depots, cashflowbereinigte Renditen (IRR/TWR), historischer Chart. Fair-Value-Verdict pro Position direkt aus dem Kalkulator.</div>
       </div>
       <div class="tool-box">
         <div class="tool-label" style="color:var(--td-accent);">Investment Planner</div>
@@ -298,7 +298,7 @@ body { background: var(--bg); }
           </tr>
           <tr>
             <td>Qualitätsscore (unabhängig vom Kurs)</td>
-            <td class="yes hl-col">✓ 10 Kriterien, Note A–D</td>
+            <td class="yes hl-col">✓ 12 Kriterien, Note A–D</td>
             <td class="no">–</td>
             <td class="part">Vermischt mit Preis</td>
             <td class="no">–</td>
@@ -479,8 +479,8 @@ body { background: var(--bg); }
       </div>
       <div class="method-item">
         <div class="method-name">Portfolio-Performance</div>
-        <div class="method-title">TWR und CAGR</div>
-        <div class="method-text">Time-Weighted Return für Cashflow-bereinigte Vergleichbarkeit — professioneller Standard. CAGR für annualisierte Mehrjahres-Vergleiche. Mathematisch sauber, nicht durch Überweisungen verzerrt.</div>
+        <div class="method-title">IRR und TWR</div>
+        <div class="method-text">IRR für die geldgewichtete, TWR für die zeitgewichtete Perspektive — professioneller Standard. Mathematisch sauber, nicht durch Überweisungen verzerrt.</div>
       </div>
       <div class="method-item">
         <div class="method-name">Behavioral Finance</div>
@@ -590,7 +590,7 @@ body { background: var(--bg); }
     <p>Das Modell trennt bewusst drei Ebenen — und schafft dadurch eine Erlösstruktur ohne Marktdaten-Lizenzrisiko.</p>
     <p><strong>Ebene 1 — Kein separates FVP-Abo für den Kalkulator.</strong> Fair Value Pro erhebt keine eigene Lizenzgebühr für das Bewertungswerkzeug. Die Nutzung erfordert jedoch zwingend einen Marktdaten-Plan beim Datenanbieter — ohne Datenzugang ist der Kalkulator nicht vollständig nutzbar. Der Zugang ist damit nicht kostenlos, aber die Kosten bleiben vollständig beim Datenanbieter und transparent für den User.</p>
     <p><strong>Ebene 2 — Daten via Partner, Provision für uns.</strong> User wählen ihren Marktdaten-Provider (FMP, Alpha Vantage u.a.) über einen geführten Onboarding-Prozess. Die Account-Erstellung beim Partner erfolgt über unseren Affiliate-Link. Für jeden Sign-Up erhalten wir eine Provision — <strong>ein Erlösstrom der mit der Nutzerbasis skaliert, ohne dass wir Marktdaten vorfinanzieren oder Lizenzrisiken tragen.</strong></p>
-    <p><strong>Ebene 3 — MAX-Features über Stripe.</strong> Erweiterte Funktionen — gespeicherte Analysen, eigene Presets, Portfolio Tracker, Investment Planner, unbegrenzte Bewertungen — werden als MAX-Plan direkt über Stripe abgerechnet. Klar definierter Mehrwert, transparente Abrechnung.</p>
+    <p><strong>Ebene 3 — MAX-Features über Stripe.</strong> Erweiterte Funktionen — gespeicherte Analysen, Preset-Sync über Geräte, Portfolio Tracker, Investment Planner — werden als MAX-Plan direkt über Stripe abgerechnet. Klar definierter Mehrwert, transparente Abrechnung.</p>
     <p><strong>Setup-Marketplace</strong> (Roadmap) — Revenue-Share mit Analysten und Content-Creators, die Premium-Setups anbieten.</p>
   </div>
 
@@ -617,7 +617,7 @@ body { background: var(--bg); }
       <div class="wanted-item">
         <div class="wanted-type" style="color:var(--mid);">Mathematiker</div>
         <div class="wanted-title">Berechnungsmethoden verifizieren</div>
-        <div class="wanted-text">Quants und Mathematiker, die unsere Implementierungen prüfen — DCF-Modell, TWR/CAGR-Berechnung, Compound-Interest-Konventionen, Cashflow-Bereinigung. Fehler in der Mathematik sind der schlimmste Fehler den ein Bewertungstool machen kann.</div>
+        <div class="wanted-text">Quants und Mathematiker, die unsere Implementierungen prüfen — DCF-Modell, IRR/TWR-Berechnung, Compound-Interest-Konventionen, Cashflow-Bereinigung. Fehler in der Mathematik sind der schlimmste Fehler den ein Bewertungstool machen kann.</div>
       </div>
       <div class="wanted-item">
         <div class="wanted-type" style="color:var(--td-accent);">Finanzexperten</div>
@@ -679,7 +679,7 @@ body { background: var(--bg); }
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Zwei-Phasen-DCF</strong> mit Gordon-Growth-Terminal-Value, vollständig user-parametrisiert</div>
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">TWR</strong> (Time-Weighted Return) — von Cashflows bereinigt, professioneller Standard</div>
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">EV/EBITDA</strong> Net-Debt-bereinigt — M&A-Praxis-konform</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CAGR</strong> für annualisierte Mehrjahres-Vergleiche</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">IRR</strong> — geldgewichtete Rendite</div>
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">DDM</strong> Constant-Growth + Two-Stage für Dividendentitel</div>
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Compound-Interest</strong> nominal r/12 monatlich + vorschüssig — matcht Spar-Apps pixelgenau</div>
         <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Margin of Safety</strong> nach Graham — prozentualer Discount-Faktor pro Aktie</div>
