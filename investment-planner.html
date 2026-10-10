@@ -520,7 +520,7 @@
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.35rem;"><span style="color:var(--text-3);">Risiko je Position</span><span style="color:var(--text-2);">1,0 %</span></div>
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.35rem;"><span style="color:var(--text-3);">Aktie</span><span style="color:var(--text); font-weight:700;">SAP</span></div>
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.35rem;"><span style="color:var(--text-3);">Einstiegskurs</span><span style="color:var(--text-2);">180,00 €</span></div>
-                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.35rem;"><span style="color:var(--text-3);">These widerlegt bei</span><span style="color:var(--text-2);">162,00 €</span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.62rem; margin-bottom:0.35rem;"><span style="color:var(--text-3);">Falsifikationsniveau</span><span style="color:var(--text-2);">162,00 €</span></div>
                   <div style="display:flex; justify-content:space-between; font-size:0.62rem;"><span style="color:var(--text-3);">Kursziel</span><span style="color:var(--text-2);">225,00 €</span></div>
                 </div>
                 <!-- RESULTS -->
@@ -546,10 +546,10 @@
               </div>
               <!-- Rechenweg kompakt -->
               <div style="background:#060d09; border:1px solid var(--border); border-radius:4px; padding:0.6rem 0.8rem; font-family:var(--mono); font-size:0.54rem; color:var(--text-3); line-height:1.7;">
-                <div><span style="color:var(--td);">Risiko-Budget</span>  84.320 € × 1,0 % = <span style="color:var(--text-2);">843 €</span></div>
-                <div><span style="color:var(--td);">Risiko / Stück</span>  180,00 € − 162,00 € = <span style="color:var(--text-2);">18,00 €</span></div>
-                <div><span style="color:var(--td);">Stückzahl</span>  843 € ÷ 18,00 € = <span style="color:var(--text-2);">46,8 → 46 (abgerundet)</span></div>
-                <div><span style="color:var(--td);">CRV</span>  (225 − 180) ÷ (180 − 162) = <span style="color:var(--text-2);">2,5 : 1</span></div>
+                <div><span style="color:var(--td);">Risiko-Budget</span>  Depotwert × Risiko-% = 84.320 € × 1,0 % = <span style="color:var(--text-2);">843 €</span></div>
+                <div><span style="color:var(--td);">Risiko / Stück</span>  Einstieg − Falsifikationsniveau = 180,00 € − 162,00 € = <span style="color:var(--text-2);">18,00 €</span></div>
+                <div><span style="color:var(--td);">Stückzahl</span>  Risiko-Budget ÷ Risiko / Stück = 843 € ÷ 18,00 € = <span style="color:var(--text-2);">46,8 → 46 (abgerundet)</span></div>
+                <div><span style="color:var(--td);">CRV</span>  (Kursziel − Einstieg) ÷ (Einstieg − Falsifikation) = (225 − 180) ÷ (180 − 162) = <span style="color:var(--text-2);">2,5 : 1</span></div>
               </div>
             </div>
 
