@@ -277,6 +277,12 @@
   nav { padding: 0 1.25rem; }
   .modules-grid { grid-template-columns: 1fr; }
 }
+
+/* Hero-Pills: Zuordnung ans Mockup (unten eng), Abstand zu den Buttons (oben weit) */
+#hero .gb-hero-pills { margin-top: 44px; }
+#hero .gb-hero-inner { padding-bottom: 56px; }
+#hero.gb-hero-product { border-bottom: none; }
+#mockup-section { padding-top: 0; scroll-margin-top: calc(var(--nav-h, 68px) + 24px); }
 </style>
 </head>
 <body data-product="td" data-level="product">
@@ -339,7 +345,7 @@
 </section>
 
 <!-- MOCKUP -->
-<section style="padding: 4rem 2rem 5rem; border-bottom: 1px solid var(--border);">
+<section id="mockup-section" style="padding: 4rem 2rem 5rem; border-bottom: 1px solid var(--border);">
   <div class="wide">
     <div class="mockup-wrap fade">
       <div class="mockup-glow"></div>
@@ -557,6 +563,7 @@
         </div><!-- /body -->
       </div><!-- /mockup -->
     </div><!-- /mockup-wrap -->
+    <p class="fade" style="text-align:center; font-family:var(--font-sans); font-size:0.85rem; color:var(--text-2); line-height:1.5; margin-top:1rem;">Beispielwerte zur Illustration — keine aktuellen Kurse oder Bewertungen.</p>
   </div>
 </section>
 

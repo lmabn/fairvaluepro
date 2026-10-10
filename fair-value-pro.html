@@ -243,7 +243,9 @@
   .product-text h2 .n { color: var(--neon); }
   .product-text p { color: var(--text-2); font-size: 0.93rem; margin-bottom: 0.9rem; }
 
+  .terminal-col { display: flex; flex-direction: column; }
   .terminal { background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; overflow: hidden; font-family: var(--mono); font-size: 0.73rem; }
+  .terminal-caption { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-2); line-height: 1.5; margin: 1rem 0 0; text-align: left; }
   .t-bar { background: var(--bg4); padding: 0.7rem 1rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
   .t-dots { display:flex; gap:6px; }
   .t-dot { width:10px; height:10px; border-radius:50%; }
@@ -668,7 +670,8 @@
         <p>Alle Modelle gleichzeitig — DCF, KGV, EV/EBITDA, DDM, PEG, historisches Median-KGV und FCF-Rendite — auf einen Blick vergleichbar. Das Ergebnis ist ein gewichteter Komposit-Wert: 50 % DCF, 25 % KGV, 25 % EV/EBITDA.</p>
         <p style="margin-top:1.2rem; font-size:0.88rem; color:var(--text-2);">Presets speichern &amp; laden · PDF-Export · Glossar mit 62 Fachbegriffen · Automatischer Datenabruf</p>
       </div>
-      <div class="terminal fade">
+      <div class="terminal-col fade">
+      <div class="terminal">
         <div class="t-bar">
           <div class="t-dots"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div></div>
           <div class="t-title">Fair Value Pro</div>
@@ -697,6 +700,8 @@
             <div class="t-v-box blue"><div class="vl">Bewertung</div><div class="vv">Überbewertet</div></div>
           </div>
         </div>
+      </div>
+      <p class="terminal-caption">Beispielwerte zur Illustration — keine aktuellen Kurse oder Bewertungen.</p>
       </div>
     </div>
   </div>
