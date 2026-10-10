@@ -165,10 +165,10 @@
 
   <h2>12. Marktdaten-Abruf (BYOK · Financial Modeling Prep)</h2>
   <p>Diese Website selbst ruft keine Marktdaten ab und übermittelt keinen API-Schlüssel an einen Marktdaten-Anbieter. Der Datenabruf findet ausschließlich in der Anwendung unter <strong>app.gobetter.trade</strong> statt und nutzt das Bring-Your-Own-Key-Prinzip: Jeder Nutzer verwendet seinen eigenen, direkt beim Anbieter abgeschlossenen Plan und API-Schlüssel.</p>
-  <p>Datenanbieter ist derzeit die <strong>Financial Modeling Prep, Inc.</strong> (USA). Die Verarbeitung in der App erfolgt in zwei getrennten Wegen:</p>
+  <p>Datenanbieter ist derzeit die <strong>Financial Modeling Prep, Inc.</strong> (USA). Innerhalb der App gibt es zwei getrennte Datenwege:</p>
   <ul>
-    <li><strong>Fair Value Pro</strong> (Kalkulator): Für die Bewertung wird der API-Schlüssel des Nutzers pro Anfrage transient über den Server von GO:BETTER an Financial Modeling Prep weitergereicht. Der Schlüssel wird nicht in URLs übertragen, nicht in Logs geschrieben und nicht in der Datenbank gespeichert.</li>
-    <li><strong>Portfolio Tracker</strong>: Marktdaten werden direkt vom Browser des Nutzers bei Financial Modeling Prep abgerufen. Der API-Schlüssel verlässt den Browser ausschließlich in Richtung Anbieter; der Server von GO:BETTER ist an diesem Abruf nicht beteiligt.</li>
+    <li><strong>Serverseitig durchgereicht</strong> (Fair Value Pro, Investment Planner): Für diese Module wird der API-Schlüssel des Nutzers pro Anfrage transient über den Server von GO:BETTER an Financial Modeling Prep weitergereicht. Der Schlüssel wird nicht in URLs übertragen, nicht in Logs geschrieben und nicht in der Datenbank gespeichert.</li>
+    <li><strong>Direkt aus dem Browser</strong> (Portfolio Tracker): Marktdaten werden unmittelbar vom Browser des Nutzers bei Financial Modeling Prep abgerufen. Der API-Schlüssel verlässt den Browser ausschließlich in Richtung Anbieter; der Server von GO:BETTER ist an diesem Abruf nicht beteiligt.</li>
   </ul>
   <p>Beide Wege unterliegen der Datenschutzerklärung der Anwendung unter <strong>app.gobetter.trade</strong>; dort sind Rechtsgrundlagen, übermittelte Datenkategorien und die Drittlandübermittlung in die USA im Detail beschrieben.</p>
 

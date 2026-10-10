@@ -53,10 +53,10 @@
     },
     {
       "@type": "Question",
-      "name": "Sieht FVP meine Marktdaten?",
+      "name": "Sieht GO:BETTER meine Marktdaten?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Während des Abrufs läuft deine Anfrage transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Die Marktdaten (Kurse, Bilanzen, Cashflows) speichern wir nicht dauerhaft und protokollieren sie nicht. Dein API-Schlüssel wird nur für die jeweilige Anfrage verwendet und ist ausschließlich in deinem Browser gespeichert, nie auf unseren Servern. KI-Anfragen laufen direkt von deinem Browser zum jeweiligen Anbieter."
+        "text": "Je nach Werkzeug zwei getrennte Wege. Fair Value Pro (Kalkulator) und Investment Planner (Planner) reichen den API-Schlüssel pro Anfrage transient über unseren Server an den Datenanbieter weiter — nicht in URLs, nicht in Logs, nicht in der Datenbank. Der Portfolio Tracker ruft die Daten direkt aus deinem Browser beim Anbieter ab; unser Server ist an diesem Abruf nicht beteiligt. In beiden Fällen bleibt dein API-Schlüssel in deinem Browser gespeichert; Marktdaten (Kurse, Bilanzen, Cashflows) speichern wir nicht dauerhaft. KI-Anfragen laufen immer direkt vom Browser zum jeweiligen Anbieter."
       }
     },
     {
@@ -258,7 +258,7 @@
   <div class="gb-hero-inner">
     <span class="gb-eyebrow fade in">Daten-Quelle · Broker-unabhängig · Transparent</span>
     <h1 class="gb-h1-product fade in">Deine Daten. Dein Anbieter.<br class="mobile-br"> <span class="accent">Deine Kontrolle.</span></h1>
-    <p class="gb-hero-sub fade in">Fair Value Pro nutzt Marktdaten von einem unserer geprüften Daten-Partner. Du schließt einen Plan direkt beim Partner ab — wir greifen nur mit deinem API-Schlüssel darauf zu. Kein Lock-in, keine versteckten Kosten auf unserer Seite.</p>
+    <p class="gb-hero-sub fade in">GO:BETTER nutzt Marktdaten von einem unserer geprüften Daten-Partner. Du schließt einen Plan direkt beim Partner ab, hinterlegst deinen API-Schlüssel einmal — und alle drei Werkzeuge greifen über ihn auf die Daten zu. Kein Lock-in, keine versteckten Kosten auf unserer Seite.</p>
     <div class="gb-hero-btns fade in">
       <a href="#how" class="gb-btn gb-btn--l gb-btn--primary">Wie es funktioniert</a>
     </div>
@@ -271,17 +271,23 @@
     <div class="why-grid">
       <div class="why-text fade">
         <div class="tag">Warum so</div>
-        <h2>Wir sind ein Bewertungstool — kein Datenprovider.</h2>
+        <h2>Wir sind ein Werkzeug — kein Datenprovider.</h2>
         <p>Die meisten Finanztools kaufen Marktdaten-Lizenzen en gros und reichen die Kosten als Abo-Gebühr weiter. Das schafft Lock-in: du bezahlst den Anbieter doppelt — einmal für die Daten, einmal für das Tool.</p>
         <p><strong>Wir trennen das bewusst.</strong> Du schließt direkt beim Daten-Partner einen Plan ab — zu dessen Konditionen, transparent und ohne Umwege. Du behältst volle Kontrolle über deinen Plan, deine Daten und deine Kosten.</p>
-        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) persistent gespeichert. Für die automatische Bewertung übergibt Fair Value Pro ihn pro Anfrage transient an den eigenen Server, der ihn ausschließlich für den Abruf beim Datenanbieter verwendet — nicht in URLs, nicht in Logs, nicht in der Datenbank.</p>
+        <p>Dein API-Schlüssel wird ausschließlich in deinem Browser (<code style="font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.3rem; border-radius:2px;">localStorage</code>) persistent gespeichert. Für automatische Abrufe gibt es zwei getrennte Wege: <strong>Fair Value Pro</strong> (Kalkulator) und <strong>Investment Planner</strong> (Planner) reichen den Schlüssel pro Anfrage transient über unseren Server an den Datenanbieter weiter — nicht in URLs, nicht in Logs, nicht in der Datenbank. Der <strong>Portfolio Tracker</strong> ruft die Daten direkt aus deinem Browser beim Anbieter ab; unser Server ist an diesem Abruf nicht beteiligt.</p>
       </div>
       <div class="why-visual fade">
-        <div style="font-size:0.6rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase;">Bewertungs-Abruf</div>
+        <div style="font-size:0.6rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase;">Serverseitig · Kalkulator &amp; Planner</div>
         <div class="flow">
           <div class="flow__node"><strong>Browser</strong><small>Schlüssel liegt lokal</small></div>
           <div class="flow__arrow" aria-hidden="true">→</div>
-          <div class="flow__node"><strong>GO:BETTER</strong><small>Fair Value Pro</small></div>
+          <div class="flow__node"><strong>GO:BETTER</strong><small>FVP · IP</small></div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><strong>Datenanbieter</strong><small>FMP u. a.</small></div>
+        </div>
+        <div style="font-size:0.6rem; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; margin-top:1.2rem;">Direkt aus dem Browser · Tracker</div>
+        <div class="flow">
+          <div class="flow__node"><strong>Browser</strong><small>Portfolio Tracker</small></div>
           <div class="flow__arrow" aria-hidden="true">→</div>
           <div class="flow__node"><strong>Datenanbieter</strong><small>FMP u. a.</small></div>
         </div>
@@ -382,8 +388,8 @@
     </details>
 
     <details class="faq-item">
-      <summary>Sieht FVP meine Marktdaten?<span class="faq-icon">+</span></summary>
-      <p>Während des Abrufs läuft deine Anfrage transient über unseren Server an den Datenanbieter, der die Antwort zurückreicht. Die <strong>Marktdaten (Kurse, Bilanzen, Cashflows) speichern wir nicht dauerhaft</strong> in unserer Datenbank und protokollieren sie nicht. Dein API-Schlüssel wird nur für die jeweilige Anfrage verwendet und ist ausschließlich in deinem Browser gespeichert, nie auf unseren Servern. KI-Anfragen (Claude/OpenAI/Gemini) laufen direkt von deinem Browser zum jeweiligen Anbieter.</p>
+      <summary>Sieht GO:BETTER meine Marktdaten?<span class="faq-icon">+</span></summary>
+      <p>Je nach Werkzeug zwei getrennte Wege. <strong>Fair Value Pro</strong> (Kalkulator) und <strong>Investment Planner</strong> (Planner) reichen den API-Schlüssel pro Anfrage transient über unseren Server an den Datenanbieter weiter — nicht in URLs, nicht in Logs, nicht in der Datenbank. Der <strong>Portfolio Tracker</strong> ruft die Daten direkt aus deinem Browser beim Anbieter ab; unser Server ist an diesem Abruf nicht beteiligt. In beiden Fällen bleibt dein API-Schlüssel in deinem Browser gespeichert; <strong>Marktdaten (Kurse, Bilanzen, Cashflows) speichern wir nicht dauerhaft</strong>. KI-Anfragen (Claude/OpenAI/Gemini) laufen immer direkt von deinem Browser zum jeweiligen Anbieter.</p>
     </details>
 
     <details class="faq-item">
