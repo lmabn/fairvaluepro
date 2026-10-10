@@ -192,7 +192,9 @@
     border-left: 1px solid var(--neon-border);
     border-right: 1px solid var(--neon-border);
     position: relative;
+    grid-template-rows: auto auto auto auto auto 1fr auto;
   }
+  .plan.featured .toggle-wrap { border-bottom: 1px solid var(--border); padding-bottom: 1.1rem; }
   .plan.featured .plan-top-line {
     position: absolute; top: 0; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, transparent, var(--neon), transparent);
@@ -505,17 +507,17 @@
       <div class="plan featured">
         <div class="plan-top-line"></div>
         <div class="plan-bottom-line"></div>
-        <span class="plan-badge">Empfohlen</span><div class="plan-name" style="color:var(--neon);">MAX</div>
+        <span class="plan-badge">Alle Werkzeuge</span><div class="plan-name" style="color:var(--neon);">MAX</div>
         <div class="plan-desc">Für regelmäßige Nutzer — alle Werkzeuge, Analysen speichern, Verlauf, PDF-Export.</div>
-        <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 0.4rem 0 1.1rem;">
-          <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
-          <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
-          <span class="toggle-pill" id="toggle-pill" aria-hidden="true"></span>
-        </div>
         <div class="plan-price">
           <div class="price-main"><span class="currency">€</span><span id="max-price-value">9,99</span></div>
           <div class="price-period" id="max-price-period">pro Monat</div>
-          <div class="price-annual-note" id="max-price-note">oder 89,91 € im Jahr · 7,49 €/Monat · 25 % gespart</div>
+          <div class="price-annual-note" id="max-price-note">oder 89,91 € im Jahr · 25 % gespart</div>
+        </div>
+        <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 1.1rem 0 1.1rem;">
+          <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
+          <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
+          <span class="toggle-pill" id="toggle-pill" aria-hidden="true"></span>
         </div>
         <ul class="plan-features">
           <li>
@@ -736,10 +738,10 @@
       inactiveBtn.setAttribute('aria-selected', 'false');
       if (mode === 'yearly') {
         priceVal.textContent  = '7,49';
-        priceNote.textContent = '89,91 € im Jahr · 25 % gespart';
+        priceNote.textContent = 'oder 9,99 € pro Monat';
       } else {
         priceVal.textContent  = '9,99';
-        priceNote.textContent = 'oder 89,91 € im Jahr · 7,49 €/Monat · 25 % gespart';
+        priceNote.textContent = 'oder 89,91 € im Jahr · 25 % gespart';
       }
       cta.href = 'https://app.gobetter.trade/fairvalue?checkout=max&billing=' + mode;
       positionPill(activeBtn);
