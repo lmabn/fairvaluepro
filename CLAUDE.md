@@ -24,6 +24,24 @@ Hintergrund: Der Pages-Workflow ist GitHubs auto-generierter `pages build and de
 
 **Allgemeine Lehre (nicht nur Pages):** Ein Filter, der etwas ausblendet, erzeugt einen Fehlschluss, der wie ein Befund aussieht. „Keinen abgeschlossenen Lauf gefunden" ist nicht „kein Lauf gestartet". Wer eine Abfrage einschränkt, muss beim Auswerten denselben Vorbehalt mitführen. Das gilt für jede Suche, nicht nur für Workflow-Runs.
 
+## FMP-Referral-Link
+
+Monetarisiert — die Provision wird nur zugeordnet, wenn der Kauf über **unseren** Link läuft (nicht über ein früher per Link angelegtes Konto). Der Link ist bewusst mehrfach im HTML hartkodiert, nicht per JS gesetzt: ein Affiliate-Link darf nie an einem Skript hängen, sonst geht Geld verloren.
+
+**URL (exakt):** siehe `EXPECTED` in `scripts/audit-fmp.sh` — dort steht sie einmal und ist die Quelle der Wahrheit.
+
+**Regeln**
+- Jeder FMP-Link steht als `<a>` im HTML mit `target="_blank"` und `rel="noopener"`.
+- Der Query-Parameter (`couponCode=…`) bleibt unverändert — er trägt die Attribution.
+- Der Gutscheincode darf **nirgends abtippbar** stehen (nicht im Fließtext, nicht in Readmes, nicht im Styleguide, nicht in dieser Datei). Der Rabatt kommt ausschließlich über den Link.
+- Nach jedem Touch an einer FMP-Stelle lokal `bash scripts/audit-fmp.sh` laufen lassen. Das Script zählt die Vorkommen, prüft dass alle Links identisch sind und `target`/`rel` tragen, und schlägt bei abtippbarem Gutscheincode an. Exit-Code 0 = alles ok.
+
+**Platzierungs-Haltung** — Direktlinks nur dort, wo der Nutzer **jetzt gerade** zum Anbieter will (daten-quelle.html: Setup-Steps, Partner-Card, zwei FAQs). Nicht in `agb.html` / `datenschutz.html` (Legal), nicht in `partner.html` (B2B-Pitch), nicht in `plaene.html` (dort läuft die Konversion über die Erklärseite `daten-quelle.html`).
+
+**Formulierungs-Haltung** — Der Rabatt kommt NUR über den Link. Also nicht „wird automatisch angewendet", nicht „im Onboarding freigeschaltet", sondern aktiv: „25 % Rabatt bekommst du über unseren Partner-Link." Button mit identischem Satz dahinter.
+
+**Offene Frage:** Gilt der Rabatt dauerhaft oder nur auf die erste Zahlung? Mail an Sam läuft. Falls einmalig → alle fünf Stellen präziser machen („auf die erste Zahlung" statt pauschal).
+
 ## Offene To-dos
 
 - **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
