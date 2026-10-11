@@ -24,6 +24,11 @@ Hintergrund: Der Pages-Workflow ist GitHubs auto-generierter `pages build and de
 
 **Allgemeine Lehre (nicht nur Pages):** Ein Filter, der etwas ausblendet, erzeugt einen Fehlschluss, der wie ein Befund aussieht. „Keinen abgeschlossenen Lauf gefunden" ist nicht „kein Lauf gestartet". Wer eine Abfrage einschränkt, muss beim Auswerten denselben Vorbehalt mitführen. Das gilt für jede Suche, nicht nur für Workflow-Runs.
 
+## Allgemeine Lehren · Arbeitsweise
+
+- **Nach Aussagen arbeiten, nicht nach Fundstellen.** Prüfen heißt den Inhalt gegen den aktuellen Stand lesen, nicht nach einer Liste verdächtiger Wörter greifen. Ein Grep deckt nur ab, wonach gesucht wurde; der Rest bleibt ungeprüft, bis er gelesen ist. Wenn jemand bittet, einen Abschnitt gegen den heutigen Stand abzugleichen, ist der Abschnitt zu lesen — nicht ein Scan abzuliefern.
+- **Ein Auftrag ist unfertig, wenn er eine Information offenlässt, die der Auftraggeber selbst hat.** Fehlt eine Quelle zur Prüfung, aber der Auftraggeber hat sie: fragen, nicht ausweichen. „Ohne Zugriff kann ich nicht prüfen" ist keine Antwort, sondern eine offene Frage, die gestellt werden muss.
+
 ## FMP-Referral-Link
 
 Monetarisiert — die Provision wird nur zugeordnet, wenn der Kauf über **unseren** Link läuft (nicht über ein früher per Link angelegtes Konto). Der Link ist bewusst mehrfach im HTML hartkodiert, nicht per JS gesetzt: ein Affiliate-Link darf nie an einem Skript hängen, sonst geht Geld verloren.
