@@ -130,6 +130,24 @@ Konsequenz für die Überarbeitung:
 - Abschnitt **„Was Ludmila nicht sagen sollte, weil es heute nicht stimmt"** am Dateianfang (acht Punkte, u. a. 10-Jahre-Kursverlauf, 7-Modelle-Framing, Live-Kurse in der Watchlist, Krypto/Rohstoff-Erkennung, PDF-Sperre nur am Knopf, Tracker-Zeiträume).
 - Abschnitt **„Offene Rechtsfragen"** (Widerrufs-Zustimmung, Konto-Löschung, AGB-Link nur im Kaufdialog) — ohne Bewertung, aber nichts davon in Entwürfe aufnehmen.
 
+## Mockup-Abgleich — Faktenbasis
+
+> **Quelle:** Bauplan im App-Repo (Block-4-Bericht der App-Sitzung).
+> **Stand:** 2026-10-11.
+
+**Datei:** `docs/mockup-beschriftungen.md` — der Block-4-Bericht steht am Dateianfang.
+
+Die statischen Produkt-Mockups auf der Website weichen an mehreren Stellen von der App ab. Nicht einzelfallweise korrigieren — bei der Überarbeitung der jeweiligen Seite als Ganzes nachziehen.
+
+**Betroffene Seiten:**
+- **Seite 3 (`portfolio-tracker.html`)** — fast jede Kennzahl heißt in den Mockups anders als in der App; der Zeitraum-Umschalter „1J · 2J · 3J · 5J · Alle" existiert in der App gar nicht.
+- **Seite 4 (`investment-planner.html`)** — bei der Positionsgröße stimmen die Hälfte der Feldnamen nicht.
+
+**Grundsätzlich (vor Korrektur mit User klären):**
+- Das Terminal auf `fair-value-pro.html` (Section `#product`) bildet keine App-Ansicht ab — „Unternehmensqualität", „Gewinnwachstum 5J", „Verschuldung" und die beiden Boxen gibt es dort nicht.
+- Dasselbe gilt für die Startseiten-Panels in `index.html`.
+- Bei beiden ist vor der Korrektur zu klären, ob sie überhaupt eine App-Ansicht zeigen sollen oder bewusst Illustrationen sind.
+
 ## Ablauf — Inhaltsüberarbeitung Seite für Seite
 
 **Verbindlich** für die aussagenbasierte Überarbeitung aller Produktseiten.
