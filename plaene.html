@@ -260,6 +260,16 @@
     min-height: 1.1rem;
   }
 
+  /* MAX-Karte: Toggle folgt direkt auf den Preis-Block —
+     globale .plan-price-Reserve (min-height 7rem, border, margin)
+     aus style.css hier abschalten, sonst klafft eine Lücke mit
+     Trennlinie zwischen „25 % gespart" und dem Toggle. */
+  .plan.featured .plan-price {
+    min-height: 0;
+    margin-bottom: 0.4rem;
+    border-bottom: none;
+  }
+
   /* PLAN CTA BUTTONS */
   .btn-plan {
     font-family: var(--mono);
@@ -507,7 +517,7 @@
           <div class="price-period" id="max-price-period">pro Monat</div>
           <div class="price-annual-note" id="max-price-note">oder 89,91 € im Jahr · 25 % gespart</div>
         </div>
-        <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 1.1rem 0 1.1rem;">
+        <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 0 0 1.4rem;">
           <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
           <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
         </div>
