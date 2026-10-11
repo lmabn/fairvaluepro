@@ -410,37 +410,35 @@ body { background: var(--bg); }
   <div class="section">
     <div class="section-label">Tech-Stack</div>
     <h2>Bewusste Entscheidungen statt Default-Choices.</h2>
-    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Sub-100ms-Antwortzeiten bei normaler Last. Kein Build-Step, kein npm, keine Supply-Chain-Risiken.</p>
+    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Kein Build-Step, kein npm.</p>
 
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:2rem 0;">
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Backend</div>
-        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · PostgreSQL</div>
-        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL ohne ORM, dual-mode (SQLite lokal / Postgres in Production), eigene Token-Auth mit gehärtetem Hashing</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · uvicorn · PostgreSQL</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL ohne ORM, eigene Token-Auth. Datenbank bei Supabase, Region EU-West.</div>
       </div>
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Frontend</div>
         <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Vanilla JS · Zero Build</div>
-        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Kein React, kein Webpack. Chart.js + Flatpickr per CDN, versions-gepinnt</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Kein React, kein Webpack. Chart.js + Flatpickr per CDN.</div>
       </div>
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
         <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Infra</div>
-        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Render · Supabase · Cloudflare</div>
-        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Hosting und Datenbank in der EU, Cloudflare DNS/CDN, Auto-Deploy aus Git</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Render · Cloudflare · Stripe</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">App bei Render (Frankfurt), DNS und Auslieferung über Cloudflare, Zahlungen über Stripe, Transaktionsmails über Resend. Marketing-Website auf GitHub Pages. Auto-Deploy aus Git.</div>
       </div>
     </div>
+
+    <p style="font-size:0.85rem; color:var(--text-2); margin-top:1rem;">Marktdaten bezieht die App bei <strong>Financial Modeling Prep</strong>, mit dem Schlüssel des Nutzers. KI-Anfragen gehen zu <strong>Anthropic, OpenAI oder Google</strong> — ebenfalls mit dem Schlüssel des Nutzers, direkt aus dem Browser.</p>
 
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Sicherheits-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CSP mit strikter connect-src-Whitelist</strong> — Datenexfiltration bei XSS strukturell verhindert</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">HSTS</strong> — 1 Jahr, includeSubDomains, erzwungenes HTTPS</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Brute-Force-Schutz</strong> — Rate-Limiting per IP, automatische Sperrung bei wiederholten Fehlversuchen</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Permissions-Policy</strong> — Camera, Mic, Geolocation, Payment, USB deaktiviert</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">X-Frame-Options: DENY</strong> — Clickjacking-Schutz</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">BYOK für KI</strong> — Schlüssel im Browser, nie auf unserem Server</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CDN-Versions-Pinning</strong> — kein böswilliges Update unterwandert den Stack</div>
-        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Idempotente Schema-Migrationen</strong> — Live-DB-Updates ohne Downtime</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Verschlüsselte Übertragung</strong> — jede Verbindung zur App läuft über HTTPS</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Übliche Browser-Schutzmaßnahmen</strong> — gegen Clickjacking, XSS und ungefragte Nutzung von Kamera, Mikrofon oder Standort</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Schutz gegen Brute-Force</strong> — automatische Sperrung bei wiederholten Login-Fehlversuchen</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Schlüssel bleiben beim Nutzer</strong> — eigene Schlüssel für Marktdaten und KI, siehe „Daten und Schlüssel"</div>
       </div>
     </details>
 
@@ -461,7 +459,7 @@ body { background: var(--bg); }
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Datenbank-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg);">
-        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">17 Tabellen, klar nach Domänen getrennt — Auth, Portfolio Tracker, Investment Planner, plus gespeicherte Analysen und Bewertungs-Setups. Cascading Deletes durchgängig, Foreign-Key-Constraints aktiv über Domänen-Grenzen hinweg. <strong style="color:var(--text);">Dual-Mode-DB</strong>: SQLite für schnelle lokale Entwicklung, PostgreSQL via Supabase in Production — selbes Raw-SQL über eine dünne Abstraktionsschicht.</p>
+        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">Datenbank klar nach Domänen getrennt — Auth, Portfolio Tracker, Investment Planner, plus gespeicherte Analysen und Bewertungs-Setups. Cascading Deletes durchgängig, Foreign-Key-Constraints aktiv über Domänen-Grenzen hinweg. <strong style="color:var(--text);">PostgreSQL bei Supabase</strong>, Region EU-West.</p>
       </div>
     </details>
 
@@ -469,8 +467,8 @@ body { background: var(--bg); }
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">KI-Integration <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
       <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.8rem; color:var(--text-2); line-height:1.7;">
         <p style="margin-bottom:0.6rem;"><strong style="color:var(--text);">KI-Assistent direkt im Kalkulator:</strong> Inline-Erklärungen zu DCF, ROIC, KGV und anderen Kennzahlen via „?"-Button. Was-wäre-wenn-Szenarien berechnen live: WACC +1 % → wie ändert sich der DCF-Wert? Der System-Prompt verbietet Kaufempfehlungen technisch — keine Anlageberatung.</p>
-        <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude Haiku 4.5, OpenAI GPT-4o-mini, Google Gemini 2.0 Flash</strong> — bewusst „schnell + günstig"-Klasse, typische Anfragen im Cent-Bereich. Provider-agnostische <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">callAI()</code>-Schnittstelle — Provider jederzeit austauschbar.</p>
-        <p>Browser-direkte Calls — wir sehen weder API-Schlüssel noch Inhalte. Bias-Coach liefert strukturiertes JSON, 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
+        <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude, OpenAI, Google Gemini</strong>. Der Nutzer wählt, Provider jederzeit austauschbar.</p>
+        <p>Browser-direkte Calls mit dem Schlüssel des Nutzers — wir sehen weder Schlüssel noch Inhalte. Bias-Coach liefert strukturiertes JSON, 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
       </div>
     </details>
   </div>
