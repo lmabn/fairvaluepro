@@ -263,10 +263,12 @@
   /* MAX-Karte: Toggle folgt direkt auf den Preis-Block —
      globale .plan-price-Reserve (min-height 7rem, border, margin)
      aus style.css hier abschalten, sonst klafft eine Lücke mit
-     Trennlinie zwischen „25 % gespart" und dem Toggle. */
+     Trennlinie zwischen „25 % gespart" und dem Toggle.
+     margin-bottom ≈ Höhe einer Feature-Zeile, damit der Toggle
+     im gleichen vertikalen Rhythmus wie die Features darunter sitzt. */
   .plan.featured .plan-price {
     min-height: 0;
-    margin-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
     border-bottom: none;
   }
 
@@ -511,7 +513,7 @@
         <div class="plan-top-line"></div>
         <div class="plan-bottom-line"></div>
         <span class="plan-badge">Alle Werkzeuge</span><div class="plan-name" style="color:var(--neon);">MAX</div>
-        <div class="plan-desc">Für regelmäßige Nutzer — alle Werkzeuge, Analysen speichern, Verlauf, PDF-Export.</div>
+        <div class="plan-desc">Für regelmäßige Nutzer, die alle drei Werkzeuge einsetzen.</div>
         <div class="plan-price">
           <div class="price-main"><span class="currency">€</span><span id="max-price-value">9,99</span></div>
           <div class="price-period" id="max-price-period">pro Monat</div>
