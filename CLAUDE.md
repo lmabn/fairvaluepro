@@ -155,6 +155,12 @@ Konsequenz für die Überarbeitung:
 4. **Umsetzung nach Freigabe**: Einmal umsetzen, Screenshots zeigen, Merge, Purge.
 5. **Erst danach die nächste Seite.**
 
+## Vorgemerkt für die Seitenüberarbeitung
+
+Freigegebene Inhalte, die bei der Überarbeitung ihrer jeweiligen Seite wörtlich einzusetzen sind. Hier als Zeiger, damit nichts verlorengeht.
+
+- **Seite 7 (`index.html`)** — Markentext für den Block unter Hero + Produktkarten (drei Absätze, letzte Zeile gestalterisch abgesetzt). Volltext und Gestaltungs-Hinweis in `docs/vorgemerkt-index-markentext.md`. Dort auch der Hinweis zur falschen „Sieben Modelle"-Zeile auf `index.html:415`, die bei derselben Überarbeitung nachgezogen wird.
+
 ## Offene To-dos
 
 - **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
