@@ -42,6 +42,20 @@ Monetarisiert — die Provision wird nur zugeordnet, wenn der Kauf über **unser
 
 **Offene Frage:** Gilt der Rabatt dauerhaft oder nur auf die erste Zahlung? Mail an Sam läuft. Falls einmalig → alle fünf Stellen präziser machen („auf die erste Zahlung" statt pauschal).
 
+## Komposit Fairer Wert — Faktenbasis
+
+Belegt durch die App-Sitzung am 2026-10-11, Grundlage für die bevorstehende aussagenbasierte Seitenüberarbeitung. Nicht einzelfallweise umsetzen — die Site hat mindestens 26 Fundstellen in sechs Dateien zu dieser Mechanik; sie werden pro Seite als Ganzes nachgezogen.
+
+1. **Wortmarke**: durchgehend **„Komposit Fairer Wert"**. Keine Varianten (nicht „Komposit-Wert", nicht „Composite Fair Value", nicht „Komposit-Fairer-Wert" mit zwei Bindestrichen, keine Flexionsformen wie „Komposit-Fairen-Wert").
+2. **„Fairer Wert" statt „Fair Value"** — durchgehend. Einzige Ausnahme: der Produktname **„Fair Value Pro"**.
+3. **Mechanik**: Sieben Modelle werden berechnet und nebeneinander gezeigt. Drei gehen in den gewichteten Komposit Fairen Wert: **DCF, KGV, EV/EBITDA**. Die Gewichtung ist **einstellbar**; voreingestellt **50 / 25 / 25**. Es gibt Vorlagen für sieben Branchen:
+   - **Konsum, Gesundheit, Konservativ**: 60 / 20 / 20
+   - **Energie, Edelmetalle, Rohstoffe**: 30 / 35 / 35
+   - **Banken, Versicherungen**: 0 / 100 / 0
+   - **Kryptowährungen**: kein Komposit Fairer Wert
+
+Konsequenz für die Überarbeitung: „nutzergewichtet" (partner.html Z. 412, 413, 458) ist im Kern richtig; „fest 50/25/25" (sieben weitere Stellen) ist zu eng und muss die Einstellbarkeit sowie die Branchen-Vorlagen abbilden.
+
 ## Offene To-dos
 
 - **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
