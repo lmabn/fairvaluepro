@@ -225,7 +225,7 @@ body { background: var(--bg); }
   <!-- STAND (ohne Eyebrow/H2, nur Box direkt unter dem Hero) -->
   <div class="section" style="padding-top:2.5rem; border-bottom:none;">
     <div class="honesty-box" style="margin-top:0;">
-      <p>GO:BETTER läuft, wird aktiv weiterentwickelt und finanziert sich selbst. Hier steht, was es heute gibt, was noch nicht, und woran wir arbeiten.</p>
+      <p>GO:BETTER läuft, wird aktiv weiterentwickelt und finanziert sich selbst. Hier steht, was es heute gibt.</p>
     </div>
   </div>
 
@@ -244,11 +244,11 @@ body { background: var(--bg); }
       <div class="tool-box">
         <div class="tool-label" style="color:var(--pt-accent);">Portfolio Tracker</div>
         <div class="tool-name">Verfolgen</div>
-        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fair Value je Position.</div>
+        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fairer Wert je Position.</div>
       </div>
       <div class="tool-box">
         <div class="tool-label" style="color:var(--td-accent);">Investment Planner</div>
-        <div class="tool-name">Entscheiden</div>
+        <div class="tool-name">Planen</div>
         <div class="tool-desc">Zehn Module, mit denen aus Daten ein Plan wird — von der Positionsgröße bis zum Trade Journal.</div>
       </div>
     </div>
@@ -259,7 +259,7 @@ body { background: var(--bg); }
     </details>
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Portfolio Tracker — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Depots über mehrere Broker, Snapshots pro Datum, Käufe und Verkäufe mit Preis und Gebühr, Ausschüttungen und Steuern pro Jahr. Dokumente kannst du per Bild, PDF, CSV oder Text importieren — die KI liest heraus, du prüfst in der Vorschau, dann wird gespeichert. Vor dem Versand schwärzt ein Scrubber im Browser Kontoname, IBAN, Steuer-ID, Adresse, Nummern, E-Mail und Telefon — in einer Vorschau kannst du nachschwärzen. Fair-Value-Verdict pro Position aus deinen eigenen Bewertungen. Teil des MAX-Plans.</div>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Depots über mehrere Broker, Snapshots pro Datum, Käufe und Verkäufe mit Preis und Gebühr, Ausschüttungen und Steuern pro Jahr. Dokumente kannst du per Bild, PDF, CSV oder Text importieren — die KI liest heraus, du prüfst in der Vorschau, dann wird gespeichert. Vor dem Versand schwärzt ein Scrubber im Browser Kontoname, IBAN, Steuer-ID, Adresse, Nummern, E-Mail und Telefon — in einer Vorschau kannst du nachschwärzen. Einordnung nach deinem Fairen Wert je Position aus deinen eigenen Bewertungen. Teil des MAX-Plans.</div>
     </details>
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Investment Planner — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
@@ -315,6 +315,78 @@ body { background: var(--bg); }
     </details>
   </div>
 
+  <!-- WO WIR UNS ABGRENZEN -->
+  <div class="section">
+    <div class="section-label">Wo wir uns abgrenzen</div>
+    <h2>Was anders ist.</h2>
+    <p>Werkzeuge für Aktien-Bewertungen gibt es viele; keines kombiniert, was uns wichtig ist: Annahmen in der Bewertung, die der Nutzer selbst setzt, eine Qualitätsnote getrennt vom Kurs, Depot und Planung im selben Konto, Marktdaten und KI mit eigenem Schlüssel. Die Übersicht ordnet GO:BETTER neben drei bekannte Werkzeuge aus derselben Nische ein.</p>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Merkmal</th>
+            <th class="hl">GO:BETTER</th>
+            <th>Morningstar</th>
+            <th>Simply Wall St</th>
+            <th>GuruFocus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bewertung mit eigenen Annahmen</td>
+            <td class="yes hl-col">✓ Nutzer setzt Wachstum, Zinssatz, Marge</td>
+            <td class="part">Analystenurteil</td>
+            <td class="part">Automatisch</td>
+            <td class="part">Teilweise</td>
+          </tr>
+          <tr>
+            <td>Komposit aus mehreren Verfahren, Gewicht einstellbar</td>
+            <td class="yes hl-col">✓ DCF · KGV · EV/EBITDA</td>
+            <td class="part">Star Rating</td>
+            <td class="part">Snowflake</td>
+            <td class="part">GF Score / GF Value</td>
+          </tr>
+          <tr>
+            <td>Qualitätsnote getrennt vom Kurs</td>
+            <td class="yes hl-col">✓ 12 Kriterien, A–D</td>
+            <td class="part">Economic-Moat-Rating</td>
+            <td class="no">in Snowflake vermischt</td>
+            <td class="part">Teilweise</td>
+          </tr>
+          <tr>
+            <td>Depot im selben Konto</td>
+            <td class="yes hl-col">✓ Portfolio Tracker</td>
+            <td class="part">eigenes Modul</td>
+            <td class="part">Watchlist</td>
+            <td class="part">Watchlist</td>
+          </tr>
+          <tr>
+            <td>Trade Journal mit Prüfung auf Denkfehler</td>
+            <td class="yes hl-col">✓ 16 Verzerrungen</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>Marktdaten über eigenen Schlüssel (BYOK)</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>KI-Zugang über eigenen Schlüssel</td>
+            <td class="yes hl-col">✓ Claude · ChatGPT · Gemini</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Die drei verglichenen Werkzeuge sind etablierte Anbieter aus derselben Nische (Aktien-Bewertung für Privatanleger). Was dort als Bezeichnung steht, ist der jeweilige Produktname. Preise und Pläne der Anbieter wechseln; wir vergleichen Methodik, nicht Kosten.</p>
+  </div>
+
   <!-- DATEN UND SCHLÜSSEL -->
   <div class="section">
     <div class="section-label">Daten und Schlüssel</div>
@@ -331,7 +403,7 @@ body { background: var(--bg); }
       <div class="status-item">
         <div class="status-label">KI-Schlüssel</div>
         <div class="status-val" style="font-size:0.95rem;">Optional</div>
-        <div class="status-sub">Anbieter frei wählbar. Kosten typischerweise im Cent-Bereich pro Anfrage.</div>
+        <div class="status-sub">Mit eigenem Schlüssel bei Anthropic, OpenAI oder Google.</div>
       </div>
     </div>
 
@@ -344,7 +416,74 @@ body { background: var(--bg); }
 
     <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Warum eigener Schlüssel <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">Transparent — du siehst, was der Anbieter kostet, wir legen nichts drauf. Kein Lock-in — du kannst Anbieter oder Plan jederzeit wechseln. Kostenkontrolliert — du bezahlst nach eigener Nutzung. Datenschutz-sauber: Marktdaten rufst du über den Tracker direkt vom Anbieter ab; Kalkulator und Planner reichen deine Anfragen transient weiter — nicht gespeichert, nicht geloggt.</div>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">Transparent — du siehst, was der Anbieter kostet, wir legen nichts drauf. Kein Lock-in — du kannst Anbieter oder Plan jederzeit wechseln. Kostenkontrolliert — du bezahlst nach eigener Nutzung. Datenschutz-sauber: Marktdaten rufst du über den Tracker direkt vom Anbieter ab; Kalkulator und Planner reichen deine Anfragen transient weiter.</div>
+    </details>
+  </div>
+
+  <!-- TECH -->
+  <div class="section">
+    <div class="section-label">Tech-Stack</div>
+    <h2>Bewusste Entscheidungen statt Default-Choices.</h2>
+    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Kein Build-Step.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:2rem 0;">
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Backend</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · uvicorn · PostgreSQL</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL ohne ORM, eigene Token-Auth. Datenbank bei Supabase, Region EU-West.</div>
+      </div>
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Frontend</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Vanilla JS · Zero Build</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Kein React, kein Webpack. Chart.js + Flatpickr per CDN.</div>
+      </div>
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Infra</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Render · Cloudflare · Stripe</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">App bei Render (Frankfurt), DNS und Auslieferung über Cloudflare, Zahlungen über Stripe, Transaktionsmails über Resend. Marketing-Website auf GitHub Pages. Auto-Deploy aus Git.</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--text-2); margin-top:1rem;">Marktdaten bezieht die App bei <strong>Financial Modeling Prep</strong>, mit dem Schlüssel des Nutzers. KI-Anfragen gehen zu <strong>Anthropic, OpenAI oder Google</strong> — ebenfalls mit dem Schlüssel des Nutzers, direkt aus dem Browser.</p>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Sicherheits-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Verschlüsselte Übertragung</strong> — jede Verbindung zur App läuft über HTTPS</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Übliche Browser-Schutzmaßnahmen</strong> — gegen Clickjacking, XSS und ungefragte Nutzung von Kamera, Mikrofon oder Standort</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Schutz gegen Brute-Force</strong> — automatische Sperrung bei wiederholten Login-Fehlversuchen</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Schlüssel bleiben beim Nutzer</strong> — eigene Schlüssel für Marktdaten und KI, siehe „Daten und Schlüssel"</div>
+      </div>
+    </details>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Mathematik & Algorithmen <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Zwei-Phasen-DCF</strong> mit Gordon-Growth-Terminal-Value, vollständig user-parametrisiert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">TWR</strong> (Time-Weighted Return) — von Cashflows bereinigt, professioneller Standard</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">EV/EBITDA</strong> Net-Debt-bereinigt — M&A-Praxis-konform</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">IRR</strong> — geldgewichtete Rendite</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">DDM</strong> Constant-Growth + Two-Stage für Dividendentitel</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Compound-Interest</strong> nominal r/12 monatlich + vorschüssig — matcht Spar-Apps pixelgenau</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Margin of Safety</strong> nach Graham — prozentualer Discount-Faktor pro Aktie</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Recovery-Return</strong> — Drawdown, p.a.-Wachstum über variablen Zeithorizont</div>
+      </div>
+    </details>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Datenbank-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg);">
+        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">Datenbank klar nach Domänen getrennt — Auth, Portfolio Tracker, Investment Planner, plus gespeicherte Analysen und Bewertungs-Setups. Cascading Deletes durchgängig, Foreign-Key-Constraints aktiv über Domänen-Grenzen hinweg. <strong style="color:var(--text);">PostgreSQL bei Supabase</strong>, Region EU-West.</p>
+      </div>
+    </details>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">KI-Integration <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.8rem; color:var(--text-2); line-height:1.7;">
+        <p style="margin-bottom:0.6rem;"><strong style="color:var(--text);">KI-Assistent direkt im Kalkulator:</strong> Inline-Erklärungen zu DCF, ROIC, KGV und anderen Kennzahlen via „?"-Button. Was-wäre-wenn-Szenarien berechnen live: WACC +1 % → wie ändert sich der DCF-Wert? Der System-Prompt verbietet Kaufempfehlungen technisch — keine Anlageberatung.</p>
+        <p style="margin-bottom:0.6rem;">Drei Provider angebunden: <strong style="color:var(--text);">Anthropic Claude, OpenAI, Google Gemini</strong> — mit dem eigenen Schlüssel des Nutzers.</p>
+        <p>Browser-direkte Calls mit dem Schlüssel des Nutzers — wir sehen weder Schlüssel noch Inhalte. Bias-Coach liefert strukturiertes JSON, 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
+      </div>
     </details>
   </div>
 
