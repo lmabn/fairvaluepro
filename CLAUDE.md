@@ -49,7 +49,7 @@ Monetarisiert — die Provision wird nur zugeordnet, wenn der Kauf über **unser
 
 **Formulierungs-Haltung** — Der Rabatt kommt NUR über den Link. Also nicht „wird automatisch angewendet", nicht „im Onboarding freigeschaltet", sondern aktiv: „25 % Rabatt bekommst du über unseren Partner-Link." Button mit identischem Satz dahinter.
 
-**Rabatt-Status (bestätigt, 11.10.2026):** Der Rabatt gilt **dauerhaft**, nicht nur auf die erste Zahlung. Alle Website-Formulierungen („25 % Rabatt" ohne Zusatz) sind damit korrekt — keine Nachjustierung nötig.
+**Offen:** Antwort von FMP zu Attribution und Rabattdauer. Auf der Website nichts zur Dauer des Rabatts behaupten (nicht „dauerhaft", nicht „nur erste Zahlung", nicht „im Onboarding freigeschaltet" o. Ä.) — nur „25 % Rabatt über unseren Partner-Link".
 
 ## Konvention — Produktaussagen vs. Sprachregeln
 
