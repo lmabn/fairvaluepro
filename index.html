@@ -224,6 +224,7 @@ section.gb-tiles-section { padding: 0; }
 .gb-chain-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 72px; align-items: start; }
 .gb-chain-cols .lead { margin: 0; font-size: 24px; line-height: 1.45; font-weight: 500; letter-spacing: -0.015em; max-width: 560px; text-wrap: pretty; }
 .gb-chain-cols .body { margin: 0; font-size: 17px; line-height: 1.65; color: var(--color-text-muted); max-width: 520px; text-wrap: pretty; }
+.gb-chain-closer { margin: 56px 0 0; font-family: var(--font-sans); font-size: 22px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: var(--color-text); max-width: 760px; padding-top: 32px; border-top: 1px solid var(--color-border); text-wrap: pretty; }
 
 /* ── Werkzeuge ── */
 .gb-tools-head { display: flex; flex-direction: column; gap: 20px; max-width: 760px; }
@@ -412,17 +413,17 @@ section.gb-tiles-section { padding: 0; }
       <a href="fair-value-pro.html" class="gb-tile fvp">
         <div class="gb-tile-head"><span class="gb-tile-label">FAIR VALUE PRO</span><span class="gb-tile-arrow">→</span></div>
         <span class="gb-tile-verb">Bewerten</span>
-        <span class="gb-tile-short">Sieben Modelle, ein gewichteter Fair Value.</span>
+        <span class="gb-tile-short">Fünf Verfahren, ein Komposit Fairer Wert.</span>
       </a>
       <a href="portfolio-tracker.html" class="gb-tile pt">
         <div class="gb-tile-head"><span class="gb-tile-label">PORTFOLIO TRACKER</span><span class="gb-tile-arrow">→</span></div>
         <span class="gb-tile-verb">Verfolgen</span>
-        <span class="gb-tile-short">Renditen, Allokation, Fair Value je Position.</span>
+        <span class="gb-tile-short">Renditen, Allokation, Fairer Wert je Position.</span>
       </a>
       <a href="investment-planner.html" class="gb-tile td">
         <div class="gb-tile-head"><span class="gb-tile-label">INVESTMENT PLANNER</span><span class="gb-tile-arrow">→</span></div>
-        <span class="gb-tile-verb">Entscheiden</span>
-        <span class="gb-tile-short">Markt, Watchlist, Journal im Kontext.</span>
+        <span class="gb-tile-verb">Planen</span>
+        <span class="gb-tile-short">Positionsgröße, Watchlist, Journal.</span>
       </a>
     </div>
   </div>
@@ -441,9 +442,10 @@ section.gb-tiles-section { padding: 0; }
       <span class="muted-end">deine Entscheidung</span>
     </div>
     <div class="gb-chain-cols">
-      <p class="lead">GO steht für Weitergehen. Von Daten zu Kontext, von Kontext zu Erkenntnis, von Erkenntnis zur eigenen, fundierten Entscheidung.</p>
-      <p class="body">Drei Werkzeuge begleiten diesen Weg: Bewerten mit Fair Value Pro. Verfolgen mit dem Portfolio Tracker. Planen mit dem Investment Planner. Sie teilen denselben Account und dieselben Daten. Die Werkzeuge liefern Kontext, die Entscheidung bleibt bei dir.</p>
+      <p class="lead">Die meisten Verluste entstehen nicht durch falsche Aktien, sondern durch Entscheidungen ohne Plan: zu groß eingestiegen, zu spät verkauft, die eigene These unterwegs vergessen.</p>
+      <p class="body">GO:BETTER macht sichtbar, worauf deine Einschätzung beruht — jede Annahme, jede Zahl. Es behält, was du dir vor dem Kauf gedacht hast, und zeigt dir später, was daraus geworden ist. So wird aus Daten ein Kontext, aus Kontext eine Erkenntnis, und am Ende steht deine Entscheidung.</p>
     </div>
+    <p class="gb-chain-closer">GO ist der Beginn. BETTER ist deine Ambition — besser investieren, Entscheidung für Entscheidung.</p>
   </div>
 </section>
 
@@ -452,16 +454,16 @@ section.gb-tiles-section { padding: 0; }
   <div class="gb-section-inner">
     <div class="gb-tools-head">
       <span class="gb-eyebrow" style="color:var(--color-text-muted);">DREI WERKZEUGE, EINE LOGIK</span>
-      <h2 class="gb-h2-home">Bewerten. Verfolgen.<br>Entscheiden.</h2>
+      <h2 class="gb-h2-home">Bewerten. Verfolgen.<br>Planen.</h2>
     </div>
     <div class="gb-tools-grid">
       <a href="fair-value-pro.html" class="gb-tool-panel fvp">
         <div class="gb-tool-brand"><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle cx="15" cy="61" r="10"/></svg><span class="label">FAIR VALUE PRO</span></div>
-        <span class="gb-tool-h">Berechne den fairen Wert.</span>
-        <span class="body">Sieben Bewertungsmodelle gleichzeitig. Qualitätsscore, Szenarien, Sensitivitätstabelle.</span>
+        <span class="gb-tool-h">Berechne den Fairen Wert.</span>
+        <span class="body">Fünf Verfahren gleichzeitig. Qualitätsnote, Szenarien, Sensitivitätstabelle.</span>
         <div class="gb-tool-ui">
-          <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Beispiel AG</span><span class="gb-tool-ui-sub">7 MODELLE</span></div>
-          <div class="gb-tool-ui-row"><span class="k">Fair Value</span><span class="v">142,80 €</span></div>
+          <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Beispiel AG</span><span class="gb-tool-ui-sub">5 VERFAHREN</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Komposit Fairer Wert</span><span class="v">142,80 €</span></div>
           <div class="gb-tool-ui-row"><span class="k">Kurs</span><span class="v">118,40 €</span></div>
           <div class="gb-tool-ui-row"><span class="k">Abstand</span><span class="v">17,1 %</span></div>
         </div>
@@ -475,18 +477,18 @@ section.gb-tiles-section { padding: 0; }
           <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Hauptdepot</span><span class="gb-tool-ui-sub">14 POSITIONEN</span></div>
           <div class="gb-tool-ui-row"><span class="k">Depotwert</span><span class="v">248.310 €</span></div>
           <div class="gb-tool-ui-row"><span class="k">TWR 2025</span><span class="v pos">▲ +8,4 %</span></div>
-          <div class="gb-tool-ui-row"><span class="k">Heute</span><span class="v neg">▼ −0,6 %</span></div>
+          <div class="gb-tool-ui-row"><span class="k">IRR p.a.</span><span class="v pos">▲ +7,1 %</span></div>
         </div>
         <span class="gb-tool-link">Portfolio Tracker ansehen →</span>
       </a>
       <a href="investment-planner.html" class="gb-tool-panel td">
         <div class="gb-tool-brand"><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle cx="15" cy="61" r="10"/></svg><span class="label">INVESTMENT PLANNER</span></div>
         <span class="gb-tool-h">Triff fundierte Entscheidungen.</span>
-        <span class="body">Recovery-Return, Zinsrechner, Watchlist, Rebalancing und Trade Journal.</span>
+        <span class="body">Zehn Module, von der Positionsgröße bis zum Trade Journal.</span>
         <div class="gb-tool-ui">
           <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Watchlist</span><span class="gb-tool-ui-sub">1 IN KAUFZONE</span></div>
-          <div class="gb-tool-ui-row"><span class="k">Beispiel AG</span><span class="v pos">▲ +2,4 %</span></div>
-          <div class="gb-tool-ui-row"><span class="k">Nordwerk SE</span><span class="v neg">▼ −1,1 %</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Beispiel AG</span><span class="v">21 % über FW</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Nordwerk SE</span><span class="v">5 % über FW</span></div>
           <div class="gb-tool-ui-row"><span class="k">Mikro Werke</span><span class="v">Kaufzone</span></div>
         </div>
         <span class="gb-tool-link">Investment Planner ansehen →</span>
@@ -508,18 +510,18 @@ section.gb-tiles-section { padding: 0; }
     <div class="gb-principles">
       <div class="gb-principle" style="--line:#10C27F;">
         <span class="title">Unternehmen selbst beurteilen</span>
-        <span class="text">Sieben Bewertungsmodelle, alle Annahmen offen und einstellbar.</span>
+        <span class="text">Fünf Verfahren, alle Annahmen offen und einstellbar.</span>
       </div>
       <div class="gb-principle" style="--line:#F0B42A;">
         <span class="title">Verstehen, was man besitzt</span>
-        <span class="text">Jede Position mit Einstand, Anteil, Entwicklung und Fair Value.</span>
+        <span class="text">Jede Position mit Einstand, Anteil, Entwicklung und Fairem Wert.</span>
       </div>
       <div class="gb-principle" style="--line:#3B7BFF;">
         <span class="title">Entscheidungen begründen</span>
         <span class="text">Markt, Bewertung und eigene Begründung an einem Ort, nachvollziehbar auch später.</span>
       </div>
       <div class="gb-principle" style="--line:#111317;">
-        <span class="title">Kosten im Blick</span>
+        <span class="title">Kosten im Blick (in Entwicklung)</span>
         <span class="text">Was Anlegen kostet, bleibt sichtbar. Ein Faktor der eigenen Rendite unter mehreren.</span>
       </div>
     </div>
