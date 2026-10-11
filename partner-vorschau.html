@@ -230,11 +230,11 @@ body { background: var(--bg); }
       <div class="tool-box">
         <div class="tool-label" style="color:var(--pt-accent);">Portfolio Tracker</div>
         <div class="tool-name">Verfolgen</div>
-        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fair Value je Position.</div>
+        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fairer Wert je Position.</div>
       </div>
       <div class="tool-box">
         <div class="tool-label" style="color:var(--td-accent);">Investment Planner</div>
-        <div class="tool-name">Entscheiden</div>
+        <div class="tool-name">Planen</div>
         <div class="tool-desc">Zehn Module, mit denen aus Daten ein Plan wird — von der Positionsgröße bis zum Trade Journal.</div>
       </div>
     </div>
@@ -245,7 +245,7 @@ body { background: var(--bg); }
     </details>
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Portfolio Tracker — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Depots über mehrere Broker, Snapshots pro Datum, Käufe und Verkäufe mit Preis und Gebühr, Ausschüttungen und Steuern pro Jahr. Dokumente kannst du per Bild, PDF, CSV oder Text importieren — die KI liest heraus, du prüfst in der Vorschau, dann wird gespeichert. Vor dem Versand schwärzt ein Scrubber im Browser Kontoname, IBAN, Steuer-ID, Adresse, Nummern, E-Mail und Telefon — in einer Vorschau kannst du nachschwärzen. Fair-Value-Verdict pro Position aus deinen eigenen Bewertungen. Teil des MAX-Plans.</div>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Depots über mehrere Broker, Snapshots pro Datum, Käufe und Verkäufe mit Preis und Gebühr, Ausschüttungen und Steuern pro Jahr. Dokumente kannst du per Bild, PDF, CSV oder Text importieren — die KI liest heraus, du prüfst in der Vorschau, dann wird gespeichert. Vor dem Versand schwärzt ein Scrubber im Browser Kontoname, IBAN, Steuer-ID, Adresse, Nummern, E-Mail und Telefon — in einer Vorschau kannst du nachschwärzen. Einordnung nach deinem Fairen Wert je Position aus deinen eigenen Bewertungen. Teil des MAX-Plans.</div>
     </details>
     <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Investment Planner — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
@@ -402,7 +402,7 @@ body { background: var(--bg); }
 
     <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Warum eigener Schlüssel <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">Transparent — du siehst, was der Anbieter kostet, wir legen nichts drauf. Kein Lock-in — du kannst Anbieter oder Plan jederzeit wechseln. Kostenkontrolliert — du bezahlst nach eigener Nutzung. Datenschutz-sauber: Marktdaten rufst du über den Tracker direkt vom Anbieter ab; Kalkulator und Planner reichen deine Anfragen transient weiter — nicht gespeichert, nicht geloggt.</div>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">Transparent — du siehst, was der Anbieter kostet, wir legen nichts drauf. Kein Lock-in — du kannst Anbieter oder Plan jederzeit wechseln. Kostenkontrolliert — du bezahlst nach eigener Nutzung. Datenschutz-sauber: Marktdaten rufst du über den Tracker direkt vom Anbieter ab; Kalkulator und Planner reichen deine Anfragen transient weiter.</div>
     </details>
   </div>
 
@@ -410,7 +410,7 @@ body { background: var(--bg); }
   <div class="section">
     <div class="section-label">Tech-Stack</div>
     <h2>Bewusste Entscheidungen statt Default-Choices.</h2>
-    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Kein Build-Step, kein npm.</p>
+    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Kein Build-Step.</p>
 
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:2rem 0;">
       <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
@@ -513,6 +513,18 @@ body { background: var(--bg); }
       <li><strong style="color:var(--text);">Menschen mit Reichweite</strong>, die GO:BETTER in ihrem Umfeld sichtbar machen können.</li>
       <li><strong style="color:var(--text);">Darüber hinaus</strong> jede Form von Zusammenarbeit, die zur Idee passt — melde dich einfach.</li>
     </ul>
+
+    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Woran wir arbeiten <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
+        <p style="margin:0 0 0.8rem;">Nichts ist fertig, einiges läuft noch nicht wie beschrieben. Die wichtigsten offenen Baustellen:</p>
+        <ul style="margin:0 0 0 1.2rem; padding:0; list-style:disc;">
+          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Live-Kurse in der Watchlist</strong> — kommen erst mit dem zweiten Datenanbieter. Heute steht dort der Kurs der letzten Bewertung mit Datum.</li>
+          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Kursverlauf über zehn Jahre</strong> — die Anzeige deckt heute die letzten fünf Jahre ab. Wir arbeiten an der vollen Historie.</li>
+          <li><strong style="color:var(--text);">Bitcoin, andere Kryptowährungen und Rohstoffe</strong> — der aktuelle Datenanbieter liefert für diese Werte keinen Kurs. Statt einer falschen Einordnung zeigt GO:BETTER derzeit eine Meldung, dass keine Kursdaten vorliegen.</li>
+        </ul>
+      </div>
+    </details>
   </div>
 
   <!-- KONTAKT -->
