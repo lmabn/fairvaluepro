@@ -1,0 +1,22 @@
+Quelle: gesetze-im-internet.de/bgb/__356a.html
+Abrufdatum: 12.10.2026
+Zweck: Belegquelle für den Baustein zur Widerrufsfunktion
+(Schaltfläche „Vertrag widerrufen" in app.gobetter.trade) in
+agb.html § 5. Verbindlich ist der amtliche Text im Bundesgesetzblatt.
+
+=== § 356a BGB ===
+Bürgerliches Gesetzbuch (BGB)
+§ 356a Elektronische Widerrufsfunktion bei Fernabsatzverträgen
+(1) Bei Fernabsatzverträgen, die über eine Online-Benutzeroberfläche geschlossen werden, hat der Unternehmer sicherzustellen, dass der Verbraucher auf der Online-Benutzeroberfläche durch das Nutzen einer Widerrufsfunktion eine Widerrufserklärung abgeben kann. Die Widerrufsfunktion muss gut lesbar mit „Vertrag widerrufen" oder einer anderen gleichbedeutenden eindeutigen Formulierung beschriftet sein. Sie muss während des Laufs der Widerrufsfrist auf der Online-Benutzeroberfläche ständig verfügbar, hervorgehoben platziert und für den Verbraucher leicht zugänglich sein.
+(2) Die Widerrufsfunktion muss dem Verbraucher ermöglichen, eine Widerrufserklärung an den Unternehmer zu übermitteln und dem Unternehmer in oder mit der Widerrufserklärung ohne Weiteres folgende Informationen bereitzustellen oder zu bestätigen:
+1.
+den Namen des Verbrauchers,
+2.
+Angaben zur Identifizierung des Vertrags oder des Teils des Vertrags, den der Verbraucher widerrufen möchte,
+3.
+Angaben zum elektronischen Kommunikationsmittel, mit welchem dem Verbraucher eine Eingangsbestätigung für den Widerruf zu übermitteln ist.
+(3) Sobald der Verbraucher die Informationen nach Absatz 2 bereitgestellt oder bestätigt hat, hat der Unternehmer dem Verbraucher zu ermöglichen, seine Widerrufserklärung und die Informationen dem Unternehmer mittels einer Bestätigungsfunktion zu übermitteln. Diese Bestätigungsfunktion muss gut lesbar und mit „Widerruf bestätigen" oder einer anderen gleichbedeutenden eindeutigen Formulierung beschriftet sein.
+(4) Der Unternehmer hat dem Verbraucher, wenn dieser die Bestätigungsfunktion aktiviert hat, auf einem dauerhaften Datenträger unverzüglich eine Eingangsbestätigung zu übermitteln, die zumindest den Inhalt der Widerrufserklärung nach Absatz 2 sowie das Datum und die Uhrzeit ihres Eingangs enthält.
+(5) Die Widerrufserklärung des Verbrauchers gilt als dem Unternehmer innerhalb der Widerrufsfrist zugegangen, wenn er die Widerrufserklärung nach Absatz 3 vor Ablauf dieser Frist über die Widerrufsfunktion versandt hat.
+Fußnote
+(+++ § 356a BGB: Zur Anwendung vgl. § 8 Abs. 1 VVG 2008 +++)
