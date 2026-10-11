@@ -32,7 +32,7 @@
 - „Alle Unternehmen weltweit": Werte außerhalb der USA brauchen einen höheren Plan beim Datenanbieter.
 - Tracker-Zeiträume „1J · 2J · 3J · 5J · Alle": im Code ohne 2J, dafür 1M, 3M, 6M, YTD, 10J, 15J.
 
-**Offene Rechtsfragen, ohne Bewertung:** Widerrufs-Zustimmung — die AGB versprechen zwei getrennte Zustimmungen (§ 356 Abs. 5 BGB), die App hat einen kombinierten Haken mit anderem Wortlaut (`plans.py:66–76`). Konto löschen entfernt auch den gespeicherten Nachweis dieser Zustimmung (`auth.py:795`). AGB-Link nur im Kaufdialog (Bauplan).
+**Offene Rechtsfragen, ohne Bewertung:** Widerrufs-Zustimmung — die AGB versprechen zwei getrennte Zustimmungen (§ 356 Abs. 4 BGB), die App hat einen kombinierten Haken mit anderem Wortlaut (`plans.py:66–76`). Konto löschen entfernt auch den gespeicherten Nachweis dieser Zustimmung (`auth.py:795`). AGB-Link nur im Kaufdialog (Bauplan).
 
 ## Fair Value Pro (Kalkulator)
 
