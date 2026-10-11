@@ -72,6 +72,30 @@ Konsequenz für die Überarbeitung: „nutzergewichtet" (partner.html Z. 412, 41
 
 Nicht einzelfallweise umsetzen — die Site hat mindestens 26 Fundstellen in sechs Dateien zu dieser Mechanik; sie werden pro Seite als Ganzes nachgezogen.
 
+## Daten-Aktualität — Faktenbasis
+
+### Sprachregeln
+
+Nicht belegt und damit **nicht verwenden**:
+- **„Live-Kurse"** — es gibt keine Live-Kurse im Produkt.
+- **„aktuell und vollständig" ohne Einschränkung** — zu pauschal.
+- **Jede Angabe einer festen Verzögerung in Minuten** — ist nicht belegt.
+
+### Produktaussage · Belegte Formulierungen
+
+> **Quelle:** Bauplan im App-Repo (Daten-Pfad, von der App-Sitzung gemessen).
+> **Stand:** 2026-10-11.
+
+Drei Formulierungen, 1:1 verwendbar bei der Seitenüberarbeitung:
+
+- **Kurse:** „Kurse und Finanzzahlen werden bei jeder Bewertung direkt bei deinem Datenanbieter abgerufen."
+- **Finanzzahlen:** „Finanzzahlen sind so aktuell wie der letzte veröffentlichte Quartals- bzw. Jahresbericht."
+- **Watchlist:** „In der Watchlist steht der Kurs deiner letzten Bewertung, mit Datum."
+
+Konsequenz für die Überarbeitung:
+- `fair-value-pro.html:668` „in Echtzeit" (H2 der Live-Vorschau-Section) kommt bei der Überarbeitung dieser Seite weg. Die Überschrift darf den Blick ins Werkzeug versprechen, nicht die Aktualität der Daten.
+- `fair-value-pro.html:727` „aktuell und vollständig" fällt bei derselben Überarbeitung weg oder wird durch die oben belegte Kurs-/Finanzzahlen-Formulierung ersetzt.
+
 ## Offene To-dos
 
 - **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
