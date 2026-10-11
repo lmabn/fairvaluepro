@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0B0D10">
+<meta name="description" content="Partner-Vorschau · nicht öffentlich.">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="web.css">
+<link rel="stylesheet" href="gb-shell.css">
+<meta name="robots" content="noindex, nofollow">
+<title>Partner-Vorschau · GO:BETTER</title>
+<style>
+/* PAGE LAYOUT */
+body { background: var(--bg); }
+.page-wrap { max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+
+/* HERO */
+.partner-hero { padding: 5rem 0 4rem; border-bottom: 1px solid var(--border); }
+.partner-eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem; }
+.partner-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--neon); }
+.partner-hero h1 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.8rem; }
+.partner-hero h1 em { font-style: normal; color: var(--neon); }
+.partner-hero .lead { font-size: 1.05rem; color: var(--text-2); line-height: 1.8; max-width: 640px; margin-bottom: 2.5rem; }
+.values-bar { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.value-item { flex: 1; padding: 0.7rem 0; text-align: center; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); border-right: 1px solid var(--border); }
+.value-item:last-child { border-right: none; }
+.value-item.hl { color: var(--neon); }
+
+/* SECTIONS */
+.section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.section-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+.section-label::before { content: ''; display: block; width: 16px; height: 1px; background: var(--text-3); }
+.section h2 { font-family: var(--display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+.section p { color: var(--text-2); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+.section p:last-child { margin-bottom: 0; }
+.section p strong { color: var(--text); font-weight: 500; }
+
+/* HONESTY BOX */
+.honesty-box { background: var(--bg2); border: 1px solid var(--border2); border-left: 3px solid var(--neon); border-radius: 0 4px 4px 0; padding: 1.4rem 1.8rem; margin: 2rem 0; }
+.honesty-box p { font-size: 0.9rem; color: var(--text-2); line-height: 1.75; margin-bottom: 0.7rem; }
+.honesty-box p:last-child { margin-bottom: 0; }
+.honesty-box p strong { color: var(--neon); }
+
+/* THREE TOOLS */
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.tool-box { background: var(--bg2); padding: 1.4rem 1.2rem; }
+.tool-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.tool-name { font-family: var(--display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.tool-desc { font-size: 0.78rem; color: var(--text-3); line-height: 1.55; }
+
+/* USP LIST */
+.usp-list { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.usp-item { display: grid; grid-template-columns: 3rem 1fr; gap: 0; border-bottom: 1px solid var(--border); }
+.usp-item:last-child { border-bottom: none; }
+.usp-num { background: var(--bg3); padding: 1.4rem 0; display: flex; align-items: flex-start; justify-content: center; font-family: var(--mono); font-size: 0.55rem; color: var(--text-3); padding-top: 1.6rem; letter-spacing: 0.06em; }
+.usp-body { background: var(--bg2); padding: 1.4rem 1.6rem; }
+.usp-title { font-family: var(--display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.usp-text { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
+.usp-text strong { color: var(--text); font-weight: 500; }
+
+/* COMPETITOR TABLE */
+.comp-table-wrap { overflow-x: auto; margin: 2rem 0; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+.comp-table-wrap::-webkit-scrollbar { height: 6px; }
+.comp-table-wrap::-webkit-scrollbar-track { background: transparent; }
+.comp-table-wrap::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 860px; }
+.comp-table th, .comp-table td { white-space: nowrap; min-width: 120px; }
+.comp-table th:first-child, .comp-table td:first-child { min-width: 200px; white-space: normal; position: sticky; left: 0; z-index: 1; }
+.comp-table th:first-child { background: var(--bg3); }
+.comp-table td:first-child { background: var(--bg); }
+.comp-table tr:hover td:first-child { background: var(--bg2); }
+.comp-table th { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); background: var(--bg3); }
+.comp-table th.hl { color: var(--neon); }
+.comp-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: middle; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table td:first-child { color: var(--text); font-weight: 500; }
+.comp-table .yes { color: var(--neon); }
+.comp-table .no { color: var(--text-3); }
+.comp-table .part { color: var(--mid); }
+.comp-table .hl-col { background: rgba(0,255,135,0.03); }
+
+
+/* METHOD GRID */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.method-item { background: var(--bg2); padding: 1.4rem 1.6rem; }
+.method-name { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neon); margin-bottom: 0.5rem; }
+.method-title { font-family: var(--display); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+.method-text { font-size: 0.8rem; color: var(--text-3); line-height: 1.65; }
+
+/* GTM */
+.gtm-quote { font-family: var(--display); font-size: 1.1rem; font-weight: 500; color: var(--text); line-height: 1.6; border-left: 3px solid var(--neon); padding-left: 1.4rem; margin: 2rem 0; }
+
+/* STATUS GRID */
+.status-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.status-item { background: var(--bg2); padding: 1.2rem 1.4rem; }
+.status-label { font-family: var(--mono); font-size: 0.55rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.status-val { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.status-sub { font-size: 0.75rem; color: var(--text-3); margin-top: 0.2rem; }
+.live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--neon); margin-right: 5px; position: relative; top: -1px; }
+
+/* ROADMAP */
+.roadmap-list { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.roadmap-item { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
+.roadmap-item:last-child { border-bottom: none; }
+.tech-accordion > summary::before { display: none !important; }
+.tech-accordion > summary { text-align: left; }
+.roadmap-q { background: var(--bg3); padding: 1rem 1.2rem; font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.06em; width: 110px; flex-shrink: 0; display: flex; align-items: flex-start; padding-top: 1.1rem; white-space: nowrap; }
+.roadmap-text { background: var(--bg2); padding: 1rem 1.4rem; font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
+.roadmap-text strong { color: var(--text); font-weight: 500; }
+
+/* WANTED */
+.wanted-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.wanted-item { background: var(--bg2); padding: 1.4rem 1.6rem; }
+.wanted-type { font-family: var(--mono); font-size: 0.55rem; color: var(--td, #5b9cf6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.wanted-title { font-family: var(--display); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+.wanted-text { font-size: 0.8rem; color: var(--text-3); line-height: 1.65; }
+.wanted-not { background: var(--bg3); border-top: 1px solid var(--border); padding: 1.2rem 1.6rem; grid-column: span 2; font-size: 0.82rem; color: var(--text-3); }
+.wanted-not strong { color: var(--text-2); }
+
+/* MARKET STATS */
+.market-row { display: flex; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.market-stat { flex: 1; background: var(--bg2); padding: 1.2rem; text-align: center; }
+.market-num { font-family: var(--display); font-size: 1.6rem; font-weight: 700; color: var(--neon); line-height: 1; margin-bottom: 0.3rem; }
+.market-label { font-size: 0.75rem; color: var(--text-3); line-height: 1.45; }
+
+/* CONTACT */
+.contact-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 2rem; margin: 2rem 0; }
+.contact-box h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+.contact-row { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.6rem; font-size: 0.85rem; }
+.contact-row .clabel { font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; width: 80px; flex-shrink: 0; padding-top: 2px; }
+.contact-row .cval { color: var(--text-2); }
+.contact-row a { color: var(--neon); text-decoration: none; }
+.contact-row a:hover { text-decoration: underline; }
+.placeholder { color: var(--text-3); font-style: italic; }
+
+/* RESPONSIVE */
+@media(max-width: 720px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .method-grid { grid-template-columns: 1fr; }
+  .status-grid { grid-template-columns: 1fr; }
+  .wanted-grid { grid-template-columns: 1fr; }
+  .wanted-not { grid-column: span 1; }
+  .market-row { flex-direction: column; }
+  .values-bar { flex-wrap: wrap; }
+  .value-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
+  .usp-item { grid-template-columns: 2.5rem 1fr; }
+}
+</style>
+</head>
+<body data-level="product">
+
+<!-- NAV · GO:BETTER Shell -->
+<div class="gb-nav-wrap">
+  <div class="gb-nav">
+    <div class="gb-nav-left">
+      <a href="index.html" class="gb-wm gb-nav-wm" aria-label="GO:BETTER">
+        <span aria-hidden="true"><span class="k">G</span>O</span>
+        <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg>
+        <span aria-hidden="true">BETTER</span>
+      </a>
+      <div class="gb-nav-links">
+        <div class="gb-nav-item">
+          <a href="fair-value-pro.html">Fair Value Pro</a>
+          <div class="gb-nav-dropdown">            <a href="pro-mode.html">Pro Mode</a>
+            <a href="daten-quelle.html">Daten-Quelle</a>
+          </div>
+        </div>
+        <a href="portfolio-tracker.html">Portfolio Tracker</a>
+        <a href="investment-planner.html">Investment Planner</a>
+      </div>
+    </div>
+    <div class="gb-nav-right">
+      <a href="plaene.html">Pläne</a>
+      <a href="akademie/index.html">Akademie</a>
+      <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--primary gb-btn--m">Jetzt starten</a>
+      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
+    <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="pro-mode.html" class="sub">↳ Pro Mode</a>
+    <a href="daten-quelle.html" class="sub">↳ Daten-Quelle</a>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="investment-planner.html">Investment Planner</a>
+    <a href="plaene.html">Pläne</a>
+    <a href="akademie/index.html">Akademie</a>
+  </nav>
+</div>
+
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="partner-hero">
+    <div class="partner-eyebrow">Für Unterstützer</div>
+    <h1>GO:BETTER ist für Anleger gebaut,<br>die <em>selbst</em> entscheiden wollen.</h1>
+    <p class="lead">Drei Werkzeuge, die ineinandergreifen — bewerten, verfolgen, planen.</p>
+  </div>
+
+  <!-- STAND (ohne Eyebrow/H2, nur Box direkt unter dem Hero) -->
+  <div class="section" style="padding-top:2.5rem; border-bottom:none;">
+    <div class="honesty-box" style="margin-top:0;">
+      <p>GO:BETTER läuft, wird aktiv weiterentwickelt und finanziert sich selbst. Hier steht, was es heute gibt, was noch nicht, und woran wir arbeiten.</p>
+    </div>
+  </div>
+
+  <!-- WAS GO:BETTER IST -->
+  <div class="section">
+    <div class="section-label">Was GO:BETTER ist</div>
+    <h2>Drei Werkzeuge, eine Logik.</h2>
+    <p>GO:BETTER ist eine Plattform für Anleger, die selbst entscheiden wollen, statt fremden Urteilen zu folgen. Drei Werkzeuge greifen ineinander, teilen Konto und Daten.</p>
+    <p><strong>Fair Value Pro</strong> berechnet, was eine Aktie heute wert sein könnte. <strong>Portfolio Tracker</strong> führt dein Depot und zeigt, wie dein Geld tatsächlich arbeitet. <strong>Investment Planner</strong> macht aus Bewertung und Depot einen Plan: wann einsteigen, wann nachkaufen, wann prüfen, ob die Idee noch stimmt.</p>
+    <div class="tools-grid">
+      <div class="tool-box">
+        <div class="tool-label" style="color:var(--neon);">Fair Value Pro</div>
+        <div class="tool-name">Bewerten</div>
+        <div class="tool-desc">Berechnet aus Firmenzahlen und deinen Annahmen einen Fairen Wert zum Vergleich mit dem Börsenkurs.</div>
+      </div>
+      <div class="tool-box">
+        <div class="tool-label" style="color:var(--pt-accent);">Portfolio Tracker</div>
+        <div class="tool-name">Verfolgen</div>
+        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fair Value je Position.</div>
+      </div>
+      <div class="tool-box">
+        <div class="tool-label" style="color:var(--td-accent);">Investment Planner</div>
+        <div class="tool-name">Entscheiden</div>
+        <div class="tool-desc">Zehn Module, mit denen aus Daten ein Plan wird — von der Positionsgröße bis zum Trade Journal.</div>
+      </div>
+    </div>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Fair Value Pro — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Du gibst eine Aktie ein. GO:BETTER lädt die Zahlen vom Datenanbieter und rechnet sie durch fünf Verfahren. Jede Annahme ist sichtbar und änderbar — Wachstum, Zinssatz, Steuersatz. Am Ende steht eine Note für die Qualität des Unternehmens und ein Komposit Fairer Wert zum Vergleich mit dem Kurs. Kurzansicht ohne Konto; volles Dashboard nach Registrierung, kostenlos.</div>
+    </details>
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Portfolio Tracker — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Depots über mehrere Broker, Snapshots pro Datum, Käufe und Verkäufe mit Preis und Gebühr, Ausschüttungen und Steuern pro Jahr. Dokumente kannst du per Bild, PDF, CSV oder Text importieren — die KI liest heraus, du prüfst in der Vorschau, dann wird gespeichert. Vor dem Versand schwärzt ein Scrubber im Browser Kontoname, IBAN, Steuer-ID, Adresse, Nummern, E-Mail und Telefon — in einer Vorschau kannst du nachschwärzen. Fair-Value-Verdict pro Position aus deinen eigenen Bewertungen. Teil des MAX-Plans.</div>
+    </details>
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Investment Planner — mehr dazu <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.7;">Zehn Module in einer Seitenleiste: Meine Richtwerte, Stresstest, Watchlist, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Recovery Return, Zinsrechner, Rebalancing, Trade Journal. Alle greifen auf deine gespeicherten Bewertungen und Depot-Daten zu. Das Trade Journal lässt dich eine Kaufbegründung festhalten, die nach dem Speichern nicht mehr änderbar ist; ein optionaler KI-Coach prüft sie gegen 16 bekannte Denkfehler. Teil des MAX-Plans.</div>
+    </details>
+  </div>
+
+  <!-- WIE DER KOMPOSIT FAIRER WERT ENTSTEHT -->
+  <div class="section">
+    <div class="section-label">Wie der Komposit Fairer Wert entsteht</div>
+    <h2>Fünf Verfahren, drei im Gewicht.</h2>
+    <p>Fair Value Pro rechnet fünf Verfahren gleichzeitig. Drei davon ergeben zusammen den <strong>Komposit Fairen Wert</strong>, und du bestimmst, wie stark jedes zählt. Die anderen beiden stehen zum Vergleich daneben. Dazu kommen zwei Kennzahlen, die keinen eigenen Wert ergeben, sondern nur einordnen.</p>
+    <p>Für jeden Branchentyp liegt eine Vorlage bereit: Bei Banken zählt allein das KGV, für Kryptowährungen entfällt der Komposit ganz. Die Gewichte stehen in der Tabelle.</p>
+
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Branche</th>
+            <th>DCF</th>
+            <th>KGV</th>
+            <th>EV/EBITDA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Voreinstellung (Standard)</td><td>50 %</td><td>25 %</td><td>25 %</td></tr>
+          <tr><td>Konsum, Gesundheit, Konservativ</td><td>60 %</td><td>20 %</td><td>20 %</td></tr>
+          <tr><td>Energie, Edelmetalle, Rohstoffe</td><td>30 %</td><td>35 %</td><td>35 %</td></tr>
+          <tr><td>Banken, Versicherungen</td><td class="no">—</td><td>100 %</td><td class="no">—</td></tr>
+          <tr><td>Kryptowährungen</td><td colspan="3" class="part">kein Komposit Fairer Wert</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Die Verfahren im Einzelnen <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
+        <p style="margin:0 0 0.8rem;"><strong style="color:var(--text);">Fünf Verfahren rechnen einen Fairen Wert:</strong></p>
+        <ul style="margin:0 0 1rem 1.2rem; padding:0; list-style:disc;">
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">DCF (zweistufig)</strong> — Rechnet die künftigen Geldüberschüsse auf heute zurück: fünf Jahre Wachstum, dann Übergang in einen gleichbleibenden Zustand.</li>
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">KGV</strong> — Gewinn je Aktie mal Ziel-KGV für die Branche.</li>
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">EV/EBITDA</strong> — Wert aus dem branchentypischen Vielfachen auf den Betriebsgewinn vor Abschreibungen.</li>
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">DDM</strong> — Wert aus den künftigen Dividenden; erscheint nur bei ausschüttenden Titeln.</li>
+          <li><strong style="color:var(--text);">PEG</strong> — KGV im Verhältnis zum Gewinnwachstum.</li>
+        </ul>
+        <p style="margin:0 0 0.8rem;"><strong style="color:var(--text);">Zwei Vergleichsgrößen, die nicht als Fairer Wert zählen:</strong></p>
+        <ul style="margin:0 0 0.8rem 1.2rem; padding:0; list-style:disc;">
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">Historisches Median-KGV</strong> — Vergleichslinie aus dem eigenen KGV der letzten fünf Jahre, im Kursverlauf-Diagramm sichtbar.</li>
+          <li><strong style="color:var(--text);">FCF-Rendite</strong> — Freier Geldüberschuss im Verhältnis zum Börsenwert, verglichen mit dem Anleihezins. Eine Kennzahl, kein Fairer Wert.</li>
+        </ul>
+        <p style="margin:0;">Der Komposit bildet sich aus den ersten drei (DCF, KGV, EV/EBITDA).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- WO WIR UNS ABGRENZEN -->
+  <div class="section">
+    <div class="section-label">Wo wir uns abgrenzen</div>
+    <h2>Was anders ist.</h2>
+    <p>Werkzeuge für Aktien-Bewertungen gibt es viele; keines kombiniert, was uns wichtig ist: Annahmen in der Bewertung, die der Nutzer selbst setzt, eine Qualitätsnote getrennt vom Kurs, Depot und Planung im selben Konto, Marktdaten und KI mit eigenem Schlüssel. Die Übersicht ordnet GO:BETTER neben drei bekannte Werkzeuge aus derselben Nische ein.</p>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Merkmal</th>
+            <th class="hl">GO:BETTER</th>
+            <th>Morningstar</th>
+            <th>Simply Wall St</th>
+            <th>GuruFocus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bewertung mit eigenen Annahmen</td>
+            <td class="yes hl-col">✓ Nutzer setzt Wachstum, Zinssatz, Marge</td>
+            <td class="part">Analystenurteil</td>
+            <td class="part">Automatisch</td>
+            <td class="part">Teilweise</td>
+          </tr>
+          <tr>
+            <td>Komposit aus mehreren Verfahren, Gewicht einstellbar</td>
+            <td class="yes hl-col">✓ DCF · KGV · EV/EBITDA</td>
+            <td class="part">Star Rating</td>
+            <td class="part">Snowflake</td>
+            <td class="part">GF Score / GF Value</td>
+          </tr>
+          <tr>
+            <td>Qualitätsnote getrennt vom Kurs</td>
+            <td class="yes hl-col">✓ 12 Kriterien, A–D</td>
+            <td class="part">Economic-Moat-Rating</td>
+            <td class="no">in Snowflake vermischt</td>
+            <td class="part">Teilweise</td>
+          </tr>
+          <tr>
+            <td>Depot im selben Konto</td>
+            <td class="yes hl-col">✓ Portfolio Tracker</td>
+            <td class="part">eigenes Modul</td>
+            <td class="part">Watchlist</td>
+            <td class="part">Watchlist</td>
+          </tr>
+          <tr>
+            <td>Trade Journal mit Prüfung auf Denkfehler</td>
+            <td class="yes hl-col">✓ 16 Verzerrungen</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>Marktdaten über eigenen Schlüssel (BYOK)</td>
+            <td class="yes hl-col">✓</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>KI-Zugang über eigenen Schlüssel</td>
+            <td class="yes hl-col">✓ Claude · ChatGPT · Gemini</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Die drei verglichenen Werkzeuge sind etablierte Anbieter aus derselben Nische (Aktien-Bewertung für Privatanleger). Was dort als Bezeichnung steht, ist der jeweilige Produktname. Preise und Pläne der Anbieter wechseln; wir vergleichen Methodik, nicht Kosten.</p>
+  </div>
+
+  <!-- DATEN UND SCHLÜSSEL -->
+  <div class="section">
+    <div class="section-label">Daten und Schlüssel</div>
+    <h2>Bring Your Own Key.</h2>
+    <p>GO:BETTER liefert keine Marktdaten mit. Für die Bewertung legst du selbst einen Schlüssel bei einem Datenanbieter an und hinterlegst ihn in der App. Für die KI-Funktionen (Dokumenten-Import im Tracker, Erklärungen im Kalkulator, Bias-Coach im Trade Journal) brauchst du zusätzlich einen eigenen Schlüssel bei Claude, ChatGPT oder Gemini.</p>
+    <p>Das Prinzip heißt <strong>Bring Your Own Key</strong>: Du zahlst beim Anbieter, nicht uns. Deine Schlüssel bleiben in deinem Browser.</p>
+
+    <div class="status-grid">
+      <div class="status-item">
+        <div class="status-label">Marktdaten-Schlüssel</div>
+        <div class="status-val" style="font-size:0.95rem;">Pflicht für Bewertung</div>
+        <div class="status-sub">Für Kursabruf im Tracker und Watchlist-Suche. Empfehlung: Financial Modeling Prep (25 % Rabatt über unseren Partner-Link).</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">KI-Schlüssel</div>
+        <div class="status-val" style="font-size:0.95rem;">Optional</div>
+        <div class="status-sub">Anbieter frei wählbar. Kosten typischerweise im Cent-Bereich pro Anfrage.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--display); font-size:1rem; font-weight:700; margin:1.5rem 0 0.8rem;">Was heißt das für die Aktualität?</h3>
+    <ul style="margin:0 0 1rem 1.2rem; padding:0; list-style:disc; color:var(--text-2); font-size:0.9rem; line-height:1.75;">
+      <li style="margin-bottom:0.4rem;">Kurse und Finanzzahlen werden bei jeder Bewertung direkt bei deinem Datenanbieter abgerufen.</li>
+      <li style="margin-bottom:0.4rem;">Finanzzahlen sind so aktuell wie der letzte veröffentlichte Quartals- bzw. Jahresbericht.</li>
+      <li>In der Watchlist steht der Kurs deiner letzten Bewertung, mit Datum.</li>
+    </ul>
+
+    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Warum eigener Schlüssel <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">Transparent — du siehst, was der Anbieter kostet, wir legen nichts drauf. Kein Lock-in — du kannst Anbieter oder Plan jederzeit wechseln. Kostenkontrolliert — du bezahlst nach eigener Nutzung. Datenschutz-sauber: Marktdaten rufst du über den Tracker direkt vom Anbieter ab; Kalkulator und Planner reichen deine Anfragen transient weiter — nicht gespeichert, nicht geloggt.</div>
+    </details>
+  </div>
+
+  <!-- TECHNIK -->
+  <div class="section">
+    <div class="section-label">Technik</div>
+    <h2>Wie es gebaut ist.</h2>
+    <p>Fundiertes Handwerk, nichts Experimentelles. Python im Hintergrund, schlanker Browser-Client im Vordergrund — ohne Build-Pipeline, ohne Framework-Schicht dazwischen. Marktdaten und KI nach dem BYOK-Prinzip, Zahlung über Stripe.</p>
+
+    <div class="status-grid">
+      <div class="status-item">
+        <div class="status-label">Website · gobetter.trade</div>
+        <div class="status-val" style="font-size:0.95rem;">Statisch, GitHub Pages</div>
+        <div class="status-sub">HTML, CSS und JavaScript als Dateien. DNS über Cloudflare (DNS-only, kein Traffic-Proxy). E-Mail an support@gobetter.trade über Cloudflare Email Routing.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Anwendung · app.gobetter.trade</div>
+        <div class="status-val" style="font-size:0.95rem;">Python im Backend, Vanilla JavaScript im Browser</div>
+        <div class="status-sub">Getrennt von der Website gehostet, mit eigenem Konto und eigener Datenbank.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Marktdaten</div>
+        <div class="status-val" style="font-size:0.95rem;">BYOK — eigener Schlüssel beim Anbieter</div>
+        <div class="status-sub">Im Tracker direkt vom Browser zum Anbieter. In Kalkulator und Planner über den Server transient durchgereicht — nicht in URLs, nicht in Logs, nicht in der Datenbank.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">KI-Zugang</div>
+        <div class="status-val" style="font-size:0.95rem;">BYOK — Claude, ChatGPT oder Gemini</div>
+        <div class="status-sub">Der Schlüssel bleibt im Browser des Nutzers. Wir sehen weder Anfrage noch Antwort.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Zahlung</div>
+        <div class="status-val" style="font-size:0.95rem;">Stripe</div>
+        <div class="status-sub">Vertragspartner im EWR: Stripe Payments Europe, Dublin. Vollständige Kartendaten und IBAN liegen bei Stripe; wir bekommen nur Zahlungsstatus und Kundenkennung.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">Rechnungslegung</div>
+        <div class="status-val" style="font-size:0.95rem;">Deutschland</div>
+        <div class="status-sub">Betrieb nach § 19 UStG (Kleinunternehmerregelung). Keine Umsatzsteuer auf Rechnungen.</div>
+      </div>
+    </div>
+
+    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Wie die Daten fließen — Schritt für Schritt <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
+        <p style="margin:0 0 0.8rem;">Die Website <strong style="color:var(--text);">gobetter.trade</strong> lädt nur statische Dateien — keine Analytics, keine Cookies, kein Login. Zum Starten verlässt der Nutzer die Website und wechselt zur Anwendung unter <strong style="color:var(--text);">app.gobetter.trade</strong>.</p>
+        <p style="margin:0 0 0.5rem;"><strong style="color:var(--text);">In der Anwendung:</strong></p>
+        <ul style="margin:0 0 0.8rem 1.2rem; padding:0; list-style:disc;">
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">Marktdaten im Tracker</strong> werden unmittelbar vom Browser des Nutzers beim Datenanbieter abgerufen. Der Schlüssel verlässt den Browser nur in Richtung Anbieter.</li>
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">Marktdaten in Kalkulator und Planner</strong> laufen über den Server von GO:BETTER an den Anbieter weiter. Der Schlüssel wird dabei pro Anfrage mitgereicht und danach vergessen — nicht in URLs, nicht in Logs, nicht in der Datenbank.</li>
+          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">KI-Anfragen</strong> (Dokumenten-Import im Tracker, Erklärungen im Kalkulator, Bias-Coach im Trade Journal) laufen vom Browser direkt zum KI-Anbieter, den der Nutzer gewählt hat. Wir sehen weder die Anfrage noch die Antwort.</li>
+          <li><strong style="color:var(--text);">Zahlungsdaten</strong> sehen wir nicht. Vollständige Kartendaten und IBAN liegen ausschließlich bei Stripe; wir bekommen nur den Zahlungsstatus und eine Kundenkennung zurück.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- GESCHÄFTSMODELL -->
+  <div class="section">
+    <div class="section-label">Geschäftsmodell</div>
+    <h2>Kalkulator kostenlos. Für mehr: MAX.</h2>
+    <p>Der Kalkulator ist kostenlos — ohne Konto als Kurzansicht, mit Konto als volles Dashboard. Wer gespeicherte Analysen, Preset-Sync, Portfolio Tracker, Investment Planner und den KI-Assistenten will, zahlt für <strong>MAX</strong>: 9,99 € im Monat oder 89,91 € im Jahr.</p>
+
+    <div class="status-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="status-item">
+        <div class="status-label">GO</div>
+        <div class="status-val" style="font-size:0.95rem;">Kostenlos, ohne Konto</div>
+        <div class="status-sub">Kurzansicht Fair Value Pro: vier Kennzahlen plus Einordnung.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">PRO</div>
+        <div class="status-val" style="font-size:0.95rem;">Kostenlos, mit Konto</div>
+        <div class="status-sub">Volles Dashboard, eigene Vorlagen lokal, Export und Import.</div>
+      </div>
+      <div class="status-item">
+        <div class="status-label">MAX</div>
+        <div class="status-val" style="font-size:0.95rem;">9,99 €/Monat · 89,91 €/Jahr</div>
+        <div class="status-sub">Gespeicherte Analysen, Preset-Sync über Geräte, Portfolio Tracker, Investment Planner, KI-Assistent (eigener Schlüssel).</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--text-3); margin-top:1rem;">Der Datenanbieter kommt zusätzlich und wird dort separat bezahlt. Konto-Verwaltung läuft über Stripe, Kündigung direkt in der App.</p>
+  </div>
+
+  <!-- WAS WIR SUCHEN -->
+  <div class="section">
+    <div class="section-label">Was wir suchen</div>
+    <h2>Rückmeldungen aus der Praxis.</h2>
+    <p>GO:BETTER ist noch jung und braucht Rückmeldungen aus der Praxis. Wir suchen Menschen, die mit dem Werkzeug arbeiten und uns zeigen, was tatsächlich hilft und was fehlt.</p>
+
+    <ul style="margin:1.5rem 0 1rem 1.2rem; padding:0; list-style:disc; color:var(--text-2); font-size:0.9rem; line-height:1.9;">
+      <li><strong style="color:var(--text);">Anleger</strong>, die GO:BETTER selbst nutzen und ehrliches Feedback geben.</li>
+      <li><strong style="color:var(--text);">Fachleute</strong> für Bewertung und Mathematik, die unsere Rechenverfahren prüfen.</li>
+      <li><strong style="color:var(--text);">Entwickler</strong>, die am Stack mitarbeiten wollen.</li>
+      <li><strong style="color:var(--text);">Menschen mit Reichweite</strong>, die GO:BETTER in ihrem Umfeld sichtbar machen können.</li>
+      <li><strong style="color:var(--text);">Darüber hinaus</strong> jede Form von Zusammenarbeit, die zur Idee passt — melde dich einfach.</li>
+    </ul>
+
+    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Woran wir arbeiten <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
+        <p style="margin:0 0 0.8rem;">Nichts ist fertig, einiges läuft noch nicht wie beschrieben. Die wichtigsten offenen Baustellen:</p>
+        <ul style="margin:0 0 0 1.2rem; padding:0; list-style:disc;">
+          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Live-Kurse in der Watchlist</strong> — kommen erst mit dem zweiten Datenanbieter. Heute steht dort der Kurs der letzten Bewertung mit Datum.</li>
+          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Kursverlauf über zehn Jahre</strong> — die Anzeige deckt heute die letzten fünf Jahre ab. Wir arbeiten an der vollen Historie.</li>
+          <li><strong style="color:var(--text);">Bitcoin, andere Kryptowährungen und Rohstoffe</strong> — der aktuelle Datenanbieter liefert für diese Werte keinen Kurs. Statt einer falschen Einordnung zeigt GO:BETTER derzeit eine Meldung, dass keine Kursdaten vorliegen.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- KONTAKT -->
+  <div class="section">
+    <div class="section-label">Kontakt</div>
+    <h2>Gespräch aufnehmen.</h2>
+    <p>Du hast Fragen, Hinweise oder Interesse an einer konkreten Zusammenarbeit? Schreib direkt — eine Rückmeldung kommt üblicherweise innerhalb von zwei Werktagen.</p>
+    <a href="mailto:support@gobetter.trade?subject=Partner-Anfrage%20(GO%3ABETTER)" class="gb-btn gb-btn--l gb-btn--primary" style="margin-top:1.5rem;">E-Mail schreiben →</a>
+  </div>
+
+</div><!-- /page-wrap -->
+
+</div><!-- /page-wrap -->
+
+<!-- FOOTER · GO:BETTER Shell -->
+<div class="gb-foot-wrap">
+  <div class="gb-foot">
+    <div class="gb-foot-bar" aria-hidden="true">
+      <span class="fvp"></span><span class="pt"></span><span class="td"></span>
+    </div>
+    <div class="gb-foot-links">
+      <a href="partner.html">Für Partner</a>
+      <a href="https://app.gobetter.trade/kuendigung">Verträge hier kündigen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+    <span class="gb-foot-note">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen. <span style="opacity:0.75;">· Bildmotive KI-generiert.</span><br><span style="opacity:0.75;">✱ Preise verstehen sich als Endpreise · Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.</span></span>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      const icon = d.querySelector('summary span:last-child');
+      if(icon) icon.textContent = d.open ? '×' : '+';
+    });
+  });
+</script>
+<script src="gb-shell.js" defer></script>
+</body>
+</html>

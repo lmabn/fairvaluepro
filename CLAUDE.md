@@ -132,10 +132,12 @@ Konsequenz für die Überarbeitung:
 
 ## Ablauf — Inhaltsüberarbeitung Seite für Seite
 
-**Verbindlich** für die bevorstehende aussagenbasierte Überarbeitung aller Produktseiten.
+**Verbindlich** für die aussagenbasierte Überarbeitung aller Produktseiten.
 
 **Grundregeln**
 - **Eine Seite nach der anderen.** Nie zwei gleichzeitig.
+- **Seiten werden aktualisiert, nicht neu entworfen.** Die bestehende Gliederung bleibt. Zu tun ist: falsche Aussagen korrigieren, fehlende Funktionen ergänzen, Begriffe nach den Festlegungen vereinheitlichen, dreistufige Darstellung dort anwenden, wo Details den Fließtext überladen.
+- **Abschnitte werden nicht gestrichen**, außer Ludmila sagt es ausdrücklich. Wenn ein Abschnitt überflüssig scheint, wird er mit Begründung genannt — dann wird gewartet.
 - **Keine Einzeländerungen außerhalb der laufenden Seite** — Ausnahme: nachweislich falsche Aussagen (wie LIVE-Badges im Planner-Mockup) werden sofort entfernt, auf einem eigenen Mini-Branch.
 
 **Reihenfolge**
@@ -148,12 +150,24 @@ Konsequenz für die Überarbeitung:
 7. `index.html`
 8. `daten-quelle.html`
 
-**Ablauf je Seite**
-1. **Entwurf**: Der komplette Inhalt der Seite — alle Aussagen, dreistufig (Fließtext verdichtet, kompakte Übersicht, Details in Akkordeons; siehe Abschnitt „Gestaltung — Funktionen dreistufig darstellen").
-2. **Faktenprüfung**: Entwurf gegen die Faktenbasis — Funktionsliste der App-Sitzung, Komposit-Beschreibung, Begriffsregeln, Datenaktualität.
-3. **Vorlage**: Entwurf wird als Text (nicht als Code) vorgelegt.
-4. **Umsetzung nach Freigabe**: Einmal umsetzen, Screenshots zeigen, Merge, Purge.
-5. **Erst danach die nächste Seite.**
+**Ablauf je Seite** (ab Seite 2)
+1. **Diff-Entwurf**: Was sich ändert — nicht die ganze Seite neu. Pro Abschnitt der Seite: alte Formulierung → neue Formulierung, mit Begründung (falsche Aussage korrigiert, Begriff vereinheitlicht, dreistufige Darstellung, Lücke aus Funktionsliste gefüllt). Streichvorschläge nur mit Begründung, dann warten.
+2. **Faktenprüfung**: Diff gegen die Faktenbasis — Funktionsliste der App-Sitzung, Komposit-Beschreibung, Begriffsregeln, Datenaktualität.
+3. **Vorschau-Umsetzung**: Diff in eine Vorschau-Fassung einbauen, nach dem **Vorschau-Workflow** unten.
+4. **Live-Prüfung**: Ludmila sieht sich die Vorschau am echten Pages-Build an und gibt frei (oder fordert Nachbesserung).
+5. **Freigabe**: Die Vorschau-Fassung ersetzt die echte Seite, Vorschau wird gelöscht, Cache wird gepurgt.
+6. **Erst danach die nächste Seite.**
+
+## Vorschau-Workflow (Live-Prüfung durch Ludmila)
+
+Ludmila prüft nicht an Screenshots, sondern am echten Pages-Build. Pro Seitenüberarbeitung läuft das so:
+
+1. **Vorschau-Datei** anlegen: Fassung mit den geplanten Änderungen unter einem Vorschau-Dateinamen im Wurzelverzeichnis, z. B. `partner-vorschau.html`. Unterordner nur, wenn relative Verweise auf CSS, Skripte und Bilder darin weiter funktionieren — sonst Wurzelverzeichnis mit anderem Dateinamen (Default).
+2. **Robots-Ausschluss**: `<meta name="robots" content="noindex, nofollow">` im `<head>`. Nicht in `sitemap.xml` eintragen.
+3. **Merge der Vorschau**: Nur die Vorschau-Datei wird gemerged, nicht die echte Seite. Pages-Build abwarten (siehe „Pages-Deploy-Check nach Merge").
+4. **URL nennen**: Die Vorschau-Adresse an Ludmila melden.
+5. **Freigabe oder Nachbesserung**: Bei Nachbesserung → neue Vorschau-Fassung. Bei Freigabe → in einem Folge-Commit die echte Seite durch den Vorschau-Inhalt ersetzen und die Vorschau-Datei löschen.
+6. **Keine Vorschau liegenlassen**: Nach der Freigabe wird die Vorschau-Datei entfernt, nicht nur umbenannt.
 
 ## Vorgemerkt für die Seitenüberarbeitung
 
