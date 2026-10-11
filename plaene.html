@@ -132,6 +132,10 @@
     color: var(--bg);
     background: var(--neon);
   }
+  /* Im aktiven Zustand ist der Rabatt-Hinweis durch die grüne Pille
+     und die price-annual-note bereits abgedeckt — die Badge würde
+     grün-auf-grün sitzen und wirkt dort als Fremdkörper. */
+  .toggle-btn.active .save-badge { display: none; }
   .save-badge {
     font-family: var(--mono);
     font-size: 0.52rem;
