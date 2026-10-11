@@ -10,6 +10,27 @@ Zahlen in den Mockups sind Beispielwerte und werden nicht geprüft — nur die W
 
 ---
 
+## Stand der App-Sitzung · Block 4 · 2026-10-11
+
+Die App-Sitzung hat die Mockups gegen den aktuellen Bauplan abgeglichen. Zusammenfassung des Berichts; wird bei der jeweiligen Seitenüberarbeitung herangezogen.
+
+### Portfolio Tracker — Seite 3 (`portfolio-tracker.html`)
+
+**Praktisch jede Kennzahl heißt in den Mockups anders als in der App.** Nicht einzelne Felder, sondern ein durchgängiger Begriffs-Mismatch — bei der Überarbeitung der Seite als Ganzes nachziehen, nicht Feld für Feld. Nicht existent: Zeitraum-Umschalter **„1J · 2J · 3J · 5J · Alle"** — dieser Umschalter kommt in der App gar nicht vor.
+
+### Investment Planner — Seite 4 (`investment-planner.html`)
+
+**Positionsgröße-Modul: Die Hälfte der Feldnamen stimmt nicht.** Bei der Überarbeitung Feldnamen vollständig gegen den Bauplan abgleichen (`frontend/trading-desk.js` und das Positionsgröße-Modul), nicht aus dem Website-Mockup übernehmen.
+
+### Grundsätzlich — zwei Fundstellen, vor der Korrektur zu klären
+
+Diese zwei Panels zeigen Elemente, die es in der App nicht gibt. **Vor der Korrektur mit dem User klären, ob sie überhaupt eine App-Ansicht abbilden sollen oder bewusst Illustrationen sind.**
+
+- **Fair-Value-Pro Live-Vorschau-Terminal** (`fair-value-pro.html` Section `#product`) — in der App nicht vorhanden: „Unternehmensqualität", „Gewinnwachstum 5J", „Verschuldung" sowie die beiden Verdict-Boxen „Qualität" und „Bewertung". Entweder in App-Begriffe übersetzen oder als Illustration kennzeichnen.
+- **Startseiten-Panels** (`index.html`, Produkt-Teaser-Panels) — gleicher Status: nicht nachweisbar in der App. Dieselbe Klärung nötig.
+
+---
+
 ## 1. Fair-Value-Pro Live-Vorschau-Terminal
 
 Datei: `fair-value-pro.html` — Section `#product`, Element `<div class="terminal-col fade"><div class="terminal">`

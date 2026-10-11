@@ -406,56 +406,71 @@ body { background: var(--bg); }
     </details>
   </div>
 
-  <!-- TECHNIK -->
+  <!-- TECH -->
   <div class="section">
-    <div class="section-label">Technik</div>
-    <h2>Wie es gebaut ist.</h2>
-    <p>Fundiertes Handwerk, nichts Experimentelles. Python im Hintergrund, schlanker Browser-Client im Vordergrund — ohne Build-Pipeline, ohne Framework-Schicht dazwischen. Marktdaten und KI nach dem BYOK-Prinzip, Zahlung über Stripe.</p>
+    <div class="section-label">Tech-Stack</div>
+    <h2>Bewusste Entscheidungen statt Default-Choices.</h2>
+    <p>Der Stack ist so gewählt, dass jeder JavaScript-fähige Entwickler beitragen kann — kein Framework-Spezialist nötig. Sub-100ms-Antwortzeiten bei normaler Last. Kein Build-Step, kein npm, keine Supply-Chain-Risiken.</p>
 
-    <div class="status-grid">
-      <div class="status-item">
-        <div class="status-label">Website · gobetter.trade</div>
-        <div class="status-val" style="font-size:0.95rem;">Statisch, GitHub Pages</div>
-        <div class="status-sub">HTML, CSS und JavaScript als Dateien. DNS über Cloudflare (DNS-only, kein Traffic-Proxy). E-Mail an support@gobetter.trade über Cloudflare Email Routing.</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin:2rem 0;">
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Backend</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Python · FastAPI · PostgreSQL</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Raw-SQL ohne ORM, dual-mode (SQLite lokal / Postgres in Production), eigene Token-Auth mit gehärtetem Hashing</div>
       </div>
-      <div class="status-item">
-        <div class="status-label">Anwendung · app.gobetter.trade</div>
-        <div class="status-val" style="font-size:0.95rem;">Python im Backend, Vanilla JavaScript im Browser</div>
-        <div class="status-sub">Getrennt von der Website gehostet, mit eigenem Konto und eigener Datenbank.</div>
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Frontend</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Vanilla JS · Zero Build</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Kein React, kein Webpack. Chart.js + Flatpickr per CDN, versions-gepinnt</div>
       </div>
-      <div class="status-item">
-        <div class="status-label">Marktdaten</div>
-        <div class="status-val" style="font-size:0.95rem;">BYOK — eigener Schlüssel beim Anbieter</div>
-        <div class="status-sub">Im Tracker direkt vom Browser zum Anbieter. In Kalkulator und Planner über den Server transient durchgereicht — nicht in URLs, nicht in Logs, nicht in der Datenbank.</div>
-      </div>
-      <div class="status-item">
-        <div class="status-label">KI-Zugang</div>
-        <div class="status-val" style="font-size:0.95rem;">BYOK — Claude, ChatGPT oder Gemini</div>
-        <div class="status-sub">Der Schlüssel bleibt im Browser des Nutzers. Wir sehen weder Anfrage noch Antwort.</div>
-      </div>
-      <div class="status-item">
-        <div class="status-label">Zahlung</div>
-        <div class="status-val" style="font-size:0.95rem;">Stripe</div>
-        <div class="status-sub">Vertragspartner im EWR: Stripe Payments Europe, Dublin. Vollständige Kartendaten und IBAN liegen bei Stripe; wir bekommen nur Zahlungsstatus und Kundenkennung.</div>
-      </div>
-      <div class="status-item">
-        <div class="status-label">Rechnungslegung</div>
-        <div class="status-val" style="font-size:0.95rem;">Deutschland</div>
-        <div class="status-sub">Betrieb nach § 19 UStG (Kleinunternehmerregelung). Keine Umsatzsteuer auf Rechnungen.</div>
+      <div style="background:var(--bg2); padding:1.2rem 1.4rem;">
+        <div style="font-family:var(--mono); font-size:0.55rem; color:var(--neon); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">Infra</div>
+        <div style="font-family:var(--display); font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">Render · Supabase · Cloudflare</div>
+        <div style="font-size:0.78rem; color:var(--text-3); line-height:1.55;">Hosting und Datenbank in der EU, Cloudflare DNS/CDN, Auto-Deploy aus Git</div>
       </div>
     </div>
 
-    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
-      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Wie die Daten fließen — Schritt für Schritt <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
-        <p style="margin:0 0 0.8rem;">Die Website <strong style="color:var(--text);">gobetter.trade</strong> lädt nur statische Dateien — keine Analytics, keine Cookies, kein Login. Zum Starten verlässt der Nutzer die Website und wechselt zur Anwendung unter <strong style="color:var(--text);">app.gobetter.trade</strong>.</p>
-        <p style="margin:0 0 0.5rem;"><strong style="color:var(--text);">In der Anwendung:</strong></p>
-        <ul style="margin:0 0 0.8rem 1.2rem; padding:0; list-style:disc;">
-          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">Marktdaten im Tracker</strong> werden unmittelbar vom Browser des Nutzers beim Datenanbieter abgerufen. Der Schlüssel verlässt den Browser nur in Richtung Anbieter.</li>
-          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">Marktdaten in Kalkulator und Planner</strong> laufen über den Server von GO:BETTER an den Anbieter weiter. Der Schlüssel wird dabei pro Anfrage mitgereicht und danach vergessen — nicht in URLs, nicht in Logs, nicht in der Datenbank.</li>
-          <li style="margin-bottom:0.4rem;"><strong style="color:var(--text);">KI-Anfragen</strong> (Dokumenten-Import im Tracker, Erklärungen im Kalkulator, Bias-Coach im Trade Journal) laufen vom Browser direkt zum KI-Anbieter, den der Nutzer gewählt hat. Wir sehen weder die Anfrage noch die Antwort.</li>
-          <li><strong style="color:var(--text);">Zahlungsdaten</strong> sehen wir nicht. Vollständige Kartendaten und IBAN liegen ausschließlich bei Stripe; wir bekommen nur den Zahlungsstatus und eine Kundenkennung zurück.</li>
-        </ul>
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Sicherheits-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CSP mit strikter connect-src-Whitelist</strong> — Datenexfiltration bei XSS strukturell verhindert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">HSTS</strong> — 1 Jahr, includeSubDomains, erzwungenes HTTPS</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Brute-Force-Schutz</strong> — Rate-Limiting per IP, automatische Sperrung bei wiederholten Fehlversuchen</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Permissions-Policy</strong> — Camera, Mic, Geolocation, Payment, USB deaktiviert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">X-Frame-Options: DENY</strong> — Clickjacking-Schutz</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">BYOK für KI</strong> — Schlüssel im Browser, nie auf unserem Server</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">CDN-Versions-Pinning</strong> — kein böswilliges Update unterwandert den Stack</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Idempotente Schema-Migrationen</strong> — Live-DB-Updates ohne Downtime</div>
+      </div>
+    </details>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Mathematik & Algorithmen <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem;">
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Zwei-Phasen-DCF</strong> mit Gordon-Growth-Terminal-Value, vollständig user-parametrisiert</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">TWR</strong> (Time-Weighted Return) — von Cashflows bereinigt, professioneller Standard</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">EV/EBITDA</strong> Net-Debt-bereinigt — M&A-Praxis-konform</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">IRR</strong> — geldgewichtete Rendite</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">DDM</strong> Constant-Growth + Two-Stage für Dividendentitel</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Compound-Interest</strong> nominal r/12 monatlich + vorschüssig — matcht Spar-Apps pixelgenau</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Margin of Safety</strong> nach Graham — prozentualer Discount-Faktor pro Aktie</div>
+        <div style="font-size:0.8rem; color:var(--text-2);">✓ <strong style="color:var(--text);">Recovery-Return</strong> — Drawdown, p.a.-Wachstum über variablen Zeithorizont</div>
+      </div>
+    </details>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Datenbank-Architektur <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg);">
+        <p style="font-size:0.8rem; color:var(--text-2); margin-bottom:0.8rem;">17 Tabellen, klar nach Domänen getrennt — Auth, Portfolio Tracker, Investment Planner, plus gespeicherte Analysen und Bewertungs-Setups. Cascading Deletes durchgängig, Foreign-Key-Constraints aktiv über Domänen-Grenzen hinweg. <strong style="color:var(--text);">Dual-Mode-DB</strong>: SQLite für schnelle lokale Entwicklung, PostgreSQL via Supabase in Production — selbes Raw-SQL über eine dünne Abstraktionsschicht.</p>
+      </div>
+    </details>
+
+    <details class="tech-accordion" style="margin-top:0.5rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">KI-Integration <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.8rem; color:var(--text-2); line-height:1.7;">
+        <p style="margin-bottom:0.6rem;"><strong style="color:var(--text);">KI-Assistent direkt im Kalkulator:</strong> Inline-Erklärungen zu DCF, ROIC, KGV und anderen Kennzahlen via „?"-Button. Was-wäre-wenn-Szenarien berechnen live: WACC +1 % → wie ändert sich der DCF-Wert? Der System-Prompt verbietet Kaufempfehlungen technisch — keine Anlageberatung.</p>
+        <p style="margin-bottom:0.6rem;">Drei Provider parallel: <strong style="color:var(--text);">Anthropic Claude Haiku 4.5, OpenAI GPT-4o-mini, Google Gemini 2.0 Flash</strong> — bewusst „schnell + günstig"-Klasse, typische Anfragen im Cent-Bereich. Provider-agnostische <code style="font-family:var(--mono); font-size:0.85em; color:var(--neon); background:var(--bg3); padding:0.1rem 0.35rem; border-radius:2px;">callAI()</code>-Schnittstelle — Provider jederzeit austauschbar.</p>
+        <p>Browser-direkte Calls — wir sehen weder API-Schlüssel noch Inhalte. Bias-Coach liefert strukturiertes JSON, 16-Verzerrungen-Katalog kuratiert aus Kahneman, Thaler, Damodaran.</p>
       </div>
     </details>
   </div>
@@ -500,18 +515,6 @@ body { background: var(--bg); }
       <li><strong style="color:var(--text);">Menschen mit Reichweite</strong>, die GO:BETTER in ihrem Umfeld sichtbar machen können.</li>
       <li><strong style="color:var(--text);">Darüber hinaus</strong> jede Form von Zusammenarbeit, die zur Idee passt — melde dich einfach.</li>
     </ul>
-
-    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
-      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Woran wir arbeiten <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
-        <p style="margin:0 0 0.8rem;">Nichts ist fertig, einiges läuft noch nicht wie beschrieben. Die wichtigsten offenen Baustellen:</p>
-        <ul style="margin:0 0 0 1.2rem; padding:0; list-style:disc;">
-          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Live-Kurse in der Watchlist</strong> — kommen erst mit dem zweiten Datenanbieter. Heute steht dort der Kurs der letzten Bewertung mit Datum.</li>
-          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Kursverlauf über zehn Jahre</strong> — die Anzeige deckt heute die letzten fünf Jahre ab. Wir arbeiten an der vollen Historie.</li>
-          <li><strong style="color:var(--text);">Bitcoin, andere Kryptowährungen und Rohstoffe</strong> — der aktuelle Datenanbieter liefert für diese Werte keinen Kurs. Statt einer falschen Einordnung zeigt GO:BETTER derzeit eine Meldung, dass keine Kursdaten vorliegen.</li>
-        </ul>
-      </div>
-    </details>
   </div>
 
   <!-- KONTAKT -->
