@@ -71,16 +71,22 @@ Dasselbe gilt für die **Partnerseite**: Ludmila nutzt sie zum Sprechen, nicht z
 ### Produktaussage · Mechanik
 
 > **Quelle:** Bauplan im App-Repo (Komposit-Logik in `frontend/trading-desk.js` und zugehörige Module). Änderungen an der Mechanik beginnen dort, nicht hier.
-> **Stand:** 2026-10-11.
+> **Stand:** 2026-10-11, präzisiert nach App-Sitzungs-Prüfung. (Der aktualisierte Bauplan-Wortlaut wird parallel von der App-Sitzung erstellt und löst diese Fassung ab, sobald er ankommt.)
 
-Sieben Modelle werden berechnet und nebeneinander gezeigt. Drei gehen in den gewichteten Komposit Fairen Wert: **DCF, KGV, EV/EBITDA**. Die Gewichtung ist **einstellbar**; voreingestellt **50 / 25 / 25**. Es gibt Vorlagen für sieben Branchen:
+**Fünf Verfahren** rechnen einen Fairen Wert: **DCF, KGV, EV/EBITDA, DDM, PEG**. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den **Komposit Fairen Wert** — DDM und PEG stehen eigenständig daneben als Vergleich.
+
+Dazu kommen **zwei Vergleichsgrößen, die keinen eigenen Fairen Wert ergeben**, sondern nur einordnen: das **historische Median-KGV** als Linie im Kursverlauf-Diagramm und die **FCF-Rendite** als Kennzahl.
+
+Die Gewichtung der drei Komposit-Verfahren ist **einstellbar**; voreingestellt **50 / 25 / 25**. Es gibt Vorlagen für sieben Branchen:
 
 - **Konsum, Gesundheit, Konservativ**: 60 / 20 / 20
 - **Energie, Edelmetalle, Rohstoffe**: 30 / 35 / 35
 - **Banken, Versicherungen**: 0 / 100 / 0
 - **Kryptowährungen**: kein Komposit Fairer Wert
 
-Konsequenz für die Überarbeitung: „nutzergewichtet" (partner.html Z. 412, 413, 458) ist im Kern richtig; „fest 50/25/25" (sieben weitere Stellen) ist zu eng und muss die Einstellbarkeit sowie die Branchen-Vorlagen abbilden.
+Konsequenzen für die Überarbeitung:
+- „Sieben Modelle" / „Sieben Methoden" als Framing ist **nicht belegt** — es sind fünf Verfahren plus zwei Vergleichsgrößen.
+- „nutzergewichtet" (partner.html Z. 412, 413, 458) ist im Kern richtig; „fest 50/25/25" (sieben weitere Stellen) ist zu eng und muss die Einstellbarkeit sowie die Branchen-Vorlagen abbilden.
 
 Nicht einzelfallweise umsetzen — die Site hat mindestens 26 Fundstellen in sechs Dateien zu dieser Mechanik; sie werden pro Seite als Ganzes nachgezogen.
 
