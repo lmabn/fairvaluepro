@@ -51,7 +51,7 @@
       "name": "Was unterscheidet euer Tool von anderen Rechnern für den Fairen Wert?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro rechnet fünf Verfahren einen Fairen Wert: Two-Stage DCF, KGV, EV/EBITDA, DDM (Gordon Growth Model) und PEG. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den Komposit Fairen Wert — DDM und PEG stehen als Vergleich daneben. Dazu zwei Vergleichsgrößen, die keinen eigenen Fairen Wert ergeben: historisches Median-KGV als Linie im Kursverlauf und FCF-Rendite als Kennzahl. Die Gewichtung ist einstellbar, voreingestellt 50/25/25, mit Branchen-Vorlagen. Alle Annahmen sind sichtbar und steuerbar."
+        "text": "Bei Fair Value Pro rechnen fünf Verfahren einen Fairen Wert: Two-Stage DCF, KGV, EV/EBITDA, DDM (Gordon Growth Model) und PEG. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den Komposit Fairen Wert — voreingestellt 50/25/25, einstellbar, mit Branchen-Vorlagen. DDM und PEG stehen als Vergleich daneben. Dazu kommen zwei Vergleichsgrößen ohne eigenen Fairen Wert: historisches Median-KGV als Linie im Kursverlauf und FCF-Rendite als Kennzahl. Das Two-Stage-DCF-Modell projiziert Cashflows in zwei Phasen: fünf Jahre Wachstum, dann Übergang in einen gleichbleibenden Zustand, Endwert nach dem Gordon-Growth-Modell. Der entscheidende Unterschied: Alle Annahmen sind sichtbar und steuerbar. Das Ergebnis ist immer dein eigenes Modell — transparent und nachvollziehbar."
       }
     },
     {
@@ -271,9 +271,36 @@
   .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .feat-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
   .feat-card:hover { background: var(--bg3); }
+  .feat-card--spacer { pointer-events: none; }
+  .feat-card--spacer:hover { background: var(--bg); }
   .feat-icon { font-family: var(--mono); font-size: 0.8rem; color: var(--neon); border: 1px solid var(--neon-border); display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 3px; margin-bottom: 1.2rem; }
   .feat-card h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
   .feat-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
+
+  /* Verfahren-Akkordeon (gleicher Aufbau wie partner.html) */
+  .verfahren-wrap { max-width: 1120px; margin: 2rem auto 0; padding: 0 2rem; }
+  .verfahren-table-wrap { overflow-x: auto; margin: 0 0 1rem; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
+  .verfahren-table-wrap::-webkit-scrollbar { height: 6px; }
+  .verfahren-table-wrap::-webkit-scrollbar-track { background: transparent; }
+  .verfahren-table-wrap::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  .verfahren-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 560px; }
+  .verfahren-table th, .verfahren-table td { white-space: nowrap; min-width: 90px; padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: middle; }
+  .verfahren-table th:first-child, .verfahren-table td:first-child { min-width: 200px; white-space: normal; }
+  .verfahren-table th { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); text-align: left; background: var(--bg3); }
+  .verfahren-table td:first-child { color: var(--text); font-weight: 500; }
+  .verfahren-table tr:last-child td { border-bottom: none; }
+  .verfahren-table .no { color: var(--text-3); }
+  .verfahren-table .part { color: var(--mid); }
+  .verfahren-acc { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .verfahren-acc > summary { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; background: var(--bg2); }
+  .verfahren-acc > summary::-webkit-details-marker { display: none; }
+  .verfahren-acc-body { padding: 1.2rem 1.4rem; background: var(--bg); font-size: 0.85rem; color: var(--text-2); line-height: 1.75; }
+  .verfahren-acc-body ul { margin: 0 0 1rem 1.2rem; padding: 0; list-style: disc; }
+  .verfahren-acc-body li { margin-bottom: 0.4rem; }
+  .verfahren-acc-body li:last-child { margin-bottom: 0; }
+  .verfahren-acc-body p { margin: 0 0 0.8rem; }
+  .verfahren-acc-body p:last-child { margin-bottom: 0; }
+  .verfahren-acc-body strong { color: var(--text); }
 
   /* CTA-Section · GO:BETTER Design v3 · reiner dunkler Grund, kein Bild */
   #cta {
@@ -518,26 +545,16 @@
 
     <details class="fade vs-details" style="margin-top:2.5rem; border:1px solid var(--border2); border-radius:4px; overflow:hidden;">
       <summary style="font-family:var(--display); font-size:1rem; font-weight:700; color:var(--text); padding:1rem 1.4rem; background:var(--bg2); text-transform:none; letter-spacing:0; display:flex; justify-content:space-between; align-items:center; cursor:pointer; list-style:none;">
-        <span style="text-align:left;">Fair Value Pro vs. andere Tools</span><span style="font-family:var(--mono); font-size:0.9rem; color:var(--neon); flex-shrink:0; margin-left:1rem;">+</span>
+        <span style="text-align:left;">Was Fair Value Pro leistet</span><span style="font-family:var(--mono); font-size:0.9rem; color:var(--neon); flex-shrink:0; margin-left:1rem;">+</span>
       </summary>
       <div class="detail-body" style="padding:1.5rem 1.4rem 1.4rem;">
         <div class="versus-bar">
-          <div class="versus-side bad">
-            <div class="vs-label">Andere Tools &amp; manuelle Modelle</div>
-            <ul>
-              <li>Stunden Excel-Arbeit pro Aktie</li>
-              <li>Annahmen versteckt, nicht anpassbar</li>
-              <li>Eine Zahl ohne Erklärung</li>
-              <li>Kein Kontext zur Unternehmensqualität</li>
-              <li>Finanzdaten manuell eintippen</li>
-            </ul>
-          </div>
-          <div class="versus-side good">
+          <div class="versus-side good" style="grid-column: 1 / -1;">
             <div class="vs-label">Fair Value Pro</div>
             <ul>
               <li>Ergebnis in Sekunden</li>
               <li>Alle Annahmen sichtbar &amp; frei steuerbar</li>
-              <li>Qualität + fairer Wert auf einen Blick</li>
+              <li>Qualität + Fairer Wert auf einen Blick</li>
               <li>Fünf Verfahren rechnen einen Fairen Wert: DCF · KGV · EV/EBITDA · DDM · PEG. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den Komposit Fairen Wert; historisches Median-KGV und FCF-Rendite stehen als Vergleich daneben.</li>
               <li>Automatischer Datenabruf</li>
               <li>Gordon Growth Model (DDM) für Dividendenaktien — automatisch berechnet</li>
@@ -595,7 +612,7 @@
       <div class="how-step fade">
         <div class="step-n">Schritt 01</div>
         <h3>Ticker eingeben</h3>
-        <p>Beliebiges Kürzel eintippen — AAPL, SAP, ALV, NVDA. Finanzdaten werden automatisch geladen. Kein manuelles Eintippen.</p>
+        <p>Kürzel eingeben, z. B. AAPL, SAP oder NVDA — die Finanzdaten werden automatisch geladen.</p>
       </div>
       <div class="how-step fade">
         <div class="step-n">Schritt 02</div>
@@ -622,7 +639,7 @@
           <div class="detail-body">
             <p>Fair Value Pro berechnet, was ein Unternehmen <strong>wert wäre, wenn deine Annahmen eintreten</strong>. Wer 30 % Wachstum einstellt, bekommt einen hohen fairen Wert — das ist dann seine eigene Prognose, keine objektive Wahrheit.</p>
             <p>Das ist kein Fehler, sondern Methode: <strong>Genau so arbeiten professionelle Analysten.</strong> Transparent, nachvollziehbar, ehrlich.</p>
-            <p>Andere Tools verstecken ihre Annahmen und suggerieren falsche Objektivität. Fair Value Pro legt alles offen — du behältst die vollständige Kontrolle.</p>
+            <p>Fair Value Pro legt alle Annahmen offen — Wachstumsrate, Zinssatz, Sicherheitsmarge, jedes Vielfache. Du siehst, was in die Zahl eingeht, und kannst jede Stellschraube bewegen.</p>
           </div>
         </details>
         <div class="formula">
@@ -702,7 +719,7 @@
       <div class="feat-card fade">
         <div class="feat-icon">Σ</div>
         <h3>Fünf Verfahren — gewichtet</h3>
-        <p>Fünf Verfahren rechnen einen Fairen Wert: DCF, KGV, EV/EBITDA, DDM und PEG. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den Komposit Fairen Wert — DDM und PEG stehen als Vergleich daneben. Historisches Median-KGV und FCF-Rendite kommen als Vergleichsgrößen hinzu, ohne eigenen Fairen Wert. Die Gewichtung ist einstellbar, voreingestellt 50/25/25, mit Branchen-Vorlagen (Konsum/Gesundheit/Konservativ 60/20/20, Energie/Edelmetalle/Rohstoffe 30/35/35, Banken/Versicherungen 0/100/0, Kryptowährungen kein Komposit).</p>
+        <p>Fünf Verfahren rechnen einen Fairen Wert. Drei davon ergeben gewichtet den Komposit Fairen Wert, die Gewichtung stellst du selbst ein.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">↻</div>
@@ -734,6 +751,49 @@
         <h3>KI-Assistent</h3>
         <p>Verstehe, was du berechnest — nicht nur das Ergebnis. Erklärt Kennzahlen, rechnet Was-wäre-wenn-Szenarien, ordnet Methodik ein. Bring-your-own-Key: Claude, ChatGPT (in Entwicklung) oder Gemini direkt aus deinem Browser.</p>
       </div>
+      <div class="feat-card feat-card--spacer" aria-hidden="true"></div>
+    </div>
+
+    <div class="verfahren-wrap fade">
+      <div class="verfahren-table-wrap">
+        <table class="verfahren-table">
+          <thead>
+            <tr>
+              <th>Branche</th>
+              <th>DCF</th>
+              <th>KGV</th>
+              <th>EV/EBITDA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Voreinstellung (Standard)</td><td>50 %</td><td>25 %</td><td>25 %</td></tr>
+            <tr><td>Konsum, Gesundheit, Konservativ</td><td>60 %</td><td>20 %</td><td>20 %</td></tr>
+            <tr><td>Energie, Edelmetalle, Rohstoffe</td><td>30 %</td><td>35 %</td><td>35 %</td></tr>
+            <tr><td>Banken, Versicherungen</td><td class="no">—</td><td>100 %</td><td class="no">—</td></tr>
+            <tr><td>Kryptowährungen</td><td colspan="3" class="part">kein Komposit Fairer Wert</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="verfahren-acc">
+        <summary>Die Verfahren im Einzelnen <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
+        <div class="verfahren-acc-body">
+          <p><strong>Fünf Verfahren rechnen einen Fairen Wert:</strong></p>
+          <ul>
+            <li><strong>DCF (zweistufig)</strong> — Rechnet die künftigen Geldüberschüsse auf heute zurück: fünf Jahre Wachstum, dann Übergang in einen gleichbleibenden Zustand.</li>
+            <li><strong>KGV</strong> — Gewinn je Aktie mal Ziel-KGV für die Branche.</li>
+            <li><strong>EV/EBITDA</strong> — Wert aus dem branchentypischen Vielfachen auf den Betriebsgewinn vor Abschreibungen.</li>
+            <li><strong>DDM</strong> — Wert aus den künftigen Dividenden; erscheint nur bei ausschüttenden Titeln.</li>
+            <li><strong>PEG</strong> — KGV im Verhältnis zum Gewinnwachstum.</li>
+          </ul>
+          <p><strong>Zwei Vergleichsgrößen, die nicht als Fairer Wert zählen:</strong></p>
+          <ul>
+            <li><strong>Historisches Median-KGV</strong> — Vergleichslinie aus dem eigenen KGV der letzten fünf Jahre, im Kursverlauf-Diagramm sichtbar.</li>
+            <li><strong>FCF-Rendite</strong> — Freier Geldüberschuss im Verhältnis zum Börsenwert, verglichen mit dem Anleihezins. Eine Kennzahl, kein Fairer Wert.</li>
+          </ul>
+          <p>Der Komposit bildet sich aus den ersten drei (DCF, KGV, EV/EBITDA).</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -749,9 +809,9 @@
       <details class="fade" style="border-bottom:1px solid var(--border);">
         <summary>Was unterscheidet euer Tool von anderen Rechnern für den Fairen Wert?<span class="faq-icon">+</span></summary>
         <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
-          <p style="margin-bottom:0.8rem;">Die meisten Rechner verwenden eine einzige Methode — häufig nur DCF oder nur ein KGV-Multiplikator. Fair Value Pro rechnet fünf Verfahren einen Fairen Wert: <strong style="color:var(--text);">Two-Stage DCF, KGV, EV/EBITDA</strong>, DDM (Gordon Growth Model) und PEG. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den <strong style="color:var(--text);">Komposit Fairen Wert</strong> — voreingestellt 50/25/25, einstellbar, mit Branchen-Vorlagen. DDM und PEG stehen als Vergleich daneben. Dazu kommen zwei Vergleichsgrößen ohne eigenen Fairen Wert: historisches Median-KGV als Linie im Kursverlauf und FCF-Rendite als Kennzahl.</p>
-          <p style="margin-bottom:0.8rem;">Das Two-Stage-DCF-Modell projiziert Cashflows in zwei Phasen: stabiles Wachstum in den ersten fünf Jahren, dann ein realistischer linearer Übergang zum Terminal Value — genau wie professionelle Analysten es tun.</p>
-          <p>Der entscheidende Unterschied: Alle Annahmen sind sichtbar und steuerbar. Andere Tools verstecken ihre Parameter und suggerieren eine Objektivität, die nicht existiert. Bei Fair Value Pro ist das Ergebnis immer dein eigenes Modell — transparent, nachvollziehbar, ehrlich.</p>
+          <p style="margin-bottom:0.8rem;">Bei Fair Value Pro rechnen fünf Verfahren einen Fairen Wert: <strong style="color:var(--text);">Two-Stage DCF, KGV, EV/EBITDA</strong>, DDM (Gordon Growth Model) und PEG. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den <strong style="color:var(--text);">Komposit Fairen Wert</strong> — voreingestellt 50/25/25, einstellbar, mit Branchen-Vorlagen. DDM und PEG stehen als Vergleich daneben. Dazu kommen zwei Vergleichsgrößen ohne eigenen Fairen Wert: historisches Median-KGV als Linie im Kursverlauf und FCF-Rendite als Kennzahl.</p>
+          <p style="margin-bottom:0.8rem;">Das Two-Stage-DCF-Modell projiziert Cashflows in zwei Phasen: fünf Jahre Wachstum, dann Übergang in einen gleichbleibenden Zustand, Endwert nach dem Gordon-Growth-Modell.</p>
+          <p>Der entscheidende Unterschied: Alle Annahmen sind sichtbar und steuerbar. Das Ergebnis ist immer dein eigenes Modell — transparent und nachvollziehbar.</p>
         </div>
       </details>
 
