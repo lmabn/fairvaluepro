@@ -42,19 +42,35 @@ Monetarisiert — die Provision wird nur zugeordnet, wenn der Kauf über **unser
 
 **Offene Frage:** Gilt der Rabatt dauerhaft oder nur auf die erste Zahlung? Mail an Sam läuft. Falls einmalig → alle fünf Stellen präziser machen („auf die erste Zahlung" statt pauschal).
 
+## Konvention — Produktaussagen vs. Sprachregeln
+
+Was wir in CLAUDE.md über das Produkt festhalten, gehört in eine von zwei Schubladen:
+
+- **Sprachregeln** sind Arbeitsanweisungen: wie wir Dinge nennen, formatieren, schreiben. Sie entstehen hier und gelten ab Eintrag.
+- **Produktaussagen** sind Behauptungen darüber, wie das Produkt funktioniert — Zahlen, Mechaniken, Plan-Zuordnungen, Modul-Namen, Feldbeschriftungen. Ihre Quelle ist der Bauplan im App-Repo, nicht diese Datei. Jede Produktaussage trägt **Quelle** (welche Datei/welches Modul im App-Repo) und **Datum des Stands**. Wenn diese Kopie und der App-Code auseinanderfallen, ist der App-Code maßgeblich — hier wird nachgezogen, nicht umgekehrt.
+
 ## Komposit Fairer Wert — Faktenbasis
 
-Belegt durch die App-Sitzung am 2026-10-11, Grundlage für die bevorstehende aussagenbasierte Seitenüberarbeitung. Nicht einzelfallweise umsetzen — die Site hat mindestens 26 Fundstellen in sechs Dateien zu dieser Mechanik; sie werden pro Seite als Ganzes nachgezogen.
+### Sprachregeln
 
 1. **Wortmarke**: durchgehend **„Komposit Fairer Wert"**. Keine Varianten (nicht „Komposit-Wert", nicht „Composite Fair Value", nicht „Komposit-Fairer-Wert" mit zwei Bindestrichen, keine Flexionsformen wie „Komposit-Fairen-Wert").
 2. **„Fairer Wert" statt „Fair Value"** — durchgehend. Einzige Ausnahme: der Produktname **„Fair Value Pro"**.
-3. **Mechanik**: Sieben Modelle werden berechnet und nebeneinander gezeigt. Drei gehen in den gewichteten Komposit Fairen Wert: **DCF, KGV, EV/EBITDA**. Die Gewichtung ist **einstellbar**; voreingestellt **50 / 25 / 25**. Es gibt Vorlagen für sieben Branchen:
-   - **Konsum, Gesundheit, Konservativ**: 60 / 20 / 20
-   - **Energie, Edelmetalle, Rohstoffe**: 30 / 35 / 35
-   - **Banken, Versicherungen**: 0 / 100 / 0
-   - **Kryptowährungen**: kein Komposit Fairer Wert
+
+### Produktaussage · Mechanik
+
+> **Quelle:** Bauplan im App-Repo (Komposit-Logik in `frontend/trading-desk.js` und zugehörige Module). Änderungen an der Mechanik beginnen dort, nicht hier.
+> **Stand:** 2026-10-11.
+
+Sieben Modelle werden berechnet und nebeneinander gezeigt. Drei gehen in den gewichteten Komposit Fairen Wert: **DCF, KGV, EV/EBITDA**. Die Gewichtung ist **einstellbar**; voreingestellt **50 / 25 / 25**. Es gibt Vorlagen für sieben Branchen:
+
+- **Konsum, Gesundheit, Konservativ**: 60 / 20 / 20
+- **Energie, Edelmetalle, Rohstoffe**: 30 / 35 / 35
+- **Banken, Versicherungen**: 0 / 100 / 0
+- **Kryptowährungen**: kein Komposit Fairer Wert
 
 Konsequenz für die Überarbeitung: „nutzergewichtet" (partner.html Z. 412, 413, 458) ist im Kern richtig; „fest 50/25/25" (sieben weitere Stellen) ist zu eng und muss die Einstellbarkeit sowie die Branchen-Vorlagen abbilden.
+
+Nicht einzelfallweise umsetzen — die Site hat mindestens 26 Fundstellen in sechs Dateien zu dieser Mechanik; sie werden pro Seite als Ganzes nachgezogen.
 
 ## Offene To-dos
 
