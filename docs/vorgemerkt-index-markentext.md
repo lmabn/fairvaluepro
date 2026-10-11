@@ -16,12 +16,12 @@ Direkt unter der Produktkarten-Reihe, oberhalb des Werkzeuge-Abschnitts. Heutige
 >
 > GO:BETTER macht sichtbar, worauf deine Einschätzung beruht — jede Annahme, jede Zahl. Es behält, was du dir vor dem Kauf gedacht hast, und zeigt dir später, was daraus geworden ist. So wird aus Daten ein Kontext, aus Kontext eine Erkenntnis, und am Ende steht deine Entscheidung.
 >
-> GO ist der Beginn. BETTER ist deine Ambition — besser werden, Entscheidung für Entscheidung.
+> GO ist der Beginn. BETTER ist deine Ambition — besser investieren, Entscheidung für Entscheidung.
 
 ## Gestaltung
 
 - Die drei Absätze stehen untereinander.
-- Die **letzte Zeile** („GO ist der Beginn. BETTER ist deine Ambition — besser werden, Entscheidung für Entscheidung.") **setzt sich gestalterisch ab, als eigene Zeile** — nicht als vierter Satz im zweiten Absatz. Größerer Abstand oben, eigenes Element.
+- Die **letzte Zeile** („GO ist der Beginn. BETTER ist deine Ambition — besser investieren, Entscheidung für Entscheidung.") **setzt sich gestalterisch ab, als eigene Zeile** — nicht als vierter Satz im zweiten Absatz. Größerer Abstand oben, eigenes Element.
 
 ## Zusätzlich bei Seite 7 zu korrigieren
 
