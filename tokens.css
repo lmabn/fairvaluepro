@@ -150,7 +150,7 @@
   --color-product-fvp:      #10C27F;
   --color-product-fvp-text: #0A7A52;
   --color-product-pt:       #F0B42A;
-  --color-product-pt-text:  #8A5F00;
+  --color-product-pt-text:  #111317;
   --color-product-td:       #3B7BFF;
   --color-product-td-text:  #2459D6;
 
@@ -174,7 +174,7 @@
   --shadow-1: 0 4px 16px rgba(17,19,23,0.08), 0 0 0 1px var(--color-border);
   --shadow-2: 0 16px 48px rgba(17,19,23,0.14), 0 0 0 1px var(--color-border);
 }
-:root[data-theme="light"] [data-product="pt"] { --color-accent-soft: rgba(240,180,42,0.16); --color-accent-border: rgba(176,125,0,0.55); }
+:root[data-theme="light"] [data-product="pt"] { --color-accent-soft: rgba(240,180,42,0.16); --color-accent-border: rgba(240,180,42,0.75); }
 :root[data-theme="light"] [data-product="td"] { --color-accent-soft: rgba(59,123,255,0.10); --color-accent-border: rgba(59,123,255,0.50); }
 
 @media (prefers-reduced-motion: reduce) {
