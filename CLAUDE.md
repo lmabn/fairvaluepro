@@ -108,6 +108,31 @@ Konsequenz für die Überarbeitung:
 - `fair-value-pro.html:668` „in Echtzeit" (H2 der Live-Vorschau-Section) kommt bei der Überarbeitung dieser Seite weg. Die Überschrift darf den Blick ins Werkzeug versprechen, nicht die Aktualität der Daten.
 - `fair-value-pro.html:727` „aktuell und vollständig" fällt bei derselben Überarbeitung weg oder wird durch die oben belegte Kurs-/Finanzzahlen-Formulierung ersetzt.
 
+## Ablauf — Inhaltsüberarbeitung Seite für Seite
+
+**Verbindlich** für die bevorstehende aussagenbasierte Überarbeitung aller Produktseiten.
+
+**Grundregeln**
+- **Eine Seite nach der anderen.** Nie zwei gleichzeitig.
+- **Keine Einzeländerungen außerhalb der laufenden Seite** — Ausnahme: nachweislich falsche Aussagen (wie LIVE-Badges im Planner-Mockup) werden sofort entfernt, auf einem eigenen Mini-Branch.
+
+**Reihenfolge**
+1. `partner.html`
+2. `fair-value-pro.html`
+3. `portfolio-tracker.html`
+4. `investment-planner.html`
+5. `pro-mode.html`
+6. `plaene.html`
+7. `index.html`
+8. `daten-quelle.html`
+
+**Ablauf je Seite**
+1. **Entwurf**: Der komplette Inhalt der Seite — alle Aussagen, dreistufig (Fließtext verdichtet, kompakte Übersicht, Details in Akkordeons; siehe Abschnitt „Gestaltung — Funktionen dreistufig darstellen").
+2. **Faktenprüfung**: Entwurf gegen die Faktenbasis — Funktionsliste der App-Sitzung, Komposit-Beschreibung, Begriffsregeln, Datenaktualität.
+3. **Vorlage**: Entwurf wird als Text (nicht als Code) vorgelegt.
+4. **Umsetzung nach Freigabe**: Einmal umsetzen, Screenshots zeigen, Merge, Purge.
+5. **Erst danach die nächste Seite.**
+
 ## Offene To-dos
 
 - **AGB überarbeiten** — `agb.html` enthält noch Fehler und ist unvollständig (u. a. § 2, § 7 nach BYOK-Umstellung, Personal-Plan-Klausel). Aktuell aus dem Footer aller Seiten ausgeblendet. Wenn der User an FVP-Marketing/Rechtssachen arbeitet: hier daran erinnern und AGB-Rework anbieten.
