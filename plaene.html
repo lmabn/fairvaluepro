@@ -228,7 +228,10 @@
     color: var(--text-2);
     margin-bottom: 1.4rem;
     line-height: 1.5;
-    min-height: 3rem;
+    /* min-height deckt 3 Zeilen ab (GO ist am längsten) — sorgt dafür,
+       dass die plan-price-Blöcke und ihre Trennstriche bei allen drei
+       Plänen auf gleicher Höhe starten. */
+    min-height: 4rem;
   }
 
   .price-main {
