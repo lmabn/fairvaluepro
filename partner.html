@@ -29,7 +29,6 @@
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="web.css">
 <link rel="stylesheet" href="gb-shell.css">
-<meta name="robots" content="noindex, nofollow">
 <title>Partnerprogramm · GO:BETTER</title>
 <style>
 /* PAGE LAYOUT */
@@ -244,7 +243,7 @@ body { background: var(--bg); }
       <div class="tool-box">
         <div class="tool-label" style="color:var(--pt-accent);">Portfolio Tracker</div>
         <div class="tool-name">Verfolgen</div>
-        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fairer Wert je Position.</div>
+        <div class="tool-desc">Zeigt dein Depot über mehrere Broker, mit Kurs, Rendite und Fairem Wert je Position.</div>
       </div>
       <div class="tool-box">
         <div class="tool-label" style="color:var(--td-accent);">Investment Planner</div>
@@ -354,7 +353,7 @@ body { background: var(--bg); }
             <td class="part">Teilweise</td>
           </tr>
           <tr>
-            <td>Depot im selben Konto</td>
+            <td>Portfolio Tracker im selben Konto</td>
             <td class="yes hl-col">✓ Portfolio Tracker</td>
             <td class="part">eigenes Modul</td>
             <td class="part">Watchlist</td>
@@ -376,7 +375,7 @@ body { background: var(--bg); }
           </tr>
           <tr>
             <td>KI-Zugang über eigenen Schlüssel</td>
-            <td class="yes hl-col">✓ Claude · ChatGPT · Gemini</td>
+            <td class="yes hl-col">✓ Claude · ChatGPT (in Entwicklung) · Gemini</td>
             <td class="no">—</td>
             <td class="no">—</td>
             <td class="no">—</td>
@@ -385,13 +384,21 @@ body { background: var(--bg); }
       </table>
     </div>
     <p style="font-size:0.78rem; color:var(--text-3); margin-top:0.8rem;">Die drei verglichenen Werkzeuge sind etablierte Anbieter aus derselben Nische (Aktien-Bewertung für Privatanleger). Was dort als Bezeichnung steht, ist der jeweilige Produktname. Preise und Pläne der Anbieter wechseln; wir vergleichen Methodik, nicht Kosten.</p>
+
+    <h3 style="font-family:var(--display); font-size:1rem; font-weight:700; margin:1.8rem 0 0.8rem;">Außerdem in GO:BETTER</h3>
+    <ul style="margin:0 0 1rem 1.2rem; padding:0; list-style:disc; color:var(--text-2); font-size:0.9rem; line-height:1.75;">
+      <li style="margin-bottom:0.4rem;">Depot über mehrere Broker, mit zeitgewichteter Rendite (TWR).</li>
+      <li style="margin-bottom:0.4rem;">Dokumenten-Import per KI — persönliche Daten werden vorher im Browser geschwärzt.</li>
+      <li style="margin-bottom:0.4rem;">Investment Planner mit Positionsgröße, Einstiegsplan, Stresstest und Rebalancing.</li>
+      <li>Fair Value Pro kostenlos, auch ohne Konto.</li>
+    </ul>
   </div>
 
   <!-- DATEN UND SCHLÜSSEL -->
   <div class="section">
     <div class="section-label">Daten und Schlüssel</div>
     <h2>Bring Your Own Key.</h2>
-    <p>GO:BETTER liefert keine Marktdaten mit. Für die Bewertung legst du selbst einen Schlüssel bei einem Datenanbieter an und hinterlegst ihn in der App. Für die KI-Funktionen (Dokumenten-Import im Tracker, Erklärungen im Kalkulator, Bias-Coach im Trade Journal) brauchst du zusätzlich einen eigenen Schlüssel bei Claude, ChatGPT oder Gemini.</p>
+    <p>GO:BETTER liefert keine Marktdaten mit. Für die Bewertung legst du selbst einen Schlüssel bei einem Datenanbieter an und hinterlegst ihn in der App. Für die KI-Funktionen (Dokumenten-Import im Tracker, Erklärungen im Kalkulator, Bias-Coach im Trade Journal) brauchst du zusätzlich einen eigenen Schlüssel bei Claude, ChatGPT (in Entwicklung) oder Gemini.</p>
     <p>Das Prinzip heißt <strong>Bring Your Own Key</strong>: Du zahlst beim Anbieter, nicht uns. Deine Schlüssel bleiben in deinem Browser.</p>
 
     <div class="status-grid">
@@ -527,18 +534,6 @@ body { background: var(--bg); }
       <li><strong style="color:var(--text);">Menschen mit Reichweite</strong>, die GO:BETTER in ihrem Umfeld sichtbar machen können.</li>
       <li><strong style="color:var(--text);">Darüber hinaus</strong> jede Form von Zusammenarbeit, die zur Idee passt — melde dich einfach.</li>
     </ul>
-
-    <details class="tech-accordion" style="margin-top:1rem; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
-      <summary style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; background:var(--bg2);">Woran wir arbeiten <span style="color:var(--neon); font-size:0.9rem;">+</span></summary>
-      <div style="padding:1.2rem 1.4rem; background:var(--bg); font-size:0.85rem; color:var(--text-2); line-height:1.75;">
-        <p style="margin:0 0 0.8rem;">Nichts ist fertig, einiges läuft noch nicht wie beschrieben. Die wichtigsten offenen Baustellen:</p>
-        <ul style="margin:0 0 0 1.2rem; padding:0; list-style:disc;">
-          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Live-Kurse in der Watchlist</strong> — kommen erst mit dem zweiten Datenanbieter. Heute steht dort der Kurs der letzten Bewertung mit Datum.</li>
-          <li style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Kursverlauf über zehn Jahre</strong> — die Anzeige deckt heute die letzten fünf Jahre ab. Wir arbeiten an der vollen Historie.</li>
-          <li><strong style="color:var(--text);">Bitcoin, andere Kryptowährungen und Rohstoffe</strong> — der aktuelle Datenanbieter liefert für diese Werte keinen Kurs. Statt einer falschen Einordnung zeigt GO:BETTER derzeit eine Meldung, dass keine Kursdaten vorliegen.</li>
-        </ul>
-      </div>
-    </details>
   </div>
 
   <!-- KONTAKT -->
