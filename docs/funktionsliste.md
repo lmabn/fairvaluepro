@@ -27,10 +27,10 @@
 - „Sieben Modelle": fünf rechnen einen fairen Wert, das Median-KGV liefert eine Linie, die FCF-Rendite ist eine Kennzahl (Bauplan, Abschnitt „Verbindlich: Wie der Komposit Fairer Wert entsteht").
 - „Komposit 50/25/25": nur die Grundeinstellung, einstellbar, sieben Branchen-Vorlagen mit eigenen Werten.
 - „Live-Kurse in der Watchlist": auf dem Live-Server nie, dort gilt der Kurs der gespeicherten Analyse mit Datum (`td_api.py:384–404`).
+- „Bitcoin, Krypto und Rohstoffe werden bewertet": Für BTC-USD, BTCUSD, GC=F und GCUSD liefert der Anbieter derzeit keinen Kurs. Seit #743 meldet die App das, statt ein falsches Ergebnis zu zeigen; eine Bewertung gibt es nicht.
+- „PDF-Export nur mit MAX": Über den Druckbefehl des Browsers bekommt jeder das volle Dashboard; als Verkaufsargument nicht belastbar, solange das offen ist.
 - „Alle Unternehmen weltweit": Werte außerhalb der USA brauchen einen höheren Plan beim Datenanbieter.
 - Tracker-Zeiträume „1J · 2J · 3J · 5J · Alle": im Code ohne 2J, dafür 1M, 3M, 6M, YTD, 10J, 15J.
-- „Krypto und Rohstoffe funktionieren": Bitcoin und Gold bekommen heute keinen Kurs und zeigen dann eine falsche Einordnung (Nachtrag 11.10.2026, Bauplan).
-- „PDF-Export nur für MAX": Nur der Knopf ist in Nicht-MAX-Plänen gesperrt; der Druckdialog des Browsers liefert dieselbe Druckansicht (Nachtrag 11.10.2026, Bauplan — siehe auch Auffälligkeit Kalkulator Nr. 1).
 
 **Offene Rechtsfragen, ohne Bewertung:** Widerrufs-Zustimmung — die AGB versprechen zwei getrennte Zustimmungen (§ 356 Abs. 5 BGB), die App hat einen kombinierten Haken mit anderem Wortlaut (`plans.py:66–76`). Konto löschen entfernt auch den gespeicherten Nachweis dieser Zustimmung (`auth.py:795`). AGB-Link nur im Kaufdialog (Bauplan).
 
@@ -68,8 +68,8 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | ROIC gegen WACC | Vergleicht die Kapitalrendite mit den Kapitalkosten (wertschaffend oder nicht). | PRO | fair_value_calculator.py:1455, :4815 | pro-mode (Beispielbild) „ROIC 7.9 % Spread −2.1 %“ | aktiv |
 | Komposit Fairer Wert | Gewichteter Mittelwert aus DCF, KGV und EV/EBITDA; fehlende Bausteine fallen heraus, die Gewichte werden neu verteilt. | GO (Kurzansicht) | :4701–4707, api.py:2683–2688 | fair-value-pro „gewichteter Komposit-Wert: 50 % DCF, 25 % KGV“ | aktiv |
 | Komposit-Gewichte einstellen | Regler für DCF, KGV und EV/EBITDA, auf 100 % umgerechnet; Branchen-Vorlagen setzen eigene Werte. | GO (Seitenleiste) | :2566, :3925, :4197, :3277–3292 | nicht erwähnt (Website nennt feste 50/25/25) | aktiv |
-| Krypto-Bewertung | Nur 200-Tage-Linie als Bezug, bei Bitcoin zusätzlich die Mining-Kosten als Untergrenze; Aktienkennzahlen ausgegraut; kein Komposit. | GO | api.py:1999, :2052, :4838 | nicht erwähnt | unsicher: erkennt nur Kürzel wie BTC-USD; das in der Werteliste als „verifiziert“ geführte BTCUSD passt nicht zur Erkennung (:4447) |
-| Rohstoff-Bewertung | Produktionskosten als Untergrenze (Gold, Öl …) plus 200-Tage-Linie, 5-Jahres-Mittel und 52-Wochen-Spanne. | GO | api.py:1761, :1779, :1804 | nicht erwähnt | unsicher: erkennt nur „=F“-Kürzel oder die feste Liste; GCUSD aus der Werteliste passt nicht |
+| Krypto-Bewertung | Nur 200-Tage-Linie als Bezug, bei Bitcoin zusätzlich die Mining-Kosten als Untergrenze; Aktienkennzahlen ausgegraut; kein Komposit. | GO | api.py:1999, :2052, :4838 | nicht erwähnt | **Fehler, bestätigt 11.10.:** Der Anbieter liefert für BTC-USD und BTCUSD keinen Kurs; BTC-USD zeigte „Kurs 0 · Stark unterbewertet“, BTCUSD einen Entwicklerfehler. Seit #743 erscheint stattdessen „Für diesen Wert liegen keine Kursdaten vor.“ Ursache offen (Bauplan). |
+| Rohstoff-Bewertung | Produktionskosten als Untergrenze (Gold, Öl …) plus 200-Tage-Linie, 5-Jahres-Mittel und 52-Wochen-Spanne. | GO | api.py:1761, :1779, :1804 | nicht erwähnt | **Fehler, bestätigt 11.10.:** Für GC=F liefert der Anbieter keinen Kurs (Kurs 0, fairer Wert 1.350), GCUSD brach ab. Seit #743 erscheint „Für diesen Wert liegen keine Kursdaten vor.“ Ursache offen (Bauplan). |
 | Banken-/Versicherer-Hinweis | Weist darauf hin, dass DCF und EV/EBITDA bei Banken und Versicherern nicht tragen. | PRO | :4762, :6256 | nicht erwähnt | aktiv |
 | **Einstellungen & Vorlagen** | | | | | |
 | Branchen-Vorlagen (11) | Setzen WACC, Endwachstum, Prognosejahre, EV/EBITDA-Ziel und Komposit-Gewichte je Branche (Tech, Konsum, Finanzen, Banken, Energie, Gesundheit, Konservativ, Edelmetalle, Rüstung, Krypto, Rohstoffe). | GO | :3277–3293, :3779, :2060 | plaene „Branchen-Presets“ | aktiv |
@@ -122,7 +122,7 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | Suchverlauf | Der Server merkt sich die letzten 15 bewerteten Kürzel; im Konto-Reiter „Verlauf“ sucht ein Klick erneut. | MAX | api.py:2423, plans.py:249, account.js:698, :725 | plaene „Suchverlauf — letzte 15 Suchen“ | aktiv |
 | Bewertung bleibt erhalten | Die Bewertung bleibt beim Wechsel zu Tracker oder Planner und zurück stehen. | GO | :4664, :6495 | nicht erwähnt | aktiv |
 | **Export & Teilen** | | | | | |
-| PDF-Export | Der Knopf öffnet den Druckdialog des Browsers; die Druckansicht zeigt alle Reiter. | MAX (am Knopf gesperrt) | :3634, :527, :6167 | plaene „PDF-Export“ | aktiv (siehe Auffälligkeiten: Sperre nur am Knopf) |
+| PDF-Export | Der Knopf öffnet den Druckdialog des Browsers; die Druckansicht zeigt alle Reiter. | MAX (am Knopf gesperrt) | :3634, :527, :6167 | plaene „PDF-Export“ | **aktiv, Sperre nur am Knopf — bestätigt 11.10.:** Über „Drucken“ im Browser bekommt schon ein Gast (GO) das volle Pro-Dashboard (Bauplan, vorrangig). |
 | Teilen | Menü mit WhatsApp, Telegram, X, LinkedIn, Text kopieren und System-Teilen; der Text enthält Kurs, fairen Wert, Marge, Einordnung und einen App-Link. | GO | :3521, :3548, :3557 | nicht erwähnt | aktiv |
 | **KI & Hilfe** | | | | | |
 | KI-Assistent | Chat im Seitenpanel zur aktuellen Bewertung mit Schnellfragen, FAQ-Chips und Verlauf je Wert (bis 20 Werte / 50 Nachrichten im Browser), mit eigenem Schlüssel für Claude, ChatGPT oder Gemini. | MAX + eigener KI-Schlüssel | :5580–6100, :7717, fvp_ai_assistant.js:1 | fair-value-pro „Bring-your-own-Key: Claude, ChatGPT oder Gemini“ | aktiv |

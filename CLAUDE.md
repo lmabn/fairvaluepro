@@ -111,7 +111,7 @@ Konsequenz für die Überarbeitung:
 ## Funktionsliste — Faktenbasis
 
 > **Quelle:** Bauplan im App-Repo (aus dem Code erhoben, nicht aus der Dokumentation).
-> **Stand:** 11.10.2026 (App `main` e73e70d, Frontend bis 09a86f9) + Nachträge 11.10.2026 (Krypto/Rohstoff-Erkennung, PDF-Sperre).
+> **Stand:** 11.10.2026 (App `main` e73e70d, Frontend bis 09a86f9).
 
 **Datei:** `docs/funktionsliste.md` — 245 Funktionen in vier Bereichen (Kalkulator 79 · Tracker 64 · Planner 48 · Konto/Übergreifendes 54), je mit Was-sie-tut, Ab-Plan, Fundstelle `datei:zeile`, Website-Erwähnung und Status (aktiv / unsicher mit Grund). 126 Funktionen werden heute auf der Website nirgends erwähnt (Tracker über die Hälfte).
 
