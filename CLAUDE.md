@@ -49,6 +49,18 @@ Was wir in CLAUDE.md über das Produkt festhalten, gehört in eine von zwei Schu
 - **Sprachregeln** sind Arbeitsanweisungen: wie wir Dinge nennen, formatieren, schreiben. Sie entstehen hier und gelten ab Eintrag.
 - **Produktaussagen** sind Behauptungen darüber, wie das Produkt funktioniert — Zahlen, Mechaniken, Plan-Zuordnungen, Modul-Namen, Feldbeschriftungen. Ihre Quelle ist der Bauplan im App-Repo, nicht diese Datei. Jede Produktaussage trägt **Quelle** (welche Datei/welches Modul im App-Repo) und **Datum des Stands**. Wenn diese Kopie und der App-Code auseinanderfallen, ist der App-Code maßgeblich — hier wird nachgezogen, nicht umgekehrt.
 
+## Gestaltung — Funktionen dreistufig darstellen
+
+Für alle Seitenüberarbeitungen gilt: Funktionen erscheinen auf der Seite in drei Stufen, nicht als eine lange Liste.
+
+1. **Fließtext** — verdichtet und verständlich. Was der Nutzer davon hat, nicht wie viele Schalter es gibt.
+2. **Kompakte Übersicht** — knapp, scanbar.
+3. **Details in Akkordeons** — zum Nachlesen bei Bedarf, eingeklappt.
+
+Die Funktionsliste der App-Sitzung (Stand 2026-10-11: 245 Funktionen) ist **Prüfgrundlage, keine Inhaltsvorlage**. Sie sorgt dafür, dass nichts Wichtiges fehlt und nichts Falsches behauptet wird. Sie kommt nicht als Aufzählung auf die Seite.
+
+Dasselbe gilt für die **Partnerseite**: Ludmila nutzt sie zum Sprechen, nicht zum Vorlesen. Sie muss vollständig genug sein, dass ihr nichts Wesentliches entgeht — und kurz genug, dass ein Zwölfjähriger folgen kann.
+
 ## Komposit Fairer Wert — Faktenbasis
 
 ### Sprachregeln
