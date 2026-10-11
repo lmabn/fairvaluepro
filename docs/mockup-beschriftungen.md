@@ -257,7 +257,6 @@ investment-planner.html:480  "+ Eintrag"                   — [Button]
 **Position-Karten-Felder (3× wiederholt):**
 ```
 investment-planner.html:487, 495, 503  "Aktueller Kurs"
-investment-planner.html:488, 496, 504  "LIVE"             — [Live-Indikator-Badge]
 investment-planner.html:488, 496, 504  "Fairer Wert"
 investment-planner.html:489, 497, 505  "Status"
 ```
