@@ -108,6 +108,22 @@ Konsequenz für die Überarbeitung:
 - `fair-value-pro.html:668` „in Echtzeit" (H2 der Live-Vorschau-Section) kommt bei der Überarbeitung dieser Seite weg. Die Überschrift darf den Blick ins Werkzeug versprechen, nicht die Aktualität der Daten.
 - `fair-value-pro.html:727` „aktuell und vollständig" fällt bei derselben Überarbeitung weg oder wird durch die oben belegte Kurs-/Finanzzahlen-Formulierung ersetzt.
 
+## Funktionsliste — Faktenbasis
+
+> **Quelle:** Bauplan im App-Repo (aus dem Code erhoben, nicht aus der Dokumentation).
+> **Stand:** 11.10.2026 (App `main` e73e70d, Frontend bis 09a86f9).
+
+**Datei:** `docs/funktionsliste.md` — 245 Funktionen in vier Bereichen (Kalkulator 79 · Tracker 64 · Planner 48 · Konto/Übergreifendes 54), je mit Was-sie-tut, Ab-Plan, Fundstelle `datei:zeile`, Website-Erwähnung und Status (aktiv / unsicher mit Grund). 126 Funktionen werden heute auf der Website nirgends erwähnt (Tracker über die Hälfte).
+
+**Verwendung bei jedem Seiten-Entwurf** (zusätzlich zur Prüfung gegen Komposit- und Daten-Aktualität-Faktenbasis):
+- **Stimmt, was dort steht?** — Jede Website-Aussage gegen die Liste prüfen.
+- **Fehlt etwas, das dort hingehört?** — Lücken ermitteln (126 Kandidaten), dreistufig einbauen falls relevant.
+- **Prüfgrundlage, keine Inhaltsvorlage.** Kommt nicht als Aufzählung auf die Seite — es gilt die dreistufige Darstellung aus „Gestaltung — Funktionen dreistufig darstellen".
+
+**Zwingend zu beachten vor jedem Entwurf, nichts davon darf hinein:**
+- Abschnitt **„Was Ludmila nicht sagen sollte, weil es heute nicht stimmt"** am Dateianfang (acht Punkte, u. a. 10-Jahre-Kursverlauf, 7-Modelle-Framing, Live-Kurse in der Watchlist, Krypto/Rohstoff-Erkennung, PDF-Sperre nur am Knopf, Tracker-Zeiträume).
+- Abschnitt **„Offene Rechtsfragen"** (Widerrufs-Zustimmung, Konto-Löschung, AGB-Link nur im Kaufdialog) — ohne Bewertung, aber nichts davon in Entwürfe aufnehmen.
+
 ## Ablauf — Inhaltsüberarbeitung Seite für Seite
 
 **Verbindlich** für die bevorstehende aussagenbasierte Überarbeitung aller Produktseiten.
