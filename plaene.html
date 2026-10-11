@@ -263,6 +263,11 @@
     min-height: 1.1rem;
   }
 
+  /* MAX-Karte: Intro-Zeile „Alles aus PRO, plus:" ohne Haken und
+     ohne Trennstrich — sie ist Überschrift, kein Feature. */
+  .plan-features li.intro { border-bottom: none; padding-bottom: 0.2rem; }
+  .plan-features li.intro::before { content: none; }
+
   /* MAX-Karte: Toggle folgt direkt auf den Preis-Block —
      globale .plan-price-Reserve (min-height 7rem, border, margin)
      aus style.css hier abschalten, sonst klafft eine Lücke mit
@@ -527,7 +532,7 @@
           <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
         </div>
         <ul class="plan-features">
-          <li><strong>Alles aus PRO, plus:</strong></li>
+          <li class="intro"><strong>Alles aus PRO, plus:</strong></li>
           <li><strong>Analysen speichern</strong> — unbegrenzt</li>
           <li><strong>Preset-Sync</strong> über alle Geräte</li>
           <li><strong>Suchverlauf</strong> — letzte 15 Suchen</li>
