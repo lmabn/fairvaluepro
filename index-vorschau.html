@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="web.css">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0B0D10">
+<meta name="description" content="Startseiten-Vorschau · nicht öffentlich.">
+<meta name="robots" content="noindex, nofollow">
+<title>Startseite — Vorschau · GO:BETTER</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GO:BETTER",
+  "url": "https://gobetter.trade/",
+  "logo": "https://gobetter.trade/assets/brand/icon-512.png",
+  "description": "GO:BETTER bündelt Bewerten, Verfolgen und Planen in einer Plattform für Privatanleger — mit transparenten Methoden und eigenem Marktdaten-Schlüssel."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GO:BETTER",
+  "url": "https://gobetter.trade/",
+  "inLanguage": "de-DE"
+}
+</script>
+<style>
+/* ══════ HOMEPAGE · GO:BETTER ══════ */
+
+/* Startseite ist theme-unabhängig: dunkel ist Standard, „Selbst anlegen"-Sektion hell.
+   Lokale Token-Kaskade lockt alle Farb-Rollen auf ihre Dark-Werte, damit die Seite im
+   Light-Mode nicht kollabiert. Nav, Hero, Werkzeuge, Haltung, Abschluss, Footer bleiben
+   dunkel; nur .gb-section.light kippt lokal wieder auf helle Werte. */
+body[data-level="home"] {
+  background: #0B0D10;
+  color: #ECEDEF;
+  --color-bg:              #0B0D10;
+  --color-surface:         #12151A;
+  --color-surface-2:       #191D23;
+  --color-border:          #262B33;
+  --color-border-strong:   #68707B;
+  --color-text:            #ECEDEF;
+  --color-text-muted:      #9A9FA7;
+  --color-text-disabled:   #5A6068;
+  --color-text-inverse:    #0B0D10;
+  --color-accent:          #2EE59D;
+  --color-accent-text:     #2EE59D;
+}
+body[data-level="home"] .gb-section.light {
+  background: #F7F8FA;
+  color: #111317;
+  --color-bg:              #F7F8FA;
+  --color-surface:         #FFFFFF;
+  --color-surface-2:       #EEF0F3;
+  --color-border:          #DEE1E6;
+  --color-border-strong:   #7E858F;
+  --color-text:            #111317;
+  --color-text-muted:      #555A62;
+  --color-text-disabled:   #A3A8AF;
+  --color-text-inverse:    #F7F8FA;
+}
+
+body { margin: 0; -webkit-font-smoothing: antialiased; font-family: var(--font-sans); }
+a { color: inherit; text-decoration: none; }
+
+/* ── Wortmarke ── */
+.gb-wm { display: inline-flex; align-items: baseline; font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1; color: var(--color-text); text-decoration: none; }
+.gb-wm .k { margin-right: -0.01em; }
+.gb-wm svg { display: block; height: 0.71em; width: 0.33em; margin: 0 0.045em 0 0.055em; }
+.gb-wm svg circle { fill: currentColor; }
+
+/* ── Nav ── */
+.gb-nav-wrap { background: var(--color-bg); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; }
+.gb-nav { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.gb-nav-left { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+.gb-nav-wm { font-size: 19px; padding: 22px 0; }
+.gb-nav-links { display: flex; gap: 22px; align-self: stretch; flex-wrap: wrap; }
+.gb-nav-links > a, .gb-nav-item > a { display: flex; align-items: center; font-size: 14px; color: var(--color-text-muted); box-shadow: inset 0 -2px 0 transparent; transition: color 200ms var(--motion-ease); }
+.gb-nav-links > a:hover, .gb-nav-item > a:hover { color: var(--color-text); }
+.gb-nav-item { position: relative; align-self: stretch; display: flex; align-items: center; }
+.gb-nav-item > a::after { content: '⌄'; font-size: 12px; margin-left: 4px; color: var(--color-text-disabled); transition: transform 200ms var(--motion-ease); display: inline-block; }
+.gb-nav-item:hover > a::after { transform: rotate(180deg); color: var(--color-text); }
+.gb-nav-dropdown { display: none; position: absolute; top: 100%; left: -16px; min-width: 180px; background: #12151A; border: 1px solid var(--color-border); border-radius: 4px; padding: 6px 0; z-index: 110; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.gb-nav-item:hover .gb-nav-dropdown, .gb-nav-item:focus-within .gb-nav-dropdown { display: block; }
+.gb-nav-dropdown::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+.gb-nav-dropdown a { display: block; padding: 10px 16px; font-size: 14px; color: var(--color-text-muted); text-decoration: none; transition: color 150ms, background 150ms; }
+.gb-nav-dropdown a:hover { color: var(--color-text); background: var(--color-surface-2); }
+.gb-nav-right { display: flex; align-items: center; gap: 20px; padding: 14px 0; margin-left: auto; }
+.gb-nav-right a:not(.gb-btn) { font-size: 14px; color: var(--color-text-muted); }
+.gb-nav-right a:not(.gb-btn):hover { color: var(--color-text); }
+
+/* Burger + Mobile-Menü — .gb-nav-mobile ist ein <nav>-Element und braucht
+ * harte Resets gegen style.css's globale nav-Regel (fixed, height:58px,
+ * translucent bg mit backdrop-filter, display:grid). */
+.gb-nav-burger { display: none; background: transparent; border: none; color: var(--color-text); width: 44px; height: 40px; border-radius: var(--radius-2, 4px); align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.gb-nav-burger:hover { color: var(--color-accent); }
+.gb-nav-burger svg { display: block; }
+.gb-nav-mobile {
+  display: none;
+  position: static; top: auto; left: auto; right: auto; z-index: auto;
+  height: auto;
+  padding: 8px 20px 20px;
+  border-top: 1px solid #DEE1E6; border-bottom: none;
+  background: #F7F8FA; backdrop-filter: none;
+  flex-direction: column;
+  grid-template-columns: none;
+  align-items: stretch;
+  font-family: var(--font-sans);
+}
+.gb-nav-mobile a {
+  display: block;
+  color: #0B0D10;
+  font-family: var(--font-sans); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 500;
+  padding: 14px 0;
+  border-bottom: 1px solid #DEE1E6;
+  text-decoration: none;
+}
+.gb-nav-mobile a.sub { padding-left: 20px; font-size: 14px; font-weight: 400; color: #555A62; }
+.gb-nav-mobile a:last-child { border-bottom: none; }
+.gb-nav-mobile a:hover { color: #555A62; }
+.gb-nav-mobile-sep { display: none; }
+
+/* ── Hero ── */
+/* .gb-tiles-section immer padding:0 — sitzt unmittelbar unter dem Hero.
+ * Die anderen GB-Sections (Markenidee, Werkzeuge, Selbst-anlegen, Haltung,
+ * Abschluss) behalten global das section{padding:7rem 2rem} aus style.css.
+ * Für .gb-hero das padding:0-Override nur auf Mobile — dort berechnet der
+ * Wrap mit calc(100svh - --nav-h) die viewport-exakte Höhe und darf keinen
+ * Extra-Section-Padding-Top bekommen. Auf Desktop behält .gb-hero das
+ * globale Section-Padding (~112 px oben) als vertikale Positionierung
+ * der Headline-Gruppe (wie in PR#98). */
+section.gb-tiles-section { padding: 0; }
+.gb-hero { position: relative; overflow: hidden; background: var(--color-bg); }
+.gb-hero-img { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; display: block; transform-origin: center center; animation: gbHeroDrift 16s ease-in-out infinite alternate; }
+.gb-hero-img.motif-b { object-position: 60% 40%; }
+@keyframes gbHeroDrift { 0% { transform: scale(1.00); } 100% { transform: scale(1.10); } }
+@media (prefers-reduced-motion: reduce) { .gb-hero-img { animation: none; } }
+.gb-hero-overlay { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(11,13,16,0.72) 0%, rgba(11,13,16,0.45) 38%, rgba(11,13,16,0) 62%), linear-gradient(180deg, rgba(11,13,16,0) 58%, #0B0D10 100%); }
+.gb-hero-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 96px 32px 96px; display: flex; flex-direction: column; gap: 32px; min-height: var(--web-hero-home, 880px); }
+.gb-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #B9BCC0; text-transform: uppercase; }
+.gb-h1-home { margin: 0; font-size: clamp(56px, 8vw, 116px); line-height: 0.98; font-weight: 600; letter-spacing: -0.05em; max-width: 980px; text-wrap: balance; }
+.gb-hero-sub { margin: 0; font-size: 22px; line-height: 1.5; color: #B9BCC0; max-width: 560px; }
+.gb-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.gb-hero-note { margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.5; letter-spacing: 0.02em; color: #B9BCC0; max-width: 560px; }
+
+/* Frühe Nutzer · Social Proof · Typografische Trennung ohne Karten */
+.proof { border-top: 1px solid #262B33; }
+.proof .gb-section-inner { padding: 72px 32px; gap: 40px; }
+.proof__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: #9A9FA7; text-transform: uppercase; margin: 0; }
+.proof__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.proof figure { margin: 0; display: flex; flex-direction: column; gap: 20px; padding-top: 24px; border-top: 1px solid #262B33; }
+.proof__stars { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em; line-height: 1; color: #ECEDEF; }
+.proof blockquote { margin: 0; font-family: var(--font-sans); font-size: 18px; line-height: 1.55; font-weight: 400; letter-spacing: -0.01em; color: #ECEDEF; text-wrap: pretty; }
+.proof figcaption { margin-top: auto; display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; }
+.proof figcaption span:first-child { color: #ECEDEF; }
+.proof figcaption span:last-child { color: #9A9FA7; }
+@media (min-width: 720px) {
+  .proof .gb-section-inner { gap: 48px; }
+  .proof__grid { max-width: 680px; }
+  .proof blockquote { font-size: 20px; }
+  .proof figure { gap: 24px; padding-top: 28px; }
+  .proof__stars { font-size: 14px; }
+}
+@media (min-width: 1100px) {
+  .proof .gb-section-inner { padding: 96px 32px; gap: 56px; }
+  .proof__grid { max-width: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
+}
+@media (max-width: 719px) { .proof .gb-section-inner { padding: 56px 20px; } }
+
+/* Tiles-Section · direkt unter dem Hero-Fold, eigene Section damit
+   der Hero-Wrap genau am Viewport-Ende endet (mit Buttons ans untere Ende
+   dank margin-top:auto) und Tiles komplett unter dem Fold liegen. */
+.gb-tiles-section { background: var(--color-bg); padding: 64px 0 0; }
+.gb-tiles-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.gb-hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; }
+.gb-tile { border-radius: var(--radius-3); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 196px; color: var(--web-field-ink); transition: transform 200ms var(--motion-ease); }
+.gb-tile:hover { transform: translateY(-2px); }
+.gb-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.gb-tile-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; font-weight: 500; }
+.gb-tile-arrow { font-size: 18px; }
+.gb-tile-verb { font-size: 28px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin-top: auto; }
+.gb-tile-short { font-size: 14px; line-height: 1.5; }
+.gb-tile.fvp { background: var(--web-field-fvp); } .gb-tile.fvp .gb-tile-short { color: var(--web-field-fvp-muted); }
+.gb-tile.pt  { background: var(--web-field-pt); }  .gb-tile.pt .gb-tile-short  { color: var(--web-field-pt-muted); }
+.gb-tile.td  { background: var(--web-field-td); }  .gb-tile.td .gb-tile-short  { color: var(--web-field-td-muted); }
+
+/* ── Sektionen ── */
+.gb-section { background: var(--color-bg); }
+.gb-section-inner { max-width: 1280px; margin: 0 auto; padding: 152px 32px; display: flex; flex-direction: column; gap: 64px; }
+.gb-section-inner.pad-marken   { padding-top: 128px; padding-bottom: 152px; gap: 72px; }
+.gb-section-inner.pad-light    { gap: 72px; }
+.gb-section-inner.pad-stance   { padding-top: 0; padding-bottom: 0; }
+.gb-section.line { border-top: 1px solid var(--color-border); }
+.gb-section.light { background: #F7F8FA; color: #111317; }
+
+/* ── Markenidee (Doppelpunkt-Kette) ── */
+.gb-chain { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 0.22em; font-weight: 600; font-size: clamp(36px, 4.6vw, 62px); letter-spacing: -0.04em; line-height: 1.05; }
+.gb-chain svg { display: block; height: 0.71em; width: 0.3em; margin: 0 0.06em; }
+.gb-chain .muted-end { color: var(--color-text-muted); }
+.gb-chain-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 72px; align-items: start; }
+.gb-chain-cols .lead { margin: 0; font-size: 24px; line-height: 1.45; font-weight: 500; letter-spacing: -0.015em; max-width: 560px; text-wrap: pretty; }
+.gb-chain-cols .body { margin: 0; font-size: 17px; line-height: 1.65; color: var(--color-text-muted); max-width: 520px; text-wrap: pretty; }
+.gb-chain-closer { margin: 56px 0 0; font-family: var(--font-sans); font-size: 22px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: var(--color-text); max-width: 760px; padding-top: 32px; border-top: 1px solid var(--color-border); text-wrap: pretty; }
+
+/* ── Werkzeuge ── */
+.gb-tools-head { display: flex; flex-direction: column; gap: 20px; max-width: 760px; }
+.gb-h2-home { margin: 0; font-size: clamp(44px, 5.6vw, 72px); line-height: 1.02; font-weight: 600; letter-spacing: -0.045em; }
+.gb-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 12px; }
+.gb-tool-panel { border-radius: var(--radius-3); padding: 36px 32px 32px; display: flex; flex-direction: column; gap: 20px; color: var(--web-field-ink); }
+.gb-tool-panel.fvp { background: var(--web-field-fvp); } .gb-tool-panel.fvp .body { color: var(--web-field-fvp-muted); }
+.gb-tool-panel.pt  { background: var(--web-field-pt); }  .gb-tool-panel.pt  .body { color: var(--web-field-pt-muted); }
+.gb-tool-panel.td  { background: var(--web-field-td); }  .gb-tool-panel.td  .body { color: var(--web-field-td-muted); }
+.gb-tool-brand { display: flex; align-items: center; gap: 10px; }
+.gb-tool-brand svg { width: 12px; height: 28px; display: block; }
+.gb-tool-brand svg circle { fill: var(--web-field-ink); }
+.gb-tool-brand .label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; font-weight: 500; }
+.gb-tool-h { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.gb-tool-panel .body { font-size: 15px; line-height: 1.6; text-wrap: pretty; }
+.gb-tool-ui { background: #0B0D10; color: #ECEDEF; border-radius: var(--radius-2); padding: 16px 18px; display: flex; flex-direction: column; margin-top: 8px; box-shadow: 0 16px 40px rgba(11,13,16,0.28); }
+.gb-tool-ui-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding-bottom: 10px; }
+.gb-tool-ui-title { font-size: 13px; font-weight: 500; }
+.gb-tool-ui-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: #9A9FA7; }
+.gb-tool-ui-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid #262B33; font-size: 12px; }
+.gb-tool-ui-row .k { color: #9A9FA7; }
+.gb-tool-ui-row .v { font-family: var(--font-mono); color: #ECEDEF; }
+.gb-tool-ui-row .v.pos { color: #7FC0A2; }
+.gb-tool-ui-row .v.neg { color: #EF7B72; }
+.gb-tool-link { font-size: 14px; font-weight: 500; padding-top: 14px; border-top: 1px solid rgba(11,13,16,0.2); color: var(--web-field-ink); }
+
+/* ── Selbst anlegen (hell) ── */
+.gb-light-head { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px; align-items: end; }
+.gb-label-dot { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.gb-label-dot .dot { width: 6px; height: 6px; border-radius: 50%; background: #111317; display: block; }
+.gb-h2-light { margin: 0; font-size: clamp(44px, 5.6vw, 72px); line-height: 1.02; font-weight: 600; letter-spacing: -0.045em; color: #111317; }
+.gb-light-body { margin: 0; font-size: 18px; line-height: 1.6; color: #555A62; max-width: 520px; text-wrap: pretty; }
+.gb-principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 48px 32px; }
+.gb-principle { display: flex; flex-direction: column; gap: 14px; padding-top: 24px; border-top: 2px solid var(--line, #111317); }
+.gb-principle .title { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; color: #111317; }
+.gb-principle .text { font-size: 15px; line-height: 1.55; color: #555A62; text-wrap: pretty; }
+
+/* ── Haltung ── */
+.gb-stance { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 56px; align-items: start; padding-top: 168px; padding-bottom: 168px; }
+.gb-stance svg { width: 36px; height: 85px; display: block; margin-top: 10px; }
+.gb-stance-text { display: flex; flex-direction: column; gap: 28px; }
+.gb-stance-quote { margin: 0; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.12; font-weight: 500; letter-spacing: -0.035em; max-width: 1000px; text-wrap: balance; color: var(--color-text); }
+.gb-stance-attr { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--color-text-muted); }
+
+/* ── Abschluss (CTA mit Bildgrund) ── */
+.gb-cta-close { position: relative; overflow: hidden; background: var(--color-bg); color: var(--color-text); border-top: 1px solid var(--color-border); }
+.gb-cta-close img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; display: block; }
+.gb-cta-close .ovr { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,13,16,0.7) 0%, rgba(11,13,16,0.4) 45%, rgba(11,13,16,0) 75%); }
+.gb-cta-close-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 176px 32px; display: flex; flex-direction: column; gap: 32px; }
+.gb-wm-huge { font-size: clamp(72px, 11vw, 164px); letter-spacing: -0.045em; }
+
+/* Abschluss · Doppelpunkt-Animation 1a „Übergang" (WEBSITE.md §14) */
+@keyframes gbWmMove { 0% { transform: translateY(0) scale(1); opacity: 0; } 12% { opacity: 1; } 62% { transform: translateY(54px) scale(1.43); opacity: 1; } 72%, 100% { transform: translateY(54px) scale(1.43); opacity: 0; } }
+@keyframes gbWmPulse { 0%, 58% { transform: scale(1); } 68% { transform: scale(1.12); } 88%, 100% { transform: scale(1); } }
+.gb-cta-close .gb-wm-huge svg { overflow: visible; }
+.gb-cta-close .gb-wm-huge svg circle { transform-box: fill-box; transform-origin: center; }
+.gb-cta-close .gb-wm-huge svg .wm-move { opacity: 0; }
+.gb-cta-close.is-playing .gb-wm-huge svg .wm-move { animation: gbWmMove 2.4s cubic-bezier(.5, 0, .3, 1) 3; }
+.gb-cta-close.is-playing .gb-wm-huge svg .wm-bot { animation: gbWmPulse 2.4s cubic-bezier(.5, 0, .3, 1) 3; }
+@media (prefers-reduced-motion: reduce) { .gb-cta-close .gb-wm-huge svg circle { animation: none !important; } }
+.gb-cta-taglines { display: flex; flex-direction: column; gap: 8px; }
+.gb-cta-tagline { font-size: 28px; font-weight: 500; letter-spacing: -0.02em; }
+.gb-cta-sub { font-size: 19px; color: #B9BCC0; }
+
+/* ── Footer ── */
+.gb-foot-wrap { background: var(--color-bg); border-top: 1px solid var(--color-border); }
+.gb-foot { max-width: 1280px; margin: 0 auto; padding: 48px 32px; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+.gb-foot-bar { display: flex; gap: 4px; height: 4px; width: 120px; }
+.gb-foot-bar span { flex: 1; }
+.gb-foot-bar span.fvp { background: var(--web-field-fvp); }
+.gb-foot-bar span.pt  { background: var(--web-field-pt); }
+.gb-foot-bar span.td  { background: var(--web-field-td); }
+.gb-foot-links { display: flex; gap: 28px; font-size: 13px; color: var(--color-text-muted); flex-wrap: wrap; }
+.gb-foot-links a:hover { color: var(--color-text); }
+.gb-foot-note { font-size: 12px; color: var(--color-text-muted); max-width: 360px; line-height: 1.5; }
+
+/* ── Responsive ── */
+@media (max-width: 1099px) {
+  .gb-hero-img { object-position: 82% 40%; }
+  .gb-hero-img.motif-b { object-position: 73% 40%; }
+  .gb-hero-overlay { background: linear-gradient(90deg, rgba(11,13,16,0.85) 0%, rgba(11,13,16,0.5) 45%, rgba(11,13,16,0.1) 80%), linear-gradient(180deg, rgba(11,13,16,0) 55%, #0B0D10 100%); }
+  .gb-cta-close img { object-position: 55% 50%; }
+  .gb-cta-close .ovr { background: linear-gradient(90deg, rgba(11,13,16,0.82) 0%, rgba(11,13,16,0.55) 50%, rgba(11,13,16,0.15) 100%); }
+}
+@media (max-width: 719px) {
+  .gb-nav { padding: 0 20px; gap: 16px; }
+  .gb-nav-links { display: none; }
+  .gb-nav-right { gap: 10px; }
+  .gb-nav-right > a:not(.gb-btn) { display: none; }
+  .gb-nav-burger { display: inline-flex; }
+  .gb-nav-mobile.is-open { display: flex; }
+  /* Nav-CTA auf Mobile schlanker als der Standard-Button. */
+  .gb-nav-right .gb-btn { height: 36px; min-height: 36px; padding: 0 14px; font-size: 13px; }
+  /* Auf Mobile: kein Section-Padding — der Wrap rechnet mit
+     calc(100svh - --nav-h) die viewport-exakte Höhe. */
+  section.gb-hero { padding: 0; }
+  .gb-h1-home { font-size: clamp(34px, 9vw, 52px); line-height: 1.05; }
+  .gb-hero-sub { font-size: 17px; }
+  /* Wrap-Puffer 140 px (Cards unter dem Fold), padding-bottom 220 px —
+     hebt die Content-Gruppe (Headline + Buttons) weiter vom unteren
+     Screenrand ab. */
+  .gb-hero-wrap { padding: 40px 20px 220px; min-height: calc(100svh - var(--nav-h, 77px) + 140px); gap: 18px; justify-content: flex-end; }
+  /* Bild deckt nur die oberen 62 % ab (statt 75 %) und der Ausschnitt
+     wird nach oben verschoben (object-position 75 %/25 % statt 40 %) —
+     Motiv sitzt höher, Content-Bereich unten hat mehr Platz. */
+  .gb-hero-img { height: 62%; object-position: 75% 25%; }
+  .gb-hero-img.motif-b { height: 62%; object-position: 75% 25%; }
+  .gb-hero-overlay { height: 62%; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
+  .gb-tiles-section { padding-top: 48px; }
+  .gb-tiles-inner { padding: 0 20px; }
+  .gb-section-inner { padding: 96px 20px; gap: 48px; }
+  .gb-section-inner.pad-marken { padding-top: 96px; padding-bottom: 96px; gap: 48px; }
+  .gb-section-inner.pad-light { gap: 48px; }
+  .gb-section-inner.pad-stance { padding-top: 0; padding-bottom: 0; }
+  .gb-stance { padding-top: 96px; padding-bottom: 96px; gap: 32px; }
+  .gb-cta-close img { object-position: 62% 50%; }
+  .gb-cta-close .ovr { background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0.7) 50%, rgba(11,13,16,0.9) 100%); }
+  .gb-cta-close-wrap { padding: 96px 20px; }
+  .gb-foot { padding: 32px 20px; }
+}
+</style>
+</head>
+<body data-level="home">
+
+<!-- NAV -->
+<div class="gb-nav-wrap">
+  <div class="gb-nav">
+    <div class="gb-nav-left">
+      <a href="index.html" class="gb-wm gb-nav-wm" aria-label="GO:BETTER">
+        <span aria-hidden="true"><span class="k">G</span>O</span>
+        <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg>
+        <span aria-hidden="true">BETTER</span>
+      </a>
+      <div class="gb-nav-links">
+        <div class="gb-nav-item">
+          <a href="fair-value-pro.html">Fair Value Pro</a>
+          <div class="gb-nav-dropdown">
+            <a href="fair-value-pro/pro-mode.html">Pro Mode</a>
+            <a href="fair-value-pro/daten-quelle.html">Daten-Quelle</a>
+          </div>
+        </div>
+        <a href="portfolio-tracker.html">Portfolio Tracker</a>
+        <a href="investment-planner.html">Investment Planner</a>
+      </div>
+    </div>
+    <div class="gb-nav-right">
+      <a href="plaene.html">Pläne</a>
+      <a href="akademie/index.html">Akademie</a>
+      <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--primary gb-btn--m">Jetzt starten</a>
+      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
+    <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="fair-value-pro/pro-mode.html" class="sub">↳ Pro Mode</a>
+    <a href="fair-value-pro/daten-quelle.html" class="sub">↳ Daten-Quelle</a>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="investment-planner.html">Investment Planner</a>
+    <a href="plaene.html">Pläne</a>
+    <a href="akademie/index.html">Akademie</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="gb-hero">
+  <img id="gb-hero-motif" class="gb-hero-img" src="assets/photo/workspace-desk.webp" alt="" fetchpriority="high" decoding="async">
+  <div class="gb-hero-overlay"></div>
+  <div class="gb-hero-wrap">
+    <span class="gb-eyebrow">DREI WERKZEUGE · EINE PLATTFORM</span>
+    <h1 class="gb-h1-home">The Investment Workspace.</h1>
+    <p class="gb-hero-sub">Better tools for independent investors.</p>
+    <div class="gb-hero-btns">
+      <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--primary gb-btn--l">Kostenlos testen</a>
+      <a href="#werkzeuge" class="gb-btn gb-btn--secondary gb-btn--l on-photo">Die Werkzeuge</a>
+    </div>
+    <p class="gb-hero-note">Eigener Daten-Schlüssel, in rund 5 Minuten im Onboarding eingerichtet.</p>
+  </div>
+</section>
+
+<!-- TILES · direkt unter dem Hero-Fold -->
+<section class="gb-tiles-section">
+  <div class="gb-tiles-inner">
+    <div class="gb-hero-tiles">
+      <a href="fair-value-pro.html" class="gb-tile fvp">
+        <div class="gb-tile-head"><span class="gb-tile-label">FAIR VALUE PRO</span><span class="gb-tile-arrow">→</span></div>
+        <span class="gb-tile-verb">Bewerten</span>
+        <span class="gb-tile-short">Fünf Verfahren, ein Komposit Fairer Wert.</span>
+      </a>
+      <a href="portfolio-tracker.html" class="gb-tile pt">
+        <div class="gb-tile-head"><span class="gb-tile-label">PORTFOLIO TRACKER</span><span class="gb-tile-arrow">→</span></div>
+        <span class="gb-tile-verb">Verfolgen</span>
+        <span class="gb-tile-short">Renditen, Allokation, Fairer Wert je Position.</span>
+      </a>
+      <a href="investment-planner.html" class="gb-tile td">
+        <div class="gb-tile-head"><span class="gb-tile-label">INVESTMENT PLANNER</span><span class="gb-tile-arrow">→</span></div>
+        <span class="gb-tile-verb">Planen</span>
+        <span class="gb-tile-short">Positionsgröße, Watchlist, Journal.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKENIDEE -->
+<section class="gb-section">
+  <div class="gb-section-inner pad-marken">
+    <div class="gb-chain">
+      <span>Daten</span>
+      <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
+      <span>Kontext</span>
+      <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#F0B42A"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
+      <span>Erkenntnis</span>
+      <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#5B8CFF"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
+      <span class="muted-end">deine Entscheidung</span>
+    </div>
+    <div class="gb-chain-cols">
+      <p class="lead">Die meisten Verluste entstehen nicht durch falsche Aktien, sondern durch Entscheidungen ohne Plan: zu groß eingestiegen, zu spät verkauft, die eigene These unterwegs vergessen.</p>
+      <p class="body">GO:BETTER macht sichtbar, worauf deine Einschätzung beruht — jede Annahme, jede Zahl. Es behält, was du dir vor dem Kauf gedacht hast, und zeigt dir später, was daraus geworden ist. So wird aus Daten ein Kontext, aus Kontext eine Erkenntnis, und am Ende steht deine Entscheidung.</p>
+    </div>
+    <p class="gb-chain-closer">GO ist der Beginn. BETTER ist deine Ambition — besser werden, Entscheidung für Entscheidung.</p>
+  </div>
+</section>
+
+<!-- WERKZEUGE -->
+<section id="werkzeuge" class="gb-section line">
+  <div class="gb-section-inner">
+    <div class="gb-tools-head">
+      <span class="gb-eyebrow" style="color:var(--color-text-muted);">DREI WERKZEUGE, EINE LOGIK</span>
+      <h2 class="gb-h2-home">Bewerten. Verfolgen.<br>Planen.</h2>
+    </div>
+    <div class="gb-tools-grid">
+      <a href="fair-value-pro.html" class="gb-tool-panel fvp">
+        <div class="gb-tool-brand"><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle cx="15" cy="61" r="10"/></svg><span class="label">FAIR VALUE PRO</span></div>
+        <span class="gb-tool-h">Berechne den Fairen Wert.</span>
+        <span class="body">Fünf Verfahren gleichzeitig. Qualitätsnote, Szenarien, Sensitivitätstabelle.</span>
+        <div class="gb-tool-ui">
+          <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Beispiel AG</span><span class="gb-tool-ui-sub">5 VERFAHREN</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Komposit Fairer Wert</span><span class="v">142,80 €</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Kurs</span><span class="v">118,40 €</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Abstand</span><span class="v">17,1 %</span></div>
+        </div>
+        <span class="gb-tool-link">Fair Value Pro ansehen →</span>
+      </a>
+      <a href="portfolio-tracker.html" class="gb-tool-panel pt">
+        <div class="gb-tool-brand"><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle cx="15" cy="61" r="10"/></svg><span class="label">PORTFOLIO TRACKER</span></div>
+        <span class="gb-tool-h">Verfolge deine Investments.</span>
+        <span class="body">KI-Import per Screenshot, PDF oder CSV — Zahlen prüfen, übernehmen. Cashflowbereinigte Renditen (IRR · TWR).</span>
+        <div class="gb-tool-ui">
+          <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Hauptdepot</span><span class="gb-tool-ui-sub">14 POSITIONEN</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Depotwert</span><span class="v">248.310 €</span></div>
+          <div class="gb-tool-ui-row"><span class="k">TWR 2025</span><span class="v pos">▲ +8,4 %</span></div>
+          <div class="gb-tool-ui-row"><span class="k">IRR p.a.</span><span class="v pos">▲ +7,1 %</span></div>
+        </div>
+        <span class="gb-tool-link">Portfolio Tracker ansehen →</span>
+      </a>
+      <a href="investment-planner.html" class="gb-tool-panel td">
+        <div class="gb-tool-brand"><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle cx="15" cy="61" r="10"/></svg><span class="label">INVESTMENT PLANNER</span></div>
+        <span class="gb-tool-h">Triff fundierte Entscheidungen.</span>
+        <span class="body">Zehn Module, von der Positionsgröße bis zum Trade Journal.</span>
+        <div class="gb-tool-ui">
+          <div class="gb-tool-ui-head"><span class="gb-tool-ui-title">Watchlist</span><span class="gb-tool-ui-sub">1 IN KAUFZONE</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Beispiel AG</span><span class="v">21 % über FW</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Nordwerk SE</span><span class="v">5 % über FW</span></div>
+          <div class="gb-tool-ui-row"><span class="k">Mikro Werke</span><span class="v">Kaufzone</span></div>
+        </div>
+        <span class="gb-tool-link">Investment Planner ansehen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SELBST ANLEGEN (hell) -->
+<section class="gb-section light">
+  <div class="gb-section-inner pad-light">
+    <div class="gb-light-head">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <span class="gb-label-dot"><span class="dot"></span>SELBSTBESTIMMT ANLEGEN</span>
+        <h2 class="gb-h2-light">Selbst anlegen.<br>Selbst verstehen.</h2>
+      </div>
+      <p class="gb-light-body">Wer selbst anlegt, will wissen, was er besitzt und warum. GO:BETTER macht Bewertungen, Positionen und Entwicklungen nachvollziehbar, damit jede Entscheidung auf einer Grundlage steht, die du selbst prüfen kannst.</p>
+    </div>
+    <div class="gb-principles">
+      <div class="gb-principle" style="--line:#10C27F;">
+        <span class="title">Unternehmen selbst beurteilen</span>
+        <span class="text">Fünf Verfahren, alle Annahmen offen und einstellbar.</span>
+      </div>
+      <div class="gb-principle" style="--line:#F0B42A;">
+        <span class="title">Verstehen, was man besitzt</span>
+        <span class="text">Jede Position mit Einstand, Anteil, Entwicklung und Fairem Wert.</span>
+      </div>
+      <div class="gb-principle" style="--line:#3B7BFF;">
+        <span class="title">Entscheidungen begründen</span>
+        <span class="text">Markt, Bewertung und eigene Begründung an einem Ort, nachvollziehbar auch später.</span>
+      </div>
+      <div class="gb-principle" style="--line:#111317;">
+        <span class="title">Kosten im Blick (in Entwicklung)</span>
+        <span class="text">Was Anlegen kostet, bleibt sichtbar. Ein Faktor der eigenen Rendite unter mehreren.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HALTUNG -->
+<section class="gb-section">
+  <div class="gb-section-inner gb-stance pad-stance">
+    <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7" fill="#2EE59D"/><circle cx="15" cy="61" r="10" fill="#ECEDEF"/></svg>
+    <div class="gb-stance-text">
+      <p class="gb-stance-quote">Wir glauben an Anleger, die verstehen wollen, was sie tun – und selbst entscheiden, was zu ihnen passt.</p>
+      <span class="gb-stance-attr">UNSERE HALTUNG</span>
+    </div>
+  </div>
+</section>
+
+<!-- FRÜHE NUTZER · Social Proof -->
+<section class="gb-section proof" id="stimmen">
+  <div class="gb-section-inner">
+    <p class="proof__label">Frühe Nutzer</p>
+    <div class="proof__grid">
+      <figure>
+        <div class="proof__stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</blockquote>
+        <figcaption><span>Marc S.</span><span>Bankkaufmann &amp; Privatanleger · Duisburg</span></figcaption>
+      </figure>
+      <figure>
+        <div class="proof__stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</blockquote>
+        <figcaption><span>Moritz M.</span><span>Betriebswirt &amp; Privatanleger · Berlin</span></figcaption>
+      </figure>
+      <figure>
+        <div class="proof__stars" role="img" aria-label="4 von 5 Sternen">★★★★☆</div>
+        <blockquote>„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Dass der Portfolio Tracker meine echte Rendite cashflowbereinigt zeigt, hat Klarheit in mein Depot gebracht. Genau das wollte ich."</blockquote>
+        <figcaption><span>Andrej P.</span><span>Unternehmer · Bielefeld</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ABSCHLUSS -->
+<section class="gb-cta-close">
+  <img src="assets/photo/workspace-banner.webp" alt="" loading="lazy" decoding="async">
+  <div class="ovr"></div>
+  <div class="gb-cta-close-wrap">
+    <a href="index.html" class="gb-wm gb-wm-huge" aria-label="GO:BETTER">
+      <span aria-hidden="true"><span class="k">G</span>O</span>
+      <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="7" r="7"/><circle class="wm-move" cx="15" cy="7" r="7"/><circle class="wm-bot" cx="15" cy="61" r="10"/></svg>
+      <span aria-hidden="true">BETTER</span>
+    </a>
+    <div class="gb-cta-taglines">
+      <span class="gb-cta-tagline">The Investment Workspace.</span>
+      <span class="gb-cta-sub">Better tools for independent investors.</span>
+    </div>
+    <div class="gb-hero-btns">
+      <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--primary gb-btn--l">Kostenlos testen</a>
+      <a href="plaene.html" class="gb-btn gb-btn--secondary gb-btn--l">Pläne ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="gb-foot-wrap">
+  <div class="gb-foot">
+    <div class="gb-foot-bar" aria-hidden="true">
+      <span class="fvp"></span><span class="pt"></span><span class="td"></span>
+    </div>
+    <div class="gb-foot-links">
+      <a href="partner.html">Für Partner</a>
+      <a href="https://app.gobetter.trade/kuendigung">Verträge hier kündigen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+    <span class="gb-foot-note">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen. <span style="opacity:0.75;">· Bildmotive KI-generiert.</span><br><span style="opacity:0.75;">✱ Preise verstehen sich als Endpreise · Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.</span></span>
+  </div>
+</div>
+
+<script>
+  // Hero-Motiv rotiert pro Seitenaufruf zufällig zwischen den beiden Bildern
+  (function(){
+    var img = document.getElementById('gb-hero-motif');
+    if (!img) return;
+    if (Math.random() < 0.5) {
+      img.src = 'assets/photo/workspace-laptop.webp';
+      img.classList.add('motif-b');
+    }
+  })();
+  // Nav-Höhe messen und als --nav-h veröffentlichen, damit der Mobile-Hero
+  // mit calc(100dvh - var(--nav-h)) exakt an den Fold enden kann — egal wie
+  // die Nav auf der jeweiligen Viewport-Breite umbricht.
+  (function(){
+    var nav = document.querySelector('.gb-nav-wrap');
+    if (!nav) return;
+    function setNavH(){
+      document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+    }
+    setNavH();
+    window.addEventListener('resize', setNavH);
+    if (window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
+  })();
+  // Abschluss-Wortmarke: Doppelpunkt-Animation 1a „Übergang" beim Sichtbarwerden
+  (function(){
+    var cta = document.querySelector('.gb-cta-close');
+    if (!cta || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { cta.classList.remove('is-playing'); void cta.offsetWidth; cta.classList.add('is-playing'); }
+        else cta.classList.remove('is-playing');
+      });
+    }, { threshold: 0.5 }).observe(cta);
+  })();
+  // Burger-Menü toggle
+  (function(){
+    var burger = document.getElementById('gb-burger');
+    var menu = document.getElementById('gb-mobile-menu');
+    if (!burger || !menu) return;
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); });
+    });
+  })();
+</script>
+
+</body>
+</html>
