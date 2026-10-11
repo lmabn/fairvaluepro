@@ -1,5 +1,9 @@
 # Workflow
 
+## Wer schreibt
+
+In dieser Sitzung schreibt **Ludmila**, nicht Pierre. Frühere Aufträge an „Pierre" oder im Sinne von Pierre bleiben weiterhin gültig; neue Aufträge und Rückmeldungen kommen von Ludmila.
+
 ## Branch & Merge
 
 - Entwicklung erfolgt auf dem vorgegebenen `claude/<task>`-Branch.

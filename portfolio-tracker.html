@@ -43,9 +43,9 @@
   "inLanguage": "de-DE",
   "offers": {
     "@type": "Offer",
-    "price": "0",
+    "price": "9.99",
     "priceCurrency": "EUR",
-    "availability": "https://schema.org/PreOrder"
+    "availability": "https://schema.org/InStock"
   },
   "publisher": {
     "@type": "Organization",
@@ -179,9 +179,9 @@
 .mk-cell.pos { color: var(--pt); }
 .mk-cell.neg { color: #e24b4a; }
 .mk-verdict { font-size: 0.52rem; padding: 0.15rem 0.45rem; border-radius: 3px; text-align: center; font-weight: 700; letter-spacing: 0.05em; }
-.mk-verdict.under { background: rgba(240,180,42,0.1); color: var(--pt); border: 1px solid var(--pt-border); }
-.mk-verdict.over { background: rgba(226,75,74,0.1); color: #e24b4a; border: 1px solid rgba(226,75,74,0.25); }
-.mk-verdict.fair { background: rgba(0,196,106,0.08); color: var(--mid); border: 1px solid var(--mid-border); }
+.mk-verdict.under { background: rgba(127,192,162,0.14); color: #7FC0A2; border: 1px solid rgba(127,192,162,0.28); }
+.mk-verdict.over { background: rgba(239,123,114,0.14); color: #EF7B72; border: 1px solid rgba(239,123,114,0.28); }
+.mk-verdict.fair { background: var(--bg2); color: var(--text-2); border: 1px solid var(--border2); }
 
 /* FEATURES */
 .features-section { padding: 7rem 2rem; }
@@ -296,16 +296,16 @@
 <!-- HERO -->
 <section id="hero" class="gb-hero-product gb-hero-product--breathe" data-product="pt" data-level="product">
   <div class="gb-hero-inner">
-    <span class="gb-eyebrow fade in">Portfolio Tracker · Depot-Überblick · Renditen · Fair-Value</span>
+    <span class="gb-eyebrow fade in">Portfolio Tracker · Depot-Überblick · Renditen · Fairer Wert</span>
     <h1 class="gb-h1-product fade in">Behalte deine<br class="mobile-br"> Investments im <span class="accent">Blick.</span></h1>
-    <p class="gb-hero-sub fade in">KI-gestützter Import per Screenshot, PDF oder CSV — broker-unabhängig, und du prüfst die Zahlen, bevor sie übernommen werden. Cashflowbereinigte Renditen (IRR, TWR) und Fair-Value-Verdict pro Position, verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
+    <p class="gb-hero-sub fade in">KI-gestützter Import per Screenshot, PDF oder CSV — broker-unabhängig, und du prüfst die Zahlen, bevor sie übernommen werden. Cashflowbereinigte Renditen (IRR, TWR) und Einordnung nach deinem Fairen Wert pro Position, verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
     <div class="gb-hero-btns fade in">
       <a href="plaene.html" class="gb-btn gb-btn--l gb-btn--primary">Jetzt starten</a>
       <a href="#features" class="gb-btn gb-btn--l gb-btn--secondary">Funktionen ansehen</a>
     </div>
     <div class="gb-hero-pills fade in">
       <span class="gb-hero-pill is-active">MAX</span>
-      <span class="gb-hero-pill">Teil aller drei Werkzeuge</span>
+      <span class="gb-hero-pill">Verknüpft mit Fair Value Pro</span>
     </div>
   </div>
 </section>
@@ -384,7 +384,7 @@
           <!-- Depot table -->
           <div class="mk-depot">
             <div class="mk-depot-head">
-              <span>Position</span><span style="text-align:right">Wert</span><span style="text-align:right">G/V</span><span style="text-align:right">G/V %</span><span style="text-align:right">FVP-Verdict</span></div>
+              <span>Position</span><span style="text-align:right">Wert</span><span style="text-align:right">G/V</span><span style="text-align:right">G/V %</span><span style="text-align:right">Einordnung</span></div>
             <div class="mk-depot-row">
               <div><div class="mk-ticker">MSFT</div><div class="mk-name">Microsoft Corp.</div></div>
               <div class="mk-cell">€ 19.840</div>
@@ -438,11 +438,11 @@
       </div>
       <div class="pain-item">
         <div class="pain-q">Ich weiß nicht ob meine Positionen gerade über- oder unterbewertet sind.</div>
-        <div class="pain-a">Pro Position wird der berechnete Fair Value aus dem FVP-Kalkulator automatisch übernommen. <strong>Das Verdict — überbewertet / fair bewertet / unterbewertet</strong> — aktualisiert sich bei jedem Tab-Wechsel.</div>
+        <div class="pain-a">Pro Position wird der berechnete Fairer Wert aus Fair Value Pro automatisch übernommen. <strong>Die Einordnung — überbewertet / fair bewertet / unterbewertet</strong> — aktualisiert sich bei jedem Tab-Wechsel.</div>
       </div>
       <div class="pain-item">
         <div class="pain-q">Wie war meine Rendite in den letzten fünf Jahren wirklich?</div>
-        <div class="pain-a">Der Vergleich-Tab zeigt jedes Jahr aufgeklappt: Snapshots, G/V, Rendite. <strong>TWR annualisiert</strong> — nicht die verzerrte Durchschnittszahl, die die meisten Apps zeigen.</div>
+        <div class="pain-a">Der Vergleich-Tab zeigt jedes Jahr aufgeklappt: Snapshots, G/V, Rendite. <strong>TWR annualisiert</strong> — Ein- und Auszahlungen verfälschen die Rendite nicht.</div>
       </div>
     </div>
   </div>
@@ -460,17 +460,17 @@
       <div class="feat fade">
         <div class="feat-icon">⧉</div>
         <h3>Universal-Import mit KI</h3>
-        <p>Depotbestände nicht mehr abtippen: Screenshot(s) aus der Broker-App, PDF-Finanzreport, CSV-Export oder kopierter Text. Die KI liest Positionen, Depotwert, Ein-/Auszahlungen und Trades heraus — erprobt an einigen Banken und Dokumentarten, nicht an allen. Du prüfst die Zahlen in der Vorschau, bevor sie übernommen werden. Deine Korrekturen im Import-Dialog werden lokal gemerkt und verbessern die nächste Erkennung desselben Brokers.</p>
+        <p>Depotbestände nicht mehr abtippen: Screenshot(s) aus der Broker-App, PDF-Finanzreport, CSV-Export oder kopierter Text. Die KI liest Positionen, Depotwert, Ein-/Auszahlungen und Trades heraus. Du prüfst die Zahlen in der Vorschau, bevor sie übernommen werden. Deine Korrekturen im Import-Dialog werden lokal gemerkt und verbessern die nächste Erkennung desselben Brokers.</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">▣</div>
         <h3>Privacy-Layer vor jedem Versand</h3>
-        <p>Bevor ein Text-Dokument den Browser verlässt, entfernt ein clientseitiger Privacy-Scrubber IBAN, Steuer-ID, Namen, Adressen und Konto-/Depotnummern — soweit erkennbar, nicht lückenlos. Deshalb siehst du in einem Vorschau-Modal exakt, was gesendet wird; nichts geht ohne dein OK raus. Screenshots kann der Scrubber nicht schwärzen — die schneidest du vorher zu.</p>
+        <p>Bevor ein Text-Dokument den Browser verlässt, schwärzt ein Scrubber IBAN, Steuer-ID, Namen, Adressen und Konto-/Depotnummern. In einer Vorschau siehst du genau, was gesendet wird, und kannst nachschwärzen — nichts geht ohne dein OK raus. Screenshots schwärzt der Scrubber nicht; die schneidest du vorher zu.</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">✓</div>
         <h3>Die KI liest, wir rechnen</h3>
-        <p>Die KI arbeitet als Scanner, nicht als Taschenrechner: Stückzahlen und Einstandswerte berechnet die App deterministisch aus den abgelesenen Werten. Ein Plausibilitäts-Check vergleicht die Positions-Summe mit dem Depotwert, bei Kontoauszügen rechnet die App die Buchungen gegen Anfangs- und Endstand. Was sie als unsicher erkennt, ist markiert — prüfen solltest du trotzdem alles.</p>
+        <p>Die KI arbeitet als Scanner, nicht als Taschenrechner: Stückzahlen und Einstandswerte berechnet die App deterministisch aus den abgelesenen Werten. Ein Plausibilitäts-Check vergleicht die Positions-Summe mit dem Depotwert, bei Kontoauszügen rechnet die App die Buchungen gegen Anfangs- und Endstand. Unsichere Werte sind markiert.</p>
       </div>
     </div>
   </div>
@@ -508,14 +508,13 @@
       </div>
       <div class="feat fade">
         <div class="feat-icon">◎</div>
-        <h3>Fair-Value-Kontext pro Position</h3>
-        <p>Jede Position zeigt den im FVP-Kalkulator ermittelten fairen Wert direkt im Depot — unterbewertet, fair bewertet oder überbewertet, mit automatischer Aktualisierung beim Tab-Wechsel.</p>
+        <h3>Fairer Wert pro Position</h3>
+        <p>Jede Position zeigt den in Fair Value Pro ermittelten Fairen Wert direkt im Depot — unterbewertet, fair bewertet oder überbewertet, mit automatischer Aktualisierung beim Tab-Wechsel.</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">⌾</div>
         <h3>Deine Schlüssel, deine Daten</h3>
         <p>Marktdaten über deinen eigenen Datenprovider-Schlüssel, KI-Import über deinen eigenen Anbieter-Schlüssel. Beide Schlüssel bleiben im Browser und gehen von dort direkt an den jeweiligen Anbieter — unser Server ist an diesen Abrufen nicht beteiligt.</p>
-        <p style="font-size:0.72rem; color:var(--text-3); margin-top:0.6rem;">Ein KI-Import kostet bei deinem Anbieter typischerweise unter 0,05 €.</p>
       </div>
     </div>
   </div>
@@ -528,26 +527,26 @@
       <div class="diff-text fade">
         <div class="tag" style="--neon: var(--pt);">Warum das anders ist</div>
         <h2>Nicht eine weitere App. Sondern der fehlende Baustein.</h2>
-        <p>Die meisten Portfolio-Apps zeigen dir Zahlen. Was sie nicht zeigen: ob du zu einem guten Preis gekauft hast, ob deine Rendite korrekt berechnet ist — und was als nächstes zu tun wäre.</p>
-        <p>Portfolio Tracker löst das, weil er Teil eines zusammenhängenden Systems ist: Bewertung (FVP) → Verfolgung (Tracker) → Planung (Investment Planner).</p>
+        <p>Portfolio Tracker zeigt dir, zu welchem Preis du im Verhältnis zu deinem Fairen Wert gekauft hast und wie deine Rendite ohne Cashflow-Verzerrung aussieht.</p>
+        <p>Portfolio Tracker ist Teil eines zusammenhängenden Systems: Bewertung (Fair Value Pro) → Verfolgung (Tracker) → Planung (Investment Planner).</p>
         <div class="diff-list">
           <div class="diff-item">
             <div class="diff-icon">⊕</div>
             <div class="diff-item-text">
-              <strong>Fair Value direkt in der Depot-Ansicht</strong>
-              <span>Kein Wechsel zwischen Tools — das Verdict aus deiner eigenen Bewertung steht neben jeder Position.</span></div>
+              <strong>Fairer Wert direkt in der Depot-Ansicht</strong>
+              <span>Kein Wechsel zwischen Tools — die Einordnung aus deiner eigenen Bewertung steht neben jeder Position.</span></div>
           </div>
           <div class="diff-item">
             <div class="diff-icon">≋</div>
             <div class="diff-item-text">
               <strong>Rendite ohne Buchhalter-Trick</strong>
-              <span>Cashflowbereinigung nach TWR-Methode — dieselbe die Fondsmanager verwenden.</span></div>
+              <span>Cashflowbereinigung nach TWR-Methode.</span></div>
           </div>
           <div class="diff-item">
             <div class="diff-icon">⊞</div>
             <div class="diff-item-text">
               <strong>Made in Germany · Gehostet in der EU</strong>
-              <span>Hosting und Datenbank in der EU, DSGVO-konform.</span></div>
+              <span>Hosting und Datenbank in der EU.</span></div>
           </div>
         </div>
       </div>
