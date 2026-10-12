@@ -16,13 +16,15 @@ In dieser Sitzung schreibt **Ludmila**, nicht Pierre. Frühere Aufträge an „P
 
 ## Pages-Deploy-Check nach Merge
 
-Nach jedem Merge auf `main` **vor** jedem Purge-Hinweis an den User:
+Nach jedem Merge auf `main` **vor** jedem Live-Hinweis an den User:
 
 1. `gh api "repos/lmabn/fairvaluepro/actions/runs?per_page=5"` **ohne** `status`-Filter aufrufen.
 2. In der Antwort nach dem Merge-Commit-SHA suchen.
-3. Erst wenn `conclusion: success` für diesen SHA bestätigt ist, Purge-Hinweis geben.
+3. Erst wenn `conclusion: success` für diesen SHA bestätigt ist, Live-Hinweis geben: „nach dem Pages-Build live, ggf. wenige Minuten Verzögerung".
 4. Falls `status: queued` oder `in_progress` → warten und erneut prüfen; falls > 2 min hängend → User informieren. Ein `queued`-Lauf lässt sich **nicht** per „Re-run" neu anstoßen (nur „Cancel"); Weg ist dann abbrechen und einen trivialen Commit (z. B. `sitemap.xml` lastmod-Bump) nachschieben, der einen frischen Build triggert.
 5. Falls **kein** Run existiert → max. 30 s warten (Trigger-Delay), sonst Alarm.
+
+**Kein Cloudflare-Purge.** Ludmilas Cloudflare liegt nicht zwischen Besuchern und der Website — ein Purge erreicht die Seite nicht. GitHub Pages hält Seiten selbst nur wenige Minuten zwischen. Nie „Cache leeren" oder „CDN purgen" vorschlagen; die richtige Formel ist: „nach dem Pages-Build live, ggf. wenige Minuten Verzögerung".
 
 Hintergrund: Der Pages-Workflow ist GitHubs auto-generierter `pages build and deployment` (keine `.github/workflows/`-Datei im Repo, kein eigener Pfadfilter, kein eigenes concurrency-Setup). Wenn ein Build in `queued` hängt und nicht durchstartet, ist die Ursache **vermutlich** eine transiente GitHub-Infrastructure-Verzögerung (nicht belegt — reine Hypothese); Pages hat eine built-in Deployment-Concurrency, mehr nicht.
 
