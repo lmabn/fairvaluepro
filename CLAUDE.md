@@ -47,7 +47,9 @@ Monetarisiert — die Provision wird nur zugeordnet, wenn der Kauf über **unser
 - Der Gutscheincode darf **nirgends abtippbar** stehen (nicht im Fließtext, nicht in Readmes, nicht im Styleguide, nicht in dieser Datei). Der Rabatt kommt ausschließlich über den Link.
 - Nach jedem Touch an einer FMP-Stelle lokal `bash scripts/audit-fmp.sh` laufen lassen. Das Script zählt die Vorkommen, prüft dass alle Links identisch sind und `target`/`rel` tragen, und schlägt bei abtippbarem Gutscheincode an. Exit-Code 0 = alles ok.
 
-**Platzierungs-Haltung** — Direktlinks nur dort, wo der Nutzer **jetzt gerade** zum Anbieter will (daten-quelle.html: Setup-Steps, Partner-Card, zwei FAQs). Nicht in `agb.html` / `datenschutz.html` (Legal), nicht in `partner.html` (B2B-Pitch), nicht in `plaene.html` (dort läuft die Konversion über die Erklärseite `daten-quelle.html`).
+**Platzierungs-Haltung** — Direktlinks nur dort, wo der Nutzer **jetzt gerade** zum Anbieter will. Auf `daten-quelle.html` genau zwei: einer im Setup-Step 2 (Einrichtung) und einer am CTA unten. **Nicht** in der Anbieter-Karte, nicht in den FAQ (dort nur der Fließtext-Verweis „Den Link mit 25 % Rabatt findest du oben auf dieser Seite." ohne Link). Nicht in `agb.html` / `datenschutz.html` (Legal), nicht in `partner.html` (B2B-Pitch), nicht in `plaene.html` (dort läuft die Konversion über die Erklärseite `daten-quelle.html`).
+
+**Hinweis-Platzierung** — Wo ein Partner-Link steht, steht der Hinweis „Partner-Link: Wir erhalten eine Provision, dein Preis ändert sich dadurch nicht." direkt daneben (unmittelbar unter dem Link, nicht gesammelt am Seitenende). Keine separate „Transparenzhinweis"-Zeile.
 
 **Formulierungs-Haltung** — Der Rabatt kommt NUR über den Link. Also nicht „wird automatisch angewendet", nicht „im Onboarding freigeschaltet", sondern aktiv: „25 % Rabatt bekommst du über unseren Partner-Link." Button mit identischem Satz dahinter.
 
