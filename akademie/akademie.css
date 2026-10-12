@@ -90,8 +90,8 @@
 .ak-formula::-webkit-scrollbar { height: 6px; }
 .ak-formula::-webkit-scrollbar-track { background: transparent; }
 .ak-formula::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-.ak-formula .neg { color: #e05252; }
-.ak-formula .pos { color: var(--neon); }
+.ak-formula .neg { color: var(--color-negative); }
+.ak-formula .pos { color: var(--color-positive); }
 
 /* ── Callout (Anfängerfehler etc.) ────────────────────── */
 .ak-callout { background: var(--bg3); border: 1px solid var(--border2); border-left: 3px solid var(--warn); border-radius: 0 3px 3px 0; padding: 1rem 1.3rem; margin: 1.5rem 0; }
