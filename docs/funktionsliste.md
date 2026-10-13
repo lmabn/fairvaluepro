@@ -18,9 +18,9 @@
 |---|---|---|---|
 | Fair Value Pro (Kalkulator) | 79 | 36 | 7 |
 | Portfolio Tracker | 64 | 37 | 1 |
-| Investment Planner | 48 | 22 | 2 |
+| Investment Planner | 45 | 22 | 2 |
 | Konto, Schlüssel, Kauf und Übergreifendes | 54 | 31 | 3 |
-| **Gesamt** | **245** | **126** | **13** |
+| **Gesamt** | **242** | **123** | **13** |
 
 **Was Ludmila nicht sagen sollte, weil es heute nicht stimmt** (aus den Auffälligkeiten unten, je mit Beleg):
 - „Kursverlauf über zehn Jahre": heute fünf Jahre (Abruf ohne Startdatum, `fmp_provider.py:613–625`; Bauplan, vorrangig).
@@ -237,7 +237,7 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | **Rahmen (gilt für alle Module)** | | | | | |
 | Seitenzugang mit Sperre | Nur angemeldete Nutzer kommen auf die Seite. Wer nicht MAX hat, sieht statt der Module eine Upgrade-Karte. | MAX (+ Login) | frontend/trading-desk.js:37, :3244-3256; frontend/premium-gate.js:76-90 | plaene: Tabelle „Investment Planner – – ✓“; investment-planner „Investment Planner ist Teil des MAX-Plans“ | aktiv |
 | Server-Sperre | Alle Planner-Schnittstellen lehnen Nutzer ohne MAX ab (gilt auch für Tracker-Daten). | MAX | td_api.py:122 ff. (`@require_tier("td_modules")`, jeder Endpunkt); plans.py:98/112/127, :220 | wie oben | aktiv |
-| Modul-Leiste und Direktlinks | Seitenleiste mit 10 Modulen, Direktlinks per `#modul`, das zuletzt geöffnete Modul wird gemerkt. | MAX | frontend/trading-desk.js:3108-3125, :3159-3181 | investment-planner „Zehn Module ansehen“ | aktiv |
+| Modul-Leiste und Direktlinks | Seitenleiste mit 9 Modulen, Direktlinks per `#modul`, das zuletzt geöffnete Modul wird gemerkt. (Recovery Return entfällt seit 13.10.2026.) | MAX | frontend/trading-desk.js:3108-3125, :3159-3181 | investment-planner „Neun Module ansehen“ | aktiv |
 | Einstellungen wirken sofort | Änderungen an Risiko je Position oder Mindest-CRV in den Einstellungen zeichnen das offene Modul ohne Neuladen neu. | MAX | frontend/trading-desk.js:3262; frontend/account-modal.js:761-772, :885 | nicht erwähnt | aktiv |
 | **Meine Richtwerte** | | | | | |
 | Rückgang-Grenze | Zeigt den selbst festgelegten maximalen Rückgang in % und dazu den aktuellen Euro-Betrag. | MAX + Wert in den Einstellungen + Tracker-Depotwert | frontend/trading-desk.js:136-185 | investment-planner „maximaler Rückgang in Euro, Cash-Korridor“ | aktiv |
@@ -274,10 +274,10 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | Heutiger Kurs | Holt den aktuellen Kurs. Ohne ihn ist die Prüfung trotzdem möglich, dann nur anhand der Freitexte. | MAX + Marktdaten-Schlüssel (optional) | frontend/trading-desk.js:2973-2981, :3017-3018 | nicht erwähnt | aktiv |
 | Drei Fragen mit Einordnung | Ja/Nein/unklar zu Falsifikation, These und Änderung am Unternehmen. Ergebnis ist eine neutrale Einordnung (Annahme hinfällig / fairer Wert erreicht / nur Kursrückgang / unklar), keine Empfehlung. | MAX | frontend/trading-desk.js:2899-2919, :3022-3058; td_api.py:1240-1305 | investment-planner „Ein Kursrückgang allein ist kein Grund.“ | aktiv |
 | Prüf-Verlauf | Jede Prüfung wird dauerhaft gespeichert (nicht löschbar) und als Verlauf angezeigt. | MAX | frontend/trading-desk.js:3060-3097; td_api.py:1421 ff. | nicht erwähnt | aktiv |
-| **Recovery Return** | | | | | |
-| Rangliste Aufholpotenzial | Listet alle gespeicherten Bewertungen (max. 50) mit Abstand zum fairen Wert, nötiger Erholung in % und nötiger Jahresrendite, sortiert nach Potenzial. | MAX + gespeicherte Analysen | frontend/trading-desk.js:504-640, :705-725; td_api.py:874-971 | investment-planner „rankt deine gespeicherten Bewertungen nach Aufholpotenzial“ | aktiv |
-| Zeithorizont-Regler | 1–120 Monate. Unter 1 Jahr erscheint ein Hinweis zur Aussagekraft. | MAX | frontend/trading-desk.js:686-703 | partner „p.a.-Wachstum über variablen Zeithorizont“ | aktiv |
-| Manuelle Einträge | Eigener Ticker mit Kurs und Zielkurs in 4 Währungen, nur im Browser gespeichert. Läuft ohne Server, liegt aber hinter der MAX-Seitensperre. | MAX (Seitensperre) | frontend/trading-desk.js:488-502, :644-680 | nicht erwähnt | aktiv |
+| **Recovery Return** | **entfällt seit 13.10.2026** (Entscheidung Produkt) | | | | |
+| ~~Rangliste Aufholpotenzial~~ | | ~~MAX~~ | ~~frontend/trading-desk.js:504-640, :705-725; td_api.py:874-971~~ | — (Website-Erwähnungen entfernt) | entfällt |
+| ~~Zeithorizont-Regler~~ | | ~~MAX~~ | ~~frontend/trading-desk.js:686-703~~ | — | entfällt |
+| ~~Manuelle Einträge~~ | | ~~MAX~~ | ~~frontend/trading-desk.js:488-502, :644-680~~ | — | entfällt |
 | **Zinsrechner** | | | | | |
 | Endkapital mit Zinseszins | Startkapital und Sparrate (monatlich/jährlich), Zins, Laufzeit bis 80 J. Zeigt Endkapital, eingezahlt, Zinsgewinn und effektive Jahresrendite, live bei jeder Eingabe. Läuft ohne Server, liegt aber hinter der MAX-Seitensperre. | MAX (Seitensperre) | frontend/trading-desk.js:734-778, :780-946 | investment-planner „live aktualisiert ohne Berechnen-Button“ | aktiv |
 | Inflation / Kaufkraft | Rechnet das Endkapital in heutige Kaufkraft um (Standard 2,5 %). | MAX | frontend/trading-desk.js:769-776, :920-946 | investment-planner „Realwert in heutiger Kaufkraft“ | aktiv |
@@ -295,11 +295,11 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | Löschen | Eintrag nach Rückfrage endgültig löschen. | MAX | frontend/trading-desk.js:1948-1960; td_api.py:701-713 | nicht erwähnt | aktiv |
 
 **Auffälligkeiten (Planner)**
-- **Live-Kurse:** Watchlist und Recovery Return nutzen Live-Kurse nur im Dev-Modus (td_api.py:384-404). Auf dem Live-Server erscheint nie das „Live“-Abzeichen. Die Website zeigt im Mockup trotzdem „LIVE“.
+- **Live-Kurse:** Watchlist nutzt Live-Kurse nur im Dev-Modus (td_api.py:384-404). Auf dem Live-Server erscheint nie das „Live“-Abzeichen. Die Website zeigt im Mockup trotzdem „LIVE“.
 - **Watchlist-Suche:** Ohne Marktdaten-Schlüssel lässt sich kein Watchlist-Eintrag anlegen, denn die Suche braucht FMP (frontend/trading-desk.js:1471-1475). Die Website erwähnt diese Voraussetzung nicht.
 - **Veralteter Upgrade-Text:** Der Text auf der Upgrade-Karte nennt nur 4 Module (frontend/trading-desk.js:3252).
 - **Richtwerte/Stresstest aktualisieren nicht sofort:** Die Seite reagiert nur auf Änderungen an Risiko je Position und Mindest-CRV (frontend/trading-desk.js:3265). Rückgang-Grenze oder Cash-Korridor zeigen bis zum Modulwechsel oder Neuladen noch die alten Werte.
-- **Zinsrechner und manuelles Recovery Return:** Beide laufen komplett im Browser, sind wegen der Seitensperre aber nur für MAX erreichbar.
+- **Zinsrechner:** Läuft komplett im Browser, ist wegen der Seitensperre aber nur für MAX erreichbar.
 
 ## Konto, Schlüssel, Kauf und Übergreifendes
 
