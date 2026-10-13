@@ -33,7 +33,7 @@
 .gb-nav-right a:not(.gb-btn) { font-size: 14px; color: var(--color-text-muted); text-decoration: none; }
 .gb-nav-right a:not(.gb-btn):hover { color: var(--color-text); }
 
-/* Dropdown (Fair Value Pro → Übersicht/Pro Mode/Daten-Quelle) */
+/* Dropdown (Fair Value Pro → Übersicht/Pro-Modus/Daten-Quelle) */
 .gb-nav-item { position: relative; align-self: stretch; display: flex; align-items: center; }
 .gb-nav-item > a::after { content: '⌄'; font-size: 12px; margin-left: 4px; color: var(--color-text-disabled); transition: transform 200ms var(--motion-ease, cubic-bezier(0.2,0,0,1)); display: inline-block; }
 .gb-nav-item:hover > a::after, .gb-nav-item:focus-within > a::after { transform: rotate(180deg); color: var(--color-text); }

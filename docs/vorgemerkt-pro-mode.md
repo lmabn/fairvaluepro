@@ -1,8 +1,8 @@
-# Vorgemerkt für Pro Mode (Seite 5)
+# Vorgemerkt für den Pro-Modus (Seite 5)
 
 ## Gewichte-Tabelle · Branchen-Vorlagen für den Komposit Fairen Wert
 
-Als Akkordeon „Gewichtung und Branchen-Vorlagen" direkt nach dem Funktionsraster einbauen (siehe Auftrag Pro-Mode-Überarbeitung, Punkt B). Zeile Kryptowährungen in neutraler Textfarbe, nicht grün. Entfernt aus `fair-value-pro-vorschau.html` beim Abschluss der FVP-Seite.
+Als Akkordeon „Gewichtung und Branchen-Vorlagen" direkt nach dem Funktionsraster einbauen (siehe Auftrag Pro-Modus-Überarbeitung, Punkt B). Zeile Kryptowährungen in neutraler Textfarbe, nicht grün. Entfernt aus `fair-value-pro-vorschau.html` beim Abschluss der FVP-Seite.
 
 | Branche | DCF | KGV | EV/EBITDA |
 |---|---|---|---|
