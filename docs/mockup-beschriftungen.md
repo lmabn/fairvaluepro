@@ -126,8 +126,8 @@ pro-mode.html:523   "DCF Fairer Wert"
 pro-mode.html:524   "KGV Fairer Wert"
 pro-mode.html:525   "Hist. Median-KGV"
 pro-mode.html:526   "DDM (Gordon Growth)"
-pro-mode.html:527   "PEG-Ratio"
 ```
+(PEG-Zeile entfällt seit 13.10.2026 — PEG ist kein Verfahren im Kalkulator mehr.)
 
 ### Szenarien-Labels
 ```

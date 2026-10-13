@@ -84,9 +84,9 @@ Dasselbe gilt für die **Partnerseite**: Ludmila nutzt sie zum Sprechen, nicht z
 ### Produktaussage · Mechanik
 
 > **Quelle:** Bauplan im App-Repo (Komposit-Logik in `frontend/trading-desk.js` und zugehörige Module). Änderungen an der Mechanik beginnen dort, nicht hier.
-> **Stand:** 2026-10-11, präzisiert nach App-Sitzungs-Prüfung. (Der aktualisierte Bauplan-Wortlaut wird parallel von der App-Sitzung erstellt und löst diese Fassung ab, sobald er ankommt.)
+> **Stand:** 2026-10-13, PEG entfällt (Entscheidung Produkt vom 13.10.2026: die Datenquelle liefert kein verlässliches erwartetes Gewinnwachstum).
 
-**Fünf Verfahren** rechnen einen Fairen Wert: **DCF, KGV, EV/EBITDA, DDM, PEG**. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den **Komposit Fairen Wert** — DDM und PEG stehen eigenständig daneben als Vergleich.
+**Vier Verfahren** rechnen einen Fairen Wert: **DCF, KGV, EV/EBITDA, DDM**. Drei davon (DCF, KGV, EV/EBITDA) gehen gewichtet in den **Komposit Fairen Wert** — DDM steht eigenständig daneben als Vergleich.
 
 Dazu kommen **zwei Vergleichsgrößen, die keinen eigenen Fairen Wert ergeben**, sondern nur einordnen: das **historische Median-KGV** als Linie im Kursverlauf-Diagramm und die **FCF-Rendite** als Kennzahl.
 
@@ -97,11 +97,12 @@ Die Gewichtung der drei Komposit-Verfahren ist **einstellbar**; voreingestellt *
 - **Banken, Versicherungen**: 0 / 100 / 0
 - **Kryptowährungen**: kein Komposit Fairer Wert
 
-Konsequenzen für die Überarbeitung:
-- „Sieben Modelle" / „Sieben Methoden" als Framing ist **nicht belegt** — es sind fünf Verfahren plus zwei Vergleichsgrößen.
-- „nutzergewichtet" (partner.html Z. 412, 413, 458) ist im Kern richtig; „fest 50/25/25" (sieben weitere Stellen) ist zu eng und muss die Einstellbarkeit sowie die Branchen-Vorlagen abbilden.
+**Marketing-Standardsatz:** „4 Bewertungsverfahren, 2 Vergleichsgrößen, Qualitätsnote aus 12 Kriterien."
 
-Nicht einzelfallweise umsetzen — die Site hat mindestens 26 Fundstellen in sechs Dateien zu dieser Mechanik; sie werden pro Seite als Ganzes nachgezogen.
+Konsequenzen für die Überarbeitung:
+- „Sieben Modelle" / „Sieben Methoden" / „Fünf Verfahren" als Framing ist **nicht mehr belegt** — es sind vier Verfahren plus zwei Vergleichsgrößen.
+- **PEG** darf auf der Website nirgends mehr als Verfahren von Fair Value Pro genannt werden. Als Lehrkonzept in der Akademie bleibt es (Modul 2.12), mit dem klaren Hinweis, dass es im Kalkulator nicht verwendet wird.
+- „nutzergewichtet" (partner.html Z. 412, 413, 458) ist im Kern richtig; „fest 50/25/25" (sieben weitere Stellen) ist zu eng und muss die Einstellbarkeit sowie die Branchen-Vorlagen abbilden.
 
 ## Daten-Aktualität — Faktenbasis
 
