@@ -70,7 +70,7 @@ Für alle Seitenüberarbeitungen gilt: Funktionen erscheinen auf der Seite in dr
 2. **Kompakte Übersicht** — knapp, scanbar.
 3. **Details in Akkordeons** — zum Nachlesen bei Bedarf, eingeklappt.
 
-Die Funktionsliste der App-Sitzung (Stand 2026-10-11: 245 Funktionen) ist **Prüfgrundlage, keine Inhaltsvorlage**. Sie sorgt dafür, dass nichts Wichtiges fehlt und nichts Falsches behauptet wird. Sie kommt nicht als Aufzählung auf die Seite.
+Die Funktionsliste der App-Sitzung (Stand 2026-10-13: 242 Funktionen — Recovery Return entfällt seit 13.10.2026) ist **Prüfgrundlage, keine Inhaltsvorlage**. Sie sorgt dafür, dass nichts Wichtiges fehlt und nichts Falsches behauptet wird. Sie kommt nicht als Aufzählung auf die Seite.
 
 Dasselbe gilt für die **Partnerseite**: Ludmila nutzt sie zum Sprechen, nicht zum Vorlesen. Sie muss vollständig genug sein, dass ihr nichts Wesentliches entgeht — und kurz genug, dass ein Zwölfjähriger folgen kann.
 
@@ -135,7 +135,7 @@ Konsequenz für die Überarbeitung:
 > **Quelle:** Bauplan im App-Repo (aus dem Code erhoben, nicht aus der Dokumentation).
 > **Stand:** 11.10.2026 (App `main` e73e70d, Frontend bis 09a86f9).
 
-**Datei:** `docs/funktionsliste.md` — 245 Funktionen in vier Bereichen (Kalkulator 79 · Tracker 64 · Planner 48 · Konto/Übergreifendes 54), je mit Was-sie-tut, Ab-Plan, Fundstelle `datei:zeile`, Website-Erwähnung und Status (aktiv / unsicher mit Grund). 126 Funktionen werden heute auf der Website nirgends erwähnt (Tracker über die Hälfte).
+**Datei:** `docs/funktionsliste.md` — 242 Funktionen in vier Bereichen (Kalkulator 79 · Tracker 64 · Planner 45 · Konto/Übergreifendes 54), je mit Was-sie-tut, Ab-Plan, Fundstelle `datei:zeile`, Website-Erwähnung und Status (aktiv / unsicher mit Grund). 123 Funktionen werden heute auf der Website nirgends erwähnt (Tracker über die Hälfte).
 
 **Verwendung bei jedem Seiten-Entwurf** (zusätzlich zur Prüfung gegen Komposit- und Daten-Aktualität-Faktenbasis):
 - **Stimmt, was dort steht?** — Jede Website-Aussage gegen die Liste prüfen.

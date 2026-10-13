@@ -228,7 +228,7 @@ investment-planner.html:344  "Die Module — Werkzeuge, die Kaufentscheidungen v
 investment-planner.html:345  "MAX"                                                      — [Plan-Badge]
 ```
 
-### Sidebar (10 Modul-Namen)
+### Sidebar (9 Modul-Namen)
 ```
 investment-planner.html:361  "Meine Richtwerte"
 investment-planner.html:365  "Stresstest"
@@ -236,36 +236,13 @@ investment-planner.html:369  "Watchlist"
 investment-planner.html:373  "Positionsgröße"
 investment-planner.html:377  "Einstiegsplan"
 investment-planner.html:381  "Verkaufsprüfung"
-investment-planner.html:385  "Recovery Return"
-investment-planner.html:389  "Zinsrechner"
-investment-planner.html:393  "Rebalancing"
-investment-planner.html:397  "Trade Journal"       — [KI-Badge daneben]
+investment-planner.html:385  "Zinsrechner"
+investment-planner.html:389  "Rebalancing"
+investment-planner.html:393  "Trade Journal"       — [KI-Badge daneben]
 ```
+(„Recovery Return" entfällt seit 13.10.2026.)
 
-### Panel 1 — Recovery Return
-```
-investment-planner.html:410  "Recovery Return"                                             — [Panel-Titel]
-investment-planner.html:411  "Wie viel Wachstum braucht es, um einen Verlust auszugleichen?" — [Panel-Sub]
-investment-planner.html:415  "Zeithorizont:"                                               — [Slider-Label]
-```
-
-**Recovery-Spalten-Header:**
-```
-investment-planner.html:425  "#"
-investment-planner.html:426  "Ticker"
-investment-planner.html:427  "Akt. Kurs"
-investment-planner.html:428  "Fairer Wert"
-investment-planner.html:429  "Drawdown"
-investment-planner.html:430  "Recovery"
-investment-planner.html:431  "p.a."
-```
-
-**Zellen-Marker:**
-```
-investment-planner.html:437, 445, 453  "FVP"   — [Badge an jedem Ticker, markiert Quelle]
-```
-
-### Panel 2 — Watchlist
+### Panel 1 — Watchlist
 ```
 investment-planner.html:470  "Watchlist"                                                              — [Panel-Titel]
 investment-planner.html:471  "Aktien beobachten — der Titel landet in der Kaufzone, sobald er die Sicherheitsmarge erreicht." — [Panel-Sub]
@@ -291,7 +268,7 @@ investment-planner.html:490, 498  "Beobachten"
 investment-planner.html:506  "Kaufzone erreicht"           — [Status-Text]
 ```
 
-### Panel 3 — Positionsgröße
+### Panel 2 — Positionsgröße
 ```
 investment-planner.html:516  "Positionsgröße"                     — [Panel-Titel]
 investment-planner.html:517  "Wie viele Stück, bei welchem Risiko?" — [Panel-Sub]
@@ -326,8 +303,7 @@ investment-planner.html:555  "CRV"
 ```
 
 **Prüfpunkte für App:**
-- Alle 10 Sidebar-Modul-Namen — wortgleich?
-- Recovery-Spalten „# / Ticker / Akt. Kurs / Fairer Wert / Drawdown / Recovery / p.a." — exakt?
+- Alle 9 Sidebar-Modul-Namen — wortgleich?
 - Watchlist-Badge „1 IN KAUFZONE" + Status-Text „Kaufzone erreicht" — exakt in App?
 - Watchlist-Status „X % über FW" / „X % unter FW" — Abkürzung „FW" oder voller Begriff „fairer Wert"?
 - Positionsgröße-Felder, insbesondere: „Risiko je Position" (vs. „Risiko-Anteil" o.ä.), „Falsifikationsniveau" (bestätigt), „Chance : Risiko" vs. „CRV" (zwei verschiedene Formen im selben Panel), „Tatsächliches Risiko"
