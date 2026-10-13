@@ -332,7 +332,10 @@ section.gb-tiles-section { padding: 0; }
      Motiv sitzt höher, Content-Bereich unten hat mehr Platz. */
   .gb-hero-img { height: 62%; object-position: 75% 25%; }
   .gb-hero-img.motif-b { height: 62%; object-position: 75% 25%; }
-  .gb-hero-overlay { height: 62%; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 62%, #0B0D10 100%); }
+  /* Overlay deckt die volle Hero-Höhe: oberer Verlauf für Lesbarkeit, ab 62 %
+     voll opak, um den Zoom-Overshoot (Bild bei scale 1.10 ragt ca. 3 % über
+     die 62-%-Grenze) sicher abzudecken. */
+  .gb-hero-overlay { height: 100%; background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 30%, rgba(11,13,16,0.55) 55%, #0B0D10 62%, #0B0D10 100%); }
   .gb-tiles-section { padding-top: 48px; }
   .gb-tiles-inner { padding: 0 20px; }
   .gb-section-inner { padding: 96px 20px; gap: 48px; }
