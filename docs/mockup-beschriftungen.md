@@ -81,7 +81,7 @@ fair-value-pro.html:697  "Bewertung"       — Wert-Beispiel "Überbewertet"
 
 ---
 
-## 2. Pro-Mode Dashboard-Mockup
+## 2. Pro-Modus Dashboard-Mockup
 
 Datei: `pro-mode.html` — Section `#hero`, Element `<div class="mockup">` (Z. 382–584)
 
@@ -91,7 +91,7 @@ pro-mode.html:397   "Dokumentation"                     — [einziger sichtbarer
 pro-mode.html:400   "Bewertung mit angepassten Annahmen" — [Status-Text]
 pro-mode.html:400   "↺ Zurücksetzen"                    — [Button]
 pro-mode.html:400   "Light Mode"                        — [Button]
-pro-mode.html:400   "Pro Mode"                          — [Status-Pill/Button]
+pro-mode.html:400   "Pro-Modus"                         — [Status-Pill/Button]
 ```
 
 ### Sidebar (Inputs)
