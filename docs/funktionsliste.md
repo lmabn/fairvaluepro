@@ -63,7 +63,7 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | EV/EBITDA-Wert | Wert aus dem Ziel-Vielfachen auf den Betriebsgewinn vor Abschreibungen. | PRO | fair_value_calculator.py:1397, :4909 | fair-value-pro „EV/EBITDA (25 %)“ | aktiv |
 | Historisches 5-Jahres-Median-KGV | Vergleichswert aus dem eigenen mittleren KGV der letzten 5 Jahre; auch als Linie im Kursverlauf. | PRO | api.py:2462, api.py:3130–3158, :4945 | fair-value-pro „historisches Median-KGV und FCF-Rendite“ | aktiv |
 | DDM (Dividendenmodell) | Wert aus den Dividenden; die Karte erscheint ab 25 % Ausschüttungsquote, sonst ausgegraut mit Begründung. | PRO | fair_value_calculator.py:1304, :4959 | fair-value-pro „Gordon Growth Model (DDM)“ | aktiv |
-| PEG-Wert | Wert aus KGV im Verhältnis zum Gewinnwachstum. | PRO | fair_value_calculator.py:1349, :4978 | fair-value-pro „PEG-Ratio als Wachstums-Schnellcheck“ | aktiv |
+| PEG-Wert | ~~Wert aus KGV im Verhältnis zum Gewinnwachstum.~~ | PRO | fair_value_calculator.py:1349, :4978 | — (Website-Erwähnungen entfernt) | **entfällt seit 13.10.2026** — Datenquelle liefert kein verlässliches erwartetes Gewinnwachstum. |
 | FCF-Rendite | Freier Geldüberschuss geteilt durch den Börsenwert, verglichen mit 4,3 % Anleihezins. Eine Kennzahl, kein fairer Wert. | PRO | api.py:2456–2465, :4930 | fair-value-pro „FCF-Rendite“ (dort als Modell gezählt) | aktiv |
 | ROIC gegen WACC | Vergleicht die Kapitalrendite mit den Kapitalkosten (wertschaffend oder nicht). | PRO | fair_value_calculator.py:1455, :4815 | pro-mode (Beispielbild) „ROIC 7.9 % Spread −2.1 %“ | aktiv |
 | Komposit Fairer Wert | Gewichteter Mittelwert aus DCF, KGV und EV/EBITDA; fehlende Bausteine fallen heraus, die Gewichte werden neu verteilt. | GO (Kurzansicht) | :4701–4707, api.py:2683–2688 | fair-value-pro „gewichteter Komposit-Wert: 50 % DCF, 25 % KGV“ | aktiv |
@@ -81,7 +81,7 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | Eigene Vorlagen (lokal) | Speichert die aktuellen Einstellungen unter einem Namen im Browser; Laden und Löschen per Chip. | PRO | :3406, :3444–3472 | plaene „Eigene Presets lokal (inkl. Export + Import)“ | aktiv |
 | Vorlagen exportieren / importieren | Lädt die Vorlagen als Datei herunter bzw. liest eine solche Datei ein. | PRO | :3474, :3493 | fair-value-pro „Vorlagen als Datei exportieren, teilen“ | aktiv |
 | Vorlagen übers Konto abgleichen | Beim Speichern oder Importieren geht die Vorlage zusätzlich ans Konto; im Konto-Reiter „Vorlagen“ anlegen, anwenden, löschen. | MAX | :3428, :3434, account.js:586, :646, api.py:754 | plaene „Preset-Sync über alle Geräte“ | aktiv (nur Hochladen: lokales Löschen wird nicht übertragen, Konto-Vorlagen erscheinen nicht in der Seitenleiste) |
-| Stage-2-Verlauf, PEG-Zielwert | Der Server kann beide verstellen, im Kalkulator gibt es kein Bedienelement dafür. | – | api.py:2390, :2397 | nicht erwähnt | unsicher: kein Bedienelement |
+| Stage-2-Verlauf, ~~PEG-Zielwert~~ | Der Server kann den Stage-2-Verlauf verstellen, im Kalkulator gibt es kein Bedienelement dafür. (PEG-Zielwert: PEG entfällt seit 13.10.2026.) | – | api.py:2390, :2397 | nicht erwähnt | unsicher: kein Bedienelement |
 | **Ansichten & Ergebnis-Anzeige** | | | | | |
 | Kurzansicht (Minimal) | Vier Karten: Kurs, Komposit Fairer Wert, KGV, Qualitätsnote, dazu die Einordnung. | GO | :6532, :2810–2847 | plaene „Minimal Mode — 4 Kennzahlen“ | aktiv |
 | Pro-Ansicht / Umschalter | Zeigt das volle Dashboard; Gäste bekommen beim Umschalten das Registrierungsfenster. | PRO | :6428, :6441, :1963 | plaene „Pro Mode — volles Dashboard“ | aktiv |
@@ -106,7 +106,7 @@ Ohne Dateiangabe ist `frontend/fairvaluepro.html` gemeint.
 | Qualitäts-Scorecard | 12 Kriterien ergeben eine Note von A bis D; unter 9 bewertbaren gibt es „n. b.“, fehlende Kriterien werden genannt. | GO (Note), Details PRO | :5446, :5476, api.py:3365–3641 | pro-mode „Automatische Benotung von A bis D.“ | aktiv |
 | **Reiter Modell** | | | | | |
 | Modell-Transparenz | Tabelle aller Annahmen, jeweils markiert als automatisch, angepasst oder gedeckelt. | PRO | :4100, :3157 | pro-mode „Modell-Transparenz Jede Annahme sichtbar“ | aktiv |
-| Relative Bewertung | Karten für KGV, EV/EBITDA, Median-KGV, DDM und PEG mit Marge je Verfahren und Angabe der Branchenquelle. | PRO | :4909 | pro-mode „Relative Bewertung“ | aktiv |
+| Relative Bewertung | Karten für KGV, EV/EBITDA, Median-KGV und DDM mit Marge je Verfahren und Angabe der Branchenquelle. (PEG entfällt seit 13.10.2026.) | PRO | :4909 | pro-mode „Relative Bewertung“ | aktiv |
 | Szenarien Bär / Basis / Bulle | Drei Werte mit eigenem Wachstum und WACC plus ein gewichteter Gesamtwert. | PRO | :4826, fair_value_calculator.py:1153, :1428 | pro-mode „Drei-Szenarien-Analyse“ | aktiv |
 | WACC-Aufschlüsselung | Alle Bestandteile der Kapitalkosten plus ROIC-Balken. | PRO | :4888 | pro-mode „WACC-Aufschlüsselung“ | aktiv |
 | Sensitivitätstabelle | Wachstum × WACC ergibt den fairen Wert, farbig markiert. | PRO | :5306, fair_value_calculator.py:1482 | pro-mode „Sensitivitätstabelle“ | aktiv |
