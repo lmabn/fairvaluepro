@@ -98,8 +98,8 @@ pro-mode.html:400   "Pro-Modus"                         — [Status-Pill/Button]
 ```
 pro-mode.html:409   "Wert suchen"            — [Suchfeld-Platzhalter oder Label]
 pro-mode.html:417   "Währung"                — [Dropdown-Label]
-pro-mode.html:424   "Branchen-Presets"       — [Dropdown-Label]
-                    "Technologie"            — [Beispiel-Preset-Wert]
+pro-mode.html:424   "Branchen-Vorlagen"      — [Dropdown-Label]
+                    "Technologie"            — [Beispiel-Vorlagen-Wert]
 pro-mode.html:427   "✓ Bewertung starten"    — [Primär-Button]
 pro-mode.html:429   "⚙ Erweiterte Einstellungen" — [Button]
 ```
