@@ -81,6 +81,7 @@ Dasselbe gilt für die **Partnerseite**: Ludmila nutzt sie zum Sprechen, nicht z
 1. **Wortmarke**: durchgehend **„Komposit Fairer Wert"**. Keine Varianten (nicht „Komposit-Wert", nicht „Composite Fair Value", nicht „Komposit-Fairer-Wert" mit zwei Bindestrichen, keine Flexionsformen wie „Komposit-Fairen-Wert").
 2. **„Fairer Wert" statt „Fair Value"** — durchgehend. Einzige Ausnahme: der Produktname **„Fair Value Pro"**.
 3. **Modi des Kalkulators** (seit 13.10.2026): **„Kompakt"** (ehem. „Minimal" / „Kurzansicht") für die Gast-Ansicht, **„Pro-Modus"** (ehem. „Pro Mode") für das volle Dashboard. Nicht mehr „Minimal Mode", „Minimal", „Kurzansicht" oder „Pro Mode" als Modusnamen verwenden. Produktname bleibt **„Fair Value Pro"**. Die URL `pro-mode.html` bleibt wegen bestehender Links.
+4. **„Fair Value Pro" vs. „Kalkulator"**: Produktname ist **„Fair Value Pro"**. „Kalkulator" ist der zulässige Kurzname (so eingeführt in der App-Navigation: Kalkulator · Tracker · Planner). Regel: **Auf jeder Seite steht bei der ersten sichtbaren Content-Erwähnung „Fair Value Pro", danach darf „Kalkulator" stehen.** Nav-Links, `<meta>`-Tags, `<title>` und JSON-LD zählen nicht als erste Content-Erwähnung — gemeint ist der sichtbare Fließtext. Die Phrase „Fair Value Calculator" ist unzulässig.
 
 ### Produktaussage · Mechanik
 
