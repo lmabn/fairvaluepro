@@ -102,29 +102,33 @@
     line-height: 1.75;
   }
 
-  /* BILLING TOGGLE — Hintergrund direkt auf .active, keine absolute Pill mehr */
+  /* BILLING TOGGLE — Hintergrund direkt auf .active, keine absolute Pill mehr
+     justify-self: start, damit der Toggle als Grid-Child nicht über die
+     volle Spaltenbreite gestreckt wird, sondern eng um die Pills sitzt. */
   .toggle-wrap {
     display: inline-flex;
     background: var(--bg3);
     border: 1px solid var(--border2);
     border-radius: 50px;
-    padding: 4px;
+    padding: 3px;
+    justify-self: start;
+    width: fit-content;
   }
   .toggle-btn {
     font-family: var(--mono);
-    font-size: 0.67rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-2);
-    padding: 0 1.1rem;
-    height: 2rem;
+    padding: 0 0.75rem;
+    height: 1.6rem;
     border-radius: 50px;
     cursor: pointer;
     border: none;
     background: transparent;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
     line-height: 1;
     transition: color 0.2s, background 0.25s ease;
   }
@@ -166,10 +170,19 @@
     background: var(--bg2);
     padding: 1.8rem 1.4rem;
     display: grid;
-    grid-template-rows: auto auto auto auto 1fr auto;
+    /* Sieben Rows (badge, name, desc, price, toggle, features, cta),
+       bei GO/PRO sitzt in der Toggle-Row ein unsichtbarer Platzhalter.
+       So starten die .plan-features bei allen drei Plänen auf gleicher
+       Höhe. */
+    grid-template-rows: auto auto auto auto auto 1fr auto;
     position: relative;
     transition: background 0.25s, box-shadow 0.25s;
     overflow: hidden;
+  }
+  .toggle-placeholder {
+    visibility: hidden;
+    height: calc(1.6rem + 6px + 2px); /* Pill-Höhe + 2× padding + 2× border, synchron zu .toggle-wrap */
+    margin: 0 0 1.4rem;
   }
   .plan::before {
     content: '';
@@ -190,7 +203,6 @@
     border-left: 1px solid var(--neon-border);
     border-right: 1px solid var(--neon-border);
     position: relative;
-    grid-template-rows: auto auto auto auto auto 1fr auto;
   }
   .plan.featured .plan-top-line {
     position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -272,17 +284,10 @@
   .plan-features li.intro { border-bottom: none; padding-bottom: 0.2rem; }
   .plan-features li.intro::before { content: none; }
 
-  /* MAX-Karte: Toggle folgt direkt auf den Preis-Block —
-     globale .plan-price-Reserve (min-height 7rem, border, margin)
-     aus style.css hier abschalten, sonst klafft eine Lücke mit
-     Trennlinie zwischen „25 % gespart" und dem Toggle.
-     margin-bottom ≈ Höhe einer Feature-Zeile, damit der Toggle
-     im gleichen vertikalen Rhythmus wie die Features darunter sitzt. */
-  .plan.featured .plan-price {
-    min-height: 0;
-    margin-bottom: 1.5rem;
-    border-bottom: none;
-  }
+  /* Alle drei Preis-Blöcke behalten die globale Reserve (min-height,
+     margin, border-bottom), damit die Features-Blöcke bei allen Plänen
+     auf derselben Höhe starten. Der Toggle in MAX sitzt dann im
+     gleichen Rhythmus wie der Toggle-Platzhalter in GO/PRO. */
 
   /* PLAN CTA BUTTONS */
   .btn-plan {
@@ -418,6 +423,9 @@
     nav .nav-links { display: none; }
     nav a.nav-cta { display: none; }
     .compare-table { min-width: 560px; }
+    /* Pläne liegen mobil untereinander — der Höhen-Platzhalter ist dann
+       nur unnötige Lücke zwischen Preis und Features. */
+    .toggle-placeholder { display: none; }
   }
   @media(max-width: 600px) {
     .stat-boxes { grid-template-columns: 1fr !important; }
@@ -487,18 +495,17 @@
 
       <!-- PLAN 1: GO (Demo, kein Account) -->
       <div class="plan">
-        <span class="plan-badge" style="background:var(--bg4); color:var(--text-2); border:1px solid var(--border2);">Kein Account</span><div class="plan-name">GO</div>
-        <div class="plan-desc">Einmal reinschauen ohne Registrierung — mit eigenem Marktdaten-Schlüssel.</div>
+        <span class="plan-badge" style="background:var(--bg4); color:var(--text-2); border:1px solid var(--border2);">Demo</span><div class="plan-name">GO</div>
+        <div class="plan-desc">Reinschauen ohne Registrierung — mit eigenem Marktdaten-Schlüssel.</div>
         <div class="plan-price">
           <div class="price-main free"><span>—</span></div>
-          <div class="price-period">Demo</div>
+          <div class="price-period">Testen ohne Account</div>
           <div class="price-annual-note">&nbsp;</div>
         </div>
+        <div class="toggle-placeholder" aria-hidden="true"></div>
         <ul class="plan-features">
-          <li><strong>Kompakt</strong> — 4 Kennzahlen</li>
-          <li>Kurs, Komposit Fairer Wert, KGV, Qualitätsnote</li>
-          <li>Suche &amp; Bewertung starten</li>
-          <li><strong>Erweiterte Einstellungen</strong><br><span style="font-weight:400; font-size:0.82rem; color:var(--text-3);">WACC · Beta · ERP</span></li>
+          <li><strong>Kompakt</strong> — 4 Kennzahlen <span style="color:var(--text-3);">(Kurs, Komposit Fairer Wert, KGV, Qualitätsnote)</span></li>
+          <li><strong>Erweiterte Einstellungen</strong> <span style="color:var(--text-3);">(WACC · Beta · ERP)</span></li>
           <li>Branchen-Vorlagen</li>
         </ul>
         <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--m gb-btn--secondary">Ohne Account starten</a>
@@ -506,18 +513,19 @@
 
       <!-- PLAN 2: PRO (free with account) -->
       <div class="plan">
-        <span class="plan-badge" style="background:var(--bg4); color:var(--text-2); border:1px solid var(--border2);">Mit Registrierung</span><div class="plan-name">PRO</div>
-        <div class="plan-desc">Volles Dashboard für ernsthafte Analysen.</div>
+        <span class="plan-badge" style="background:var(--bg4); color:var(--text-2); border:1px solid var(--border2);">Volles Dashboard</span><div class="plan-name">PRO</div>
+        <div class="plan-desc">Umfangreiche Analysen für Fortgeschrittene.</div>
         <div class="plan-price">
           <div class="price-main free"><span>0</span><span class="currency">€</span></div>
           <div class="price-period">kostenloser Account</div>
           <div class="price-annual-note">&nbsp;</div>
         </div>
+        <div class="toggle-placeholder" aria-hidden="true"></div>
         <ul class="plan-features">
           <li class="intro"><strong>Alles aus GO, plus:</strong></li>
           <li><strong>Pro-Modus</strong> — volles Dashboard</li>
           <li>4 Verfahren: DCF, KGV, EV/EBITDA, DDM · dazu Median-KGV und FCF-Rendite · Szenarien, Charts</li>
-          <li>Eigene Vorlagen lokal</li>
+          <li>Eigene Vorlagen</li>
         </ul>
         <a href="fair-value-pro.html#cta" class="gb-btn gb-btn--m gb-btn--secondary">Jetzt registrieren</a>
       </div>
@@ -527,7 +535,7 @@
         <div class="plan-top-line"></div>
         <div class="plan-bottom-line"></div>
         <span class="plan-badge">Alle Werkzeuge</span><div class="plan-name" style="color:var(--neon);">MAX</div>
-        <div class="plan-desc">Für regelmäßige Nutzer, die alle drei Werkzeuge einsetzen.</div>
+        <div class="plan-desc">Für aktive Anleger, die mehr wollen.</div>
         <div class="plan-price">
           <div class="price-main"><span id="max-price-value">9,99</span><span class="currency">€</span></div>
           <div class="price-period" id="max-price-period">pro Monat</div>
