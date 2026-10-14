@@ -102,17 +102,18 @@
     line-height: 1.75;
   }
 
-  /* BILLING TOGGLE — Hintergrund direkt auf .active, keine absolute Pill mehr
-     justify-self: start, damit der Toggle als Grid-Child nicht über die
-     volle Spaltenbreite gestreckt wird, sondern eng um die Pills sitzt. */
+  /* BILLING TOGGLE — Hintergrund direkt auf .active, keine absolute Pill mehr.
+     Sitzt innerhalb des .plan-price-Blocks oberhalb des Trennstrichs; mit
+     margin-top vom „25 % gespart"-Hinweis abgesetzt. width:fit-content, damit
+     der Toggle eng um die Pills sitzt und nicht über die Spalte streckt. */
   .toggle-wrap {
     display: inline-flex;
     background: var(--bg3);
     border: 1px solid var(--border2);
     border-radius: 50px;
     padding: 3px;
-    justify-self: start;
     width: fit-content;
+    margin-top: 0.8rem;
   }
   .toggle-btn {
     font-family: var(--mono);
@@ -170,19 +171,14 @@
     background: var(--bg2);
     padding: 1.8rem 1.4rem;
     display: grid;
-    /* Sieben Rows (badge, name, desc, price, toggle, features, cta),
-       bei GO/PRO sitzt in der Toggle-Row ein unsichtbarer Platzhalter.
-       So starten die .plan-features bei allen drei Plänen auf gleicher
-       Höhe. */
-    grid-template-rows: auto auto auto auto auto 1fr auto;
+    /* badge, name, desc, price (mit Toggle und Trennstrich), features, cta —
+       der Toggle in MAX sitzt oberhalb des Trennstrichs im Price-Block,
+       damit unter dem Strich bei allen drei Plänen die Features auf
+       gleicher Höhe anfangen. */
+    grid-template-rows: auto auto auto auto 1fr auto;
     position: relative;
     transition: background 0.25s, box-shadow 0.25s;
     overflow: hidden;
-  }
-  .toggle-placeholder {
-    visibility: hidden;
-    height: calc(1.6rem + 6px + 2px); /* Pill-Höhe + 2× padding + 2× border, synchron zu .toggle-wrap */
-    margin: 0 0 1.4rem;
   }
   .plan::before {
     content: '';
@@ -284,10 +280,11 @@
   .plan-features li.intro { border-bottom: none; padding-bottom: 0.2rem; }
   .plan-features li.intro::before { content: none; }
 
-  /* Alle drei Preis-Blöcke behalten die globale Reserve (min-height,
-     margin, border-bottom), damit die Features-Blöcke bei allen Plänen
-     auf derselben Höhe starten. Der Toggle in MAX sitzt dann im
-     gleichen Rhythmus wie der Toggle-Platzhalter in GO/PRO. */
+  /* Preis-Block fasst Preis + Zusatzzeile + (bei MAX) den Toggle
+     oberhalb des Trennstrichs zusammen. Höhere min-height als die
+     globale 7rem-Reserve, damit MAX mit Toggle und GO/PRO ohne Toggle
+     auf exakt gleicher Höhe mit dem Trennstrich abschließen. */
+  .plan-price { min-height: 11rem; }
 
   /* PLAN CTA BUTTONS */
   .btn-plan {
@@ -423,9 +420,6 @@
     nav .nav-links { display: none; }
     nav a.nav-cta { display: none; }
     .compare-table { min-width: 560px; }
-    /* Pläne liegen mobil untereinander — der Höhen-Platzhalter ist dann
-       nur unnötige Lücke zwischen Preis und Features. */
-    .toggle-placeholder { display: none; }
   }
   @media(max-width: 600px) {
     .stat-boxes { grid-template-columns: 1fr !important; }
@@ -502,7 +496,6 @@
           <div class="price-period">Testen ohne Account</div>
           <div class="price-annual-note">&nbsp;</div>
         </div>
-        <div class="toggle-placeholder" aria-hidden="true"></div>
         <ul class="plan-features">
           <li><strong>Kompakt</strong> — 4 Kennzahlen <span style="color:var(--text-3);">(Kurs, Komposit Fairer Wert, KGV, Qualitätsnote)</span></li>
           <li><strong>Erweiterte Einstellungen</strong> <span style="color:var(--text-3);">(WACC · Beta · ERP)</span></li>
@@ -520,7 +513,6 @@
           <div class="price-period">kostenloser Account</div>
           <div class="price-annual-note">&nbsp;</div>
         </div>
-        <div class="toggle-placeholder" aria-hidden="true"></div>
         <ul class="plan-features">
           <li class="intro"><strong>Alles aus GO, plus:</strong></li>
           <li><strong>Pro-Modus</strong> — volles Dashboard</li>
@@ -540,10 +532,10 @@
           <div class="price-main"><span id="max-price-value">9,99</span><span class="currency">€</span></div>
           <div class="price-period" id="max-price-period">pro Monat</div>
           <div class="price-annual-note" id="max-price-note">oder 89,91 € im Jahr · 25 % gespart</div>
-        </div>
-        <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum" style="margin: 0 0 1.4rem;">
-          <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
-          <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
+          <div class="toggle-wrap" id="toggle-wrap" role="tablist" aria-label="Abrechnungszeitraum">
+            <button type="button" class="toggle-btn active" id="btn-monthly" data-billing="monthly" role="tab" aria-selected="true">Monatlich</button>
+            <button type="button" class="toggle-btn" id="btn-yearly" data-billing="yearly" role="tab" aria-selected="false">Jährlich <span class="save-badge">−25 %</span></button>
+          </div>
         </div>
         <ul class="plan-features">
           <li class="intro"><strong>Alles aus PRO, plus:</strong></li>
