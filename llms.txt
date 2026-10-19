@@ -1,0 +1,35 @@
+# GO:BETTER
+
+> GO:BETTER bündelt Bewerten, Verfolgen und Planen in einer Plattform für Privatanleger — mit transparenten Methoden und eigenem Marktdaten-Schlüssel.
+
+Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio Tracker (Depot-Verfolgung) und Investment Planner (Entscheidungen vorbereiten). Marktdaten laufen über einen eigenen Anbieter-Schlüssel des Nutzers (Bring Your Own Key).
+
+## Produkte
+
+- [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Berechnet einen Fairen Wert einer Aktie aus vier Verfahren (DCF, KGV, EV/EBITDA, DDM) — drei davon gewichtet im Komposit Fairen Wert — und deinen eigenen Annahmen. Methodik und Zahlen bleiben sichtbar.
+- [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Verfolgt dein Depot über mehrere Broker: Dokumente hochladen, die ausgelesenen Zahlen prüfen und cashflowbereinigte Renditen (IRR, TWR) rechnen lassen.
+- [Investment Planner](https://gobetter.trade/investment-planner.html): Positionsgröße, Einstieg und Ausstieg vor dem Kauf festlegen — mit Watchlist, Trade-Journal und KI-Hinweisen auf mögliche Denkfehler auf Wunsch.
+- [Pro-Modus](https://gobetter.trade/fair-value-pro/pro-mode.html): Das volle Dashboard von Fair Value Pro — alle Verfahren nebeneinander, Szenarien, Sensitivitäten, Kennzahlen auf einen Blick.
+- [Daten-Quelle](https://gobetter.trade/fair-value-pro/daten-quelle.html): Marktdaten laufen über einen eigenen Anbieter-Schlüssel (BYOK) — Erklärung des Flows.
+
+## Pläne
+
+- [Pläne](https://gobetter.trade/plaene.html): GO (Demo, ohne Account), PRO (kostenloser Account mit vollem Fair-Value-Pro-Dashboard), MAX (9,99 € im Monat, alle drei Werkzeuge).
+
+## Akademie
+
+Acht Lernmodule für Privatanleger — Grundlagen bis eigene Strategie.
+
+- [Akademie-Übersicht](https://gobetter.trade/akademie/)
+- [Modul 1: Grundlagen](https://gobetter.trade/akademie/modul-01-grundlagen.html): Grundlagen des Aktienmarkts — Kurse, Preisbildung, Orderarten, Risiko, Zeithorizont und was einen bewussten Anleger ausmacht.
+- [Modul 2: Fundamentalanalyse](https://gobetter.trade/akademie/modul-02-fundamentalanalyse.html): Geschäftsmodell, Bilanz, Cashflow und Marge lesen und daraus eine eigene Einschätzung eines Unternehmens ableiten.
+- [Modul 3: Chartanalyse](https://gobetter.trade/akademie/modul-03-chartanalyse.html): Was Chartmuster und Indikatoren tatsächlich leisten — und wo ihre statistischen Grenzen liegen.
+- [Modul 4: Der richtige Einstieg](https://gobetter.trade/akademie/modul-04-einstieg.html): Zeitpunkt und Größe eines Einstiegs vorbereiten, statt sie dem Bauchgefühl zu überlassen.
+- [Modul 5: Risikomanagement](https://gobetter.trade/akademie/modul-05-risikomanagement.html): Positionsgröße, Diversifikation, Korrelation und Drawdown — Risiko als Rechnung, nicht als Gefühl.
+- [Modul 6: Verkaufsstrategien](https://gobetter.trade/akademie/modul-06-verkaufsstrategien.html): Woran sich ein Verkauf festmachen lässt — und warum Nichts-Tun auch eine Entscheidung ist.
+- [Modul 7: Trading-Psychologie](https://gobetter.trade/akademie/modul-07-psychologie.html): Verlustaversion, Confirmation Bias, Overconfidence — welche Denkmuster deine Entscheidungen stören und wie du sie entschärfst.
+- [Modul 8: Eigene Strategie entwickeln](https://gobetter.trade/akademie/modul-08-strategie.html): Aus Grundlagen, Analyse und Risiko ein eigenes, konsistentes Regelwerk zusammenstellen.
+
+## Partner
+
+- [Partnerprogramm](https://gobetter.trade/partner.html): Vision, Geschäftsmodell und Kooperationsformen für Daten-Provider, Investoren und frühe Unterstützer.
