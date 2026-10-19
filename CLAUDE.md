@@ -209,6 +209,21 @@ Freigegebene Inhalte, die bei der Überarbeitung ihrer jeweiligen Seite wörtlic
 
 - **Seite 7 (`index.html`)** — Markentext für den Block unter Hero + Produktkarten (drei Absätze, letzte Zeile gestalterisch abgesetzt). Volltext und Gestaltungs-Hinweis in `docs/vorgemerkt-index-markentext.md`. Dort auch der Hinweis zur falschen „Sieben Modelle"-Zeile auf `index.html:415`, die bei derselben Überarbeitung nachgezogen wird.
 
+## Pflegeliste · Preis- und Plan-Stellen
+
+Bei jeder Preis- oder Plan-Änderung (Betrag, Features, Plan-Zuordnung einer Funktion, Plan-Namen) sind diese Stellen mitzuziehen — nichts darf auseinanderfallen:
+
+- `plaene.html` — Preistabelle (GO/PRO/MAX), Vergleichstabelle unten, FAQ-Antworten, Meta-/OG-/Twitter-Description, FAQPage-JSON-LD mit Preis.
+- `fair-value-pro.html` — Hero-Pills (GO kostenlos), CTA-Subline mit Preis.
+- `portfolio-tracker.html` — Hero-Pill „MAX", CTA-Note „MAX 9,99 €/Monat".
+- `investment-planner.html` — Hero-Pill „MAX", CTA-Note.
+- `fair-value-pro/pro-mode.html` — Hero-Pills, Section-Intro mit Plan-Hinweis, Mode-Cards (GO/PRO/MAX), CTA-Note.
+- `partner.html` — Vergleichstabelle, Abschnitt „Kalkulator kostenlos. Für mehr: MAX." mit Preis + Jahrespreis.
+- `agb.html` — § 3 Plan-Beschreibungen (GO/PRO/MAX), § 4 Verweis auf Preisseite. Keine Preisangabe hier, nur Plan-Namen und Leistungsumfang.
+- `llms.txt` — Zeile unter „## Pläne" nennt GO, PRO, MAX und 9,99 €.
+
+Die Plan-Zuordnung einzelner Funktionen (Spalte „Ab Plan") steht in `docs/funktionsliste.md` — die Liste ist die Quelle, nicht ein weiterer Pflegeort. Website-Formulierungen werden daran gemessen.
+
 ## Offene To-dos
 
 - **Legal-Seiten erledigt (Stand 11.10.2026):** `impressum.html`, `datenschutz.html` und `agb.html` sind inhaltlich und strukturell vollständig und bestätigt. Offen bleiben zwei App-Themen aus `docs/funktionsliste.md:35` („Offene Rechtsfragen") — Widerrufs-Zustimmung (AGB versprechen zwei getrennte Zustimmungen nach § 356 Abs. 4 BGB, App hat kombinierten Haken) und AGB-Link nur im Kaufdialog. Das sind App-Baustellen, nicht AGB-Textfehler.
