@@ -25,5 +25,4 @@ Direkt unter der Produktkarten-Reihe, oberhalb des Werkzeuge-Abschnitts. Heutige
 
 ## Zusätzlich bei Seite 7 zu korrigieren
 
-- **`index.html:415`** (Fair-Value-Pro-Tile Short-Line): „Sieben Modelle, ein gewichteter Fair Value." ist nach der korrigierten Komposit-Faktenbasis (**vier Verfahren + zwei Vergleichsgrößen** seit 13.10.2026, PEG entfällt) **falsch**. Bei der Überarbeitung von Seite 7 ebenfalls nachziehen.
 - Weitere Prüfpunkte dieser Seite kommen aus den Faktenbasen in CLAUDE.md (Komposit, Daten-Aktualität, Funktionsliste).

@@ -313,34 +313,34 @@ investment-planner.html:555  "CRV"
 
 ## 5. Index-Startseiten-Werkzeug-Panels
 
-Datei: `index.html` — drei kompakte `.gb-tool-ui`-Panels, eins pro Produkt (Z. 462, 474, 486)
+Datei: `index.html` — drei kompakte `.gb-tool-ui`-Panels, eins pro Produkt (Z. 469, 481, 493)
 
 ### Panel 1 — Fair Value Pro
 ```
-index.html:463  "Beispiel AG"       — [Panel-Titel, fiktiver Ticker]
-index.html:463  "7 MODELLE"         — [Sub-Zeile]
-index.html:464  "Fair Value"        — [Label]
-index.html:465  "Kurs"              — [Label]
-index.html:466  "Abstand"           — [Label]
+index.html:470  "Beispiel AG"       — [Panel-Titel, fiktiver Ticker]
+index.html:470  "4 VERFAHREN"       — [Sub-Zeile]
+index.html:471  "Komposit Fairer Wert" — [Label]
+index.html:472  "Kurs"              — [Label]
+index.html:473  "Abstand"           — [Label]
 ```
 
 ### Panel 2 — Portfolio Tracker
 ```
-index.html:475  "Hauptdepot"        — [Panel-Titel]
-index.html:475  "14 POSITIONEN"     — [Sub-Zeile]
-index.html:476  "Depotwert"         — [Label]
-index.html:477  "TWR 2025"          — [Label]
-index.html:478  "Heute"             — [Label]
+index.html:482  "Hauptdepot"        — [Panel-Titel]
+index.html:482  "14 POSITIONEN"     — [Sub-Zeile]
+index.html:483  "Depotwert"         — [Label]
+index.html:484  "TWR 2025"          — [Label]
+index.html:485  "IRR p.a."          — [Label]
 ```
 
 ### Panel 3 — Investment Planner
 ```
-index.html:487  "Watchlist"         — [Panel-Titel]
-index.html:487  "1 IN KAUFZONE"     — [Sub-Zeile]
-index.html:488  "Beispiel AG"       — [Row-Label, Ticker]
-index.html:489  "Nordwerk SE"       — [Row-Label, Ticker]
-index.html:490  "Mikro Werke"       — [Row-Label, Ticker]
-index.html:490  "Kaufzone"          — [Status-Wert]
+index.html:494  "Watchlist"         — [Panel-Titel]
+index.html:494  "1 IN KAUFZONE"     — [Sub-Zeile]
+index.html:495  "Beispiel AG"       — [Row-Label, Ticker]
+index.html:496  "Nordwerk SE"       — [Row-Label, Ticker]
+index.html:497  "Mikro Werke"       — [Row-Label, Ticker]
+index.html:497  "Kaufzone"          — [Status-Wert]
 ```
 
 **Prüfpunkte für App:**
