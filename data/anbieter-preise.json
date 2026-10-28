@@ -1,0 +1,25 @@
+{
+  "_comment": "Quelle der Wahrheit für Anbieter-Preise (Financial Modeling Prep) und EUR/USD-Kurs. Wird vom Prüfskript scripts/audit-anbieter-preise.sh gegen jede Preisstelle im HTML abgeglichen.",
+  "anbieter": "Financial Modeling Prep",
+  "stand": "2026-10-28",
+  "ultimate": {
+    "monatlich_usd": 139,
+    "jaehrlich_usd_pro_monat": 99,
+    "jaehrlich_usd_pro_jahr": 1188
+  },
+  "wechselkurs": {
+    "paar": "EUR/USD",
+    "quelle": "EZB-Referenzkurs",
+    "datum": "2026-10-27",
+    "usd_pro_eur": 1.1150
+  },
+  "max_eur": {
+    "monatlich": 9.99,
+    "jaehrlich_pro_monat": 7.49,
+    "jaehrlich_pro_jahr": 89.91
+  },
+  "summen": {
+    "monatlich_eur_ganze_euro": 135,
+    "jaehrlich_eur_ganze_euro_pro_monat": 96
+  }
+}
