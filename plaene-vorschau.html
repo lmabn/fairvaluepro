@@ -72,139 +72,145 @@
 }
 </script>
 <style>
+  /* Entwurfsmaße 1:1 — Fontgrößen, Abstände, Zeilenhöhen aus
+     ui_kits/website/Preise.html (Design System Export 2026-10-20). */
+
   /* HERO */
   #hero {
-    padding: 7rem 2rem 2rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
+    padding: 80px 32px 0;
+    border-bottom: none;
   }
-  #hero .wide { max-width: 1280px; margin: 0 auto; }
-  #hero h1 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.25rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; margin: 0 0 1rem; }
-  #hero .lead { color: var(--soft, var(--text-2)); font-size: 1.125rem; line-height: 1.6; max-width: 680px; margin: 0; }
+  #hero .wide { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  #hero h1 { font-family: var(--display); font-size: 52px; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; margin: 0; }
+  #hero .lead { color: var(--soft, var(--text-2)); font-size: 18px; line-height: 1.6; max-width: 680px; margin: 0; }
 
-  /* DEMO-BOX (GO vor der Rechnung) */
+  /* GO · Demo-Box (linksbündig unter der Einleitung) */
   .demo-box {
     max-width: 680px;
-    margin: 2.5rem auto 0;
-    padding: 1.4rem 1.5rem;
+    margin: 32px 0 0;
+    padding: 20px 24px;
     border: 1px solid var(--border);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    background: var(--bg2);
+    gap: 10px;
   }
-  .demo-box .plan-eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); font-weight: 600; }
-  .demo-box h2 { font-family: var(--display); font-size: 1.3rem; font-weight: 500; letter-spacing: -0.015em; margin: 0; }
-  .demo-box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.88rem; color: var(--text-2); line-height: 1.5; }
-  .demo-box ul li { position: relative; padding-left: 1.2rem; }
+  .demo-box .plan-eyebrow { font-size: 15px; font-weight: 600; color: var(--text); }
+  .demo-box h2 { font-family: var(--display); font-size: 22px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.28; margin: 0; }
+  .demo-box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 1.45; color: var(--soft, var(--text)); }
+  .demo-box ul li { position: relative; padding-left: 20px; }
   .demo-box ul li::before { content: "✓"; position: absolute; left: 0; font-family: var(--mono); color: var(--text); }
 
   /* ZAHLWEISE-UMSCHALTER */
-  .bill-row { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; margin: 0 0 0.5rem; max-width: 1280px; margin-left: auto; margin-right: auto; padding: 0 2rem; }
+  .bill-row {
+    max-width: 1280px; margin: 32px auto 0; padding: 0 32px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
   .bill-switch { display: inline-flex; gap: 4px; padding: 3px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg2); }
   .bill-switch button {
-    font-family: var(--sans); font-size: 0.85rem; font-weight: 500;
-    height: 40px; padding: 0 1.1rem;
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    height: 40px; padding: 0 18px;
     border: 0; border-radius: 3px; background: transparent;
     color: var(--text-2); cursor: pointer;
   }
   .bill-switch button[aria-checked="true"] { background: var(--text); color: var(--bg); }
-  .bill-hint { font-size: 0.83rem; color: var(--text-2); }
+  .bill-hint { font-size: 13px; color: var(--text-2); }
 
   /* ZWEI VERTRÄGE + SUMME */
-  .pricing-wrap { max-width: 1280px; margin: 0 auto; padding: 1rem 2rem 4rem; display: flex; flex-direction: column; gap: 1.2rem; }
-  .two-grid { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: stretch; gap: 0; }
-  .plus-op, .eq-op { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 1.75rem; color: var(--text-2); font-weight: 400; }
+  .pricing-wrap { max-width: 1280px; margin: 0 auto; padding: 16px 32px 48px; display: flex; flex-direction: column; gap: 24px; }
+  .two-grid { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: stretch; }
+  .plus-op, .eq-op { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 24px; color: var(--text-2); font-weight: 400; }
   .eq-op { width: 28px; }
 
+  /* Vertrag-Karten · Maße aus dem Entwurf */
   .contract-card {
     border: 1px solid var(--border);
     border-radius: 6px;
     background: var(--bg2);
-    padding: 1.8rem 1.6rem;
+    padding: 28px;
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 18px;
   }
-  .contract-head { display: flex; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; align-items: baseline; }
-  .contract-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); font-weight: 500; }
-  .contract-who { font-size: 0.82rem; color: var(--text-2); }
-  .contract-card h2 { font-family: var(--display); font-size: 1.4rem; font-weight: 500; letter-spacing: -0.015em; margin: 0; line-height: 1.28; }
-  .contract-lead { font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin: -0.4rem 0 0; max-width: 560px; }
+  .contract-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+  .contract-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); font-weight: 400; }
+  .contract-who { font-size: 13px; color: var(--text-2); }
+  .contract-card h2 { font-family: var(--display); font-size: 22px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.28; margin: 0; }
+  .contract-lead { margin: -4px 0 4px; font-size: 14px; line-height: 1.5; color: var(--text-2); max-width: 560px; }
 
   .plan-list { display: flex; flex-direction: column; }
   .plan-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 1rem;
-    padding: 1rem 0;
+    gap: 16px;
+    padding: 14px 0;
     border-top: 1px solid var(--border);
     align-items: start;
   }
-  .plan-row > .plan-name { grid-column: 1; display: flex; flex-direction: column; gap: 0.3rem; }
-  .plan-row > .plan-name b { font-size: 1rem; font-weight: 600; }
-  .plan-row > .plan-name .plan-sub { font-size: 0.84rem; color: var(--text-2); line-height: 1.45; }
-  .plan-row > .plan-amount { grid-column: 2; display: flex; flex-direction: column; align-items: flex-end; text-align: right; min-width: 180px; gap: 2px; }
-  .plan-row > .plan-amount .amount { font-family: var(--mono); font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.02em; font-feature-settings: "tnum" 1, "lnum" 1; }
-  .plan-row > .plan-amount .amount-pair { display: flex; flex-direction: column; align-items: inherit; gap: 2px; }
-  .plan-row > .plan-amount .amount-reg { font-size: 0.82rem; color: var(--text-2); font-family: var(--sans); font-feature-settings: "tnum" 1, "lnum" 1; white-space: nowrap; }
-  .plan-row > .plan-amount .amount-unit { font-size: 0.83rem; color: var(--text-2); }
-  .plan-row > .plan-amount .amount-sub { font-size: 0.78rem; color: var(--text-2); line-height: 1.45; }
-  .plan-row > .plan-amount .amount-sub:empty { display: none; }
+  .plan-name { display: flex; flex-direction: column; gap: 4px; }
+  .plan-name b { font-size: 15px; font-weight: 600; }
+  .plan-name .plan-sub { font-size: 13px; line-height: 1.45; color: var(--text-2); }
+  .plan-amount { display: flex; flex-direction: column; align-items: flex-end; text-align: right; min-width: 180px; gap: 2px; }
+  .plan-amount .amount { font-family: var(--mono); font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; font-feature-settings: "tnum" 1, "lnum" 1; font-weight: 400; }
+  .plan-amount .amount-pair { display: flex; flex-direction: column; align-items: inherit; gap: 2px; }
+  .plan-amount .amount-reg { font-size: 13px; color: var(--text-2); font-family: var(--sans); font-feature-settings: "tnum" 1, "lnum" 1; white-space: nowrap; }
+  .plan-amount .amount-unit { font-size: 13px; color: var(--text-2); }
+  .plan-amount .amount-sub { font-size: 12px; line-height: 1.45; color: var(--text-2); }
+  .plan-amount .amount-sub:empty { display: none; }
 
+  /* Feature-Bereich · Hauptpunkte als ✓-Zeile mit "·"-getrennter
+     Unterpunkt-Zeile unmittelbar darunter, kein Trennstrich zwischen
+     den Hauptpunkten. */
   .plan-features-wrap { grid-column: 1 / -1; }
-  .plan-includes-head { display: block; font-size: 0.82rem; color: var(--text-2); margin: 0.3rem 0 0.5rem; }
+  .plan-includes-head { display: block; font-size: 13px; color: var(--text-2); margin: 2px 0 0; }
   .plan-features {
     list-style: none;
-    margin: 0.3rem 0 0;
+    margin: 2px 0 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    color: var(--text-2);
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--soft, var(--text));
   }
-  .plan-features > li { position: relative; padding-left: 1.3rem; }
+  .plan-features > li { position: relative; padding-left: 20px; }
   .plan-features > li::before { content: "✓"; position: absolute; left: 0; font-family: var(--mono); color: var(--text); }
   .plan-features > li > b { color: var(--text); font-weight: 600; }
   .plan-features ul {
     list-style: none;
-    margin: 0.3rem 0 0;
+    margin: 4px 0 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0 0;
+    gap: 2px 0;
     color: var(--text-2);
-    font-size: 0.82rem;
-    line-height: 1.55;
+    font-size: 12.5px;
+    line-height: 1.5;
   }
   .plan-features ul li { padding-left: 0; }
   .plan-features ul li::before { content: none; }
-  .plan-features ul li:not(:last-child)::after { content: "·"; margin: 0 0.4em; color: var(--text-2); }
-  .plan-flx { margin: 0.5rem 0 0.3rem; font-size: 0.84rem; color: var(--text-2); line-height: 1.5; }
+  .plan-features ul li:not(:last-child)::after { content: "·"; margin: 0 7px; color: var(--text-2); }
+  .plan-flx { margin: 4px 0 8px; font-size: 13px; line-height: 1.5; color: var(--text-2); }
 
-  .plan-cta { grid-column: 1 / -1; display: flex; margin-top: 0.4rem; }
+  .plan-cta { grid-column: 1 / -1; display: flex; margin-top: 4px; }
 
   .partner-note {
     grid-column: 1 / -1;
-    margin: 0.6rem 0 0;
-    padding: 0.9rem 0 0;
+    margin: 0;
+    padding: 12px 0 0;
     border-top: 1px solid var(--border);
     display: flex;
-    gap: 0.6rem;
+    gap: 10px;
     align-items: baseline;
-    font-size: 0.84rem;
-    line-height: 1.55;
+    font-size: 13px;
+    line-height: 1.5;
     color: var(--text);
   }
   .partner-tag {
     flex: none;
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     border: 1px solid var(--border2);
@@ -216,109 +222,107 @@
 
   .fine {
     margin: 0;
-    font-size: 0.78rem;
+    font-size: 12px;
     line-height: 1.5;
     color: var(--text-2);
   }
 
   /* SUMME */
-  .sum-block { display: flex; flex-direction: column; gap: 1rem; padding-top: 0.5rem; }
-  .sum-head { display: flex; align-items: center; gap: 1rem; }
-  .sum-head h2 { font-family: var(--display); font-size: 1.4rem; font-weight: 500; letter-spacing: -0.015em; margin: 0; }
+  .sum-block { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+  .sum-head { display: flex; align-items: center; gap: 14px; }
+  .sum-head h2 { font-family: var(--display); font-size: 22px; font-weight: 500; letter-spacing: -0.015em; margin: 0; }
   .sum-body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
-    gap: 1.5rem;
+    gap: 24px;
     border: 1px solid var(--text);
     border-radius: 6px;
-    padding: 1.8rem;
+    padding: 28px;
   }
-  .sum-total { display: flex; flex-direction: column; gap: 0.4rem; }
-  .sum-amount { font-family: var(--mono); font-size: 2.5rem; line-height: 1.1; letter-spacing: -0.02em; font-feature-settings: "tnum" 1, "lnum" 1; color: var(--text); }
-  .sum-unit { font-size: 0.9rem; color: var(--text-2); }
-  .sum-break { font-family: var(--mono); font-size: 0.84rem; line-height: 1.5; color: var(--text-2); font-feature-settings: "tnum" 1, "lnum" 1; margin-top: 0.3rem; }
-  .sum-fine { font-size: 0.8rem; line-height: 1.55; color: var(--text-2); }
+  .sum-total { display: flex; flex-direction: column; gap: 6px; }
+  .sum-amount { font-family: var(--mono); font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; font-feature-settings: "tnum" 1, "lnum" 1; color: var(--text); }
+  .sum-unit { font-size: 13px; color: var(--text-2); }
+  .sum-break { font-family: var(--mono); font-size: 12px; line-height: 1.5; color: var(--text-2); font-feature-settings: "tnum" 1, "lnum" 1; margin-top: 4px; }
+  .sum-fine { font-size: 12px; line-height: 1.5; color: var(--text-2); }
   .sum-alt {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    font-size: 0.95rem;
+    gap: 6px;
+    font-size: 15px;
     line-height: 1.5;
-    padding-left: 1.5rem;
+    padding-left: 24px;
     border-left: 1px solid var(--border);
   }
-  .sum-alt .sum-alt-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
+  .sum-alt .sum-alt-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
 
-  /* MOBILE */
+  /* MOBILE · Entwurfsmaße (390 px) */
   @media (max-width: 860px) {
-    .two-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-    .plus-op { width: 100%; height: 32px; font-size: 1.5rem; }
-    .sum-body { grid-template-columns: 1fr; padding: 1.4rem; }
-    .sum-alt { padding: 1rem 0 0; border-left: 0; border-top: 1px solid var(--border); }
-    .plan-row { grid-template-columns: 1fr; gap: 0.3rem; }
-    .plan-row > .plan-amount { align-items: flex-start; text-align: left; min-width: 0; }
-    .bill-switch button { height: 44px; padding: 0 1.25rem; }
+    #hero { padding: 48px 20px 0; }
+    #hero h1 { font-size: 36px; }
+    #hero .lead { font-size: 16px; }
+    .demo-box { padding: 20px; }
+    .bill-row { padding: 0 20px; }
+    .bill-switch button { height: 44px; padding: 0 20px; }
+    .pricing-wrap { padding: 16px 20px 32px; gap: 24px; }
+    .two-grid { grid-template-columns: 1fr; gap: 0; }
+    .plus-op { width: 100%; height: 40px; font-size: 24px; }
+    .contract-card { padding: 20px; }
+    .plan-row { grid-template-columns: 1fr; gap: 6px; }
+    .plan-amount { align-items: flex-start; text-align: left; min-width: 0; }
     .plan-cta .gb-btn { width: 100%; justify-content: center; }
-    .sum-head { flex-direction: row; }
-    .eq-op { width: auto; }
-  }
-  @media (max-width: 600px) {
-    #hero { padding: 7rem 1.25rem 2rem; }
-    .pricing-wrap { padding: 1rem 1.25rem 3rem; }
-    .bill-row { padding: 0 1.25rem; }
-    .demo-box { margin: 2rem 1.25rem 0; }
+    .sum-body { grid-template-columns: 1fr; padding: 20px; }
+    .sum-alt { padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--border); }
   }
 
   /* FEATURE COMPARISON TABLE (danach, wie heute) */
-  #compare { padding: 5rem 2rem; border-top: 1px solid var(--border); }
-  .compare-header { text-align: center; margin-bottom: 3.5rem; }
-  .compare-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-  .compare-header p { color: var(--text-2); font-size: 0.93rem; }
+  #compare { padding: 80px 32px; border-top: 1px solid var(--border); margin-top: 56px; }
+  .compare-header { text-align: center; margin-bottom: 56px; }
+  .compare-header h2 { font-family: var(--display); font-size: clamp(26px, 3vw, 36px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .compare-header p { color: var(--text-2); font-size: 15px; }
   .compare-table { width: 100%; border-collapse: collapse; }
-  .compare-table th { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); padding: 0.55rem 1rem; text-align: left; border-bottom: 1px solid var(--border2); font-weight: 400; }
+  .compare-table th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border2); font-weight: 400; }
   .compare-table th:not(:first-child) { text-align: center; }
   .compare-table th.hl { color: var(--neon); }
-  .compare-table td { padding: 0.5rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.84rem; color: var(--text-2); vertical-align: middle; }
+  .compare-table td { padding: 8px 16px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-2); vertical-align: middle; }
   .compare-table td:not(:first-child) { text-align: center; }
-  .compare-table td.feature-name { color: var(--text); font-size: 0.88rem; }
+  .compare-table td.feature-name { color: var(--text); font-size: 14px; }
   .compare-table tr:last-child td { border-bottom: none; }
-  .compare-table tr:hover td { background: rgba(0,255,135,0.02); }
-  .compare-table .cat-row td { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); padding: 1.4rem 1.2rem 0.5rem; border-bottom: none; }
-  .check { color: var(--neon); font-size: 0.9rem; }
-  .dash { color: var(--text-3); font-size: 0.9rem; }
+  .compare-table .cat-row td { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); padding: 24px 20px 8px; border-bottom: none; }
+  .check { color: var(--neon); font-size: 14px; }
+  .dash { color: var(--text-3); font-size: 14px; }
 
   /* FAQ */
-  #faq { padding: 5rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); }
-  .faq-header { margin-bottom: 2.5rem; }
-  .faq-header h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-  .faq-header p { color: var(--text-2); font-size: 0.9rem; }
+  #faq { padding: 80px 32px; background: var(--bg2); border-top: 1px solid var(--border); }
+  .faq-header { margin-bottom: 40px; }
+  .faq-header h2 { font-family: var(--display); font-size: clamp(26px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .faq-header p { color: var(--text-2); font-size: 14px; }
   .faq-list { max-width: 100%; }
   .faq-item { border-bottom: 1px solid var(--border); width: 100%; }
-  .faq-item summary { font-size: 0.95rem; font-weight: 500; color: var(--text); padding: 1.2rem 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%; text-align: left; }
+  .faq-item summary { font-size: 15px; font-weight: 500; color: var(--text); padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; text-align: left; }
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after { content: '+'; font-family: var(--mono); font-size: 1rem; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item summary::after { content: '+'; font-family: var(--mono); font-size: 16px; color: var(--neon); flex-shrink: 0; transition: transform 0.2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { font-size: 0.88rem; color: var(--text-2); line-height: 1.75; padding-bottom: 1.2rem; }
+  .faq-item p { font-size: 14px; color: var(--text-2); line-height: 1.75; padding-bottom: 20px; }
 
   /* PERSPEKTIVWECHSEL */
-  .persp-section { padding: 5rem 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .persp-section { padding: 80px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .persp-section .container { max-width: 1200px; margin: 0 auto; }
-  .persp-section h2 { font-family: var(--display); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 1.2rem; text-align: center; }
-  .persp-lead { color: var(--text-2); font-size: 0.97rem; line-height: 1.75; margin: 0 auto 2.5rem; max-width: 720px; text-align: center; }
+  .persp-section h2 { font-family: var(--display); font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 20px; text-align: center; }
+  .persp-lead { color: var(--text-2); font-size: 15px; line-height: 1.75; margin: 0 auto 40px; max-width: 720px; text-align: center; }
   .stat-boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border2); border: 1px solid var(--border2); border-radius: 4px; text-align: left; max-width: 1000px; margin: 0 auto; }
-  .stat-box { background: var(--bg2); padding: 1.8rem 1.5rem; }
-  .stat-box .stat-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.8rem; }
-  .stat-box .stat-value { font-family: var(--display); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.4rem; color: var(--text); }
-  .stat-box .stat-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
-  .stat-box .stat-note { font-family: var(--mono); font-size: 0.58rem; color: var(--text-3); margin-top: 0.5rem; display: block; }
+  .stat-box { background: var(--bg2); padding: 28px 24px; }
+  .stat-box .stat-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
+  .stat-box .stat-value { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; color: var(--text); }
+  .stat-box .stat-desc { font-size: 14px; color: var(--text-2); line-height: 1.5; }
+  .stat-box .stat-note { font-family: var(--mono); font-size: 10px; color: var(--text-3); margin-top: 8px; display: block; }
   @media (max-width: 600px) { .stat-boxes { grid-template-columns: 1fr !important; } }
 
   /* BOTTOM CTA */
-  #bottom-cta { padding: 6rem 2rem; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  #bottom-cta { padding: 96px 32px; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
   #bottom-cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 350px; background: radial-gradient(ellipse at 50% 100%, rgba(0,255,135,0.06), transparent 70%); pointer-events: none; }
-  #bottom-cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+  #bottom-cta h2 { font-family: var(--display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
   #bottom-cta h2 .n { color: var(--neon); }
-  #bottom-cta p { color: var(--text-2); max-width: 420px; margin: 0 auto 2rem; font-size: 0.93rem; }
+  #bottom-cta p { color: var(--text-2); max-width: 420px; margin: 0 auto 32px; font-size: 15px; }
 </style>
 </head>
 <body data-product="fvp" data-level="product">
@@ -369,11 +373,11 @@
 <!-- HERO -->
 <section id="hero">
   <div class="wide">
-    <h1 class="fade in">Preise</h1>
-    <p class="lead fade in">Zwei getrennte Verträge: dein Plan bei GO:BETTER und dein Datenzugang beim Anbieter. Unten steht, was beide zusammen kosten.</p>
+    <h1>Preise</h1>
+    <p class="lead">Zwei getrennte Verträge: dein Plan bei GO:BETTER und dein Datenzugang beim Anbieter. Unten steht, was beide zusammen kosten.</p>
 
-    <!-- GO · Demo vor der Rechnung, kein Plan und kein Vertrag -->
-    <section class="demo-box fade in">
+    <!-- GO · Demo vor der Rechnung, linksbündig -->
+    <section class="demo-box">
       <span class="plan-eyebrow">GO</span>
       <h2>Demo — ohne Konto reinschauen</h2>
       <ul>
@@ -387,7 +391,7 @@
 </section>
 
 <!-- ZAHLWEISE-UMSCHALTER -->
-<div class="bill-row fade" style="margin-top: 2rem;">
+<div class="bill-row">
   <div class="bill-switch" role="radiogroup" aria-label="Zahlweise">
     <button type="button" role="radio" aria-checked="true"  data-bill="monthly">Monatlich</button>
     <button type="button" role="radio" aria-checked="false" data-bill="yearly">Jährlich</button>
@@ -398,7 +402,7 @@
 <!-- ZWEI VERTRÄGE + SUMME -->
 <section class="pricing-wrap">
 
-  <div class="two-grid fade">
+  <div class="two-grid">
     <!-- VERTRAG 1 — GO:BETTER-Plan -->
     <section class="contract-card">
       <div class="contract-head">
@@ -544,7 +548,7 @@
   </div>
 
   <!-- = SUMME -->
-  <div class="sum-block fade">
+  <div class="sum-block">
     <div class="sum-head">
       <span class="eq-op" aria-hidden="true">=</span>
       <h2>Mit weltweiter Abdeckung</h2>
@@ -556,9 +560,8 @@
         <span class="sum-break">
           <span data-bill-show="monthly">MAX 9,99 € + Ultimate 104,25 $ (≈ 93,50 €)</span><span data-bill-show="yearly" hidden>MAX 7,49 € + Ultimate 74,25 $ (≈ 66,59 €)</span>
         </span>
-        <span class="sum-fine">Kurs: 1 € = 1,1150 $ (1 $ ≈ 0,90 €), EZB-Referenzkurs vom 2026-10-27. Der Anbieter rechnet in US-Dollar ab; der Betrag in Euro hängt vom Kurs bei der Abbuchung ab.</span>
+        <span class="sum-fine">Kurs: 1 € = 1,1150 $ <strong>(Platzhalter — EZB-Kurs wird noch eingetragen)</strong>, Stand 27.10.2026. Der Anbieter rechnet in US-Dollar ab; der Betrag in Euro hängt vom Kurs bei der Abbuchung ab.</span>
         <span class="sum-fine"><span data-bill-show="monthly">Zum regulären Preis des Anbieters: ≈ 135 € im Monat</span><span data-bill-show="yearly" hidden>Zum regulären Preis des Anbieters: ≈ 96 € im Monat</span></span>
-        <span class="sum-fine">Maßgeblich ist der Preis im Bezahlvorgang.</span>
       </div>
       <div class="sum-alt">
         <span class="sum-alt-label">Erst testen</span>
@@ -575,13 +578,13 @@
 <!-- FEATURE COMPARISON TABLE (danach, wie heute · Inhalt unverändert) -->
 <section id="compare">
   <div class="container">
-    <div class="compare-header fade">
+    <div class="compare-header">
       <div class="tag" style="justify-content:center;">Funktionsvergleich</div>
       <h2>Was ist in welchem Plan?</h2>
       <p>Vollständige Übersicht aller Features — für die, die es genau wissen wollen.</p>
     </div>
     <div class="compare-table-wrap">
-    <table class="compare-table fade">
+    <table class="compare-table">
       <thead>
         <tr>
           <th style="width:40%">Feature</th>
@@ -623,7 +626,7 @@
 <!-- PERSPEKTIVWECHSEL (wie heute · „2 Min." bleibt in dieser Vorschau unverändert) -->
 <section class="persp-section">
   <div class="container">
-    <div style="max-width: 720px; margin: 0 auto; text-align: center;" class="fade">
+    <div style="max-width: 720px; margin: 0 auto; text-align: center;">
       <div class="tag" style="justify-content:center;">Perspektivwechsel</div>
       <h2>Was kostet dich eine <span style="color:var(--neon);">falsche Kaufentscheidung</span>?</h2>
       <p class="persp-lead">Wer zu teuer kauft, riskiert einen Rückgang auf den Fairen Wert — und der Weg zurück ist länger als der Weg nach unten.</p>
@@ -651,12 +654,12 @@
 <!-- FAQ (wie heute, Fragen zum Datenanbieter verweisen auf Vertrag 2) -->
 <section id="faq">
   <div class="container">
-    <div class="faq-header fade">
+    <div class="faq-header">
       <div class="tag">FAQ</div>
       <h2>Häufige Fragen</h2>
       <p>Alles, was du vor dem Start wissen solltest.</p>
     </div>
-    <div class="faq-list fade">
+    <div class="faq-list">
       <details class="faq-item">
         <summary>Brauche ich eine Kreditkarte für den kostenlosen Plan?</summary>
         <p>Nein. GO und PRO sind vollständig kostenlos — keine Zahlungsdaten, kein Abo, kein Risiko. MAX kostet 9,99 €/Monat; die Buchung läuft direkt in der App, Jahreszahlung ist dort ebenfalls möglich. Die Marktdaten laufen über deinen eigenen Anbieter-Schlüssel. Der Free-Plan des Anbieters erlaubt 250 Abrufe am Tag und deckt eine Liste getesteter US-Werte ab — zum Testen geeignet, nicht für europäische Titel. Für den regulären Einsatz ist beim Anbieter der Ultimate-Plan nötig; die Preise stehen in <a href="#pricing" style="color:var(--neon);">Vertrag 2</a> auf dieser Seite.</p>
@@ -680,9 +683,9 @@
 <!-- BOTTOM CTA -->
 <section id="bottom-cta">
   <div class="container">
-    <h2 class="fade">Starte deine<br><span class="n">erste Analyse.</span></h2>
-    <p class="fade">Starte mit GO ohne Konto — oder registriere dich für PRO und MAX.</p>
-    <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--m gb-btn--primary fade">Jetzt starten →</a>
+    <h2>Starte deine<br><span class="n">erste Analyse.</span></h2>
+    <p>Starte mit GO ohne Konto — oder registriere dich für PRO und MAX.</p>
+    <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--m gb-btn--primary">Jetzt starten →</a>
   </div>
 </section>
 
@@ -706,24 +709,9 @@
 </div>
 
 <script>
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if(e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), (e.target.dataset.d || 0));
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade').forEach((el, i) => {
-    el.dataset.d = (i % 4) * 80;
-    obs.observe(el);
-  });
-
-  // Globaler Zahlweise-Umschalter — schaltet MAX, Ultimate (Rabatt- und
-  // Regulärpreis) und beide Summen gemeinsam. Beide Fassungen stehen fest
-  // im HTML; ohne JavaScript bleibt die monatliche Voreinstellung sichtbar
-  // (yearly-Elemente tragen hidden-Attribut).
+  // Zahlweise-Umschalter — schaltet MAX, Ultimate (Rabatt- und Regulärpreis)
+  // und beide Summen gemeinsam. Beide Fassungen stehen fest im HTML; ohne
+  // JavaScript bleibt die monatliche Voreinstellung sichtbar.
   (function() {
     const btnMonthly = document.querySelector('.bill-switch button[data-bill="monthly"]');
     const btnYearly  = document.querySelector('.bill-switch button[data-bill="yearly"]');

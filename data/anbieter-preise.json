@@ -13,9 +13,13 @@
   },
   "wechselkurs": {
     "paar": "EUR/USD",
-    "quelle": "EZB-Referenzkurs",
+    "quelle": "EZB-Referenzkurs (Tagesreferenzkurs der Europäischen Zentralbank)",
+    "quelle_url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+    "abrufweg": "XML-Datei abrufen, Element <Cube currency='USD' rate='…'/> auslesen. Der Kurs wird einmal werktäglich zwischen 14:30 und 16:00 MEZ veröffentlicht.",
     "datum": "2026-10-27",
-    "usd_pro_eur": 1.1150
+    "usd_pro_eur": 1.1150,
+    "status": "platzhalter",
+    "status_hinweis": "Der Wert wurde zur Entwurfs-Live-Prüfung aus dem oben genannten XML abgerufen. Ludmila trägt den final zu verwendenden Kurs selbst ein; bis dahin ist der Wert auf der Seite als Platzhalter gekennzeichnet."
   },
   "max_eur": {
     "monatlich": 9.99,
