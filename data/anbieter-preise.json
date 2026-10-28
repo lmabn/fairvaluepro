@@ -16,10 +16,9 @@
     "quelle": "EZB-Referenzkurs (Tagesreferenzkurs der Europäischen Zentralbank)",
     "quelle_url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
     "abrufweg": "XML-Datei abrufen, Element <Cube currency='USD' rate='…'/> auslesen. Der Kurs wird einmal werktäglich zwischen 14:30 und 16:00 MEZ veröffentlicht.",
-    "datum": "2026-10-27",
-    "usd_pro_eur": 1.1150,
-    "status": "platzhalter",
-    "status_hinweis": "Der Wert wurde zur Entwurfs-Live-Prüfung aus dem oben genannten XML abgerufen. Ludmila trägt den final zu verwendenden Kurs selbst ein; bis dahin ist der Wert auf der Seite als Platzhalter gekennzeichnet."
+    "datum": "2026-10-26",
+    "usd_pro_eur": 1.1188,
+    "eingetragen_von": "Ludmila (28.10.2026)"
   },
   "max_eur": {
     "monatlich": 9.99,
@@ -29,11 +28,11 @@
   "summen_partner_eur": {
     "monatlich_ganze_euro": 103,
     "jaehrlich_pro_monat_ganze_euro": 74,
-    "aufschluesselung_monatlich_ultimate_eur_cent": 93.50,
-    "aufschluesselung_jaehrlich_ultimate_eur_cent": 66.59
+    "aufschluesselung_monatlich_ultimate_eur_cent": 93.18,
+    "aufschluesselung_jaehrlich_ultimate_eur_cent": 66.37
   },
   "summen_regulaer_eur": {
-    "monatlich_ganze_euro": 135,
+    "monatlich_ganze_euro": 134,
     "jaehrlich_pro_monat_ganze_euro": 96
   }
 }
