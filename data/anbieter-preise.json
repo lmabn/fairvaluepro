@@ -1,11 +1,15 @@
 {
-  "_comment": "Quelle der Wahrheit für Anbieter-Preise (Financial Modeling Prep) und EUR/USD-Kurs. Wird vom Prüfskript scripts/audit-anbieter-preise.sh gegen jede Preisstelle im HTML abgeglichen.",
+  "_comment": "Quelle der Wahrheit für Anbieter-Preise (Financial Modeling Prep) und EUR/USD-Kurs. Wird vom Prüfskript scripts/audit-anbieter-preise.sh gegen jede Preisstelle im HTML abgeglichen. Reguläre und Partner-Link-Preise sind beide fest hinterlegt; die Zahlen im HTML müssen damit übereinstimmen.",
   "anbieter": "Financial Modeling Prep",
   "stand": "2026-10-28",
   "ultimate": {
-    "monatlich_usd": 139,
-    "jaehrlich_usd_pro_monat": 99,
-    "jaehrlich_usd_pro_jahr": 1188
+    "regulaer_monatlich_usd": 139,
+    "regulaer_jaehrlich_usd_pro_monat": 99,
+    "regulaer_jaehrlich_usd_pro_jahr": 1188,
+    "partner_monatlich_usd": 104.25,
+    "partner_jaehrlich_usd_pro_monat": 74.25,
+    "partner_jaehrlich_usd_pro_jahr": 891,
+    "partner_rabatt_prozent": 25
   },
   "wechselkurs": {
     "paar": "EUR/USD",
@@ -18,8 +22,14 @@
     "jaehrlich_pro_monat": 7.49,
     "jaehrlich_pro_jahr": 89.91
   },
-  "summen": {
-    "monatlich_eur_ganze_euro": 135,
-    "jaehrlich_eur_ganze_euro_pro_monat": 96
+  "summen_partner_eur": {
+    "monatlich_ganze_euro": 103,
+    "jaehrlich_pro_monat_ganze_euro": 74,
+    "aufschluesselung_monatlich_ultimate_eur_cent": 93.50,
+    "aufschluesselung_jaehrlich_ultimate_eur_cent": 66.59
+  },
+  "summen_regulaer_eur": {
+    "monatlich_ganze_euro": 135,
+    "jaehrlich_pro_monat_ganze_euro": 96
   }
 }
