@@ -73,14 +73,18 @@
 </script>
 <style>
   /* Entwurfsmaße 1:1 — Fontgrößen, Abstände, Zeilenhöhen aus
-     ui_kits/website/Preise.html (Design System Export 2026-10-20). */
+     ui_kits/website/Preise.html (Design System Export 2026-10-20).
+     Seitenraster: max 1280 px, Rand 32 px (Desktop) / 20 px (Mobile).
+     Alle Blöcke stehen auf derselben linken Kante wie Nav + Hero. */
+  main { --page-max: 1280px; --page-gutter: 32px; }
+  .page-rail { max-width: var(--page-max); margin-left: auto; margin-right: auto; padding-left: var(--page-gutter); padding-right: var(--page-gutter); }
 
   /* HERO */
   #hero {
-    padding: 80px 32px 0;
+    padding: 80px 0 0;
     border-bottom: none;
   }
-  #hero .wide { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  #hero .wide { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); display: flex; flex-direction: column; gap: 16px; }
   #hero h1 { font-family: var(--display); font-size: 52px; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; margin: 0; }
   #hero .lead { color: var(--soft, var(--text-2)); font-size: 18px; line-height: 1.6; max-width: 680px; margin: 0; }
 
@@ -103,7 +107,7 @@
 
   /* ZAHLWEISE-UMSCHALTER */
   .bill-row {
-    max-width: 1280px; margin: 32px auto 0; padding: 0 32px;
+    max-width: var(--page-max); margin: 32px auto 0; padding: 0 var(--page-gutter);
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
   .bill-switch { display: inline-flex; gap: 4px; padding: 3px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg2); }
@@ -117,7 +121,7 @@
   .bill-hint { font-size: 13px; color: var(--text-2); }
 
   /* ZWEI VERTRÄGE + SUMME */
-  .pricing-wrap { max-width: 1280px; margin: 0 auto; padding: 16px 32px 48px; display: flex; flex-direction: column; gap: 24px; }
+  .pricing-wrap { max-width: var(--page-max); margin: 0 auto; padding: 16px var(--page-gutter) 48px; display: flex; flex-direction: column; gap: 24px; }
   .two-grid { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: stretch; }
   .plus-op, .eq-op { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 24px; color: var(--text-2); font-weight: 400; }
   .eq-op { width: 28px; }
@@ -255,15 +259,17 @@
   }
   .sum-alt .sum-alt-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
 
-  /* MOBILE · Entwurfsmaße (390 px) */
+  /* MOBILE · Entwurfsmaße (390 px) — Rand 20 px */
   @media (max-width: 860px) {
-    #hero { padding: 48px 20px 0; }
+    main { --page-gutter: 20px; }
+    #hero { padding: 48px 0 0; }
+    #hero .wide { padding: 0 var(--page-gutter); }
     #hero h1 { font-size: 36px; }
     #hero .lead { font-size: 16px; }
     .demo-box { padding: 20px; }
-    .bill-row { padding: 0 20px; }
+    .bill-row { padding: 0 var(--page-gutter); margin-top: 24px; }
     .bill-switch button { height: 44px; padding: 0 20px; }
-    .pricing-wrap { padding: 16px 20px 32px; gap: 24px; }
+    .pricing-wrap { padding: 16px var(--page-gutter) 32px; gap: 24px; }
     .two-grid { grid-template-columns: 1fr; gap: 0; }
     .plus-op { width: 100%; height: 40px; font-size: 24px; }
     .contract-card { padding: 20px; }
@@ -272,10 +278,15 @@
     .plan-cta .gb-btn { width: 100%; justify-content: center; }
     .sum-body { grid-template-columns: 1fr; padding: 20px; }
     .sum-alt { padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+    #compare > .container,
+    #faq > .container,
+    .persp-section > .container,
+    #bottom-cta > .container { padding: 0 var(--page-gutter); }
   }
 
   /* FEATURE COMPARISON TABLE (danach, wie heute) */
-  #compare { padding: 80px 32px; border-top: 1px solid var(--border); margin-top: 56px; }
+  #compare { padding: 80px 0; border-top: 1px solid var(--border); margin-top: 56px; }
+  #compare > .container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); }
   .compare-header { text-align: center; margin-bottom: 56px; }
   .compare-header h2 { font-family: var(--display); font-size: clamp(26px, 3vw, 36px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
   .compare-header p { color: var(--text-2); font-size: 15px; }
@@ -292,7 +303,8 @@
   .dash { color: var(--text-3); font-size: 14px; }
 
   /* FAQ */
-  #faq { padding: 80px 32px; background: var(--bg2); border-top: 1px solid var(--border); }
+  #faq { padding: 80px 0; background: var(--bg2); border-top: 1px solid var(--border); }
+  #faq > .container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); }
   .faq-header { margin-bottom: 40px; }
   .faq-header h2 { font-family: var(--display); font-size: clamp(26px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
   .faq-header p { color: var(--text-2); font-size: 14px; }
@@ -305,8 +317,8 @@
   .faq-item p { font-size: 14px; color: var(--text-2); line-height: 1.75; padding-bottom: 20px; }
 
   /* PERSPEKTIVWECHSEL */
-  .persp-section { padding: 80px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .persp-section .container { max-width: 1200px; margin: 0 auto; }
+  .persp-section { padding: 80px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .persp-section > .container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); }
   .persp-section h2 { font-family: var(--display); font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 20px; text-align: center; }
   .persp-lead { color: var(--text-2); font-size: 15px; line-height: 1.75; margin: 0 auto 40px; max-width: 720px; text-align: center; }
   .stat-boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border2); border: 1px solid var(--border2); border-radius: 4px; text-align: left; max-width: 1000px; margin: 0 auto; }
@@ -318,7 +330,8 @@
   @media (max-width: 600px) { .stat-boxes { grid-template-columns: 1fr !important; } }
 
   /* BOTTOM CTA */
-  #bottom-cta { padding: 96px 32px; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  #bottom-cta { padding: 96px 0; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  #bottom-cta > .container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); }
   #bottom-cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 350px; background: radial-gradient(ellipse at 50% 100%, rgba(0,255,135,0.06), transparent 70%); pointer-events: none; }
   #bottom-cta h2 { font-family: var(--display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
   #bottom-cta h2 .n { color: var(--neon); }
@@ -533,7 +546,8 @@
               <span class="amount"><span data-bill-show="monthly">104,25 $</span><span data-bill-show="yearly" hidden>74,25 $</span></span>
               <span class="amount-reg"><span data-bill-show="monthly">regulär 139 $</span><span data-bill-show="yearly" hidden>regulär 99 $</span></span>
             </span>
-            <span class="amount-unit"><span data-bill-show="monthly">monatlich</span><span data-bill-show="yearly" hidden>im Monat, jährlich · 891 $ im Jahr (regulär 1.188 $)</span></span>
+            <span class="amount-unit"><span data-bill-show="monthly">monatlich</span><span data-bill-show="yearly" hidden>im Monat, jährlich</span></span>
+            <span class="amount-sub" data-bill-show="yearly" hidden>891 $ im Jahr · regulär 1.188 $</span>
           </div>
           <div class="partner-note">
             <span class="partner-tag">Partner-Link</span>
