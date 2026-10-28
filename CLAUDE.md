@@ -220,7 +220,7 @@ Bei jeder Preis- oder Plan-Änderung (Betrag, Features, Plan-Zuordnung einer Fun
 - `fair-value-pro/pro-mode.html` — Hero-Pills, Section-Intro mit Plan-Hinweis, Mode-Cards (GO/PRO/MAX), CTA-Note.
 - `partner.html` — Vergleichstabelle, Abschnitt „Kalkulator kostenlos. Für mehr: MAX." mit Preis + Jahrespreis.
 - `agb.html` — § 3 Plan-Beschreibungen (GO/PRO/MAX), § 4 Verweis auf Preisseite. Keine Preisangabe hier, nur Plan-Namen und Leistungsumfang.
-- `llms.txt` — Zeile unter „## Pläne" nennt GO, PRO, MAX und 9,99 €.
+- `llms.txt` — Zeile unter „## Preise" nennt GO, PRO, MAX, 9,99 € und den Anbieter-Zugang.
 
 Die Plan-Zuordnung einzelner Funktionen (Spalte „Ab Plan") steht in `docs/funktionsliste.md` — die Liste ist die Quelle, nicht ein weiterer Pflegeort. Website-Formulierungen werden daran gemessen.
 
