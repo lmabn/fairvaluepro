@@ -35,7 +35,7 @@ MISSING_ATTRS=$(grep -rnE 'href="[^"]*financialmodelingprep[^"]*"' --include='*.
       $1=""; $2=""; sub(/^: : /,"");
       content=$0;
       ok_target = (content ~ /target="_blank"/);
-      ok_rel    = (content ~ /rel="noopener"/);
+      ok_rel    = (content ~ /rel="[^"]*noopener[^"]*"/);
       if (!ok_target || !ok_rel) {
         missing = "";
         if (!ok_target) missing = missing " target=\"_blank\"";
