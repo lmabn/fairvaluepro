@@ -359,13 +359,64 @@
   .stat-box .stat-note { font-family: var(--mono); font-size: 10px; color: var(--text-3); margin-top: 8px; display: block; }
   @media (max-width: 600px) { .stat-boxes { grid-template-columns: 1fr !important; } }
 
-  /* BOTTOM CTA */
-  #bottom-cta { padding: 96px 0; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
-  #bottom-cta > .container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); }
-  #bottom-cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 350px; background: radial-gradient(ellipse at 50% 100%, rgba(0,255,135,0.06), transparent 70%); pointer-events: none; }
-  #bottom-cta h2 { font-family: var(--display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
-  #bottom-cta h2 .n { color: var(--neon); }
-  #bottom-cta p { color: var(--text-2); max-width: 420px; margin: 0 auto 32px; font-size: 15px; }
+  /* ABSCHLUSS-BANNER · Design-Entwurf 28.10.2026 */
+  .pban {
+    position: relative;
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-top: 1px solid #262B33;
+  }
+  .pban__img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 78% 45%;
+  }
+  .pban__shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.62) 42%, rgba(11,13,16,0) 72%);
+    pointer-events: none;
+  }
+  .pban__in {
+    position: relative;
+    max-width: var(--page-max);
+    width: 100%;
+    margin: 0 auto;
+    padding: 128px var(--page-gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .pban__in h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 52px;
+    line-height: 1.06;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    color: #ECEDEF;
+    max-width: 560px;
+  }
+  .pban__in h2 .n { color: var(--neon); }
+  .pban__in p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #B9BCC0;
+    max-width: 560px;
+  }
+  @media (max-width: 860px) {
+    .pban { min-height: 560px; align-items: flex-end; }
+    .pban__img { object-position: 84% 40%; }
+    .pban__shade { background: linear-gradient(0deg, rgba(11,13,16,0.92) 0%, rgba(11,13,16,0.7) 48%, rgba(11,13,16,0.15) 100%); }
+    .pban__in { padding: 96px var(--page-gutter) 80px; }
+    .pban__in h2 { font-size: 32px; line-height: 1.08; }
+    .pban__in p { font-size: 17px; }
+    .pban .gb-btn { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body data-product="fvp" data-level="product" data-bill="monthly">
@@ -725,12 +776,14 @@
   </div>
 </section>
 
-<!-- BOTTOM CTA -->
-<section id="bottom-cta">
-  <div class="container">
+<!-- BOTTOM CTA · Abschluss-Banner -->
+<section class="pban" aria-label="Abschluss">
+  <img src="assets/photo/workspace-window.webp" alt="" class="pban__img" loading="lazy" decoding="async" width="1672" height="941">
+  <div class="pban__shade" aria-hidden="true"></div>
+  <div class="pban__in">
     <h2>Starte deine<br><span class="n">erste Analyse.</span></h2>
     <p>Starte mit GO ohne Konto — oder registriere dich für PRO und MAX.</p>
-    <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--m gb-btn--primary">Jetzt starten →</a>
+    <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--l gb-btn--primary">Jetzt starten →</a>
   </div>
 </section>
 
