@@ -93,6 +93,11 @@ par_m_str = f"{ult_par_m:.2f}".replace(".", ",")
 par_y_m_str = f"{ult_par_y_m:.2f}".replace(".", ",")
 auf_m_str = f"{auf_par_m:.2f}".replace(".", ",")
 auf_y_str = f"{auf_par_y:.2f}".replace(".", ",")
+# Deutsches Datumsformat TT.MM.JJJJ aus ISO
+try:
+    kurs_dt_de = datetime.date.fromisoformat(kurs_dt).strftime("%d.%m.%Y")
+except Exception:
+    kurs_dt_de = kurs_dt
 
 for f in targets:
     if not f.exists():
@@ -114,7 +119,7 @@ for f in targets:
         (f"≈ {sum_reg_y} €",     f"Regulär-Summe jährlich (pro Monat) ≈ {sum_reg_y} €"),
         (f"{auf_m_str} €",            f"Aufschlüsselung monatlich Ultimate {auf_m_str} €"),
         (f"{auf_y_str} €",            f"Aufschlüsselung jährlich Ultimate {auf_y_str} €"),
-        (kurs_dt,                          f"EZB-Kursdatum {kurs_dt}"),
+        (kurs_dt_de,                       f"EZB-Kursdatum {kurs_dt_de}"),
     ]
     for needle, label in needles:
         if needle not in txt:
