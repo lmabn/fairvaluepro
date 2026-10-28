@@ -104,19 +104,20 @@
   .demo-box ul li { position: relative; padding-left: 20px; }
   .demo-box ul li::before { content: "✓"; position: absolute; left: 0; font-family: var(--mono); color: var(--text); }
 
-  /* ZAHLWEISE-UMSCHALTER */
+  /* ZAHLWEISE-UMSCHALTER — Variante aus Entwurf v2:
+     transparenter Hintergrund, aktives Segment mit Produkt-Grün-Unterstrich. */
   .bill-row {
     max-width: var(--page-max); margin: 32px auto 0; padding: 0 var(--page-gutter);
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
-  .bill-switch { display: inline-flex; gap: 4px; padding: 3px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg2); }
+  .bill-switch { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 4px; background: transparent; }
   .bill-switch button {
-    font-family: var(--sans); font-size: 14px; font-weight: 500;
-    height: 40px; padding: 0 18px;
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    height: 36px; padding: 0 16px;
     border: 0; border-radius: 3px; background: transparent;
     color: var(--text-2); cursor: pointer;
   }
-  .bill-switch button[aria-checked="true"] { background: var(--text); color: var(--bg); }
+  .bill-switch button[aria-checked="true"] { background: var(--bg3, var(--border)); color: var(--text); box-shadow: inset 0 -2px 0 #2EE59D; }
   .bill-hint { font-size: 13px; color: var(--text-2); }
 
   /* ZWEI VERTRÄGE + SUMME */
@@ -183,6 +184,32 @@
   .plan-features li { border-bottom: 0; padding-top: 0; padding-bottom: 0; }
   .plan-features > li { position: relative; padding-left: 20px; }
   .plan-features > li::before { content: "✓"; position: absolute; left: 0; font-family: var(--mono); color: var(--text); }
+
+  /* Produktfarben-Punkt statt ✓ für die Hauptpunkte eines Werkzeugs
+     (Design System „Produktlabel"): Fair Value Pro grün, Portfolio
+     Tracker gold, Investment Planner blau. */
+  .plan-features > li.pd::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 999px;
+    top: 0.55em; left: 4px;
+    background: var(--pc);
+  }
+  .plan-features > li.pd > b { font-weight: 600; color: var(--text); }
+  .pd-fvp { --pc: #2EE59D; }
+  .pd-pt  { --pc: #F0B42A; }
+  .pd-td  { --pc: #5B8CFF; }
+
+  /* Bei „Jährlich" stehen die Preise mit Ersparnis in Produktgrün
+     (MAX, Ultimate, Summe) — Design-Ausnahme Ludmila 28.10.2026.
+     Marker: [data-k] (max / ult / sum) nur an den Preisen, die beim
+     Umschalten wechseln; 0 € / 0 $ bleiben neutral. */
+  body[data-bill="yearly"] [data-k] { color: #2EE59D; }
+
+  /* Ultimate-Primär-Knopf-Block (Entwurf v2) — Knopf, Provisionssatz,
+     Verlängerungs-Hinweis als zusammenhängender Block ohne Trennstrich. */
+  .ultimate-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 12px; grid-column: 1 / -1; }
+  .ultimate-cta .ad-note { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+  .ultimate-cta .ad-note + .ad-note { margin-top: -10px; }
   .plan-features > li > b { color: var(--text); font-weight: 600; }
   .plan-features ul {
     list-style: none;
@@ -341,7 +368,7 @@
   #bottom-cta p { color: var(--text-2); max-width: 420px; margin: 0 auto 32px; font-size: 15px; }
 </style>
 </head>
-<body data-product="fvp" data-level="product">
+<body data-product="fvp" data-level="product" data-bill="monthly">
 
 <!-- NAV · GO:BETTER Shell -->
 <div class="gb-nav-wrap">
@@ -396,8 +423,8 @@
     <section class="demo-box">
       <span class="plan-eyebrow">GO</span>
       <h2>Demo — ohne Konto reinschauen</h2>
-      <ul>
-        <li>Fair Value Pro in der Ansicht Kompakt</li>
+      <ul class="plan-features">
+        <li class="pd pd-fvp">Fair Value Pro in der Ansicht Kompakt</li>
       </ul>
       <div>
         <a class="gb-btn gb-btn--secondary gb-btn--m" href="fair-value-pro.html#cta">Ohne Konto starten</a>
@@ -439,7 +466,7 @@
           </div>
           <div class="plan-features-wrap">
             <ul class="plan-features">
-              <li>
+              <li class="pd pd-fvp">
                 <b>Fair Value Pro</b>
                 <ul>
                   <li>Kompakt und Pro-Modus mit voller Ansicht</li>
@@ -465,7 +492,7 @@
             <b>MAX</b>
           </div>
           <div class="plan-amount">
-            <span class="amount"><span data-bill-show="monthly">9,99 €</span><span data-bill-show="yearly" hidden>7,49 €</span></span>
+            <span class="amount" data-k="max"><span data-bill-show="monthly">9,99 €</span><span data-bill-show="yearly" hidden>7,49 €</span></span>
             <span class="amount-unit"><span data-bill-show="monthly">monatlich</span><span data-bill-show="yearly" hidden>im Monat, jährlich</span></span>
             <span class="amount-sub">
               <span data-bill-show="monthly">&nbsp;</span><span data-bill-show="yearly" hidden>89,91 € im Jahr · Jährlich: 25 % gespart gegenüber monatlich</span>
@@ -474,7 +501,7 @@
           <div class="plan-features-wrap">
             <span class="plan-includes-head">Alles aus PRO, plus:</span>
             <ul class="plan-features">
-              <li>
+              <li class="pd pd-fvp">
                 <b>Fair Value Pro, erweitert</b>
                 <ul>
                   <li>KI-Assistent mit eigenem Schlüssel</li>
@@ -484,7 +511,7 @@
                   <li>PDF-Export</li>
                 </ul>
               </li>
-              <li>
+              <li class="pd pd-pt">
                 <b>Portfolio Tracker</b>
                 <ul>
                   <li>Depots über mehrere Broker</li>
@@ -493,7 +520,7 @@
                   <li>Cashflows und Ausschüttungen</li>
                 </ul>
               </li>
-              <li>
+              <li class="pd pd-td">
                 <b>Investment Planner</b>
                 <ul>
                   <li>Watchlist mit eigener Kaufzone</li>
@@ -531,7 +558,7 @@
         <div class="plan-row">
           <div class="plan-name">
             <b>Free</b>
-            <span class="plan-sub">zum Testen, 250 Abrufe am Tag, im Kalkulator eine Liste getesteter US-Werte</span>
+            <span class="plan-sub">zum Testen, 250 Abrufe am Tag, ausgewählte US-Werte</span>
           </div>
           <div class="plan-amount">
             <span class="amount">0 $</span>
@@ -546,15 +573,16 @@
           </div>
           <div class="plan-amount">
             <span class="amount-pair">
-              <span class="amount"><span data-bill-show="monthly">104,25 $</span><span data-bill-show="yearly" hidden>74,25 $</span></span>
+              <span class="amount" data-k="ult"><span data-bill-show="monthly">104,25 $</span><span data-bill-show="yearly" hidden>74,25 $</span></span>
               <span class="amount-reg"><span data-bill-show="monthly">regulär 139 $</span><span data-bill-show="yearly" hidden>regulär 99 $</span></span>
             </span>
             <span class="amount-unit"><span data-bill-show="monthly">monatlich</span><span data-bill-show="yearly" hidden>im Monat, jährlich</span></span>
             <span class="amount-sub" data-bill-show="yearly" hidden>891 $ im Jahr · regulär 1.188 $</span>
           </div>
-          <div class="partner-note">
-            <span class="partner-tag">Partner-Link</span>
-            <span>25 % Rabatt beim Abschluss über unseren <a href="fair-value-pro/daten-quelle.html">Partner-Link</a>. Ob er auch für Verlängerungen gilt, legt der Anbieter fest. Für Abschlüsse über diesen Link erhalten wir eine Provision.</span>
+          <div class="ultimate-cta">
+            <a class="gb-btn gb-btn--primary gb-btn--m" href="https://site.financialmodelingprep.com/pricing-plans?couponCode=gobetter25" target="_blank" rel="noopener sponsored" aria-label="Ultimate mit 25 % Rabatt beim Anbieter, öffnet in neuem Tab">Ultimate mit 25 % Rabatt →</a>
+            <p class="ad-note">Für Abschlüsse über diesen Link erhalten wir eine Provision.</p>
+            <p class="ad-note">Ob der Rabatt auch für Verlängerungen gilt, legt der Anbieter fest.</p>
           </div>
         </div>
       </div>
@@ -572,7 +600,7 @@
     </div>
     <div class="sum-body">
       <div class="sum-total">
-        <span class="sum-amount"><span data-bill-show="monthly">≈ 103 €</span><span data-bill-show="yearly" hidden>≈ 74 €</span></span>
+        <span class="sum-amount" data-k="sum"><span data-bill-show="monthly">≈ 103 €</span><span data-bill-show="yearly" hidden>≈ 74 €</span></span>
         <span class="sum-unit"><span data-bill-show="monthly">im Monat</span><span data-bill-show="yearly" hidden>im Monat, jährlich</span></span>
         <span class="sum-break">
           <span data-bill-show="monthly">MAX 9,99 € + Ultimate 104,25 $ (≈ 93,18 €)</span><span data-bill-show="yearly" hidden>MAX 7,49 € + Ultimate 74,25 $ (≈ 66,37 €)</span>
@@ -740,6 +768,7 @@
       const inactiveBtn = mode === 'yearly' ? btnMonthly : btnYearly;
       activeBtn.setAttribute('aria-checked', 'true');
       inactiveBtn.setAttribute('aria-checked', 'false');
+      document.body.setAttribute('data-bill', mode);
       document.querySelectorAll('[data-bill-show="monthly"]').forEach(el => { el.hidden = (mode !== 'monthly'); });
       document.querySelectorAll('[data-bill-show="yearly"]').forEach(el  => { el.hidden = (mode !== 'yearly'); });
       if (cta) cta.href = 'https://app.gobetter.trade/fairvalue?checkout=max&billing=' + mode;
