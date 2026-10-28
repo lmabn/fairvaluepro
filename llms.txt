@@ -12,9 +12,9 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 - [Pro-Modus](https://gobetter.trade/fair-value-pro/pro-mode.html): Das volle Dashboard von Fair Value Pro — alle Verfahren nebeneinander, Szenarien, Sensitivitäten, Kennzahlen auf einen Blick.
 - [Daten-Quelle](https://gobetter.trade/fair-value-pro/daten-quelle.html): Marktdaten laufen über einen eigenen Anbieter-Schlüssel (BYOK) — Erklärung des Flows.
 
-## Pläne
+## Preise
 
-- [Pläne](https://gobetter.trade/plaene.html): GO (Demo, ohne Account), PRO (kostenloser Account mit vollem Fair-Value-Pro-Dashboard), MAX (9,99 € im Monat, alle drei Werkzeuge).
+- [Preise](https://gobetter.trade/plaene.html): GO (Demo, ohne Konto), PRO (kostenloses Konto mit vollem Fair-Value-Pro-Dashboard), MAX (9,99 € im Monat, alle drei Werkzeuge). Dazu der nötige Datenzugang beim Anbieter (Financial Modeling Prep, Ultimate 139 $/Monat regulär · über unseren Partner-Link mit 25 % Rabatt).
 
 ## Akademie
 
