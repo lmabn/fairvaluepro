@@ -307,7 +307,7 @@
   <div class="gb-hero-inner">
     <span class="gb-eyebrow fade in">Portfolio Tracker · Depot-Überblick · Renditen · Fairer Wert</span>
     <h1 class="gb-h1-product fade in">Behalte deine<br class="mobile-br"> Investments im <span class="accent">Blick.</span></h1>
-    <p class="gb-hero-sub fade in">KI-gestützter Import per PDF oder CSV — broker-unabhängig, und du prüfst die Zahlen, bevor sie übernommen werden. Cashflowbereinigte Renditen (IRR, TWR) und Einordnung nach deinem Fairen Wert pro Position, verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
+    <p class="gb-hero-sub fade in">Dokumentimport per PDF oder CSV — broker-unabhängig: feste Leser erkennen die bekannten Felder, die Dokumentvorschau zeigt die Fundstelle je Wert. KI (mit deinem eigenen Schlüssel) nur, wenn ein Wert unklar bleibt; ohne KI-Schlüssel bleibt das Feld offen zum Nachtragen. Cashflowbereinigte Renditen (IRR, TWR) und Einordnung nach deinem Fairen Wert pro Position, verknüpft mit deinen Bewertungen aus Fair Value Pro.</p>
     <div class="gb-hero-btns fade in">
       <a href="plaene.html" class="gb-btn gb-btn--l gb-btn--primary">Jetzt starten</a>
       <a href="#features" class="gb-btn gb-btn--l gb-btn--secondary">Funktionen ansehen</a>
@@ -334,7 +334,7 @@
             <div class="mk-tab">Vergleich</div>
             <div class="mk-tab">Export</div>
           </div>
-          <div style="font-size:0.6rem; color:var(--text-3);">1J · 2J · <strong style="color:var(--text)">3J</strong> · 5J · Alle</div>
+          <div style="font-size:0.6rem; color:var(--text-3);">3M · YTD · 1J · <strong style="color:var(--text)">3J</strong> · 5J · 10J · Alle</div>
         </div>
 
         <!-- Body -->
@@ -367,7 +367,7 @@
           <div class="mk-chart-area">
             <div class="mk-chart-head">
               <span class="mk-chart-title">↗ Depotverlauf</span><div class="mk-time-btns">
-                <span class="mk-time-btn">1J</span><span class="mk-time-btn">2J</span><span class="mk-time-btn active">3J</span><span class="mk-time-btn">5J</span><span class="mk-time-btn">Alle</span></div>
+                <span class="mk-time-btn">3M</span><span class="mk-time-btn">YTD</span><span class="mk-time-btn">1J</span><span class="mk-time-btn active">3J</span><span class="mk-time-btn">5J</span><span class="mk-time-btn">10J</span><span class="mk-time-btn">Alle</span></div>
             </div>
             <svg class="chart-svg" viewBox="0 0 800 90" preserveAspectRatio="none">
               <defs>
@@ -399,28 +399,28 @@
               <div class="mk-cell">€ 19.840</div>
               <div class="mk-cell pos">+6.240</div>
               <div class="mk-cell pos">+45,8 %</div>
-              <div class="mk-cell"><span class="mk-verdict over">Überbewertet · 12,3 %</span><div class="mk-verdict-date">03.10.2026</div></div>
+              <div class="mk-cell"><span class="mk-verdict over">Überbewertet</span><div class="mk-verdict-date">Bär $180 – Bulle $205 · 03.10.2026</div></div>
             </div>
             <div class="mk-depot-row">
               <div><div class="mk-ticker">NOVO B</div><div class="mk-name">Novo Nordisk</div></div>
               <div class="mk-cell">€ 14.220</div>
               <div class="mk-cell pos">+2.180</div>
               <div class="mk-cell pos">+18,1 %</div>
-              <div class="mk-cell"><span class="mk-verdict under">Unterbewertet · 18,4 %</span><div class="mk-verdict-date">03.10.2026</div></div>
+              <div class="mk-cell"><span class="mk-verdict under">Unterbewertet</span><div class="mk-verdict-date">Bär 720 DKK – Bulle 980 DKK · 03.10.2026</div></div>
             </div>
             <div class="mk-depot-row">
               <div><div class="mk-ticker">ALV.DE</div><div class="mk-name">Allianz SE</div></div>
               <div class="mk-cell">€ 11.660</div>
               <div class="mk-cell neg">−840</div>
               <div class="mk-cell neg">−6,7 %</div>
-              <div class="mk-cell"><span class="mk-verdict fair">Fair bewertet · 1,8 %</span><div class="mk-verdict-date">02.10.2026</div></div>
+              <div class="mk-cell"><span class="mk-verdict fair">Fair bewertet</span><div class="mk-verdict-date">Bank-Modus · Bär € 325 – Bulle € 380 · 02.10.2026</div></div>
             </div>
             <div class="mk-depot-row" style="opacity:0.5">
               <div><div class="mk-ticker">AAPL</div><div class="mk-name">Apple Inc.</div></div>
               <div class="mk-cell">€ 9.430</div>
               <div class="mk-cell pos">+1.930</div>
               <div class="mk-cell pos">+25,7 %</div>
-              <div class="mk-cell"><span class="mk-verdict over">Überbewertet · 24,1 %</span><div class="mk-verdict-date">28.09.2026</div></div>
+              <div class="mk-cell"><span class="mk-verdict neutral">Außerhalb des Modellbereichs</span><div class="mk-verdict-date">Grund im ⓘ · 28.09.2026</div></div>
             </div>
           </div>
 
@@ -447,7 +447,7 @@
       </div>
       <div class="pain-item">
         <div class="pain-q">Ich weiß nicht ob meine Positionen gerade über- oder unterbewertet sind.</div>
-        <div class="pain-a">Pro Position wird der berechnete Fairer Wert aus Fair Value Pro automatisch übernommen. <strong>Die Einordnung — überbewertet / fair bewertet / unterbewertet</strong> — aktualisiert sich bei jedem Tab-Wechsel. Du siehst die Einordnung mit Abstand in Prozent und dem Datum deiner Analyse.</div>
+        <div class="pain-a">Pro Position wird der berechnete Fairer Wert aus Fair Value Pro automatisch übernommen. <strong>Die Einordnung — stark unterbewertet · unterbewertet · fair bewertet · überbewertet · stark überbewertet</strong> steht als Wort in Farbe, dazu die faire Zone „Bär – Bulle“ in der Währung deiner Analyse und das Analyse-Datum. Sonderfälle („Außerhalb des Modellbereichs“, „Nicht beurteilbar“) mit Grund im ⓘ. Keine Prozent-Angabe.</div>
       </div>
       <div class="pain-item">
         <div class="pain-q">Wie war meine Rendite in den letzten fünf Jahren wirklich?</div>
@@ -468,18 +468,18 @@
     <div class="features-grid">
       <div class="feat fade">
         <div class="feat-icon">⧉</div>
-        <h3>Universal-Import mit KI</h3>
-        <p>Depotbestände nicht mehr abtippen: PDF-Finanzreport, CSV-Export oder kopierter Text. Die KI liest Positionen, Depotwert, Ein-/Auszahlungen und Trades heraus. Du prüfst die Zahlen in der Vorschau, bevor sie übernommen werden. Deine Korrekturen im Import-Dialog werden lokal gemerkt und verbessern die nächste Erkennung desselben Brokers.</p>
+        <h3>Dokumentimport mit festen Lesern, KI nur für Unklares</h3>
+        <p>PDF-Finanzreport, CSV-Export oder kopierter Text. Feste Leser erkennen die bekannten Felder je Broker; die Dokumentvorschau zeigt die Fundstelle je Wert. Nur wenn ein Wert unklar bleibt, geht die Rückfrage an deinen KI-Anbieter (mit deinem eigenen Schlüssel). Ohne KI-Schlüssel bleibt das Feld offen und steht zum Nachtragen von Hand bereit. Deine Korrekturen werden lokal gemerkt und verbessern die nächste Erkennung desselben Brokers.</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">▣</div>
-        <h3>Privacy-Layer vor jedem Versand</h3>
-        <p>Bevor ein Text-Dokument den Browser verlässt, schwärzt ein Scrubber IBAN, Steuer-ID, Namen, Adressen und Konto-/Depotnummern. In einer Vorschau siehst du genau, was gesendet wird, und kannst nachschwärzen — nichts geht ohne dein OK raus.</p>
+        <h3>Privacy-Layer vor jedem KI-Versand</h3>
+        <p>Bevor ein Text-Dokument den Browser verlässt, schwärzt der Privacy-Layer bekannte Muster: IBAN, Steuer-ID und Steuernummer, Konto-, Depot-, Kunden-, Vorgangs- und Referenznummern, Name (auch über Adressanker), Straße, PLZ/Ort, E-Mail und Telefonnummer; dazu dein hinterlegter Kontoname und eigene Begriffe. In der Vorschau siehst du genau, was gesendet wird, und kannst nachschwärzen — nichts geht ohne dein OK raus.</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">✓</div>
-        <h3>Die KI liest, wir rechnen</h3>
-        <p>Die KI arbeitet als Scanner, nicht als Taschenrechner: Stückzahlen und Einstandswerte berechnet die App deterministisch aus den abgelesenen Werten. Ein Plausibilitäts-Check vergleicht die Positions-Summe mit dem Depotwert, bei Kontoauszügen rechnet die App die Buchungen gegen Anfangs- und Endstand. Unsichere Werte sind markiert.</p>
+        <h3>Einstand nur aus Belegen</h3>
+        <p>Die KI arbeitet als Scanner, nicht als Taschenrechner. Einstand nimmt der Tracker ausschließlich aus Belegen — Kaufwert im Dokument, aus Abrechnungen oder von Hand nachgetragen. Fehlt der Beleg, bleibt der Einstand „offen“, die Spalte G/V der Position zeigt „nicht berechenbar“ mit dem Grund im ⓘ. Ein Plausibilitäts-Check vergleicht die Positions-Summe mit dem Depotwert, bei Kontoauszügen rechnet die App die Buchungen gegen Anfangs- und Endstand.</p>
       </div>
     </div>
   </div>
@@ -518,12 +518,50 @@
       <div class="feat fade">
         <div class="feat-icon">◎</div>
         <h3>Fairer Wert pro Position</h3>
-        <p>Jede Position zeigt den in Fair Value Pro ermittelten Fairen Wert direkt im Depot — unterbewertet, fair bewertet oder überbewertet, mit automatischer Aktualisierung beim Tab-Wechsel. Du siehst die Einordnung mit Abstand in Prozent und dem Datum deiner Analyse.</p>
+        <p>Jede Position zeigt den in Fair Value Pro ermittelten Fairen Wert direkt im Depot. Die Einordnung steht als Wort in Farbe, dazu die faire Zone „Bär – Bulle“ in der Währung deiner Analyse und das Datum. Keine Prozent-Angabe. Sonderfälle „Außerhalb des Modellbereichs“ und „Nicht beurteilbar“ stehen genauso, mit Grund im ⓘ. Für Banken und Versicherer gilt der Bank-Wert (60 % KBV + 40 % KGV) genauso.</p>
       </div>
       <div class="feat fade">
         <div class="feat-icon">⌾</div>
         <h3>Deine Schlüssel, deine Daten</h3>
         <p>Marktdaten über deinen eigenen Datenprovider-Schlüssel, KI-Import über deinen eigenen Anbieter-Schlüssel. Beide Schlüssel bleiben im Browser und gehen von dort direkt an den jeweiligen Anbieter — unser Server ist an diesen Abrufen nicht beteiligt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEU IN 3.14 -->
+<section class="features-section" id="features-neu" style="padding-top:3rem;">
+  <div class="wide">
+    <div class="features-header fade">
+      <div class="tag" style="--neon: var(--pt); justify-content:center;">Neu seit Roadmap 3.14</div>
+      <h2>Fünf Bausteine, die bisher fehlten.</h2>
+      <p>Was im Herbst 2026 dazu gekommen ist — bisher nicht auf der Seite erklärt, aber in der App bereits aktiv.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat fade">
+        <div class="feat-icon">▦</div>
+        <h3>Kauf-Historie je Titel</h3>
+        <p>Käufe, Verkäufe und Splits je Titel, mit Datum, Stückzahl, Kurs, Gebühr und Steuer sowie der Herkunft jedes Werts (Dokumentart und Datum oder „von Hand“). Daraus den Ø Kaufkurs je Snapshot. Wege zum Nachtragen offener Werte direkt in der Zeile.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">Σ</div>
+        <h3>Realisierte G/V je Jahr</h3>
+        <p>Je Verkauf nach FIFO aus den Belegen deines Kontos; wo der Einstand fehlt, steht „offen“ statt eine falsche Zahl zu rechnen. Keine Steuerberechnung — maßgeblich ist deine Steuerbescheinigung. Ausschüttungen bleiben außen vor.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">◉</div>
+        <h3>Herkunft je Wert</h3>
+        <p>Zu jedem einzelnen Wert — Depotwert, Stückzahl, Kurs, Einstand, Gebühr — steht die Herkunft: Dokumentart und Datum des Dokuments, Tag der Eingabe von Hand oder Angabe des Anbieters. Im Tooltip, nicht in der Spalte.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">▤</div>
+        <h3>Art des Depots</h3>
+        <p>Wertpapierdepot (Grundeinstellung, schließt Krypto als Position ein) oder Krypto-Börse. Die Art bestimmt, welche Importe zulässig sind und welche Rechenwege gelten — Krypto-Börsen nehmen keine Steuerbescheinigungen oder Kosteninformationen an. Von Hand umschaltbar.</p>
+      </div>
+      <div class="feat fade">
+        <div class="feat-icon">⇄</div>
+        <h3>Wertpapier-Eingang</h3>
+        <p>Zieht ein Titel von einem Konto in ein anderes um, übernimmt der Tracker den Einstand aus dem Kaufwert des letzten Stands des Quell-Depots. Lässt sich dieser nicht ermitteln, bleibt der Einstand offen — nie geraten.</p>
       </div>
     </div>
   </div>
