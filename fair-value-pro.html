@@ -97,7 +97,7 @@
       "name": "Was macht der KI-Assistent — und was kostet er?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Der KI-Assistent ist ein optionales MAX-Feature, das Kennzahlen erklärt, Was-wäre-wenn-Szenarien durchrechnet und Methodik einordnet. Du hinterlegst einmalig deinen eigenen API-Schlüssel eines KI-Anbieters — Claude (Anthropic), ChatGPT (in Entwicklung, OpenAI) oder Gemini (Google). Anfragen gehen direkt von deinem Browser zum Anbieter, wir sehen weder Schlüssel noch Inhalte. Die Kosten entstehen direkt beim Anbieter."
+        "text": "Der KI-Assistent ist ein optionales MAX-Feature, das Kennzahlen erklärt, Was-wäre-wenn-Szenarien durchrechnet und Methodik einordnet. Du hinterlegst einmalig deinen eigenen API-Schlüssel eines KI-Anbieters — Claude (Anthropic), ChatGPT (OpenAI) oder Gemini (Google, in Entwicklung). Anfragen gehen direkt von deinem Browser zum Anbieter, wir sehen weder Schlüssel noch Inhalte. Die Kosten entstehen direkt beim Anbieter."
       }
     }
   ]
@@ -285,8 +285,6 @@
   .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .feat-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
   .feat-card:hover { background: var(--bg3); }
-  .feat-card--spacer { pointer-events: none; }
-  .feat-card--spacer:hover { background: var(--bg); }
   .feat-icon { font-family: var(--mono); font-size: 0.8rem; color: var(--neon); border: 1px solid var(--neon-border); display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 3px; margin-bottom: 1.2rem; }
   .feat-card h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
   .feat-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
@@ -735,8 +733,7 @@
       <div class="feat-card fade">
         <div class="feat-icon">Σ</div>
         <h3>Vier Verfahren — gewichtet</h3>
-        <p>Vier Verfahren rechnen einen Fairen Wert. Drei davon ergeben gewichtet den Komposit Fairen Wert, die Gewichtung stellst du selbst ein.</p>
-        <p style="margin-top:0.6rem;">Für Banken und Versicherer schaltet der Rechner automatisch auf einen Bank-Modus: 60 % KBV aus der materiellen Eigenkapitalrendite plus 40 % KGV; das DDM mit Eigenkapitalkosten steht nur als Vergleich daneben. Umschaltbar.</p>
+        <p>Vier Verfahren rechnen einen Fairen Wert. Drei davon ergeben gewichtet den Komposit Fairen Wert, die Gewichtung stellst du selbst ein. Banken und Versicherer bewertet der Rechner automatisch mit einem eigenen Bank-Modus.</p>
       </div>
       <div class="feat-card fade">
         <div class="feat-icon">⚑</div>
@@ -771,9 +768,8 @@
       <div class="feat-card fade">
         <div class="feat-icon">✦</div>
         <h3>KI-Assistent</h3>
-        <p>Verstehe, was du berechnest — nicht nur das Ergebnis. Erklärt Kennzahlen, rechnet Was-wäre-wenn-Szenarien, ordnet Methodik ein. Bring-your-own-Key: Claude, ChatGPT (in Entwicklung) oder Gemini direkt aus deinem Browser.</p>
+        <p>Verstehe, was du berechnest — nicht nur das Ergebnis. Erklärt Kennzahlen, rechnet Was-wäre-wenn-Szenarien, ordnet Methodik ein. Bring-your-own-Key: Claude, ChatGPT oder Gemini (in Entwicklung) direkt aus deinem Browser.</p>
       </div>
-      <div class="feat-card feat-card--spacer" aria-hidden="true"></div>
     </div>
 
     <p class="verfahren-wrap fade" style="font-size:0.9rem; color:var(--text-2); line-height:1.75; text-align:center;">Wie die vier Verfahren rechnen und wie du sie gewichtest, zeigt der <a href="fair-value-pro/pro-mode.html" style="color:var(--neon); text-decoration:underline;">Pro-Modus</a>.</p>
@@ -822,7 +818,7 @@
         <summary>Was macht der KI-Assistent — und was kostet er?<span class="faq-icon">+</span></summary>
         <div style="font-size:0.88rem; color:var(--text-2); line-height:1.75; padding:0.8rem 0 1.4rem;">
           <p>Der KI-Assistent ist ein optionales MAX-Feature das Kennzahlen erklärt, Was-wäre-wenn-Szenarien durchrechnet und Methodik einordnet — zu deiner konkreten Analyse, nicht allgemein. Er ist zu Erklärungszwecken gedacht und gibt weder Kaufempfehlungen noch stellt er eine Anlageberatung dar.</p>
-          <p>Du hinterlegst einmalig deinen eigenen API-Schlüssel eines KI-Anbieters — Claude (Anthropic), ChatGPT (in Entwicklung, OpenAI) oder Gemini (Google). Anfragen gehen direkt von deinem Browser zum Anbieter, wir sehen weder Schlüssel noch Inhalte. Die Kosten entstehen direkt beim Anbieter.</p>
+          <p>Du hinterlegst einmalig deinen eigenen API-Schlüssel eines KI-Anbieters — Claude (Anthropic), ChatGPT (OpenAI) oder Gemini (Google, in Entwicklung). Anfragen gehen direkt von deinem Browser zum Anbieter, wir sehen weder Schlüssel noch Inhalte. Die Kosten entstehen direkt beim Anbieter.</p>
         </div>
       </details>
 
