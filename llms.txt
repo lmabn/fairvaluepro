@@ -6,13 +6,13 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 
 ## Produkte
 
-- [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Berechnet einen Fairen Wert einer Aktie aus vier Verfahren (DCF, KGV, EV/EBITDA, DDM) — drei davon gewichtet im Komposit Fairen Wert — und deinen eigenen Annahmen. Methodik und Zahlen bleiben sichtbar.
-- [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Verfolgt dein Depot über mehrere Broker: Dokumente hochladen, die ausgelesenen Zahlen prüfen und cashflowbereinigte Renditen (IRR, TWR) rechnen lassen.
-- [Investment Planner](https://gobetter.trade/investment-planner.html): Positionsgröße, Einstieg und Ausstieg vor dem Kauf festlegen — mit Watchlist, Trade-Journal und KI-Hinweisen auf mögliche Denkfehler auf Wunsch.
+- [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Fundamentalanalyse mit vier Verfahren (DCF, KGV, EV/EBITDA, DDM): Fair Value Pro berechnet den Fairen Wert einer Aktie, drei Verfahren gewichtet im Komposit. Alle Annahmen bleiben sichtbar — kostenlos ohne Konto starten.
+- [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Verfolgt dein Depot über mehrere Broker: PDF oder CSV hochladen, Positionen und Buchungen prüfen, cashflowbereinigte Renditen (IRR, TWR) rechnen lassen — mit Einordnung aus deinem Fairen Wert pro Position.
+- [Investment Planner](https://gobetter.trade/investment-planner.html): Positionsgröße, Einstieg und Ausstieg vor dem Kauf festlegen — mit Watchlist, Trade-Journal, Rebalancing und KI-Hinweisen auf mögliche Denkfehler mit eigenem Schlüssel.
 
 ## Preise
 
-- [Preise](https://gobetter.trade/plaene.html): GO (Demo, ohne Konto), PRO (kostenloses Konto mit vollem Fair-Value-Pro-Dashboard), MAX (9,99 € im Monat, alle drei Werkzeuge). Dazu der nötige Datenzugang beim Anbieter (Financial Modeling Prep, Ultimate 139 $/Monat regulär · über unseren Partner-Link mit 25 % Rabatt).
+- [Preise und Pläne](https://gobetter.trade/plaene.html): GO ohne Konto, PRO als kostenloses Konto, MAX mit allen drei Werkzeugen. Der Datenzugang beim Anbieter kommt getrennt hinzu und ist offen ausgewiesen.
 
 ## Akademie
 
