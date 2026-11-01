@@ -1,0 +1,110 @@
+name: IndexNow
+
+# Nach jedem Push auf main: geänderte Adressen aus sitemap.xml an api.indexnow.org
+# melden (Bing, Yandex u. a.). Kein Konto, kein neuer Dienst — nur der Schlüssel
+# aus der Datei im Wurzelverzeichnis.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout mit Historie
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Geänderte Sitemap-URLs sammeln und IndexNow pingen
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          KEY="425120dcb111ae6666ca4e678904b1bb"
+          HOST="gobetter.trade"
+          KEY_LOC="https://${HOST}/${KEY}.txt"
+
+          # Geänderte HTML-Dateien im letzten Commit (Merge-Commit zählt den
+          # Diff zu HEAD~1).
+          mapfile -t changed < <(git diff --name-only HEAD~1 HEAD -- '*.html' sitemap.xml || true)
+          echo "Geänderte Dateien:"
+          printf '  %s\n' "${changed[@]:-(keine)}"
+
+          # Alle URLs aus sitemap.xml einlesen.
+          mapfile -t sitemap_urls < <(
+            grep -oE '<loc>[^<]+</loc>' sitemap.xml | sed -E 's|<loc>([^<]+)</loc>|\1|'
+          )
+          echo "Sitemap enthält ${#sitemap_urls[@]} URLs."
+
+          # Mapping: Datei im Repo → URL in der Sitemap.
+          # - index.html → https://gobetter.trade/
+          # - akademie/index.html → https://gobetter.trade/akademie/
+          # - sonst: https://gobetter.trade/<pfad>
+          declare -a urls=()
+          for f in "${changed[@]:-}"; do
+            [ -z "$f" ] && continue
+            if [ "$f" = "sitemap.xml" ]; then
+              # Bei Sitemap-Änderungen alle Sitemap-URLs melden.
+              urls+=("${sitemap_urls[@]}")
+              continue
+            fi
+            case "$f" in
+              index.html)             url="https://${HOST}/" ;;
+              akademie/index.html)    url="https://${HOST}/akademie/" ;;
+              *)                      url="https://${HOST}/${f}" ;;
+            esac
+            # Nur melden, wenn die URL auch wirklich in der Sitemap steht.
+            for s in "${sitemap_urls[@]}"; do
+              if [ "$s" = "$url" ]; then urls+=("$url"); break; fi
+            done
+          done
+
+          # Doppelte raus.
+          mapfile -t unique_urls < <(printf '%s\n' "${urls[@]:-}" | awk 'NF && !seen[$0]++')
+
+          if [ "${#unique_urls[@]}" -eq 0 ]; then
+            echo "Keine indexierbaren Änderungen — nichts zu melden."
+            exit 0
+          fi
+
+          echo "An IndexNow zu melden (${#unique_urls[@]}):"
+          printf '  %s\n' "${unique_urls[@]}"
+
+          # JSON-Payload aufbauen.
+          urlList=$(printf '"%s",' "${unique_urls[@]}")
+          urlList="[${urlList%,}]"
+          payload=$(cat <<JSON
+          {"host":"${HOST}","key":"${KEY}","keyLocation":"${KEY_LOC}","urlList":${urlList}}
+JSON
+          )
+
+          echo "Payload:"
+          echo "$payload"
+
+          # POST an api.indexnow.org. 200 = sofort angenommen; 202 = angenommen,
+          # aber Schlüsselprüfung läuft noch.
+          code=$(curl -sS -o /tmp/indexnow-body -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data-binary "$payload")
+          echo "IndexNow HTTP $code"
+          echo "Antwort:"
+          cat /tmp/indexnow-body || true
+          echo
+
+          # 200 oder 202 ist Erfolg. Alles andere ist Fehler.
+          case "$code" in
+            200|202) echo "OK (IndexNow nimmt Melde-Request an)." ;;
+            *)       echo "FAIL — IndexNow HTTP $code"; exit 1 ;;
+          esac
