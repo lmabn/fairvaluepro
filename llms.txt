@@ -9,8 +9,6 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 - [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Berechnet einen Fairen Wert einer Aktie aus vier Verfahren (DCF, KGV, EV/EBITDA, DDM) — drei davon gewichtet im Komposit Fairen Wert — und deinen eigenen Annahmen. Methodik und Zahlen bleiben sichtbar.
 - [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Verfolgt dein Depot über mehrere Broker: Dokumente hochladen, die ausgelesenen Zahlen prüfen und cashflowbereinigte Renditen (IRR, TWR) rechnen lassen.
 - [Investment Planner](https://gobetter.trade/investment-planner.html): Positionsgröße, Einstieg und Ausstieg vor dem Kauf festlegen — mit Watchlist, Trade-Journal und KI-Hinweisen auf mögliche Denkfehler auf Wunsch.
-- [Pro-Modus](https://gobetter.trade/fair-value-pro/pro-mode.html): Das volle Dashboard von Fair Value Pro — alle Verfahren nebeneinander, Szenarien, Sensitivitäten, Kennzahlen auf einen Blick.
-- [Daten-Quelle](https://gobetter.trade/fair-value-pro/daten-quelle.html): Marktdaten laufen über einen eigenen Anbieter-Schlüssel (BYOK) — Erklärung des Flows.
 
 ## Preise
 
