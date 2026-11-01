@@ -32,6 +32,6 @@ Acht Lernmodule für Privatanleger — Grundlagen bis eigene Strategie.
 
 - [Partnerprogramm](https://gobetter.trade/partner.html): Vision, Geschäftsmodell und Kooperationsformen für Daten-Provider, Investoren und frühe Unterstützer.
 
-## Autoren
+## Community
 
-- [Für Autoren](https://gobetter.trade/fuer-autoren.html): Angebot an Autorinnen und Autoren, auf GO:BETTER unabhängige Inhalte zu veröffentlichen — Rahmen, Hinweis zur Haftung, Kontakt.
+- [Community](https://gobetter.trade/community.html): Vorlagen und Bewertungen von Autoren mit allen Annahmen — zum Übernehmen und mit eigenen Daten nachrechnen. Für alle lesbar; Autoren wählt GO:BETTER aus.
