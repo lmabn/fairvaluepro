@@ -31,3 +31,7 @@ Acht Lernmodule für Privatanleger — Grundlagen bis eigene Strategie.
 ## Partner
 
 - [Partnerprogramm](https://gobetter.trade/partner.html): Vision, Geschäftsmodell und Kooperationsformen für Daten-Provider, Investoren und frühe Unterstützer.
+
+## Community
+
+- [Community](https://gobetter.trade/community.html): Vorlagen und Bewertungen von Autoren mit allen Annahmen — zum Übernehmen und mit eigenen Daten nachrechnen. Für alle lesbar; Autoren wählt GO:BETTER aus.
