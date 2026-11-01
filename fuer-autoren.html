@@ -20,13 +20,35 @@
 /* Seitenlayout — Entwurf 01.11.2026, ausgewogene Produktseiten-Stufe */
 main.autoren { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sans); }
 
-/* Hero (dunkel) */
-.au-hero { padding: 7rem 2.5rem 5rem; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+/* Hero (dunkel, mit Bannerbild) — Entwurf 01.11.2026:
+   Spiegelung im Fenster, links/unten neutral abgedunkelt für Textkontrast,
+   Schrift auf der ruhigen Bildseite; Handy eigener Ausschnitt. */
+.au-hero {
+  position: relative;
+  min-height: 640px;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 7rem 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background:
+    linear-gradient(90deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.62) 45%, rgba(11,13,16,0.15) 80%),
+    linear-gradient(0deg, rgba(11,13,16,0.75) 0%, rgba(11,13,16,0) 45%),
+    url("assets/photo/workspace-reflection.webp") 60% 50% / cover no-repeat;
+}
 .au-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9FA7; }
 .au-hero h1 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; max-width: 900px; }
 .au-hero p.sub { margin: 0; font-size: 1.15rem; line-height: 1.55; color: #B9BCC0; max-width: 640px; }
 @media (max-width: 720px) {
-  .au-hero { padding: 3.5rem 1.25rem 3rem; }
+  .au-hero {
+    padding: 3.5rem 1.25rem 2.5rem;
+    gap: 1rem;
+    min-height: 560px;
+    background:
+      linear-gradient(0deg, rgba(11,13,16,0.92) 0%, rgba(11,13,16,0.7) 55%, rgba(11,13,16,0.25) 100%),
+      url("assets/photo/workspace-reflection.webp") 78% 50% / cover no-repeat;
+  }
   .au-hero p.sub { font-size: 1.05rem; }
 }
 
@@ -96,13 +118,8 @@ main.autoren { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sans
 .au-sel .cta:hover { background: #ECEDEF; color: #0B0D10; }
 @media (max-width: 720px) { .au-sel { grid-template-columns: 1fr; gap: 1.25rem; } }
 
-/* Fuß-Hinweis (ausführliche Fassung, ersetzt die kurze Entwurfsvariante) */
-.au-fn { font-size: 0.85rem; line-height: 1.6; color: #9A9FA7; padding: 1.5rem 2.5rem; border-top: 1px solid #262B33; display: flex; flex-direction: column; gap: 0.9rem; }
-.au-fn p { margin: 0; max-width: 820px; }
-.au-fn .links { display: flex; gap: 1rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
-.au-fn .links a { color: #9A9FA7; text-decoration: none; }
-.au-fn .links a:hover { color: #ECEDEF; }
-@media (max-width: 720px) { .au-fn { padding: 1.25rem; } }
+/* Hinweis zu Autor-Inhalten (an der linken Inhaltskante, direkt unter „Auswahl") */
+.au-note { font-size: 0.95rem; line-height: 1.6; color: #B9BCC0; max-width: 820px; margin: 0; }
 </style>
 </head>
 <body>
@@ -261,15 +278,13 @@ main.autoren { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sans
     </div>
   </section>
 
-  <!-- Fuß-Hinweis (ausführliche Fassung, ersetzt die kurze Entwurfsvariante) -->
-  <div class="au-fn">
-    <p>Inhalte von Autoren geben deren eigene Einschätzung wieder. Sie sind keine Anlageberatung, keine Anlageempfehlung und keine Aufforderung zum Kauf oder Verkauf von Wertpapieren. GO:BETTER prüft diese Inhalte nicht und macht sie sich nicht zu eigen.</p>
-    <div class="links">
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="agb.html">AGB</a>
+  <!-- Hinweis zu Autor-Inhalten (an der linken Inhaltskante wie die übrigen Abschnitte, direkt unter „Auswahl") -->
+  <section class="au-sec">
+    <div class="wide" style="display:flex; flex-direction:column; gap:1rem;">
+      <span class="au-eyebrow">Hinweis</span>
+      <p class="au-note">Inhalte von Autoren geben deren eigene Einschätzung wieder. Sie sind keine Anlageberatung, keine Anlageempfehlung und keine Aufforderung zum Kauf oder Verkauf von Wertpapieren. GO:BETTER prüft diese Inhalte nicht und macht sie sich nicht zu eigen.</p>
     </div>
-  </div>
+  </section>
 
 </main>
 
@@ -283,6 +298,7 @@ main.autoren { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sans
       <a href="partner.html">Für Partner</a>
       <a href="https://app.gobetter.trade/kuendigen">Verträge hier kündigen</a>
       <a href="https://app.gobetter.trade/widerrufen">Vertrag widerrufen</a>
+      <a href="agb.html">AGB</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="impressum.html">Impressum</a>
     </div>
