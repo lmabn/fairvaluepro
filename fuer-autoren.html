@@ -20,13 +20,35 @@
 /* Seitenlayout — Entwurf 01.11.2026, ausgewogene Produktseiten-Stufe */
 main.autoren { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sans); }
 
-/* Hero (dunkel) */
-.au-hero { padding: 7rem 2.5rem 5rem; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+/* Hero (dunkel, mit Bannerbild) — Entwurf 01.11.2026:
+   Spiegelung im Fenster, links/unten neutral abgedunkelt für Textkontrast,
+   Schrift auf der ruhigen Bildseite; Handy eigener Ausschnitt. */
+.au-hero {
+  position: relative;
+  min-height: 640px;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 7rem 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background:
+    linear-gradient(90deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.62) 45%, rgba(11,13,16,0.15) 80%),
+    linear-gradient(0deg, rgba(11,13,16,0.75) 0%, rgba(11,13,16,0) 45%),
+    url("assets/photo/workspace-reflection.webp") 60% 50% / cover no-repeat;
+}
 .au-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9FA7; }
 .au-hero h1 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; max-width: 900px; }
 .au-hero p.sub { margin: 0; font-size: 1.15rem; line-height: 1.55; color: #B9BCC0; max-width: 640px; }
 @media (max-width: 720px) {
-  .au-hero { padding: 3.5rem 1.25rem 3rem; }
+  .au-hero {
+    padding: 3.5rem 1.25rem 2.5rem;
+    gap: 1rem;
+    min-height: 560px;
+    background:
+      linear-gradient(0deg, rgba(11,13,16,0.92) 0%, rgba(11,13,16,0.7) 55%, rgba(11,13,16,0.25) 100%),
+      url("assets/photo/workspace-reflection.webp") 78% 50% / cover no-repeat;
+  }
   .au-hero p.sub { font-size: 1.05rem; }
 }
 
