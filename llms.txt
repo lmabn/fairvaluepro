@@ -7,12 +7,12 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 ## Produkte
 
 - [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Fundamentalanalyse mit vier Verfahren (DCF, KGV, EV/EBITDA, DDM): Fair Value Pro berechnet den Fairen Wert einer Aktie, drei Verfahren gewichtet im Komposit. Alle Annahmen bleiben sichtbar — kostenlos ohne Konto starten. Vorlagen und Bewertungen lassen sich in der Community mit anderen Autoren teilen (Bewertungen im Betatest).
-- [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Verfolgt dein Depot über mehrere Broker: PDF oder CSV hochladen, Positionen und Buchungen prüfen, cashflowbereinigte Renditen (IRR, TWR) rechnen lassen — mit Einordnung aus deinem Fairen Wert pro Position. Dazu ein KI-Assistent im Seitenpanel (Claude oder ChatGPT, Gemini in Entwicklung) und ein app-weites Postfach für Nachrichten des Teams.
+- [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Verfolgt dein Depot über mehrere Broker. Depots anlegen und Snapshots von Hand führen ab PRO (kostenlos nach Registrierung); mit MAX dazu Import aus Depot- und Kontoauszügen, cashflowbereinigte Renditen (IRR, TWR), Allokation, Fairer Wert je Position und KI-Assistent im Seitenpanel (Claude oder ChatGPT, Gemini in Entwicklung). Postfach für Nachrichten des Teams app-weit.
 - [Investment Planner](https://gobetter.trade/investment-planner.html): Positionsgröße, Einstieg und Ausstieg vor dem Kauf festlegen — mit Watchlist, Trade-Journal, Rebalancing und KI-Hinweisen auf mögliche Denkfehler mit eigenem Schlüssel.
 
 ## Preise
 
-- [Preise und Pläne](https://gobetter.trade/plaene.html): GO ohne Konto, PRO als kostenloses Konto, MAX mit allen drei Werkzeugen. Der Datenzugang beim Anbieter kommt getrennt hinzu und ist offen ausgewiesen.
+- [Preise und Pläne](https://gobetter.trade/plaene.html): GO ohne Konto, PRO kostenloses Konto mit vollem Fair-Value-Pro-Dashboard und Portfolio Tracker mit Depots und Snapshots von Hand, MAX (9,99 €/Monat) mit vollem Tracker (Import, Rendite, Allokation, Fairer Wert je Position, KI-Assistent) und Investment Planner. Der Datenzugang beim Anbieter kommt getrennt hinzu und ist offen ausgewiesen.
 
 ## Akademie
 
