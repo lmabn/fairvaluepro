@@ -59,6 +59,9 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
   gap: 1.2rem;
 }
 .co-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9FA7; }
+/* Hero-Eyebrow mit Betatest-Marke daneben */
+.co-hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; align-self: flex-start; }
+.co-beta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--web-mood, #2EE59D); border: 1px solid currentColor; border-radius: 2px; padding: 2px 6px; line-height: 1; }
 .co-hero h1 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; max-width: 900px; }
 .co-hero p.sub { margin: 0; font-size: 1.15rem; line-height: 1.55; color: #B9BCC0; max-width: 640px; }
 .co-avail {
@@ -259,10 +262,10 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
   <!-- Hero -->
   <section class="co-hero">
     <div class="wide">
-      <span class="co-eyebrow">Community</span>
+      <span class="co-hero-eyebrow"><span class="co-eyebrow">Community</span><span class="co-beta">Betatest</span></span>
       <h1>Bewertungen, die man nachrechnen kann.</h1>
       <p class="sub">Statt nur der Standard-Vorlagen: Vorlagen und Bewertungen von Autoren, mit allen Annahmen. Du übernimmst sie und rechnest mit deinen eigenen Daten nach.</p>
-      <span class="co-avail"><i></i>Die Community ist noch nicht für alle geöffnet. Wir schalten sie schrittweise frei.</span>
+      <span class="co-avail"><i></i>Die Community ist noch nicht für alle geöffnet.</span>
     </div>
   </section>
 
