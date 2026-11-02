@@ -38,7 +38,7 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
   min-height: 640px;
   justify-content: flex-end;
   box-sizing: border-box;
-  padding: 7rem 2.5rem 6rem;
+  padding: 7rem 0 6rem;
   display: flex;
   flex-direction: column;
   background:
@@ -46,10 +46,14 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
     linear-gradient(0deg, rgba(11,13,16,0.75) 0%, rgba(11,13,16,0) 45%),
     url("assets/photo/workspace-reflection.webp") 60% 50% / cover no-repeat;
 }
+/* .wide innerhalb des Hero: exakt wie .gb-nav gebaut (max-width 1280px +
+   padding 0 32px), damit die H1 unter dem Nav-Logo in einer Linie steht. */
 .co-hero > .wide {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -67,22 +71,24 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
 .co-avail i { width: 6px; height: 6px; border-radius: 999px; background: var(--web-mood, #2EE59D); flex: none; }
 @media (max-width: 720px) {
   .co-hero {
-    padding: 3.5rem 1.25rem 2.5rem;
+    padding: 3.5rem 0 2.5rem;
     min-height: 560px;
     background:
       linear-gradient(0deg, rgba(11,13,16,0.92) 0%, rgba(11,13,16,0.7) 55%, rgba(11,13,16,0.25) 100%),
       url("assets/photo/workspace-reflection.webp") 78% 50% / cover no-repeat;
   }
-  .co-hero > .wide { gap: 1rem; }
+  .co-hero > .wide { gap: 1rem; padding: 0 20px; }
   .co-hero p.sub { font-size: 1.05rem; }
   .co-avail { font-size: 0.85rem; align-self: stretch; }
 }
 
-/* Abschnitt (allgemein, dunkel) */
-.co-sec { padding: 6rem 2.5rem; border-top: 1px solid #262B33; }
+/* Abschnitt (allgemein, dunkel) — Content-Container exakt wie .gb-nav
+   (max-width 1280px + padding 0 32px), damit H2, Mockup und Fließtext
+   auf einer Linie mit dem Nav-Logo stehen. */
+.co-sec { padding: 6rem 0; border-top: 1px solid #262B33; }
 .co-sec h2 { margin: 0 0 2rem; font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -0.025em; font-weight: 600; }
-.co-sec .wide { max-width: 1280px; margin: 0 auto; }
-@media (max-width: 720px) { .co-sec { padding: 3.5rem 1.25rem; } .co-sec h2 { font-size: 1.75rem; margin-bottom: 1.25rem; } }
+.co-sec .wide { max-width: 1280px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; }
+@media (max-width: 720px) { .co-sec { padding: 3.5rem 0; } .co-sec .wide { padding: 0 20px; } .co-sec h2 { font-size: 1.75rem; margin-bottom: 1.25rem; } }
 
 /* Heller Abschnitt mit vier Punkten */
 .co-sec.light { background: #F7F8FA; color: #111317; border-top: 0; }
