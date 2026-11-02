@@ -143,6 +143,60 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
   .co-pub .ph1 { padding: 0 1.25rem; }
 }
 
+/* Öffentlicher Link — Drei-Schritte-Ablauf + Leseransicht.
+   Alle Klassen lokal unter .co-sh gescoped, 1:1 nach Entwurf 02.11.2026. */
+.co-sh .lks { display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr); gap: 1rem; align-items: start; }
+.co-sh .ar { color: #68707B; font-size: 1.25rem; align-self: center; text-align: center; }
+.co-sh .lstp { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.co-sh .ln { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9FA7; }
+.co-sh .lstp p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: #9A9FA7; }
+.co-sh .ui { background: #12151A; border: 1px solid #262B33; border-radius: 6px; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 188px; box-sizing: border-box; }
+.co-sh .uh { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; font-size: 0.9rem; }
+.co-sh .uh b { color: #ECEDEF; font-weight: 500; }
+.co-sh .ua { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 0.8rem; color: #9A9FA7; }
+.co-sh .ua .mono { color: #ECEDEF; }
+.co-sh .uf { display: flex; align-items: baseline; gap: 0.6rem; border-top: 1px solid #262B33; padding-top: 0.6rem; font-size: 0.8rem; color: #9A9FA7; flex-wrap: wrap; }
+.co-sh .uf b { font-size: 1.25rem; color: #ECEDEF; font-weight: 400; }
+.co-sh .uf small { font-size: 0.75rem; }
+.co-sh .uc { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.8rem; }
+.co-sh .ul { display: flex; flex-direction: column; gap: 0.5rem; border: 1px solid #68707B; border-radius: 4px; padding: 0.625rem 0.75rem; }
+.co-sh .ul .mono { font-size: 0.75rem; color: #ECEDEF; overflow-wrap: anywhere; }
+.co-sh .cp { display: inline-flex; align-items: center; gap: 0.375rem; align-self: flex-start; height: 32px; padding: 0 0.75rem; border-radius: 4px; background: #ECEDEF; color: #0B0D10; font-size: 0.8rem; font-weight: 500; }
+.co-sh .ok { font-size: 0.8rem; color: #ECEDEF; }
+.co-sh .vd { aspect-ratio: 16 / 9; border-radius: 4px; background: #191D23; display: flex; align-items: center; justify-content: center; color: #9A9FA7; }
+.co-sh .vt { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: #9A9FA7; }
+.co-sh .vt b { color: #ECEDEF; font-weight: 500; font-size: 0.9rem; }
+.co-sh .lu { color: #2EE59D; overflow-wrap: anywhere; font-size: 0.75rem; }
+.co-sh .mut { color: #68707B; }
+.co-sh .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 400; }
+
+/* Leseransicht (helle Preview-Karte auf dunklem Hintergrund) */
+.co-sh .lr { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #262B33; }
+.co-sh .lrt { display: flex; flex-direction: row; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.co-sh .lrt p { margin: 0; font-size: 1.05rem; line-height: 1.5; color: #9A9FA7; }
+.co-sh .pv { background: #F7F8FA; color: #111317; border-radius: 6px; padding: 1.5rem; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) auto; gap: 2rem; align-items: center; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); }
+.co-sh .pvh { display: flex; flex-direction: column; gap: 0.25rem; }
+.co-sh .pvh b { font-size: 1.25rem; font-weight: 500; color: #111317; }
+.co-sh .pvh .mut { color: #555A62; font-size: 0.875rem; }
+.co-sh .pvh small { color: #555A62; font-size: 0.75rem; line-height: 1.4; }
+.co-sh .pvr { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; font-size: 0.8rem; color: #555A62; border-left: 1px solid #DEE1E6; padding-left: 2rem; }
+.co-sh .pvr b { font-size: 1.75rem; font-weight: 400; color: #111317; }
+.co-sh .pvr small { color: #555A62; font-size: 0.75rem; }
+.co-sh .pva { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 1rem; font-size: 0.8rem; color: #555A62; border-left: 1px solid #DEE1E6; padding-left: 2rem; align-content: center; }
+.co-sh .pva .mono { color: #111317; }
+.co-sh .pv .gb-btn { align-self: flex-start; color: #111317; border-color: #7E858F; }
+
+@media (max-width: 980px) {
+  .co-sh .lks { grid-template-columns: 1fr; gap: 0.75rem; }
+  .co-sh .ar { transform: rotate(90deg); justify-self: center; }
+  .co-sh .ui { min-height: 0; }
+  .co-sh .lr { margin-top: 2rem; gap: 1rem; }
+  .co-sh .lrt { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .co-sh .lrt p { font-size: 0.95rem; }
+  .co-sh .pv { grid-template-columns: 1fr; gap: 1rem; padding: 1.125rem; }
+  .co-sh .pvr, .co-sh .pva { border-left: 0; padding-left: 0; border-top: 1px solid #DEE1E6; padding-top: 0.75rem; }
+}
+
 /* Auswahl mit Kontakt */
 .co-sel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; }
 .co-sel .text { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -330,6 +384,95 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
           <span class="n">04</span>
           <b>Leser prüfen selbst</b>
           <p>Wer deine Annahmen übernimmt, rechnet mit eigenen Daten nach. Abweichungen sind sichtbar, nicht versteckt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Öffentlicher Link (dunkel) · Drei Schritte + Leseransicht -->
+  <section class="co-sec co-sh">
+    <div class="wide">
+      <span class="co-eyebrow">Öffentlicher Link</span>
+      <h2>Bewerten, Link kopieren, verlinken.</h2>
+      <div class="lks">
+        <div class="lstp">
+          <span class="ln">01 · Bewerten</span>
+          <div class="ui">
+            <div class="uh">
+              <b>Muster Industrie AG</b>
+              <span class="mono mut">MUS · XETRA</span>
+            </div>
+            <div class="ua">
+              <span>Wachstum Stufe 1</span><span class="mono">4,0 %</span>
+              <span>Endwachstum</span><span class="mono">2,0 %</span>
+              <span>WACC</span><span class="mono">8,5 %</span>
+              <span>Gewichte</span><span class="mono">DCF 50 · KGV 25 · EV/EBITDA 25</span>
+            </div>
+            <div class="uf">
+              <span>Fairer Wert</span>
+              <b class="mono">61,40 €</b>
+              <small class="mono mut">Stand 28.10.2026</small>
+            </div>
+          </div>
+          <p>Du bewertest wie gewohnt im Kalkulator.</p>
+        </div>
+        <span class="ar" aria-hidden="true">→</span>
+        <div class="lstp">
+          <span class="ln">02 · Teilen</span>
+          <div class="ui">
+            <div class="uc">
+              <span class="mut">⋯ › Veröffentlichen …</span>
+              <span class="mut">› Öffentlichen Link erstellen</span>
+            </div>
+            <div class="ul">
+              <span class="mono">share.gobetter.trade/kapitalkompass/muster-industrie-ag</span>
+              <span class="cp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                Link kopieren
+              </span>
+            </div>
+            <span class="ok">✓ Link kopiert</span>
+          </div>
+          <p>Ein Link je Bewertung oder Vorlage. Du kannst ihn jederzeit deaktivieren.</p>
+        </div>
+        <span class="ar" aria-hidden="true">→</span>
+        <div class="lstp">
+          <span class="ln">03 · Verlinken</span>
+          <div class="ui">
+            <div class="vd" aria-label="Dein Video oder Beitrag">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4"/></svg>
+            </div>
+            <div class="vt">
+              <b>Dein Video oder Beitrag</b>
+              <span>Meine Bewertung mit allen Annahmen:</span>
+              <span class="mono lu">share.gobetter.trade/kapitalkompass/muster-industrie-ag</span>
+            </div>
+          </div>
+          <p>Leser öffnen die Seite ohne Konto.</p>
+        </div>
+      </div>
+      <div class="lr">
+        <div class="lrt">
+          <span class="co-eyebrow">So sehen Leser die Seite</span>
+          <p>Annahmen, Fairer Wert mit Stand und dein Profil. Ohne Kurs, ohne Bilanzen, ohne Kursverläufe.</p>
+        </div>
+        <div class="pv">
+          <div class="pvh">
+            <b>Muster Industrie AG</b>
+            <span class="mut">Bewertung von Kapitalkompass</span>
+            <small>Inhalt von Kapitalkompass, nicht von GO:BETTER. Keine Anlageberatung.</small>
+          </div>
+          <div class="pvr">
+            <span>Fairer Wert</span>
+            <b class="mono">61,40 €</b>
+            <small class="mono">Stand 28.10.2026</small>
+          </div>
+          <div class="pva">
+            <span>Wachstum Stufe 1</span><span class="mono">4,0 %</span>
+            <span>Endwachstum</span><span class="mono">2,0 %</span>
+            <span>WACC</span><span class="mono">8,5 %</span>
+          </div>
+          <a class="gb-btn gb-btn--secondary gb-btn--m" href="https://app.gobetter.trade/fairvalue">Selbst ausprobieren</a>
         </div>
       </div>
     </div>
