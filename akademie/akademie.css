@@ -181,8 +181,8 @@
   .ak-hero { padding: 2.5rem 1.25rem 2rem; }
   .ak-content { padding: 3.5rem 1.25rem; }
   .ak-content h2 { margin-top: 3rem; }
-  .ak-modulnav { padding: 1.2rem 1rem; gap: 4px; }
-  .ak-modulnav a { padding: 0.4rem 0.7rem; font-size: 0.62rem; }
+  .ak-modulnav { padding: 1.2rem 1rem; gap: 4px; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .ak-modulnav a { padding: 0.4rem 0.7rem; font-size: 0.62rem; text-align: center; }
   .ak-content ol.ak-quiz > li { padding-left: 2.4rem; }
   .ak-content .ak-quiz-answers ol > li { padding-left: 2.2rem; }
   nav .nav-links { display: none !important; }
