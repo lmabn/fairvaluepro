@@ -331,6 +331,7 @@
   .compare-table .cat-row td { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); padding: 24px 20px 8px; border-bottom: none; }
   .check { color: var(--neon); font-size: 14px; }
   .dash { color: var(--text-3); font-size: 14px; }
+  .compare-foot { font-size: 12px; color: var(--text-3); margin: 16px 4px 0; line-height: 1.55; }
 
   /* FAQ */
   #faq { padding: 80px 0; background: var(--bg2); border-top: 1px solid var(--border); }
@@ -692,31 +693,36 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="feature-name">Eigener Marktdaten-Schlüssel</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr class="cat-row"><td colspan="4">Bewertung</td></tr>
-        <tr><td class="feature-name">Suche &amp; Datenabruf</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Kompakt — 4 Kennzahlen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Pro-Modus — volles Dashboard</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">4 Verfahren: DCF · KGV · EV/EBITDA · DDM · dazu Median-KGV und FCF-Rendite</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Erweiterte Einstellungen (WACC, Beta, ERP)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Branchen-Vorlagen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr class="cat-row"><td colspan="4">Fair Value Pro</td></tr>
+        <tr><td class="feature-name">Kompakt-Ansicht (4 Kennzahlen)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Pro-Modus mit 4 Verfahren (DCF, KGV, EV/EBITDA, DDM) und Vergleichsgrößen</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Eigene Vorlagen (lokal; auf allen Geräten ab MAX)</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Analysen speichern &amp; PDF-Export</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">KI-Assistent (BYOK)</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
 
-        <tr class="cat-row"><td colspan="4">Speichern &amp; Export</td></tr>
-        <tr><td class="feature-name">Analysen speichern</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Eigene Vorlagen lokal (inkl. Export + Import)</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Vorlagen auf allen Geräten</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Suchverlauf (letzte 15)</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">PDF-Export</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr class="cat-row"><td colspan="4">Portfolio Tracker</td></tr>
+        <tr><td class="feature-name">Import aus Depot- und Kontoauszügen</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Rendite IRR und TWR</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Allokation (Asset-Klassen, Länder, Sektoren)</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Fairer Wert je Position</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">KI-Assistent (BYOK)</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
 
-        <tr class="cat-row"><td colspan="4">Tools</td></tr>
-        <tr><td class="feature-name">KI-Assistent im Kalkulator (BYOK)</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Portfolio Tracker</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td class="feature-name">Investment Planner</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr class="cat-row"><td colspan="4">Investment Planner</td></tr>
+        <tr><td class="feature-name">Positionsgröße &amp; Einstiegsplan</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Watchlist</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Trade-Journal mit KI-Hinweisen auf Denkfehler</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Rebalancing</td><td><span class="dash">–</span></td><td><span class="dash">–</span></td><td><span class="check">✓</span></td></tr>
+
+        <tr class="cat-row"><td colspan="4">Community</td></tr>
+        <tr><td class="feature-name">Vorlagen ansehen und übernehmen</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td class="feature-name">Veröffentlichen</td><td><span class="dash">–</span></td><td><span class="check">✱</span></td><td><span class="check">✱</span></td></tr>
 
         <tr class="cat-row"><td colspan="4">Zugang</td></tr>
+        <tr><td class="feature-name">Eigener Marktdaten-Schlüssel</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
         <tr><td class="feature-name">Konto erforderlich</td><td><span class="dash">–</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
       </tbody>
     </table>
+    <p class="compare-foot">✱ Autor werden Nutzer, die GO:BETTER einstuft (unabhängig vom Plan). Bewertungen sind im Betatest und vorerst nur für Autoren sichtbar.</p>
     </div>
   </div>
 </section>
