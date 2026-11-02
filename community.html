@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://gobetter.trade/community.html">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0B0D10">
+<meta name="description" content="Community: Vorlagen und Bewertungen von Autoren mit allen Annahmen. Du übernimmst sie und rechnest mit deinen eigenen Daten nach.">
+<meta property="og:title" content="Community · GO:BETTER">
+<meta property="og:description" content="Vorlagen und Bewertungen von Autoren mit allen Annahmen. Übernimm sie, rechne selbst nach.">
+<meta property="og:url" content="https://gobetter.trade/community.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community · GO:BETTER">
+<meta name="twitter:description" content="Vorlagen und Bewertungen von Autoren mit allen Annahmen. Übernimm sie, rechne selbst nach.">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="web.css">
+<link rel="stylesheet" href="gb-shell.css">
+<title>Community · GO:BETTER</title>
+<style>
+/* Seitenlayout — Community · Entwurf 01.11.2026 */
+main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sans); }
+
+/* Hero (dunkel, mit Bannerbild) — Spiegelung im Fenster, links/unten abgedunkelt für Textkontrast,
+   Schrift auf der ruhigen Bildseite; Handy eigener Ausschnitt. */
+.co-hero {
+  position: relative;
+  min-height: 640px;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 7rem 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background:
+    linear-gradient(90deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.62) 45%, rgba(11,13,16,0.15) 80%),
+    linear-gradient(0deg, rgba(11,13,16,0.75) 0%, rgba(11,13,16,0) 45%),
+    url("assets/photo/workspace-reflection.webp") 60% 50% / cover no-repeat;
+}
+.co-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9FA7; }
+.co-hero h1 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; max-width: 900px; }
+.co-hero p.sub { margin: 0; font-size: 1.15rem; line-height: 1.55; color: #B9BCC0; max-width: 640px; }
+.co-avail {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  font-size: 0.95rem; color: #ECEDEF;
+  border: 1px solid rgba(236,237,239,0.28); border-radius: 4px;
+  padding: 0.6rem 0.9rem; align-self: flex-start;
+  background: rgba(11,13,16,0.4);
+}
+.co-avail i { width: 6px; height: 6px; border-radius: 999px; background: var(--web-mood, #2EE59D); flex: none; }
+@media (max-width: 720px) {
+  .co-hero {
+    padding: 3.5rem 1.25rem 2.5rem;
+    gap: 1rem;
+    min-height: 560px;
+    background:
+      linear-gradient(0deg, rgba(11,13,16,0.92) 0%, rgba(11,13,16,0.7) 55%, rgba(11,13,16,0.25) 100%),
+      url("assets/photo/workspace-reflection.webp") 78% 50% / cover no-repeat;
+  }
+  .co-hero p.sub { font-size: 1.05rem; }
+  .co-avail { font-size: 0.85rem; align-self: stretch; }
+}
+
+/* Abschnitt (allgemein, dunkel) */
+.co-sec { padding: 6rem 2.5rem; border-top: 1px solid #262B33; }
+.co-sec h2 { margin: 0 0 2rem; font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -0.025em; font-weight: 600; }
+.co-sec .wide { max-width: 1280px; margin: 0 auto; }
+@media (max-width: 720px) { .co-sec { padding: 3.5rem 1.25rem; } .co-sec h2 { font-size: 1.75rem; margin-bottom: 1.25rem; } }
+
+/* Heller Abschnitt mit vier Punkten */
+.co-sec.light { background: #F7F8FA; color: #111317; border-top: 0; }
+.co-sec.light + .co-sec.light { border-top: 1px solid #DEE1E6; }
+.co-grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: #DEE1E6; border-top: 1px solid #DEE1E6; border-bottom: 1px solid #DEE1E6; }
+.co-grid4 > div { background: #F7F8FA; padding: 1.75rem 1.5rem 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.co-grid4 .n { font-family: var(--font-mono); font-size: 11px; color: #555A62; }
+.co-grid4 b { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.015em; }
+.co-grid4 p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: #555A62; }
+@media (max-width: 720px) { .co-grid4 { grid-template-columns: 1fr; } .co-grid4 > div { padding: 1.25rem 0; } }
+
+/* Beispiel (dunkel, mit skalierter Vorschau) */
+.co-ex { display: grid; grid-template-columns: minmax(0, 1fr) 720px; gap: 3rem; align-items: start; }
+.co-ex .intro { display: flex; flex-direction: column; gap: 1rem; }
+.co-ex h2 { margin: 0; }
+.co-ex p { margin: 0; font-size: 1.1rem; line-height: 1.6; color: #B9BCC0; }
+.co-frame { border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 1px #262B33; height: 470px; position: relative; }
+.co-frame > div { transform: scale(0.5); transform-origin: 0 0; width: 1440px; }
+@media (max-width: 980px) { .co-ex { grid-template-columns: 1fr; gap: 1.5rem; } .co-frame { height: 620px; } .co-frame > div { transform: scale(0.86); width: 390px; } }
+
+/* Beispiel: öffentliche geteilte Bewertung (dunkles Mini-Layout) */
+.co-pub { background: #0B0D10; color: #ECEDEF; display: flex; flex-direction: column; min-height: 900px; }
+.co-pub .ph1 { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 3rem; border-bottom: 1px solid #262B33; }
+.co-pub .wm { font-weight: 600; letter-spacing: -0.03em; font-size: 1.05rem; }
+.co-pub .wm i { font-style: normal; }
+.co-pub .wb { height: 40px; padding: 0 1.1rem; border-radius: 4px; background: #ECEDEF; color: #0B0D10; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; }
+.co-pub .wb.s { background: transparent; color: #ECEDEF; border: 1px solid #68707B; height: 36px; }
+.co-pub .pb { max-width: 1040px; padding: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.co-pub h1 { font-size: 2.75rem; letter-spacing: -0.035em; font-weight: 600; margin: 0; line-height: 1.08; }
+.co-pub .lb2 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9FA7; }
+.co-pub .dc { font-size: 0.95rem; line-height: 1.5; color: #9A9FA7; margin: 0; max-width: 680px; }
+.co-pub .g2 { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.co-pub .big { font: 500 1.75rem/1.1 var(--font-mono); letter-spacing: -0.02em; }
+.co-pub .kv { display: flex; flex-direction: column; }
+.co-pub .kv span { display: flex; justify-content: space-between; gap: 0.75rem; min-height: 36px; align-items: center; border-bottom: 1px solid #262B33; font-size: 0.9rem; }
+.co-pub .kv i { font-style: normal; color: #9A9FA7; }
+.co-pub .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 400; }
+.co-pub .au { display: flex; gap: 0.75rem; align-items: flex-start; }
+.co-pub .au .av { width: 40px; height: 40px; border-radius: 999px; background: #191D23; border: 1px solid #262B33; flex: none; }
+.co-pub .au b { font-weight: 500; }
+.co-pub .au p { margin: 2px 0 0; font-size: 0.85rem; color: #9A9FA7; line-height: 1.45; }
+.co-pub .lk { color: #ECEDEF; font-size: 0.85rem; text-decoration: underline; text-underline-offset: 3px; }
+.co-pub .inv { border-top: 1px solid #262B33; padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; }
+.co-pub .inv p { margin: 0; font-size: 0.95rem; color: #9A9FA7; }
+.co-pub .ff { font-size: 12px; color: #9A9FA7; padding: 1rem 3rem; border-top: 1px solid #262B33; }
+@media (max-width: 980px) {
+  .co-pub .pb { padding: 1.5rem; gap: 1.1rem; }
+  .co-pub h1 { font-size: 1.9rem; }
+  .co-pub .g2 { grid-template-columns: 1fr; gap: 1.5rem; }
+  .co-pub .inv { flex-direction: column; align-items: flex-start; padding: 1.25rem; }
+  .co-pub .ff { padding: 1rem 1.25rem; }
+  .co-pub .ph1 { padding: 0 1.25rem; }
+}
+
+/* Auswahl mit Kontakt */
+.co-sel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; }
+.co-sel .text { display: flex; flex-direction: column; gap: 0.75rem; }
+.co-sel p { margin: 0; font-size: 1.1rem; line-height: 1.6; color: #B9BCC0; max-width: 680px; }
+.co-sel .cta { height: 48px; padding: 0 1.5rem; border-radius: 4px; background: transparent; border: 1px solid #ECEDEF; color: #ECEDEF; font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; text-decoration: none; }
+.co-sel .cta:hover { background: #ECEDEF; color: #0B0D10; }
+@media (max-width: 720px) { .co-sel { grid-template-columns: 1fr; gap: 1.25rem; } }
+
+/* Hinweis zu Autor-Inhalten (an der linken Inhaltskante, direkt unter „Auswahl") */
+.co-note { font-size: 0.95rem; line-height: 1.6; color: #B9BCC0; max-width: 820px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV · GO:BETTER Shell -->
+<div class="gb-nav-wrap">
+  <div class="gb-nav">
+    <div class="gb-nav-left">
+      <a href="/" class="gb-wm gb-nav-wm" aria-label="GO:BETTER">
+        <span aria-hidden="true"><span class="k">G</span>O</span>
+        <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg>
+        <span aria-hidden="true">BETTER</span>
+      </a>
+      <div class="gb-nav-links">
+        <div class="gb-nav-item">
+          <a href="fair-value-pro.html">Fair Value Pro</a>
+          <div class="gb-nav-dropdown">
+            <a href="fair-value-pro/pro-mode.html">Pro-Modus</a>
+            <a href="fair-value-pro/daten-quelle.html">Daten-Quelle</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+        <a href="portfolio-tracker.html">Portfolio Tracker</a>
+        <a href="investment-planner.html">Investment Planner</a>
+      </div>
+    </div>
+    <div class="gb-nav-right">
+      <a href="plaene.html">Preise</a>
+      <a href="/akademie/">Akademie</a>
+      <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--primary gb-btn--m">Jetzt starten</a>
+      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
+    <a href="fair-value-pro.html">Fair Value Pro</a>
+    <a href="fair-value-pro/pro-mode.html" class="sub">↳ Pro-Modus</a>
+    <a href="fair-value-pro/daten-quelle.html" class="sub">↳ Daten-Quelle</a>
+    <a href="community.html" class="sub">↳ Community</a>
+    <a href="portfolio-tracker.html">Portfolio Tracker</a>
+    <a href="investment-planner.html">Investment Planner</a>
+    <a href="plaene.html">Preise</a>
+    <a href="/akademie/">Akademie</a>
+  </nav>
+</div>
+
+<main class="community">
+
+  <!-- Hero -->
+  <section class="co-hero">
+    <span class="co-eyebrow">Community</span>
+    <h1>Bewertungen, die man nachrechnen kann.</h1>
+    <p class="sub">Statt nur der Standard-Vorlagen: Vorlagen und Bewertungen von Autoren, mit allen Annahmen. Du übernimmst sie und rechnest mit deinen eigenen Daten nach.</p>
+    <span class="co-avail"><i></i>Die Community ist noch nicht für alle geöffnet. Wir schalten sie schrittweise frei.</span>
+  </section>
+
+  <!-- Für alle · Was du in der Community bekommst (hell) -->
+  <section class="co-sec light">
+    <div class="wide">
+      <span class="co-eyebrow" style="color:#555A62;">Für alle</span>
+      <h2 style="margin-top:0.75rem;">Was du in der Community bekommst</h2>
+      <div class="co-grid4">
+        <div>
+          <span class="n">01</span>
+          <b>Finden</b>
+          <p>Vorlagen und Bewertungen von Autoren, je Titel und je Autor. Jede mit Annahmen, Fairem Wert und Stand.</p>
+        </div>
+        <div>
+          <span class="n">02</span>
+          <b>Annahmen übernehmen</b>
+          <p>Mit einem Klick in deine Vorlagen. Wachstum, Kapitalkosten und Gewichte der Verfahren stehen danach in deinem Kalkulator.</p>
+        </div>
+        <div>
+          <span class="n">03</span>
+          <b>Mit eigenen Daten rechnen</b>
+          <p>GO:BETTER rechnet die Annahmen mit deinem Marktdaten-Schlüssel neu. Du siehst deinen Fairen Wert, nicht nur den des Autors.</p>
+        </div>
+        <div>
+          <span class="n">04</span>
+          <b>Selbst prüfen</b>
+          <p>Abweichungen zwischen beiden Ergebnissen sind sichtbar. Was davon für dich gilt, entscheidest du.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beispiel (dunkel, mit eingebetteter öffentlicher Bewertung) -->
+  <section class="co-sec">
+    <div class="wide co-ex">
+      <div class="intro">
+        <span class="co-eyebrow">Beispiel</span>
+        <h2>So sieht eine Bewertung in der Community aus.</h2>
+        <p>Annahmen, Fairer Wert mit Stand und das Profil des Autors. Keine Bilanzen, keine Kursverläufe. Mit „Selbst ausprobieren“ rechnest du nach.</p>
+      </div>
+      <div class="co-frame" aria-hidden="true">
+        <div>
+          <div class="co-pub" style="width: 1440px;">
+            <div class="ph1">
+              <span class="wm">GO<i style="color:#ECEDEF">:</i>BETTER</span>
+              <span class="wb s">Selbst ausprobieren</span>
+            </div>
+            <div class="pb">
+              <div style="display:flex; flex-direction:column; gap:0.5rem">
+                <span class="lb2">Bewertung · geteilt von Kapitalkompass</span>
+                <h1>Muster Industrie AG</h1>
+                <p class="dc">Inhalt von Kapitalkompass, nicht von GO:BETTER. Keine Anlageberatung.</p>
+              </div>
+              <div class="g2">
+                <div style="display:flex; flex-direction:column; gap:1rem">
+                  <div>
+                    <span class="lb2">Fairer Wert des Autors · Stand 28.10.2026</span>
+                    <div class="big">61,40 €</div>
+                  </div>
+                  <span class="lb2">Annahmen</span>
+                  <div class="kv">
+                    <span><i>WACC</i><b class="mono">8,5 %</b></span>
+                    <span><i>Wachstum Stufe 1</i><b class="mono">4,0 %</b></span>
+                    <span><i>Endwachstum</i><b class="mono">2,0 %</b></span>
+                    <span><i>Prognosejahre</i><b class="mono">5</b></span>
+                    <span><i>Gewichte</i><b class="mono">DCF 50 · KGV 25 · EV/EBITDA 25</b></span>
+                    <span><i>Deckel Wachstum</i><b class="mono">10,0 %</b></span>
+                  </div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:1rem">
+                  <span class="lb2">Autor</span>
+                  <div class="au">
+                    <span class="av"></span>
+                    <div>
+                      <b>Kapitalkompass</b>
+                      <p>Bewertet Industriewerte mit vorsichtigen Annahmen.</p>
+                      <span class="lk">kapitalkompass.example ↗</span>
+                    </div>
+                  </div>
+                  <span class="lb2">Beschreibung</span>
+                  <p style="margin:0; font-size:0.95rem; line-height:1.6">Vorsichtiges Wachstum, weil der Auftragseingang 2026 schwächer ist.</p>
+                </div>
+              </div>
+            </div>
+            <div class="inv">
+              <p>Mit GO:BETTER rechnest du solche Bewertungen selbst, mit deinen Annahmen und deinem eigenen Marktdaten-Schlüssel.</p>
+              <span class="wb">Selbst ausprobieren</span>
+            </div>
+            <div class="ff">GO:BETTER · Impressum · Datenschutz · Keine Anlageberatung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Für Autoren · Was du als Autor bekommst (hell) -->
+  <section class="co-sec light">
+    <div class="wide">
+      <span class="co-eyebrow" style="color:#555A62;">Für Autoren</span>
+      <h2 style="margin-top:0.75rem;">Was du als Autor bekommst</h2>
+      <div class="co-grid4">
+        <div>
+          <span class="n">01</span>
+          <b>Eigenes Profil</b>
+          <p>Anzeigename, ein Satz über dich und ein Link zu deinem Blog oder Kanal. Alle deine Veröffentlichungen an einem Ort.</p>
+        </div>
+        <div>
+          <span class="n">02</span>
+          <b>Öffentlicher Link</b>
+          <p>Jede Bewertung und jede Vorlage hat eine eigene Seite, ohne Konto lesbar. Zum Verlinken unter Videos und in Beiträgen.</p>
+        </div>
+        <div>
+          <span class="n">03</span>
+          <b>Annahmen statt Kursziel</b>
+          <p>Du zeigst, wie du rechnest: Wachstum, Kapitalkosten, Gewichte der Verfahren, dazu dein Fairer Wert mit Datum.</p>
+        </div>
+        <div>
+          <span class="n">04</span>
+          <b>Leser prüfen selbst</b>
+          <p>Wer deine Annahmen übernimmt, rechnet mit eigenen Daten nach. Abweichungen sind sichtbar, nicht versteckt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auswahl & Kontakt (dunkel) -->
+  <section class="co-sec">
+    <div class="wide co-sel">
+      <div class="text">
+        <span class="co-eyebrow">Auswahl</span>
+        <h2>Autoren wählt GO:BETTER aus.</h2>
+        <p>Eine Bewerbung gibt es noch nicht. Wenn du veröffentlichen möchtest, schreib uns, mit einem Link zu deinem Blog oder Kanal.</p>
+      </div>
+      <a class="cta" href="mailto:support@gobetter.trade?subject=Community%20—%20Anfrage">Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+  <!-- Hinweis zu Autor-Inhalten (direkt unter „Auswahl") -->
+  <section class="co-sec">
+    <div class="wide" style="display:flex; flex-direction:column; gap:1rem;">
+      <span class="co-eyebrow">Hinweis</span>
+      <p class="co-note">Inhalte von Autoren geben deren eigene Einschätzung wieder. Sie sind keine Anlageberatung, keine Anlageempfehlung und keine Aufforderung zum Kauf oder Verkauf von Wertpapieren. GO:BETTER prüft diese Inhalte nicht und macht sie sich nicht zu eigen.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER · GO:BETTER Shell -->
+<div class="gb-foot-wrap">
+  <div class="gb-foot">
+    <div class="gb-foot-bar" aria-hidden="true">
+      <span class="fvp"></span><span class="pt"></span><span class="td"></span>
+    </div>
+    <div class="gb-foot-links">
+      <a href="partner.html">Für Partner</a>
+      <a href="https://app.gobetter.trade/kuendigen">Verträge hier kündigen</a>
+      <a href="https://app.gobetter.trade/widerrufen">Vertrag widerrufen</a>
+      <a href="agb.html">AGB</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+    <span class="gb-foot-note">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen.<br><span style="opacity:0.75;">✱ Preise verstehen sich als Endpreise · Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.</span></span>
+  </div>
+</div>
+
+<script src="gb-shell.js" defer></script>
+</body>
+</html>
