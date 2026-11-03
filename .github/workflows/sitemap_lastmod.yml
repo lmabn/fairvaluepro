@@ -1,45 +1,35 @@
 name: Sitemap lastmod
 
-# Nach jedem Push auf main die lastmod-Werte in sitemap.xml automatisch
-# aus der Versionsgeschichte setzen (letzter Commit, der die jeweilige
-# Datei ändert). Keine sichtbare Wirkung — nur Datumspflege.
+# Prüft in jedem PR gegen main, dass die lastmod-Werte in sitemap.xml
+# mit dem letzten Commit übereinstimmen, der die jeweilige Datei
+# ändert. Pusht nichts — der Autor des PRs lässt vor dem Push
+# `python3 .github/workflows/sitemap_lastmod.py` lokal laufen und
+# committet sitemap.xml mit.
 
 on:
-  push:
+  pull_request:
     branches: [main]
     paths:
       - '**.html'
+      - 'sitemap.xml'
+      - '.github/workflows/sitemap_lastmod.py'
+      - '.github/workflows/sitemap_lastmod.yml'
   workflow_dispatch:
 
 concurrency:
   group: sitemap-lastmod-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  update:
-    # Nicht laufen, wenn der Commit selbst von diesem Workflow stammt
-    # (Marker im Commit-Titel).
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+  check:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
       - name: Checkout mit voller Historie
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: lastmod aus git log setzen
-        run: python3 .github/workflows/sitemap_lastmod.py
-
-      - name: Änderung committen und pushen
-        run: |
-          if git diff --quiet -- sitemap.xml; then
-            echo "sitemap.xml unverändert — nichts zu committen."
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add sitemap.xml
-          git commit -m 'chore(sitemap): lastmod automatisch aus Versionsgeschichte [skip ci]'
-          git push
+      - name: lastmod gegen Versionsgeschichte prüfen
+        run: python3 .github/workflows/sitemap_lastmod.py --check
