@@ -5,11 +5,16 @@ Für jede <url> wird der <loc> auf einen Pfad im Repo abgebildet und das
 Datum des letzten Commits bestimmt, der diese Datei geändert hat
 (git log -1 --format=%cs). Nur <lastmod>-Zeilen werden angefasst.
 
-Wenn sich nichts ändert, exit 0 ohne Datei-Schreibvorgang.
+Zwei Modi:
+  * default (ohne Flag): schreibt sitemap.xml bei Abweichung, exit 0
+    — zum lokalen Lauf vor dem Push.
+  * --check: schreibt nichts, exit 1 bei Abweichung — für den
+    PR-Workflow, der die Prüfung durchreicht statt zu pushen.
 """
 
 from __future__ import annotations
 
+import argparse
 import re
 import subprocess
 import sys
@@ -56,6 +61,14 @@ def git_last_change_date(path: Path) -> str | None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Nichts schreiben; exit 1 bei Abweichung (für PR-Prüfung).",
+    )
+    args = parser.parse_args()
+
     src = SITEMAP.read_text(encoding="utf-8")
 
     # Jede <url>-Gruppe durchlaufen; <loc> extrahieren, <lastmod> ersetzen.
@@ -104,6 +117,13 @@ def main() -> int:
             print(f"  {loc}")
 
     if new_src != src:
+        if args.check:
+            print(
+                "[sitemap-lastmod] FEHLER — sitemap.xml ist nicht aktuell. "
+                "Lokal 'python3 .github/workflows/sitemap_lastmod.py' laufen "
+                "lassen und das Ergebnis mit committen."
+            )
+            return 1
         SITEMAP.write_text(new_src, encoding="utf-8")
         print(f"[sitemap-lastmod] sitemap.xml neu geschrieben.")
         return 0
