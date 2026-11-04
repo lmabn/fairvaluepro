@@ -223,6 +223,7 @@ Bei jeder Preis- oder Plan-Änderung (Betrag, Features, Plan-Zuordnung einer Fun
 - `partner.html` — Vergleichstabelle, Abschnitt „Kalkulator kostenlos. Für mehr: MAX." mit Preis + Jahrespreis.
 - `agb.html` — § 3 Plan-Beschreibungen (GO/PRO/MAX), § 4 Verweis auf Preisseite. Keine Preisangabe hier, nur Plan-Namen und Leistungsumfang.
 - `llms.txt` — Zeile unter „## Preise" nennt GO, PRO, MAX, 9,99 € und den Anbieter-Zugang.
+- `index.html` — Abschnitt „Für wen": Kostenquote 0,35 % und Sternchen-Zeile (Basis: MAX + Ultimate mit 25 % Partner-Rabatt, jährliche Zahlung, Kurs wie `plaene.html`, Depot 250.000 €); bei jeder Preis- oder Kursänderung neu rechnen.
 
 Die Plan-Zuordnung einzelner Funktionen (Spalte „Ab Plan") steht in `docs/funktionsliste.md` — die Liste ist die Quelle, nicht ein weiterer Pflegeort. Website-Formulierungen werden daran gemessen.
 
