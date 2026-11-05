@@ -27,7 +27,7 @@
 .ak-modulnav a.active { color: var(--neon); border-color: var(--neon-border); background: var(--neon-dim); }
 .ak-modulnav a.upcoming { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 .ak-modulnav a.overview { color: var(--text-2); }
-.ak-modulnav-top { margin-top: 58px; }
+.ak-modulnav-top { margin-top: 0; }
 
 /* ── Content-Container ────────────────────────────────── */
 .ak-content { max-width: 960px; margin: 0 auto; padding: 5rem 2rem; }
