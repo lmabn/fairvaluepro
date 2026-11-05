@@ -101,6 +101,7 @@ p,h1,h2{margin:0}
 .nav__links{display:none}
 .nav__right{display:flex;align-items:center;gap:20px;margin-left:auto;font-size:14px;color:var(--mu)}
 .nav__right>a:not(.gb-btn){display:none}
+.nav__right .gb-btn{display:none}  /* Mobile/Tablet: Button nur im Burger-Menü-Fuß */
 .burger{flex:none;margin-left:0;margin-right:-12px;width:48px;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:none;border:0;color:var(--tx);cursor:pointer;padding:0}
 .burger span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 200ms var(--ease)}
 .is-menu-open .burger span:first-child{transform:translateY(3.75px) rotate(45deg)}
@@ -112,6 +113,7 @@ p,h1,h2{margin:0}
   .nav__links>a,.nav__links>.dd{display:flex;align-items:center}
   .nav__links a:hover{color:var(--tx)}
   .nav__right>a:not(.gb-btn){display:flex}
+  .nav__right .gb-btn{display:inline-flex}
   .nav__right>a:not(.gb-btn):hover{color:var(--tx)}
 }
 .dd{position:relative;align-self:stretch}
