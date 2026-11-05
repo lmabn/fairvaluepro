@@ -224,6 +224,7 @@ Bei jeder Preis- oder Plan-Änderung (Betrag, Features, Plan-Zuordnung einer Fun
 - `agb.html` — § 3 Plan-Beschreibungen (GO/PRO/MAX), § 4 Verweis auf Preisseite. Keine Preisangabe hier, nur Plan-Namen und Leistungsumfang.
 - `llms.txt` — Zeile unter „## Preise" nennt GO, PRO, MAX, 9,99 € und den Anbieter-Zugang.
 - `index.html` — Abschnitt „Für wen": Kostenquote 0,35 % und Sternchen-Zeile (Basis: MAX + Ultimate mit 25 % Partner-Rabatt, jährliche Zahlung, Kurs wie `plaene.html`, Depot 250.000 €); bei jeder Preis- oder Kursänderung neu rechnen.
+- `agb.html` — **Stand-Datum** („Stand: TT.MM.JJJJ“): Jede AGB-Änderung zieht im App-Repo `plans.AGB_STAND` (plans.py) im selben Zug mit — die App speichert diesen Stand beim Kauf. Erst den App-PR, dann diese Seite; der Test `agb_stand_test` im App-Repo prüft beide gegeneinander (Ludmila 05.11.2026, Go Live Plan 4.13).
 
 Die Plan-Zuordnung einzelner Funktionen (Spalte „Ab Plan") steht in `docs/funktionsliste.md` — die Liste ist die Quelle, nicht ein weiterer Pflegeort. Website-Formulierungen werden daran gemessen.
 
