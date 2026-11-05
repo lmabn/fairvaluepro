@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="web.css">
 <link rel="stylesheet" href="gb-shell.css">
+<link rel="stylesheet" href="/assets/nav-shell.css">
 <title>Community · GO:BETTER</title>
 <style>
 /* Seitenlayout — Community · Entwurf 01.11.2026 */
@@ -215,46 +216,43 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
 <body>
 
 <!-- NAV · GO:BETTER Shell -->
-<div class="gb-nav-wrap">
-  <div class="gb-nav">
-    <div class="gb-nav-left">
-      <a href="/" class="gb-wm gb-nav-wm" aria-label="GO:BETTER">
-        <span aria-hidden="true"><span class="k">G</span>O</span>
-        <svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg>
-        <span aria-hidden="true">BETTER</span>
-      </a>
-      <div class="gb-nav-links">
-        <div class="gb-nav-item">
-          <a href="fair-value-pro.html">Fair Value Pro</a>
-          <div class="gb-nav-dropdown">
-            <a href="fair-value-pro/pro-mode.html">Pro-Modus</a>
-            <a href="fair-value-pro/daten-quelle.html">Daten-Quelle</a>
-            <a href="community.html">Community</a>
-          </div>
-        </div>
-        <a href="portfolio-tracker.html">Portfolio Tracker</a>
-        <a href="investment-planner.html">Investment Planner</a>
+
+
+<header class="site-nav">
+  <div class="site-nav__in">
+    <a class="wm" href="/" aria-label="GO:BETTER Startseite"><span>GO</span><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5" fill="#ECEDEF"/><circle cx="15" cy="58" r="13" fill="#ECEDEF"/></svg><span>BETTER</span></a>
+    <nav class="site-nav__links" aria-label="Produkte">
+      <div class="dd" id="dd-fvp">
+        <button class="dd__trigger" aria-haspopup="menu" aria-expanded="false">Fair Value Pro<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        <ul class="dd__menu" role="menu">
+          <li><a class="dd__item" role="menuitem" href="/fair-value-pro/pro-mode.html">Pro-Modus</a></li>
+          <li><a class="dd__item" role="menuitem" href="/fair-value-pro/daten-quelle.html">Daten-Quelle</a></li>
+          <li><a class="dd__item is-current" role="menuitem" href="/community.html">Community</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="gb-nav-right">
-      <a href="plaene.html">Preise</a>
-      <a href="/akademie/">Akademie</a>
-      <a href="https://app.gobetter.trade/fairvalue" class="gb-btn gb-btn--primary gb-btn--m">Jetzt starten</a>
-      <button class="gb-nav-burger" id="gb-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="gb-mobile-menu">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
+      <a class="nav-link" href="/portfolio-tracker.html">Portfolio Tracker</a>
+      <a class="nav-link" href="/investment-planner.html">Investment Planner</a>
+    </nav>
+    <div class="site-nav__right">
+      <a class="nav-link" href="/plaene.html">Preise</a>
+      <a class="nav-link" href="/akademie/">Akademie</a>
+      <a class="nav-btn" href="https://app.gobetter.trade/fairvalue">Jetzt starten</a>
+      <button class="burger" aria-label="Menü" aria-expanded="false" aria-controls="site-mmenu"><span></span><span></span></button>
     </div>
   </div>
-  <nav class="gb-nav-mobile" id="gb-mobile-menu" aria-label="Mobile Navigation">
-    <a href="fair-value-pro.html">Fair Value Pro</a>
-    <a href="fair-value-pro/pro-mode.html" class="sub">↳ Pro-Modus</a>
-    <a href="fair-value-pro/daten-quelle.html" class="sub">↳ Daten-Quelle</a>
-    <a href="community.html" class="sub">↳ Community</a>
-    <a href="portfolio-tracker.html">Portfolio Tracker</a>
-    <a href="investment-planner.html">Investment Planner</a>
-    <a href="plaene.html">Preise</a>
-    <a href="/akademie/">Akademie</a>
-  </nav>
+</header>
+
+<div class="site-mmenu" id="site-mmenu">
+  <div class="site-mmenu__in">
+    <div class="mm-acc" id="mm-fvp">
+      <div class="mm-item"><a  href="/fair-value-pro.html">Fair Value Pro</a><button class="mm-acc__btn" aria-expanded="false" aria-label="Unterseiten Fair Value Pro"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button></div>
+      <div class="mm-sub"><a  href="/fair-value-pro/pro-mode.html">Pro-Modus</a><a  href="/fair-value-pro/daten-quelle.html">Daten-Quelle</a><a class="is-current" href="/community.html">Community</a></div>
+    </div>
+    <a class="mm-item" href="/portfolio-tracker.html">Portfolio Tracker</a>
+    <a class="mm-item" href="/investment-planner.html">Investment Planner</a>
+    <div class="mm-secondary"><a  href="/plaene.html">Preise</a><a  href="/akademie/">Akademie</a></div>
+    <div class="mm-cta"><a class="nav-btn nav-btn--l" href="https://app.gobetter.trade/fairvalue">Jetzt starten</a></div>
+  </div>
 </div>
 
 <main class="community">
@@ -504,23 +502,18 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
 </main>
 
 <!-- FOOTER · GO:BETTER Shell -->
-<div class="gb-foot-wrap">
-  <div class="gb-foot">
-    <div class="gb-foot-bar" aria-hidden="true">
-      <span class="fvp"></span><span class="pt"></span><span class="td"></span>
-    </div>
-    <div class="gb-foot-links">
-      <a href="partner.html">Für Partner</a>
-      <a href="https://app.gobetter.trade/kuendigen">Verträge hier kündigen</a>
-      <a href="https://app.gobetter.trade/widerrufen">Vertrag widerrufen</a>
-      <a href="agb.html">AGB</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="impressum.html">Impressum</a>
-    </div>
-    <span class="gb-foot-note">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen.<br><span style="opacity:0.75;">✱ Preise verstehen sich als Endpreise · Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.</span></span>
-  </div>
-</div>
+
 
 <script src="gb-shell.js" defer></script>
+<script src="/assets/nav-shell.js" defer></script>
+
+<footer class="site-foot">
+  <div class="site-foot__in">
+    <div class="site-foot__bar" aria-hidden="true"><i style="background:#2EE59D"></i><i style="background:#F0B42A"></i><i style="background:#5B8CFF"></i></div>
+    <nav class="site-foot__links" aria-label="Footer"><a href="/partner.html">Für Partner</a><a href="https://app.gobetter.trade/kuendigen">Verträge hier kündigen</a><a href="https://app.gobetter.trade/widerrufen">Vertrag widerrufen</a><a href="/agb.html">AGB</a><a href="/datenschutz.html">Datenschutz</a><a href="/impressum.html">Impressum</a></nav>
+    <p class="site-foot__note"><span class="site-foot__strong">Keine Anlageberatung. Alle Ergebnisse beruhen auf deinen eigenen Annahmen.</span> · Bildmotive KI-generiert.<br>✱ Preise verstehen sich als Endpreise · Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.</p>
+  </div>
+</footer>
+
 </body>
 </html>
