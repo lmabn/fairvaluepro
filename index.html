@@ -295,6 +295,83 @@ p,h1,h2{margin:0}
 @media (min-width:720px){ .proof__in{gap:48px} .proof__grid{max-width:680px} .proof blockquote{font-size:20px} .proof figure{gap:24px;padding-top:28px} .proof__stars{font-size:14px} }
 @media (min-width:1100px){ .proof__in{gap:56px} .proof__grid{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px} }
 
+/* Akademie (neu 05.11.2026, vor „Community") */
+.ak{background:var(--s1);border-top:1px solid var(--bd)}
+.ak__in{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+.ak__head{display:flex;flex-direction:column;gap:20px}
+.ak__label{font-size:11px;color:var(--mu)}
+.ak__lead{margin:0;font-size:17px;line-height:1.55;color:var(--t2);max-width:560px;text-wrap:pretty}
+.ak__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--bd)}
+.ak__list li{border-bottom:1px solid var(--bd)}
+.ak__list li a{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:12px;row-gap:4px;align-items:baseline;padding:14px 0;color:inherit;text-decoration:none;transition:background-color 120ms var(--ease)}
+.ak__list li a:hover{background-color:var(--s2)}
+.ak__list i{grid-row:1/3;font-style:normal;font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:var(--mu)}
+.ak__list b{font-size:16px;font-weight:500;letter-spacing:-.01em;line-height:1.35}
+.ak__list span{display:none;font-size:15px;line-height:1.5;color:var(--mu);text-wrap:pretty}
+.ak__foot{display:flex}
+@media (min-width:720px){
+  .ak__label{font-size:12px}
+  .ak__lead{font-size:19px}
+  .ak__list li a{grid-template-columns:48px minmax(0,1fr);padding:18px 0}
+  .ak__list b{font-size:19px}
+  .ak__list span{display:block;grid-column:2}
+}
+@media (min-width:1100px){
+  .ak__in{grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:96px;row-gap:48px;align-items:start}
+  .ak__list{grid-column:1;grid-row:1/3}
+  .ak__list li a{grid-template-columns:48px minmax(0,5fr) minmax(0,6fr);column-gap:24px}
+  .ak__list i{grid-row:auto}
+  .ak__list span{grid-column:3;font-size:14px}
+  .ak__head{grid-column:2;grid-row:1}
+  .ak__foot{grid-column:2;grid-row:2}
+}
+
+/* Community (neu 05.11.2026, zwischen „Selbst anlegen" und „Für wen") */
+.cm{border-top:1px solid var(--bd)}
+.cm__in{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
+.cm__head{display:flex;flex-direction:column;gap:20px}
+.cm__label{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--mu)}
+.cm__beta{display:inline-flex;align-items:center;height:20px;padding:0 7px;border:1px solid var(--bd);border-radius:2px;font-family:'Geist Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#ECEDEF}
+.cm__lead{margin:0;font-size:17px;line-height:1.55;color:var(--t2);max-width:560px;text-wrap:pretty}
+.cm__foot{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.cm__foot p{margin:0;font-size:15px;line-height:1.55;color:var(--t2);max-width:520px;text-wrap:pretty}
+.cv{background:var(--s1);border:1px solid var(--bd);border-top:3px solid #2EE59D;border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 64px rgba(0,0,0,.4)}
+.cv__top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cv__t{font-size:17px;font-weight:500;letter-spacing:-.01em}
+.cv__by{font-size:13px;color:var(--mu)}
+.cv__by b{font-weight:500;color:var(--t2)}
+.cv__sc{display:flex;flex-direction:column;gap:10px}
+.cv__sc>.mono{font-size:11px;color:var(--mu)}
+.cv__scg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:2px;overflow:hidden}
+.cv__scg>div{display:flex;flex-direction:column;gap:4px;padding:10px 12px;background:var(--s1)}
+.cv__scg>div.is-base{background:var(--s2)}
+.cv__scg span{font-size:12px;color:var(--mu)}
+.cv__scg b{font-family:'Geist Mono',ui-monospace,monospace;font-size:15px;font-weight:500;font-variant-numeric:tabular-nums}
+.cv__fw{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.cv__fw .mono{font-size:11px;color:var(--mu)}
+.cv__fw b{font-family:'Geist Mono',ui-monospace,monospace;font-size:36px;font-weight:500;letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums}
+.cv__fw span{font-size:13px;color:var(--t2)}
+.cv__rows{display:flex;flex-direction:column}
+.cv__row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--bd);font-size:13px}
+.cv__row:first-child{border-top:0;padding-top:0}
+.cv__row span:first-child{color:var(--mu)}
+.cv__row span:last-child{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.cv__src{font-family:'Geist Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.04em;color:var(--mu)}
+@media (min-width:720px){
+  .cm__label{font-size:12px}
+  .cm__lead{font-size:19px}
+  .cv{padding:28px;gap:20px;max-width:560px}
+  .cv__fw b{font-size:48px}
+  .cv__row{font-size:14px}
+}
+@media (min-width:1100px){
+  .cm__in{grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:96px;row-gap:64px;align-items:start}
+  .cm__head{grid-column:1;grid-row:1}
+  .cm__card{grid-column:2;grid-row:1/3}
+  .cm__foot{grid-column:1;grid-row:2;align-self:end}
+  .cv{max-width:none}
+}
+
 /* Für wen */
 .zg{background:var(--s1);border-top:1px solid var(--bd)}
 .zg__in{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
@@ -512,6 +589,56 @@ p,h1,h2{margin:0}
   </div>
 </section>
 
+<section class="sec ak">
+  <div class="wrap ak__in">
+    <div class="ak__head">
+      <div class="mono ak__label">Akademie</div>
+      <h2 class="h2">Urteilsfähigkeit statt Signale.</h2>
+      <p class="ak__lead">Acht kostenlose Lernmodule, von den Grundlagen über Fundamental- und Chartanalyse bis zur eigenen Strategie. Prozess vor Ergebnis, Wahrscheinlichkeit vor Prognose, Risiko vor Rendite.</p>
+    </div>
+    <ol class="ak__list">
+      <li><a href="akademie/modul-01-grundlagen.html"><i>01</i><b>Grundlagen erfolgreicher Aktienhändler</b><span>Wie funktioniert der Markt, gegen den ich handle?</span></a></li>
+      <li><a href="akademie/modul-02-fundamentalanalyse.html"><i>02</i><b>Fundamentalanalyse</b><span>Was ist das Unternehmen wert?</span></a></li>
+      <li><a href="akademie/modul-03-chartanalyse.html"><i>03</i><b>Chartanalyse</b><span>Was sagt mir der Kursverlauf — und was nicht?</span></a></li>
+      <li><a href="akademie/modul-04-einstieg.html"><i>04</i><b>Den richtigen Einstieg finden</b><span>Wie verbinde ich Wert und Zeitpunkt?</span></a></li>
+      <li><a href="akademie/modul-05-risikomanagement.html"><i>05</i><b>Risikomanagement</b><span>Wie überlebe ich eine Serie von Fehlern?</span></a></li>
+      <li><a href="akademie/modul-06-verkaufsstrategien.html"><i>06</i><b>Verkaufsstrategien</b><span>Wann ist eine These beendet?</span></a></li>
+      <li><a href="akademie/modul-07-psychologie.html"><i>07</i><b>Trading-Psychologie</b><span>Wie schalte ich meinen größten Gegner aus?</span></a></li>
+      <li><a href="akademie/modul-08-strategie.html"><i>08</i><b>Eigene Strategie entwickeln</b><span>Wie wird daraus ein wiederholbares System?</span></a></li>
+    </ol>
+    <div class="ak__foot"><a class="gb-btn gb-btn--secondary gb-btn--l" href="/akademie/">Zur Akademie</a></div>
+  </div>
+</section>
+
+<section class="sec cm">
+  <div class="wrap cm__in">
+    <div class="cm__head">
+      <div class="mono cm__label">Community <span class="cm__beta">Betatest</span></div>
+      <h2 class="h2">Teile deine Bewertung.<br>Prüfe die der anderen.</h2>
+      <p class="cm__lead">Veröffentliche deine Bewertung mit allen Annahmen. Bewertungen anderer übernimmst du in deinen Kalkulator und rechnest sie mit deinen eigenen Daten nach.</p>
+    </div>
+    <div class="cm__card">
+      <article class="cv" aria-label="Beispiel-Bewertung">
+        <div class="cv__top"><span class="cv__t">Muster Industrie AG</span><span class="cv__by">geteilt von <b>Kapitalkompass</b></span></div>
+        <div class="cv__fw"><span class="mono">Fairer Wert</span><b>61,40 €</b><span>Autor hält den Titel: ja · Stand 28.10.2026</span></div>
+        <div class="cv__sc"><span class="mono">Szenarien</span><div class="cv__scg"><div><span>Bär</span><b>48,20 €</b></div><div class="is-base"><span>Basis</span><b>63,80 €</b></div><div><span>Bulle</span><b>79,10 €</b></div></div></div>
+        <div class="cv__rows">
+          <div class="cv__row"><span>WACC</span><span>8,5 %</span></div>
+          <div class="cv__row"><span>Wachstum Stufe 1</span><span>4,0 %</span></div>
+          <div class="cv__row"><span>Endwachstum</span><span>2,0 %</span></div>
+          <div class="cv__row"><span>Prognosejahre</span><span>5</span></div>
+          <div class="cv__row"><span>Gewichte</span><span>DCF 50 · KGV 25 · EV/EBITDA 25</span></div>
+        </div>
+        <span class="cv__src">Financial Data Derived from FMP API</span>
+      </article>
+    </div>
+    <div class="cm__foot">
+      <p>Für Autoren: ein eigenes Profil und für jede Bewertung ein öffentlicher Link.</p>
+      <a class="gb-btn gb-btn--secondary gb-btn--l" href="community.html">Community ansehen</a>
+    </div>
+  </div>
+</section>
+
 <section class="sec zg">
   <div class="wrap zg__in">
     <div class="zg__head">
@@ -520,7 +647,7 @@ p,h1,h2{margin:0}
       <p class="zg__lead">GO:BETTER ist für Anleger, die größere Vermögen selbst führen und jede Position fundamental begründen wollen.</p>
     </div>
     <ol class="zg__list">
-      <li><i>01</i><b>Du rechnest selbst.</b><span>Der Faire Wert entsteht aus deinen Zahlen, nicht aus einer Blackbox.</span></li>
+      <li><i>01</i><b>Du rechnest selbst.</b><span>Jede Annahme ist sichtbar und änderbar. Der Faire Wert entsteht aus deinen Zahlen, nicht aus einer Blackbox.</span></li>
       <li><i>02</i><b>Du denkst in Jahren.</b><span>Bewertung, Bestand und Entscheidung für langfristige Anlagen. Kein Daytrading, keine Signale.</span></li>
       <li><i>03</i><b>Du liest Kennzahlen.</b><span>Umsatz, Marge, Free Cashflow und Verschuldung zählen für dich mehr als der Kurs von heute.</span></li>
     </ol>
@@ -549,17 +676,17 @@ p,h1,h2{margin:0}
     <div class="proof__grid">
       <figure>
         <div class="proof__stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
-        <blockquote>„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert."</blockquote>
+        <blockquote>„Endlich kann ich eine Aktie in zwei Minuten bewerten — und vor allem verstehen, warum ich zu welchem Preis kaufe. Das hat mein Investmentverhalten komplett verändert.“</blockquote>
         <figcaption><span>Marc S.</span><span>Bankkaufmann &amp; Privatanleger · Duisburg</span></figcaption>
       </figure>
       <figure>
         <div class="proof__stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
-        <blockquote>„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will."</blockquote>
+        <blockquote>„Der Unterschied zu anderen Tools: Ich sehe genau, welche Annahmen hinter dem fairen Wert stecken. Das ist ehrlich und entspricht dem, wie ich selbst denken will.“</blockquote>
         <figcaption><span>Moritz M.</span><span>Betriebswirt &amp; Privatanleger · Berlin</span></figcaption>
       </figure>
       <figure>
         <div class="proof__stars" role="img" aria-label="4 von 5 Sternen">★★★★☆</div>
-        <blockquote>„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Dass der Portfolio Tracker meine echte Rendite cashflowbereinigt zeigt, hat Klarheit in mein Depot gebracht. Genau das wollte ich."</blockquote>
+        <blockquote>„Ich habe aufgehört, blind Empfehlungen zu folgen — ich bewerte jetzt selbst. Dass der Portfolio Tracker meine echte Rendite cashflowbereinigt zeigt, hat Klarheit in mein Depot gebracht. Genau das wollte ich.“</blockquote>
         <figcaption><span>Andrej P.</span><span>Unternehmer · Bielefeld</span></figcaption>
       </figure>
     </div>
@@ -621,9 +748,9 @@ p,h1,h2{margin:0}
     };
     document.querySelectorAll('.hero h1, .h2, .cta__t b').forEach(function (el) { lines(el, el.matches('.hero h1') ? 150 : 0); });
     document.querySelectorAll('.hero__label, .hero__sub, .hero .btns, .hero__hint, .strip').forEach(function (el, i) { el.classList.add('rv'); el.style.transitionDelay = (450 + i * 90) + 'ms'; });
-    document.querySelectorAll('.zg h2, .zg__lead, .zg__list li, .zg__price, .lead, .body, .idea__go, .self__p, .pr, .panel, .proof figure, .cta__t > span, .cta .btns').forEach(function (el) { el.classList.add('rv'); });
+    document.querySelectorAll('.ak__lead, .ak__list li, .ak__foot, .cm__lead, .cm__card, .cm__foot, .zg h2, .zg__lead, .zg__list li, .zg__price, .lead, .body, .idea__go, .self__p, .pr, .panel, .proof figure, .cta__t > span, .cta .btns').forEach(function (el) { el.classList.add('rv'); });
     document.querySelectorAll('.chain > *').forEach(function (el, i) { el.style.transitionDelay = (i * 120) + 'ms'; });
-    [['.panel', 100], ['.pr', 90], ['.zg__list li', 110], ['.proof figure', 120]].forEach(function (g) { document.querySelectorAll(g[0]).forEach(function (el, i) { el.style.transitionDelay = (i * g[1]) + 'ms'; }); });
+    [['.panel', 100], ['.pr', 90], ['.ak__list li', 60], ['.zg__list li', 110], ['.proof figure', 120]].forEach(function (g) { document.querySelectorAll(g[0]).forEach(function (el, i) { el.style.transitionDelay = (i * g[1]) + 'ms'; }); });
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } }); }, { threshold: .2, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.hero h1, .h2, .cta__t b, .rv, .chain').forEach(function (el) { io.observe(el); });
     document.querySelector('.hero h1').classList.add('is-in');
