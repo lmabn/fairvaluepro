@@ -8,12 +8,11 @@ In dieser Sitzung schreibt **Ludmila**, nicht Pierre. Frühere Aufträge an „P
 
 - Entwicklung erfolgt auf dem vorgegebenen `claude/<task>`-Branch.
 - **Am Ende jeder Aufgabe** automatisch:
-  1. **Vor dem Push, wenn Seiten geändert wurden**: `python3 .github/workflows/sitemap_lastmod.py` lokal laufen lassen — aktualisiert `lastmod` in `sitemap.xml` aus dem letzten Commit, der die jeweilige Datei ändert. Die aktualisierte `sitemap.xml` mit committen (wie `scripts/audit-fmp.sh` bei FMP-Touches).
-  2. Branch nach `origin` pushen
-  3. Pull Request gegen `main` öffnen (via `mcp__github__create_pull_request`)
-  4. Auto-Merge aktivieren (via `mcp__github__enable_pr_auto_merge`, `merge_method: squash`)
-- Der Workflow „Sitemap lastmod" prüft im PR dasselbe (`--check`) und schlägt fehl, wenn die Datei nicht nachgezogen ist. Er pusht nichts; die Repository-Regel lehnt direktes Pushen auf `main` ab (GH013).
-- Direkter Push auf `main` ist serverseitig blockiert (HTTP 403) — immer den PR-Weg gehen.
+  1. Branch nach `origin` pushen
+  2. Pull Request gegen `main` öffnen (via `mcp__github__create_pull_request`)
+  3. Auto-Merge aktivieren (via `mcp__github__enable_pr_auto_merge`, `merge_method: squash`)
+- Der Workflow „Sitemap lastmod" aktualisiert `sitemap.xml` im PR selbst und pusht die Änderung als eigenen Bot-Commit auf den PR-Branch. **Keine Pflicht, das Skript vorher lokal zu laufen** — wer will, kann es weiter tun (Pfad: `python3 .github/workflows/sitemap_lastmod.py`), spart aber nur die eine zusätzliche Workflow-Runde. Loop-Schutz: der Bot-Commit berührt nur `sitemap.xml`, triggert den Workflow also nicht erneut, und trägt zur Sicherheit `[skip ci]`.
+- Direkter Push auf `main` ist serverseitig blockiert (HTTP 403) — immer den PR-Weg gehen; die Repository-Regel lehnt direktes Pushen auf `main` ab (GH013).
 - Keine zusätzliche Bestätigung für PR-Erstellung nötig; der Auto-Merge ist die User-Default-Präferenz.
 
 ## Pages-Deploy-Check nach Merge

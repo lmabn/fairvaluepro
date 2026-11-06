@@ -1,17 +1,24 @@
 name: Sitemap lastmod
 
-# Prüft in jedem PR gegen main, dass die lastmod-Werte in sitemap.xml
-# mit dem letzten Commit übereinstimmen, der die jeweilige Datei
-# ändert. Pusht nichts — der Autor des PRs lässt vor dem Push
-# `python3 .github/workflows/sitemap_lastmod.py` lokal laufen und
-# committet sitemap.xml mit.
+# Läuft bei jedem PR gegen main, aktualisiert sitemap.xml selbst
+# (lastmod je URL = Datum des letzten Commits, der die zugehörige
+# Datei ändert) und pusht die Änderung als eigener Commit zurück
+# auf den PR-Branch. Kein lokaler Vorlauf nötig.
+#
+# Loop-Schutz:
+#   - paths-Filter umfasst sitemap.xml NICHT, nur .html und die
+#     Workflow-Dateien selbst — ein reiner sitemap.xml-Commit
+#     löst den Workflow nicht erneut aus.
+#   - Zusätzlich [skip ci] im Commit-Titel (GitHub-Convention,
+#     verhindert jede Workflow-Kettenreaktion).
+#   - Fork-PRs können nicht auf den Head-Branch pushen; der Job
+#     wird dort übersprungen.
 
 on:
   pull_request:
     branches: [main]
     paths:
       - '**.html'
-      - 'sitemap.xml'
       - '.github/workflows/sitemap_lastmod.py'
       - '.github/workflows/sitemap_lastmod.yml'
   workflow_dispatch:
@@ -21,15 +28,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  update:
+    # Nur für PRs aus diesem Repo (Forks können nicht pushen).
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
-      - name: Checkout mit voller Historie
-        uses: actions/checkout@v4
+      - name: Checkout PR-Branch mit voller Historie
+        uses: actions/checkout@v5
         with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
           fetch-depth: 0
 
-      - name: lastmod gegen Versionsgeschichte prüfen
-        run: python3 .github/workflows/sitemap_lastmod.py --check
+      - name: lastmod aus Versionsgeschichte setzen
+        run: python3 .github/workflows/sitemap_lastmod.py
+
+      - name: Änderung committen und pushen
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "sitemap.xml unverändert — nichts zu committen."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sitemap.xml
+          git commit -m 'chore(sitemap): lastmod automatisch aus Versionsgeschichte [skip ci]'
+          git push
