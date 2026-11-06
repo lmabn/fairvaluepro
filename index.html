@@ -747,7 +747,8 @@ p,h1,h2{margin:0}
       el.innerHTML = parts.map(function (p, i) { return '<span class="ln"><i style="transition-delay:' + ((base || 0) + i * 110) + 'ms">' + p.trim() + '</i></span>'; }).join('');
     };
     document.querySelectorAll('.hero h1, .h2, .cta__t b').forEach(function (el) { lines(el, el.matches('.hero h1') ? 150 : 0); });
-    document.querySelectorAll('.hero__label, .hero__sub, .hero .btns, .hero__hint, .strip').forEach(function (el, i) { el.classList.add('rv'); el.style.transitionDelay = (450 + i * 90) + 'ms'; });
+    document.querySelectorAll('.hero__label, .hero__sub, .hero .btns, .hero__hint').forEach(function (el, i) { el.classList.add('rv'); el.style.transitionDelay = (200 + i * 70) + 'ms'; });
+    document.querySelectorAll('.strip a').forEach(function (el, i) { el.classList.add('rv'); el.style.transitionDelay = (480 + i * 90) + 'ms'; });
     document.querySelectorAll('.ak__lead, .ak__list li, .ak__foot, .cm__lead, .cm__card, .cm__foot, .zg h2, .zg__lead, .zg__list li, .zg__price, .lead, .body, .idea__go, .self__p, .pr, .panel, .proof figure, .cta__t > span, .cta .btns').forEach(function (el) { el.classList.add('rv'); });
     document.querySelectorAll('.chain > *').forEach(function (el, i) { el.style.transitionDelay = (i * 120) + 'ms'; });
     [['.panel', 100], ['.pr', 90], ['.ak__list li', 60], ['.zg__list li', 110], ['.proof figure', 120]].forEach(function (g) { document.querySelectorAll(g[0]).forEach(function (el, i) { el.style.transitionDelay = (i * g[1]) + 'ms'; }); });
