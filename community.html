@@ -111,10 +111,14 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
 .co-ex p { margin: 0; font-size: 1.1rem; line-height: 1.6; color: #B9BCC0; }
 .co-frame { border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 1px #262B33; height: 470px; position: relative; }
 .co-frame > div { transform: scale(0.5); transform-origin: 0 0; width: 1440px; }
-@media (max-width: 980px) { .co-ex { grid-template-columns: 1fr; gap: 1.5rem; } .co-frame { height: 620px; } .co-frame > div { transform: scale(0.86); width: 390px; } }
+@media (max-width: 980px) {
+  .co-ex { grid-template-columns: 1fr; gap: 1.5rem; }
+  .co-frame { height: auto; }
+  .co-frame > div { transform: none; width: 100%; }
+}
 
 /* Beispiel: öffentliche geteilte Bewertung (dunkles Mini-Layout) */
-.co-pub { background: #0B0D10; color: #ECEDEF; display: flex; flex-direction: column; min-height: 900px; }
+.co-pub { background: #0B0D10; color: #ECEDEF; display: flex; flex-direction: column; min-height: 900px; width: 100%; box-sizing: border-box; }
 .co-pub .ph1 { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 3rem; border-bottom: 1px solid #262B33; }
 .co-pub .wm { font-weight: 600; letter-spacing: -0.03em; font-size: 1.05rem; }
 .co-pub .wm i { font-style: normal; }
@@ -139,12 +143,14 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
 .co-pub .inv p { margin: 0; font-size: 0.95rem; color: #9A9FA7; }
 .co-pub .ff { font-size: 12px; color: #9A9FA7; padding: 1rem 3rem; border-top: 1px solid #262B33; }
 @media (max-width: 980px) {
+  .co-pub { min-height: 0; }
   .co-pub .pb { padding: 1.5rem; gap: 1.1rem; }
   .co-pub h1 { font-size: 1.9rem; }
   .co-pub .g2 { grid-template-columns: 1fr; gap: 1.5rem; }
   .co-pub .inv { flex-direction: column; align-items: flex-start; padding: 1.25rem; }
   .co-pub .ff { padding: 1rem 1.25rem; }
   .co-pub .ph1 { padding: 0 1.25rem; }
+  .co-pub .kv span { flex-wrap: wrap; row-gap: 2px; }
 }
 
 /* Öffentlicher Link — Drei-Schritte-Ablauf + Leseransicht.
@@ -307,7 +313,7 @@ main.community { background: #0B0D10; color: #ECEDEF; font-family: var(--font-sa
       </div>
       <div class="co-frame" aria-hidden="true">
         <div>
-          <div class="co-pub" style="width: 1440px;">
+          <div class="co-pub">
             <div class="ph1">
               <span class="wm">GO<i style="color:#ECEDEF">:</i>BETTER</span>
               <span class="wb s">Selbst ausprobieren</span>
