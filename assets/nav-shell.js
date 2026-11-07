@@ -29,7 +29,8 @@
   if (dd && trig){
     dd.addEventListener('mouseenter', openDd);
     dd.addEventListener('mouseleave', function(){ t = setTimeout(closeDd, 120); });
-    trig.addEventListener('click', function(){ dd.classList.contains('is-open') ? closeDd() : openDd(); });
+    dd.addEventListener('focusin', openDd);
+    dd.addEventListener('focusout', function(e){ if (!dd.contains(e.relatedTarget)) closeDd(); });
   }
 
   var q = new URLSearchParams(location.search);
