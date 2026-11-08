@@ -11,7 +11,7 @@ In dieser Sitzung schreibt **Ludmila**, nicht Pierre. Frühere Aufträge an „P
   1. Branch nach `origin` pushen
   2. Pull Request gegen `main` öffnen (via `mcp__github__create_pull_request`)
   3. Auto-Merge aktivieren (via `mcp__github__enable_pr_auto_merge`, `merge_method: squash`)
-- Der Workflow „Sitemap lastmod" aktualisiert `sitemap.xml` im PR selbst und pusht die Änderung als eigenen Bot-Commit auf den PR-Branch. **Keine Pflicht, das Skript vorher lokal zu laufen** — wer will, kann es weiter tun (Pfad: `python3 .github/workflows/sitemap_lastmod.py`), spart aber nur die eine zusätzliche Workflow-Runde. Loop-Schutz: der Bot-Commit berührt nur `sitemap.xml`, triggert den Workflow also nicht erneut, und trägt zur Sicherheit `[skip ci]`.
+- Die Sitemap enthält bewusst kein `lastmod`; Änderungen meldet IndexNow (`indexnow.yml`) bei jedem Push auf `main`. Neue Seiten trotzdem in `sitemap.xml` eintragen.
 - Direkter Push auf `main` ist serverseitig blockiert (HTTP 403) — immer den PR-Weg gehen; die Repository-Regel lehnt direktes Pushen auf `main` ab (GH013).
 - Keine zusätzliche Bestätigung für PR-Erstellung nötig; der Auto-Merge ist die User-Default-Präferenz.
 
@@ -22,7 +22,7 @@ Nach jedem Merge auf `main` **vor** jedem Live-Hinweis an den User:
 1. `gh api "repos/lmabn/fairvaluepro/actions/runs?per_page=5"` **ohne** `status`-Filter aufrufen.
 2. In der Antwort nach dem Merge-Commit-SHA suchen.
 3. Erst wenn `conclusion: success` für diesen SHA bestätigt ist, Live-Hinweis geben: „nach dem Pages-Build live, ggf. wenige Minuten Verzögerung".
-4. Falls `status: queued` oder `in_progress` → warten und erneut prüfen; falls > 2 min hängend → User informieren. Ein `queued`-Lauf lässt sich **nicht** per „Re-run" neu anstoßen (nur „Cancel"); Weg ist dann abbrechen und einen trivialen Commit (z. B. `sitemap.xml` lastmod-Bump) nachschieben, der einen frischen Build triggert.
+4. Falls `status: queued` oder `in_progress` → warten und erneut prüfen; falls > 2 min hängend → User informieren. Ein `queued`-Lauf lässt sich **nicht** per „Re-run" neu anstoßen (nur „Cancel"); Weg ist dann abbrechen und einen trivialen Commit (z. B. Leerzeile in einer unkritischen Datei) nachschieben, der einen frischen Build triggert.
 5. Falls **kein** Run existiert → max. 30 s warten (Trigger-Delay), sonst Alarm.
 
 **Kein Cloudflare-Purge.** Ludmilas Cloudflare liegt nicht zwischen Besuchern und der Website — ein Purge erreicht die Seite nicht. GitHub Pages hält Seiten selbst nur wenige Minuten zwischen. Nie „Cache leeren" oder „CDN purgen" vorschlagen; die richtige Formel ist: „nach dem Pages-Build live, ggf. wenige Minuten Verzögerung".
