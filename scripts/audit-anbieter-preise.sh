@@ -5,6 +5,11 @@
 # ganze Euro gerundeten Werten in der JSON. Prüft außerdem, dass der Partner-
 # Rabatt zum regulären Preis passt (reg × (1 − rabatt%) = partner, auf Cent genau).
 # Warnt, wenn das EZB-Kursdatum älter als 30 Tage ist.
+#
+# Negativ-Check (Ludmila 11.11.2026, Punkt 4.18): Die MAX-Beträge 9,99 / 89,91 /
+# 7,49 dürfen außerhalb von plaene.html, agb.html, data/ und docs/ nirgends im
+# Repo stehen. Alle übrigen Seiten verlinken für Preise auf plaene.html.
+#
 # Exit-Code 0 = alles ok. Nach jedem Touch an einer Preisstelle lokal laufen.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -136,3 +141,27 @@ if errs:
     sys.exit(1)
 print("OK: Anbieter-Preise und Summen konsistent mit data/anbieter-preise.json")
 PYEOF
+
+# Negativ-Check: MAX-Beträge dürfen nur in plaene.html, agb.html und data/
+# stehen (plus docs/ und scripts/ — Beschreibung bzw. Script-Header selbst).
+# Treffer außerhalb schlagen Alarm.
+cd "$root"
+tracked_other=$(git ls-files -- '*.html' '*.txt' '*.md' '*.json' '*.xml' '*.css' '*.js' \
+  ':(exclude)plaene.html' \
+  ':(exclude)plaene-vorschau.html' \
+  ':(exclude)agb.html' \
+  ':(exclude)data/*' \
+  ':(exclude)docs/*' \
+  ':(exclude)CLAUDE.md' \
+  ':(exclude)scripts/audit-anbieter-preise.sh' \
+  2>/dev/null || true)
+neg_hits=""
+if [ -n "$tracked_other" ]; then
+  neg_hits=$(printf '%s\n' "$tracked_other" | xargs -d '\n' grep -nE '9,99|89,91|7,49' 2>/dev/null || true)
+fi
+if [ -n "$neg_hits" ]; then
+  echo "Negativ-Check fehlgeschlagen: MAX-Beträge außerhalb der erlaubten Stellen:" >&2
+  echo "$neg_hits" >&2
+  exit 1
+fi
+echo "OK: Keine MAX-Beträge (9,99 / 89,91 / 7,49) außerhalb plaene.html, agb.html, data/, docs/, CLAUDE.md."

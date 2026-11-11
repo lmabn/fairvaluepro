@@ -12,7 +12,7 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 
 ## Preise
 
-- [Preise und Pläne](https://gobetter.trade/plaene.html): GO ohne Konto, PRO kostenloses Konto mit vollem Fair-Value-Pro-Dashboard und Portfolio Tracker mit Depots und Snapshots von Hand, MAX (9,99 €/Monat) mit vollem Tracker (Import, Rendite, Allokation, Fairer Wert je Position, KI-Assistent) und Investment Planner. Der Datenzugang beim Anbieter kommt getrennt hinzu und ist offen ausgewiesen.
+- [Preise und Pläne](https://gobetter.trade/plaene.html): GO ohne Konto, PRO kostenloses Konto mit vollem Fair-Value-Pro-Dashboard und Portfolio Tracker mit Depots und Snapshots von Hand, MAX mit vollem Tracker (Import, Rendite, Allokation, Fairer Wert je Position, KI-Assistent) und Investment Planner. Der Datenzugang beim Anbieter kommt getrennt hinzu und ist offen ausgewiesen.
 
 ## Akademie
 
