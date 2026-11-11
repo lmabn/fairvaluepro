@@ -214,15 +214,18 @@ Freigegebene Inhalte, die bei der Überarbeitung ihrer jeweiligen Seite wörtlic
 
 Bei jeder Preis- oder Plan-Änderung (Betrag, Features, Plan-Zuordnung einer Funktion, Plan-Namen) sind diese Stellen mitzuziehen — nichts darf auseinanderfallen:
 
-- `plaene.html` — Preistabelle (GO/PRO/MAX), Vergleichstabelle unten, FAQ-Antworten, Meta-/OG-/Twitter-Description, FAQPage-JSON-LD mit Preis.
-- `fair-value-pro.html` — Hero-Pills (GO kostenlos), CTA-Subline mit Preis.
-- `portfolio-tracker.html` — Hero-Pill „MAX", CTA-Note „MAX 9,99 €/Monat".
-- `investment-planner.html` — Hero-Pill „MAX", CTA-Note.
-- `fair-value-pro/pro-mode.html` — Hero-Pills, Section-Intro mit Plan-Hinweis, Mode-Cards (GO/PRO/MAX), CTA-Note.
-- `partner.html` — Vergleichstabelle, Abschnitt „Kalkulator kostenlos. Für mehr: MAX." mit Preis + Jahrespreis.
-- `agb.html` — § 3 Plan-Beschreibungen (GO/PRO/MAX), § 4 Verweis auf Preisseite. Keine Preisangabe hier, nur Plan-Namen und Leistungsumfang.
-- `llms.txt` — Zeile unter „## Preise" nennt GO, PRO, MAX, 9,99 € und den Anbieter-Zugang.
-- `index.html` — Abschnitt „Für wen": Kostenquote 0,35 % und Sternchen-Zeile (Basis: MAX + Ultimate mit 25 % Partner-Rabatt, jährliche Zahlung, Kurs wie `plaene.html`, Depot 250.000 €); bei jeder Preis- oder Kursänderung neu rechnen.
+**MAX-Preis steht nur noch an drei Orten** (Ludmila 11.11.2026, Punkt 4.18): `plaene.html`, `agb.html` und `data/anbieter-preise.json`. Alle übrigen Seiten verlinken für Preise auf `plaene.html` und nennen keinen Betrag mehr.
+
+- `plaene.html` — Preistabelle (GO/PRO/MAX) **mit MAX-Betrag (9,99 € / 7,49 € / 89,91 €)**, Vergleichstabelle unten, FAQ-Antworten, Meta-/OG-/Twitter-Description, FAQPage-JSON-LD mit Preis, Satz unter MAX-Preis „Wer jetzt bucht, behält diesen Preis, solange das Abo läuft."
+- `data/anbieter-preise.json` — Quelle der Wahrheit für MAX- und Anbieter-Preise; `scripts/audit-anbieter-preise.sh` prüft Konsistenz mit `plaene.html`.
+- `fair-value-pro.html` — Hero-Pills (GO kostenlos), CTA-Subline (nennt MAX ohne Betrag).
+- `portfolio-tracker.html` — Hero-Pill „MAX", CTA-Note nennt „GO und PRO kostenlos" und verlinkt auf die Preisseite.
+- `investment-planner.html` — Hero-Pill „MAX", CTA-Note analog portfolio-tracker.
+- `fair-value-pro/pro-mode.html` — Hero-Pills (MAX ohne Betrag), Section-Intro mit Plan-Hinweis, Mode-Cards (GO/PRO/MAX; MAX-Badge als Link „Preise ansehen →"), CTA-Note mit „Preise ansehen"-Link.
+- `partner.html` — Vergleichstabelle, Abschnitt „Kalkulator kostenlos. Für mehr: MAX." ohne Betrag; Status-Zelle für MAX zeigt „Im Abo · Preise ansehen →" (Link auf Preisseite).
+- `agb.html` — § 3 Plan-Beschreibungen (GO/PRO/MAX), § 4 Verweis auf Preisseite plus Preisänderungsklausel (nennt die Beträge 9,99 € / 89,91 € bewusst für die Bestandspreis-Garantie).
+- `llms.txt` — Zeile unter „## Preise" nennt GO, PRO, MAX und den Anbieter-Zugang (ohne Betrag; Link auf `plaene.html` genügt).
+- `index.html` — Abschnitt „Für wen": Kostenquote 0,35 % und Sternchen-Zeile verweisen auf die Preisseite (keine konkreten Beträge mehr); bei jeder Preis- oder Kursänderung die Kostenquote neu rechnen und die Sternchen-Zeile prüfen.
 - `agb.html` — **Stand-Datum** („Stand: TT.MM.JJJJ“): Jede AGB-Änderung zieht im App-Repo `plans.AGB_STAND` (plans.py) im selben Zug mit — die App speichert diesen Stand beim Kauf und bei der Registrierung. Erst den App-PR, dann diese Seite; der Test `agb_stand_test` im App-Repo prüft beide gegeneinander (Ludmila 05.11.2026, Go Live Plan 4.13).
 
 Die Plan-Zuordnung einzelner Funktionen (Spalte „Ab Plan") steht in `docs/funktionsliste.md` — die Liste ist die Quelle, nicht ein weiterer Pflegeort. Website-Formulierungen werden daran gemessen.
