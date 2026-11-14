@@ -1,0 +1,43 @@
+<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oben bildet der Kurs ein höheres Hoch, unten bildet der RSI ein tieferes Hoch: eine bärische Divergenz.">
+  <style>
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .panel  { fill: var(--bg2, #F7F8FA); }
+    .panel2 { fill: var(--bg3, #F1F3F5); }
+    .axis   { stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1.4; fill: none; }
+    .grid   { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; fill: none; }
+    .griddash { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #10A86E); }
+    .mid    { stroke: var(--mid, #3B7BFF); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #3B7BFF); }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #555A62); }
+    .warnf  { fill: var(--warn, #D9480F); }
+    .fillneon { fill: var(--neon-dim, rgba(16,168,110,.10)); }
+    .fillmid  { fill: var(--mid-dim, rgba(59,123,255,.10)); }
+    .fillmut  { fill: var(--muted-dim, rgba(17,19,23,.06)); }
+    .box    { fill: var(--bg3, #F1F3F5); stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(16,168,110,.10)); stroke: var(--neon-border, rgba(16,168,110,.45)); stroke-width: 1; }
+    .t      { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln   { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln-b { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .tick   { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
+    .head   { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="360" rx="6"/>
+
+  <text class="head" x="60" y="40">RSI-Divergenz</text>
+  <line class="axis" x1="70" y1="60" x2="70" y2="180"/>
+  <path class="muted" d="M90,150 L200,110 L280,140 L400,90"/>
+  <circle class="neonf" cx="200" cy="110" r="4"/><circle class="neonf" cx="400" cy="90" r="4"/>
+  <text class="lbl" x="410" y="86">höheres Hoch</text>
+  <line class="axis" x1="70" y1="220" x2="70" y2="330"/>
+  <line class="axis" x1="70" y1="330" x2="680" y2="330"/>
+  <text class="tick" x="40" y="228">RSI</text>
+  <path class="mid" d="M90,270 L200,250 L280,285 L400,275"/>
+  <circle class="neonf" cx="200" cy="250" r="4"/><circle class="neonf" cx="400" cy="275" r="4"/>
+  <text class="lbln" x="410" y="278">tieferes Hoch</text>
+  <text class="lbl" x="90" y="356" style="fill:#7E858F">Kurs steigt, Momentum fällt → mögliche Erschöpfung</text>
+
+</svg>

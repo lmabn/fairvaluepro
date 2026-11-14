@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 1 Grundlagen: Preisbildung, Orderarten, Risiko · GO:BETTER</title>
+<meta name="description" content="Grundlagen des Aktienmarkts für Privatanleger: Kurse und Preisbildung, Orderarten, Risiko, Zeithorizont — und was einen bewussten Anleger ausmacht.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/logo/favicon.svg">
+<style>
+:root{
+  --bg:#F7F8FA; --sf:#FFFFFF; --sf2:#EEF0F3; --sel:#E2E5EA; --bd:#DEE1E6; --bd2:#7E858F;
+  --tx:#111317; --t2:#3F444B; --mu:#555A62;
+  --fvp:#10C27F; --fvp-t:#0A7A52; --pt:#F0B42A; --td:#3B7BFF; --td-t:#2459D6;
+  --pos:#2A7453; --neg:#B8352D; --neg-soft:rgba(184,53,45,.08);
+  --d1:#2F5E9E; --d2:#B87A3E; --d3:#0E97A6;
+  --ink:#0B0D10; --ink1:#12151A; --ink2:#191D23; --inkbd:#262B33; --inktx:#ECEDEF; --inkmu:#9A9FA7;
+  --sans:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --mono:'Geist Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+  --g:max(20px,env(safe-area-inset-left,0px)); --sec:96px; --nav-h:64px;
+  color-scheme:light;
+}
+@media (min-width:1100px){ :root{ --g:40px; --sec:144px; --nav-h:68px } }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding-left:var(--g);padding-right:max(var(--g),env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono)}
+.lab{font-family:var(--mono);font-size:11px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);display:inline-flex;align-items:center;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;flex:none;display:inline-block}
+.num{font-family:var(--mono);font-feature-settings:"tnum" 1,"lnum" 1,"zero" 1}
+:focus-visible{outline:2px solid var(--tx);outline-offset:2px}
+
+/* Knöpfe wie in der App */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:4px;border:1px solid transparent;font:500 15px/1 var(--sans);text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color 120ms var(--ease),border-color 120ms var(--ease)}
+.btn--p{background:var(--tx);color:var(--bg)} .btn--p:hover{background:#3F444B}
+.btn--s{background:var(--sf);color:var(--tx);border-color:var(--bd2)} .btn--s:hover{background:var(--sf2)}
+.btn--l{height:52px;padding:0 24px;font-size:16px}
+.lnk{font-weight:500;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.lnk span{transition:transform 120ms var(--ease)} .lnk:hover span{transform:translateX(3px)}
+
+/* Navigation · wie die App-Kopfzeile */
+.nav{position:sticky;top:0;z-index:30;background:rgba(247,248,250,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.nav__in{display:flex;align-items:center;height:var(--nav-h);gap:28px}
+.wm{display:inline-flex;align-items:center;gap:1px;font-size:19px;font-weight:500;letter-spacing:-.01em;text-decoration:none;flex:none}
+.wm svg{width:6px;height:15px;margin:0 2px 1px}
+.nav__sep{width:1px;height:20px;background:var(--bd);flex:none}
+.nav__links{display:none;align-self:stretch;gap:28px;font-size:14px}
+.nav__links a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 120ms var(--ease)}
+.nav__links a:hover{color:var(--tx);box-shadow:inset 0 -2px 0 var(--c)}
+.nav__right{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:14px}
+.nav__right>a:not(.btn){display:none;text-decoration:none;color:var(--t2)}
+.nav__right>a:not(.btn):hover{color:var(--tx)}
+.nav .btn{height:40px;padding:0 16px;font-size:14px}
+@media (min-width:960px){ .nav__links{display:flex} .nav__right>a:not(.btn){display:inline} }
+
+
+/* Mobilmenü (wie auf den Produktseiten) */
+.burger{flex:none;margin-right:-12px;width:48px;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:none;border:0;color:inherit;cursor:pointer;padding:0}
+.burger span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 200ms var(--ease)}
+.is-menu-open .burger span:first-child{transform:translateY(3.75px) rotate(45deg)}
+.is-menu-open .burger span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+.mmenu{position:fixed;left:0;right:0;top:var(--nav-h);bottom:0;z-index:29;background:#F7F8FA;color:#111317;overflow-y:auto;display:none}
+.is-menu-open .mmenu{display:block}
+.is-menu-open{overflow:hidden}
+.mmenu__in{display:flex;flex-direction:column;padding-top:8px;padding-bottom:32px}
+.mm-item,.mm-row{display:flex;align-items:center;gap:10px;min-height:56px;font-size:20px;font-weight:500;letter-spacing:-.01em;text-decoration:none;color:inherit}
+.mm-row a{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.mm-item{border-bottom:1px solid var(--bd)}
+.mm-acc{border-bottom:1px solid var(--bd)}
+.mm-row{justify-content:space-between}
+.mm-acc__btn{width:48px;height:48px;margin-right:-12px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:#111317;cursor:pointer}
+.mm-acc__btn svg{width:12px;height:12px;transition:transform 200ms var(--ease)}
+.mm-acc.is-open .mm-acc__btn svg{transform:rotate(180deg)}
+.mm-sub{display:none;padding:0 0 12px 18px}
+.mm-acc.is-open .mm-sub{display:block}
+.mm-sub a,.mm-secondary a{display:flex;align-items:center;min-height:48px;font-size:16px;color:var(--mu);text-decoration:none}
+.mm-secondary{display:flex;flex-direction:column;padding-top:16px}
+body.is-menu-open .nav.nav--dark,body.is-menu-open .nav{background:#F7F8FA;color:#111317;border-bottom-color:var(--bd)}
+body.is-menu-open .nav .wm svg circle{fill:#111317}
+body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
+@media (max-width:959px){ .nav__sep{display:none} .nav__in{gap:16px} .nav__right{gap:8px} }
+@media (max-width:379px){ .nav .btn{padding:0 12px;font-size:13px} }
+@media (min-width:960px){ .burger,.mmenu{display:none!important} }
+
+/* Hero */
+.hero{padding-top:72px}
+.hero__top{display:grid;gap:28px;align-items:end}
+.hero h1{margin:0;font-size:clamp(44px,9vw,96px);line-height:.98;font-weight:600;letter-spacing:-.05em;text-wrap:balance}
+.hero__side{display:flex;flex-direction:column;gap:24px;max-width:520px}
+.hero__sub{margin:0;font-size:18px;line-height:1.55;color:var(--t2);text-wrap:pretty}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.hero__fn{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--mu)}
+@media (min-width:1100px){ .hero{padding-top:112px} .hero__top{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px} }
+
+/* App-Fenster */
+.stage{margin-top:56px;position:relative}
+.stage::before{content:"";position:absolute;left:-40px;right:-40px;top:20%;bottom:-40px;background:radial-gradient(60% 60% at 50% 40%,rgba(16,194,127,.10),transparent 70%),radial-gradient(40% 50% at 15% 70%,rgba(240,180,42,.10),transparent 70%),radial-gradient(40% 50% at 85% 70%,rgba(59,123,255,.10),transparent 70%);pointer-events:none;z-index:0}
+.win{position:relative;z-index:1;background:var(--bg);border:1px solid var(--bd);border-radius:8px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 40px 100px -20px rgba(17,19,23,.18),0 12px 32px -12px rgba(17,19,23,.10)}
+.win__bar{display:flex;align-items:center;gap:24px;height:52px;padding:0 20px;background:var(--sf);border-bottom:1px solid var(--bd)}
+.win__bar .wm{font-size:15px}
+.win__bar .wm svg{width:5px;height:12px}
+.wtabs{display:flex;align-self:stretch;gap:20px;font-size:13px;overflow-x:auto;scrollbar-width:none}
+.wtabs::-webkit-scrollbar{display:none}
+.wtabs button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 200ms var(--ease)}
+.wtabs button[aria-selected="true"]{color:var(--tx);box-shadow:inset 0 -2px 0 var(--c)}
+.wtabs button:focus-visible{outline:2px solid var(--tx);outline-offset:-2px}
+.win__user{margin-left:auto;display:none;align-items:center;gap:10px;font-size:13px;color:var(--t2)}
+.win__user i{width:24px;height:24px;border-radius:50%;background:var(--sf2);border:1px solid var(--bd)}
+.win__user b{font:500 10px/1 var(--mono);letter-spacing:.06em;background:var(--tx);color:var(--bg);padding:4px 6px;border-radius:2px}
+@media (min-width:720px){ .win__user{display:flex} }
+.view{padding:24px 20px 28px;display:none;flex-direction:column;gap:20px}
+.view.is-on{display:flex;animation:in 320ms var(--ease)}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .view.is-on{animation:none} }
+/* ---------- Bewegung wie auf der aktuellen Startseite (nur mit .motion, nie bei reduzierter Bewegung) ---------- */
+.motion .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.motion .ln>i{display:block;font-style:normal;transform:translateY(108%);transition:transform 1000ms cubic-bezier(.2,.75,0,1)}
+.motion .is-in .ln>i{transform:none}
+.motion .rv{opacity:0;transform:translateY(28px);transition:opacity 800ms cubic-bezier(.2,.75,0,1),transform 800ms cubic-bezier(.2,.75,0,1)}
+.motion .rv.is-in{opacity:1;transform:none}
+.motion .halt__q .w{color:#3A3F47;transition:color 240ms linear}
+.motion .halt__q .w.on{color:#ECEDEF}
+.halt__ray{position:absolute;z-index:0;left:0;right:0;top:0;height:min(92vh,58vw);min-height:560px;pointer-events:none;opacity:0;
+  background:url("../assets/photo/workspace-reflection.png") 72% center/cover no-repeat;
+  filter:contrast(2.4) brightness(.8) sepia(.5) saturate(1.8);mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(110deg,transparent 30%,#000 46%,#000 54%,transparent 70%);mask-image:linear-gradient(110deg,transparent 30%,#000 46%,#000 54%,transparent 70%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-position:100% 0;mask-position:100% 0}
+.motion .halt.is-lit .halt__ray{animation:gbRay 10s cubic-bezier(.45,0,.55,1) .6s 3 both}
+@keyframes gbRay{0%{-webkit-mask-position:100% 0;mask-position:100% 0;opacity:0}20%{opacity:.5}80%{opacity:.5}100%{-webkit-mask-position:0 0;mask-position:0 0;opacity:0}}
+@media (max-width:719px){ .halt__ray{height:620px;background-position:74% center} }
+@media (prefers-reduced-motion:reduce){ .halt__ray{display:none} }
+
+@media (min-width:1100px){ .view{padding:32px 32px 36px;min-height:560px} }
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.ph__t{display:flex;flex-direction:column;gap:6px}
+.ph__t b{font-size:26px;font-weight:500;letter-spacing:-.02em;line-height:1.15}
+.ph__act{display:flex;gap:8px}
+.ph__act span{display:inline-flex;align-items:center;height:34px;padding:0 12px;border:1px solid var(--bd2);border-radius:4px;font-size:13px;background:var(--sf)}
+.ph__act span.p{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.sub{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px}
+.sub b{font-size:20px;font-weight:500;letter-spacing:-.01em}
+.sub .m{font-size:12px;color:var(--mu)}
+.badge{display:inline-flex;align-items:center;height:22px;padding:0 8px;border:1px solid;border-radius:2px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.badge--neg{color:var(--neg);border-color:rgba(184,53,45,.8);background:var(--neg-soft)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px}
+.tile{background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile .lab{font-size:10.5px}
+.tile .v{font-family:var(--mono);font-feature-settings:"tnum" 1,"zero" 1;font-size:26px;line-height:1.1;letter-spacing:-.02em;white-space:nowrap}
+.tile .n{font-size:12.5px;color:var(--mu);line-height:1.4}
+.tile .v.pos{color:var(--pos)} .tile .v.big{font-family:var(--sans);font-size:22px;font-weight:500;letter-spacing:-.02em}
+.split{display:grid;gap:12px}
+@media (min-width:900px){ .split{grid-template-columns:minmax(0,2fr) minmax(0,1fr)} .split--ip{grid-template-columns:240px minmax(0,1fr)} }
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.card__h{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.chart{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--mu)}
+.legend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:6px}
+.rows{display:flex;flex-direction:column;font-size:13px}
+.rows>div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--bd)}
+.rows>div:first-child{border-top:0;padding-top:0}
+.rows span:last-child{font-family:var(--mono);font-feature-settings:"tnum" 1,"zero" 1}
+.scg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:2px;overflow:hidden}
+.scg>div{background:var(--sf);padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.scg>div.on{background:var(--sf2)}
+.scg span{font-size:12px;color:var(--mu)} .scg b{font:500 15px/1.2 var(--mono);font-feature-settings:"tnum" 1}
+.alloc{display:flex;height:10px;border-radius:2px;overflow:hidden;gap:2px}
+.mods{display:flex;flex-direction:column;gap:2px;font-size:14px}
+.mods span{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:4px;color:var(--t2)}
+.mods span.on{background:var(--sel);color:var(--tx);box-shadow:inset 2px 0 0 var(--td)}
+.mods svg{width:16px;height:16px;flex:none}
+.rw{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.corr{position:relative;height:8px;border-radius:2px;background:var(--sf2)}
+.corr i{position:absolute;top:0;bottom:0;background:rgba(59,123,255,.18);border-left:1px solid var(--td);border-right:1px solid var(--td)}
+.corr b{position:absolute;top:-4px;width:2px;height:16px;background:var(--tx);border-radius:1px}
+
+/* Belegleiste: Panel-Raster mit 1-px-Fugen wie in der App */
+.facts{margin-top:88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--bd);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.facts>div{background:var(--bg);padding:28px 24px 28px 0;display:flex;flex-direction:column;gap:8px}
+.facts b{font:500 40px/1 var(--mono);letter-spacing:-.03em;font-feature-settings:"tnum" 1}
+.facts span{font-size:14px;color:var(--mu);line-height:1.45;max-width:30ch}
+@media (min-width:720px){ .facts>div{padding:32px 28px} .facts>div:first-child{padding-left:0} }
+
+/* Abschnitte */
+.sec{padding:var(--sec) 0}
+.h2{margin:0;font-size:clamp(34px,5.4vw,60px);line-height:1.02;font-weight:600;letter-spacing:-.045em;text-wrap:balance}
+.lead{margin:0;font-size:18px;line-height:1.55;color:var(--t2);max-width:560px;text-wrap:pretty}
+.head{display:flex;flex-direction:column;gap:20px;margin-bottom:56px}
+
+/* Drei Fragen · Karten wie die App-Startseite */
+.q3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.qc{background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:28px 24px 24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;transition:border-color 120ms var(--ease),box-shadow 200ms var(--ease)}
+.qc:hover{border-color:var(--bd2);box-shadow:0 12px 32px -16px rgba(17,19,23,.18)}
+.qc__top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.plan{font:500 11px/1 var(--mono);letter-spacing:.08em;color:var(--mu)}
+.plan b{font-weight:500;background:var(--tx);color:var(--bg);padding:4px 6px;border-radius:2px}
+.qc__q{font-size:26px;line-height:1.2;font-weight:500;letter-spacing:-.025em;margin:8px 0 0}
+.qc__p{font-size:15px;line-height:1.6;color:var(--t2);margin:0}
+.qc__name{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bd);font-size:15px;font-weight:500}
+
+/* Werkzeug-Abschnitte */
+.tool{display:grid;gap:40px;align-items:center}
+.tool+.tool{margin-top:var(--sec)}
+.tool__txt{display:flex;flex-direction:column;gap:20px}
+.tool__txt h3{margin:0;font-size:clamp(30px,4vw,44px);line-height:1.06;font-weight:600;letter-spacing:-.04em;text-wrap:balance}
+.tool__txt p{margin:0;font-size:17px;line-height:1.6;color:var(--t2);max-width:480px;text-wrap:pretty}
+.ticks{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;font-size:15px}
+.ticks li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;padding:11px 0;border-top:1px solid var(--bd)}
+.ticks li:last-child{border-bottom:1px solid var(--bd)}
+.ticks li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c);margin-top:9px}
+.tool__ui{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:16px;box-shadow:0 24px 64px -24px rgba(17,19,23,.16);display:flex;flex-direction:column;gap:12px;min-width:0}
+@media (min-width:1000px){ .tool{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px} .tool--r .tool__txt{order:2} .tool--r{grid-template-columns:minmax(0,7fr) minmax(0,5fr)} .tool__ui{padding:24px} }
+
+/* Hell und dunkel */
+.modes{display:grid;border:1px solid var(--bd);border-radius:8px;overflow:hidden;box-shadow:0 24px 64px -24px rgba(17,19,23,.16)}
+@media (min-width:900px){ .modes{grid-template-columns:1fr 1fr} }
+.mode{padding:28px 24px;display:flex;flex-direction:column;gap:14px}
+.mode--d{background:var(--ink);color:var(--inktx)}
+.mode--d .tile{background:var(--ink1);border-color:var(--inkbd)}
+.mode--d .lab,.mode--d .tile .n{color:var(--inkmu)}
+.mode--d .tile .v.pos{color:#7FC0A2}
+.mode__h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+
+/* Für wen + Preis */
+.who{display:grid;gap:48px}
+@media (min-width:1000px){ .who{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px} }
+.who ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.who li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;padding:20px 0;border-top:1px solid var(--bd)}
+.who li:last-child{border-bottom:1px solid var(--bd)}
+.who li i{grid-row:1/3;font:400 12px/1 var(--mono);color:var(--mu);padding-top:7px;font-style:normal}
+.who li b{font-size:19px;font-weight:500;letter-spacing:-.02em}
+.who li span{font-size:15px;color:var(--mu);line-height:1.55}
+.price{margin-top:72px;display:grid;gap:20px;align-items:end;padding-top:40px;border-top:1px solid var(--bd)}
+@media (min-width:900px){ .price{grid-template-columns:auto minmax(0,1fr) auto;gap:40px} }
+.price__n{font:600 clamp(64px,11vw,128px)/.9 var(--sans);letter-spacing:-.06em;display:flex;align-items:flex-start;white-space:nowrap}
+.price__n sup{font-size:.32em;margin-left:6px;line-height:1}
+.price__cta{display:flex;flex-wrap:wrap;gap:12px}
+.price p{margin:0;font-size:17px;line-height:1.5;color:var(--t2);max-width:340px}
+.fn{margin:20px 0 0;font-size:12px;line-height:1.5;color:var(--mu);display:flex;gap:6px;max-width:760px}
+
+/* Abschluss */
+.end{background:var(--ink);color:var(--inktx);border-radius:8px;padding:56px 24px;display:grid;gap:32px;position:relative;overflow:hidden}
+.end::after{content:"";position:absolute;right:-10%;top:-40%;width:70%;height:180%;background:radial-gradient(closest-side,rgba(46,229,157,.16),transparent),radial-gradient(closest-side at 70% 70%,rgba(91,140,255,.14),transparent);pointer-events:none}
+.end h2{margin:0;font-size:clamp(40px,7vw,88px);line-height:.98;font-weight:600;letter-spacing:-.05em;position:relative;z-index:1}
+.end p{margin:0;font-size:18px;color:#B9BCC0;max-width:460px;position:relative;z-index:1}
+.end .btns{position:relative;z-index:1}
+.end .btn--p{background:var(--inktx);color:var(--ink)} .end .btn--p:hover{background:#B9BCC0}
+.end .btn--s{background:transparent;color:var(--inktx);border-color:#68707B} .end .btn--s:hover{background:var(--ink2)}
+.end__bar{display:flex;gap:4px;position:relative;z-index:1}
+.end__bar i{height:3px;width:40px;border-radius:2px}
+@media (min-width:1100px){ .end{padding:96px 80px;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:end} }
+
+.foot{border-top:1px solid var(--bd);margin-top:var(--sec);padding:32px 0 calc(32px + env(safe-area-inset-bottom,0px))}
+.foot__in{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;font-size:14px;color:var(--mu)}
+.foot__in a{text-decoration:none} .foot__in a:hover{color:var(--tx)}
+.foot__note{flex-basis:100%;margin:8px 0 0;font-size:12px;line-height:1.6}
+
+/* Key Visual · Haltung: randlose, helle Bildfläche nach dem App-Fenster. Zwei Motive zur Probe (A Illustration, B Foto). */
+.kv{position:relative;margin-top:var(--sec);aspect-ratio:1983/793;min-height:440px;max-height:860px;width:100%;display:flex;align-items:flex-start;color:#111317;background:#DCEBF6 center bottom/cover no-repeat;overflow:hidden}
+.kv[data-kv="a"]{background-image:url("../assets/creatives/kv-huegel.jpg")}
+.kv[data-kv="b"]{background-image:url("../assets/creatives/kv-fenster.jpg");background-position:60% center}
+.kv[data-kv="c"]{background-color:#0B0D10;background-image:url("../assets/photo/workspace-window.png");background-position:center 40%;color:#F7F8FA}
+.kv[data-kv="c"]::before{background:linear-gradient(90deg,rgba(11,13,16,.85) 0%,rgba(11,13,16,.55) 38%,rgba(11,13,16,0) 68%)}
+.kv[data-kv="c"] .kv__by{color:#B9BCC0}
+.kv::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.25) 32%,rgba(255,255,255,0) 55%);pointer-events:none}
+.kv .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(48px,7vw,112px)}
+.kv__q{margin:0;max-width:15ch;font-size:clamp(32px,4.6vw,64px);line-height:1.06;font-weight:600;letter-spacing:-.045em;text-wrap:balance}
+.kv__by{margin-top:24px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3F444B}
+.kv__by i{display:flex;gap:3px}.kv__by i b{width:16px;height:3px;border-radius:2px}
+.kv__sw{position:absolute;z-index:2;right:max(16px,env(safe-area-inset-right,0px));bottom:16px;display:flex;gap:4px;padding:4px;border-radius:6px;background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);font:500 12px/1 var(--sans)}
+.kv__sw button{all:unset;cursor:pointer;height:28px;padding:0 10px;display:flex;align-items:center;border-radius:4px;color:#3F444B}
+.kv__sw button[aria-pressed="true"]{background:#111317;color:#F7F8FA}
+.kv__sw button:focus-visible{outline:2px solid #111317;outline-offset:2px}
+@media (max-width:719px){ .kv{aspect-ratio:auto;height:560px} .kv[data-kv="a"]{background-position:68% bottom} .kv[data-kv="b"]{background-position:72% center} .kv[data-kv="c"]{background-position:78% center} .kv[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.85) 0%,rgba(11,13,16,.4) 50%,rgba(11,13,16,.1) 100%)} }
+/* Abschluss: dunkle Box mit Farbschein der drei Werkzeuge */
+@media (min-width:1100px){ .end{min-height:440px} }
+
+/* Umbau 11.11.: Hero = Marke und Key Visual, danach Nutzen, dann der Workspace */
+.kv--hero{margin-top:calc(-1*var(--nav-h) - 1px);aspect-ratio:auto;max-height:none;min-height:max(640px,min(100svh,62vw));align-items:flex-start;background-position:center bottom}
+.kv--hero .wrap{padding-top:calc(var(--nav-h) + clamp(56px,8vw,128px))}
+.kvh{display:flex;flex-direction:column;gap:22px;max-width:820px}
+.kvh .kvh__sub{max-width:34em}
+.kvh h1{margin:0;font-size:clamp(44px,7vw,96px);line-height:.98;font-weight:600;letter-spacing:-.05em;text-wrap:balance}
+.kvh__sub{margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:#3F444B;max-width:30em;text-wrap:pretty}
+.kvh__lab{color:#3F444B}
+.kvh__dots{display:flex;gap:3px}.kvh__dots b{width:16px;height:3px;border-radius:2px}
+.kv[data-kv="c"] .kvh__sub,.kv[data-kv="c"] .kvh__lab{color:#B9BCC0}
+.kv[data-kv="c"] .btn--p{background:#ECEDEF;color:#0B0D10}
+.kv[data-kv="c"] .btn--s{background:transparent;color:#ECEDEF;border-color:#68707B}
+.kv--hero::before{background:linear-gradient(100deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,.3) 34%,rgba(255,255,255,0) 58%)}
+.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(11,13,16,.88) 0%,rgba(11,13,16,.6) 40%,rgba(11,13,16,0) 70%)}
+.nav{background:rgba(247,248,250,.72)}
+.ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1px;background:var(--bd);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.ben>div{background:var(--bg);padding:28px 0;display:flex;flex-direction:column;gap:10px}
+.ben i{font:400 12px/1 var(--mono);color:var(--mu);font-style:normal}
+.ben b{font-size:21px;font-weight:500;letter-spacing:-.02em;line-height:1.25}
+.ben span{font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty}
+@media (min-width:720px){ .ben>div{padding:36px 28px} .ben>div:first-child{padding-left:0} }
+@media (max-width:719px){
+  .kv--hero{min-height:900px;height:auto}
+  .kv--hero[data-kv="a"]{background-position:66% bottom}
+  .kv--hero[data-kv="b"]{background-position:70% center}
+  .kv--hero[data-kv="c"]{background-position:80% center}
+  .kv--hero::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 72%)}
+  .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.9) 0%,rgba(11,13,16,.6) 50%,rgba(11,13,16,.1) 80%)}
+  .kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px)}
+}
+
+/* Menü dunkel, solange es über dem Hero liegt; danach hell (12.11.) */
+.nav{transition:background-color 200ms var(--ease),border-color 200ms var(--ease)}
+.nav svg circle{transition:fill 200ms var(--ease)}
+.nav.nav--dark{background:rgba(11,13,16,.72);border-bottom-color:rgba(255,255,255,.08);color:#ECEDEF}
+.nav--dark .wm svg circle{fill:#ECEDEF}
+.nav--dark .nav__sep{background:rgba(255,255,255,.16)}
+.nav--dark .nav__links a{color:#B9BCC0}
+.nav--dark .nav__links a:hover{color:#ECEDEF}
+.nav--dark .nav__right>a:not(.btn){color:#B9BCC0}
+.nav--dark .nav__right>a:not(.btn):hover{color:#ECEDEF}
+.nav--dark .btn--p{background:#ECEDEF;color:#0B0D10}
+.nav--dark .btn--p:hover{background:#B9BCC0}
+.nav--dark :focus-visible{outline-color:#ECEDEF}
+
+/* Inhalte der bisherigen Startseite (12.11.) */
+.dd{position:relative;display:flex;align-self:stretch}
+.dd__m{position:absolute;top:100%;left:-12px;min-width:200px;padding:6px;background:#FFFFFF;border:1px solid var(--bd);border-radius:6px;box-shadow:0 12px 32px -12px rgba(17,19,23,.18);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity 120ms var(--ease),transform 120ms var(--ease),visibility 0s 120ms}
+.dd:hover .dd__m,.dd:focus-within .dd__m{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.nav .dd__m a{color:#3F444B!important;padding:9px 12px;border-radius:4px;box-shadow:none!important;font-size:14px;align-self:auto}
+.nav .dd__m a:hover{background:#EEF0F3;color:#111317!important}
+.kvh__fn{margin:-6px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:#3F444B}
+.kv[data-kv="c"] .kvh__fn{color:#B9BCC0}
+.tl3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.tc{background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.tc h3{margin:4px 0 0;font-size:24px;line-height:1.2;font-weight:500;letter-spacing:-.025em}
+.tc p{margin:0;font-size:15px;line-height:1.6;color:var(--t2)}
+.mini{margin-top:auto;border:1px solid var(--bd);border-radius:4px;background:var(--bg);font-size:13px}
+.mini__h{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--bd);font-weight:500}
+.mini__h span{font:400 11px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.mini__r{display:flex;justify-content:space-between;gap:12px;padding:9px 14px;border-top:1px solid var(--bd)}
+.mini__r:first-of-type{border-top:0}
+.mini__r b{font:500 13px/1.4 var(--mono);font-feature-settings:"tnum" 1,"zero" 1}
+.mini__r b.pos{color:var(--pos)}
+.self{display:grid;gap:48px}
+@media (min-width:1000px){ .self{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px} }
+.self .ben{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.self .ben>div{padding:24px 20px 24px 0}
+@media (min-width:720px){ .self .ben>div:nth-child(even){padding-left:24px} }
+.tag{display:inline-flex;align-items:center;height:20px;padding:0 6px;margin-left:8px;border:1px solid var(--bd2);border-radius:2px;font:400 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mu);vertical-align:3px}
+.ak{display:grid;gap:48px}
+@media (min-width:1000px){ .ak{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px} }
+@media (min-width:1000px){ .ak--r{grid-template-columns:minmax(0,7fr) minmax(0,5fr)} .ak--r>.head{order:2} }
+.ak ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:var(--bd);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.ak li{background:var(--bg);padding:18px 16px 18px 0;display:grid;align-content:start;grid-template-columns:32px minmax(0,1fr);gap:2px 8px}
+@media (min-width:720px){ .ak li:nth-child(even){padding-left:20px} }
+.ak li i{grid-row:1/3;font:400 12px/1 var(--mono);color:var(--mu);font-style:normal;padding-top:5px}
+.ak li b{font-size:16px;font-weight:500;letter-spacing:-.01em}
+.ak li span{font-size:14px;color:var(--mu);line-height:1.5}
+.cm{display:grid;gap:40px;align-items:center}
+@media (min-width:1000px){ .cm{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px} }
+.beta{display:inline-flex;height:20px;align-items:center;padding:0 6px;border-radius:2px;background:var(--tx);color:var(--bg);font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.cv{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 64px -24px rgba(17,19,23,.16)}
+.cv__top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.cv__top b{font-size:18px;font-weight:500;letter-spacing:-.01em}
+.cv__top span{font-size:13px;color:var(--mu)}
+.cv__fv{display:flex;flex-direction:column;gap:4px}
+.cv__fv b{font:500 30px/1.1 var(--mono);letter-spacing:-.02em;font-feature-settings:"tnum" 1}
+.cv__fv span{font-size:12.5px;color:var(--mu)}
+.cv__src{font:400 11px/1.4 var(--mono);color:var(--mu)}
+.stance{display:grid;gap:48px}
+@media (min-width:1000px){ .stance{grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:72px} }
+.stance__q{margin:0;font-size:clamp(28px,3.6vw,46px);line-height:1.12;font-weight:500;letter-spacing:-.035em;text-wrap:balance}
+.stance__by{margin-top:20px;display:flex;align-items:center;gap:12px}
+.stance__by i{display:flex;gap:3px}.stance__by i b{width:16px;height:3px;border-radius:2px}
+.about{display:flex;flex-direction:column;gap:18px;padding-top:4px}
+.about p{margin:0;font-size:17px;line-height:1.65;color:var(--t2);max-width:560px;text-wrap:pretty}
+.about p.about__lead{font-size:20px;line-height:1.45;color:var(--tx);font-weight:500;letter-spacing:-.01em}
+.proof{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.proof figure{margin:0;background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.proof__s{color:var(--tx);letter-spacing:.12em;font-size:13px}
+.proof blockquote{margin:0;font-size:16px;line-height:1.6}
+.proof figcaption{margin-top:auto;padding-top:14px;border-top:1px solid var(--bd);font-size:14px;display:flex;flex-direction:column;gap:2px}
+.proof figcaption b{font-weight:500}
+.proof figcaption span{color:var(--mu);font-size:13px}
+.end__claim{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9A9FA7;position:relative;z-index:1}
+
+/* Haltung und Über GO:BETTER: randlose dunkle Bildfläche (12.11.) */
+.halt{position:relative;background:#0B0D10;color:#ECEDEF;overflow:hidden;padding-bottom:clamp(72px,9vw,128px)}
+.halt__img{position:absolute;left:0;right:0;top:0;height:min(92vh,58vw);min-height:560px;background:url("../assets/photo/workspace-reflection.png") 72% center/cover no-repeat}
+.halt__img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,13,16,.92) 0%,rgba(11,13,16,.6) 38%,rgba(11,13,16,0) 66%),linear-gradient(0deg,#0B0D10 0%,rgba(11,13,16,0) 38%)}
+.halt__top{position:relative;z-index:1;min-height:min(92vh,58vw);display:flex;flex-direction:column;justify-content:center;gap:28px;padding-block:96px}
+.halt__lab{color:#9A9FA7}
+.halt__q{margin:0;max-width:17ch;font-size:clamp(34px,4.8vw,68px);line-height:1.04;font-weight:600;letter-spacing:-.045em;text-wrap:balance}
+.halt__about{position:relative;z-index:1;display:grid;gap:48px;padding-top:24px;border-top:1px solid #262B33}
+@media (min-width:1000px){ .halt__about{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;padding-top:56px} }
+.gb{display:flex;flex-direction:column;gap:18px}
+.gb__row{display:grid;grid-template-columns:auto;gap:4px}
+@media (min-width:720px){ .gb__row{grid-template-columns:minmax(0,auto) minmax(0,1fr);align-items:center;gap:24px} .gb__t{padding-top:.4em} }
+.gb__w{font-size:clamp(56px,8.4vw,128px);line-height:.9;font-weight:600;letter-spacing:-.055em}
+.gb__row:first-child .gb__w{color:#2EE59D}
+.gb__t{font-size:clamp(17px,1.5vw,21px);line-height:1.4;color:#B9BCC0;max-width:22em;text-wrap:pretty}
+.halt .about p{color:#B9BCC0}
+.halt .about b{color:#ECEDEF;font-weight:500}
+/* GO:BETTER-Abschnitt hell, direkt nach der App (13.11.) */
+.gbsec .halt__about{border-top:0;padding-top:0}
+.gbsec .gb__row:first-child .gb__w{color:#0A7A52}
+.gbsec .gb__row+.gb__row .gb__w{color:#111317}
+.gbsec .gb__t{color:#555A62}
+.gbsec .about b{color:#111317;font-weight:500}
+
+/* Frühe Nutzer auf Schwarz unter dem Haltungs-Bild (13.11.) */
+.halt{padding-bottom:clamp(72px,9vw,128px)}
+.halt__voices{position:relative;z-index:1;padding-top:24px}
+.halt .voices figure{border-top-color:#ECEDEF}
+.halt .voices blockquote{color:#ECEDEF}
+.halt .voices__s,.halt .voices figcaption{color:#9A9FA7}
+.halt .voices figcaption b{color:#ECEDEF}
+.halt__voices .lab{color:#9A9FA7}
+.gbsec .gb__row:first-child .gb__w{color:#111317}
+
+
+@media (max-width:719px){ .halt__img{height:620px;background-position:74% center} .halt__img::after{background:linear-gradient(0deg,#0B0D10 0%,rgba(11,13,16,.55) 50%,rgba(11,13,16,.75) 100%)} .halt__top{min-height:620px;justify-content:flex-end;padding-block:64px 40px} }
+/* Frühe Nutzer ohne Boxen */
+.voices{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.voices figure{margin:0;padding-top:24px;border-top:2px solid var(--tx);display:flex;flex-direction:column;gap:18px}
+.voices__s{font-size:13px;letter-spacing:.14em;color:var(--mu)}
+.voices blockquote{margin:0;font-size:clamp(19px,1.6vw,23px);line-height:1.4;font-weight:500;letter-spacing:-.015em;text-wrap:pretty}
+.voices figcaption{margin-top:auto;font-size:14px;color:var(--mu)}
+.voices figcaption b{color:var(--tx);font-weight:500}
+
+/* Werkzeug-Karten in Produktfarbe wie auf der aktuellen Startseite (12.11.) */
+.tc--c{border:0;border-radius:6px;color:#0B0D10;gap:16px;padding:28px 24px 24px}
+.tc--fvp{background:#2EE59D}.tc--pt{background:#F0B42A}.tc--td{background:#5B8CFF}
+.tc--c .lab{color:#0B0D10;opacity:.75}
+.tc--c .dot{background:#0B0D10!important}
+.tc--c h3{font-weight:600;letter-spacing:-.03em}
+.tc--c p{color:rgba(11,13,16,.75)}
+.tc--c .mini{background:#0B0D10;border:0;color:#ECEDEF;box-shadow:0 16px 40px rgba(11,13,16,.28)}
+.tc--c .mini__h{border-bottom-color:#262B33}
+.tc--c .mini__h span{color:#9A9FA7}
+.tc--c .mini__r{border-top-color:#262B33}
+.tc--c .mini__r span{color:#9A9FA7}
+.tc--c .mini__r b.pos{color:#7FC0A2}
+.tc--c .lnk{min-height:48px;margin-top:2px;border-top:1px solid rgba(11,13,16,.2);color:#0B0D10}
+
+/* Band „Über die Werkzeuge hinaus“: Akademie und Community auf weißer Fläche, abgesetzt vom Werkzeug-Teil (12.11.) */
+.band{background:#FFFFFF;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding-top:clamp(56px,7vw,96px);margin-bottom:var(--sec)}
+.band__h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:20px;margin-bottom:clamp(48px,6vw,88px);border-bottom:1px solid var(--bd)}
+.band__h .wrap{border:0}
+.band__t{font-size:15px;font-weight:500;color:var(--t2)}
+.band .ak li{background:#FFFFFF}
+.band .scg>div{background:#FFFFFF}
+
+/* Farbige Karten tragen die drei Fragen (12.11. abends) */
+.tc__top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tc--c .plan{color:#0B0D10}
+.tc--c .plan b{background:#0B0D10;color:#ECEDEF}
+.tc--c p b{font-weight:600;color:#0B0D10}
+
+/* Selbst anlegen: sechs Punkte als offene Kacheln mit Produktfarben-Akzent, anders als die Akademie-Liste (12.11. abends) */
+.self2__h{display:grid;gap:20px;margin-bottom:clamp(64px,7vw,104px)}
+@media (min-width:1000px){ .self2__h{grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:72px;align-items:end} .self2__h .lab{grid-column:1/-1} .self2__h .lead{margin-bottom:8px} }
+.self2 .ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px 40px;background:none;border:0}
+.self2 .ben>div{background:none;padding:0!important;gap:12px;position:relative}
+.self2 .ben>div::before{content:"";display:block;width:40px;height:3px;border-radius:2px;margin-bottom:8px;background:var(--fvp)}
+.self2 .ben>div:nth-child(3n+2)::before{background:var(--pt)}
+.self2 .ben>div:nth-child(3n)::before{background:var(--td)}
+.self2 .ben i{display:none}
+.self2 .ben b{font-size:22px;letter-spacing:-.02em}
+/* Band ohne weiße Fläche, nur die Kapitelzeile trennt */
+.band{background:none;border:0}
+.band .ak li{background:var(--bg)}
+.band .scg>div{background:var(--sf)}
+.band .scg>div.on{background:var(--sf2)}
+
+/* Trennlinie vor Akademie/Community: mittig zwischen den Abschnitten */
+.band{padding-top:0!important}
+.band__line{margin:0 0 var(--sec);border:0;border-top:1px solid var(--bd)}
+.band__line--end{margin:0}
+.band{margin-bottom:0}
+/* Probe: zwei weitere Darstellungen der sechs Punkte */
+.self2__sw{margin-top:40px;display:inline-flex;gap:4px;padding:4px;border:1px solid var(--bd);border-radius:6px;background:var(--sf);font:500 12px/1 var(--sans)}
+.self2__sw button{all:unset;cursor:pointer;height:28px;padding:0 10px;display:flex;align-items:center;border-radius:4px;color:var(--t2)}
+.self2__sw button[aria-pressed="true"]{background:var(--tx);color:var(--bg)}
+.self2__sw button:focus-visible{outline:2px solid var(--tx);outline-offset:2px}
+/* B: dunkle Fläche wie die App im dunklen Modus, Punkte im 1-px-Raster */
+.self2[data-v="b"] .ben{background:#262B33;gap:1px;border-radius:8px;overflow:hidden;border:1px solid #262B33}
+.self2[data-v="b"] .ben>div{background:#0B0D10;padding:32px 28px!important;color:#ECEDEF}
+.self2[data-v="b"] .ben>div::before{width:8px;height:8px;border-radius:50%;margin-bottom:12px}
+.self2[data-v="b"] .ben b{color:#ECEDEF}
+.self2[data-v="b"] .ben span{color:#9A9FA7}
+/* C: große Nummern in Mono, zweispaltig, ohne Striche */
+.self2[data-v="c"] .ben{grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px 72px}
+.self2[data-v="c"] .ben>div{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:20px;row-gap:8px;align-content:start;grid-template-rows:auto 1fr}
+.self2[data-v="c"] .ben>div::before{display:none}
+.self2[data-v="c"] .ben i{display:block;grid-row:1/3;font:400 48px/1 var(--mono);letter-spacing:-.04em;color:var(--fvp-t,#0A7A52);font-style:normal}
+.self2[data-v="c"] .ben>div:nth-child(3n+2) i{color:#B07D0B}
+.self2[data-v="c"] .ben>div:nth-child(3n) i{color:#2459D6}
+
+/* Handy */
+main{overflow-x:clip}
+@media (max-width:719px){
+  .nav__sep{display:none}
+  .nav .btn{height:36px;padding:0 12px;font-size:13px}
+  .ph__act{display:none}
+  .view .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .view .tile{padding:12px}
+  .view .tile .v{font-size:19px}
+  .view .tile .v.big{font-size:16px}
+  .view .tile .n{font-size:11.5px}
+  .tool__ui .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .tool__ui .tile .v{font-size:20px}
+  .scg b{font-size:13px}
+  .win__bar{gap:16px;padding:0 14px}
+  .win__bar>.wm{display:none}
+  .facts{margin-top:56px}
+  .facts>div{padding:22px 0}
+  .end{padding:40px 24px}
+}
+</style><style>
+/* Akademie-Seite v2 (13.11.): eigener Charakter. Dunkler Kopf mit Lernpfad, Module als klickbare Karten in drei Etappen. */
+.ak2-hero{background:#0B0D10;color:#ECEDEF;margin-top:calc(-1*var(--gbn-h));padding-top:calc(var(--gbn-h) + clamp(56px,8vw,120px));padding-bottom:clamp(64px,8vw,120px);position:relative;overflow:hidden}
+.ak2-hero::before{content:"";position:absolute;inset:auto -10% -40% 40%;height:80%;background:radial-gradient(closest-side,rgba(46,229,157,.16),transparent 70%),radial-gradient(closest-side at 70% 60%,rgba(91,140,255,.14),transparent 70%);pointer-events:none}
+.ak2-hero__in{position:relative;display:grid;gap:56px}
+@media (min-width:1000px){.ak2-hero__in{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:center}}
+.ak2-hero .lab{color:#9A9FA7}
+.ak2-hero h1{margin:0;font-size:clamp(44px,6.2vw,88px);line-height:.96;font-weight:600;letter-spacing:-.05em;text-wrap:balance}
+.ak2-hero p{margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#B9BCC0;max-width:32em;text-wrap:pretty}
+.ak2-hero .btn--p{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+.ak2-hero .btn--s{background:transparent;color:#ECEDEF;border-color:#68707B}
+.ak2-facts{display:flex;flex-wrap:wrap;gap:8px 20px;font:400 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:#9A9FA7}
+.ak2-facts b{color:#ECEDEF;font-weight:500}
+/* Lernpfad im Kopf */
+.lpfad{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;position:relative}
+.lpfad::before{content:"";position:absolute;left:15px;top:16px;bottom:16px;width:1px;background:linear-gradient(#2EE59D,#F0B42A 55%,#5B8CFF)}
+.lpfad li a{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:14px;padding:9px 0;color:#ECEDEF;text-decoration:none}
+.lpfad i{position:relative;z-index:1;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#0B0D10;border:1px solid #3A3F47;font:500 11px/1 var(--mono);font-style:normal;color:#ECEDEF;transition:background-color 120ms,border-color 120ms}
+.lpfad span{font-size:16px;letter-spacing:-.01em}
+.lpfad em{font-style:normal;font:400 11px/1 var(--mono);color:#68707B;letter-spacing:.06em;text-transform:uppercase;opacity:0;transition:opacity 120ms}
+.lpfad li a:hover i,.lpfad li a:focus-visible i{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+.lpfad li a:hover em,.lpfad li a:focus-visible em{opacity:1}
+/* Grundsätze */
+.prin2{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.prin2>div{display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:2px solid var(--tx)}
+.prin2 b{font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.03em;line-height:1.15}
+.prin2 p{margin:0;color:var(--t2);font-size:16px;line-height:1.6}
+/* Etappen und Modulkarten */
+.etp{display:grid;gap:24px;padding-top:clamp(40px,5vw,64px)}
+.etp+.etp{margin-top:clamp(24px,3vw,40px);border-top:1px solid var(--bd)}
+@media (min-width:1000px){.etp{grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:48px}}
+.etp__h{display:flex;flex-direction:column;gap:8px}
+.etp__h b{font-size:24px;font-weight:600;letter-spacing:-.025em}
+.etp__h span{font-size:15px;color:var(--mu);line-height:1.5;max-width:22em}
+.akm-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.akm{display:flex;flex-direction:column;gap:14px;padding:24px;min-height:248px;background:var(--sf);border:1px solid var(--bd);border-radius:6px;color:inherit;text-decoration:none;position:relative;transition:border-color 140ms var(--ease),transform 140ms var(--ease),box-shadow 140ms var(--ease)}
+.akm:hover,.akm:focus-visible{border-color:var(--tx);transform:translateY(-2px);box-shadow:0 14px 32px -18px rgba(17,19,23,.35)}
+.akm__n{font:500 13px/1 var(--mono);color:var(--mu);letter-spacing:.04em}
+.akm b{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.akm p{margin:0;font-size:15px;line-height:1.5;color:var(--t2)}
+.akm__use{display:flex;align-items:center;gap:8px;font:400 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.akm__use i{width:6px;height:6px;border-radius:50%;flex:none}
+.akm__go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--bd);font-size:15px;font-weight:500}
+.akm__go svg{width:16px;height:16px;transition:transform 140ms var(--ease)}
+.akm:hover .akm__go svg{transform:translateX(3px)}
+.akm--first{background:#0B0D10;color:#ECEDEF;border-color:#0B0D10}
+.akm--first .akm__n,.akm--first .akm__use{color:#9A9FA7}
+.akm--first p{color:#B9BCC0}
+.akm--first .akm__go{border-top-color:#262B33}
+.akm--first:hover{border-color:#0B0D10}
+.akm__tag{position:absolute;top:20px;right:20px;font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;border-radius:3px;background:#2EE59D;color:#0B0D10}
+@media (prefers-reduced-motion:reduce){.akm,.akm:hover{transform:none}}
+
+/* Akademie v3: alle Inhalte der Live-Seite (13.11.) */
+.ak2-facts{gap:8px 28px}
+.pos{display:grid;gap:40px}
+@media (min-width:1000px){.pos{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px}}
+.pos__t{display:flex;flex-direction:column;gap:28px}
+.pos__t p{margin:0;font-size:18px;line-height:1.65;color:var(--t2);max-width:44em}
+.pos__t p b{color:var(--tx);font-weight:500}
+.akq{margin:0;padding-left:24px;border-left:3px solid var(--fvp);font-size:clamp(22px,2.3vw,30px);line-height:1.25;font-weight:600;letter-spacing:-.025em;color:var(--tx);text-wrap:balance}
+.saeulen{width:100%;border-collapse:collapse;font-size:16px}
+.saeulen th{font:400 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mu);text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--bd)}
+.saeulen td{padding:18px 16px 18px 0;border-bottom:1px solid var(--bd);vertical-align:top}
+.saeulen td:first-child{font-weight:500;white-space:nowrap}
+.saeulen td:nth-child(2){color:var(--t2)}
+.saeulen th:last-child,.saeulen td:last-child{text-align:right;padding-right:0;font-family:var(--mono);white-space:nowrap}
+.saeulen td:last-child{color:var(--fvp-t)}
+.tblw{overflow-x:auto}
+.note2{margin:16px 0 0;font-size:15px;color:var(--mu);font-style:italic}
+.akm-grid--8{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.akm__use{flex-wrap:wrap}
+.akm__use i{margin-left:4px}
+.akm__use i:first-child{margin-left:0}
+.rf{background:#0B0D10;color:#ECEDEF}
+.rf .lab{color:#9A9FA7}.rf .h2{color:#ECEDEF;font-size:clamp(32px,3.2vw,46px)}.rf .lead{color:#B9BCC0}
+.rf ul{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid #262B33}
+.rf li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:24px 0;border-bottom:1px solid #262B33;font-size:17px;line-height:1.65;color:#B9BCC0}
+.rf li::before{content:"→";color:#2EE59D;font-family:var(--mono)}
+.rf li b{color:#ECEDEF;font-weight:500}
+.rf__in{display:grid;gap:40px}
+@media (min-width:1000px){.rf__in{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px}}
+.eco{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.eco>div{display:flex;flex-direction:column;gap:12px;padding:28px 24px;background:var(--sf);border:1px solid var(--bd);border-radius:6px;border-top:3px solid var(--c)}
+.eco .lab{color:var(--ct)}
+.eco b{font-size:21px;font-weight:600;letter-spacing:-.02em}
+.eco p{margin:0;font-size:16px;line-height:1.55;color:var(--t2)}
+.eco a{margin-top:auto;padding-top:8px;font-size:15px;font-weight:500;color:var(--tx);text-decoration:none}
+.eco a:hover{text-decoration:underline;text-underline-offset:4px}
+.did{display:grid;gap:40px}
+@media (min-width:1000px){.did{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px}}
+.did__t{display:flex;flex-direction:column;gap:20px}
+.did__t p{margin:0;font-size:17px;line-height:1.65;color:var(--t2)}
+.did__t p b{color:var(--tx);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips span{font:400 13px/1 var(--mono);letter-spacing:.02em;padding:10px 12px;border:1px solid var(--bd);border-radius:4px;background:var(--sf);color:var(--t2)}
+.start{background:#0B0D10;color:#ECEDEF;text-align:center}
+.start__in{display:flex;flex-direction:column;align-items:center;gap:24px}
+.start h2{margin:0;font-size:clamp(40px,6vw,80px);line-height:1;font-weight:600;letter-spacing:-.045em}
+.start h2 em{font-style:normal;color:#2EE59D}
+.start p{margin:0;font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:#B9BCC0;max-width:34em}
+.start .btn--p{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+.disc{margin-top:40px;max-width:900px;text-align:left;padding:24px 28px;border:1px solid #262B33;border-radius:6px;font:400 13px/1.8 var(--mono);letter-spacing:.02em;color:#9A9FA7}
+
+.more{border-top:1px solid var(--bd)}
+.more summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;cursor:pointer;list-style:none;font-size:17px;font-weight:500}
+.more summary::-webkit-details-marker{display:none}
+.more summary svg{width:14px;height:14px;flex:none;transition:transform 200ms var(--ease)}
+.more[open] summary svg{transform:rotate(180deg)}
+.more>div{padding:0 0 20px;display:flex;flex-direction:column;gap:16px}
+.rf .more{border-top-color:#262B33}
+.rf details.rfi{border-bottom:1px solid #262B33}
+.rfi summary{display:grid;grid-template-columns:28px minmax(0,1fr) 14px;gap:12px;align-items:start;padding:22px 0;cursor:pointer;list-style:none;font-size:18px;line-height:1.45;font-weight:500;color:#ECEDEF}
+.rfi summary::-webkit-details-marker{display:none}
+.rfi summary::before{content:"→";color:#2EE59D;font-family:var(--mono)}
+.rfi summary svg{width:14px;height:14px;margin-top:6px;transition:transform 200ms var(--ease)}
+.rfi[open] summary svg{transform:rotate(180deg)}
+.rfi p{margin:0;padding:0 26px 24px 40px;font-size:16px;line-height:1.65;color:#B9BCC0}
+.rf .rfl{border-top:1px solid #262B33}
+
+.pos>.head{grid-column:1/-1}
+.pos>.head .h2{max-width:22ch}
+.pos__t{display:contents}
+.pos__a{display:flex;flex-direction:column;gap:20px}
+@media (min-width:1000px){.pos{grid-template-columns:minmax(0,5fr) minmax(0,7fr);row-gap:48px}}
+.saeulen tfoot td{border-bottom:0;border-top:2px solid var(--tx)}
+
+/* Hero hell und freundlich (13.11.) */
+.ak2-hero,.mh{background:radial-gradient(60% 80% at 85% 20%,rgba(46,229,157,.20),transparent 70%),radial-gradient(50% 70% at 65% 95%,rgba(91,140,255,.16),transparent 70%),radial-gradient(40% 60% at 100% 75%,rgba(240,180,42,.14),transparent 70%),#F3F5F4;color:#111317}
+.ak2-hero::before,.mh::before{display:none}
+.ak2-hero .lab,.mh .lab{color:#555A62}
+.ak2-hero p,.mh p{color:#3F444B}
+.ak2-hero .btn--p{background:#111317;color:#F7F8FA;border-color:#111317}
+.ak2-hero .btn--s{background:rgba(255,255,255,.6);color:#111317;border-color:#C9CDD3}
+.ak2-facts{color:#555A62}.ak2-facts b{color:#111317}
+.mh h1 .accent{color:#0A7A52}
+.lpfad li a{color:#111317}
+.lpfad i{background:#FFFFFF;border-color:#C9CDD3;color:#111317}
+.lpfad em{color:#7E858F}
+.lpfad li a:hover i,.lpfad li a:focus-visible i{background:#111317;color:#F7F8FA;border-color:#111317}
+.ak-fig{background:#FFFFFF;border:1px solid var(--bd)}
+.ak-fig figcaption{color:#555A62;border-top-color:var(--bd)}
+
+/* Hero dunkel mit Farbverlauf (13.11., Probe) */
+.ak2-hero,.mh{background:radial-gradient(60% 80% at 85% 15%,rgba(46,229,157,.26),transparent 70%),radial-gradient(55% 75% at 60% 105%,rgba(91,140,255,.26),transparent 70%),radial-gradient(40% 60% at 102% 80%,rgba(240,180,42,.20),transparent 70%),#0B0D10;color:#ECEDEF}
+.ak2-hero .lab,.mh .lab{color:#9A9FA7}
+.ak2-hero p,.mh p{color:#B9BCC0}
+.ak2-hero .btn--p{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+.ak2-hero .btn--s{background:rgba(255,255,255,.06);color:#ECEDEF;border-color:#68707B}
+.ak2-facts{color:#9A9FA7}.ak2-facts b{color:#ECEDEF}
+.mh h1 .accent{color:#2EE59D}
+.lpfad li a{color:#ECEDEF}
+.lpfad i{background:#12151A;border-color:#3A3F47;color:#ECEDEF}
+.lpfad em{color:#9A9FA7}
+.lpfad li a:hover i,.lpfad li a:focus-visible i{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+
+.ytbox{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:8px;padding:16px 18px;border:1px solid var(--bd);border-radius:6px;background:var(--sf)}
+.ytbox svg{flex:none}
+.ytbox p{flex:1 1 260px;margin:0;font-size:15px!important;line-height:1.5;color:var(--t2)}
+.ytbox p b{color:var(--tx);font-weight:500}
+.ytbox a{flex:none;font-size:15px;font-weight:500;color:var(--tx);text-decoration:none;white-space:nowrap}
+.ytbox a:hover{text-decoration:underline;text-underline-offset:4px}
+</style>
+<style>
+/* Modulseiten der Akademie (13.11.) */
+.mh{background:#0B0D10;color:#ECEDEF;margin-top:calc(-1*var(--gbn-h));padding-top:calc(var(--gbn-h) + clamp(48px,7vw,104px));padding-bottom:clamp(56px,7vw,96px);position:relative;overflow:hidden}
+.mh::before{content:"";position:absolute;inset:auto -10% -50% 45%;height:90%;background:radial-gradient(closest-side,rgba(46,229,157,.14),transparent 70%),radial-gradient(closest-side at 70% 60%,rgba(91,140,255,.12),transparent 70%);pointer-events:none}
+.mh .wrap{position:relative;display:flex;flex-direction:column;gap:22px}
+.mh .lab{color:#9A9FA7}
+.mh h1{margin:0;max-width:16ch;font-size:clamp(42px,6.4vw,88px);line-height:.98;font-weight:600;letter-spacing:-.05em;text-wrap:balance}
+.mh h1 .accent{color:#2EE59D}
+.mh p{margin:0;max-width:36em;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#B9BCC0}
+.mbar{position:sticky;top:var(--gbn-h);z-index:40;background:rgba(247,248,250,.78);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--bd)}
+.mbar .wrap{display:flex;align-items:center;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+.mbar a{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:34px;padding:0 10px;border-radius:4px;font:500 13px/1 var(--mono);color:var(--t2);text-decoration:none}
+.mbar a:hover{background:var(--sf2);color:var(--tx)}
+.mbar a[aria-current="page"]{background:var(--tx);color:#F7F8FA}
+.mbar .ov{font-family:var(--sans);font-size:14px;margin-right:8px}
+.mbody>*{min-width:0}
+.mbody{grid-template-columns:minmax(0,1fr);display:grid;gap:48px;padding-top:clamp(40px,5vw,72px);padding-bottom:var(--sec)}
+@media (min-width:1100px){.mbody{grid-template-columns:240px minmax(0,1fr);gap:72px}}
+.toc{display:none}
+@media (min-width:1100px){.toc{display:block;position:sticky;top:calc(var(--gbn-h) + 72px);align-self:start;max-height:calc(100vh - var(--gbn-h) - 96px);overflow:auto}}
+.toc .lab{display:block;margin-bottom:12px}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--bd)}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;font-size:14px;line-height:1.35;color:var(--mu);text-decoration:none}
+.toc a:hover{color:var(--tx)}
+.toc a.on{color:var(--tx);border-left-color:var(--tx);font-weight:500}
+.ak-content{max-width:760px;font-size:17px;line-height:1.7;color:var(--t2);--text-2:var(--mu);--text-3:var(--mu);--neon:var(--fvp-t)}
+.ak-content>*:first-child{margin-top:0}
+.ak-content p{margin:0 0 1.1em}
+.ak-content strong{color:var(--tx);font-weight:500}
+.ak-content h2{margin:2.6em 0 .7em;font-size:clamp(26px,2.6vw,34px);line-height:1.15;font-weight:600;letter-spacing:-.03em;color:var(--tx);scroll-margin-top:calc(var(--gbn-h) + 72px);text-wrap:balance}
+.ak-content h2 .num{display:block;margin-bottom:10px;font:500 13px/1 var(--mono);letter-spacing:.04em;color:var(--mu)}
+.ak-content h3{margin:1.8em 0 .5em;font-size:20px;line-height:1.3;font-weight:600;letter-spacing:-.015em;color:var(--tx)}
+.ak-content h4{margin:0 0 .4em;font-size:17px;font-weight:600;color:var(--tx)}
+.ak-content ul,.ak-content ol{margin:0 0 1.2em;padding-left:1.3em}
+.ak-content li{margin:.35em 0}
+.ak-content em{font-style:italic}
+.ak-lernziele{background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:28px 28px 16px;margin-bottom:8px}
+.ak-lernziele h3{margin-top:0;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.ak-tbl-wrap{overflow-x:auto;margin:1.4em 0;border:1px solid var(--bd);border-radius:6px;background:var(--sf)}
+.ak-tbl{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.5}
+.ak-tbl th{text-align:left;font:500 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mu);background:var(--sf2);padding:12px 14px;border-bottom:1px solid var(--bd);white-space:nowrap}
+.ak-tbl td{padding:12px 14px;border-bottom:1px solid var(--bd);vertical-align:top}
+.ak-tbl tr:last-child td{border-bottom:0}
+.ak-tbl .hl{background:rgba(16,194,127,.08);color:var(--tx)}
+.ak-tbl .check{color:var(--pos)}.ak-tbl .cross{color:var(--neg)}
+.ak-merksatz{margin:1.6em 0;padding:22px 24px;border-left:3px solid var(--fvp);background:var(--sf);border-radius:0 6px 6px 0}
+.ak-merksatz p{margin:0;font-size:19px;line-height:1.5;font-weight:500;letter-spacing:-.01em;color:var(--tx)}
+.ak-mtag{display:block;margin-bottom:8px;font:500 11px/1 var(--mono)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--fvp-t)!important}
+.ak-callout{margin:1.6em 0;padding:22px 24px;border:1px solid var(--bd);background:var(--sf2);border-radius:6px}
+.ak-callout p:last-child{margin-bottom:0}
+.ak-ctag{display:block;margin-bottom:10px;font:500 12px/1.3 var(--mono);letter-spacing:.04em;color:var(--tx)}
+.ak-fig{margin:1.8em 0;padding:0;background:#0B0D10;border-radius:6px;overflow:hidden}
+.ak-fig img{display:block;width:100%;height:auto}
+.ak-fig figcaption{padding:12px 16px;font:400 12px/1.5 var(--mono);color:#9A9FA7;border-top:1px solid #262B33}
+.ak-pre,.ak-formula{margin:1.4em 0;padding:18px 20px;background:#FFFFFF;color:#111317;border:1px solid var(--bd);border-left:3px solid var(--tx);border-radius:0 6px 6px 0;font:400 14px/1.7 var(--mono);overflow-x:auto;white-space:pre}
+.ak-check-list{list-style:none;padding:0!important}
+.ak-check-list li{position:relative;padding:10px 0 10px 32px;border-bottom:1px solid var(--bd);margin:0}
+.ak-check-list li::before{content:"";position:absolute;left:2px;top:14px;width:16px;height:16px;border:1.5px solid var(--tx);border-radius:3px}
+.ak-quiz li{margin:.6em 0}
+.ak-quiz-answers{margin:1.2em 0;border:1px solid var(--bd);border-radius:6px;background:var(--sf)}
+.ak-quiz-answers summary{cursor:pointer;list-style:none;padding:16px 20px;font-weight:500;color:var(--tx);display:flex;justify-content:space-between}
+.ak-quiz-answers summary::-webkit-details-marker{display:none}
+.ak-quiz-answers summary::after{content:"+";font-family:var(--mono)}
+.ak-quiz-answers[open] summary::after{content:"−"}
+.ak-quiz-body{padding:0 20px 16px}
+.ak-uebungen{display:grid;gap:12px;margin:1.2em 0}
+.ak-uebung{padding:20px 22px;border:1px solid var(--bd);border-radius:6px;background:var(--sf)}
+.ak-uebung p:last-child{margin-bottom:0}
+.ak-disclaimer{margin-top:3em;padding:20px 22px;border:1px solid var(--bd);border-radius:6px;font:400 12.5px/1.75 var(--mono);color:var(--mu)}
+.mnext{background:#0B0D10;color:#ECEDEF}
+.mnext .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;padding-block:clamp(64px,8vw,112px)}
+.mnext .lab{color:#9A9FA7}
+.mnext h2{margin:12px 0 0;font-size:clamp(32px,4vw,52px);line-height:1.05;font-weight:600;letter-spacing:-.04em;max-width:20ch}
+.mnext h2 span{display:block;color:#9A9FA7;font-size:.6em;letter-spacing:-.02em;margin-top:8px;font-weight:500}
+.mnext .btn--p{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+/* Hero hell und freundlich (13.11.) */
+.ak2-hero,.mh{background:radial-gradient(60% 80% at 85% 20%,rgba(46,229,157,.20),transparent 70%),radial-gradient(50% 70% at 65% 95%,rgba(91,140,255,.16),transparent 70%),radial-gradient(40% 60% at 100% 75%,rgba(240,180,42,.14),transparent 70%),#F3F5F4;color:#111317}
+.ak2-hero::before,.mh::before{display:none}
+.ak2-hero .lab,.mh .lab{color:#555A62}
+.ak2-hero p,.mh p{color:#3F444B}
+.ak2-hero .btn--p{background:#111317;color:#F7F8FA;border-color:#111317}
+.ak2-hero .btn--s{background:rgba(255,255,255,.6);color:#111317;border-color:#C9CDD3}
+.ak2-facts{color:#555A62}.ak2-facts b{color:#111317}
+.mh h1 .accent{color:#0A7A52}
+.lpfad li a{color:#111317}
+.lpfad i{background:#FFFFFF;border-color:#C9CDD3;color:#111317}
+.lpfad em{color:#7E858F}
+.lpfad li a:hover i,.lpfad li a:focus-visible i{background:#111317;color:#F7F8FA;border-color:#111317}
+.ak-fig{background:#FFFFFF;border:1px solid var(--bd)}
+.ak-fig figcaption{color:#555A62;border-top-color:var(--bd)}
+/* Hero dunkel mit Farbverlauf (13.11., Probe) */
+.ak2-hero,.mh{background:radial-gradient(60% 80% at 85% 15%,rgba(46,229,157,.26),transparent 70%),radial-gradient(55% 75% at 60% 105%,rgba(91,140,255,.26),transparent 70%),radial-gradient(40% 60% at 102% 80%,rgba(240,180,42,.20),transparent 70%),#0B0D10;color:#ECEDEF}
+.ak2-hero .lab,.mh .lab{color:#9A9FA7}
+.ak2-hero p,.mh p{color:#B9BCC0}
+.ak2-hero .btn--p{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+.ak2-hero .btn--s{background:rgba(255,255,255,.06);color:#ECEDEF;border-color:#68707B}
+.ak2-facts{color:#9A9FA7}.ak2-facts b{color:#ECEDEF}
+.mh h1 .accent{color:#2EE59D}
+.lpfad li a{color:#ECEDEF}
+.lpfad i{background:#12151A;border-color:#3A3F47;color:#ECEDEF}
+.lpfad em{color:#9A9FA7}
+.lpfad li a:hover i,.lpfad li a:focus-visible i{background:#ECEDEF;color:#0B0D10;border-color:#ECEDEF}
+
+
+</style>
+<link rel="stylesheet" href="../site-nav.css"><link rel="stylesheet" href="../site-foot.css">
+</head>
+<body>
+<script src="site-nav.js" data-page="akademie"></script>
+<main>
+<section class="mh" data-nav="dark"><div class="wrap"><span class="lab">Modul 1 · Grundlagen · 1 von 8</span><h1>Grundlagen erfolgreicher <span class="accent">Anleger.</span></h1><p>Der Markt ist kein Gegner, den man schlagen muss. Er ist ein Mechanismus, den man verstehen muss, bevor man ihn benutzt.</p></div></section>
+<nav class="mbar" aria-label="Module"><div class="wrap"><a class="ov" href="index.html">← Übersicht</a><a href="modul-01-grundlagen.html" aria-current="page" title="Grundlagen erfolgreicher Anleger">01</a><a href="modul-02-fundamentalanalyse.html" title="Fundamentalanalyse">02</a><a href="modul-03-chartanalyse.html" title="Chartanalyse">03</a><a href="modul-04-einstieg.html" title="Den richtigen Einstieg finden">04</a><a href="modul-05-risikomanagement.html" title="Risikomanagement">05</a><a href="modul-06-verkaufsstrategien.html" title="Verkaufsstrategien">06</a><a href="modul-07-psychologie.html" title="Börsen-Psychologie">07</a><a href="modul-08-strategie.html" title="Eigene Strategie entwickeln">08</a></div></nav>
+<div class="wrap mbody">
+<nav class="toc" aria-label="Inhalt"><span class="lab">Inhalt</span><ol><li><a href="#k1">1.1 Investieren oder Handeln? Ein Spektrum, keine Grenze</a></li><li><a href="#k2">1.2 Wie entsteht ein Aktienkurs?</a></li><li><a href="#k3">1.3 Gegen wen handelst du eigentlich?</a></li><li><a href="#k4">1.4 Orderbuch, Bid/Ask, Spread, Liquidität, Volumen</a></li><li><a href="#k5">1.5 Börsenplätze — wo du tatsächlich handelst</a></li><li><a href="#k6">1.6 Orderarten</a></li><li><a href="#k7">1.7 Warum die meisten Privatanleger Geld verlieren</a></li><li><a href="#k8">1.8 Erwartungswert statt Trefferquote</a></li><li><a href="#k9">1.9 Risiko vs. Rendite — und warum Verluste asymmetrisch sind</a></li><li><a href="#k10">1.10 Die Denkweise professioneller Händler</a></li><li><a href="#k11">Typische Anfängerfehler in Modul 1</a></li><li><a href="#k12">Checkliste — vor jeder einzelnen Order</a></li><li><a href="#k13">Zusammenfassung</a></li><li><a href="#k14">Quiz</a></li><li><a href="#k15">Praktische Übungen</a></li></ol></nav>
+<article class="ak-content">
+
+  <!-- Lernziele -->
+  <div class="ak-lernziele">
+    <h3>Lernziele</h3>
+    <p style="color:var(--text-2); font-size:0.93rem; margin:0 0 1rem;">Nach diesem Modul kannst du:</p>
+    <ol>
+      <li><strong>erklären</strong>, wodurch sich Investieren und aktiver Aktienhandel unterscheiden — und wo dein eigener Ansatz auf diesem Spektrum liegt;</li>
+      <li><strong>beschreiben</strong>, wie ein Aktienkurs mechanisch zustande kommt und warum Preis und Wert zwei verschiedene Dinge sind;</li>
+      <li><strong>benennen</strong>, wer die anderen Marktteilnehmer sind, welche Vorteile sie haben — und welchen Vorteil ausgerechnet du hast;</li>
+      <li><strong>ein Orderbuch lesen</strong> und Bid, Ask, Spread, Liquidität und Volumen korrekt interpretieren;</li>
+      <li><strong>die passende Orderart</strong> für eine gegebene Situation auswählen und die typischen Fallen vermeiden;</li>
+      <li><strong>den Erwartungswert</strong> eines Handelssystems berechnen und erklären, warum eine Trefferquote von 40 % profitabler sein kann als eine von 70 %;</li>
+      <li><strong>die Asymmetrie von Verlusten</strong> quantifizieren und daraus ableiten, warum Risikomanagement der Aktienauswahl vorgelagert ist;</li>
+      <li><strong>empirisch begründen</strong>, warum die Mehrheit der Privatanleger schlechter abschneidet als der Markt — und welche dieser Ursachen bei dir selbst wirksam sind.</li>
+    </ol>
+  </div>
+
+  <!-- 1.1 -->
+  <h2 id="k1"><span class="num">1.1</span>Investieren oder Handeln? Ein Spektrum, keine Grenze</h2>
+  <p>Die Frage „Bist du Investor oder Trader?" wird oft als Identitätsfrage gestellt. Sie ist in Wahrheit eine Frage nach <strong>drei Parametern</strong>: Haltedauer, Entscheidungstreiber und Ausstiegskriterium.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Passives Investieren</th>
+          <th class="hl">Aktiver Aktienhandel (dieser Kurs)</th>
+          <th>Swing Trading</th>
+          <th>Daytrading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Haltedauer</strong></td><td>Jahrzehnte</td><td class="hl">Monate bis Jahre</td><td>Tage bis Wochen</td><td>Minuten bis Stunden</td></tr>
+        <tr><td><strong>Entscheidungstreiber</strong></td><td>keiner (Sparplan)</td><td class="hl">Unternehmenswert + Kurskontext</td><td>Kursmuster</td><td>Orderfluss, Momentum</td></tr>
+        <tr><td><strong>Ausstiegskriterium</strong></td><td>keines</td><td class="hl">Fair Value erreicht <em>oder</em> These widerlegt</td><td>Kursziel / Stop</td><td>Zeit / Stop</td></tr>
+        <tr><td><strong>Notwendige Kompetenz</strong></td><td>gering</td><td class="hl">hoch</td><td>hoch</td><td>sehr hoch</td></tr>
+        <tr><td><strong>Kostenlast</strong></td><td>minimal</td><td class="hl">niedrig</td><td>mittel</td><td>hoch</td></tr>
+        <tr><td><strong>Wichtigster Gegner</strong></td><td>Ungeduld</td><td class="hl">Selbsttäuschung</td><td>Rauschen</td><td>Kosten &amp; Latenz</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Wo dieser Kurs steht:</strong> Wir kaufen <em>Unternehmen</em>, nicht <em>Kurse</em>. Aber wir kaufen sie nicht blind, sondern nutzen den Kurskontext, um den Einstieg zu optimieren und Ausstiege zu disziplinieren. Der Kurs ist damit das, was man am ehesten <strong>regelbasiertes Quality-Value-Investing mit technischem Timing-Filter</strong> nennen könnte.</p>
+
+  <p>Der entscheidende strukturelle Vorteil dieses Ansatzes ist nicht Intelligenz und nicht Information — beides haben andere in größerem Maße. Es ist <strong>Zeithorizont</strong>. Ein Fondsmanager, der an Quartalszahlen gemessen wird, kann eine Aktie nicht drei Jahre lang halten, während sie unterperformt, selbst wenn er weiß, dass sie unterbewertet ist. Er würde vorher entlassen. Du kannst das. Das ist deine einzige echte Arbitrage — und wenn du sie aufgibst, indem du hektisch handelst, gibst du das Einzige auf, was du hattest.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 1</strong>Dein Vorteil als Privatanleger ist nicht Wissen, sondern Geduld. Wer hektisch handelt, tauscht seinen einzigen Vorteil gegen den Nachteil aller anderen ein.</p>
+  </div>
+
+  <!-- 1.2 -->
+  <h2 id="k2"><span class="num">1.2</span>Wie entsteht ein Aktienkurs?</h2>
+  <h3>Der Kurs ist kein Wert — er ist ein Protokoll</h3>
+  <p>Ein Aktienkurs ist <strong>der Preis, zu dem zuletzt eine Transaktion stattgefunden hat.</strong> Nicht mehr. Er sagt aus: Zu diesem Preis war <em>ein</em> Käufer bereit zu kaufen und <em>ein</em> Verkäufer bereit zu verkaufen.</p>
+  <p>Das hat eine Konsequenz, die man kaum überschätzen kann: <strong>Der Kurs wird vom marginalen Marktteilnehmer gesetzt, nicht von der Mehrheit.</strong> Apple hat rund 15 Milliarden Aktien im Umlauf. An einem normalen Tag wechseln vielleicht 50 Millionen davon den Besitzer — etwa 0,3 %. Der Preis, den <em>alle</em> 15 Milliarden Aktien in diesem Moment „haben", wird also von 0,3 % der Aktionäre bestimmt. Die anderen 99,7 % haben an diesem Tag gar keine Meinung geäußert. Sie haben schlicht nichts getan.</p>
+  <p>Wenn der Kurs an einem Tag um 4 % fällt, bedeutet das <strong>nicht</strong>, dass „der Markt" seine Meinung über Apple um 4 % nach unten korrigiert hat. Es bedeutet, dass unter den wenigen, die an diesem Tag <em>handeln mussten oder wollten</em>, die Verkäufer dringlicher waren als die Käufer.</p>
+
+  <h3>Preisbildung im Detail</h3>
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-orderbuch.svg" alt="Schematische Darstellung eines Orderbuchs mit Bid, Ask und Spread" loading="lazy">
+    <figcaption>Orderbuch — die beste Ask trifft auf die beste Bid; der Spread ist der Zwischenraum</figcaption>
+  </figure>
+
+  <h3>Wo siehst du das Orderbuch als Privatanleger?</h3>
+  <p>Ehrliche Antwort: bei den meisten Standard-Brokern nur eingeschränkt. Neobroker wie <strong>Scalable Capital, Trade Republic oder Smartbroker</strong> zeigen in der App in der Regel nur den letzten gehandelten Kurs — das echte Orderbuch bleibt verborgen. Klassische Direktbanken wie <strong>comdirect, Consorsbank oder ING</strong> zeigen dir bei den meisten Titeln immerhin die beste Bid- und Ask-Seite (die „Marktdaten"- oder „Kurse"-Ansicht), aber selten die volle Buchtiefe. Wer mehrere Preisstufen live sehen will, braucht einen kostenpflichtigen Level-2-Datenfeed oder einen Broker mit Fokus auf aktive Händler (z. B. <strong>Interactive Brokers, CapTrader, sino</strong>) — oder greift zu Zusatzdiensten wie Traderfox oder Guidants.</p>
+
+  <p><strong>Gut zu wissen — das kostenlose Xetra-Orderbuch:</strong> In Deutschland lässt sich das Orderbuch sogar kostenlos anschauen. Das <strong>öffentliche Xetra-Orderbuch</strong> (Xetra ist der deutsche Referenz-Handelsplatz mit der größten Markttiefe) zeigt die Kauf- und Verkaufsaufträge einer liquiden Aktie, ohne dass man ein kostenpflichtiges Level-2-Datenpaket beim Broker freischalten muss. Ein guter, kostenloser Weg, um einmal zu sehen, wie sich Bid, Ask und Markttiefe in der Praxis darstellen — bevor man (als kurzfristiger Händler) überhaupt über bezahlte Datenfeeds nachdenkt.</p>
+
+  <p>Für einen langfristigen Anleger ist die Mechanik wichtiger als der ständige Live-Blick: Du musst das Buch nicht permanent im Blick haben, um sinnvoll zu handeln. Was du aber verstanden haben solltest: <strong>Der eine Kurs, den dein Broker in der App anzeigt, ist eine Zusammenfassung — nicht die ganze Wahrheit über Angebot und Nachfrage.</strong></p>
+
+  <p>Ein Kurs entsteht <strong>ausschließlich dann</strong>, wenn jemand die Preisvorstellung der Gegenseite akzeptiert. Solange sich Bid und Ask nicht berühren, passiert nichts — der Kurs steht still, obwohl beide Seiten voller Meinungen sind.</p>
+
+  <h3>Preis vs. Wert</h3>
+  <p>Benjamin Graham beschrieb den Markt kurzfristig als Abstimmungsmaschine und langfristig als Waage. Kurzfristig gewinnt, wer die meisten Stimmen (= das meiste Kaufinteresse) auf sich zieht — unabhängig von der Substanz. Langfristig setzt sich die tatsächliche Ertragskraft durch.</p>
+  <p>Genau in dieser Lücke arbeitest du:</p>
+
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-preis-vs-wert.svg" alt="Zweikurvenchart: innerer Wert steigt langsam und stetig, der Kurs schwankt stark darum herum" loading="lazy">
+    <figcaption>Der Kurs (volatil) schwingt um den inneren Wert (stetig steigend). Grüne Kaufzonen unter der Wertlinie, rote Verkaufszonen darüber.</figcaption>
+  </figure>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 2</strong>Der Kurs sagt dir, was andere heute bezahlen. Er sagt dir nichts darüber, was das Unternehmen wert ist. Die Differenz zwischen beidem ist dein gesamtes Geschäftsmodell.</p>
+  </div>
+
+  <!-- 1.3 -->
+  <h2 id="k3"><span class="num">1.3</span>Gegen wen handelst du eigentlich?</h2>
+  <p>Wenn du eine Aktie kaufst, verkauft sie dir jemand. Es lohnt sich zu wissen, wer.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead>
+        <tr>
+          <th>Teilnehmer</th>
+          <th>Anteil am Volumen</th>
+          <th>Zeithorizont</th>
+          <th>Motiv</th>
+          <th>Vorteil ggü. dir</th>
+          <th class="hl">Dein Vorteil ggü. ihm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Passive Indexfonds</strong></td><td>sehr hoch</td><td>unendlich</td><td>Index abbilden</td><td>keiner</td><td class="hl">Sie sind preisblind — kaufen teuer, verkaufen billig, wenn Mittel fließen</td></tr>
+        <tr><td><strong>Aktive Fonds</strong></td><td>hoch</td><td>Quartale</td><td>Benchmark schlagen</td><td>Research, Zugang zum Management</td><td class="hl">Karrierezwang → sie müssen kurzfristig performen</td></tr>
+        <tr><td><strong>Hedgefonds</strong></td><td>mittel</td><td>Tage–Jahre</td><td>Absolute Rendite</td><td>Kapital, Hebel, Daten</td><td class="hl">Redemption-Risiko, Hebel zwingt zum Ausstieg</td></tr>
+        <tr><td><strong>Market Maker / HFT</strong></td><td>sehr hoch</td><td>Millisekunden</td><td>Spread verdienen</td><td>Latenz, Technik</td><td class="hl">Sie haben keine Meinung — sie sind kein Gegner</td></tr>
+        <tr><td><strong>Unternehmen selbst</strong></td><td>mittel</td><td>Jahre</td><td>Aktienrückkauf</td><td>Insiderwissen über sich</td><td>—</td></tr>
+        <tr><td><strong>Insider (Vorstand)</strong></td><td>gering</td><td>Jahre</td><td>Vergütung, Überzeugung</td><td>Informationsvorsprung</td><td>—</td></tr>
+        <tr><td><strong>Privatanleger</strong></td><td>gering</td><td>alles</td><td>alles</td><td>keiner</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Zwei Zeilen aus der Tabelle verdienen mehr Kontext</h3>
+  <p><strong>Market Maker / HFT</strong> sind spezialisierte Firmen (bekannte Namen: Citadel Securities, Virtu Financial, Susquehanna, Optiver), die permanent gleichzeitig eine Kaufofferte (Bid) und eine Verkaufsofferte (Ask) ins Orderbuch stellen. Ihr Geschäftsmodell ist nicht, eine Aktie zu besitzen, sondern die kleine Differenz zwischen Bid und Ask (den Spread) zu verdienen — und zwar millionenfach am Tag. Für dich sind sie im Alltag Infrastruktur, nicht Gegner: Wenn du eine Aktie kaufst, ist dein Verkäufer oft ein Market Maker — nicht weil er glaubt, die Aktie fällt, sondern weil das schlicht sein Geschäftsmodell ist. Deshalb sind sie in der Spalte „Dein Vorteil ggü. ihm" mit „keine Meinung — kein Gegner" gekennzeichnet.</p>
+  <p><strong>Und die anderen Großen — Staaten, Zentralbanken, Versicherungen, Pensionskassen?</strong> Sie tauchen in der Tabelle nicht separat auf, sondern verhalten sich strukturell wie die passiven und aktiven Fonds oben und tragen zu deren Volumen bei. Ein Staatsfonds wie der norwegische Ölfonds oder eine Zentralbank hält Aktien nach fest definierten Mandaten und Regelwerken; sie sind ähnlich preisunempfindlich wie ein Indexfonds. Wichtig zu wissen: Auch diese Riesen können in schlechten Marktphasen zu Verkäufen gezwungen werden — durch Mittelabflüsse, aufsichtsrechtliche Grenzen oder politischen Druck. Dein struktureller Vorteil bleibt in allen Fällen derselbe: die Fähigkeit, unbeirrt zu warten.</p>
+
+  <p><strong>Zwei Schlussfolgerungen, die den Rest des Kurses prägen:</strong></p>
+  <p><strong>Erstens: Der Versuch, einen Informationsvorsprung zu erlangen, ist aussichtslos.</strong> Du wirst nie vor einem Hedgefonds wissen, wie NVIDIAs Quartal lief. Du wirst nie Satellitenbilder von Costco-Parkplätzen auswerten. Jede Strategie, die auf „ich weiß es früher" beruht, ist für dich strukturell verloren.</p>
+  <p><strong>Zweitens: Der Versuch, einen Zeithorizont-Vorsprung zu nutzen, ist realistisch.</strong> Niemand zwingt dich, quartalsweise Rechenschaft abzulegen. Niemand zieht dir Kapital ab, weil du drei Monate hinter dem S&amp;P 500 liegst. Du kannst eine unterbewertete Aktie kaufen und <strong>warten</strong>. Das kann fast keiner deiner Gegenüber.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 3</strong>Handle nie in der Disziplin, in der andere schneller, besser informiert und besser ausgerüstet sind. Handle in der Disziplin, in der sie strukturell nicht mitspielen dürfen: Geduld.</p>
+  </div>
+
+  <!-- 1.4 -->
+  <h2 id="k4"><span class="num">1.4</span>Orderbuch, Bid/Ask, Spread, Liquidität, Volumen</h2>
+  <p>Diese fünf Begriffe beschreiben ein einziges Phänomen aus fünf Blickwinkeln: <strong>Wie leicht kann ich handeln, ohne den Preis gegen mich zu bewegen?</strong></p>
+
+  <h3>Bid und Ask</h3>
+  <ul>
+    <li><strong>Bid (Geldkurs):</strong> Höchster Preis, den aktuell jemand zu zahlen bereit ist. → <strong>Zu diesem Preis kannst du verkaufen.</strong></li>
+    <li><strong>Ask (Briefkurs):</strong> Niedrigster Preis, zu dem aktuell jemand verkaufen will. → <strong>Zu diesem Preis kannst du kaufen.</strong></li>
+  </ul>
+  <p>Der Anfängerfehler: Man sieht auf einer Website „Kurs: 214,08 €" und glaubt, zu diesem Preis handeln zu können. Der angezeigte Kurs ist aber meist der <strong>letzte Trade</strong> oder die <strong>Mitte</strong> von Bid und Ask. Kaufen kannst du zu 214,10, verkaufen zu 214,06.</p>
+
+  <p><strong>Wo siehst du Bid und Ask in der Praxis?</strong> Bei den meisten Brokern (Scalable Capital, Trade Republic, comdirect, ING, Consorsbank …) werden dir Bid und Ask beim Öffnen der Ordermaske angezeigt — oft als „Kaufkurs" (das ist der Ask) und „Verkaufskurs" (das ist der Bid), bei manchen auch direkt als „Bid" und „Ask" oder „Geld" und „Brief". Zusätzlich zeigen Finanzseiten wie <strong>finanzen.net, ariva.de, boerse.de oder tradingview.com</strong> Bid und Ask für praktisch alle liquiden Titel live an. Wichtig: Der große Kurs oben auf jeder Seite ist meist der „letzte Trade" — die tatsächlich handelbaren Preise stehen kleiner darunter.</p>
+
+  <h3>Spread</h3>
+  <p><strong>Spread = Ask − Bid.</strong> Es ist die Gebühr, die du an den Markt zahlst, unabhängig von der Ordergebühr deines Brokers.</p>
+
+  <div class="ak-callout">
+    <span class="ak-ctag">Kurzer Einschub — was sind „Nebenwerte"?</span>
+    <p>Aktien werden nach Größe des Unternehmens in Kategorien einsortiert. In Deutschland: die 40 größten Konzerne stehen im <strong>DAX</strong> (SAP, Siemens, Deutsche Telekom, Allianz …), die nächstgrößeren rund 50 im <strong>MDAX</strong> (z. B. HELLA, Nordex, Kion), darunter der <strong>SDAX</strong> mit weiteren Small Caps (z. B. Adesso, Bilfinger). Die USA haben eine ähnliche Staffelung: Large Caps (S&amp;P 500), Mid Caps (S&amp;P 400), Small Caps (Russell 2000). <strong>Als „Nebenwerte" bezeichnet man alles unterhalb der Blue-Chip-Ebene</strong> — Mid Caps, Small Caps, oft auch Micro Caps. Je kleiner das Unternehmen, desto weniger täglich gehandelt, desto breiter der Spread und desto dünner das Orderbuch. Genau darum tauchen sie in der Tabelle unten mit spürbar höheren Spread-Prozenten auf.</p>
+  </div>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Aktie</th><th>Typischer Kurs</th><th>Typischer Spread</th><th>Spread in %</th><th>Bewertung</th></tr></thead>
+      <tbody>
+        <tr><td>Apple (Nasdaq)</td><td>~215 $</td><td>~0,02 $</td><td class="hl">0,01 %</td><td>vernachlässigbar</td></tr>
+        <tr><td>SAP (Xetra)</td><td>~230 €</td><td>~0,05 €</td><td class="hl">0,02 %</td><td>vernachlässigbar</td></tr>
+        <tr><td>Novo Nordisk (Kopenhagen)</td><td>~600 DKK</td><td>~0,4 DKK</td><td class="hl">0,07 %</td><td>unproblematisch</td></tr>
+        <tr><td>Deutscher Nebenwert (SDAX)</td><td>~30 €</td><td>~0,15 €</td><td class="hl">0,5 %</td><td>spürbar</td></tr>
+        <tr><td>US-Nebenwert außerhalb Handelszeit</td><td>—</td><td>—</td><td class="hl">2–5 %</td><td>inakzeptabel</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85rem; color:var(--text-3); font-style:italic;">Werte illustrativ und tageszeitabhängig.</p>
+
+  <p><strong>Rechenbeispiel — was der Spread kostet:</strong><br>
+  Du kaufst eine Aktie mit 0,5 % Spread und verkaufst sie später wieder. Beim Kauf zahlst du den Ask, beim Verkauf bekommst du den Bid. <strong>Round-Trip-Kosten allein durch den Spread: ca. 0,5 %.</strong></p>
+
+  <p>Bei einer angestrebten Jahresrendite von 10 % und einer Haltedauer von 3 Jahren verteilt sich dieser einmalige Round-Trip-Spread auf drei Jahre — rund <strong>0,17 Prozentpunkte pro Jahr</strong>. Verschmerzbar.</p>
+
+  <p>Ganz anders bei häufigem Handeln. Schlägst du dein Kapital mehrfach im Jahr komplett um, summiert sich der Spread: Bei <strong>12 vollständigen Kauf-und-Verkauf-Runden pro Jahr</strong>, bei denen jeweils das gesamte eingesetzte Kapital bewegt wird, sind das <strong>12 × 0,5 % = 6 % des eingesetzten Kapitals pro Jahr</strong> — allein durch den Spread, bevor Gebühren und Steuern überhaupt dazukommen. Deine gesamte angestrebte Überrendite wäre weg, bevor du eine einzige richtige Entscheidung getroffen hast.</p>
+
+  <p>Das ist ein Extremfall. Aber auch moderater Handel kostet: Schon <strong>4 volle Umschläge pro Jahr</strong> bedeuten <strong>2 % Spread-Kosten jährlich</strong> — mehr als die laufenden Kosten der meisten breiten ETFs. Die Lehre ist nicht „handle nie", sondern: Jeder Trade hat einen Preis, und die Handelsfrequenz ist einer der teuersten und am meisten unterschätzten Renditekiller.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 4</strong>Der Spread ist eine Steuer auf Aktivität. Er skaliert mit der Anzahl deiner Trades, nicht mit deren Qualität.</p>
+  </div>
+
+  <h3>Liquidität</h3>
+  <p>Liquidität ist die <strong>Fähigkeit des Marktes, deine Order aufzunehmen, ohne dass der Preis wegläuft.</strong></p>
+  <p><strong>Was heißt „liquide", was heißt „illiquide"?</strong></p>
+  <ul>
+    <li><strong>Liquider Titel:</strong> Umsatz von <em>vielen Millionen Euro pro Tag</em> am Heimatmarkt, tiefes Orderbuch, enger Spread. Typische Beispiele: alle DAX-Werte (SAP, Siemens, Allianz), alle S&amp;P-500-Werte (Apple, Microsoft, Alphabet), große europäische Werte (Nestlé, LVMH, Novo Nordisk). Du kannst hier praktisch jederzeit ohne Kursrutscher rein und raus.</li>
+    <li><strong>Illiquider Titel:</strong> Umsatz von <em>wenigen tausend bis wenigen hunderttausend Euro pro Tag</em>, dünnes Orderbuch, breiter Spread. Typische Beispiele: viele SDAX-Nebenwerte, kleine US-Micro-Caps am OTC-Markt, ausländische Aktien außerhalb ihres Heimatmarkts. Du kommst zwar oft problemlos rein — aber wenn du wieder raus willst, ist kein Käufer zum aktuellen Kurs da.</li>
+  </ul>
+  <p>Zwischen den Extremen liegt alles graduell. Anhaltspunkt für dich: Wenn du das Tickersymbol erst googeln musst und der Tagesumsatz auf einer bekannten Finanzseite (finanzen.net &amp; Co.) nicht sofort sichtbar ist, ist der Titel wahrscheinlich illiquide.</p>
+
+  <p><strong>Warum das im Alltag entscheidend ist — ein Beispiel:</strong><br>Du willst Aktien im Wert von 20.000 € kaufen.</p>
+  <p><strong>Fall A — Apple:</strong> Im Orderbuch liegen auf der ersten Preisstufe bereits 2.500 Stück (≈ 535.000 $). Deine Order wird vollständig zum besten Ask ausgeführt. <strong>Marktauswirkung: null.</strong></p>
+  <p><strong>Fall B — Nebenwert mit 30 € Kurs und dünnem Buch:</strong></p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Ask-Stufe</th><th>Preis</th><th>Stück</th><th>Kumuliert (€)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="num">30,00</td><td class="num">100</td><td class="num">3.000</td></tr>
+        <tr><td>2</td><td class="num">30,15</td><td class="num">150</td><td class="num">7.523</td></tr>
+        <tr><td>3</td><td class="num">30,40</td><td class="num">200</td><td class="num">13.603</td></tr>
+        <tr><td>4</td><td class="num">30,90</td><td class="num">250</td><td class="num">21.328</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Was passiert da genau? Schritt für Schritt:</strong></p>
+  <p>Deine Market-Order sagt zum Broker: <em>„Kauf mir Aktien für insgesamt rund 20.000 €, egal zu welchem Preis."</em> Der Broker arbeitet dann das Orderbuch von der günstigsten Verkäuferseite nach oben ab, weil er zu jedem Ask nur so viele Stücke bekommt, wie dort zum Verkauf stehen:</p>
+  <ol>
+    <li><strong>Stufe 1 (30,00 €, 100 Stück verfügbar):</strong> Der Broker kauft alle 100 Stücke. Kosten: 3.000 €. Stufe 1 ist damit leer, der nächste Käufer muss teurer kaufen.</li>
+    <li><strong>Stufe 2 (30,15 €, 150 Stück):</strong> Es fehlen noch 17.000 €. Der Broker greift auf Stufe 2 zu, kauft die 150 Stücke — weitere ~4.523 €, kumuliert 7.523 €.</li>
+    <li><strong>Stufe 3 (30,40 €, 200 Stück):</strong> Immer noch nicht genug. Weitere 200 Stücke, weitere ~6.080 €, kumuliert 13.603 €.</li>
+    <li><strong>Stufe 4 (30,90 €, 250 Stück):</strong> Für die restlichen ~6.400 € kauft der Broker in Stufe 4 rund 207 Stücke — die übrigen 43 Stücke der Stufe bleiben liegen und stehen dem nächsten Käufer zur Verfügung.</li>
+  </ol>
+  <p>Am Ende hast du <strong>rund 657 Aktien für 20.000 € bezahlt</strong>. Dein Durchschnittspreis: <strong>30,42 € pro Aktie</strong> — obwohl die Aktie „bei 30,00 €" stand. Der Kurs ist während deiner eigenen Order mit dir nach oben gelaufen. Der Effekt heißt <strong>Slippage</strong> und ist der Grund, warum große Fonds Nebenwerte meiden. Für dich ist er der Grund, bei illiquiden Titeln <strong>niemals mit Market-Orders zu arbeiten</strong>. Beim späteren Verkauf passiert dasselbe rückwärts: Du bekommst nicht 30,00 € für alle Stücke, sondern arbeitest dich auf der Bid-Seite (den Kaufofferten) nach unten durch.</p>
+
+  <h3>Volumen</h3>
+  <p>Das <strong>Volumen</strong> ist die Anzahl Stücke (oder der Euro-Wert davon), die pro Zeiteinheit gehandelt wird — z. B. „an einem durchschnittlichen Tag werden von Aktie X 300.000 Stück gehandelt". Auf jeder Finanzseite findest du diesen Wert meist als „Ø Volumen" oder „Umsatz Ø 90 Tage". Zwei Dinge macht das Volumen für dich sichtbar:</p>
+
+  <p><strong>1. Volumen als Überzeugung.</strong> Wenn du in einem Chart eine deutliche Kursbewegung siehst und viele Marktteilnehmer daran mitgemacht haben (hohes Volumen an diesem Tag), ist die Wahrscheinlichkeit hoch, dass die Bewegung „echt" ist und Bestand hat. Eine gleich große Bewegung, an der nur wenige beteiligt waren (niedriges Volumen), kann am nächsten Tag ebenso schnell wieder verschwinden. Detailliert kommt das in Modul 3, hier reicht die Vorstellung: <em>je mehr Leute mitgemacht haben, desto ernster ist eine Kursbewegung zu nehmen.</em></p>
+
+  <p><strong>2. Volumen als Machbarkeit (bin ich mit meiner Bestellung zu groß?).</strong> Ein konkretes Rechenbeispiel:</p>
+  <ul>
+    <li>Depot: 50.000 €. Geplante Position: 10 % davon = <strong>5.000 €</strong>.</li>
+    <li>Die gewünschte Aktie setzt im Durchschnitt <strong>200.000 € pro Tag</strong> um (Tages-Umsatz).</li>
+    <li>Deine 5.000 € sind damit 5.000 / 200.000 = <strong>2,5 % des Tagesvolumens</strong>.</li>
+  </ul>
+  <p>Warum ist das ein Problem? Wenn deine Order groß im Verhältnis zum normalen Tagesumsatz ist, drückst du beim Kauf den Preis nach oben — genau der Fall B mit den vier Preisstufen von eben. Der Markt bewegt sich mit dir statt neben dir.</p>
+  <p><strong>Faustregel für dieses Modul:</strong> Deine geplante Position sollte höchstens <strong>1 % des durchschnittlichen Tagesvolumens</strong> ausmachen. Im Beispiel oben also 2.000 € statt 5.000 €. Wer diese Grenze reißt, ist beim Handel nicht mehr Teilnehmer des Marktes, sondern <em>bewegt den Markt selbst</em> — und zahlt die Rechnung dafür.</p>
+
+  <!-- 1.5 -->
+  <h2 id="k5"><span class="num">1.5</span>Börsenplätze — wo du tatsächlich handelst</h2>
+  <p>Dieselbe Aktie wird an vielen Plätzen gehandelt. Sie ist überall dieselbe Aktie, aber nicht überall zum selben Preis und nicht überall gleich sicher handelbar.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Handelsplatz</th><th>Typ</th><th>Handelszeiten (MEZ)</th><th>Charakteristik</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Xetra</strong></td><td>Referenzbörse DE</td><td>9:00–17:30</td><td>Höchste Liquidität für deutsche Aktien, echte Orderbuchtiefe</td></tr>
+        <tr><td><strong>Tradegate / Gettex</strong></td><td>Elektronische Handelsplätze</td><td>8:00–22:00</td><td>Market-Maker-basiert, oft gebührenfrei über Neobroker</td></tr>
+        <tr><td><strong>NYSE / Nasdaq</strong></td><td>Referenzbörse US</td><td>15:30–22:00</td><td>Höchste Liquidität weltweit</td></tr>
+        <tr><td><strong>Regionalbörsen (Stuttgart, München …)</strong></td><td>Präsenz/elektronisch</td><td>8:00–22:00</td><td>Geringe Liquidität, breitere Spreads</td></tr>
+        <tr><td><strong>LSE, Euronext, SIX</strong></td><td>Referenzbörsen</td><td>variiert</td><td>Heimatmarkt europäischer Titel</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die drei Regeln zum Handelsplatz</h3>
+  <p><strong>Regel 1: Handle möglichst am Heimatmarkt bzw. zu dessen Handelszeiten.</strong><br>
+  Apple in Frankfurt um 9:00 Uhr zu kaufen bedeutet: Der US-Markt ist geschlossen, der deutsche Market Maker stellt den Preis auf Basis eines <em>geschätzten</em> US-Kurses und lässt sich das Risiko über einen breiteren Spread bezahlen. Kaufe Apple ab 15:30 Uhr — dann ist die Nasdaq offen und der Preis ist real.</p>
+  <p><strong>Regel 2: Meide die ersten und letzten 15 Minuten.</strong><br>
+  Eröffnungs- und Schlussauktionen erzeugen die höchste Volatilität und die breitesten Spreads des Tages. Als langfristiger Anleger hast du keinen Grund, dich dort aufzuhalten.</p>
+  <p><strong>Regel 3: Meide den Handel bei geschlossenem Heimatmarkt vollständig, wenn der Titel illiquide ist.</strong><br>
+  Ein US-Nebenwert, um 8:15 Uhr in Stuttgart gekauft, kann dich problemlos 3 % kosten.</p>
+
+  <div class="ak-callout">
+    <span class="ak-ctag">⚠ Anfängerfehler</span>
+    <p>Eine US-Aktie um 9:00 Uhr morgens „schnell noch" über Tradegate kaufen, weil eine Nachricht kam. Genau in diesem Moment ist der Spread maximal, die Liquidität minimal und der Market Maker im Vorteil.</p>
+  </div>
+
+  <!-- 1.6 -->
+  <h2 id="k6"><span class="num">1.6</span>Orderarten</h2>
+  <p>Die Orderart ist keine technische Nebensache. Sie ist die <strong>Schnittstelle zwischen deiner Entscheidung und dem Markt</strong> — und der Ort, an dem die meisten vermeidbaren Verluste entstehen.</p>
+
+  <h3>Die vier Grundtypen</h3>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Orderart</th><th>Was sie tut</th><th>Garantiert</th><th>Nicht garantiert</th><th>Wofür</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Market</strong></td><td>Kaufe/verkaufe sofort zum nächstbesten Preis</td><td class="hl">Ausführung</td><td>Preis</td><td>Nur bei hoher Liquidität und Dringlichkeit</td></tr>
+        <tr><td><strong>Limit</strong></td><td>Kaufe max. zu X / verkaufe min. zu X</td><td class="hl">Preis</td><td>Ausführung</td><td><strong>Standard für alles in diesem Kurs</strong></td></tr>
+        <tr><td><strong>Stop-Loss (Stop-Market)</strong></td><td>Wird zur Market-Order, sobald Kurs X berührt</td><td class="hl">Ausführung (nach Auslösung)</td><td>Preis</td><td>Verlustbegrenzung bei liquiden Titeln</td></tr>
+        <tr><td><strong>Stop-Limit</strong></td><td>Wird zur Limit-Order, sobald Kurs X berührt</td><td class="hl">Preis (nach Auslösung)</td><td>Ausführung</td><td>Verlustbegrenzung bei illiquiden Titeln</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Der Trade-off</h3>
+  <p>Es gibt <strong>keine Orderart, die dir Preis und Ausführung gleichzeitig garantiert.</strong> Jede Wahl ist eine Entscheidung darüber, welches der beiden Risiken du trägst.</p>
+
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-orderarten.svg" alt="Zweiachsiges Diagramm der vier Orderarten nach Ausführungssicherheit und Preissicherheit" loading="lazy">
+    <figcaption>Die vier Orderarten auf den Achsen Ausführungssicherheit und Preissicherheit — die obere rechte Ecke ist unmöglich</figcaption>
+  </figure>
+
+  <h3>Die Stop-Loss-Falle</h3>
+  <p>Ein Stop-Loss ist <strong>keine Versicherung</strong>. Er ist ein Auftrag, im Fall der Fälle <em>zu jedem Preis</em> zu verkaufen.</p>
+  <p><strong>Beispiel:</strong><br>
+  Du hältst eine Aktie bei 100 €. Du setzt einen Stop-Loss bei 90 €, „um maximal 10 % zu verlieren".<br>
+  Nach Börsenschluss meldet das Unternehmen eine Gewinnwarnung. Am nächsten Morgen eröffnet die Aktie bei <strong>72 €</strong>.</p>
+  <p>Dein Stop bei 90 € wird ausgelöst — aber es gab zwischen 100 € und 72 € nie einen Handel. Deine Order wird zur Market-Order und <strong>bei 72 € ausgeführt</strong>. Dein Verlust: 28 %, nicht 10 %.</p>
+  <p>Das nennt man <strong>Gap-Risiko</strong>, und kein Stop-Loss der Welt kann es verhindern. Ein Stop-Loss schützt gegen <em>gleitende</em> Abwärtsbewegungen, nicht gegen <em>Sprünge</em>. Das Instrument, das gegen Sprünge schützt, heißt <strong>Positionsgröße</strong> — Modul 5.</p>
+  <p>Der <strong>Flash Crash vom 6. Mai 2010</strong> ist das Lehrbuchbeispiel: Innerhalb weniger Minuten fielen einzelne US-Aktien auf Cent-Beträge, alle Stop-Loss-Orders wurden zu Market-Orders, die Orderbücher waren leer — und Minuten später stand alles wieder auf dem Ausgangsniveau. Wer einen Stop hatte, war ausgestoppt. Wer keinen hatte, hat nichts bemerkt.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 5</strong>Der Stop-Loss begrenzt deinen Verlust nur an Tagen, an denen du ihn nicht wirklich brauchst.</p>
+  </div>
+
+  <h3>Praxisregeln zur Orderausführung (für diesen Kurs verbindlich)</h3>
+  <ol>
+    <li><strong>Immer Limit-Order.</strong> Ausnahmslos beim Kauf. Du hast es nicht eilig.</li>
+    <li><strong>Limit realistisch setzen.</strong> Setze dein Limit auf den aktuellen Ask (siehe Abschnitt 1.4 — wo du Bid und Ask siehst) oder <strong>1–2 „Ticks" darüber</strong>. Ein <strong>Tick</strong> ist die kleinste Preisstufe, in der eine Aktie handelbar ist — bei den meisten europäischen und US-Aktien 1 Cent (0,01 € bzw. $ 0,01). Beispiel: Ask steht bei 214,10 €, du setzt Limit auf 214,11 € oder 214,12 €. Nicht 3 % darunter „vielleicht fällt es ja noch" — das ist kein Limit, sondern eine unausgesprochene Prognose. Deine Order wird dann meist gar nicht ausgeführt, und du sitzt frustriert vorm Bildschirm, während die Aktie ohne dich weiterläuft.</li>
+    <li><strong>Keine Market-Orders in Auktionen</strong> (Eröffnung, Schluss, Volatilitätsunterbrechung).</li>
+    <li><strong>Stop-Loss nur bei liquiden Titeln</strong> und nur, wenn er Teil eines <em>vorher definierten</em> Systems ist — nicht als nachträgliche Beruhigungsmaßnahme.</li>
+    <li><strong>Bei illiquiden Titeln: Stop-Limit</strong> mit ausreichendem Abstand zwischen Stop und Limit, oder gar kein Stop.</li>
+  </ol>
+
+  <!-- 1.7 -->
+  <h2 id="k7"><span class="num">1.7</span>Warum die meisten Privatanleger Geld verlieren</h2>
+  <p>Das ist keine Meinung, sondern einer der am besten belegten Befunde der Finanzmarktforschung. Und es lohnt, die Ursachen einzeln anzusehen, weil <strong>jede einzelne von ihnen abstellbar ist.</strong></p>
+
+  <h3>Der empirische Befund</h3>
+  <p>Die klassische Untersuchung von <strong>Barber und Odean</strong> wertete über 66.000 Depots eines US-Discountbrokers über sechs Jahre aus. Ergebnis: Der durchschnittliche Haushalt blieb spürbar hinter dem Marktindex zurück — und <strong>je häufiger gehandelt wurde, desto größer war der Rückstand.</strong> Das aktivste Fünftel der Anleger schnitt am schlechtesten ab.</p>
+  <p>Eine zweite, oft zitierte Untersuchung derselben Autoren fand, dass Männer häufiger handeln als Frauen und <strong>deshalb</strong> schlechter abschneiden — nicht, weil sie schlechtere Aktien auswählen, sondern weil sie mehr Kosten und mehr Fehler produzieren.</p>
+  <p>Die Auswertungen von <strong>Dalbar</strong> über Fondsanleger zeigen dasselbe Muster aus einer anderen Perspektive: Die Rendite, die Anleger <em>tatsächlich erzielen</em>, liegt systematisch unter der Rendite der Fonds, in die sie investieren. Der Grund ist ausschließlich <strong>Timing</strong> — sie kaufen nach guten Jahren und verkaufen nach schlechten. Diese Lücke nennt man den <strong>Behavior Gap</strong>.</p>
+
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-behavior-gap.svg" alt="Balkenvergleich: Fondsrendite gegen tatsächlich vom Anleger erzielte Rendite, die Differenz ist der Behavior Gap" loading="lazy">
+    <figcaption>Der Behavior Gap — was Kosten, falsches Timing und Panik von der Fondsrendite abziehen</figcaption>
+  </figure>
+
+  <h3>Die sieben Ursachen</h3>
+  <p><strong>1. Overtrading.</strong> Jeder Trade kostet Spread, Gebühren und — in Deutschland — potenziell Steuern auf realisierte Gewinne. 20 Trades pro Jahr à 0,3 % Gesamtkosten = 6 % Vorsprung, den der Markt gegen dich hat, bevor irgendetwas passiert ist.</p>
+  <p><strong>2. Der Dispositionseffekt.</strong> Anleger realisieren Gewinne zu früh und lassen Verluste zu lange laufen. Der Mechanismus ist psychologisch: Ein realisierter Gewinn fühlt sich wie ein Erfolg an, ein realisierter Verlust wie ein Eingeständnis. Also verkauft man die Gewinner (um sich gut zu fühlen) und behält die Verlierer (um das Eingeständnis zu vermeiden). Das ist <strong>exakt die Umkehrung</strong> dessen, was ökonomisch sinnvoll ist — und obendrein steuerlich nachteilig.</p>
+  <p><strong>3. Steuerliche Reibung.</strong> In Deutschland fallen bei Realisierung von Kursgewinnen 25 % Abgeltungsteuer plus Soli (effektiv ca. 26,375 %, ggf. plus Kirchensteuer) an. Wer alle zwei Jahre umschichtet, versteuert alle zwei Jahre — und der Zinseszins läuft auf einem reduzierten Kapitalstock weiter. Über 20 Jahre ist der Unterschied zwischen einmal versteuern und zehnmal versteuern <strong>erheblich</strong>.</p>
+  <p><strong>4. Home Bias.</strong> Deutsche Anleger halten stark überproportional deutsche Aktien. Deutschland stellt einen kleinen einstelligen Prozentanteil der globalen Marktkapitalisierung. Man konzentriert also freiwillig ein Risiko, ohne dafür bezahlt zu werden.</p>
+  <p><strong>5. Lottery-Präferenz.</strong> Kleine, spekulative, „günstig" wirkende Aktien mit hoher Aufmerksamkeitsdichte (Penny Stocks, Hype-Titel) werden systematisch überkauft und liefern im Durchschnitt eine <em>negative</em> Überrendite. Anleger zahlen einen Aufpreis für die Chance auf einen Lottogewinn.</p>
+  <p><strong>6. Aufmerksamkeitsgetriebenes Kaufen.</strong> Privatanleger kaufen überproportional Aktien, die gerade in den Nachrichten sind — weil das die Aktien sind, die sie <em>sehen</em>. Der Kauf erfolgt damit systematisch <strong>nach</strong> der Kursbewegung.</p>
+  <p><strong>7. Fehlende Ausstiegsregel.</strong> Die meisten Privatanleger haben eine Kaufthese, aber keine Verkaufsthese. Sie wissen, warum sie gekauft haben, aber nicht, unter welchen Umständen sie sich geirrt hätten. Damit ist jede Entscheidung unfalsifizierbar — und ein unfalsifizierbares System kann sich nicht verbessern.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 6</strong>Die Mehrheit der Privatanleger verliert nicht, weil sie die falschen Aktien kauft. Sie verliert, weil sie zu oft, zu spät, zu emotional und ohne Ausstiegsregel handelt. Alle vier Ursachen sind Prozessprobleme — und Prozesse kann man reparieren.</p>
+  </div>
+
+  <!-- 1.8 -->
+  <h2 id="k8"><span class="num">1.8</span>Erwartungswert statt Trefferquote</h2>
+  <p>Wenn du von Modul 1 nur eine Sache mitnimmst, dann diese.</p>
+
+  <h3>Die falsche Frage</h3>
+  <p>Anfänger fragen: <em>„Wie oft liege ich richtig?"</em><br>
+  Profis fragen: <em>„Wie viel verdiene ich, wenn ich richtig liege — und wie viel verliere ich, wenn ich falsch liege?"</em></p>
+
+  <h3>Die Formel</h3>
+  <div class="ak-formula">EW  =  (p_gewinn × Ø-Gewinn)  −  (p_verlust × Ø-Verlust)</div>
+  <p>Der Erwartungswert ist der <strong>durchschnittliche Ertrag pro Trade über viele Trades hinweg.</strong> Ist er positiv, verdienst du langfristig Geld — egal, wie sich einzelne Trades anfühlen. Ist er negativ, verlierst du langfristig Geld — egal, wie viele einzelne Trades du gewinnst.</p>
+
+  <h3>Zwei Systeme im Vergleich</h3>
+  <p><strong>System A — „Der Sichere":</strong> Trefferquote 70 %. Gewinne werden bei +5 % mitgenommen, Verluste laufen bis −15 %.</p>
+  <div class="ak-formula">EW = (0,70 × 5 %) − (0,30 × 15 %)
+   = 3,5 % − 4,5 %
+   = <span style="color:#e05252;">−1,0 % pro Trade</span></div>
+
+  <p><strong>System B — „Der Unbequeme":</strong> Trefferquote 40 %. Gewinne dürfen bis +25 % laufen, Verluste werden bei −8 % begrenzt.</p>
+  <div class="ak-formula">EW = (0,40 × 25 %) − (0,60 × 8 %)
+   = 10,0 % − 4,8 %
+   = <span style="color:var(--neon);">+5,2 % pro Trade</span></div>
+
+  <p><strong>System A fühlt sich großartig an.</strong> Sieben von zehn Entscheidungen sind richtig. Man erzählt beim Abendessen davon. <strong>Und es ruiniert dich.</strong></p>
+  <p><strong>System B fühlt sich furchtbar an.</strong> Sechs von zehn Entscheidungen sind falsch. Man zweifelt permanent an sich. <strong>Und es macht dich vermögend.</strong></p>
+
+  <h3>Welche Trefferquote brauchst du?</h3>
+  <p>Das <strong>Chance-Risiko-Verhältnis (CRV)</strong> ist der Quotient aus durchschnittlichem Gewinn und durchschnittlichem Verlust. Aus ihm lässt sich direkt ableiten, welche Trefferquote du mindestens für Break-even brauchst:</p>
+  <div class="ak-formula">Mindest-Trefferquote  =  1 / (1 + CRV)</div>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>CRV (Gewinn : Verlust)</th><th>Mindest-Trefferquote für Break-even</th><th>Bei 50 % Trefferquote: EW</th></tr></thead>
+      <tbody>
+        <tr><td>1 : 1</td><td class="hl"><strong>50,0 %</strong></td><td>0 %</td></tr>
+        <tr><td>1,5 : 1</td><td class="hl"><strong>40,0 %</strong></td><td>+0,25 × Risiko</td></tr>
+        <tr><td>2 : 1</td><td class="hl"><strong>33,3 %</strong></td><td>+0,50 × Risiko</td></tr>
+        <tr><td>3 : 1</td><td class="hl"><strong>25,0 %</strong></td><td>+1,00 × Risiko</td></tr>
+        <tr><td>4 : 1</td><td class="hl"><strong>20,0 %</strong></td><td>+1,50 × Risiko</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-crv-trefferquote.svg" alt="Hyperbelkurve: CRV auf der X-Achse, benötigte Trefferquote auf der Y-Achse; profitable Fläche über der Kurve" loading="lazy">
+    <figcaption>Je höher das CRV, desto niedriger darf die Trefferquote sein — die profitable Region liegt über der Kurve</figcaption>
+  </figure>
+
+  <p><strong>Lies diese Tabelle rückwärts, und du hast das gesamte Geschäftsmodell dieses Kurses:</strong><br>
+  Wenn du nur dann kaufst, wenn die Sicherheitsmarge groß genug für ein CRV von 3:1 ist, darfst du <strong>in drei von vier Fällen falsch liegen</strong> und verdienst trotzdem Geld.</p>
+  <p><strong>Genau darum geht es bei der Sicherheitsmarge in Modul 2.</strong> Sie ist kein moralisches Prinzip — sie ist eine mathematische Notwendigkeit, um die eigene Fehlbarkeit zu finanzieren.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 7</strong>Du wirst dich oft irren. Baue kein System, das darauf angewiesen ist, dass du recht behältst. Baue eines, das überlebt, wenn du dich irrst.</p>
+  </div>
+
+  <!-- 1.9 -->
+  <h2 id="k9"><span class="num">1.9</span>Risiko vs. Rendite — und warum Verluste asymmetrisch sind</h2>
+
+  <h3>Was Risiko <em>nicht</em> ist</h3>
+  <p>Die Finanzindustrie definiert Risiko als <strong>Volatilität</strong> (Standardabweichung der Renditen). Das ist praktisch, weil messbar — aber es beschreibt nicht, was Anleger tatsächlich fürchten.</p>
+  <p>Volatilität ist <strong>Schwankung</strong>. Sie ist symmetrisch: Eine Aktie, die um 40 % <em>steigt</em>, erhöht ihre Volatilität genauso wie eine, die um 40 % fällt.</p>
+  <p>Das tatsächliche Risiko ist <strong>dauerhafter Kapitalverlust</strong>: die Wahrscheinlichkeit, dass Kapital nicht zurückkommt, weil das Unternehmen strukturell beschädigt ist — nicht, weil der Kurs schwankt.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Volatilität</th><th>Dauerhafter Kapitalverlust</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Beispiel</strong></td><td>NVIDIA fällt 2022 um ~50 % und verzehnfacht sich danach</td><td>Wirecard fällt 2020 auf ~0 und kommt nie zurück</td></tr>
+        <tr><td><strong>Für den langfristigen Anleger</strong></td><td class="check">Gelegenheit</td><td class="cross">Ruin</td></tr>
+        <tr><td><strong>Messbar?</strong></td><td>ja, exakt</td><td>nein, nur abschätzbar</td></tr>
+        <tr><td><strong>Womit bekämpfen?</strong></td><td>Geduld, Zeithorizont</td><td>Qualitätsanalyse, Diversifikation, Positionsgröße</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Aber:</strong> Volatilität ist nicht harmlos. Sie wird genau dann zum echten Risiko, wenn sie dich zu einer Handlung zwingt — weil du auf Kredit gekauft hast, weil du das Geld brauchst, oder weil du es psychisch nicht aushältst. Dann verwandelt Volatilität sich in dauerhaften Kapitalverlust. <strong>Das ist der einzige Mechanismus, über den ein langfristiger Anleger an Schwankung zugrunde geht: indem er im falschen Moment verkauft.</strong></p>
+
+  <h3>Die Drawdown-Mathematik</h3>
+  <p>Das ist die unangenehmste Tabelle im gesamten Kurs. Sie beantwortet die Frage: <em>Welche Rendite brauche ich, um einen Verlust wieder aufzuholen?</em></p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Verlust</th><th>Nötiger Gewinn zur Wiederherstellung</th></tr></thead>
+      <tbody>
+        <tr><td>−10 %</td><td class="num">+11,1 %</td></tr>
+        <tr><td>−20 %</td><td class="num">+25,0 %</td></tr>
+        <tr><td>−25 %</td><td class="num">+33,3 %</td></tr>
+        <tr><td>−33 %</td><td class="num">+50,0 %</td></tr>
+        <tr><td class="hl"><strong>−50 %</strong></td><td class="num hl"><strong>+100,0 %</strong></td></tr>
+        <tr><td>−66,7 %</td><td class="num">+200,0 %</td></tr>
+        <tr><td>−75 %</td><td class="num">+300,0 %</td></tr>
+        <tr><td>−90 %</td><td class="num hl"><strong>+900,0 %</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-drawdown-konvexitaet.svg" alt="Exponentiell steigende Kurve: Verlust auf der X-Achse, nötiger Aufholgewinn auf der Y-Achse; Markierung bei minus 50 Prozent gleich plus 100 Prozent" loading="lazy">
+    <figcaption>Die Konvexität der Drawdowns: bis −20 % linear, ab −50 % nichtlinear und existenzbedrohend</figcaption>
+  </figure>
+
+  <p><strong>Die Formel:</strong></p>
+  <div class="ak-formula">Nötiger Gewinn  =  1 / (1 − Verlust)  −  1</div>
+
+  <p>Die entscheidende Einsicht ist nicht die Formel. Sie ist die <strong>Konvexität</strong>: Bis −20 % ist der Schaden linear und beherrschbar. Ab −50 % wird er nichtlinear und existenzbedrohend. Deshalb ist das oberste Ziel des Risikomanagements nicht, <em>jeden</em> Verlust zu vermeiden — sondern zu verhindern, dass irgendein Verlust jemals in den nichtlinearen Bereich gerät.</p>
+
+  <h3>Arithmetisches vs. geometrisches Mittel</h3>
+  <p>Ein Depot macht in zwei Jahren: <strong>+50 %</strong>, dann <strong>−50 %</strong>.<br>
+  Das arithmetische Mittel der Renditen ist <strong>0 %</strong>.<br>
+  Der tatsächliche Endstand: 100 € → 150 € → <strong>75 €</strong>. Ein Verlust von <strong>25 %</strong>.</p>
+  <p>Renditen multiplizieren sich, sie addieren sich nicht. Was zählt, ist das <strong>geometrische Mittel</strong> — und das wird von Schwankung <em>bestraft</em>. Zwei Depots mit identischer Durchschnittsrendite, aber unterschiedlicher Schwankung, haben nicht dasselbe Endvermögen. Das schwankungsärmere gewinnt.</p>
+  <p>Das ist der mathematische Kern von Risikomanagement, und er ist der Grund, warum Modul 5 wichtiger ist als Modul 2.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 8</strong>Ein Verlust von 50 % erfordert einen Gewinn von 100 %. Rendite ist eine Frage der Auswahl. Überleben ist eine Frage der Größe.</p>
+  </div>
+
+  <!-- 1.10 -->
+  <h2 id="k10"><span class="num">1.10</span>Die Denkweise professioneller Händler</h2>
+
+  <h3>Prozess statt Ergebnis</h3>
+  <p>Ein einzelner Trade sagt <strong>nichts</strong> über die Qualität der Entscheidung aus, die ihm zugrunde lag. Das ist keine Ausrede, sondern eine Konsequenz der Wahrscheinlichkeit.</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th></th><th>Guter Prozess</th><th>Schlechter Prozess</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gutes Ergebnis</strong></td><td class="check">Verdienter Erfolg</td><td class="hl"><strong>Glück</strong> ← gefährlichstes Feld</td></tr>
+        <tr><td><strong>Schlechtes Ergebnis</strong></td><td><strong>Pech</strong> ← notwendig auszuhalten</td><td class="cross">Verdiente Strafe</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ak-fig">
+    <img src="assets/svg/m01-prozess-ergebnis.svg" alt="Zwei-mal-zwei-Matrix Prozess vs Ergebnis, das Feld Glück hervorgehoben" loading="lazy">
+    <figcaption>Die Prozess-Ergebnis-Matrix — „Glück" ist das gefährlichste Feld, weil es schlechte Prozesse belohnt</figcaption>
+  </figure>
+
+  <p>Das gefährlichste Feld ist <strong>„Glück"</strong>: Ein schlechter Prozess wird durch ein gutes Ergebnis belohnt und deshalb wiederholt. Genau so entsteht die Karriere des typischen Anlegers, der nach drei zufälligen Erfolgen die Positionsgröße verdreifacht.</p>
+  <p>Die notwendige Konsequenz: <strong>Bewerte Entscheidungen, nicht Ergebnisse.</strong> Das geht nur, wenn du die Entscheidung <em>vorher</em> dokumentiert hast. Deshalb das Trading-Journal (Modul 7) — es ist kein Tagebuch, es ist das einzige Instrument, das Prozess und Ergebnis überhaupt trennen kann.</p>
+
+  <h3>Die schriftliche These</h3>
+  <p>Vor jedem Kauf beantwortest du schriftlich vier Fragen:</p>
+  <ol>
+    <li><strong>Warum kaufe ich?</strong> (Bewertung, Qualität, Katalysator)</li>
+    <li><strong>Was muss eintreten, damit ich recht behalte?</strong> (Prognostizierte Entwicklung)</li>
+    <li><strong>Woran erkenne ich, dass ich falsch lag?</strong> ← <strong>Das Falsifikationskriterium</strong></li>
+    <li><strong>Wie groß darf die Position sein, wenn ich vollständig falsch liege?</strong></li>
+  </ol>
+  <p>Frage 3 ist die, die fast niemand stellt — und die entscheidende. Eine These ohne Falsifikationskriterium ist keine These, sondern ein Glaubenssatz. Glaubenssätze lassen sich nicht widerlegen, also lassen sie sich auch nie korrigieren. Man hält sie bis zum Totalverlust.</p>
+  <p>Ein Falsifikationskriterium ist <strong>konkret und im Voraus festgelegt</strong>:</p>
+
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th class="cross">❌ Kein Kriterium</th><th class="check">✅ Falsifikationskriterium</th></tr></thead>
+      <tbody>
+        <tr><td>„Wenn sich die Lage verschlechtert"</td><td>„Wenn die Bruttomarge zwei Quartale in Folge unter 40 % fällt"</td></tr>
+        <tr><td>„Wenn ich das Vertrauen verliere"</td><td>„Wenn der Free Cash Flow ein volles Jahr negativ ist"</td></tr>
+        <tr><td>„Wenn der Kurs zu weit fällt"</td><td>„Wenn der CFO ohne Nachfolgeplan zurücktritt"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Wahrscheinlichkeitsdenken</h3>
+  <p>Professionelle Marktteilnehmer sprechen nicht in Gewissheiten. Sie sprechen in Verteilungen:</p>
+  <ul>
+    <li><span style="color:#e05252;">❌</span> <em>„Die Aktie wird auf 300 steigen."</em></li>
+    <li><span style="color:var(--neon);">✅</span> <em>„Bei meinen Annahmen liegt der faire Wert bei ca. 280. Im Bärenszenario bei 190, im Bullenszenario bei 360. Beim aktuellen Kurs von 200 ist das Chance-Risiko-Verhältnis attraktiv, weil selbst mein Bärenszenario nur knapp unter dem Kurs liegt."</em></li>
+  </ul>
+  <p>Die zweite Aussage ist länger, weniger befriedigend und deutlich wertvoller. Sie ist überprüfbar, sie quantifiziert das Risiko, und sie enthält ein implizites Ausstiegskriterium.</p>
+
+  <h3>„Ich weiß es nicht" ist eine vollständige Antwort</h3>
+  <p>Es gibt keine Verpflichtung zu handeln. Das Fehlen einer Position ist ebenfalls eine Position — und oft die richtige. Ein Fondsmanager muss investiert sein; du nicht.</p>
+
+  <div class="ak-merksatz">
+    <p><strong class="ak-mtag">Merksatz 9</strong>Nicht zu handeln ist eine Entscheidung. Sie ist kostenlos, jederzeit verfügbar und in der Mehrzahl der Fälle die beste.</p>
+  </div>
+
+  <!-- Anfängerfehler -->
+  <h2 id="k11">Typische Anfängerfehler in Modul 1</h2>
+  <div class="ak-tbl-wrap">
+    <table class="ak-tbl">
+      <thead><tr><th>Fehler</th><th>Warum er teuer ist</th><th>Gegenmittel</th></tr></thead>
+      <tbody>
+        <tr><td>Market-Order bei illiquiden Titeln</td><td>Slippage von 1–3 % beim Ein- <strong>und</strong> Ausstieg</td><td>Ausnahmslos Limit-Order</td></tr>
+        <tr><td>US-Aktien morgens in Deutschland kaufen</td><td>Breiter Spread, geschätzter Preis</td><td>Erst ab 15:30 Uhr handeln</td></tr>
+        <tr><td>Stop-Loss als „Versicherung" verstehen</td><td>Gap-Risiko schlägt jeden Stop</td><td>Positionsgröße statt Stop als primärer Schutz</td></tr>
+        <tr><td>Trefferquote als Erfolgsmaß</td><td>Führt zu frühem Gewinnmitnehmen und langem Verlustaussitzen</td><td>Erwartungswert berechnen</td></tr>
+        <tr><td>Volatilität mit Risiko gleichsetzen</td><td>Verkauf im Tief, genau dann, wenn man kaufen sollte</td><td>Risiko = dauerhafter Kapitalverlust</td></tr>
+        <tr><td>Kaufen ohne Verkaufskriterium</td><td>Unfalsifizierbare These, kein Lernen möglich</td><td>Falsifikationskriterium vor dem Kauf notieren</td></tr>
+        <tr><td>Häufiges Handeln als „aktiv sein" deuten</td><td>Kosten, Steuern, Fehler skalieren mit Aktivität</td><td>Trades zählen, nicht Ideen</td></tr>
+        <tr><td>Nach Nachrichten kaufen</td><td>Der Kurs hat die Nachricht bereits verarbeitet</td><td>Watchlist vorher aufbauen, Nachricht ist nur Auslöser</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checkliste -->
+  <h2 id="k12">Checkliste — vor jeder einzelnen Order</h2>
+  <p><strong>Vor dem Klick:</strong></p>
+  <ul class="ak-check-list">
+    <li>Ich habe eine <strong>schriftliche These</strong> mit Falsifikationskriterium.</li>
+    <li>Ich kenne meinen <strong>fairen Wert</strong> und meine <strong>Sicherheitsmarge</strong>. <em>(→ Modul 2)</em></li>
+    <li>Ich kenne meine <strong>Positionsgröße</strong> und den maximalen Verlust in Euro. <em>(→ Modul 5)</em></li>
+    <li>Ich weiß, <strong>wann ich verkaufe</strong> — im Erfolgsfall <em>und</em> im Fehlerfall. <em>(→ Modul 6)</em></li>
+    <li>Der <strong>Heimatmarkt</strong> des Titels ist geöffnet.</li>
+    <li>Es sind <strong>nicht</strong> die ersten oder letzten 15 Handelsminuten.</li>
+    <li>Ich verwende eine <strong>Limit-Order</strong> mit realistischem Limit.</li>
+    <li>Meine Order ist <strong>&lt; 1 % des durchschnittlichen Tagesvolumens</strong>.</li>
+    <li>Der <strong>Spread</strong> liegt in einem für meine Haltedauer vertretbaren Rahmen.</li>
+    <li>Ich kaufe <strong>nicht</strong>, weil eine Nachricht kam. Der Titel stand vorher schon auf meiner Watchlist.</li>
+  </ul>
+
+  <!-- Zusammenfassung -->
+  <h2 id="k13">Zusammenfassung</h2>
+  <ol>
+    <li>Der Kurs ist der Preis der letzten Transaktion — gesetzt vom <strong>marginalen</strong> Marktteilnehmer, nicht von der Mehrheit. Er ist nicht der Wert des Unternehmens.</li>
+    <li>Dein einziger struktureller Vorteil gegenüber professionellen Marktteilnehmern ist der <strong>Zeithorizont</strong>. Alles, was ihn verkürzt, vernichtet ihn.</li>
+    <li><strong>Spread, Liquidität und Volumen</strong> entscheiden darüber, ob eine gute Entscheidung auch ein gutes Ergebnis werden kann. Sie sind Umsetzungsrisiko, nicht Analyserisiko.</li>
+    <li><strong>Limit-Order ist der Standard.</strong> Market-Orders sind Ausnahme, Stop-Loss ist kein Schutz gegen Kurssprünge.</li>
+    <li>Der <strong>Erwartungswert</strong> ist die einzig relevante Erfolgsgröße. Eine hohe Trefferquote mit schlechtem CRV ist ein Verlustsystem mit guten Gefühlen.</li>
+    <li>Verluste sind <strong>konvex</strong>: −50 % erfordert +100 %. Deshalb kommt Risikomanagement vor Aktienauswahl.</li>
+    <li><strong>Volatilität ist Schwankung, Risiko ist Verlust.</strong> Volatilität wird nur dann zum Risiko, wenn sie dich zum Handeln zwingt.</li>
+    <li>Bewerte <strong>Prozesse, nicht Ergebnisse.</strong> Eine These ohne Falsifikationskriterium ist ein Glaubenssatz.</li>
+  </ol>
+
+  <!-- Quiz -->
+  <h2 id="k14">Quiz</h2>
+  <ol class="ak-quiz">
+    <li>Eine Aktie zeigt Bid 49,80 / Ask 50,00. Zu welchem Preis kannst du <strong>kaufen</strong>?</li>
+    <li>Du erwartest, dass eine Aktie in den nächsten Monaten steigt, und möchtest sie zu höchstens 100 € kaufen. Welche Orderart?</li>
+    <li>Ein System hat eine Trefferquote von 60 %, Ø-Gewinn +6 %, Ø-Verlust −10 %. Berechne den Erwartungswert. Ist das System profitabel?</li>
+    <li>Dein Depot verliert 40 %. Welchen prozentualen Gewinn brauchst du, um wieder bei null zu sein?</li>
+    <li>Welches CRV brauchst du mindestens, um bei einer Trefferquote von 30 % Break-even zu erreichen?</li>
+    <li>Warum ist ein Stop-Loss bei 90 € keine Garantie, nicht mehr als 10 % zu verlieren, wenn du bei 100 € gekauft hast?</li>
+    <li>NVIDIA fiel 2022 um rund 50 % und stieg danach auf ein Vielfaches. Wirecard fiel 2020 auf nahezu null. Beide Ereignisse erzeugen hohe Volatilität. Worin unterscheiden sie sich fundamental?</li>
+    <li>Ein Bekannter erzählt dir, er habe mit einer riskanten Wette 300 % gemacht. In welchem Feld der Prozess-Ergebnis-Matrix befindet er sich vermutlich — und warum ist das gefährlich?</li>
+    <li>Warum kaufen Privatanleger systematisch <strong>nach</strong> einer Kursbewegung?</li>
+    <li>Nenne drei konkrete Falsifikationskriterien für eine Kaufthese zu einem Softwareunternehmen.</li>
+  </ol>
+
+  <details class="ak-quiz-answers">
+    <summary>Lösungen anzeigen</summary>
+    <div class="ak-quiz-body">
+      <ol>
+        <li>Zu <strong>50,00 €</strong> (dem Ask). Der Ask ist der Preis, zu dem jemand bereit ist, an dich zu verkaufen. Der angezeigte „Kurs" von z. B. 49,90 € ist nur die Mitte.</li>
+        <li><strong>Limit-Order</strong> mit Limit 100 €. Eine Market-Order würde zum nächstbesten Preis ausgeführt — möglicherweise über 100 €. Der Preis ist dir wichtiger als die sofortige Ausführung, also gibst du die Ausführungsgarantie auf.</li>
+        <li>EW = (0,60 × 6 %) − (0,40 × 10 %) = 3,6 % − 4,0 % = <strong>−0,4 % pro Trade</strong>. <strong>Nicht profitabel</strong> — trotz 60 % Trefferquote. Das CRV von 0,6 : 1 verlangt eine Trefferquote von 1/(1+0,6) = <strong>62,5 %</strong>, um überhaupt break-even zu sein.</li>
+        <li>1 / (1 − 0,40) − 1 = 1 / 0,60 − 1 = <strong>+66,7 %</strong>.</li>
+        <li>Mindest-Trefferquote = 1 / (1 + CRV) → 0,30 = 1 / (1 + CRV) → CRV = <strong>2,33 : 1</strong>. Alles darunter ist bei 30 % Trefferquote ein Verlustsystem.</li>
+        <li>Wegen des <strong>Gap-Risikos</strong>. Der Stop löst eine <em>Market</em>-Order aus, sobald 90 € berührt oder unterschritten wird. Eröffnet die Aktie nach einer Nachricht direkt bei 72 €, wurde nie zu 90 € gehandelt — deine Order wird bei 72 € ausgeführt. Verlust: 28 %.</li>
+        <li>NVIDIA war eine <strong>Schwankung</strong> — die Ertragskraft des Unternehmens blieb intakt, der Kurs kam zurück. Wirecard war ein <strong>dauerhafter Kapitalverlust</strong> — das Unternehmen selbst war zerstört. Volatilität ist reversibel, Kapitalverlust nicht. Nur der zweite Fall ist echtes Risiko.</li>
+        <li>Vermutlich im Feld <strong>„Glück"</strong> (schlechter Prozess, gutes Ergebnis). Gefährlich, weil das Ergebnis den Prozess <em>bestätigt</em> und ihn dadurch verstärkt. Er wird die Wette wiederholen — mit größerem Einsatz. Das Ergebnis wird ihn nur einmal belohnen.</li>
+        <li>Weil Aufmerksamkeit dem Kurs folgt, nicht umgekehrt. Eine Aktie erscheint erst dann in den Nachrichten und im Bewusstsein, <strong>nachdem</strong> sie sich bewegt hat. Wer nur kauft, was er sieht, kauft strukturell zu spät.</li>
+        <li>Beispiele (jeweils konkret und im Voraus messbar):
+          <ul>
+            <li>Der Net Revenue Retention fällt zwei Quartale in Folge unter 100 %.</li>
+            <li>Die Bruttomarge sinkt unter 65 % ohne Erklärung durch einen Produktmix-Wechsel.</li>
+            <li>Der Free Cash Flow wird über ein volles Geschäftsjahr negativ, ohne dass eine benannte Investitionsoffensive vorliegt.</li>
+            <li>Das Umsatzwachstum fällt unter die Rate, die meiner DCF-Annahme zugrunde lag, und zwar für zwei aufeinanderfolgende Quartale.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- Praktische Übungen -->
+  <h2 id="k15">Praktische Übungen</h2>
+  <div class="ak-uebungen">
+    <div class="ak-uebung">
+      <h4>Übung 1 — Orderbuch lesen (30 Min.)</h4>
+      <p>Öffne bei deinem Broker die Orderbuchansicht (Markttiefe) für Apple und für einen SDAX-Nebenwert deiner Wahl. Notiere jeweils: Bid, Ask, Spread absolut, Spread in %, und die Stückzahl auf den ersten drei Preisstufen beider Seiten. Beantworte: <em>Wie groß dürfte meine Market-Order in jedem der beiden Titel sein, ohne mehr als 0,2 % Slippage zu erzeugen?</em></p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 2 — Deine Kostenbasis (20 Min.)</h4>
+      <p>Rechne für deinen tatsächlichen Broker aus, was ein vollständiger Round Trip (Kauf + Verkauf) einer Position von 5.000 € kostet: Ordergebühr Kauf + Spread + Ordergebühr Verkauf. Ergebnis in Prozent. Multipliziere mit der Anzahl der Trades, die du im letzten Jahr gemacht hast (falls du bereits handelst). Das ist dein jährlicher Vorsprung, den der Markt hat.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 3 — Erwartungswert deines bisherigen Handelns (45 Min.)</h4>
+      <p>Falls du bereits gehandelt hast: Trage deine letzten 20 abgeschlossenen Trades in eine Tabelle ein (Gewinn/Verlust in %). Berechne Trefferquote, Ø-Gewinn, Ø-Verlust, CRV und Erwartungswert. Falls du noch nicht gehandelt hast: Definiere die vier Werte, die dein zukünftiges System haben <em>soll</em>, und leite daraus die minimal nötige Trefferquote ab.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 4 — Falsifikation (30 Min.)</h4>
+      <p>Wähle ein Unternehmen, das du gut kennst oder besitzt. Schreibe in maximal fünf Sätzen: (a) Deine Kaufthese. (b) Drei konkrete, messbare Ereignisse, bei deren Eintreten du dich als widerlegt betrachtest. Hebe das Blatt auf. Du wirst es in Modul 8 wieder brauchen.</p>
+    </div>
+    <div class="ak-uebung">
+      <h4>Übung 5 — Der ehrliche Spiegel (15 Min.)</h4>
+      <p>Gehe die sieben Ursachen aus Abschnitt 1.7 durch. Markiere die, die auf dich zutreffen. Sei ehrlich — niemand liest es außer dir. Die Liste ist dein persönlicher Lehrplan für Modul 7.</p>
+    </div>
+  </div>
+
+  <!-- Disclaimer inline -->
+  <div class="ak-disclaimer">
+    Dieses Modul dient ausschließlich Bildungszwecken. Es stellt keine Anlageberatung, keine Anlagevermittlung und keine Empfehlung zum Kauf oder Verkauf von Wertpapieren dar. Alle genannten Unternehmen und Zahlen sind illustrativ und beziehen sich auf zurückliegende Zeiträume. Frühere Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Aktien können Totalverluste erleiden. Für Aktualität, Vollständigkeit und Richtigkeit wird keine Gewähr übernommen, Irrtümer sind nicht ausgeschlossen. Jede Anlageentscheidung erfolgt eigenverantwortlich.
+  </div>
+
+</article>
+</div>
+<section class="mnext" data-nav="dark"><div class="wrap"><div><span class="lab">Nächstes Modul</span><h2>Modul 2 — Fundamentalanalyse<span>Was ist ein Unternehmen wert?</span></h2></div><a class="btn btn--p btn--l" href="modul-02-fundamentalanalyse.html">Modul 2 öffnen →</a></div></section>
+</main>
+<script src="site-foot.js"></script>
+<script>
+(function(){var as=[].slice.call(document.querySelectorAll('.toc a'));if(!as.length||!('IntersectionObserver' in window))return;
+var map={};as.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){as.forEach(function(x){x.classList.remove('on')});var a=map[e.target.id];if(a)a.classList.add('on')}})},{rootMargin:'-20% 0px -70% 0px'});
+Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});})();
+</script>
+</body>
+</html>

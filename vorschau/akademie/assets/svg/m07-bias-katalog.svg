@@ -1,0 +1,40 @@
+<svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tabelle des persönlichen Bias-Katalogs mit Balken für die Stärke jedes Bias und der jeweiligen Gegenmaßnahme.">
+  <style>
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .panel  { fill: var(--bg2, #F7F8FA); }
+    .panel2 { fill: var(--bg3, #F1F3F5); }
+    .axis   { stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1.4; fill: none; }
+    .grid   { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; fill: none; }
+    .griddash { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #10A86E); }
+    .mid    { stroke: var(--mid, #3B7BFF); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #3B7BFF); }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #555A62); }
+    .warnf  { fill: var(--warn, #D9480F); }
+    .fillneon { fill: var(--neon-dim, rgba(16,168,110,.10)); }
+    .fillmid  { fill: var(--mid-dim, rgba(59,123,255,.10)); }
+    .fillmut  { fill: var(--muted-dim, rgba(17,19,23,.06)); }
+    .box    { fill: var(--bg3, #F1F3F5); stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(16,168,110,.10)); stroke: var(--neon-border, rgba(16,168,110,.45)); stroke-width: 1; }
+    .t      { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln   { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln-b { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .tick   { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
+    .head   { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="340" rx="6"/>
+
+  <text class="head" x="60" y="46">Persönlicher Bias-Katalog</text>
+  <line class="grid" x1="60" y1="60" x2="660" y2="60"/>
+  <text class="lbl" x="70" y="92">FOMO</text><rect class="fillneon" x="260" y="80" width="180" height="14"/><text class="lbl" x="640" y="92" text-anchor="end" style="fill:#7E858F">Watchlist-Regel</text>
+  <text class="lbl" x="70" y="124">Verlustaversion</text><rect class="fillneon" x="260" y="112" width="240" height="14"/><text class="lbl" x="640" y="124" text-anchor="end" style="fill:#7E858F">Falsifikation</text>
+  <text class="lbl" x="70" y="156">Overconfidence</text><rect class="fillneon" x="260" y="144" width="150" height="14"/><text class="lbl" x="640" y="156" text-anchor="end" style="fill:#7E858F">Trade-Zählung</text>
+  <text class="lbl" x="70" y="188">Confirmation</text><rect class="fillneon" x="260" y="176" width="210" height="14"/><text class="lbl" x="640" y="188" text-anchor="end" style="fill:#7E858F">Gegenthese</text>
+  <text class="lbl" x="70" y="220">Anchoring</text><rect class="fillneon" x="260" y="208" width="120" height="14"/><text class="lbl" x="640" y="220" text-anchor="end" style="fill:#7E858F">nur Fair Value ankert</text>
+  <text class="lbl" x="70" y="252">Herdentrieb</text><rect class="fillneon" x="260" y="240" width="190" height="14"/><text class="lbl" x="640" y="252" text-anchor="end" style="fill:#7E858F">Regelbasierung</text>
+  <text class="lbl" x="60" y="300" style="fill:#7E858F">Fokus auf die 2–3 stärksten Biases · benennen entzieht Macht</text>
+
+</svg>

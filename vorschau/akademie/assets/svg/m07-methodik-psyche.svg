@@ -1,0 +1,43 @@
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Multiplikative Darstellung: Anlageerfolg ist Methodik mal Psychologie; die Psychologie ist der begrenzende Faktor.">
+  <style>
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .panel  { fill: var(--bg2, #F7F8FA); }
+    .panel2 { fill: var(--bg3, #F1F3F5); }
+    .axis   { stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1.4; fill: none; }
+    .grid   { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; fill: none; }
+    .griddash { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #10A86E); }
+    .mid    { stroke: var(--mid, #3B7BFF); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #3B7BFF); }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #555A62); }
+    .warnf  { fill: var(--warn, #D9480F); }
+    .fillneon { fill: var(--neon-dim, rgba(16,168,110,.10)); }
+    .fillmid  { fill: var(--mid-dim, rgba(59,123,255,.10)); }
+    .fillmut  { fill: var(--muted-dim, rgba(17,19,23,.06)); }
+    .box    { fill: var(--bg3, #F1F3F5); stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(16,168,110,.10)); stroke: var(--neon-border, rgba(16,168,110,.45)); stroke-width: 1; }
+    .t      { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln   { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln-b { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .tick   { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
+    .head   { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  </style>
+  <rect class="bg" x="0" y="0" width="720" height="260" rx="6"/>
+
+  <text class="head" x="360" y="60" text-anchor="middle">Anlageerfolg = Methodik × Psychologie</text>
+  <rect class="boxneon" x="120" y="100" width="150" height="80"/>
+  <text class="lbln" x="195" y="135" text-anchor="middle">Methodik</text>
+  <text class="lbl" x="195" y="158" text-anchor="middle" style="fill:#7E858F">der leichte Teil</text>
+  <text class="head" x="305" y="150" text-anchor="middle" style="font-size:22px">×</text>
+  <rect class="boxneon" x="340" y="100" width="150" height="80"/>
+  <text class="lbln" x="415" y="135" text-anchor="middle">Psychologie</text>
+  <text class="lbl" x="415" y="158" text-anchor="middle" style="fill:#7E858F">der schwere Teil</text>
+  <text class="head" x="525" y="150" text-anchor="middle" style="font-size:22px">=</text>
+  <rect class="box" x="560" y="100" width="120" height="80"/>
+  <text class="lbl" x="620" y="145" text-anchor="middle" style="fill:#111317">Ergebnis</text>
+  <text class="lbl" x="360" y="220" text-anchor="middle" style="fill:#7E858F">Die Psychologie ist der begrenzende Faktor.</text>
+
+</svg>
