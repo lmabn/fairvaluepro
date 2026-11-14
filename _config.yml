@@ -1,0 +1,9 @@
+# Jekyll-Konfiguration für GitHub Pages:
+# Interne Arbeitsdateien aus der Veröffentlichung ausschließen. Die Dateien
+# bleiben im Repo. Dot-Ordner wie .github/ filtert Jekyll bereits per Default.
+exclude:
+  - CLAUDE.md
+  - docs/
+  - scripts/
+  - data/
+  - fonts/placeholder.txt
