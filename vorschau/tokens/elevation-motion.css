@@ -1,0 +1,18 @@
+/* GO:BETTER — Schatten (nur schwebende Ebenen) und Bewegung (aus tokens.css v1.0) */
+:root {
+  --shadow-0: none;                                                       /* alles, was im Fluss liegt */
+  --shadow-1: 0 4px 16px rgba(0,0,0,0.40), 0 0 0 1px var(--color-border); /* Auswahlliste, Kurzmeldung */
+  --shadow-2: 0 16px 48px rgba(0,0,0,0.55), 0 0 0 1px var(--color-border); /* Dialog */
+
+  --motion-fast: 120ms; /* @kind other */
+  --motion-base: 200ms; /* @kind other */
+  --motion-slow: 320ms; /* @kind other */
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1); /* @kind other */
+}
+[data-theme="light"] {
+  --shadow-1: 0 4px 16px rgba(17,19,23,0.08), 0 0 0 1px var(--color-border);
+  --shadow-2: 0 16px 48px rgba(17,19,23,0.14), 0 0 0 1px var(--color-border);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fast: 0ms; /* @kind other */ --motion-base: 0ms; /* @kind other */ --motion-slow: 0ms; /* @kind other */ }
+}

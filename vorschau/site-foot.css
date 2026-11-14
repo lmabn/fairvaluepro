@@ -1,0 +1,15 @@
+/* GO:BETTER · Footer für alle Seiten. Einbinden: <link rel="stylesheet" href="site-foot.css"> im head,
+   am Seitenende: <script src="site-foot.js"></script>. Änderungen nur hier und in site-foot.js. */
+.gbf{background:#F7F8FA;color:#555A62;border-top:1px solid #DEE1E6;font:400 14px/1.6 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.gbf *{box-sizing:border-box}
+.gbf__in{max-width:1280px;margin:0 auto;padding:32px max(20px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+@media (min-width:1100px){.gbf__in{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.gbf a{color:inherit;text-decoration:none}
+.gbf a:hover,.gbf a[aria-current="page"]{color:#111317}
+.gbf__yt{display:inline-flex;align-items:center;gap:6px}
+.gbf__yt svg{flex:none}
+.gbf__note{flex-basis:100%;margin:8px 0 0;font-size:12px;line-height:1.6}
+.gbf__note b{font-weight:500;color:#3F444B}
+.gbf :focus-visible{outline:2px solid #111317;outline-offset:2px;border-radius:2px}
+.gbf__sep{width:1px;height:16px;background:#C9CDD3;margin:0 -8px;flex:none}
+.gbf__copy{order:1;flex-basis:100%;margin:0;padding-top:16px;border-top:1px solid #DEE1E6;font-size:12px;color:#555A62}

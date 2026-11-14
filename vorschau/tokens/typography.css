@@ -1,0 +1,18 @@
+/* GO:BETTER — Typografie (aus tokens.css v1.0) · --font-sans und --font-mono stehen in tokens.json (type.families) */
+:root {
+  --font-numeric:   var(--font-mono);  /* alle Zahlen in Kacheln, Tabellen, Diagrammen */
+  --font-numeric-features: "tnum" 1, "lnum" 1, "zero" 1;  /* gleich breite Ziffern, geschlitzte Null */
+
+  /*                size  / line  / weight / tracking */
+  --type-display-size: 64px; --type-display-line: 1.02; --type-display-weight: 600; --type-display-track: -0.04em;
+  --type-h1-size:      44px; --type-h1-line:      1.08; --type-h1-weight:      600; --type-h1-track:      -0.035em;
+  --type-h2-size:      30px; --type-h2-line:      1.18; --type-h2-weight:      500; --type-h2-track:      -0.025em;
+  --type-h3-size:      22px; --type-h3-line:      1.28; --type-h3-weight:      500; --type-h3-track:      -0.015em;
+  --type-h4-size:      17px; --type-h4-line:      1.4;  --type-h4-weight:      500; --type-h4-track:      -0.005em;
+  --type-body-l-size:  18px; --type-body-l-line:  1.6;
+  --type-body-size:    15px; --type-body-line:    1.6;
+  --type-body-s-size:  13px; --type-body-s-line:  1.5;
+  --type-label-size:   11px; --type-label-line:   1.4;  --type-label-track:   0.08em;  /* Mono, Versalien */
+  --type-data-size:    14px; --type-data-line:    1.4;   /* Tabellen · font-numeric */
+  --type-data-l-size:  28px; --type-data-l-line:  1.1;  --type-data-l-track:  -0.02em; /* Kennzahlen · font-numeric */
+}
