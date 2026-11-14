@@ -1,0 +1,44 @@
+/*
+ * GO:BETTER — Farben (aus tokens.css v1.0, Namen und Werte unverändert)
+ * Die Farbwerte stehen seit 10.11.2026 in tokens.json (Themen dark und light, kompiliert in tokens.css).
+ * Hier bleiben nur --focus-ring und die Produktumschaltung über data-product.
+ * Dunkel ist Standard (:root). Hell über data-theme="light" — NUR IM TOOL.
+ * Die Website hat keinen Modus-Schalter; helle Website-Abschnitte nutzen data-ground="light" (web.css).
+ */
+:root {
+  /* Grundflächen */
+
+  /* Rahmen */
+
+  /* Text · alle ≥ 4,5:1 auf bg, surface und surface-2 */
+
+  /* Akzent · Produktfarbe des aktiven Werkzeugs. Orientierung, keine Bedeutung. */
+
+  /* Produkte · Das Kürzel td steht aus historischen Gründen für den Investment Planner und wird bewusst nicht umbenannt. */
+
+  /* Datenbedeutung · nur auf Daten, immer mit Symbol oder Text */
+
+  /* Familie A · Semantikfläche — nur mit Text, der dasselbe sagt. freigegeben am 11.10.2026 */
+
+  /* Fokus */
+  --focus-ring:            0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+
+  /* Diagramme */
+  /* Depot-Farben · wählbar je Depot, getrennt von Produkt- und Signalfarben · 19.10.2026 */
+}
+
+/* Produktwechsel: data-product am <body> setzt den Akzent (ohne Attribut: Fair Value Pro) */
+[data-product="pt"] { --color-accent: var(--color-product-pt); --color-accent-text: var(--color-product-pt-text); --color-accent-soft: rgba(240,180,42,0.12); --color-accent-border: rgba(240,180,42,0.40); }
+[data-product="td"] { --color-accent: var(--color-product-td); --color-accent-text: var(--color-product-td-text); --color-accent-soft: rgba(91,140,255,0.12); --color-accent-border: rgba(91,140,255,0.40); }
+
+/* ════ HELL (nur Tool) ════ */
+[data-theme="light"] {
+
+  /* Familie A · Semantikfläche — nur mit Text, der dasselbe sagt. freigegeben am 11.10.2026 */
+
+  --focus-ring:            0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus); /* neu aufgelöst für den hellen Bereich, Wert unverändert */
+
+  /* Depot-Farben hell · freigegeben 19.10.2026 · Linien und Marken ≥ 3 : 1 (WCAG 1.4.11) */
+}
+[data-theme="light"] [data-product="pt"], [data-theme="light"][data-product="pt"] { --color-accent: var(--color-product-pt); --color-accent-text: var(--color-product-pt-text); --color-accent-soft: rgba(240,180,42,0.16); --color-accent-border: rgba(240,180,42,0.75); }
+[data-theme="light"] [data-product="td"], [data-theme="light"][data-product="td"] { --color-accent: var(--color-product-td); --color-accent-text: var(--color-product-td-text); --color-accent-soft: rgba(59,123,255,0.10); --color-accent-border: rgba(59,123,255,0.50); }

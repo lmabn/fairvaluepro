@@ -1,0 +1,169 @@
+/* GO:BETTER Design System — generated from tokens.json */
+:root, [data-theme="dark"] {
+  --color-bg: #0b0d10;
+  --color-surface: #12151a;
+  --color-surface-2: #191d23;
+  --color-surface-selected: #232830;
+  --color-bg-translucent: rgba(11,13,16,0.92);
+  --color-overlay: rgba(5,6,8,0.64);
+  --color-border: #262b33;
+  --color-border-strong: #68707b;
+  --color-text: #ecedef;
+  --color-text-muted: #9a9fa7;
+  --color-text-disabled: #5a6068;
+  --color-text-inverse: #0b0d10;
+  --color-accent: #2ee59d;
+  --color-accent-text: #2ee59d;
+  --color-accent-soft: rgba(46,229,157,0.12);
+  --color-accent-border: rgba(46,229,157,0.40);
+  --color-accent-contrast: #0b0d10;
+  --color-product-fvp: #2ee59d;
+  --color-product-fvp-text: #2ee59d;
+  --color-product-pt: #f0b42a;
+  --color-product-pt-text: #f0b42a;
+  --color-product-td: #5b8cff;
+  --color-product-td-text: #5b8cff;
+  --color-positive: #7fc0a2;
+  --color-negative: #ef7b72;
+  --color-warning: #eda15f;
+  --color-neutral: #9a9fa7;
+  --color-info: #9fb0c8;
+  --color-positive-soft: rgba(127,192,162,0.20);
+  --color-positive-border: rgba(127,192,162,0.65);
+  --color-negative-soft: rgba(239,123,114,0.20);
+  --color-negative-border: rgba(239,123,114,0.65);
+  --color-warning-soft: rgba(237,161,95,0.20);
+  --color-warning-border: rgba(237,161,95,0.65);
+  --color-info-soft: rgba(159,176,200,0.20);
+  --color-info-border: rgba(159,176,200,0.65);
+  --color-focus: #ecedef;
+  --color-depot-1: #8aa8f8;
+  --color-depot-2: #c9a27a;
+  --color-depot-3: #d88fd8;
+  --color-depot-4: #3fd0da;
+  --color-depot-5: #e8dc50;
+  --color-depot-6: #a88cf5;
+  --color-depot-7: #f5a6d0;
+  --color-depot-8: #a6d85a;
+  --chart-series-1: #ecedef;
+  --chart-series-2: #8fb3e6;
+  --chart-series-3: #d8b878;
+  --chart-series-4: #d88fd8;
+  --chart-series-5: #9a9fa7;
+  --chart-grid: #1e2229;
+  --chart-axis: #3a4049;
+  --chart-reference: #68707b;
+  --web-field-fvp: #2ee59d;
+  --web-field-fvp-muted: #16392b;
+  --web-field-pt: #f0b42a;
+  --web-field-pt-muted: #4a3606;
+  --web-field-td: #5b8cff;
+  --web-field-td-muted: #101c3f;
+  --web-field-ink: #0b0d10;
+  --web-field-line: rgba(11,13,16,0.20);
+  --web-text-soft: #b9bcc0;
+  --web-light-bg: #f7f8fa;
+  --web-light-white: #ffffff;
+  --web-light-foot: #eef0f3;
+  --web-light-line: #dee1e6;
+  --web-light-ink: #111317;
+  --web-light-text-2: #3f444b;
+  --web-light-muted: #555a62;
+  --web-light-shadow: 0 8px 24px rgba(17,19,23,.10);
+}
+[data-theme="light"] {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef0f3;
+  --color-surface-selected: #e2e5ea;
+  --color-bg-translucent: rgba(247,248,250,0.92);
+  --color-overlay: rgba(17,19,23,0.32);
+  --color-border: #dee1e6;
+  --color-border-strong: #7e858f;
+  --color-text: #111317;
+  --color-text-muted: #555a62;
+  --color-text-disabled: #a3a8af;
+  --color-text-inverse: #f7f8fa;
+  --color-accent: #10c27f;
+  --color-accent-text: #0a7a52;
+  --color-accent-soft: rgba(16,194,127,0.12);
+  --color-accent-border: rgba(16,194,127,0.55);
+  --color-accent-contrast: #0b0d10;
+  --color-product-fvp: #10c27f;
+  --color-product-fvp-text: #0a7a52;
+  --color-product-pt: #f0b42a;
+  --color-product-pt-text: #111317;
+  --color-product-td: #3b7bff;
+  --color-product-td-text: #2459d6;
+  --color-positive: #2a7453;
+  --color-negative: #b8352d;
+  --color-warning: #9e4a12;
+  --color-neutral: #555a62;
+  --color-info: #4f5f77;
+  --color-positive-soft: rgba(42,116,83,0.10);
+  --color-positive-border: rgba(42,116,83,0.80);
+  --color-negative-soft: rgba(184,53,45,0.10);
+  --color-negative-border: rgba(184,53,45,0.80);
+  --color-warning-soft: rgba(158,74,18,0.10);
+  --color-warning-border: rgba(158,74,18,0.80);
+  --color-info-soft: rgba(79,95,119,0.10);
+  --color-info-border: rgba(79,95,119,0.80);
+  --color-focus: #111317;
+  --color-depot-1: #2f5e9e;
+  --color-depot-2: #b87a3e;
+  --color-depot-3: #b547b0;
+  --color-depot-4: #0e97a6;
+  --color-depot-5: #a88a00;
+  --color-depot-6: #5b43b8;
+  --color-depot-7: #d6457f;
+  --color-depot-8: #5c9a1a;
+  --chart-series-1: #111317;
+  --chart-series-2: #2f5e9e;
+  --chart-series-3: #8a6414;
+  --chart-series-4: #9b3a8f;
+  --chart-series-5: #7e858f;
+  --chart-grid: #e9ebef;
+  --chart-axis: #c4c9d0;
+  --chart-reference: #7e858f;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --control-h-s: 32px;
+  --control-h-m: 40px;
+  --control-h-l: 48px;
+  --radius-0: 0;
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 6px;
+  --radius-full: 999px;
+  --border-w: 1px;
+  --border-w-strong: 2px;
+  --chart-estimate-opacity: 0.55;
+  --chart-area-opacity: 0.08;
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+}
+.type-display { font-family: var(--font-sans); font-size: 64px; line-height: 1.02; font-weight: 600; letter-spacing: -0.04em; }
+.type-h1 { font-family: var(--font-sans); font-size: 44px; line-height: 1.08; font-weight: 600; letter-spacing: -0.035em; }
+.type-h2 { font-family: var(--font-sans); font-size: 30px; line-height: 1.18; font-weight: 500; letter-spacing: -0.025em; }
+.type-h3 { font-family: var(--font-sans); font-size: 22px; line-height: 1.28; font-weight: 500; letter-spacing: -0.015em; }
+.type-h4 { font-family: var(--font-sans); font-size: 17px; line-height: 1.4; font-weight: 500; letter-spacing: -0.005em; }
+.type-body-l { font-family: var(--font-sans); font-size: 18px; line-height: 1.6; font-weight: 400; }
+.type-body { font-family: var(--font-sans); font-size: 15px; line-height: 1.6; font-weight: 400; }
+.type-body-s { font-family: var(--font-sans); font-size: 13px; line-height: 1.5; font-weight: 400; }
+.type-label { font-family: var(--font-mono); font-size: 11px; line-height: 1.4; font-weight: 400; letter-spacing: 0.08em; }
+.type-data { font-family: var(--font-mono); font-size: 14px; line-height: 1.4; font-weight: 400; }
+.type-data-l { font-family: var(--font-mono); font-size: 28px; line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; }
+@font-face { font-family: 'Geist'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/geist-400.woff2') format('woff2'); }
+@font-face { font-family: 'Geist'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/geist-500.woff2') format('woff2'); }
+@font-face { font-family: 'Geist'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/geist-600.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/geist-mono-400.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/geist-mono-500.woff2') format('woff2'); }

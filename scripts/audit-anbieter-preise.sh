@@ -154,6 +154,7 @@ tracked_other=$(git ls-files -- '*.html' '*.txt' '*.md' '*.json' '*.xml' '*.css'
   ':(exclude)docs/*' \
   ':(exclude)CLAUDE.md' \
   ':(exclude)scripts/audit-anbieter-preise.sh' \
+  ':(exclude)vorschau/*' \
   2>/dev/null || true)
 neg_hits=""
 if [ -n "$tracked_other" ]; then
