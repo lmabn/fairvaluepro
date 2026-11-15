@@ -114,7 +114,8 @@ for f in targets:
     needles = [
         (f"{ult_reg_m} $",            f"Ultimate regulär monatlich {ult_reg_m} $"),
         (f"{ult_reg_y_m} $",          f"Ultimate regulär jährlich pro Monat {ult_reg_y_m} $"),
-        (f"{usd_year_reg_fmt} $",     f"Ultimate regulär jährlich pro Jahr {usd_year_reg_fmt} $"),
+        # Ultimate regulär jährlich pro Jahr (1.188 $) steht in der neuen plaene.html bewusst nicht;
+        # stattdessen wird nur der monatliche Vergleich angezeigt. Needle entfällt.
         (f"{par_m_str} $",            f"Ultimate Partner monatlich {par_m_str} $"),
         (f"{par_y_m_str} $",          f"Ultimate Partner jährlich pro Monat {par_y_m_str} $"),
         (f"{usd_year_par_fmt} $",     f"Ultimate Partner jährlich pro Jahr {usd_year_par_fmt} $"),
@@ -154,7 +155,6 @@ tracked_other=$(git ls-files -- '*.html' '*.txt' '*.md' '*.json' '*.xml' '*.css'
   ':(exclude)docs/*' \
   ':(exclude)CLAUDE.md' \
   ':(exclude)scripts/audit-anbieter-preise.sh' \
-  ':(exclude)vorschau/*' \
   2>/dev/null || true)
 neg_hits=""
 if [ -n "$tracked_other" ]; then
