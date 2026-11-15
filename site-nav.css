@@ -95,3 +95,19 @@ html.gbn-open{overflow:hidden}
 @media (min-width:960px) and (max-width:1099px){.gbn{font-size:13px}.gbn__in{gap:12px}.gbn__links{gap:14px}.gbn__r{gap:12px}.gbn__wm{font-size:17px}.gbn__btn{height:36px;padding:0 12px;font-size:13px}.gbn__links>a,.gbn__dd>a{gap:6px}}
 /* 15.11.: Wortmarke am Handy so kräftig wie am Desktop: 19 px auf allen Breiten, unter 960 px Strichstärke 600 */
 @media (max-width:959px){.gbn__wm{font-size:19px;font-weight:600}.gbn__wm svg{width:6.5px;height:16px}}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Mobilmenü folgt dem Zustand der Kopfzeile (Ludmila 15.11.2026)
+   Beim Öffnen setzt site-nav.js auf <html> die Klasse .gbn-open-dark, wenn
+   die Kopfzeile in diesem Moment dunkel ist. Zustand bleibt bis zum Schließen.
+   Über hellen Abschnitten (ohne .gbn-open-dark) gilt unverändert die
+   bestehende helle Gestaltung aus .gbn-open .gbn und .gbn-m.
+   ─────────────────────────────────────────────────────────────────────────── */
+.gbn-open-dark .gbn{background:rgba(11,13,16,.86);color:#ECEDEF;border-bottom-color:rgba(255,255,255,.08)}
+.gbn-open-dark .gbn__sep{background:rgba(255,255,255,.16)}
+.gbn-open-dark .gbn .gbn__btn{background:#ECEDEF;color:#0B0D10!important}
+.gbn-open-dark .gbn-m{color:#ECEDEF;background:rgba(11,13,16,.86)}
+.gbn-open-dark .gbn-m__item,.gbn-open-dark .gbn-m__acc{border-bottom-color:rgba(255,255,255,.12)}
+.gbn-open-dark .gbn-m__sub a,.gbn-open-dark .gbn-m__sec a{color:#B9BCC0}
+.gbn-open-dark .gbn-m__sub a[aria-current="page"],.gbn-open-dark .gbn-m__sec a[aria-current="page"]{color:#ECEDEF}
+.gbn-open-dark .gbn-m__cta{background:#ECEDEF;color:#0B0D10!important}
