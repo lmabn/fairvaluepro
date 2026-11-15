@@ -1,8 +1,10 @@
-/* GO:BETTER · Footer für alle Seiten. Eine Quelle: Änderungen nur hier und in site-foot.css. */
+/* GO:BETTER · Footer für alle Seiten. Eine Quelle: Änderungen nur hier und in site-foot.css.
+   Pfad-Prefix per data-root am Script-Tag (z. B. <script src="site-foot.js" data-root="../">). */
 (function () {
   var me = document.currentScript, here = location.pathname.split('/').pop();
+  var R = (me && me.dataset.root) || '';
   var cur = function (f) { return decodeURIComponent(here) === f ? ' aria-current="page"' : ''; };
-  var l = function (f, t) { return '<a href="' + f + '"' + cur(f) + '>' + t + '</a>'; };
+  var l = function (f, t) { return '<a href="' + R + f + '"' + cur(f) + '>' + t + '</a>'; };
   var html = '<footer class="gbf"><div class="gbf__in">' +
     l('partner.html', 'Für Partner') +
     '<a href="https://app.gobetter.trade/kuendigen">Verträge hier kündigen</a><a href="https://app.gobetter.trade/widerrufen">Vertrag widerrufen</a>' +
