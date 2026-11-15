@@ -627,6 +627,16 @@ svg.viz{max-height:120px}
 .split .head .label{justify-content:flex-start}
 .g-d .label{color:#9A9FA7}.g-d .label::before{background:#2EE59D}
 .start2{position:relative;overflow:hidden}.start2>*{position:relative;z-index:1}.start2::after{content:"";position:absolute;right:-10%;top:-40%;width:70%;height:180%;background:radial-gradient(closest-side,rgba(46,229,157,.16),transparent),radial-gradient(closest-side at 70% 70%,rgba(91,140,255,.14),transparent);pointer-events:none;z-index:0}
+/* 15.11.: Funktionsvergleich bei 390 px ohne Abschneiden */
+@media (max-width:719px){.cmpt{min-width:0;font-size:13px}.cmpt thead th{padding:10px 4px;letter-spacing:.04em}.cmpt tbody th{padding:12px 6px 12px 0}.cmpt td{padding:12px 2px;width:13%}.cmpt tr.grp th{padding:22px 0 8px}}
+/* 15.11.: Abschluss unter 960 px: Text oben auf dunkler Fläche, Bild darunter, Person ganz sichtbar */
+@media (max-width:959px){
+.cta2{flex-direction:column;align-items:stretch;min-height:0;background:#0B0D10}
+.cta2__in{order:1;padding-top:64px;padding-bottom:8px}
+.cta2__img{order:2;position:relative;inset:auto;height:auto;aspect-ratio:16/9;object-position:50% 50%;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 38%);mask-image:linear-gradient(180deg,transparent 0,#000 38%)}
+.cta2__sh{display:none}
+}
+@media (max-width:719px){.cta2__img{aspect-ratio:4/3;object-position:100% 50%}}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -704,7 +714,7 @@ svg.viz{max-height:120px}
     </div></div></section>
 
 <section class="sec g-w" data-screen-label="05 Perspektivwechsel"><div class="wrap"><div class="head"><div class="mono label">Perspektivwechsel</div><h2 class="h2">Was kostet dich eine falsche Kaufentscheidung?</h2><p class="lead">Wer zu teuer kauft, riskiert einen Rückgang auf den Fairen Wert — und der Weg zurück ist länger als der Weg nach unten.</p></div>
-<div class="grid grid--3"><div class="card"><span class="mono" style="font-size:11px;color:var(--mu)">Beispiel</span><b class="pw">– 30 %</b><p>Fällt eine Aktie um 30 %, brauchst du +42,9 % Kursanstieg, um wieder auf null zu kommen.</p><span class="note" style="font-family:'Geist Mono',monospace;font-size:12px">Mathematik: 1/(1-0.3)-1 = 42.9 %</span></div>
+<div class="grid grid--3"><div class="card"><span class="mono" style="font-size:11px;color:var(--mu)">Beispiel</span><b class="pw">– 30 %</b><p>Fällt eine Aktie um 30 %, brauchst du +42,9 % Kursanstieg, um wieder auf null zu kommen.</p><span class="note" style="font-family:'Geist Mono',monospace;font-size:12px">Mathematik: 1 / (1 − 0,3) − 1 = 42,9 %</span></div>
 <div class="card"><span class="mono" style="font-size:11px;color:var(--mu)">Realität</span><b class="pw">Jahre</b><p>Bis ein überbewerteter Kurs zum Fairen Wert zurückkehrt, können Jahre vergehen — wenn überhaupt.</p></div>
 <div class="card"><span class="mono" style="font-size:11px;color:var(--mu)">Die Alternative</span><b class="pw">2 Min.</b><p>So lange dauert eine Bewertung mit Fair Value Pro — bevor du kaufst, nicht danach.</p></div></div></div></section>
 

@@ -22,7 +22,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://gobetter.trade/fair-value-pro.html#app", "name": "Fair Value Pro", "url": "https://gobetter.trade/fair-value-pro.html", "description": "Vier Bewertungsverfahren, eine Qualitätsnote aus 12 Kriterien und alle Annahmen offen, direkt im Browser.", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "de-DE", "offers": {"@type": "Offer", "url": "https://gobetter.trade/plaene.html", "category": "Subscription"}}, {"@type": "FAQPage", "@id": "https://gobetter.trade/fair-value-pro.html#faq", "mainEntity": [{"@type": "Question", "name": "Die Verfahren im Einzelnen", "acceptedAnswer": {"@type": "Answer", "text": "Vier Verfahren rechnen einen Fairen Wert: DCF (zweistufig) — Rechnet die künftigen Geldüberschüsse auf heute zurück: fünf Jahre Wachstum, dann Übergang in einen gleichbleibenden Zustand.KGV — Gewinn je Aktie mal Ziel-KGV für die Branche.EV/EBITDA — Wert aus dem branchentypischen Vielfachen auf den Betriebsgewinn vor Abschreibungen.DDM — Wert aus den künftigen Dividenden; erscheint nur bei ausschüttenden Titeln. Zwei Vergleichsgrößen, die nicht als Fairer Wert zählen: Historisches Median-KGV — Vergleichslinie aus dem eigenen KGV der letzten fünf Jahre, im Kursverlauf-Diagramm sichtbar.FCF-Rendite — Freier Geldüberschuss im Verhältnis zum Börsenwert, verglichen mit dem Anleihezins. Eine Kennzahl, kein Fairer Wert. Der Komposit bildet sich aus den ersten drei (DCF, KGV, EV/EBITDA)."}}, {"@type": "Question", "name": "Was unterscheidet Fair Value Pro von anderen Rechnern?", "acceptedAnswer": {"@type": "Answer", "text": "Vier Verfahren rechnen einen Fairen Wert, drei davon gewichtet im Komposit, einstellbar mit Branchen-Vorlagen. Alle Annahmen sind sichtbar und änderbar."}}, {"@type": "Question", "name": "Was ist der Komposit Fairer Wert?", "acceptedAnswer": {"@type": "Answer", "text": "Der gewichtete Mittelwert aus DCF, KGV und EV/EBITDA, voreingestellt 50/25/25. Der DDM steht als Vergleich daneben."}}, {"@type": "Question", "name": "Wie rechnet das DCF-Modell?", "acceptedAnswer": {"@type": "Answer", "text": "Das zweistufige DCF rechnet fünf Jahre Wachstum, dann einen gleichbleibenden Zustand, Endwert nach dem Gordon-Growth-Modell."}}, {"@type": "Question", "name": "Was ist der Unterschied zwischen Kompakt und Pro-Modus?", "acceptedAnswer": {"@type": "Answer", "text": "Kompakt zeigt ohne Konto Kurs, Komposit Fairer Wert, KGV und Qualitätsnote. Der Pro-Modus zeigt kostenlos mit Konto alle Verfahren, Szenarien, Sensitivitäten und den Kursverlauf."}}, {"@type": "Question", "name": "Ist das eine Anlageberatung?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Fair Value Pro ist ein Berechnungswerkzeug. Das Ergebnis hängt direkt von deinen eigenen Annahmen ab — wer andere Wachstumsraten eingibt, bekommt einen anderen Wert. Es handelt sich nicht um eine persönliche Empfehlung und nicht um Anlageberatung im Sinne des WpHG."}}, {"@type": "Question", "name": "Wie genau ist der berechnete Faire Wert?", "acceptedAnswer": {"@type": "Answer", "text": "Er ist das rechnerische Ergebnis deiner Annahmen, kein objektiver Marktpreis. Das Tool rechnet, die Annahmen verantwortest du."}}, {"@type": "Question", "name": "Welche Aktien kann ich bewerten?", "acceptedAnswer": {"@type": "Answer", "text": "Welche Börsen abgedeckt sind, hängt vom Plan deines Datenanbieters ab. Ticker eingeben, z. B. AAPL, SAP oder ALV. Die Anzeige lässt sich zwischen USD und EUR umschalten."}}, {"@type": "Question", "name": "Was macht der KI-Assistent?", "acceptedAnswer": {"@type": "Answer", "text": "Mit MAX erklärt er Kennzahlen und rechnet Was-wäre-wenn-Fragen zu deiner Analyse durch, ohne Kaufempfehlung. Anfragen gehen direkt von deinem Browser zum Anbieter, wir sehen weder Schlüssel noch Inhalte. Die Kosten entstehen direkt beim KI-Anbieter."}}]}]}</script>
 
 <!-- Stand 05.11.2026: Fair Value Pro und Pro-Modus auf einer Seite. Helle Grundregel (WEBSITE.md §1a), Rhythmus H · W · H · F · W · H (mit Akkordeons Verfahren und Gewichtung) · W · H · W · D (Abschluss dunkel mit Neon-Grün). Texte nach Vorgabe 05.11.2026, Akkordeons und KI-Beispiel wie die heutige Pro-Seite.
-     Mockups aus ui_kits/app/Kalkulator.html (Kompakt, Pro mit Reitern Kursverlauf · Unternehmen · Modell). Erfundener Titel Muster Industrie AG (MIA), Beispielwerte. -->
+     Mockups aus ui_kits/app/Kalkulator.html (Kompakt, Pro mit Reitern Kursverlauf · Unternehmen · Modell). Erfundener Titel Muster Maschinenbau AG (MMB), Beispielwerte. -->
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="assets/logo/favicon.svg">
 <style>
@@ -473,6 +473,24 @@ svg.viz{max-height:120px}
 .scc small{font-size:11px;color:var(--am)}
 .scc b{font-family:'Geist Mono',monospace;font-size:14px;font-weight:500}
 .scc.ok b{color:var(--apos)}.scc.no b{color:var(--aneg)}
+.stat b{white-space:nowrap}
+/* 15.11.: alle App-Mockups bei 390 px ohne Abschneiden */
+@media (max-width:599px){
+.mfix .app__bar{flex-wrap:wrap;white-space:normal;overflow-x:visible;padding-block:10px;row-gap:8px}
+.mfix .app__bar .tabs{flex-wrap:wrap;row-gap:6px}
+.mfix .app__acts{margin-left:0}
+.mfix .tbl{min-width:0!important}
+.mfix .tbl th,.mfix .tbl td{padding-left:6px;padding-right:6px}
+.mfix .tbl th:first-child,.mfix .tbl td:first-child{padding-left:0;white-space:normal}
+.mfix .tbl th:last-child,.mfix .tbl td:last-child{padding-right:0}
+.mfix .tbl td.wrap2,.mfix .tbl td.wrapm{white-space:normal}
+.mfix .tabs{flex-wrap:wrap}
+.mfix .tabs>span{white-space:nowrap}
+.mfix .sum{flex-wrap:wrap}
+.mfix .seg{flex:none}
+.mfix .kpi b{white-space:nowrap}
+}
+@media (min-width:720px){.stats--3 .stat{padding:24px}.stats--3 .stat b{font-size:clamp(28px,2.9vw,42px)}}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -491,11 +509,11 @@ svg.viz{max-height:120px}
       <p class="hint2">Eigener Daten-Schlüssel, in rund 5 Minuten im Onboarding eingerichtet.</p>
       <p class="hint2">Fair Value Pro kannst du ohne Konto ausprobieren, in der Ansicht „Kompakt“.</p>
     </div>
-    <div class="stage"><div class="app" role="img" aria-label="Fair Value Pro, Kalkulator im Modus Kompakt">
+    <div class="stage"><div class="app mfix" role="img" aria-label="Fair Value Pro, Kalkulator im Modus Kompakt">
         <div class="app__bar"><span class="app__name"><i></i>Fair Value Pro</span><span class="mut" style="font-size:12px">Aktienanalyse &amp; Bewertung</span><span class="app__acts"><span class="abtn">⋯</span><span class="abtn">Teilen ▾</span></span></div>
         <div class="app__body">
           <div class="sum"><span class="seg"><span class="on">Kompakt</span><span>Pro</span></span><span class="mut" style="font-size:12px">Stand 03.11.2026, 09:42 · Kurs nahezu in Echtzeit · über deine Datenquelle</span></div>
-          <div class="ttl"><b>Muster Industrie AG</b><span class="num mut">MIA</span><span class="mut" style="font-size:12px">Industrie · EUR · ISIN DE0000000001</span></div>
+          <div class="ttl"><b>Muster Maschinenbau AG</b><span class="num mut">MMB</span><span class="mut" style="font-size:12px">Industrie · EUR · ISIN DE0000000001</span></div>
           <div class="eob"><b>Unterbewertet</b><span>Kurs liegt 14,7 % unter dem Fairen Wert.</span></div>
           <div class="k4">
             <div class="kpi"><small>Aktueller Börsenkurs</small><b>52,40 €</b><span>Marktkapitalisierung 4,82 Mrd €</span></div>
@@ -599,11 +617,11 @@ svg.viz{max-height:120px}
       <tr><td>Banken, Versicherungen</td><td class="sp" colspan="3">im Bank-Bewertungsmodus: 60 % KBV aus der materiellen Eigenkapitalrendite plus 40 % KGV, DDM mit Eigenkapitalkosten</td></tr>
       <tr><td>Kryptowährungen</td><td class="sp" colspan="3">kein Komposit Fairer Wert</td></tr></tbody></table></div></div></details>
     </div>
-    <div class="mock-sp"><div class="app" role="img" aria-label="Fair Value Pro, Kalkulator im Modus Pro">
+    <div class="mock-sp"><div class="app mfix" role="img" aria-label="Fair Value Pro, Kalkulator im Modus Pro">
         <div class="app__bar"><span class="app__name"><i></i>Fair Value Pro</span><span class="mut" style="font-size:12px">Aktienanalyse &amp; Bewertung</span><span class="app__acts"><span class="abtn">⋯</span><span class="abtn">Teilen ▾</span></span></div>
         <div class="app__body">
           <div class="sum"><span class="seg"><span>Kompakt</span><span class="on">Pro</span></span><span class="mut" style="font-size:12px">Stand 03.11.2026, 09:42 · Kurs nahezu in Echtzeit · über deine Datenquelle</span></div>
-          <div class="ttl"><b>Muster Industrie AG</b><span class="num mut">MIA</span><span class="mut" style="font-size:12px">Industrie · EUR · ISIN DE0000000001</span></div>
+          <div class="ttl"><b>Muster Maschinenbau AG</b><span class="num mut">MMB</span><span class="mut" style="font-size:12px">Industrie · EUR · ISIN DE0000000001</span></div>
           <div class="eob"><b>Unterbewertet</b><span>Kurs liegt 14,7 % unter dem Fairen Wert.</span></div>
           <div class="k4 k4--5">
             <div class="kpi"><small>Aktueller Börsenkurs</small><b>52,40 €</b><span>Marktkapitalisierung 4,82 Mrd €</span></div>
@@ -626,8 +644,8 @@ svg.viz{max-height:120px}
           </div></div>
           <div class="pp" data-p="u" hidden><div class="box"><div class="box__h"><b>Qualitätsaktien-Scorecard</b><b class="num">B · 9/12</b></div><div class="scg"><div class="scc ok"><small>Umsatzwachstum 10J</small><b>6,1 %</b></div><div class="scc ok"><small>Umsatzwachstum 3J</small><b>4,8 %</b></div><div class="scc ok"><small>EBIT-Wachstum 10J</small><b>5,4 %</b></div><div class="scc no"><small>EBIT-Wachstum 3J</small><b>−1,2 %</b></div><div class="scc ok"><small>Nettoverschuldung</small><b>1,1×</b></div><div class="scc ok"><small>Gewinnkontinuität</small><b>✓</b></div><div class="scc ok"><small>EBIT-Drawdown</small><b>18,4 %</b></div><div class="scc ok"><small>Eigenkapitalrendite</small><b>14,2 %</b></div><div class="scc ok"><small>ROIC/ROCE</small><b>13,4 %</b></div><div class="scc no"><small>Renditeerwartung</small><b>7,8 %</b></div><div class="scc ok"><small>Zinsdeckung</small><b>9,6×</b></div><div class="scc no"><small>Cash-Conversion</small><b>71 %</b></div></div><span class="mut" style="font-size:11px">Datenquelle: dein Marktdaten-Anbieter · Kriterien nach dem Qualitätsaktien-Ansatz</span></div></div>
           <div class="pp" data-p="m" hidden><div class="stack">
-            <div class="sc3"><div class="scn"><small>Pessimistisch (Bär)</small><b>48,20 €</b><span>Kurspotenzial −8,0 %</span><span>g=2,0 % · WACC=9,5 %</span></div><div class="scn"><small>Realistisch (Basis)</small><b>63,80 €</b><span>Kurspotenzial +21,8 %</span><span>g=4,0 % · WACC=8,5 %</span></div><div class="scn"><small>Optimistisch (Bulle)</small><b>79,10 €</b><span>Kurspotenzial +51,0 %</span><span>g=6,0 % · WACC=7,5 %</span></div></div>
-            <div class="kv" style="border-top:0"><span>Wahrscheinlichkeitsgewichteter Wert (25 % Bär + 50 % Basis + 25 % Bulle)</span><span>63,73 € · +21,6 %</span></div>
+            <div class="sc3"><div class="scn"><small>Pessimistisch (Bär)</small><b>41,76 €</b><span>Kurspotenzial −20,3 %</span><span>g=1,6 % · WACC=10,5 %</span></div><div class="scn"><small>Realistisch (Basis)</small><b>63,80 €</b><span>Kurspotenzial +21,8 %</span><span>g=4,0 % · WACC=8,5 %</span></div><div class="scn"><small>Optimistisch (Bulle)</small><b>82,64 €</b><span>Kurspotenzial +57,7 %</span><span>g=5,6 % · WACC=7,5 %</span></div></div>
+            <div class="kv" style="border-top:0"><span>Wahrscheinlichkeitsgewichteter Wert (25 % Bär + 50 % Basis + 25 % Bulle)</span><span>63,00 € · +20,2 %</span></div>
             <div class="pgrid">
               <div class="box"><div class="box__h"><b>Sensitivitätstabelle</b><span class="mut" style="font-size:12px">Wachstum × WACC → Fairer Wert</span></div><div class="scroll"><table class="sens"><thead><tr><th>Wachstum \ WACC</th><th>7,5 %</th><th>8 %</th><th>8,5 %</th><th>9 %</th><th>9,5 %</th></tr></thead><tbody><tr><th>2 %</th><td>66,35</td><td>60,82</td><td>56,14</td><td>52,13</td><td>48,66</td></tr><tr><th>3 %</th><td>70,88</td><td>64,97</td><td>59,97</td><td>55,69</td><td>51,98</td></tr><tr><th>4 %</th><td>75,40</td><td>69,12</td><td class="cur">63,80</td><td>59,24</td><td>55,29</td></tr><tr><th>5 %</th><td>79,92</td><td>73,26</td><td>67,63</td><td>62,80</td><td>58,61</td></tr><tr><th>6 %</th><td>84,45</td><td>77,41</td><td>71,46</td><td>66,35</td><td>61,93</td></tr></tbody></table></div></div>
               <div class="box"><div class="box__h"><b>WACC-Aufschlüsselung</b><b class="num">8,5 %</b></div><div class="kv"><span>Risikofreier Zins (rf)</span><span>2,6 %</span></div><div class="kv"><span>Beta (β)</span><span>1,18</span></div><div class="kv"><span>Risikoprämie (ERP)</span><span>5,5 %</span></div><div class="kv"><span>Eigenkapitalkosten (Ke)</span><span>9,1 %</span></div><div class="kv"><span>Fremdkapitalkosten (Kd)</span><span>4,2 %</span></div><div class="kv"><span>Gewicht EK / FK</span><span>90 % / 10 %</span></div><div class="kv"><span>WACC gesamt</span><span>8,5 %</span></div>
@@ -663,10 +681,10 @@ svg.viz{max-height:120px}
     <div class="app" role="img" aria-label="KI-Assistent mit Frage, Antwort und Szenario">
       <div class="app__bar"><span class="app__name"><i></i>KI-Assistent</span><span class="mut" style="margin-left:auto;font-size:12px">Claude Haiku</span></div>
       <div class="app__body chat">
-        <div class="cb"><small>Deine Frage</small>Was bedeutet ein ROIC von 8,4 % — und ist das gut für ein Industrieunternehmen?</div>
-        <div class="cb cb--a"><small>Antwort</small>ROIC (Return on Invested Capital) misst wie effizient das Unternehmen investiertes Kapital in Gewinn verwandelt. 8,4 % liegt für Industrieunternehmen im soliden Mittelfeld — der Vergleich mit dem WACC (hier 7,2 %) zeigt: das Unternehmen schafft Wert, aber mit geringem Puffer.</div>
-        <div class="cb"><small>Was-wäre-wenn</small>Wenn ich den WACC von 7,2 % auf 8,2 % erhöhe — wie ändert sich der DCF Fairer Wert?</div>
-        <div class="cb cb--a"><small>Szenario</small><span>Bei WACC 8,2 % (statt 7,2 %) sinkt der DCF Fairer Wert von <b>€ 142,30</b> auf <b>€ 127,80</b> — ein Rückgang von 10,2 %. Höherer Diskontierungssatz reduziert den Barwert zukünftiger Cashflows.</span></div>
+        <div class="cb"><small>Deine Frage</small>Was bedeutet ein ROIC von 13,4 % — und ist das gut für ein Industrieunternehmen?</div>
+        <div class="cb cb--a"><small>Antwort</small>ROIC (Return on Invested Capital) misst wie effizient das Unternehmen investiertes Kapital in Gewinn verwandelt. 13,4 % liegt für Industrieunternehmen im oberen Bereich — der Vergleich mit dem WACC (hier 8,5 %) zeigt: das Unternehmen schafft Wert, mit einem Puffer von 4,9 Prozentpunkten.</div>
+        <div class="cb"><small>Was-wäre-wenn</small>Wenn ich den WACC von 8,5 % auf 9,5 % erhöhe — wie ändert sich der DCF Fairer Wert?</div>
+        <div class="cb cb--a"><small>Szenario</small><span>Bei WACC 9,5 % (statt 8,5 %) sinkt der DCF Fairer Wert von <b>63,80 €</b> auf <b>55,29 €</b> — ein Rückgang von 13,3 %. Höherer Diskontierungssatz reduziert den Barwert zukünftiger Cashflows.</span></div>
         <div class="chat__f">Keine Anlageberatung · Keine Kaufempfehlungen</div>
       </div>
     </div>
