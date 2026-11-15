@@ -1018,7 +1018,7 @@ main{overflow-x:clip}
   function stop(){if(timer){clearInterval(timer);timer=null}}
   sel(cur);
   (wide.addEventListener?wide.addEventListener.bind(wide,'change'):wide.addListener.bind(wide))(function(){sel(cur);if(!wide.matches)stop()});
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&wide.matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},6000)}
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&wide.matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},4000)}
   document.querySelector('.win').addEventListener('pointerenter',stop);
 })();
 </script>
