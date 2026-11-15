@@ -382,6 +382,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #111317;outline-offset:2p
 .crv small{font-size:12px;color:var(--am)}
 .crv b{font-family:'Geist Mono',monospace;font-size:20px;font-weight:500}
 .crv span{font-size:12px;color:#2A7453}
+/* 15.11.: Hero-Mockup am Handy mittig, gleicher Rand links und rechts */
+@media (max-width:719px){.stage{padding:16px 12px 0}.stage::before{left:0;right:0;border-radius:6px}}
+/* 15.11.: Link „Preise ansehen“ im Abschluss in der Schrift der Zeile */
+.end__note .gb-link-arrow{display:inline;font:inherit;letter-spacing:inherit;color:#ECEDEF;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.end__note .gb-link-arrow:hover{color:#B9BCC0}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -419,7 +424,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #111317;outline-offset:2p
           </div>
         </div>
       </div>
-      <p class="cap">Beispielwerte zur Illustration — keine aktuellen Kurse oder Bewertungen.</p>
     </div>
   </div>
 </section>
@@ -576,7 +580,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #111317;outline-offset:2p
           </div>
         </div>
       </div>
-      <p class="cap">Beispielwerte zur Illustration — keine aktuellen Kurse, Termine oder Bewertungen.</p>
     </div>
   </div>
 </section>

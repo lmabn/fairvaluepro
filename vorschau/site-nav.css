@@ -1,4 +1,3 @@
-/* Patch 15.11.: white-space:nowrap auf Nav-Namen; Desktop-Breakpoint 960 → 1100 */
 /* GO:BETTER · Menü für alle Seiten (Glas, hell und dunkel)
    Einbinden: <link rel="stylesheet" href="site-nav.css"> im head,
    direkt nach <body>: <script src="site-nav.js" data-page="fvp"></script>
@@ -20,7 +19,7 @@
 .gbn__wm circle{fill:currentColor;transition:fill 200ms}
 .gbn__sep{width:1px;height:20px;background:rgba(17,19,23,.14);flex:none}
 .gbn__links{display:none;align-self:stretch;gap:28px}
-.gbn__links>a,.gbn__dd>a{display:flex;align-items:center;gap:8px;white-space:nowrap;color:#555A62;box-shadow:inset 0 -2px 0 transparent;transition:color 120ms,box-shadow 120ms}
+.gbn__links>a,.gbn__dd>a{display:flex;align-items:center;gap:8px;color:#555A62;box-shadow:inset 0 -2px 0 transparent;transition:color 120ms,box-shadow 120ms}
 .gbn__links>a:hover,.gbn__dd>a:hover,.gbn__links [aria-current="page"]{color:#111317;box-shadow:inset 0 -2px 0 var(--c)}
 .gbn__dot{width:6px;height:6px;border-radius:50%;flex:none;display:inline-block}
 .gbn__chev{width:10px;height:10px;opacity:.7}
@@ -44,10 +43,10 @@
 .gbn__burger span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 200ms cubic-bezier(.2,0,0,1)}
 .gbn-open .gbn__burger span:first-child{transform:translateY(3.75px) rotate(45deg)}
 .gbn-open .gbn__burger span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
-@media (max-width:1099px){.gbn__sep{display:none}.gbn__in{gap:16px}.gbn__r{gap:8px}}
-@media (max-width:379px){.gbn__btn{padding:0 12px;font-size:13px}.gbn__in{gap:10px}.gbn__wm{font-size:17px}.gbn__burger{width:44px;margin-right:-10px}}
+@media (max-width:959px){.gbn__sep{display:none}.gbn__in{gap:16px}.gbn__r{gap:8px}}
+@media (max-width:379px){.gbn__btn{padding:0 12px;font-size:13px}.gbn__in{gap:10px}.gbn__burger{width:44px;margin-right:-10px}}
 .gbn__sep--r{display:none}
-@media (min-width:1100px){.gbn__sep--r{display:block}.gbn__links{display:flex}.gbn__r>a:not(.gbn__btn){display:inline}.gbn__burger,.gbn-m{display:none!important}}
+@media (min-width:960px){.gbn__sep--r{display:block}.gbn__links{display:flex}.gbn__r>a:not(.gbn__btn){display:inline}.gbn__burger,.gbn-m{display:none!important}}
 
 /* Dunkel: über dunklem Untergrund */
 .gbn--dark{background:rgba(11,13,16,.55);border-bottom-color:rgba(255,255,255,.08);color:#ECEDEF}
@@ -88,5 +87,11 @@ html.gbn-open{overflow:hidden}
 .gbn-m__cta{margin-top:24px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:4px;background:#111317;color:#F7F8FA!important;font-weight:500}
 @media (prefers-reduced-motion:reduce){.gbn,.gbn *,.gbn-m *{transition:none!important}}
 /* 15.11.: Knopf im Menü mobil kleiner; am Handy nur im aufgeklappten Menü */
-@media (max-width:1099px){.gbn__btn{height:34px;padding:0 12px;font-size:13px}}
+@media (max-width:959px){.gbn__btn{height:34px;padding:0 12px;font-size:13px}}
 @media (max-width:599px){.gbn__btn{display:none}.gbn__burger{margin-left:auto}}
+/* 15.11.: Menüpunkte brechen nicht um; zwischen 960 und 1199 px engere Abstände */
+.gbn__links>a,.gbn__dd>a,.gbn__r>a{white-space:nowrap}
+@media (min-width:960px) and (max-width:1199px){.gbn__in{gap:18px}.gbn__links{gap:18px}.gbn__r{gap:14px}}
+@media (min-width:960px) and (max-width:1099px){.gbn{font-size:13px}.gbn__in{gap:12px}.gbn__links{gap:14px}.gbn__r{gap:12px}.gbn__wm{font-size:17px}.gbn__btn{height:36px;padding:0 12px;font-size:13px}.gbn__links>a,.gbn__dd>a{gap:6px}}
+/* 15.11.: Wortmarke am Handy so kräftig wie am Desktop: 19 px auf allen Breiten, unter 960 px Strichstärke 600 */
+@media (max-width:959px){.gbn__wm{font-size:19px;font-weight:600}.gbn__wm svg{width:6.5px;height:16px}}
