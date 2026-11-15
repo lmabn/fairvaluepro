@@ -615,11 +615,13 @@ main{overflow-x:clip}
 @media (min-width:1100px) and (max-width:1359px){.kvh h1{font-size:clamp(64px,5.8vw,80px)}}
 /* 15.11.: Hero ab 1100 px: Textblock tiefer, etwa auf Höhe der Frau */
 @media (min-width:1100px){.kv--hero{align-items:center}.kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px);padding-bottom:80px}}
-/* 15.11.: App-Fenster mit fester Höhe: alle Ansichten liegen übereinander, sichtbar ist nur die gewählte — auch unter 720 px (Ludmila 15.11.2026) */
+/* 15.11.: App-Fenster ab 720 px mit fester Höhe (alle Ansichten übereinander); darunter folgt jede Ansicht ihrer eigenen Höhe (Ludmila 15.11.2026: Rücknahme #392-Mobile-Stacking, feste Höhe ließ beim Planner viel Leerraum stehen) */
+@media (min-width:720px){
 .win{display:grid;grid-template-columns:minmax(0,1fr)}
 .win>.win__bar{grid-area:1/1}
 .win>.view{grid-area:2/1;display:flex;visibility:hidden;pointer-events:none}
 .win>.view.is-on{visibility:visible;pointer-events:auto}
+}
 /* 15.11.: Abschluss am Handy: mehr Luft zwischen Überschrift und Text */
 @media (max-width:1099px){.end{gap:48px}}
 </style>
@@ -1000,10 +1002,10 @@ main{overflow-x:clip}
 <script>
 (function(){
   var tabs=[].slice.call(document.querySelectorAll('.wtabs [role="tab"]'));
-  /* Alle Ansichten liegen übereinander (feste Höhe); sichtbar ist nur die ausgewählte — auf allen Breiten gleich */
-  var cur=tabs[0];
+  /* ab 720 px liegen alle Ansichten übereinander (feste Höhe); darunter wechselt die Ansicht nur per Tipp, damit die Seite nicht springt */
+  var wide=matchMedia('(min-width:720px)'),cur=tabs[0];
   function sel(t,focus){
-    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.setAttribute('aria-hidden',String(!on));p.classList.toggle('is-on',on)});
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.hidden=wide.matches?false:!on;p.setAttribute('aria-hidden',String(!on));p.classList.toggle('is-on',on)});
     cur=t;
     if(focus)t.focus();
   }
@@ -1015,8 +1017,9 @@ main{overflow-x:clip}
   var timer=null,k=0;
   function stop(){if(timer){clearInterval(timer);timer=null}}
   sel(cur);
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},4000)}
-  if(matchMedia('(hover:hover)').matches)document.querySelector('.win').addEventListener('pointerenter',stop);
+  (wide.addEventListener?wide.addEventListener.bind(wide,'change'):wide.addListener.bind(wide))(function(){sel(cur);if(!wide.matches)stop()});
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&wide.matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},4000)}
+  document.querySelector('.win').addEventListener('pointerenter',stop);
 })();
 </script>
 <script>
