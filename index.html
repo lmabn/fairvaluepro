@@ -615,12 +615,29 @@ main{overflow-x:clip}
 @media (min-width:1100px) and (max-width:1359px){.kvh h1{font-size:clamp(64px,5.8vw,80px)}}
 /* 15.11.: Hero ab 1100 px: Textblock tiefer, etwa auf Höhe der Frau */
 @media (min-width:1100px){.kv--hero{align-items:center}.kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px);padding-bottom:80px}}
-/* 15.11.: App-Fenster ab 720 px mit fester Höhe (alle Ansichten übereinander); darunter folgt jede Ansicht ihrer eigenen Höhe (Ludmila 15.11.2026: Rücknahme #392-Mobile-Stacking, feste Höhe ließ beim Planner viel Leerraum stehen) */
+/* 15.11.: App-Fenster ab 720 px mit fester Höhe: alle Ansichten liegen übereinander, sichtbar ist nur die gewählte */
 @media (min-width:720px){
 .win{display:grid;grid-template-columns:minmax(0,1fr)}
 .win>.win__bar{grid-area:1/1}
 .win>.view{grid-area:2/1;display:flex;visibility:hidden;pointer-events:none}
 .win>.view.is-on{visibility:visible;pointer-events:auto}
+}
+/* 15.11. (Nr. 43): App-Fenster am Handy: kompakte Fassung, alle drei Ansichten gleich hoch und übereinander, Wechsel von selbst */
+.m-only{display:none}
+@media (max-width:719px){
+.d-only{display:none!important}
+.m-only{display:flex}
+.win{display:grid;grid-template-columns:minmax(0,1fr)}
+.win>.win__bar{grid-area:1/1}
+.win>.view{grid-area:2/1;display:flex;visibility:hidden;pointer-events:none;padding:20px 16px;gap:14px}
+.win>.view.is-on{visibility:visible;pointer-events:auto}
+.view .ph__t b{font-size:22px}
+.view .split{flex:1;display:flex;flex-direction:column;gap:14px}
+.view .split>.card,.view .split--ip>div:last-child,.view .split--ip>div:last-child>.card:last-child{flex:1}
+.view .card{padding:14px;gap:12px}
+.view .card>.rows{flex:1}
+.view .card>.rows>div{flex:1;align-items:center}
+.view .card>.rows>div:first-child{padding-top:9px}
 }
 /* 15.11.: Abschluss am Handy: mehr Luft zwischen Überschrift und Text */
 @media (max-width:1099px){.end{gap:48px}}
@@ -669,11 +686,11 @@ main{overflow-x:clip}
             <div class="tile"><span class="lab">Aktueller Börsenkurs</span><span class="v">211,60 €</span><span class="n">Marktkapitalisierung 105,80 Mrd €</span></div>
             <div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">50 % DCF · 25 % KGV · 25 % EV/EBITDA</span></div>
             <div class="tile"><span class="lab">DCF Fairer Wert</span><span class="v">129,49 €</span><span class="n">Sicherheitsmarge −63,4&nbsp;% · Kurspotenzial −38,8&nbsp;%</span></div>
-            <div class="tile"><span class="lab">KGV</span><span class="v">19,3x</span><span class="n">Trailing (TTM)</span></div>
+            <div class="tile d-only"><span class="lab">KGV</span><span class="v">19,3x</span><span class="n">Trailing (TTM)</span></div>
             <div class="tile"><span class="lab">Qualitätsnote</span><span class="v">A</span><span class="n">12 von 12 Kriterien erfüllt</span></div>
           </div>
           <div class="split">
-            <div class="card">
+            <div class="card d-only">
               <div class="card__h"><span class="lab">Kursverlauf vs Fairer Wert</span><span class="lab">10J</span></div>
               <svg class="chart" viewBox="0 0 640 200" role="img" aria-label="Kurs steigt über zehn Jahre bis 211,60 €, deutlich über den Fairen Wert von heute (143,55 €)">
                 <g stroke="#DEE1E6" stroke-width="1"><line x1="0" y1="40" x2="640" y2="40"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="140" x2="640" y2="140"/><line x1="0" y1="190" x2="640" y2="190"/></g>
@@ -690,10 +707,10 @@ main{overflow-x:clip}
               <div class="scg"><div><span>Bär</span><b>92,75 €</b></div><div class="on"><span>Basis</span><b>129,49 €</b></div><div><span>Bulle</span><b>159,93 €</b></div></div>
               <div class="rows">
                 <div><span>Wahrscheinlichkeitsgewichtet</span><span>127,92 €</span></div>
-                <div><span>Stage-1 Wachstum</span><span>4,0 %</span></div>
-                <div><span>WACC</span><span>8,5 %</span></div>
-                <div><span>Terminal Wachstum</span><span>2,0 %</span></div>
-                <div><span>Prognosejahre</span><span>5</span></div>
+                <div class="d-only"><span>Stage-1 Wachstum</span><span>4,0 %</span></div>
+                <div class="d-only"><span>WACC</span><span>8,5 %</span></div>
+                <div class="d-only"><span>Terminal Wachstum</span><span>2,0 %</span></div>
+                <div class="d-only"><span>Prognosejahre</span><span>5</span></div>
               </div>
             </div>
           </div>
@@ -713,7 +730,7 @@ main{overflow-x:clip}
             <div class="tile"><span class="lab">Ziel 2026</span><span class="v big">Ziel erreicht.</span><span class="n">Abstand +0,1 Prozentpunkte</span></div>
           </div>
           <div class="split">
-            <div class="card">
+            <div class="card d-only">
               <div class="card__h"><span class="lab">Portfolio-Verlauf</span><span class="lab">Vergleichswert · Kein Vergleich ▾</span></div>
               <svg class="chart" viewBox="0 0 640 200" role="img" aria-label="Σ Vermögen steigt über neun Snapshots">
                 <g stroke="#DEE1E6"><line x1="0" y1="40" x2="640" y2="40"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="140" x2="640" y2="140"/><line x1="0" y1="190" x2="640" y2="190"/></g>
@@ -753,10 +770,18 @@ main{overflow-x:clip}
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="2" width="10" height="12" rx="1.5"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3"/></svg>Trade Journal</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
-              <div><div style="font-size:22px;font-weight:500;letter-spacing:-.02em">Meine Richtwerte</div><div style="font-size:14px;color:var(--mu)">Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt.</div></div>
+              <div><div style="font-size:22px;font-weight:500;letter-spacing:-.02em">Meine Richtwerte</div><div class="d-only" style="font-size:14px;color:var(--mu)">Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt.</div></div>
               <div class="rw">
                 <div class="tile"><span class="lab">Rückgang, den du aushalten willst</span><span class="v">−25 %</span><span class="n">Größter Rückgang bisher: −11,3 % · Portfolio Tracker</span></div>
                 <div class="tile"><span class="lab">Cash-Quote</span><span class="v">1,7 %</span><div class="corr" aria-hidden="true"><i style="left:20%;right:60%"></i><b style="left:7%"></b></div><span class="n">Korridor 5–10 % · unter dem Korridor</span></div>
+              </div>
+              <div class="card m-only">
+                <span class="lab">Stresstest</span>
+                <div class="rows">
+                  <div><span>Größter Sektor −30 %</span><span>11,0 % des Depots</span></div>
+                  <div><span>Größte Einzelposition −100 %</span><span>9,9 % des Depots</span></div>
+                  <div><span>Alles −20 %</span><span>20,0 % des Depots</span></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1002,10 +1027,10 @@ main{overflow-x:clip}
 <script>
 (function(){
   var tabs=[].slice.call(document.querySelectorAll('.wtabs [role="tab"]'));
-  /* ab 720 px liegen alle Ansichten übereinander (feste Höhe); darunter wechselt die Ansicht nur per Tipp, damit die Seite nicht springt */
-  var wide=matchMedia('(min-width:720px)'),cur=tabs[0];
+  /* alle Ansichten liegen übereinander (feste Höhe), damit die Seite beim Wechsel nicht springt — Nr. 43 auch am Handy */
+  var cur=tabs[0];
   function sel(t,focus){
-    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.hidden=wide.matches?false:!on;p.setAttribute('aria-hidden',String(!on));p.classList.toggle('is-on',on)});
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.setAttribute('aria-hidden',String(!on));p.classList.toggle('is-on',on)});
     cur=t;
     if(focus)t.focus();
   }
@@ -1017,9 +1042,8 @@ main{overflow-x:clip}
   var timer=null,k=0;
   function stop(){if(timer){clearInterval(timer);timer=null}}
   sel(cur);
-  (wide.addEventListener?wide.addEventListener.bind(wide,'change'):wide.addListener.bind(wide))(function(){sel(cur);if(!wide.matches)stop()});
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&wide.matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},4000)}
-  document.querySelector('.win').addEventListener('pointerenter',stop);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},4000)}
+  if(matchMedia('(hover:hover)').matches)document.querySelector('.win').addEventListener('pointerenter',stop);
 })();
 </script>
 <script>
