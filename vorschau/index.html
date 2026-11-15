@@ -343,9 +343,10 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
   .kv--hero{min-height:900px;height:auto}
   .kv--hero[data-kv="a"]{background-position:66% bottom}
   .kv--hero[data-kv="b"]{background-position:70% center}
-  .kv--hero[data-kv="c"]{background-position:80% center}
+  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0%,rgba(11,13,16,0) 30%,#0B0D10 52%,#0B0D10 100%),url("assets/photo/workspace-window.png");background-size:100% 100%,auto 54%;background-position:0 0,88% top;background-repeat:no-repeat;min-height:max(680px,100svh);align-items:flex-end}
+  .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:max(28px,env(safe-area-inset-bottom,0px))}
   .kv--hero::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 72%)}
-  .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.9) 0%,rgba(11,13,16,.6) 50%,rgba(11,13,16,.1) 80%)}
+  .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0%,rgba(11,13,16,0) 22%)}
   .kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px)}
 }
 
@@ -581,6 +582,38 @@ main{overflow-x:clip}
 @media (max-width:999px){.vorig .vorig__r{margin-left:0;flex-basis:100%;margin-top:4px}}
 .voices.voices--split::before{grid-row:1}
 @media (max-width:640px){.tc--c{padding:30px 22px 22px;gap:18px}}
+/* 15.11.: Verkaufsprüfung wie in der App */
+.vp__s{margin:0;font-size:12px;color:var(--mu)}
+.vp__t{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1.2fr);font-size:13px;border-top:1px solid var(--bd)}
+.vp__t>span{padding:8px 8px 8px 0;border-bottom:1px solid var(--bd)}
+.vp__t>span:nth-child(-n+3){font-size:11px;color:var(--mu);padding-block:6px}
+.vp__t .m{font-family:var(--mono);font-feature-settings:"tnum" 1;white-space:nowrap}
+.vp__t em{font-style:normal;font-size:11px;display:block}
+.vp__q{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.vp__q b{font-weight:500}.vp__q small{color:var(--mu);font-size:12px}
+@media (max-width:599px){.win__bar{gap:14px;padding:0 14px}.win__bar>.wm{display:none}.wtabs{gap:14px;font-size:12px}}
+.rows span:last-child{white-space:nowrap}
+.scg b{white-space:nowrap}
+@media (max-width:379px){.wtabs{gap:11px;font-size:11.5px}.win__bar{padding:0 10px}}
+@media (max-width:599px){.kvh h1{font-size:clamp(28px,8.4vw,48px)}}
+/* 15.11.: Investment Planner am Handy: Modulwahl als Auswahlfeld wie in der App */
+.modsel{display:none}
+@media (max-width:719px){
+.mods{display:none}
+.modsel{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.modsel small{font-size:12px;color:var(--mu)}
+.modsel span{display:flex;align-items:center;gap:10px;height:44px;padding:0 12px;border:1px solid var(--bd2);border-radius:4px;background:var(--sf);color:var(--tx)}
+.modsel svg{width:16px;height:16px;flex:none}
+.modsel i{margin-left:auto;font-style:normal;color:var(--mu)}
+}
+/* 15.11.: Hero 720 bis 1099 px: Bild oben ganz sichtbar, Text darunter */
+@media (min-width:720px) and (max-width:1099px){
+.kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0,rgba(11,13,16,0) calc(56.28vw * .55),#0B0D10 calc(56.28vw * .98)),url("assets/photo/workspace-window.png");background-size:100% 100%,100% auto;background-position:0 0,0 0;background-repeat:no-repeat;min-height:calc(56.28vw + 460px);align-items:flex-end}
+.kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0,rgba(11,13,16,0) 120px)}
+.kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:56px}
+.kvh h1{font-size:clamp(48px,7.4vw,68px)}
+}
+@media (min-width:1100px) and (max-width:1359px){.kvh h1{font-size:clamp(64px,5.8vw,80px)}}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -599,7 +632,6 @@ main{overflow-x:clip}
       <p class="kvh__fn">Eigener Daten-Schlüssel, in rund 5 Minuten im Onboarding eingerichtet.</p>
     </div>
   </div>
-
 </section>
 
 <section class="sec" id="workspace" style="padding-top:clamp(40px,5vw,72px)">
@@ -624,31 +656,33 @@ main{overflow-x:clip}
           </div>
           <div class="sub"><b>Muster Industrie AG</b><span class="m mono">Industrie · EUR · Stand 18.10.2026</span><span class="badge badge--neg">Stark überbewertet</span><span>Kurs liegt 47,4 % über dem Fairen Wert.</span></div>
           <div class="tiles">
-            <div class="tile"><span class="lab">Aktueller Börsenkurs</span><span class="v">211,60 €</span><span class="n">Marktkapitalisierung</span></div>
-            <div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">DCF 50 · KGV 25 · EV/EBITDA 25</span></div>
-            <div class="tile"><span class="lab">DCF Fairer Wert</span><span class="v">129,49 €</span><span class="n">Sicherheitsmarge −63,4 %</span></div>
+            <div class="tile"><span class="lab">Aktueller Börsenkurs</span><span class="v">211,60 €</span><span class="n">Marktkapitalisierung 105,80 Mrd €</span></div>
+            <div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">50 % DCF · 25 % KGV · 25 % EV/EBITDA</span></div>
+            <div class="tile"><span class="lab">DCF Fairer Wert</span><span class="v">129,49 €</span><span class="n">Sicherheitsmarge −63,4&nbsp;% · Kurspotenzial −38,8&nbsp;%</span></div>
             <div class="tile"><span class="lab">KGV</span><span class="v">19,3x</span><span class="n">Trailing (TTM)</span></div>
             <div class="tile"><span class="lab">Qualitätsnote</span><span class="v">A</span><span class="n">12 von 12 Kriterien erfüllt</span></div>
           </div>
           <div class="split">
             <div class="card">
-              <div class="card__h"><span class="lab">Kursverlauf · 10 Jahre</span><span class="lab">Kurs gegen Fairen Wert</span></div>
-              <svg class="chart" viewBox="0 0 640 200" role="img" aria-label="Kurs steigt über zehn Jahre deutlich über den Fairen Wert">
+              <div class="card__h"><span class="lab">Kursverlauf vs Fairer Wert</span><span class="lab">10J</span></div>
+              <svg class="chart" viewBox="0 0 640 200" role="img" aria-label="Kurs steigt über zehn Jahre bis 211,60 €, deutlich über den Fairen Wert von heute (143,55 €)">
                 <g stroke="#DEE1E6" stroke-width="1"><line x1="0" y1="40" x2="640" y2="40"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="140" x2="640" y2="140"/><line x1="0" y1="190" x2="640" y2="190"/></g>
-                <path d="M0 150 L80 142 L160 136 L240 128 L320 122 L400 116 L480 110 L560 104 L640 98 L640 128 L560 134 L480 140 L400 146 L320 152 L240 158 L160 166 L80 172 L0 180Z" fill="rgba(16,194,127,.12)"/>
-                <path d="M0 165 L80 157 L160 151 L240 143 L320 137 L400 131 L480 125 L560 119 L640 113" fill="none" stroke="#10C27F" stroke-width="2" stroke-dasharray="5 4"/>
-                <path d="M0 170 L40 160 L80 166 L120 150 L160 156 L200 138 L240 144 L280 120 L320 128 L360 104 L400 96 L440 108 L480 82 L520 70 L560 78 L600 52 L640 44" fill="none" stroke="#111317" stroke-width="2"/>
-                <circle cx="640" cy="44" r="4" fill="#111317"/>
+                <path d="M0 136 L64 133 L128 128 L192 124 L256 121 L320 116 L384 112 L448 108 L512 104 L576 101" fill="none" stroke="#7E858F" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <path d="M0 170 L40 160 L80 166 L120 150 L160 156 L200 138 L240 144 L280 120 L320 128 L360 104 L400 96 L440 108 L480 82 L520 70 L560 78 L600 52 L626 42" fill="none" stroke="#111317" stroke-width="2"/>
+                <circle cx="626" cy="42" r="4" fill="#111317"/>
+                <rect x="620" y="78" width="12" height="47" rx="2" fill="rgba(16,194,127,.28)"/>
+                <line x1="612" y1="89.5" x2="640" y2="89.5" stroke="#10C27F" stroke-width="3"/>
               </svg>
-              <div class="legend"><span><i style="background:#111317"></i>Kurs</span><span><i style="background:#10C27F"></i>Komposit Fairer Wert</span><span><i style="background:rgba(16,194,127,.35);height:8px"></i>Spanne Bär bis Bulle</span></div>
+              <div class="legend"><span><i style="background:#111317"></i>Kurs</span><span><i style="background:#7E858F"></i>KGV Fairer Wert</span><span><i style="background:#10C27F"></i>Fairer Wert heute 143,55 €</span><span><i style="background:rgba(16,194,127,.35);height:8px"></i>Bär – Bulle heute</span></div>
             </div>
             <div class="card">
-              <span class="lab">Szenarien</span>
-              <div class="scg"><div><span>Bär</span><b>98,20 €</b></div><div class="on"><span>Basis</span><b>143,55 €</b></div><div><span>Bulle</span><b>176,10 €</b></div></div>
+              <span class="lab">Szenarien — Was wenn?</span>
+              <div class="scg"><div><span>Bär</span><b>92,75 €</b></div><div class="on"><span>Basis</span><b>129,49 €</b></div><div><span>Bulle</span><b>159,93 €</b></div></div>
               <div class="rows">
+                <div><span>Wahrscheinlichkeitsgewichtet</span><span>127,92 €</span></div>
+                <div><span>Stage-1 Wachstum</span><span>4,0 %</span></div>
                 <div><span>WACC</span><span>8,5 %</span></div>
-                <div><span>Wachstum Stufe 1</span><span>4,0 %</span></div>
-                <div><span>Endwachstum</span><span>2,0 %</span></div>
+                <div><span>Terminal Wachstum</span><span>2,0 %</span></div>
                 <div><span>Prognosejahre</span><span>5</span></div>
               </div>
             </div>
@@ -664,27 +698,26 @@ main{overflow-x:clip}
           <div class="sub"><span class="m mono">2026 · Snapshot 30.09.2026 · 3 Depots</span></div>
           <div class="tiles">
             <div class="tile"><span class="lab">Aktueller Wert (gesamt)</span><span class="v">106.137 €</span><span class="n">3 Depots</span></div>
-            <div class="tile"><span class="lab">Vermögenszuwachs 2026</span><span class="v pos">▲ +8,8 %</span><span class="n">+8.580 € seit 31.12.2025</span></div>
-            <div class="tile"><span class="lab">Rendite · TWR 2026</span><span class="v pos">▲ +3,2 %</span><span class="n">IRR ▲ +4,1 % gesamt (9 Mt.)</span></div>
-            <div class="tile"><span class="lab">Ziel 2026</span><span class="v big">Unter dem Ziel.</span><span class="n">Abstand −2,7 Prozentpunkte</span></div>
+            <div class="tile"><span class="lab">Vermögenszuwachs 2026</span><span class="v pos">▲ +16,0 %</span><span class="n">+14.637 € seit 31.12.2025</span></div>
+            <div class="tile"><span class="lab">Rendite · TWR 2026</span><span class="v pos">▲ +10,4 %</span><span class="n">IRR ▲ +10,9 % gesamt (9 Mt.)</span></div>
+            <div class="tile"><span class="lab">Ziel 2026</span><span class="v big">Ziel erreicht.</span><span class="n">Abstand +0,1 Prozentpunkte</span></div>
           </div>
           <div class="split">
             <div class="card">
-              <div class="card__h"><span class="lab">Wertentwicklung · Snapshots</span><span class="lab">TWR · cashflowbereinigt</span></div>
-              <svg class="chart" viewBox="0 0 640 200" role="img" aria-label="Depotwert steigt über neun Snapshots">
+              <div class="card__h"><span class="lab">Portfolio-Verlauf</span><span class="lab">Vergleichswert · Kein Vergleich ▾</span></div>
+              <svg class="chart" viewBox="0 0 640 200" role="img" aria-label="Σ Vermögen steigt über neun Snapshots">
                 <g stroke="#DEE1E6"><line x1="0" y1="40" x2="640" y2="40"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="140" x2="640" y2="140"/><line x1="0" y1="190" x2="640" y2="190"/></g>
                 <polyline points="36,118 106,112 176,120 246,104 316,98 386,90 456,94 526,80 596,72" fill="none" stroke="#F0B42A" stroke-width="2.5" stroke-linejoin="round"/><circle cx="36" cy="118" r="3.5" fill="#F0B42A"/><circle cx="106" cy="112" r="3.5" fill="#F0B42A"/><circle cx="176" cy="120" r="3.5" fill="#F0B42A"/><circle cx="246" cy="104" r="3.5" fill="#F0B42A"/><circle cx="316" cy="98" r="3.5" fill="#F0B42A"/><circle cx="386" cy="90" r="3.5" fill="#F0B42A"/><circle cx="456" cy="94" r="3.5" fill="#F0B42A"/><circle cx="526" cy="80" r="3.5" fill="#F0B42A"/><circle cx="596" cy="72" r="3.5" fill="#F0B42A"/>
-                <path d="M36 128 L106 122 L176 130 L246 114 L316 108 L386 100 L456 104 L526 90 L596 82" fill="none" stroke="#111317" stroke-width="2"/>
               </svg>
-              <div class="legend"><span><i style="background:#F0B42A;height:2.5px"></i>Depotwert je Snapshot</span><span><i style="background:#111317"></i>Eingezahltes Kapital</span></div>
+              <div class="legend"><span><i style="background:#F0B42A;height:2.5px"></i>Σ Vermögen</span></div>
             </div>
             <div class="card">
-              <span class="lab">Allokation nach Depot</span>
-              <div class="alloc" aria-hidden="true"><i style="flex:52;background:var(--d1)"></i><i style="flex:31;background:var(--d2)"></i><i style="flex:17;background:var(--d3)"></i></div>
+              <span class="lab">Depots</span>
+              <div class="alloc" aria-hidden="true"><i style="flex:49;background:var(--d1)"></i><i style="flex:30.5;background:var(--d2)"></i><i style="flex:20.5;background:var(--d3)"></i></div>
               <div class="rows">
-                <div><span><i class="dot" style="background:var(--d1)"></i>&nbsp; Hauptdepot</span><span>55.191 €</span></div>
-                <div><span><i class="dot" style="background:var(--d2)"></i>&nbsp; Dividenden</span><span>32.902 €</span></div>
-                <div><span><i class="dot" style="background:var(--d3)"></i>&nbsp; Kinderdepot</span><span>18.044 €</span></div>
+                <div><span><i class="dot" style="background:var(--d1)"></i>&nbsp; Hauptdepot</span><span>51.978 €</span></div>
+                <div><span><i class="dot" style="background:var(--d2)"></i>&nbsp; ETF-Sparplan</span><span>32.387 €</span></div>
+                <div><span><i class="dot" style="background:var(--d3)"></i>&nbsp; Altersvorsorge</span><span>21.772 €</span></div>
               </div>
             </div>
           </div>
@@ -696,23 +729,24 @@ main{overflow-x:clip}
             <div class="ph__t"><span class="lab"><i class="dot" style="background:var(--td)"></i>Planung &amp; Risiko</span><b>Investment Planner</b></div>
           </div>
           <div class="split split--ip">
+            <div class="modsel" aria-hidden="true"><small>Modul</small><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 14V2h8l-1.5 3L11 8H3"/></svg>Meine Richtwerte<i>▾</i></span></div>
             <div class="mods" aria-hidden="true">
               <span class="on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 14V2h8l-1.5 3L11 8H3"/></svg>Meine Richtwerte</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z"/><circle cx="8" cy="8" r="2"/></svg>Watchlist</span>
+              <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"/><path d="M2.5 7h11M5.5 2v3M10.5 2v3"/></svg>Termine &amp; News</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 1v14"/></svg>Positionsgröße</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 4h9M5 8h9M5 12h9M2 4h.5M2 8h.5M2 12h.5"/></svg>Einstiegsplan</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="2.5" width="11" height="11" rx="1.5"/><path d="m5.5 8 2 2 3-4"/></svg>Verkaufsprüfung</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m1.5 12 4-4 3 3 6-6M10 5h4.5v4.5"/></svg>Zinsrechner</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4h12M4 8h8M6 12h4"/></svg>Rebalancing</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 2v12h12M5 10l3-4 2 2 3-4"/></svg>Stresstest</span>
+              <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="2" width="10" height="12" rx="1.5"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3"/></svg>Trade Journal</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
               <div><div style="font-size:22px;font-weight:500;letter-spacing:-.02em">Meine Richtwerte</div><div style="font-size:14px;color:var(--mu)">Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt.</div></div>
               <div class="rw">
-                <div class="tile"><span class="lab">Cash-Quote</span><span class="v">2,2 %</span><div class="corr" aria-hidden="true"><i style="left:20%;right:60%"></i><b style="left:9%"></b></div><span class="n">Korridor 5–10 % · unter dem Korridor</span></div>
-                <div class="tile"><span class="lab">Größte Einzelposition</span><span class="v">14,8 %</span><div class="corr" aria-hidden="true"><i style="left:0;right:80%;background:rgba(59,123,255,.10)"></i><b style="left:74%"></b></div><span class="n">Obergrenze 20 % · im Rahmen</span></div>
-                <div class="tile"><span class="lab">Rückgang, den du aushalten willst</span><span class="v">−25 %</span><span class="n">Größter Rückgang bisher −11,3 % · Portfolio Tracker</span></div>
-                <div class="tile"><span class="lab">Nächster Einstieg</span><span class="v big">Tranche 2 von 3</span><span class="n">Muster Industrie AG · unter 150 €</span></div>
+                <div class="tile"><span class="lab">Rückgang, den du aushalten willst</span><span class="v">−25 %</span><span class="n">Größter Rückgang bisher: −11,3 % · Portfolio Tracker</span></div>
+                <div class="tile"><span class="lab">Cash-Quote</span><span class="v">1,7 %</span><div class="corr" aria-hidden="true"><i style="left:20%;right:60%"></i><b style="left:7%"></b></div><span class="n">Korridor 5–10 % · unter dem Korridor</span></div>
               </div>
             </div>
           </div>
@@ -721,7 +755,7 @@ main{overflow-x:clip}
     </div>
 
     <div class="facts">
-      <div><b>4</b><span>Bewertungsverfahren: DCF, KGV, EV/EBITDA und DDM, zu einem Fairen Wert gewichtet.</span></div>
+      <div><b>4</b><span>Bewertungsverfahren: DCF, KGV und EV/EBITDA gewichtet zum Komposit Fairer Wert, der DDM als Vergleich daneben.</span></div>
       <div><b>12</b><span>Kriterien für die Qualitätsnote, offen nachvollziehbar.</span></div>
       <div><b>265</b><span>Funktionen in drei Werkzeugen.</span></div>
       <div><b>0</b><span>versteckte Annahmen. Jede Annahme sichtbar und einstellbar.</span></div>
@@ -751,21 +785,21 @@ main{overflow-x:clip}
         <div class="tc__top"><span class="lab"><i class="dot" style="background:var(--fvp)"></i>Fair Value Pro</span><span class="plan">GO · PRO · MAX</span></div>
         <h3>Was ist die Aktie wirklich wert?</h3>
         <p><b>Berechne den Fairen Wert.</b></p>
-        <div class="mini" aria-hidden="true"><div class="mini__h">Beispiel AG<span>Basis-Szenario</span></div><div class="mini__r"><span>Komposit Fairer Wert</span><b>142,80 €</b></div><div class="mini__r"><span>Kurs</span><b>118,40 €</b></div></div>
+        <div class="mini" aria-hidden="true"><div class="mini__h">Beispiel AG<span>Stand 02.10.2026</span></div><div class="mini__r"><span>Komposit Fairer Wert</span><b>142,80 €</b></div><div class="mini__r"><span>Kurs</span><b>118,40 €</b></div></div>
         <a class="lnk" href="fair-value-pro.html">Fair Value Pro ansehen <span aria-hidden="true">→</span></a>
       </article>
       <article class="tc tc--c tc--pt">
-        <div class="tc__top"><span class="lab"><i class="dot" style="background:var(--pt)"></i>Portfolio Tracker</span><span class="plan"><b>MAX</b></span></div>
+        <div class="tc__top"><span class="lab"><i class="dot" style="background:var(--pt)"></i>Portfolio Tracker</span><span class="plan">PRO · MAX</span></div>
         <h3>Wie hat sich dein Portfolio entwickelt?</h3>
         <p><b>Verfolge deine Investments.</b></p>
-        <div class="mini" aria-hidden="true"><div class="mini__h">Hauptdepot<span>14 Positionen</span></div><div class="mini__r"><span>Depotwert</span><b>248.310 €</b></div><div class="mini__r"><span>TWR 2025</span><b class="pos">▲ +8,4 %</b></div></div>
+        <div class="mini" aria-hidden="true"><div class="mini__h">Alle Depots<span>3 Depots</span></div><div class="mini__r"><span>Aktueller Wert (gesamt)</span><b>106.137 €</b></div><div class="mini__r"><span>Rendite · TWR 2026</span><b class="pos">▲ +10,4 %</b></div></div>
         <a class="lnk" href="portfolio-tracker.html">Portfolio Tracker ansehen <span aria-hidden="true">→</span></a>
       </article>
       <article class="tc tc--c tc--td">
         <div class="tc__top"><span class="lab"><i class="dot" style="background:var(--td)"></i>Investment Planner</span><span class="plan"><b>MAX</b></span></div>
         <h3>Was tust du als Nächstes?</h3>
         <p><b>Triff fundierte Entscheidungen.</b></p>
-        <div class="mini" aria-hidden="true"><div class="mini__h">Watchlist<span>1 in Kaufzone</span></div><div class="mini__r"><span>Beispiel AG</span><b>21 % über FW</b></div><div class="mini__r"><span>Mikro Werke</span><b>Kaufzone</b></div></div>
+        <div class="mini" aria-hidden="true"><div class="mini__h">Watchlist<span>1 in Kaufzone</span></div><div class="mini__r"><span>Beispiel AG</span><b>◆ Kaufzone erreicht</b></div><div class="mini__r"><span>Nordwerk SE · Abstand</span><b>−18,2 %</b></div></div>
         <a class="lnk" href="investment-planner.html">Investment Planner ansehen <span aria-hidden="true">→</span></a>
       </article>
     </div>
@@ -779,14 +813,14 @@ main{overflow-x:clip}
         <span class="lab"><i class="dot" style="background:var(--fvp)"></i>Fair Value Pro</span>
         <h3>Vier Verfahren. Ein Fairer Wert. Jede Annahme sichtbar.</h3>
         <p>Du siehst nicht nur das Ergebnis, sondern wie es entsteht. Ändere eine Annahme, und der Faire Wert rechnet sofort neu.</p>
-        <ul class="ticks"><li>DCF, KGV, EV/EBITDA und DDM, gewichtet zum Komposit Fairer Wert</li><li>Bär, Basis und Bulle als Szenarien nebeneinander</li><li>Qualitätsnote aus zwölf Kriterien</li><li>Sensitivitätstabelle: wie der Faire Wert auf Annahmen reagiert</li><li>Pro-Modus für eigene Annahmen, Ergebnis als PDF</li></ul>
+        <ul class="ticks"><li>DCF, KGV und EV/EBITDA, gewichtet zum Komposit Fairer Wert; der DDM als Vergleich daneben</li><li>Bär, Basis und Bulle als Szenarien nebeneinander</li><li>Qualitätsnote aus zwölf Kriterien</li><li>Sensitivitätstabelle: wie der Faire Wert auf Annahmen reagiert</li><li>Pro-Modus für eigene Annahmen, Ergebnis als PDF</li></ul>
         <a class="lnk" href="fair-value-pro.html">Fair Value Pro ansehen <span aria-hidden="true">→</span></a>
       </div>
       <div class="tool__ui" aria-hidden="true">
-        <div class="tiles"><div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">aus vier Verfahren</span></div><div class="tile"><span class="lab">Qualitätsnote</span><span class="v">A</span><span class="n">12 von 12 Kriterien</span></div></div>
+        <div class="tiles"><div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">aus drei Verfahren, gewichtet</span></div><div class="tile"><span class="lab">Qualitätsnote</span><span class="v">A</span><span class="n">12 von 12 Kriterien erfüllt</span></div></div>
         <div class="card"><span class="lab">Gewichtung</span>
           <div class="alloc"><i style="flex:50;background:#10C27F"></i><i style="flex:25;background:#7FDDB7"></i><i style="flex:25;background:#C2EFDB"></i></div>
-          <div class="rows"><div><span>DCF · 129,49 €</span><span>50 %</span></div><div><span>KGV · 158,20 €</span><span>25 %</span></div><div><span>EV/EBITDA · 157,02 €</span><span>25 %</span></div></div>
+          <div class="rows"><div><span>DCF · 129,49 €</span><span>50 %</span></div><div><span>KGV · 127,00 €</span><span>25 %</span></div><div><span>EV/EBITDA · 188,23 €</span><span>25 %</span></div><div><span>DDM · 35,04 €</span><span>Vergleich</span></div></div>
         </div>
       </div>
     </article>
@@ -800,9 +834,9 @@ main{overflow-x:clip}
         <a class="lnk" href="portfolio-tracker.html">Portfolio Tracker ansehen <span aria-hidden="true">→</span></a>
       </div>
       <div class="tool__ui" aria-hidden="true">
-        <div class="tiles"><div class="tile"><span class="lab">Rendite · TWR 2026</span><span class="v pos">▲ +3,2 %</span><span class="n">cashflowbereinigt</span></div><div class="tile"><span class="lab">IRR gesamt</span><span class="v pos">▲ +4,1 %</span><span class="n">9 Monate</span></div></div>
-        <div class="card"><span class="lab">Import · Depotauszug.pdf</span>
-          <div class="rows"><div><span>Muster Industrie AG · 40 Stück</span><span>8.464,00 €</span></div><div><span>Nordwerk SE · 120 Stück</span><span>6.912,00 €</span></div><div><span>Mineo Werke · 55 Stück</span><span>3.316,50 €</span></div><div><span style="color:var(--pos)">✓ 3 von 3 Positionen erkannt</span><span>Übernehmen</span></div></div>
+        <div class="tiles"><div class="tile"><span class="lab">Rendite · TWR 2026</span><span class="v pos">▲ +10,4 %</span><span class="n">IRR ▲ +10,9 % gesamt (9 Mt.)</span></div><div class="tile"><span class="lab">Vermögenszuwachs 2026</span><span class="v pos">▲ +16,0 %</span><span class="n">+14.637 € seit 31.12.2025</span></div></div>
+        <div class="card"><span class="lab">Import · Vorschau · Hauptdepot 30.09.2026</span>
+          <div class="rows"><div><span>Muster Industrie AG · 48 Stk.</span><span>10.156,80 €</span></div><div><span>Nordwerk SE · 35 Stk.</span><span>10.549,00 €</span></div><div><span>Beispiel AG · 88 Stk.</span><span>10.419,20 €</span></div><div><span>Mikro Werke AG · 215 Stk.</span><span>10.384,50 €</span></div><div><span>Muster Bank AG · 443 Stk.</span><span>10.468,09 €</span></div><div><span style="color:var(--pos)">✓ Depotwert · Plausibilitäts-Check aufgegangen</span><span>51.977,59 €</span></div></div>
         </div>
       </div>
     </article>
@@ -816,10 +850,15 @@ main{overflow-x:clip}
         <a class="lnk" href="investment-planner.html">Investment Planner ansehen <span aria-hidden="true">→</span></a>
       </div>
       <div class="tool__ui" aria-hidden="true">
-        <div class="card"><div class="card__h"><span class="lab">Verkaufsprüfung · Nordwerk SE</span><span class="badge" style="color:var(--td-t);border-color:rgba(59,123,255,.5);background:rgba(59,123,255,.08)">3 von 4 erfüllt</span></div>
-          <div class="rows"><div><span>These noch gültig?</span><span>Ja</span></div><div><span>Kurs über Fairem Wert</span><span>+18,2 %</span></div><div><span>Position über Obergrenze</span><span>Nein</span></div><div><span>Haltedauer über 1 Jahr</span><span>Ja</span></div></div>
+        <div class="card vp"><div class="card__h"><span class="lab">Verkaufsprüfung · Nordwerk SE</span><span class="lab">NWK</span></div>
+          <p class="vp__s">Einstieg 12.03.2025 · 35 Stück · alle Werte in EUR</p>
+          <div class="vp__t"><span class="vp__k">Damals und heute</span><span>Beim Einstieg</span><span>Heute</span>
+            <span>Kurs</span><span class="m">240,35 €</span><span class="m">301,40 € <em class="pos">▲ +25,4 %</em></span>
+            <span>Fairer Wert</span><span class="m">268,00 €</span><span class="m">255,00 €</span>
+            <span>Abstand zum Fairen Wert</span><span class="m">+10,3 %</span><span class="m">−18,2 %</span></div>
+          <div class="vp__q"><b>Ist der notierte Falsifikationsgrund eingetreten?</b><span>○ Ja &nbsp; ● Nein &nbsp; ○ Unklar</span><small>Notiert: „Auftragseingang fällt zwei Quartale in Folge“</small></div>
         </div>
-        <div class="tiles"><div class="tile"><span class="lab">Cash-Quote</span><span class="v">2,2 %</span><span class="n">Korridor 5–10 %</span></div><div class="tile"><span class="lab">Stresstest −30 %</span><span class="v">−31.841 €</span><span class="n">Depot danach 74.296 €</span></div></div>
+        <div class="tiles"><div class="tile"><span class="lab">Cash-Quote</span><span class="v">1,7 %</span><span class="n">Korridor 5–10 %</span></div><div class="tile"><span class="lab">Stresstest · Größter Sektor −30 %</span><span class="v">11,0 %</span><span class="n">des Depots · Verlust 11.622 €</span></div></div>
       </div>
     </article>
   </div>
@@ -863,8 +902,8 @@ main{overflow-x:clip}
     <div class="cv" aria-label="Beispiel einer geteilten Bewertung">
       <div class="cv__top"><b>Muster Industrie AG</b><span>geteilt von Kapitalkompass</span></div>
       <div class="cv__fv"><span class="lab">Fairer Wert</span><b>143,55 €</b><span>Autor hält den Titel: ja · Stand 28.10.2026</span></div>
-      <div><span class="lab">Szenarien</span><div class="scg" style="margin-top:8px"><div><span>Bär</span><b>98,20 €</b></div><div class="on"><span>Basis</span><b>143,55 €</b></div><div><span>Bulle</span><b>176,10 €</b></div></div></div>
-      <div class="rows"><div><span>WACC</span><span>8,5 %</span></div><div><span>Wachstum Stufe 1</span><span>4,0 %</span></div><div><span>Endwachstum</span><span>2,0 %</span></div><div><span>Prognosejahre</span><span>5</span></div><div><span>Gewichte</span><span>DCF 50 · KGV 25 · EV/EBITDA 25</span></div></div>
+      <div><span class="lab">Szenarien · im DCF</span><div class="scg" style="margin-top:8px"><div><span>Bär</span><b>92,75 €</b></div><div class="on"><span>Basis</span><b>129,49 €</b></div><div><span>Bulle</span><b>159,93 €</b></div></div></div>
+      <div class="rows"><div><span>WACC</span><span>8,5 %</span></div><div><span>Stage-1 Wachstum</span><span>4,0 %</span></div><div><span>Terminal Wachstum</span><span>2,0 %</span></div><div><span>Prognosejahre</span><span>5</span></div><div><span>Gewichte</span><span>DCF 50 · KGV 25 · EV/EBITDA 25</span></div></div>
       <span class="cv__src">Financial Data Derived from FMP API</span>
     </div>
   </div>
@@ -875,8 +914,8 @@ main{overflow-x:clip}
   <div class="wrap">
     <div class="head"><span class="lab">Bedienung</span><h2 class="h2">Gebaut für Early Birds und Nachteulen.</h2><p class="lead">Klare Wege, verständliche Begriffe, nichts Überflüssiges: GO:BETTER ist so gebaut, dass du dich auf deine Entscheidung konzentrierst, nicht auf die Bedienung. Bis ins Detail, zum Beispiel hell oder dunkel, wie und wann du arbeitest.</p></div>
     <div class="modes" aria-hidden="true">
-      <div class="mode"><span class="mode__h">Hell</span><div class="tiles"><div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">aus vier Verfahren</span></div><div class="tile"><span class="lab">Rendite · TWR</span><span class="v pos">▲ +3,2 %</span><span class="n">2026</span></div></div></div>
-      <div class="mode mode--d"><span class="mode__h">Dunkel</span><div class="tiles"><div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">aus vier Verfahren</span></div><div class="tile"><span class="lab">Rendite · TWR</span><span class="v pos">▲ +3,2 %</span><span class="n">2026</span></div></div></div>
+      <div class="mode"><span class="mode__h">Hell</span><div class="tiles"><div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">aus drei Verfahren, gewichtet</span></div><div class="tile"><span class="lab">Rendite · TWR</span><span class="v pos">▲ +10,4 %</span><span class="n">2026</span></div></div></div>
+      <div class="mode mode--d"><span class="mode__h">Dunkel</span><div class="tiles"><div class="tile"><span class="lab">Komposit Fairer Wert</span><span class="v">143,55 €</span><span class="n">aus drei Verfahren, gewichtet</span></div><div class="tile"><span class="lab">Rendite · TWR</span><span class="v pos">▲ +10,4 %</span><span class="n">2026</span></div></div></div>
     </div>
   </div>
 </section>
@@ -915,7 +954,7 @@ main{overflow-x:clip}
     <div class="facts facts--v" aria-label="Prüfzahlen">
       <div><b><small>über</small>12.000</b><span>automatische Einzelprüfungen</span></div>
       <div><b><small>über</small>400</b><span>Browser-Tests der Oberfläche</span></div>
-      <div><b><small>über</small>350</b><span>unabhängig ermittelte Sollwerte</span></div>
+      <div><b><small>über</small>300</b><span>unabhängig ermittelte Sollwerte</span></div>
       <div><b><small>über</small>250</b><span>dokumentierte Rechnungen</span></div>
     </div>
     <p class="vnote vorig"><span>Entwickelt in Deutschland</span><span>App-Server in Frankfurt</span><em class="vorig__r">Stimmen früher Nutzer, die GO:BETTER als Erste getestet haben.</em></p>
@@ -938,7 +977,7 @@ main{overflow-x:clip}
         <h2>Rechne selbst. Entscheide besser.</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:24px">
-        <p>Starte mit Fair Value Pro. Portfolio Tracker und Investment Planner kommen mit MAX dazu.</p>
+        <p>Starte mit Fair Value Pro.</p>
         <div class="btns"><a class="btn btn--p btn--l" href="https://app.gobetter.trade/fairvalue">Kostenlos registrieren</a><a class="btn btn--s btn--l" href="plaene.html">Preise ansehen →</a></div>
       </div>
     </div>
@@ -1001,7 +1040,7 @@ main{overflow-x:clip}
 })();
 </script>
 <script>
-/* Headline-Umschalter entfernt (Ludmila 14.11.): nur Variante 4 live. */
+
 </script>
 </body>
 </html>
