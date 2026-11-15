@@ -491,6 +491,11 @@ svg.viz{max-height:120px}
 .mfix .kpi b{white-space:nowrap}
 }
 @media (min-width:720px){.stats--3 .stat{padding:24px}.stats--3 .stat b{font-size:clamp(28px,2.9vw,42px)}}
+/* 15.11.: Hero-Mockup am Handy mittig, gleicher Rand links und rechts */
+@media (max-width:719px){.stage{padding:16px 12px 0}.stage::before{left:0;right:0;border-radius:6px}}
+/* 15.11.: Link „Preise ansehen“ im Abschluss in der Schrift der Zeile */
+.end__note .gb-link-arrow{display:inline;font:inherit;letter-spacing:inherit;color:#ECEDEF;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.end__note .gb-link-arrow:hover{color:#B9BCC0}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -507,7 +512,6 @@ svg.viz{max-height:120px}
       <p class="hero__sub">Vier Bewertungsverfahren, eine Qualitätsnote aus 12 Kriterien und alle Annahmen offen, direkt im Browser. So rechnen professionelle Analysten, und du entscheidest.</p>
       <div class="btns"><a class="gb-btn gb-btn--primary gb-btn--l" href="https://app.gobetter.trade/fairvalue">Kostenlos registrieren</a></div>
       <p class="hint2">Eigener Daten-Schlüssel, in rund 5 Minuten im Onboarding eingerichtet.</p>
-      <p class="hint2">Fair Value Pro kannst du ohne Konto ausprobieren, in der Ansicht „Kompakt“.</p>
     </div>
     <div class="stage"><div class="app mfix" role="img" aria-label="Fair Value Pro, Kalkulator im Modus Kompakt">
         <div class="app__bar"><span class="app__name"><i></i>Fair Value Pro</span><span class="mut" style="font-size:12px">Aktienanalyse &amp; Bewertung</span><span class="app__acts"><span class="abtn">⋯</span><span class="abtn">Teilen ▾</span></span></div>
@@ -523,9 +527,8 @@ svg.viz{max-height:120px}
             <div class="kpi"><small>Qualitätsnote</small><b>B</b><span>9 von 12 Kriterien erfüllt</span><span class="xp">✦ Erklären</span></div>
           </div>
           <span class="abtn" style="align-self:flex-start;height:36px">Vollständige Analyse im Pro-Modus →</span>
-          <span class="mut" style="font-size:11px">Keine Anlageberatung · Nur zu Analysezwecken.</span>
         </div>
-      </div><p class="cap">Beispielwerte zur Illustration — keine aktuellen Kurse oder Bewertungen.</p></div>
+      </div></div>
   </div>
 </section>
 
@@ -651,9 +654,8 @@ svg.viz{max-height:120px}
               <div class="box"><div class="box__h"><b>WACC-Aufschlüsselung</b><b class="num">8,5 %</b></div><div class="kv"><span>Risikofreier Zins (rf)</span><span>2,6 %</span></div><div class="kv"><span>Beta (β)</span><span>1,18</span></div><div class="kv"><span>Risikoprämie (ERP)</span><span>5,5 %</span></div><div class="kv"><span>Eigenkapitalkosten (Ke)</span><span>9,1 %</span></div><div class="kv"><span>Fremdkapitalkosten (Kd)</span><span>4,2 %</span></div><div class="kv"><span>Gewicht EK / FK</span><span>90 % / 10 %</span></div><div class="kv"><span>WACC gesamt</span><span>8,5 %</span></div>
                 <div class="box__h" style="margin-top:6px"><b>ROIC vs WACC</b><span>Wertschöpfend</span></div><div class="kv"><span>ROIC – WACC</span><span>+4,9 Pp.</span></div></div>
             </div></div></div>
-          <span class="mut" style="font-size:11px">Keine Anlageberatung · Nur zu Analysezwecken.</span>
         </div>
-      </div><p class="cap">Beispielwerte zur Illustration — keine aktuellen Kurse oder Bewertungen.</p></div>
+      </div></div>
     <div class="reg"><p>Pro-Modus ist kostenlos. Registriere dich mit deiner E-Mail, kein Abo, keine Kreditkarte.</p><a class="gb-btn gb-btn--primary gb-btn--l" href="https://app.gobetter.trade/fairvalue">Kostenlos registrieren</a></div>
   </div>
 </section>
@@ -664,12 +666,12 @@ svg.viz{max-height:120px}
     <div class="head"><div class="mono label">Funktionen</div><h2 class="h2">Alles drin. Nichts versteckt.</h2></div>
     <div class="grid grid--4">
       <div class="card"><span class="ico" aria-hidden="true">↺</span><h3>Reverse DCF</h3><p>Zeigt, welches Wachstum der heutige Kurs voraussetzt, neben deiner Annahme.</p></div>
-      <div class="card"><span class="ico" aria-hidden="true">◫</span><h3>Modellgrenze sichtbar</h3><p>Erklärt kein Verfahren den Kurs, steht „Außerhalb des Modellbereichs“ statt einer erfundenen Marge. Lässt sich die Lage nicht sicher einordnen, steht „Nicht beurteilbar“. Der Grund steht jeweils dabei.</p></div>
+      <div class="card"><span class="ico" aria-hidden="true">◫</span><h3>Modellgrenze sichtbar</h3><p>Erklärt kein Verfahren den Kurs, steht „Außerhalb des Modellbereichs“ oder „Nicht beurteilbar“ statt einer erfundenen Marge, jeweils mit Grund.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">⇣</span><h3>Automatischer Datenabruf</h3><p>Kurse und Finanzzahlen werden bei jeder Bewertung direkt bei deinem Datenanbieter abgerufen.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">▤</span><h3>Vorlagen speichern</h3><p>Eigene Annahmen als Vorlage speichern, als Datei exportieren oder in der <a class="lk" href="community.html">Community</a> teilen. Eine veröffentlichte Bewertung kann einen öffentlichen Link bekommen.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">◷</span><h3>Quartals-Check<span class="tagm">MAX</span></h3><p>Deine Bewertung von damals gegen heute, mit den alten Annahmen neu gerechnet.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">?</span><h3>Erklärungen und Glossar</h3><p>Jede Kennzahl dort erklärt, wo du sie brauchst, dazu ein Glossar.</p></div>
-      <div class="card"><span class="ico" aria-hidden="true">⎙</span><h3>PDF-Export<span class="tagm">MAX</span></h3><p>Jede Analyse als PDF.</p></div>
+      <div class="card"><span class="ico" aria-hidden="true">⎙</span><h3>PDF-Export<span class="tagm">MAX</span></h3><p>Die vollständige Analyse mit allen Reitern als PDF, mit Datum und Seitenzahlen.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">◎</span><h3>Community<span class="tagm">Betatest</span></h3><p>Bewertungen anderer Autoren übernehmen und mit deinen Daten nachrechnen.</p></div>
     </div>
   </div>

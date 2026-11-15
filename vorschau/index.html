@@ -343,8 +343,8 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
   .kv--hero{min-height:900px;height:auto}
   .kv--hero[data-kv="a"]{background-position:66% bottom}
   .kv--hero[data-kv="b"]{background-position:70% center}
-  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0%,rgba(11,13,16,0) 30%,#0B0D10 52%,#0B0D10 100%),url("assets/photo/workspace-window.png");background-size:100% 100%,auto 54%;background-position:0 0,88% top;background-repeat:no-repeat;min-height:max(680px,100svh);align-items:flex-end}
-  .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:max(28px,env(safe-area-inset-bottom,0px))}
+  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0%,rgba(11,13,16,0) 30%,#0B0D10 50%,#0B0D10 100%),url("assets/photo/workspace-window.png");background-size:100% 100%,auto 70%;background-position:0 0,93% top;background-repeat:no-repeat;min-height:max(700px,100svh);align-items:flex-end}
+  .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:max(56px,calc(env(safe-area-inset-bottom,0px) + 40px))}
   .kv--hero::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 72%)}
   .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0%,rgba(11,13,16,0) 22%)}
   .kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px)}
@@ -614,6 +614,17 @@ main{overflow-x:clip}
 .kvh h1{font-size:clamp(48px,7.4vw,68px)}
 }
 @media (min-width:1100px) and (max-width:1359px){.kvh h1{font-size:clamp(64px,5.8vw,80px)}}
+/* 15.11.: Hero ab 1100 px: Textblock tiefer, etwa auf Höhe der Frau */
+@media (min-width:1100px){.kv--hero{align-items:center}.kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px);padding-bottom:80px}}
+/* 15.11.: App-Fenster ab 720 px mit fester Höhe: alle Ansichten liegen übereinander, sichtbar ist nur die gewählte */
+@media (min-width:720px){
+.win{display:grid;grid-template-columns:minmax(0,1fr)}
+.win>.win__bar{grid-area:1/1}
+.win>.view{grid-area:2/1;display:flex;visibility:hidden;pointer-events:none}
+.win>.view.is-on{visibility:visible;pointer-events:auto}
+}
+/* 15.11.: Abschluss am Handy: mehr Luft zwischen Überschrift und Text */
+@media (max-width:1099px){.end{gap:48px}}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -992,8 +1003,11 @@ main{overflow-x:clip}
 <script>
 (function(){
   var tabs=[].slice.call(document.querySelectorAll('.wtabs [role="tab"]'));
+  /* ab 720 px liegen alle Ansichten übereinander (feste Höhe); darunter wechselt die Ansicht nur per Tipp, damit die Seite nicht springt */
+  var wide=matchMedia('(min-width:720px)'),cur=tabs[0];
   function sel(t,focus){
-    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.hidden=!on;p.classList.toggle('is-on',on)});
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.hidden=wide.matches?false:!on;p.setAttribute('aria-hidden',String(!on));p.classList.toggle('is-on',on)});
+    cur=t;
     if(focus)t.focus();
   }
   tabs.forEach(function(t,i){
@@ -1003,7 +1017,9 @@ main{overflow-x:clip}
   /* Ansicht wechselt von selbst, bis jemand selbst klickt; nicht bei reduzierter Bewegung */
   var timer=null,k=0;
   function stop(){if(timer){clearInterval(timer);timer=null}}
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){timer=setInterval(function(){k=(k+1)%tabs.length;sel(tabs[k])},6000)}
+  sel(cur);
+  (wide.addEventListener?wide.addEventListener.bind(wide,'change'):wide.addListener.bind(wide))(function(){sel(cur);if(!wide.matches)stop()});
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&wide.matches){timer=setInterval(function(){k=(tabs.indexOf(cur)+1)%tabs.length;sel(tabs[k])},6000)}
   document.querySelector('.win').addEventListener('pointerenter',stop);
 })();
 </script>

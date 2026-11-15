@@ -401,6 +401,11 @@ svg.viz{max-height:120px}
 .tbl--ren th{white-space:normal}
 .tbl--ren td:nth-child(5){white-space:normal}
 .tbl--ren th:first-child,.tbl--ren td:first-child{white-space:nowrap!important}
+/* 15.11.: Hero-Mockup am Handy mittig, gleicher Rand links und rechts */
+@media (max-width:719px){.stage{padding:16px 12px 0}.stage::before{left:0;right:0;border-radius:6px}}
+/* 15.11.: Link „Preise ansehen“ im Abschluss in der Schrift der Zeile */
+.end__note .gb-link-arrow{display:inline;font:inherit;letter-spacing:inherit;color:#ECEDEF;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.end__note .gb-link-arrow:hover{color:#B9BCC0}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -452,7 +457,6 @@ svg.viz{max-height:120px}
             </tbody></table></div>
         </div>
       </div>
-      <p class="cap">Beispielwerte zur Illustration — keine aktuellen Kurse oder Bewertungen.</p>
     </div>
   </div>
 </section>
