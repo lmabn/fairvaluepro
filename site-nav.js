@@ -36,7 +36,17 @@
   var ROOT = document.documentElement, hdr = document.getElementById('gbn'), menu = document.getElementById('gbn-m');
   var burger = hdr.querySelector('.gbn__burger');
 
-  function setOpen(o) { ROOT.classList.toggle('gbn-open', o); burger.setAttribute('aria-expanded', String(o)); }
+  function setOpen(o) {
+    if (o) {
+      /* Zustand der Kopfzeile im Moment des Öffnens einfrieren (Ludmila 15.11.2026):
+         War die Nav dunkel, bleibt das Mobilmenü dunkel offen; war sie hell, hell. */
+      ROOT.classList.toggle('gbn-open-dark', hdr.classList.contains('gbn--dark'));
+    } else {
+      ROOT.classList.remove('gbn-open-dark');
+    }
+    ROOT.classList.toggle('gbn-open', o);
+    burger.setAttribute('aria-expanded', String(o));
+  }
   burger.addEventListener('click', function () { setOpen(!ROOT.classList.contains('gbn-open')); });
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
   menu.querySelectorAll('.gbn-m__acc').forEach(function (acc) {
