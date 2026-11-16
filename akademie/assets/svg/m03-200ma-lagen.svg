@@ -1,11 +1,11 @@
 <svg viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zwei Beispiel-Charts nebeneinander: links Kurs über einer steigenden 200-Tage-Linie (Aufwärtstrend), rechts Kurs unter einer fallenden 200-Tage-Linie (Abwärtstrend).">
   <style>
-    .bg     { fill: var(--bg, #080e0b); }
-    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-    .madash { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; stroke-dasharray: 6 5; }
-    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
-    .tag    { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .04em; }
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .madash { stroke: var(--text-2, #555A62); stroke-width: 1.8; fill: none; stroke-dasharray: 6 5; }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .tag    { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
   </style>
   <rect class="bg" x="0" y="0" width="800" height="330" rx="6"/>
 

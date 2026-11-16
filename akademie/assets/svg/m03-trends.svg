@@ -1,15 +1,15 @@
 <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drei Miniatur-Charts nebeneinander: Aufwärtstrend mit höheren Hochs und höheren Tiefs, Abwärtstrend mit tieferen Hochs und tieferen Tiefs, Seitwärtsbewegung mit ähnlichen Hochs und Tiefs.">
   <style>
-    .bg     { fill: var(--bg, #080e0b); }
-    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-    .neonf  { fill: var(--neon, #00ff87); }
-    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-    .mutedf { fill: var(--text-2, #6a8c7a); }
-    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
-    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
-    .ptlbl  { font-family: var(--mono, ui-monospace,monospace); font-size: 9px; font-weight: 700; letter-spacing: .02em; }
-    .ptlblg { fill: var(--neon, #00ff87); }
-    .ptlblm { fill: var(--text-2, #6a8c7a); }
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .neonf  { fill: var(--neon, #10A86E); }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .mutedf { fill: var(--text-2, #555A62); }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .tick   { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
+    .ptlbl  { font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0; }
+    .ptlblg { fill: var(--neon, #10A86E); }
+    .ptlblm { fill: var(--text-2, #555A62); }
   </style>
   <rect class="bg" x="0" y="0" width="720" height="300" rx="6"/>
 

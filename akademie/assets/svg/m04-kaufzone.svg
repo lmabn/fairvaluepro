@@ -1,29 +1,29 @@
 <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Übereinanderliegende horizontale Bänder: Fairer Wert oben, Kaufschwelle, schattierte Kaufzone, Unterstützung, Falsifikationslinie unten.">
   <style>
-    .bg     { fill: var(--bg, #080e0b); }
-    .panel  { fill: var(--bg2, #0b1410); }
-    .panel2 { fill: var(--bg3, #0f1a14); }
-    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
-    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
-    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
-    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
-    .neonf  { fill: var(--neon, #00ff87); }
-    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
-    .midf   { fill: var(--mid, #00c46a); }
-    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
-    .mutedf { fill: var(--text-2, #6a8c7a); }
-    .warnf  { fill: var(--warn, #8fffcb); }
-    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
-    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
-    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
-    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
-    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
-    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
-    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
-    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
-    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
-    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
-    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .panel  { fill: var(--bg2, #F7F8FA); }
+    .panel2 { fill: var(--bg3, #F1F3F5); }
+    .axis   { stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1.4; fill: none; }
+    .grid   { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; fill: none; }
+    .griddash { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #10A86E); }
+    .mid    { stroke: var(--mid, #3B7BFF); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #3B7BFF); }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #555A62); }
+    .warnf  { fill: var(--warn, #D9480F); }
+    .fillneon { fill: var(--neon-dim, rgba(16,168,110,.10)); }
+    .fillmid  { fill: var(--mid-dim, rgba(59,123,255,.10)); }
+    .fillmut  { fill: var(--muted-dim, rgba(17,19,23,.06)); }
+    .box    { fill: var(--bg3, #F1F3F5); stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(16,168,110,.10)); stroke: var(--neon-border, rgba(16,168,110,.45)); stroke-width: 1; }
+    .t      { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln   { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln-b { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .tick   { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
+    .head   { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   </style>
   <rect class="bg" x="0" y="0" width="720" height="380" rx="6"/>
 
@@ -32,7 +32,7 @@
   <text class="tick" x="620" y="350">Zeit</text>
   <!-- Fair Value -->
   <line class="griddash" x1="120" y1="70" x2="680" y2="70"/>
-  <text class="lbl" x="130" y="62" style="fill:var(--text-2)">Fairer Wert 166 €</text>
+  <text class="lbl" x="130" y="62" style="fill:#555A62">Fairer Wert 166 €</text>
   <!-- Kaufschwelle -->
   <line class="neon" x1="120" y1="150" x2="680" y2="150" style="stroke-width:1.4"/>
   <text class="lbln" x="130" y="142">Kaufschwelle 116 € (MoS 30 %)</text>
@@ -41,9 +41,9 @@
   <text class="lbln" x="660" y="185" text-anchor="end">◄ KAUFZONE</text>
   <!-- Unterstützung -->
   <line class="mid" x1="120" y1="210" x2="680" y2="210" style="stroke-width:1.4"/>
-  <text class="lbl" x="130" y="228" style="fill:var(--mid)">Unterstützung 110 € · idealer Einstieg</text>
+  <text class="lbl" x="130" y="228" style="fill:#3B7BFF">Unterstützung 110 € · idealer Einstieg</text>
   <!-- Falsifikation -->
   <line class="griddash" x1="120" y1="270" x2="680" y2="270"/>
-  <text class="lbl" x="130" y="290" style="fill:var(--text-3)">Falsifikation &lt; 104 €</text>
+  <text class="lbl" x="130" y="290" style="fill:#7E858F">Falsifikation &lt; 104 €</text>
 
 </svg>
