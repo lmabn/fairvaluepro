@@ -1,29 +1,29 @@
 <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zwei-mal-zwei-Matrix aus Trendlage und Bewertung mit vier Einstiegssituationen und der jeweiligen Handlung.">
   <style>
-    .bg     { fill: var(--bg, #080e0b); }
-    .panel  { fill: var(--bg2, #0b1410); }
-    .panel2 { fill: var(--bg3, #0f1a14); }
-    .axis   { stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; fill: none; }
-    .grid   { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; fill: none; }
-    .griddash { stroke: var(--border, rgba(0,255,135,.07)); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
-    .neon   { stroke: var(--neon, #00ff87); stroke-width: 2.4; fill: none; }
-    .neonf  { fill: var(--neon, #00ff87); }
-    .mid    { stroke: var(--mid, #00c46a); stroke-width: 2; fill: none; }
-    .midf   { fill: var(--mid, #00c46a); }
-    .muted  { stroke: var(--text-2, #6a8c7a); stroke-width: 1.8; fill: none; }
-    .mutedf { fill: var(--text-2, #6a8c7a); }
-    .warnf  { fill: var(--warn, #8fffcb); }
-    .fillneon { fill: var(--neon-dim, rgba(0,255,135,.09)); }
-    .fillmid  { fill: var(--mid-dim, rgba(0,196,106,.09)); }
-    .fillmut  { fill: var(--muted-dim, rgba(42,102,73,.25)); }
-    .box    { fill: var(--bg3, #0f1a14); stroke: var(--border2, rgba(0,255,135,.12)); stroke-width: 1; }
-    .boxneon{ fill: var(--neon-dim, rgba(0,255,135,.09)); stroke: var(--neon-border, rgba(0,255,135,.25)); stroke-width: 1; }
-    .t      { fill: var(--text, #c8ddd2); font-family: var(--display, 'Manrope',system-ui,sans-serif); }
-    .lbl    { fill: var(--text-2, #6a8c7a); font-family: var(--mono, ui-monospace,'SF Mono','Cascadia Code','Fira Code','Consolas',monospace); font-size: 12px; letter-spacing: .04em; }
-    .lbln   { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; letter-spacing: .04em; }
-    .lbln-b { fill: var(--neon, #00ff87); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
-    .tick   { fill: var(--text-3, #344d3e); font-family: var(--mono, ui-monospace,monospace); font-size: 10px; letter-spacing: .03em; }
-    .head   { fill: var(--text, #c8ddd2); font-family: var(--mono, ui-monospace,monospace); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .bg     { fill: var(--bg, #FFFFFF); }
+    .panel  { fill: var(--bg2, #F7F8FA); }
+    .panel2 { fill: var(--bg3, #F1F3F5); }
+    .axis   { stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1.4; fill: none; }
+    .grid   { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; fill: none; }
+    .griddash { stroke: var(--border, rgba(17,19,23,.22)); stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+    .neon   { stroke: var(--neon, #10A86E); stroke-width: 2.4; fill: none; }
+    .neonf  { fill: var(--neon, #10A86E); }
+    .mid    { stroke: var(--mid, #3B7BFF); stroke-width: 2; fill: none; }
+    .midf   { fill: var(--mid, #3B7BFF); }
+    .muted  { stroke: var(--text-2, #555A62); stroke-width: 1.8; fill: none; }
+    .mutedf { fill: var(--text-2, #555A62); }
+    .warnf  { fill: var(--warn, #D9480F); }
+    .fillneon { fill: var(--neon-dim, rgba(16,168,110,.10)); }
+    .fillmid  { fill: var(--mid-dim, rgba(59,123,255,.10)); }
+    .fillmut  { fill: var(--muted-dim, rgba(17,19,23,.06)); }
+    .box    { fill: var(--bg3, #F1F3F5); stroke: var(--border2, rgba(17,19,23,.40)); stroke-width: 1; }
+    .boxneon{ fill: var(--neon-dim, rgba(16,168,110,.10)); stroke: var(--neon-border, rgba(16,168,110,.45)); stroke-width: 1; }
+    .t      { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; }
+    .lbl    { fill: var(--text-2, #555A62); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln   { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; letter-spacing: 0; }
+    .lbln-b { fill: var(--neon, #10A86E); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .tick   { fill: var(--text-3, #7E858F); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 11.5px; letter-spacing: 0; }
+    .head   { fill: var(--text, #111317); font-family: 'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   </style>
   <rect class="bg" x="0" y="0" width="680" height="420" rx="6"/>
 
@@ -34,15 +34,15 @@
   <text class="lbl" x="70" y="320" text-anchor="middle" transform="rotate(-90,70,320)">Abwärtstrend</text>
   <rect class="boxneon" x="120" y="100" width="240" height="120"/>
   <text class="lbln-b" x="240" y="150" text-anchor="middle">① Stärke + günstig</text>
-  <text class="lbl" x="240" y="176" text-anchor="middle" style="fill:var(--text-3)">Idealfall → einsteigen</text>
+  <text class="lbl" x="240" y="176" text-anchor="middle" style="fill:#7E858F">Idealfall → einsteigen</text>
   <rect class="box" x="370" y="100" width="240" height="120"/>
-  <text class="lbl" x="490" y="150" text-anchor="middle" style="fill:var(--text)">② Stärke + teuer</text>
-  <text class="lbl" x="490" y="176" text-anchor="middle" style="fill:var(--text-3)">Watchlist → warten</text>
+  <text class="lbl" x="490" y="150" text-anchor="middle" style="fill:#111317">② Stärke + teuer</text>
+  <text class="lbl" x="490" y="176" text-anchor="middle" style="fill:#7E858F">Watchlist → warten</text>
   <rect class="box" x="120" y="230" width="240" height="120"/>
-  <text class="lbl" x="240" y="280" text-anchor="middle" style="fill:var(--text)">③ Schwäche + günstig</text>
-  <text class="lbl" x="240" y="306" text-anchor="middle" style="fill:var(--text-3)">Klinge → Stabilisierung</text>
-  <rect class="box" x="370" y="230" width="240" height="120" style="stroke:var(--muted-border,rgba(42,102,73,.45))"/>
-  <text class="lbl" x="490" y="280" text-anchor="middle" style="fill:var(--text-2)">④ Schwäche + teuer</text>
-  <text class="lbl" x="490" y="306" text-anchor="middle" style="fill:var(--text-3)">ignorieren</text>
+  <text class="lbl" x="240" y="280" text-anchor="middle" style="fill:#111317">③ Schwäche + günstig</text>
+  <text class="lbl" x="240" y="306" text-anchor="middle" style="fill:#7E858F">Klinge → Stabilisierung</text>
+  <rect class="box" x="370" y="230" width="240" height="120" style="stroke:var(--muted-border,rgba(17,19,23,.18))"/>
+  <text class="lbl" x="490" y="280" text-anchor="middle" style="fill:#555A62">④ Schwäche + teuer</text>
+  <text class="lbl" x="490" y="306" text-anchor="middle" style="fill:#7E858F">ignorieren</text>
 
 </svg>
