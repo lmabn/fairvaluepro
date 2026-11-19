@@ -1,6 +1,6 @@
 # GO:BETTER
 
-> GO:BETTER bündelt Bewerten, Verfolgen und Planen in einer Plattform für Privatanleger — mit transparenten Methoden und eigenem Marktdaten-Schlüssel.
+> GO:BETTER bündelt Bewerten, Verfolgen und Planen in einer Plattform für Fundamentalanleger — mit transparenten Methoden und eigenem Marktdaten-Schlüssel.
 
 - [Über GO:BETTER](https://gobetter.trade/ueber-gobetter.html): Fakten auf einen Blick: Werkzeuge, Rechenverfahren, Datenquelle, Pläne.
 
@@ -19,7 +19,7 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 
 ## Akademie
 
-Acht Lernmodule für Privatanleger — Grundlagen bis eigene Strategie.
+Acht Lernmodule für Fundamentalanleger — Grundlagen bis eigene Strategie.
 
 - [Akademie-Übersicht](https://gobetter.trade/akademie/)
 - [Modul 1: Grundlagen](https://gobetter.trade/akademie/modul-01-grundlagen.html): Grundlagen des Aktienmarkts — Kurse, Preisbildung, Orderarten, Risiko, Zeithorizont und was einen bewussten Anleger ausmacht.
@@ -28,7 +28,7 @@ Acht Lernmodule für Privatanleger — Grundlagen bis eigene Strategie.
 - [Modul 4: Der richtige Einstieg](https://gobetter.trade/akademie/modul-04-einstieg.html): Zeitpunkt und Größe eines Einstiegs vorbereiten, statt sie dem Bauchgefühl zu überlassen.
 - [Modul 5: Risikomanagement](https://gobetter.trade/akademie/modul-05-risikomanagement.html): Positionsgröße, Diversifikation, Korrelation und Drawdown — Risiko als Rechnung, nicht als Gefühl.
 - [Modul 6: Verkaufsstrategien](https://gobetter.trade/akademie/modul-06-verkaufsstrategien.html): Woran sich ein Verkauf festmachen lässt — und warum Nichts-Tun auch eine Entscheidung ist.
-- [Modul 7: Trading-Psychologie](https://gobetter.trade/akademie/modul-07-psychologie.html): Verlustaversion, Confirmation Bias, Overconfidence — welche Denkmuster deine Entscheidungen stören und wie du sie entschärfst.
+- [Modul 7: Börsen-Psychologie](https://gobetter.trade/akademie/modul-07-psychologie.html): Verlustaversion, Confirmation Bias, Overconfidence — welche Denkmuster deine Entscheidungen stören und wie du sie entschärfst.
 - [Modul 8: Eigene Strategie entwickeln](https://gobetter.trade/akademie/modul-08-strategie.html): Aus Grundlagen, Analyse und Risiko ein eigenes, konsistentes Regelwerk zusammenstellen.
 
 ## Partner
