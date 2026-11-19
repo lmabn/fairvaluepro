@@ -6,6 +6,7 @@
   var cur = function (f) { return decodeURIComponent(here) === f ? ' aria-current="page"' : ''; };
   var l = function (f, t) { return '<a href="' + R + f + '"' + cur(f) + '>' + t + '</a>'; };
   var html = '<footer class="gbf"><div class="gbf__in">' +
+    l('ueber-gobetter.html', 'Über GO:BETTER') +
     l('partner.html', 'Für Partner') +
     '<a href="https://app.gobetter.trade/kuendigen">Verträge hier kündigen</a><a href="https://app.gobetter.trade/widerrufen">Vertrag widerrufen</a>' +
     l('agb.html', 'AGB') + l('datenschutz.html', 'Datenschutz') + l('impressum.html', 'Impressum') + '<span class="gbf__sep" aria-hidden="true"></span>' +
