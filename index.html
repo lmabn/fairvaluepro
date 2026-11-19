@@ -1,3 +1,5 @@
+---
+---
 <!-- Entwurf 3 · 11.11.2026: Startseite aus dem fertigen App-Design abgeleitet.
      Idee: Die Website zeigt die App in groß. Gleicher heller Grund (#F7F8FA), weiße Flächen mit 1-px-Rand, Radius 4,
      Geist + Geist Mono, Produktpunkte und Unterstrich in Produktfarbe wie die App-Navigation, Zahlen in Mono.
@@ -645,7 +647,7 @@ main{overflow-x:clip}
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body>
-<script src="site-nav.js" data-page="home"></script>
+{% include site-nav.html %}<script src="site-nav.js" defer></script>
 
 
 <main>
@@ -1022,7 +1024,7 @@ main{overflow-x:clip}
 
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html %}
 
 <script>
 (function(){

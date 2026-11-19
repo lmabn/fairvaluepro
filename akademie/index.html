@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -713,7 +715,7 @@ main{overflow-x:clip}
 <link rel="stylesheet" href="../site-nav.css"><link rel="stylesheet" href="../site-foot.css">
 </head>
 <body>
-<script src="../site-nav.js" data-page="akademie" data-root="../"></script>
+{% include site-nav.html page="akademie" root="../" %}<script src="../site-nav.js" defer></script>
 <main>
 <section class="ak2-hero" data-nav="dark">
   <div class="wrap ak2-hero__in">
@@ -799,6 +801,6 @@ main{overflow-x:clip}
   </div>
 </section>
 </main>
-<script src="../site-foot.js" data-root="../"></script>
+{% include site-foot.html root="../" %}
 </body>
 </html>

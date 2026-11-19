@@ -1,3 +1,5 @@
+---
+---
 <!-- @dsCard group="Website" viewport="1280x900" name="Über GO:BETTER" subtitle="Unterseite · hell · Fakten auf einen Blick, alle Antworten sichtbar" -->
 <!DOCTYPE html>
 <html lang="de">
@@ -539,7 +541,7 @@ svg.viz{max-height:120px}
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body data-level="product" data-product="fvp">
-<script src="site-nav.js" data-page=""></script>
+{% include site-nav.html %}<script src="site-nav.js" defer></script>
 
 <main>
 <section class="hero g-h ub-hero" data-screen-label="01 Seitenkopf">
@@ -603,6 +605,6 @@ svg.viz{max-height:120px}
 </section>
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html page="ueber" %}
 </body>
 </html>

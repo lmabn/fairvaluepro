@@ -1,39 +1,9 @@
-/* GO:BETTER · Menü für alle Seiten. Eine Quelle: Änderungen nur hier und in site-nav.css.
-   Pfad-Prefix per data-root am Script-Tag (z. B. <script src="site-nav.js" data-page="akademie" data-root="../">)
-   — ohne data-root: leer, Links sind dann relativ zum aktuellen Verzeichnis. */
+/* GO:BETTER · Verhalten der Nav (Burger-Menü, Dropdown, Hell/Dunkel, Escape).
+   Markup steht in _includes/site-nav.html und wird von Jekyll ausgeliefert.
+   Eine Quelle je Bauteil: Markup im Include, Verhalten hier, Stil in site-nav.css. */
 (function () {
-  var me = document.currentScript, page = (me && me.dataset.page) || '';
-  var R = (me && me.dataset.root) || '';
-  var chev = '<svg class="gbn__chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
-  var cur = function (p) { return page === p ? ' aria-current="page"' : ''; };
-  var fvpOn = page === 'fvp' || page === 'daten' || page === 'community';
-  var dot = function (c) { return '<i class="gbn__dot" style="background:' + c + '"></i>'; };
-
-  var nav = '<header class="gbn" id="gbn"><div class="gbn__in">' +
-    '<a class="gbn__wm" href="' + R + 'index.html" aria-label="GO:BETTER Startseite"><span>GO</span><svg viewBox="0 0 30 71" aria-hidden="true"><circle cx="15" cy="9.5" r="9.5"/><circle cx="15" cy="58" r="13"/></svg><span>BETTER</span></a>' +
-    '<span class="gbn__sep" aria-hidden="true"></span>' +
-    '<nav class="gbn__links" aria-label="Werkzeuge">' +
-      '<div class="gbn__dd"><a href="' + R + 'fair-value-pro.html" style="--c:#10C27F"' + (fvpOn ? ' aria-current="page"' : '') + ' aria-haspopup="true">' + dot('#10C27F') + 'Fair Value Pro' + chev + '</a>' +
-        '<div class="gbn__ddm"><a href="' + R + 'daten-quelle.html"' + cur('daten') + '>Daten-Quelle</a><a href="' + R + 'community.html"' + cur('community') + '>Community</a></div></div>' +
-      '<a href="' + R + 'portfolio-tracker.html" style="--c:#F0B42A"' + cur('pt') + '>' + dot('#F0B42A') + 'Portfolio Tracker</a>' +
-      '<a href="' + R + 'investment-planner.html" style="--c:#3B7BFF"' + cur('ip') + '>' + dot('#3B7BFF') + 'Investment Planner</a>' +
-    '</nav>' +
-    '<div class="gbn__r"><a href="' + R + 'plaene.html"' + cur('preise') + '>Preise</a><a href="' + R + 'akademie/"' + cur('akademie') + '>Akademie</a><span class="gbn__sep gbn__sep--r" aria-hidden="true"></span><a href="https://app.gobetter.trade/fairvalue">Anmelden</a>' +
-      '<a class="gbn__btn" href="https://app.gobetter.trade/fairvalue">Kostenlos registrieren</a></div>' +
-    '<button class="gbn__burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="gbn-m"><span></span><span></span></button>' +
-  '</div></header>' +
-  '<div class="gbn-m" id="gbn-m"><div class="gbn-m__in">' +
-    '<div class="gbn-m__acc' + (fvpOn ? ' is-open' : '') + '"><div class="gbn-m__row"><a href="' + R + 'fair-value-pro.html"' + cur('fvp') + '>' + dot('#10C27F') + 'Fair Value Pro</a>' +
-      '<button class="gbn-m__accbtn" type="button" aria-expanded="' + fvpOn + '" aria-label="Unterseiten Fair Value Pro"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button></div>' +
-      '<div class="gbn-m__sub"><a href="' + R + 'daten-quelle.html"' + cur('daten') + '>Daten-Quelle</a><a href="' + R + 'community.html"' + cur('community') + '>Community</a></div></div>' +
-    '<a class="gbn-m__item" href="' + R + 'portfolio-tracker.html"' + cur('pt') + '>' + dot('#F0B42A') + 'Portfolio Tracker</a>' +
-    '<a class="gbn-m__item" href="' + R + 'investment-planner.html"' + cur('ip') + '>' + dot('#3B7BFF') + 'Investment Planner</a>' +
-    '<div class="gbn-m__sec"><a href="' + R + 'plaene.html"' + cur('preise') + '>Preise</a><a href="' + R + 'akademie/"' + cur('akademie') + '>Akademie</a><a href="https://app.gobetter.trade/fairvalue">Anmelden</a></div>' +
-    '<a class="gbn-m__cta" href="https://app.gobetter.trade/fairvalue">Kostenlos registrieren</a>' +
-  '</div></div>';
-
-  if (me) me.insertAdjacentHTML('afterend', nav); else document.body.insertAdjacentHTML('afterbegin', nav);
   var ROOT = document.documentElement, hdr = document.getElementById('gbn'), menu = document.getElementById('gbn-m');
+  if (!hdr || !menu) return;
   var burger = hdr.querySelector('.gbn__burger');
 
   function setOpen(o) {
@@ -54,7 +24,7 @@
     b.addEventListener('click', function () { var o = !acc.classList.contains('is-open'); acc.classList.toggle('is-open', o); b.setAttribute('aria-expanded', String(o)); });
   });
   var dd = hdr.querySelector('.gbn__dd');
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setOpen(false); dd.classList.remove('is-open'); if (document.activeElement && hdr.contains(document.activeElement)) document.activeElement.blur(); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setOpen(false); if (dd) dd.classList.remove('is-open'); if (document.activeElement && hdr.contains(document.activeElement)) document.activeElement.blur(); } });
   addEventListener('resize', function () { if (innerWidth >= 960) setOpen(false); });
 
   /* Hell oder dunkel: Untergrund am linken Rand hinter dem Menü */

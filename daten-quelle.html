@@ -1,3 +1,5 @@
+---
+---
 <!-- @dsCard group="Website" viewport="1280x900" name="Daten-Quelle" subtitle="Unterseite Fair Value Pro · hell · WEBSITE.md §1a" -->
 <!DOCTYPE html>
 <html lang="de">
@@ -527,7 +529,7 @@ svg.viz{max-height:120px}
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body data-level="product" data-product="fvp">
-<script src="site-nav.js" data-page="daten"></script>
+{% include site-nav.html page="daten" %}<script src="site-nav.js" defer></script>
 
 
 <main>
@@ -622,7 +624,7 @@ svg.viz{max-height:120px}
 </section>
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html %}
 
 <script>
 (function(){
