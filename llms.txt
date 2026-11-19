@@ -2,6 +2,8 @@
 
 > GO:BETTER bündelt Bewerten, Verfolgen und Planen in einer Plattform für Privatanleger — mit transparenten Methoden und eigenem Marktdaten-Schlüssel.
 
+- [Über GO:BETTER](https://gobetter.trade/ueber-gobetter.html): Fakten auf einen Blick: Werkzeuge, Rechenverfahren, Datenquelle, Pläne.
+
 Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio Tracker (Depot-Verfolgung) und Investment Planner (Entscheidungen vorbereiten). Marktdaten laufen über einen eigenen Anbieter-Schlüssel des Nutzers (Bring Your Own Key).
 
 ## Produkte
@@ -36,3 +38,4 @@ Acht Lernmodule für Privatanleger — Grundlagen bis eigene Strategie.
 ## Community
 
 - [Community](https://gobetter.trade/community.html): Vorlagen und Bewertungen von Autoren mit allen Annahmen — zum Übernehmen und mit eigenen Daten nachrechnen. Für alle lesbar; Autoren wählt GO:BETTER aus.
+- [YouTube](https://www.youtube.com/@gobetter-trade): Erklärvideos zu Aktienbewertung und den Werkzeugen.
