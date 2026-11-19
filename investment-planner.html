@@ -1,3 +1,5 @@
+---
+---
 <!-- @dsCard group="Website" viewport="1280x900" name="Investment Planner" subtitle="Produktseite hell · WEBSITE.md §1a · Mockups wie die App" -->
 <!DOCTYPE html>
 <html lang="de">
@@ -390,7 +392,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #111317;outline-offset:2p
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body data-level="product" data-product="td">
-<script src="site-nav.js" data-page="ip"></script>
+{% include site-nav.html page="ip" %}<script src="site-nav.js" defer></script>
 
 
 <main>
@@ -644,7 +646,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #111317;outline-offset:2p
 </section>
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html %}
 
 <script>
 (function(){

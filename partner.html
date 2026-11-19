@@ -1,3 +1,5 @@
+---
+---
 <!-- @dsCard group="Website" viewport="1280x900" name="Für Partner" subtitle="Unterseite hell · WEBSITE.md §1a · Inhalt wie gobetter.trade/partner.html" -->
 <!DOCTYPE html>
 <html lang="de">
@@ -619,7 +621,7 @@ svg.viz{max-height:120px}
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body data-level="product" data-product="fvp">
-<script src="site-nav.js" data-page="partner"></script>
+{% include site-nav.html %}<script src="site-nav.js" defer></script>
 
 
 <main>
@@ -657,7 +659,7 @@ svg.viz{max-height:120px}
 <section class="sec g-d end" data-nav="dark" data-screen-label="09 Kontakt"><div class="wrap end__in"><div class="mono label">Kontakt</div><h2 class="h2">Gespräch aufnehmen.</h2><p class="lead">Du hast Fragen, Hinweise oder Interesse an einer konkreten Zusammenarbeit? Schreib direkt — eine Rückmeldung kommt üblicherweise innerhalb von zwei Werktagen.</p><a class="gb-btn gb-btn--primary gb-btn--l" href="mailto:support@gobetter.trade?subject=Partner-Anfrage%20%28GO%3ABETTER%29">E-Mail schreiben →</a></div></section>
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html page="partner" %}
 
 <script>
 (function(){

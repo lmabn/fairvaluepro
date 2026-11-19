@@ -1,3 +1,5 @@
+---
+---
 <!-- @dsCard group="Website" viewport="1280x900" name="AGB" subtitle="Rechtsseite hell · WEBSITE.md §1a" -->
 <!DOCTYPE html>
 <html lang="de">
@@ -627,7 +629,7 @@ body{overflow-x:clip}
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body data-level="product" data-product="fvp">
-<script src="site-nav.js" data-page=""></script>
+{% include site-nav.html %}<script src="site-nav.js" defer></script>
 
 
 <main>
@@ -742,7 +744,7 @@ body{overflow-x:clip}
 </article></div></section>
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html page="agb" %}
 
 <script>
 (function(){

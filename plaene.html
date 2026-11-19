@@ -1,3 +1,5 @@
+---
+---
 <!-- @dsCard group="Website" viewport="1280x900" name="Preise · Vorschlag 2" subtitle="Unterseite hell · WEBSITE.md §1a · Inhalt aus Preise.html" -->
 <!DOCTYPE html>
 <html lang="de">
@@ -640,7 +642,7 @@ svg.viz{max-height:120px}
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
 <body data-level="product" data-product="fvp">
-<script src="site-nav.js" data-page="preise"></script>
+{% include site-nav.html page="preise" %}<script src="site-nav.js" defer></script>
 
 
 <main>
@@ -727,7 +729,7 @@ svg.viz{max-height:120px}
 <section class="cta2" data-screen-label="07 Abschluss" data-nav="dark"><img class="cta2__img" src="assets/photo/workspace-desk.png" alt=""><div class="cta2__sh" aria-hidden="true"></div><div class="wrap cta2__in"><h2 class="h2">Starte deine <em class="ac">erste Analyse.</em></h2><p class="lead">Starte mit GO ohne Konto — oder registriere dich für PRO und MAX.</p><a class="gb-btn gb-btn--primary gb-btn--l" href="https://app.gobetter.trade/fairvalue">Kostenlos registrieren</a></div></section>
 </main>
 
-<script src="site-foot.js"></script>
+{% include site-foot.html %}
 
 <script>
 (function(){
