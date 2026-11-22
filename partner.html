@@ -259,16 +259,16 @@ a:focus-visible,button:focus-visible{outline:2px solid #111317;outline-offset:2p
 .end .ci{width:20px;height:47px}
 
 /* Abschluss zweispaltig: links hell (Business Case), rechts dunkel (Kontakt) */
-.split{display:grid;grid-template-columns:1fr 1fr;padding:0}
-.split__col{display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding:var(--sec) clamp(24px,5vw,80px)}
-.split__col h2.h2{margin:0}
-.split__col p.lead{margin:0;max-width:34em}
-.split__l{background:#FFFFFF;color:#111317}
-.split__r{background:#0B0D10;color:#ECEDEF}
-.split__r .label{color:#ECEDEF}
-.split__r .label::before{background:var(--pl)}
-.split__r .lead{color:#B9BCC0}
-@media (max-width:899px){.split{grid-template-columns:1fr}.split__col{padding:56px clamp(20px,6vw,40px)}}
+.endsplit{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;margin:0;width:100%}
+.endsplit__col{display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding:var(--sec) clamp(24px,5vw,80px);min-width:0}
+.endsplit__col h2.h2{margin:0}
+.endsplit__col p.lead{margin:0;max-width:34em}
+.endsplit__l{background:#FFFFFF;color:#111317}
+.endsplit__r{background:#0B0D10;color:#ECEDEF}
+.endsplit__r .label{color:#ECEDEF}
+.endsplit__r .label::before{background:var(--pl)}
+.endsplit__r .lead{color:#B9BCC0}
+@media (max-width:899px){.endsplit{grid-template-columns:1fr}.endsplit__col{padding:56px clamp(20px,6vw,40px)}}
 
 /* Footer hell */
 .foot{background:#EEF0F3;border-top:1px solid #DEE1E6;padding:40px 0}
@@ -658,7 +658,7 @@ svg.viz{max-height:120px}
 <p class="note" style="margin-top:16px">Der Datenanbieter kommt zusätzlich und wird dort separat bezahlt. Konto-Verwaltung läuft über Stripe, Kündigung direkt in der App.</p></div></section>
 <section class="sec g-h" data-screen-label="08 Was wir suchen"><div class="wrap"><div class="head"><div class="mono label">Was wir suchen</div><h2 class="h2">Rückmeldungen aus der Praxis.</h2><p class="lead">GO:BETTER ist noch jung und braucht Rückmeldungen aus der Praxis. Wir suchen Menschen, die mit dem Werkzeug arbeiten und uns zeigen, was tatsächlich hilft und was fehlt.</p></div>
 <ul class="bl"><li><b>Anleger</b>, die GO:BETTER selbst nutzen und ehrliches Feedback geben.</li><li><b>Fachleute</b> für Bewertung und Mathematik, die unsere Rechenverfahren prüfen.</li><li><b>Entwickler</b>, die am Stack mitarbeiten wollen.</li><li><b>Menschen mit Reichweite</b>, die GO:BETTER in ihrem Umfeld sichtbar machen können.</li><li><b>Darüber hinaus</b> jede Form von Zusammenarbeit, die zur Idee passt — melde dich einfach.</li></ul></div></section>
-<section class="split end" data-screen-label="09 Business Case · Kontakt"><div class="split__col split__l"><div class="mono label">Für Partner und Investoren</div><h2 class="h2">Business Case</h2><p class="lead">Zahlen, Markt und Plan für Partner und Investoren. Der Zugang ist geschützt; den Code kannst du auf der Seite anfragen.</p><a class="gb-btn gb-btn--secondary gb-btn--l" href="https://app.gobetter.trade/business-case">Zum Business Case →</a></div><div class="split__col split__r"><div class="mono label">Kontakt</div><h2 class="h2">Gespräch aufnehmen.</h2><p class="lead">Du hast Fragen, Hinweise oder Interesse an einer konkreten Zusammenarbeit? Schreib direkt — eine Rückmeldung kommt üblicherweise innerhalb von zwei Werktagen.</p><a class="gb-btn gb-btn--primary gb-btn--l" href="mailto:support@gobetter.trade?subject=Partner-Anfrage%20%28GO%3ABETTER%29">E-Mail schreiben →</a></div></section>
+<section class="endsplit end" data-screen-label="09 Business Case · Kontakt"><div class="endsplit__col endsplit__l"><div class="mono label">Für Partner und Investoren</div><h2 class="h2">Business Case</h2><p class="lead">Zahlen, Markt und Plan für Partner und Investoren. Der Zugang ist geschützt; den Code kannst du auf der Seite anfragen.</p><a class="gb-btn gb-btn--secondary gb-btn--l" href="https://app.gobetter.trade/business-case">Zum Business Case →</a></div><div class="endsplit__col endsplit__r"><div class="mono label">Kontakt</div><h2 class="h2">Gespräch aufnehmen.</h2><p class="lead">Du hast Fragen, Hinweise oder Interesse an einer konkreten Zusammenarbeit? Schreib direkt — eine Rückmeldung kommt üblicherweise innerhalb von zwei Werktagen.</p><a class="gb-btn gb-btn--primary gb-btn--l" href="mailto:support@gobetter.trade?subject=Partner-Anfrage%20%28GO%3ABETTER%29">E-Mail schreiben →</a></div></section>
 </main>
 
 {% include site-foot.html page="partner" %}
