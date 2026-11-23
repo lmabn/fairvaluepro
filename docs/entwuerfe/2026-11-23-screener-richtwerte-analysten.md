@@ -4,14 +4,14 @@ Stand: 23.11.2026 · Noch nichts an echten Seiten geändert · Website zieht nac
 
 ## Bildquelle für Investment Planner und Startseite
 
-**Export Nr. 83** von Claude Design (23.11.2026): „Website: Bilder mit dem Modulmenü des Investment Planners auf neuem Stand (Entwurf)". Zip in Session-Uploads, LIESMICH und Dateien entpackt nach `/tmp/claude-0/…/scratchpad/export-83/`. Die Bilder sind wie bisher gezeichnete HTML-Ansichten, keine Bilddateien.
+**Export Nr. 84** von Claude Design (23.11.2026) — **ersetzt Export Nr. 83**: „Website: Bilder mit dem Modulmenü des Investment Planners auf neuem Stand (Entwurf)". Zip in Session-Uploads, LIESMICH und Dateien entpackt nach `/tmp/claude-0/…/scratchpad/export-84/`. Die Bilder sind wie bisher gezeichnete HTML-Ansichten, keine Bilddateien.
 
 Enthalten:
-- `ui_kits/website/homepage.html` — Planner-Bild im Abschnitt mit den drei Werkzeugen: Modulliste mit Screener an erster Stelle und gewählt, geöffnete Screener-Ansicht mit Filter-Zeile und Trefferliste (Desktop), Auswahlfeld + drei Filter + Karte mit vier Treffern (Handy), iPad Mini/unter 1100 px Trefferliste reduziert.
-- `ui_kits/website/investment-planner.html` — die zwei Bilder (Kopf-Mockup Watchlist, Mockup Termine & News) mit Seitenliste, die mit Screener beginnt; Karte „Screener" mit Lupen-Icon im Modul-Raster.
+- `ui_kits/website/homepage.html` — Planner-Bild im Abschnitt mit den drei Werkzeugen: Modulliste mit Screener an erster Stelle und gewählt, geöffnete Screener-Ansicht mit Filter-Zeile und Trefferliste (Desktop); **720–899 px (Tablet hochkant): Auswahlfeld „Modul · Screener" statt der langen Liste, max-width 360 px**; iPad Mini/unter 1100 px Trefferliste reduziert; Handy: Auswahlfeld + drei Filter + Karte mit vier Treffern.
+- `ui_kits/website/investment-planner.html` — die zwei Bilder (Kopf-Mockup Watchlist, Mockup Termine & News) mit Seitenliste, die mit Screener beginnt; Karte „Screener" mit Lupen-Icon im Modul-Raster; **die zehn Karten stehen bereits in der Reihenfolge der Modulliste** (Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest, Trade Journal).
 - Begleitende CSS/Fonts/Tokens unverändert aus dem Design System.
 
-Für diesen Entwurf gilt: **Icon (Lupe) und Mockup-Inhalt werden aus Export Nr. 83 1:1 übernommen; kein selbst gebautes Bild und kein eigenes Icon.** Was Export Nr. 83 nicht enthält (partner.html, plaene.html, llms.txt, ueber-gobetter.html, FVP-Reverse-DCF-Grafik), wird separat angepasst wie unten beschrieben; die FVP-Grafik kommt in einem späteren Design-Export.
+Für diesen Entwurf gilt: **Icon (Lupe) und Mockup-Inhalt werden aus Export Nr. 84 1:1 übernommen; kein selbst gebautes Bild und kein eigenes Icon.** Kartentext ist mit Nr. 84 bestätigt. Was Export Nr. 84 nicht enthält (partner.html, plaene.html, llms.txt, ueber-gobetter.html, FVP-Reverse-DCF-Grafik), wird separat angepasst wie unten beschrieben; die FVP-Grafik kommt in einem späteren Design-Export.
 
 ## Was in der App passiert
 
@@ -110,10 +110,10 @@ Begründung: Karte „Meine Richtwerte" entfällt; neue Karte „Screener" wird 
 
 - **alt (Z. 483):**
   `<div class="card"><span class="ico" aria-hidden="true">◎</span><h3>Meine Richtwerte</h3><p>Deine Grenzen, einmal festgelegt: maximaler Rückgang in Euro, Cash-Korridor. Alles andere rechnet dagegen.</p></div>`
-- **neu (Z. 483, neue Karte „Screener" — Text wörtlich aus der App, Markup und Icon aus Export Nr. 83):**
-  `<div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><!-- Lupe aus Export Nr. 83 --></svg></span><h3>Screener</h3><p>Aktien, ETFs und Fonds nach Land, Branche und Größe filtern. Treffer setzt du auf die Watchlist oder bewertest sie in Fair Value Pro.</p></div>`
+- **neu (Z. 483, neue Karte „Screener" — Text wörtlich aus der App, Markup und Icon aus Export Nr. 84):**
+  `<div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><!-- Lupe aus Export Nr. 84 --></svg></span><h3>Screener</h3><p>Aktien, ETFs und Fonds nach Land, Branche und Größe filtern. Treffer setzt du auf die Watchlist oder bewertest sie in Fair Value Pro.</p></div>`
 
-  Icon-Pfad: 1:1 aus `ui_kits/website/investment-planner.html` übernehmen. Der kurze App-Text ersetzt meinen längeren Vorschlag aus Runde 2; die vollständige Filterliste (Art, Börse, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite, Beta) steht weiterhin in Meta/JSON-LD/llms.txt (1a, 1b, 6a).
+  Icon-Pfad: 1:1 aus `ui_kits/website/investment-planner.html` (Export Nr. 84) übernehmen. Der kurze App-Text ersetzt meinen längeren Vorschlag aus Runde 2; die vollständige Filterliste (Art, Börse, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite, Beta) steht weiterhin in Meta/JSON-LD/llms.txt (1a, 1b, 6a).
 
 - **Stresstest-Karte (Z. 484):** Beschreibung um den Richtwert ergänzen.
   - **alt:** `Was kostet der schlechte Tag? Größter Sektor minus 30 %, größte Position auf null, Krypto halbiert — in Euro, gegen deine Grenze gestellt.`
@@ -126,7 +126,7 @@ Begründung: Karte „Meine Richtwerte" entfällt; neue Karte „Screener" wird 
 - **Verkaufsprüfung-Karte (Z. 489):** unverändert.
 - **Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Zinsrechner, Trade Journal:** unverändert.
 
-**Reihenfolge der zehn Karten im Grid:** Die Karten folgen der Modulliste der App, nicht der bisherigen Position des Platzhalters. Neue Reihenfolge: Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest, Trade Journal. Die aktuelle Reihenfolge im HTML ist: Meine Richtwerte, Stresstest, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Trade Journal — wird umsortiert (klärt die offene Frage 3 in LIESMICH von Export Nr. 83).
+**Reihenfolge der zehn Karten im Grid:** Die Karten folgen der Modulliste der App. Neue Reihenfolge: Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest, Trade Journal. Die aktuelle Reihenfolge im HTML ist: Meine Richtwerte, Stresstest, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Trade Journal — wird umsortiert. Diese Reihenfolge ist in Export Nr. 84 bereits so geliefert (Änderung A gegenüber Nr. 83).
 
 ### 1g) Hinweis-Block „Verbunden mit dem Ökosystem" · Z. 494
 Begründung: Der Screener greift nicht auf gespeicherte Bewertungen zu — er übergibt einen Titel per Klick an Fair Value Pro oder die Watchlist. Watchlist und Verkaufsprüfung nutzen weiter die gespeicherten Bewertungen. Stresstest nutzt (zusätzlich zum Rebalancing) die Depot-Daten.
@@ -160,13 +160,14 @@ Begründung: Teil der App-Änderung. Umsetzung **nur als FAQ-Eintrag**, sichtbar
 Nur kosmetisch, keine Build-Wirkung.
 
 ### 1l) Bilder / Mockups
-Keine SVG- oder PNG-Dateien als externe Assets betroffen. Die zwei sichtbaren App-Mockups bestehen aus HTML-Elementen (`.side` + `.mh` + Tabelle). **Quelle für Markup und Icon: Export Nr. 83** (`ui_kits/website/investment-planner.html`):
+Keine SVG- oder PNG-Dateien als externe Assets betroffen. Die zwei sichtbaren App-Mockups bestehen aus HTML-Elementen (`.side` + `.mh` + Tabelle). **Quelle für Markup und Icon: Export Nr. 84** (`ui_kits/website/investment-planner.html`):
 
 - Kopf-Mockup „Watchlist" (Z. 409) — Seitenleiste beginnt jetzt mit „Screener"; Inhalt der Watchlist-Ansicht unverändert.
 - Mockup „Termine & News" (Z. 549) — Seitenleiste beginnt jetzt mit „Screener"; Inhalt unverändert.
-- Modul-Karte „Screener" (Z. 483) — Lupen-Icon (18 px, Strich 1,5) und Kartentext aus Export Nr. 83.
+- Modul-Karte „Screener" (Z. 483) — Lupen-Icon (18 px, Strich 1,5) und Kartentext aus Export Nr. 84.
+- Reihenfolge der zehn Karten im Grid: schon in Export Nr. 84 in der Modulliste-Reihenfolge (siehe oben).
 
-Markup und Icon 1:1 aus Export Nr. 83 übernehmen; die exakten SVG-Pfade liegen in `ui_kits/website/investment-planner.html` im entpackten Export.
+Markup und Icon 1:1 aus Export Nr. 84 übernehmen; die exakten SVG-Pfade liegen in `ui_kits/website/investment-planner.html` im entpackten Export.
 
 Kein selbstgezeichneter Screener-Mockup-Block an dieser Stelle. Falls zusätzlich zur Karte eine eigene Screener-Ansicht auf dieser Seite gewünscht ist, kommt sie in einem späteren Design-Export.
 
@@ -242,23 +243,25 @@ Begründung: Aktives Modul wechselt von „Meine Richtwerte" zu „Screener"; da
 - Z. 775: große Überschrift + Beschreibungs-Zeile im Mockup-Inhalt (zur Zeit „Meine Richtwerte" + „Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt.").
 - Z. 776–786: Mockup-Inhalt mit zwei Richtwert-Kacheln und Stresstest-Block (`.card.m-only`).
 
-**Quelle: Export Nr. 83** (`ui_kits/website/homepage.html`, Ansicht „Investment Planner" im App-Fenster, `#v-ip`). Daraus 1:1 übernommen:
+**Quelle: Export Nr. 84** (`ui_kits/website/homepage.html`, Ansicht „Investment Planner" im App-Fenster, `#v-ip`). Daraus 1:1 übernommen:
 
 - Modul-Selector-Chip-Text „Screener".
-- Modulliste mit zehn Modulen, Screener gewählt; Lupen-Icon 16 px, Strich 1,4 (im Stil der übrigen Modul-Icons).
+- Modulliste mit zehn Modulen, Screener gewählt; Lupen-Icon 16 px, Strich 1,4 (im Stil der übrigen Modul-Icons). Ab 900 px wie bisher links neben dem Inhalt.
 - Geöffnete Screener-Ansicht Desktop: Zeile mit drei gesetzten Filtern (Art · Börse · Börsenwert — Werte „Aktie" · „Xetra" · „ab 2 Mrd. €"), „Titel suchen"-Knopf, Trefferliste mit Spalten Titel · Land · Börsenwert ↓ · Kurs · Dividendenrendite · „Auf die Watchlist" · „Bewerten" (fünf Beispieltitel, „5 Treffer · sortiert nach Börsenwert").
-- iPad Mini und alles unter 1100 px: reduzierte Trefferliste (Titel · Börsenwert · zwei Handlungen) — gleicher `.sct`-Mechanik, Land/Kurs/Dividendenrendite ausgeblendet.
+- **Tablet hochkant 720–899 px**: statt der langen Modulliste das Auswahlfeld „Modul · Screener" (max. 360 px breit, `.mods` aus, `.modsel` an — dieselben Regeln wie unter 720 px). Neu in Export Nr. 84 (Änderung B gegenüber Nr. 83).
+- iPad Mini und alles unter 1100 px: reduzierte Trefferliste (Titel · Börsenwert · zwei Handlungen) — gleiche `.sct`-Mechanik, Land/Kurs/Dividendenrendite ausgeblendet.
 - Handy: Auswahlfeld „Modul · Screener", die drei Filter, Karte mit vier Treffern (Name + Börsenwert). „4 Treffer" statt „5".
 
-**Neue CSS-Klassen aus Export Nr. 83** (für `homepage.html` bzw. `index.html`):
+**Neue CSS-Klassen aus Export Nr. 84** (für `homepage.html` bzw. `index.html`):
 - `.scf` — Filter-Zeile (Felder 32 px, Bezeichnung klein und gedämpft, Wert in Textfarbe; `.scf span.p` als „Titel suchen"-Knopf).
 - `.sct` — Trefferliste als Tabelle (Kopf Mono 10,5 px Versalien, Zahlen Mono rechtsbündig, Kürzel klein unter dem Namen, zwei kleine Knöpfe rechts; unter 1100 px blendet `.sct` Land/Kurs/Dividendenrendite aus).
+- **720–899 px: `.mods` aus, `.modsel` an, max-width 360 px** (neu in Nr. 84).
 - Lupen-Icon (16 px, Strich 1,4) als erstes Element in `.mods`.
 
-Kein eigenes Markup und kein eigenes Icon im Entwurf — bei der Umsetzung wird 1:1 eingesetzt, was Export Nr. 83 liefert.
+Kein eigenes Markup und kein eigenes Icon im Entwurf — bei der Umsetzung wird 1:1 eingesetzt, was Export Nr. 84 liefert.
 
 ### 3c) Bilder / Mockups
-Icon-Glyph „Screener", Filter-Zeile, Trefferliste, Handy-Karte und die neuen CSS-Klassen `.scf` / `.sct` kommen aus Export Nr. 83. Kein selbst gebautes Bild und kein eigenes Icon im Entwurf.
+Icon-Glyph „Screener", Filter-Zeile, Trefferliste, Handy-Karte, Tablet-hoch-Auswahlfeld und die neuen CSS-Klassen `.scf` / `.sct` kommen aus Export Nr. 84. Kein selbst gebautes Bild und kein eigenes Icon im Entwurf.
 
 ---
 
@@ -364,16 +367,17 @@ Wörtlich gleich im sichtbaren Antwort-Absatz und im FAQPage-JSON-LD-`acceptedAn
 
 1. Abwarten: App-Release mit Screener, entfallenen Richtwerten, Startseite, Analystenschätzungen.
 2. Vorschau-PR je Seite (einzeln oder gebündelt), nach dem üblichen Vorschau-Workflow — mit Audits und Playwright-Screenshots für `index.html` und `investment-planner.html`.
-3. **Im Vorschau-PR zusätzlich prüfen:** Der selbsttätige Wechsel der drei Ansichten im App-Fenster am Handy (`#v-fvp` / `#v-pt` / `#v-ip`) und am iPad. Claude Design hat dafür in Export Nr. 83 die Planner-Ansicht fest eingeschaltet; die Website-Sitzung übernimmt die Prüfung. Konkret: Screenshot der automatisch wechselnden Ansicht in iPhone 14 (390 × 844) und iPad Mini (768 × 1024) über 2–3 Zyklen.
+3. **Im Vorschau-PR zusätzlich prüfen:** Der selbsttätige Wechsel der drei Ansichten im App-Fenster am Handy (`#v-fvp` / `#v-pt` / `#v-ip`) und am iPad. Claude Design hat dafür in Export Nr. 84 die Planner-Ansicht fest eingeschaltet; die Website-Sitzung übernimmt die Prüfung. Konkret: Screenshot der automatisch wechselnden Ansicht in iPhone 14 (390 × 844) und iPad Mini (768 × 1024) über 2–3 Zyklen. Zusätzlich das Tablet-hoch-Verhalten 720–899 px ansehen (`.mods` aus, `.modsel` an) — Export Nr. 84 hat 720/899/900/1024 px schon geprüft, aber nur mit fest eingeschalteter Planner-Ansicht.
 4. Je PR mergen nach Freigabe. Pages-Build grün abwarten, Live-Prüfung.
 5. `llms.txt` zuletzt, da Index-Bots sie anstoßen, sobald die Seiten umgestellt sind.
 
 ## Offene Fragen (für Ludmila)
 
-Alle vorigen offenen Fragen sind in Runde 2 (23.11.2026) beantwortet:
+Aus Runde 2 beantwortet:
 - Drei-Schritte-Startseite → nur FAQ-Eintrag in `investment-planner.html` (1j), sichtbar + im FAQPage-JSON-LD.
-- Screener-Icon und Mockup-Inhalt für `index.html` (3b) → kommen von Claude Design.
+- Screener-Icon und Mockup-Inhalt für `index.html` (3b) → kommen aus Export Nr. 84.
 - FVP-FAQ-Eintrag zu Analystenschätzungen → kommt (2d).
 - Styleguide → bleibt unverändert.
 
-Keine weiteren Entscheidungen offen.
+Neu aus Export Nr. 84 (offene Frage 1 in LIESMICH):
+- **Leere Fläche am Tablet hochkant** (720–899 px): Das App-Fenster der Startseite ist so hoch wie die höchste der drei Ansichten (Fair Value Pro). Ohne die lange Modulliste bleibt unter der Trefferliste gut ein Drittel des Fensters leer. **Füllen (zum Beispiel mit mehr Treffern) oder so lassen?** Vorschlag Website: so lassen — Treffer-Zahl ist eine App-Information, nicht beliebig aufblähbar. Entscheidung Ludmila.
