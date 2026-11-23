@@ -100,7 +100,7 @@ Begründung: Karte „Meine Richtwerte" entfällt; neue Karte „Screener" wird 
 - **alt (Z. 483):**
   `<div class="card"><span class="ico" aria-hidden="true">◎</span><h3>Meine Richtwerte</h3><p>Deine Grenzen, einmal festgelegt: maximaler Rückgang in Euro, Cash-Korridor. Alles andere rechnet dagegen.</p></div>`
 - **neu (Z. 483, neue Karte „Screener"):**
-  `<div class="card"><span class="ico" aria-hidden="true">⌕</span><h3>Screener</h3><p>Filtert dein Universum nach Art, Börse, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta. Treffer nach Börsenwert sortiert, mit einem Klick auf die Watchlist oder in die Bewertung. Kein Filter nach KGV oder Fairem Wert — das entscheidest du mit Fair Value Pro.</p></div>`
+  `<div class="card"><span class="ico" aria-hidden="true">⌕</span><h3>Screener</h3><p>Filtert die Titel einer Börse nach Art, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta. Treffer nach Börsenwert sortiert, mit einem Klick auf die Watchlist oder in die Bewertung. Die Bewertung folgt in Fair Value Pro.</p></div>`
 
 - **Stresstest-Karte (Z. 484):** Beschreibung um den Richtwert ergänzen.
   - **alt:** `Was kostet der schlechte Tag? Größter Sektor minus 30 %, größte Position auf null, Krypto halbiert — in Euro, gegen deine Grenze gestellt.`
@@ -116,10 +116,10 @@ Begründung: Karte „Meine Richtwerte" entfällt; neue Karte „Screener" wird 
 **Hinweis Reihenfolge Karten-Grid:** Die neue Reihenfolge der Karten folgt der App (Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest, Trade Journal). Die aktuelle Reihenfolge im HTML ist: Meine Richtwerte, Stresstest, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Trade Journal — diese wird umsortiert.
 
 ### 1g) Hinweis-Block „Verbunden mit dem Ökosystem" · Z. 494
-Begründung: Die Watchlist und Verkaufsprüfung nutzen weiter Fair Value Pro; neu auch der Screener für „Bewerten".
+Begründung: Der Screener greift nicht auf gespeicherte Bewertungen zu — er übergibt einen Titel per Klick an Fair Value Pro oder die Watchlist. Watchlist und Verkaufsprüfung nutzen weiter die gespeicherten Bewertungen. Stresstest nutzt (zusätzlich zum Rebalancing) die Depot-Daten.
 
 - **alt:** `Watchlist und Verkaufsprüfung greifen auf deine gespeicherten Fair-Value-Pro-Bewertungen zu. Rebalancing nutzt die Depot-Daten aus dem Portfolio Tracker. Alles mit demselben Account — kein Datendoppel.`
-- **neu:** `Screener, Watchlist und Verkaufsprüfung greifen auf deine gespeicherten Fair-Value-Pro-Bewertungen zu. Rebalancing nutzt die Depot-Daten aus dem Portfolio Tracker. Alles mit demselben Account — kein Datendoppel.`
+- **neu:** `Watchlist und Verkaufsprüfung greifen auf deine gespeicherten Fair-Value-Pro-Bewertungen zu. Der Screener übergibt einen Titel mit einem Klick an Fair Value Pro oder die Watchlist. Rebalancing und Stresstest nutzen die Depot-Daten aus dem Portfolio Tracker. Alles mit demselben Account — kein Datendoppel.`
 
 ### 1h) Modul-Mockup Seitenleiste (Termine & News-Mockup) · Z. 552
 Begründung: analog 1e.
@@ -134,12 +134,12 @@ Wörtlich identisch zur FAQPage-Antwort in 1c.
 - **neu:** `Werkzeuge vor und nach dem Kauf, in der Reihenfolge der App: Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest und Trade Journal.`
 
 ### 1j) Neue Startseite „Drei Schritte, solange die Watchlist leer ist"
-Begründung: Teil der App-Änderung. Auf der Website sollte das als neuer Hinweis sichtbar sein, damit SEO/Snippet-Treffer die Startseiten-Funktion kennen. Vorschlag: eine neue kleine Sektion unmittelbar nach dem Hero (vor den Modul-Mockups), oder ein neuer FAQ-Eintrag.
+Begründung: Teil der App-Änderung. Umsetzung **nur als FAQ-Eintrag**, sichtbar und gleichlautend im FAQPage-JSON-LD. Kein eigener Band, keine zusätzliche Modul-Karte.
 
-- **Vorschlag FAQ (neu, direkt nach „Was ist der Investment Planner?"):**
+- **Neuer FAQ-Eintrag** (direkt nach „Was ist der Investment Planner?"), wörtlich:
   - Frage: „Wie fange ich im Investment Planner an?"
-  - Antwort: „Solange deine Watchlist leer ist, zeigt der Planner eine Startseite mit drei Schritten: im Screener Kandidaten filtern, Treffer auf die Watchlist nehmen, in Fair Value Pro bewerten. Danach füllen Watchlist, Termine & News und die übrigen Module den Alltag."
-  - Gleichlautend im FAQPage-JSON-LD und im sichtbaren FAQ-Block.
+  - Antwort: „Solange deine Watchlist leer ist, zeigt der Planner eine Startseite mit drei Schritten: einen Titel finden, im Screener oder über eine Bewertung in Fair Value Pro; ihn auf die Watchlist setzen und die Schwelle festlegen; den Kauf mit Positionsgröße und Einstiegsplan planen."
+  - Im sichtbaren FAQ-Block und im FAQPage-JSON-LD wortgleich.
 
 ### 1k) CSS-Kommentar · Z. 351
 - **alt:** `/* 15.11.: zehn Modul-Karten ohne leere Fläche, Einstiegsplan breiter */`
@@ -147,12 +147,9 @@ Begründung: Teil der App-Änderung. Auf der Website sollte das als neuer Hinwei
 Nur kosmetisch, keine Build-Wirkung.
 
 ### 1l) Bilder / Mockups
-Keine SVG- oder PNG-Dateien als externe Assets betroffen. Die zwei sichtbaren App-Mockups bestehen aus HTML-Elementen (`.side` + `.mh` + Tabelle). Reines Markup-Update.
+Keine SVG- oder PNG-Dateien als externe Assets betroffen. Die zwei sichtbaren App-Mockups bestehen aus HTML-Elementen (`.side` + `.mh` + Tabelle). Die Seitenleisten-Einträge in den Mockups werden per Markup-Update angepasst (Punkte 1e und 1h).
 
-**Neu benötigt von Claude Design:**
-- Icon-Glyph für „Screener" in `index.html` (siehe 3b). Ein `<svg viewBox="0 0 16 16">`-Icon im gleichen Stil wie die anderen Modul-Icons (Trichter/Filter-Form).
-- Eventuell eigenes Mockup der Screener-Ansicht (Filter-Leiste + Treffer-Tabelle + „Auf die Watchlist" / „Bewerten"-Buttons) — wenn du einen dritten App-Mockup-Block auf der Seite willst, der Screener separat zeigt. Nicht zwingend.
-- Mockup der „Drei-Schritte-Startseite" (optional, nur wenn 1j als Band und nicht als FAQ umgesetzt wird).
+Ein eigenständiger Screener-Mockup-Block auf dieser Seite wird — falls gewünscht — von Claude Design geliefert, nicht selbst gebaut. Für diesen Entwurf nicht zwingend.
 
 ---
 
@@ -176,14 +173,16 @@ Begründung: Neue Analystenschätzungen als Vergleich im Reverse DCF; Abgrenzung
 Vorschlag **unverändert.** Die aktuelle `<meta name="description">` von Fair Value Pro nennt (wenn gültig) nicht „Reverse DCF" oder „Screener", also kein Handlungsbedarf. Zur Sicherheit vor dem Livegang kurz prüfen.
 
 ### 2d) FAQ / weitere Abschnitte
-Keine weiteren Treffer zu „Richtwerte" oder „Screener" auf dieser Seite. Falls ein neuer FAQ-Eintrag zur Analystenschätzung gewünscht ist:
+Keine weiteren Treffer zu „Richtwerte" oder „Screener" auf dieser Seite.
 
-- **Vorschlag neuer FAQ-Eintrag (sichtbar + im FAQPage-JSON-LD, falls vorhanden):**
+- **Neuer FAQ-Eintrag** (sichtbar + im FAQPage-JSON-LD, falls vorhanden; sonst nur sichtbar):
   - Frage: „Nutzt Fair Value Pro Analystenschätzungen in der Rechnung?"
-  - Antwort: „Nein. Alle Berechnungen beruhen ausschließlich auf deinen Annahmen. Im Reverse DCF zeigt Fair Value Pro das erwartete Umsatzwachstum p. a. aus Analystenschätzungen zum Vergleich neben deiner Annahme, mit einem Diagramm zum Umsatz. Diese Schätzungen gehen nie in die Rechnung ein."
+  - Antwort: „Nein. Fair Value Pro rechnet mit den Finanzzahlen deines Datenanbieters und deinen Annahmen. Im Reverse DCF steht das erwartete Umsatzwachstum p. a. aus Analystenschätzungen zum Vergleich daneben, dazu ein Diagramm zum Umsatz. Die Schätzungen gehen nie in die Rechnung ein."
 
 ### 2e) Bilder / Mockups
-- Neu von Claude Design benötigt: ein kleines Diagramm für den Umsatz-Vergleich (Reverse DCF: deine Annahme vs. Analystenschätzung p. a., plus historische Umsatzlinie). Dateiname-Vorschlag: `assets/svg/fvp-reverse-dcf-umsatz.svg`.
+Reverse-DCF-Modul und das Diagramm zum Umsatz (deine Annahme neben Analystenschätzung p. a., dazu die historische Umsatzlinie) werden von Claude Design nach dem Stand der App geliefert. Kein selbst gebautes Bild.
+
+Platzierung auf der Seite: im Modul-Karten-Grid (Reverse-DCF-Karte Z. 668) und ggf. ein Screenshot/Mockup in einem bestehenden Band — konkrete Stelle wird nach Erhalt des Assets festgelegt.
 
 ---
 
@@ -204,9 +203,9 @@ Begründung: „Richtwerte für Cash-Quote, Positionsgröße und Rückgang" setz
   ```
 - **neu:**
   ```
-  <p>Vom Kandidaten bis zum Verkauf. Der Screener findet Treffer in deinem Universum, der Planner nimmt sie durch Watchlist, Einstiegsplan und Verkaufsprüfung — mit den Zahlen aus deinem Tracker.</p>
+  <p>Vom Kandidaten bis zum Verkauf. Der Screener findet Treffer unter den Titeln einer Börse, der Planner nimmt sie durch Watchlist, Einstiegsplan und Verkaufsprüfung — mit den Zahlen aus deinem Tracker.</p>
   <ul class="ticks">
-    <li>Screener mit Filtern für Art, Börse, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta</li>
+    <li>Screener: Titel einer Börse, gefiltert nach Art, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta</li>
     <li>Einstiegsplan in Tranchen, Verkaufsprüfung vor jedem Verkauf</li>
     <li>Rebalancing und Stresstest auf deinem echten Bestand</li>
     <li>Zehn Module, alle mit deinen Daten verbunden</li>
@@ -214,40 +213,18 @@ Begründung: „Richtwerte für Cash-Quote, Positionsgröße und Rückgang" setz
   ```
 
 ### 3b) Modul-Mockup im IP-Band · Z. 761–786
-Begründung: Aktives Modul wechselt von „Meine Richtwerte" zu „Screener"; Richtwerte-Icon raus, Screener-Icon rein; Beschreibungs-Zeile unterhalb anpassen; die zwei Kacheln (Rückgang + Cash-Korridor) und der kleine „Stresstest"-Block darunter werden ersetzt durch den neuen Screener-Inhalt.
+Begründung: Aktives Modul wechselt von „Meine Richtwerte" zu „Screener"; das Modul-Selector-Chip oben, der aktive Eintrag in `.mods`, die Modul-Icons, die Mockup-Überschrift, die Beschreibungs-Zeile sowie der komplette Inhalt (zwei `.tile`-Kacheln + `.card.m-only`-Block) werden ausgetauscht.
 
-- **alt (Z. 761 Modul-Selector-Chip):** `Meine Richtwerte`
-- **neu (Z. 761 Modul-Selector-Chip):** `Screener`
+**Stellen in `index.html`:**
+- Z. 761: Modul-Selector-Chip (zur Zeit „Meine Richtwerte").
+- Z. 763: erstes Element in `.mods` (`class="on"`, zur Zeit „Meine Richtwerte" mit Richtwerte-Icon).
+- Z. 775: große Überschrift + Beschreibungs-Zeile im Mockup-Inhalt (zur Zeit „Meine Richtwerte" + „Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt.").
+- Z. 776–786: Mockup-Inhalt mit zwei Richtwert-Kacheln und Stresstest-Block (`.card.m-only`).
 
-- **alt (Z. 763, erstes Element in `.mods`, mit `class="on"`):** `Meine Richtwerte` + Richtwerte-Icon-SVG
-- **neu (Z. 763, erstes Element in `.mods`, mit `class="on"`):** `Screener` + **neues Icon-SVG** (Trichter, Vorschlag):
-  `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1.5 2.5h13l-5 6v5l-3-1.5v-3.5z"/></svg>`
-
-- **alt (Z. 775 große Überschrift im Mockup-Inhalt):** `Meine Richtwerte` + Beschreibungs-Zeile „Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt."
-- **neu (Z. 775):** `Screener` + Beschreibungs-Zeile „Filtert dein Universum. Treffer mit einem Klick auf die Watchlist oder in die Bewertung."
-
-- **alt (Z. 776–786, Inhalt: zwei `.tile`-Kacheln „Rückgang" + „Cash-Quote" und ein `.card.m-only`-Stresstest-Block):** zeigt die Richtwerte-Zahlen.
-- **neu (Z. 776–786, Inhalt):** Vorschlag — eine kleine Filter-Leiste und eine Treffer-Tabelle.
-
-  Entwurf-Markup (Beispielwerte, keine echten Firmen):
-  ```html
-  <div class="rw">
-    <div class="tile"><span class="lab">Filter</span><span class="v" style="font-size:14px">Aktie · XETRA · Europa · Industrie · 1–10 Mrd. €</span><span class="n">8 weitere Filter · Sortiert nach Börsenwert</span></div>
-    <div class="tile"><span class="lab">Treffer</span><span class="v">47</span><span class="n">Tabelle mit „Auf die Watchlist" und „Bewerten"</span></div>
-  </div>
-  <div class="card m-only">
-    <span class="lab">Top-Treffer (Beispiel)</span>
-    <div class="rows">
-      <div><span>Beispiel AG</span><span>Börsenwert 7,2 Mrd. €</span></div>
-      <div><span>Nordwerk SE</span><span>Börsenwert 4,1 Mrd. €</span></div>
-      <div><span>Muster Industrie AG</span><span>Börsenwert 2,9 Mrd. €</span></div>
-    </div>
-  </div>
-  ```
+**Neuer Inhalt kommt von Claude Design** nach dem Stand der App (Screener-Chip-Text, Screener-Icon-SVG, Mockup-Überschrift + Beschreibungs-Zeile, neuer Mockup-Inhalt für die Screener-Ansicht). Kein eigenes Markup und kein eigenes Icon im Entwurf — bei der Umsetzung wird 1:1 eingesetzt, was Design liefert.
 
 ### 3c) Bilder / Mockups
-- Neu von Claude Design benötigt: Icon-Glyph „Screener" (16×16 SVG im Stil der übrigen Modul-Icons).
-- Optional: SVG-Mockup der Screener-Ansicht für Desktop (falls die HTML-Tile-Lösung oben zu abstrakt wirkt).
+Icon-Glyph „Screener" und der gesamte Mockup-Inhalt des aktiven Moduls kommen von Claude Design nach dem Stand der App. Kein selbst gebautes Bild und kein eigenes Icon im Entwurf.
 
 ---
 
@@ -257,7 +234,7 @@ Begründung: Aktives Modul wechselt von „Meine Richtwerte" zu „Screener"; Ri
 Begründung: Modul-Aufzählung nennt „Meine Richtwerte" an erster Stelle und zeigt eine veraltete Reihenfolge; neue Reihenfolge der App spiegeln.
 
 - **alt:** `Zehn Module in einer Seitenleiste: Meine Richtwerte, Stresstest, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Trade Journal. Alle greifen auf deine gespeicherten Bewertungen und Depot-Daten zu. Das Trade Journal lässt dich eine Kaufbegründung festhalten, die nach dem Speichern nicht mehr änderbar ist; ein optionaler KI-Coach prüft sie gegen 16 bekannte Denkfehler. Teil des MAX-Plans.`
-- **neu:** `Zehn Module in einer Seitenleiste in der Reihenfolge der App: Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest, Trade Journal. Alle greifen auf deine gespeicherten Bewertungen und Depot-Daten zu. Der Screener filtert dein Universum und schickt Treffer direkt auf die Watchlist oder in die Bewertung. Das Trade Journal lässt dich eine Kaufbegründung festhalten, die nach dem Speichern nicht mehr änderbar ist; ein optionaler KI-Coach prüft sie gegen 16 bekannte Denkfehler. Teil des MAX-Plans.`
+- **neu:** `Zehn Module in einer Seitenleiste in der Reihenfolge der App: Screener, Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Zinsrechner, Rebalancing, Stresstest, Trade Journal. Der Screener filtert die Titel einer Börse und schickt einen Treffer mit einem Klick auf die Watchlist oder in die Bewertung. Watchlist und Verkaufsprüfung greifen auf deine gespeicherten Bewertungen zu, Rebalancing und Stresstest auf die Depot-Daten. Das Trade Journal lässt dich eine Kaufbegründung festhalten, die nach dem Speichern nicht mehr änderbar ist; ein optionaler KI-Coach prüft sie gegen 16 bekannte Denkfehler. Teil des MAX-Plans.`
 
 ### 4b) Kurz-Beschreibung Investment Planner · Z. 644
 Begründung: „von der Positionsgröße bis zum Trade Journal" — unverändert ok; alternativ „vom Screener bis zum Trade Journal", um die neue Startstelle zu betonen.
@@ -315,9 +292,13 @@ Keine — Tabelle.
 Begründung: Konsistenz mit der neuen Meta-Beschreibung und FAQ-Antwort.
 
 - **alt:** `[Investment Planner](https://gobetter.trade/investment-planner.html): Von der Watchlist bis zum Verkauf: Richtwerte, Stresstest, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Rebalancing und Trade-Journal.`
-- **neu:** `[Investment Planner](https://gobetter.trade/investment-planner.html): Vom Screener bis zum Verkauf: Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Rebalancing, Stresstest und Trade-Journal. Der Screener filtert nach Art, Börse, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta; Treffer gehen mit einem Klick auf die Watchlist oder in die Bewertung.`
+- **neu:** `[Investment Planner](https://gobetter.trade/investment-planner.html): Vom Screener bis zum Verkauf: Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Rebalancing, Stresstest und Trade-Journal. Der Screener filtert die Titel einer Börse nach Art, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta; Treffer gehen mit einem Klick auf die Watchlist oder in die Bewertung.`
 
-Fair-Value-Pro-Zeile (Z. 11): kein Handlungsbedarf. Die neue Analystenschätzung ist eine interne Darstellungsergänzung, keine SEO-relevante Neuaussage für die Produkt-Kurzbeschreibung.
+### 6b) Produkt-Zeile Fair Value Pro · Z. 11
+Begründung: Analystenschätzungen erscheinen in der App und sollen für Snippet-/LLM-Treffer klar als Vergleich (nicht als Rechengröße) markiert sein.
+
+- **alt (Satzteil am Ende der Zeile):** `… Vorlagen und Bewertungen lassen sich in der Community mit anderen Autoren teilen.`
+- **neu (neuer Satz davor eingefügt):** `… Analystenschätzungen zum Umsatz stehen als Vergleich daneben und gehen nicht in die Rechnung ein. Vorlagen und Bewertungen lassen sich in der Community mit anderen Autoren teilen.`
 
 ---
 
@@ -335,6 +316,14 @@ Wörtlich identisch zu 7a an genau der gleichen Frage im `@graph`.
 ### 7c) Bilder / Mockups
 Keine.
 
+### 7d) FAQ-Antwort „Wie rechnet Fair Value Pro?" — sichtbar + FAQPage-JSON-LD
+Begründung: Gleicher Zusatzsatz wie in `llms.txt` (6b). Die bestehende Antwort nennt bereits die vier Verfahren und den Komposit — hier den Vergleich zu Analystenschätzungen ergänzen, als klarer Zusatzsatz am Ende.
+
+- **alt (Antwort-Satz am Ende der bestehenden Antwort):** `… Die Gewichtung ist einstellbar; Vorlagen für sieben Branchen setzen passende Werte.`
+- **neu (neuer Satz direkt dahinter angefügt):** `… Die Gewichtung ist einstellbar; Vorlagen für sieben Branchen setzen passende Werte. Analystenschätzungen zum Umsatz stehen als Vergleich daneben und gehen nicht in die Rechnung ein.`
+
+Wörtlich gleich im sichtbaren Antwort-Absatz und im FAQPage-JSON-LD-`acceptedAnswer.text` zur selben Frage.
+
 ---
 
 ## Reihenfolge für den Livegang
@@ -346,7 +335,10 @@ Keine.
 
 ## Offene Fragen (für Ludmila)
 
-1. **„Drei-Schritte-Startseite"** auf der Marketing-Seite als neuer Hero-Band, als neue Modul-Karte (im Screener-Mockup) oder nur als FAQ? (Vorschlag oben: FAQ-Eintrag.)
-2. **Neues Icon für „Screener"** — soll ich einen Vorschlag selber zeichnen, oder wartet ihr auf Claude Design?
-3. **FVP FAQ-Eintrag zu Analystenschätzungen** (2d) — gewünscht, ja/nein?
-4. **Styleguide-Beispieltexte** für den Investment Planner (Z. 317 + Z. 789) — mit „Screener" ergänzen oder bewusst beispielhaft (Zinsrechner, Rebalancing, Watchlist, Trade-Journal) belassen?
+Alle vorigen offenen Fragen sind in Runde 2 (23.11.2026) beantwortet:
+- Drei-Schritte-Startseite → nur FAQ-Eintrag in `investment-planner.html` (1j), sichtbar + im FAQPage-JSON-LD.
+- Screener-Icon und Mockup-Inhalt für `index.html` (3b) → kommen von Claude Design.
+- FVP-FAQ-Eintrag zu Analystenschätzungen → kommt (2d).
+- Styleguide → bleibt unverändert.
+
+Keine weiteren Entscheidungen offen.
