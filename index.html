@@ -8,6 +8,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* Hero-Motiv: bei jedem Laden zufällig eines von zwei, vor dem ersten Zeichnen gesetzt, kein Wechsel danach */document.documentElement.setAttribute("data-hero",Math.random()<.5?"f":"m")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GO:BETTER · Aktienanalyse für Fundamentalanleger</title>
 <meta name="description" content="Fairen Wert einer Aktie berechnen, Rendite deines Depots richtig messen, die nächste Entscheidung nach eigenen Regeln treffen.">
@@ -302,7 +303,8 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 .kv{position:relative;margin-top:var(--sec);aspect-ratio:1983/793;min-height:440px;max-height:860px;width:100%;display:flex;align-items:flex-start;color:#111317;background:#DCEBF6 center bottom/cover no-repeat;overflow:hidden}
 .kv[data-kv="a"]{background-image:url("assets/creatives/kv-huegel.jpg")}
 .kv[data-kv="b"]{background-image:url("assets/creatives/kv-fenster.jpg");background-position:60% center}
-.kv[data-kv="c"]{background-color:#0B0D10;background-image:url("assets/photo/workspace-window.png");background-position:center 40%;color:#F7F8FA}
+.kv[data-kv="c"]{--hero-img:image-set(url("assets/photo/workspace-window-hero.webp") type("image/webp"),url("assets/photo/workspace-window-hero.png") type("image/png"));background-color:#0B0D10;background-image:var(--hero-img);background-position:center 40%;color:#F7F8FA}
+html[data-hero="m"] .kv[data-kv="c"]{--hero-img:image-set(url("assets/photo/workspace-laptop-hero.webp") type("image/webp"),url("assets/photo/workspace-laptop-hero.png") type("image/png"))}
 .kv[data-kv="c"]::before{background:linear-gradient(90deg,rgba(11,13,16,.85) 0%,rgba(11,13,16,.55) 38%,rgba(11,13,16,0) 68%)}
 .kv[data-kv="c"] .kv__by{color:#B9BCC0}
 .kv::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.25) 32%,rgba(255,255,255,0) 55%);pointer-events:none}
@@ -332,7 +334,7 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 .kv[data-kv="c"] .btn--p{background:#ECEDEF;color:#0B0D10}
 .kv[data-kv="c"] .btn--s{background:transparent;color:#ECEDEF;border-color:#68707B}
 .kv--hero::before{background:linear-gradient(100deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,.3) 34%,rgba(255,255,255,0) 58%)}
-.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(11,13,16,.88) 0%,rgba(11,13,16,.6) 40%,rgba(11,13,16,0) 70%)}
+.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(11,13,16,.88) 0%,rgba(11,13,16,.66) 44%,rgba(11,13,16,.36) 60%,rgba(11,13,16,0) 72%)}
 .nav{background:rgba(247,248,250,.72)}
 .ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1px;background:var(--bd);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
 .ben>div{background:var(--bg);padding:28px 0;display:flex;flex-direction:column;gap:10px}
@@ -344,7 +346,7 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
   .kv--hero{min-height:900px;height:auto}
   .kv--hero[data-kv="a"]{background-position:66% bottom}
   .kv--hero[data-kv="b"]{background-position:70% center}
-  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0%,rgba(11,13,16,0) 30%,#0B0D10 50%,#0B0D10 100%),url("assets/photo/workspace-window.png");background-size:100% 100%,auto 70%;background-position:0 0,93% top;background-repeat:no-repeat;min-height:max(700px,100svh);align-items:flex-end}
+  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0%,rgba(11,13,16,0) 30%,#0B0D10 50%,#0B0D10 100%),var(--hero-img);background-size:100% 100%,auto 70%;background-position:0 0,93% top;background-repeat:no-repeat;min-height:max(700px,100svh);align-items:flex-end}
   .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:max(56px,calc(env(safe-area-inset-bottom,0px) + 40px))}
   .kv--hero::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 72%)}
   .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0%,rgba(11,13,16,0) 22%)}
@@ -633,7 +635,7 @@ main{overflow-x:clip}
 @media (max-width:1099px){.sct th:nth-child(2),.sct td:nth-child(2),.sct th:nth-child(4),.sct td:nth-child(4),.sct th:nth-child(5),.sct td:nth-child(5){display:none}}
 /* 15.11.: Hero 720 bis 1099 px: Bild oben ganz sichtbar, Text darunter */
 @media (min-width:720px) and (max-width:1099px){
-.kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0,rgba(11,13,16,0) calc(56.28vw * .55),#0B0D10 calc(56.28vw * .98)),url("assets/photo/workspace-window.png");background-size:100% 100%,100% auto;background-position:0 0,0 0;background-repeat:no-repeat;min-height:calc(56.28vw + 460px);align-items:flex-end}
+.kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0,rgba(11,13,16,0) calc(56.28vw * .55),#0B0D10 calc(56.28vw * .98)),var(--hero-img);background-size:100% 100%,100% auto;background-position:0 0,0 0;background-repeat:no-repeat;min-height:calc(56.28vw + 460px);align-items:flex-end}
 .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0,rgba(11,13,16,0) 120px)}
 .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:56px}
 .kvh h1{font-size:clamp(48px,7.4vw,68px)}
@@ -829,7 +831,7 @@ main{overflow-x:clip}
     <div class="facts">
       <div><b>4</b><span>Bewertungsverfahren: DCF, KGV und EV/EBITDA gewichtet zum Komposit Fairer Wert, der DDM als Vergleich daneben.</span></div>
       <div><b>12</b><span>Kriterien für die Qualitätsnote, offen nachvollziehbar.</span></div>
-      <div><b>265</b><span>Funktionen in drei Werkzeugen.</span></div>
+      <div><b>290+</b><span>Funktionen in drei Werkzeugen.</span></div>
       <div><b>0</b><span>versteckte Annahmen. Jede Annahme sichtbar und einstellbar.</span></div>
     </div>
   </div>
