@@ -8,9 +8,9 @@ Die Plattform besteht aus drei Werkzeugen: Fair Value Pro (Bewertung), Portfolio
 
 ## Produkte
 
-- [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Fundamentalanalyse mit vier Verfahren (DCF, KGV, EV/EBITDA, DDM): Fair Value Pro berechnet den Fairen Wert einer Aktie, drei Verfahren gewichtet im Komposit. Komposit Fairer Wert ist die Bezeichnung von GO:BETTER für den gewichteten Wert aus DCF, KGV und EV/EBITDA. Alle Annahmen bleiben sichtbar — kostenlos ohne Konto starten. Vorlagen und Bewertungen lassen sich in der Community mit anderen Autoren teilen.
+- [Fair Value Pro](https://gobetter.trade/fair-value-pro.html): Fundamentalanalyse mit vier Verfahren (DCF, KGV, EV/EBITDA, DDM): Fair Value Pro berechnet den Fairen Wert einer Aktie, drei Verfahren gewichtet im Komposit. Komposit Fairer Wert ist die Bezeichnung von GO:BETTER für den gewichteten Wert aus DCF, KGV und EV/EBITDA. Alle Annahmen bleiben sichtbar — kostenlos ohne Konto starten. Analystenschätzungen zum Umsatz stehen als Vergleich daneben und gehen nicht in die Rechnung ein. Vorlagen und Bewertungen lassen sich in der Community mit anderen Autoren teilen.
 - [Portfolio Tracker](https://gobetter.trade/portfolio-tracker.html): Portfolio Tracker für mehrere Broker: Depotauszüge als PDF oder CSV importieren, Rendite mit TWR und IRR messen, Fairen Wert je Position sehen.
-- [Investment Planner](https://gobetter.trade/investment-planner.html): Von der Watchlist bis zum Verkauf: Richtwerte, Stresstest, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Rebalancing und Trade-Journal.
+- [Investment Planner](https://gobetter.trade/investment-planner.html): Vom Screener bis zum Verkauf: Watchlist, Termine & News, Positionsgröße, Einstiegsplan, Verkaufsprüfung, Rebalancing, Stresstest und Trade-Journal. Der Screener filtert die Titel einer Börse nach Art, Land, Sektor, Industrie, Börsenwert, Kurs, Dividendenrendite und Beta; Treffer gehen mit einem Klick auf die Watchlist oder in die Bewertung.
 - [Daten-Quelle](https://gobetter.trade/daten-quelle.html): Bring-Your-Own-Key bei Financial Modeling Prep — du schließt deinen Datenzugang direkt beim Anbieter ab, GO:BETTER rechnet.
 - [Fairen Wert mit Excel berechnen](https://gobetter.trade/fairen-wert-berechnen-excel.html): Kostenlose Excel-Vorlage für den Fairen Wert mit DCF und KGV, mit Anleitung und Vergleich zu Fair Value Pro.
 
