@@ -379,5 +379,7 @@ Aus Runde 2 beantwortet:
 - FVP-FAQ-Eintrag zu Analystenschätzungen → kommt (2d).
 - Styleguide → bleibt unverändert.
 
-Neu aus Export Nr. 84 (offene Frage 1 in LIESMICH):
-- **Leere Fläche am Tablet hochkant** (720–899 px): Das App-Fenster der Startseite ist so hoch wie die höchste der drei Ansichten (Fair Value Pro). Ohne die lange Modulliste bleibt unter der Trefferliste gut ein Drittel des Fensters leer. **Füllen (zum Beispiel mit mehr Treffern) oder so lassen?** Vorschlag Website: so lassen — Treffer-Zahl ist eine App-Information, nicht beliebig aufblähbar. Entscheidung Ludmila.
+Aus Export Nr. 84 beantwortet (Ludmila, 23.11.):
+- Leere Fläche am Tablet hochkant (720–899 px) → **bleibt, wie sie ist**. Kein zusätzliches Füllen unter der Trefferliste.
+
+Keine weiteren Entscheidungen offen. Der Entwurf ist vollständig.
