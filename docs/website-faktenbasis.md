@@ -9,12 +9,20 @@ hier sind die Grundlage, nicht das Ergebnis.
 
 Vorheriger Stand (ersetzt): **242 Funktionen, Stand 11.10.2026**.
 
+Vorheriger Platzhalter (ersetzt): „290+ (gerundet, genaue Zahl folgt)".
+
 ## Werkzeuge und Zahlen
 
 - **Drei Werkzeuge**: Fair Value Pro, Portfolio Tracker, Investment Planner.
-- **Funktionen in drei Werkzeugen**: **290+** (gerundet, aus
-  `docs/funktionsliste.md` der App übernehmen, sobald die genaue Zahl bekannt
-  ist; die „290+" auf der Startseite ist eine konservative Untergrenze).
+- **Funktionen in drei Werkzeugen**: **298** (gezählt am 23.11.2026
+  durch die App-Sitzung), aufgegliedert:
+  - Fair Value Pro: 81
+  - Portfolio Tracker: 88
+  - Investment Planner: 62
+  - Konto: 67
+  Auf der Startseite steht konservativ **„290+"**; die genaue Zahl
+  bleibt in dieser Faktenbasis, der sichtbare Text wird erst beim
+  nächsten Website-Durchgang nachgezogen.
 - **Verfahren im Komposit Fairen Wert**: DCF, KGV, EV/EBITDA; DDM als
   Vergleich.
 - **Qualitätsnote**: 12 Kriterien.
