@@ -607,6 +607,30 @@ main{overflow-x:clip}
 .modsel svg{width:16px;height:16px;flex:none}
 .modsel i{margin-left:auto;font-style:normal;color:var(--mu)}
 }
+/* 23.11.2026 (Export Nr. 84): Investment Planner zeigt das Modul „Screener" (zehn Module) */
+.scf{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px}
+.scf span{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid var(--bd);border-radius:4px;background:var(--sf);color:var(--tx);white-space:nowrap}
+.scf small{font-size:12px;color:var(--mu)}
+.scf span.p{background:var(--tx);color:var(--bg);border-color:var(--tx);font-weight:500}
+.sct{width:100%;border-collapse:collapse;font-size:13px}
+.sct th{text-align:left;font:400 10.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mu);padding:0 10px 8px 0;white-space:nowrap}
+.sct td{padding:9px 10px 9px 0;border-top:1px solid var(--bd);vertical-align:middle;white-space:nowrap}
+.sct td b{font-weight:400;display:block}
+.sct td small{font:11px var(--mono);color:var(--mu)}
+.sct .r{text-align:right;font-family:var(--mono);font-feature-settings:"tnum" 1,"zero" 1}
+.sct th.r{font-family:var(--mono)}
+.sct .a{text-align:right;padding-right:0}
+.sct .a span{display:inline-flex;align-items:center;height:28px;padding:0 10px;border:1px solid var(--bd2);border-radius:4px;font-size:12px;font-weight:500;margin-left:6px}
+/* 23.11.2026 (Export Nr. 84): Tablet hochkant (720 bis 899 px): Modulwahl als Auswahlfeld wie am Handy statt der langen Liste */
+@media (min-width:720px) and (max-width:899px){
+.mods{display:none}
+.modsel{display:flex;flex-direction:column;gap:6px;font-size:14px;max-width:360px}
+.modsel small{font-size:12px;color:var(--mu)}
+.modsel span{display:flex;align-items:center;gap:10px;height:44px;padding:0 12px;border:1px solid var(--bd2);border-radius:4px;background:var(--sf);color:var(--tx)}
+.modsel svg{width:16px;height:16px;flex:none}
+.modsel i{margin-left:auto;font-style:normal;color:var(--mu)}
+}
+@media (max-width:1099px){.sct th:nth-child(2),.sct td:nth-child(2),.sct th:nth-child(4),.sct td:nth-child(4),.sct th:nth-child(5),.sct td:nth-child(5){display:none}}
 /* 15.11.: Hero 720 bis 1099 px: Bild oben ganz sichtbar, Text darunter */
 @media (min-width:720px) and (max-width:1099px){
 .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0,rgba(11,13,16,0) calc(56.28vw * .55),#0B0D10 calc(56.28vw * .98)),url("assets/photo/workspace-window.png");background-size:100% 100%,100% auto;background-position:0 0,0 0;background-repeat:no-repeat;min-height:calc(56.28vw + 460px);align-items:flex-end}
@@ -758,9 +782,9 @@ main{overflow-x:clip}
             <div class="ph__t"><span class="lab"><i class="dot" style="background:var(--td)"></i>Planung &amp; Risiko</span><b>Investment Planner</b></div>
           </div>
           <div class="split split--ip">
-            <div class="modsel" aria-hidden="true"><small>Modul</small><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 14V2h8l-1.5 3L11 8H3"/></svg>Meine Richtwerte<i>▾</i></span></div>
+            <div class="modsel" aria-hidden="true"><small>Modul</small><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3.5 3.5"/></svg>Screener<i>▾</i></span></div>
             <div class="mods" aria-hidden="true">
-              <span class="on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 14V2h8l-1.5 3L11 8H3"/></svg>Meine Richtwerte</span>
+              <span class="on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3.5 3.5"/></svg>Screener</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z"/><circle cx="8" cy="8" r="2"/></svg>Watchlist</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"/><path d="M2.5 7h11M5.5 2v3M10.5 2v3"/></svg>Termine &amp; News</span>
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 1v14"/></svg>Positionsgröße</span>
@@ -772,17 +796,28 @@ main{overflow-x:clip}
               <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="2" width="10" height="12" rx="1.5"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3"/></svg>Trade Journal</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
-              <div><div style="font-size:22px;font-weight:500;letter-spacing:-.02em">Meine Richtwerte</div><div class="d-only" style="font-size:14px;color:var(--mu)">Deine Richtwerte, in Ruhe festgelegt, gegen den aktuellen Stand gestellt.</div></div>
-              <div class="rw">
-                <div class="tile"><span class="lab">Rückgang, den du aushalten willst</span><span class="v">−25 %</span><span class="n">Größter Rückgang bisher: −11,3 % · Portfolio Tracker</span></div>
-                <div class="tile"><span class="lab">Cash-Quote</span><span class="v">1,7 %</span><div class="corr" aria-hidden="true"><i style="left:20%;right:60%"></i><b style="left:7%"></b></div><span class="n">Korridor 5–10 % · unter dem Korridor</span></div>
+              <div><div style="font-size:22px;font-weight:500;letter-spacing:-.02em">Screener</div><div class="d-only" style="font-size:14px;color:var(--mu)">Aktien, ETFs und Fonds nach Land, Branche und Größe filtern. Treffer setzt du auf die Watchlist oder bewertest sie in Fair Value Pro.</div></div>
+              <div class="scf" aria-hidden="true"><span><small>Art</small>Aktie</span><span><small>Börse</small>Xetra</span><span><small>Börsenwert</small>ab 2 Mrd. €</span><span class="p d-only">Titel suchen</span></div>
+              <div class="card d-only">
+                <div class="card__h"><span class="lab">5 Treffer</span><span class="lab">sortiert nach Börsenwert</span></div>
+                <table class="sct">
+                  <thead><tr><th>Titel</th><th>Land</th><th class="r">Börsenwert ↓</th><th class="r">Kurs</th><th class="r">Dividendenrendite</th><th></th></tr></thead>
+                  <tbody>
+                    <tr><td><b>Muster Industrie AG</b><small>MUSI</small></td><td>Deutschland</td><td class="r">105,80 Mrd. €</td><td class="r">211,60 €</td><td class="r">2,1 %</td><td class="a"><span>Auf die Watchlist</span><span>Bewerten</span></td></tr>
+                    <tr><td><b>Muster Software SE</b><small>MUSW</small></td><td>Deutschland</td><td class="r">84,30 Mrd. €</td><td class="r">148,20 €</td><td class="r">0,8 %</td><td class="a"><span>Auf die Watchlist</span><span>Bewerten</span></td></tr>
+                    <tr><td><b>Muster Pharma AG</b><small>MUPH</small></td><td>Schweiz</td><td class="r">61,75 Mrd. €</td><td class="r">87,90 €</td><td class="r">3,4 %</td><td class="a"><span>Auf die Watchlist</span><span>Bewerten</span></td></tr>
+                    <tr><td><b>Muster Energie AG</b><small>MUEN</small></td><td>Österreich</td><td class="r">22,40 Mrd. €</td><td class="r">34,75 €</td><td class="r">5,2 %</td><td class="a"><span>Auf die Watchlist</span><span>Bewerten</span></td></tr>
+                    <tr><td><b>Muster Logistik AG</b><small>MULO</small></td><td>Deutschland</td><td class="r">9,85 Mrd. €</td><td class="r">23,10 €</td><td class="r">2,9 %</td><td class="a"><span>Auf die Watchlist</span><span>Bewerten</span></td></tr>
+                  </tbody>
+                </table>
               </div>
               <div class="card m-only">
-                <span class="lab">Stresstest</span>
+                <span class="lab">4 Treffer · sortiert nach Börsenwert</span>
                 <div class="rows">
-                  <div><span>Größter Sektor −30 %</span><span>11,0 % des Depots</span></div>
-                  <div><span>Größte Einzelposition −100 %</span><span>9,9 % des Depots</span></div>
-                  <div><span>Alles −20 %</span><span>20,0 % des Depots</span></div>
+                  <div><span>Muster Industrie AG</span><span>105,80 Mrd. €</span></div>
+                  <div><span>Muster Software SE</span><span>84,30 Mrd. €</span></div>
+                  <div><span>Muster Pharma AG</span><span>61,75 Mrd. €</span></div>
+                  <div><span>Muster Energie AG</span><span>22,40 Mrd. €</span></div>
                 </div>
               </div>
             </div>
@@ -882,8 +917,8 @@ main{overflow-x:clip}
       <div class="tool__txt">
         <span class="lab"><i class="dot" style="background:var(--td)"></i>Investment Planner</span>
         <h3>Entscheide nach Regeln, nicht nach Laune.</h3>
-        <p>Lege deine Richtwerte in Ruhe fest. Der Planner stellt jede neue Entscheidung dagegen, mit den Zahlen aus deinem Tracker.</p>
-        <ul class="ticks"><li>Richtwerte für Cash-Quote, Positionsgröße und Rückgang</li><li>Einstiegsplan in Tranchen, Verkaufsprüfung vor jedem Verkauf</li><li>Rebalancing und Stresstest auf deinem echten Bestand</li><li>Zehn Module, alle mit deinen Daten verbunden</li></ul>
+        <p>Vom Kandidaten bis zum Verkauf. Der Screener filtert Aktien, ETFs und Fonds; der Planner nimmt die Treffer durch Watchlist, Einstiegsplan und Verkaufsprüfung — mit den Zahlen aus deinem Tracker.</p>
+        <ul class="ticks"><li>Screener: Aktien, ETFs und Fonds nach Land, Branche und Größe filtern</li><li>Einstiegsplan in Tranchen, Verkaufsprüfung vor jedem Verkauf</li><li>Rebalancing und Stresstest auf deinem echten Bestand</li><li>Zehn Module, alle mit deinen Daten verbunden</li></ul>
         <a class="lnk" href="investment-planner.html">Investment Planner ansehen <span aria-hidden="true">→</span></a>
       </div>
       <div class="tool__ui" aria-hidden="true">
