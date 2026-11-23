@@ -48,8 +48,8 @@ Modulliste (Stand 23.11.2026, Reihenfolge der App):
 ## Fair Value Pro
 
 - **Analystenschätzungen** gehen nicht in die Rechnung ein. Sie stehen
-  nur im Reverse DCF als Vergleich zum erwarteten Umsatzwachstum p. a.
-  neben der eigenen Annahme, mit einem Diagramm zum Umsatz.
+  im Reverse DCF und am Regler „Stage-1 Wachstum" als Vergleich zur
+  eigenen Annahme, dazu das Diagramm zum Umsatz im Reiter „Modell".
 
 ## Hinweis
 
