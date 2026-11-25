@@ -22,7 +22,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://gobetter.trade/akademie/#page", "url": "https://gobetter.trade/akademie/", "name": "Akademie: Aktien bewerten lernen in 8 Modulen · GO:BETTER", "description": "Acht kostenlose Lernmodule für Fundamentalanleger: von den Grundlagen über Fundamental- und Chartanalyse bis zur eigenen Strategie.", "inLanguage": "de-DE"}, {"@type": "Course", "@id": "https://gobetter.trade/akademie/#course", "name": "GO:BETTER Akademie", "url": "https://gobetter.trade/akademie/", "description": "Acht kostenlose Lernmodule für Fundamentalanleger: von den Grundlagen über Fundamental- und Chartanalyse bis zur eigenen Strategie.", "inLanguage": "de-DE", "provider": {"@id": "https://gobetter.trade/#org"}, "isAccessibleForFree": true, "hasPart": [{"@type": "LearningResource", "name": "Modul 1 Grundlagen: Preisbildung, Orderarten, Risiko", "url": "https://gobetter.trade/akademie/modul-01-grundlagen.html"}, {"@type": "LearningResource", "name": "Modul 2 Fundamentalanalyse: Bilanz, Cashflow, Marge lesen", "url": "https://gobetter.trade/akademie/modul-02-fundamentalanalyse.html"}, {"@type": "LearningResource", "name": "Modul 3 Chartanalyse: was Muster und Indikatoren leisten", "url": "https://gobetter.trade/akademie/modul-03-chartanalyse.html"}, {"@type": "LearningResource", "name": "Modul 4 Einstieg: Zeitpunkt und Positionsgröße", "url": "https://gobetter.trade/akademie/modul-04-einstieg.html"}, {"@type": "LearningResource", "name": "Modul 5 Risikomanagement: Positionsgröße, Diversifikation", "url": "https://gobetter.trade/akademie/modul-05-risikomanagement.html"}, {"@type": "LearningResource", "name": "Modul 6 Verkaufsstrategien: wann eine Aktie verkaufen", "url": "https://gobetter.trade/akademie/modul-06-verkaufsstrategien.html"}, {"@type": "LearningResource", "name": "Modul 7 Börsen-Psychologie: Verlustaversion und Bias", "url": "https://gobetter.trade/akademie/modul-07-psychologie.html"}, {"@type": "LearningResource", "name": "Modul 8 Eigene Strategie: ein Regelwerk entwickeln", "url": "https://gobetter.trade/akademie/modul-08-strategie.html"}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://gobetter.trade/"}, {"@type": "ListItem", "position": 2, "name": "Akademie", "item": "https://gobetter.trade/akademie/"}]}]}</script>
 
 <link rel="stylesheet" href="../styles.css">
-<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/favicon-doppelpunkt.svg"><link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-doppelpunkt-32.png"><link rel="apple-touch-icon" sizes="180x180" href="../assets/logo/gobetter-app-icon-doppelpunkt-dunkel-180.png">
 <style>
 :root{
   --bg:#F7F8FA; --sf:#FFFFFF; --sf2:#EEF0F3; --sel:#E2E5EA; --bd:#DEE1E6; --bd2:#7E858F;
@@ -60,8 +60,6 @@ a{color:inherit}
 /* Navigation · wie die App-Kopfzeile */
 .nav{position:sticky;top:0;z-index:30;background:rgba(247,248,250,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
 .nav__in{display:flex;align-items:center;height:var(--nav-h);gap:28px}
-.wm{display:inline-flex;align-items:center;gap:1px;font-size:19px;font-weight:500;letter-spacing:-.01em;text-decoration:none;flex:none}
-.wm svg{width:6px;height:15px;margin:0 2px 1px}
 .nav__sep{width:1px;height:20px;background:var(--bd);flex:none}
 .nav__links{display:none;align-self:stretch;gap:28px;font-size:14px}
 .nav__links a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 120ms var(--ease)}
@@ -95,7 +93,6 @@ a{color:inherit}
 .mm-sub a,.mm-secondary a{display:flex;align-items:center;min-height:48px;font-size:16px;color:var(--mu);text-decoration:none}
 .mm-secondary{display:flex;flex-direction:column;padding-top:16px}
 body.is-menu-open .nav.nav--dark,body.is-menu-open .nav{background:#F7F8FA;color:#111317;border-bottom-color:var(--bd)}
-body.is-menu-open .nav .wm svg circle{fill:#111317}
 body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 @media (max-width:959px){ .nav__sep{display:none} .nav__in{gap:16px} .nav__right{gap:8px} }
 @media (max-width:379px){ .nav .btn{padding:0 12px;font-size:13px} }
@@ -116,8 +113,6 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 .stage::before{content:"";position:absolute;left:-40px;right:-40px;top:20%;bottom:-40px;background:radial-gradient(60% 60% at 50% 40%,rgba(16,194,127,.10),transparent 70%),radial-gradient(40% 50% at 15% 70%,rgba(240,180,42,.10),transparent 70%),radial-gradient(40% 50% at 85% 70%,rgba(59,123,255,.10),transparent 70%);pointer-events:none;z-index:0}
 .win{position:relative;z-index:1;background:var(--bg);border:1px solid var(--bd);border-radius:8px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 40px 100px -20px rgba(17,19,23,.18),0 12px 32px -12px rgba(17,19,23,.10)}
 .win__bar{display:flex;align-items:center;gap:24px;height:52px;padding:0 20px;background:var(--sf);border-bottom:1px solid var(--bd)}
-.win__bar .wm{font-size:15px}
-.win__bar .wm svg{width:5px;height:12px}
 .wtabs{display:flex;align-self:stretch;gap:20px;font-size:13px;overflow-x:auto;scrollbar-width:none}
 .wtabs::-webkit-scrollbar{display:none}
 .wtabs button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 200ms var(--ease)}
@@ -328,7 +323,6 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 .nav{transition:background-color 200ms var(--ease),border-color 200ms var(--ease)}
 .nav svg circle{transition:fill 200ms var(--ease)}
 .nav.nav--dark{background:rgba(11,13,16,.72);border-bottom-color:rgba(255,255,255,.08);color:#ECEDEF}
-.nav--dark .wm svg circle{fill:#ECEDEF}
 .nav--dark .nav__sep{background:rgba(255,255,255,.16)}
 .nav--dark .nav__links a{color:#B9BCC0}
 .nav--dark .nav__links a:hover{color:#ECEDEF}
@@ -528,7 +522,6 @@ main{overflow-x:clip}
   .tool__ui .tile .v{font-size:20px}
   .scg b{font-size:13px}
   .win__bar{gap:16px;padding:0 14px}
-  .win__bar>.wm{display:none}
   .facts{margin-top:56px}
   .facts>div{padding:22px 0}
   .end{padding:40px 24px}

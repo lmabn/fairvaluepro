@@ -11,12 +11,6 @@
  * auf Seiten die im Light-Mode laufen, kippen sie automatisch mit.
  */
 
-/* ── Wortmarke ── */
-.gb-wm { display: inline-flex; align-items: baseline; font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1; color: var(--color-text); text-decoration: none; }
-.gb-wm .k { margin-right: -0.01em; }
-.gb-wm svg { display: block; height: 0.71em; width: 0.33em; margin: 0 0.045em 0 0.055em; }
-.gb-wm svg circle { fill: currentColor; }
-
 /* ── Nav ──
  * fixed positioniert: die Bestandsseiten reservieren im Content-padding-top
  * bereits Platz für eine fest oben stehende Leiste (alte `nav { position: fixed }`).
@@ -25,7 +19,6 @@
 .gb-nav-wrap { background: var(--color-bg); border-bottom: 1px solid var(--color-border); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
 .gb-nav { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .gb-nav-left { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-.gb-nav-wm { font-size: 19px; padding: 22px 0; }
 .gb-nav-links { display: flex; gap: 22px; align-self: stretch; flex-wrap: wrap; }
 .gb-nav-links > a, .gb-nav-item > a { display: flex; align-items: center; font-size: 14px; color: var(--color-text-muted); box-shadow: inset 0 -2px 0 transparent; transition: color 200ms var(--motion-ease, cubic-bezier(0.2,0,0,1)); text-decoration: none; }
 .gb-nav-links > a:hover, .gb-nav-item > a:hover { color: var(--color-text); }

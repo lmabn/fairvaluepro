@@ -24,10 +24,10 @@
 <meta name="twitter:title" content="GO:BETTER · Aktienanalyse für Fundamentalanleger">
 <meta name="twitter:description" content="Fairen Wert einer Aktie berechnen, Rendite deines Depots richtig messen, die nächste Entscheidung nach eigenen Regeln treffen.">
 <meta name="twitter:image" content="https://gobetter.trade/assets/brand/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gobetter.trade/#website", "url": "https://gobetter.trade/", "name": "GO:BETTER", "inLanguage": "de-DE", "publisher": {"@id": "https://gobetter.trade/#org"}}, {"@type": "Organization", "@id": "https://gobetter.trade/#org", "name": "GO:BETTER", "url": "https://gobetter.trade", "description": "GO:BETTER ist eine Web-App für Fundamentalanleger mit drei Werkzeugen: Fair Value Pro, Portfolio Tracker und Investment Planner.", "logo": {"@type": "ImageObject", "url": "https://gobetter.trade/assets/logo/favicon.svg"}, "sameAs": ["https://www.youtube.com/@gobetter-trade"], "email": "support@gobetter.trade"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://gobetter.trade/#website", "url": "https://gobetter.trade/", "name": "GO:BETTER", "inLanguage": "de-DE", "publisher": {"@id": "https://gobetter.trade/#org"}}, {"@type": "Organization", "@id": "https://gobetter.trade/#org", "name": "GO:BETTER", "url": "https://gobetter.trade", "description": "GO:BETTER ist eine Web-App für Fundamentalanleger mit drei Werkzeugen: Fair Value Pro, Portfolio Tracker und Investment Planner.", "logo": {"@type": "ImageObject", "url": "https://gobetter.trade/assets/logo/gobetter-wortmarke-hell-2400.png", "width": 2400, "height": 356}, "sameAs": ["https://www.youtube.com/@gobetter-trade"], "email": "support@gobetter.trade"}]}</script>
 
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="assets/logo/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon-doppelpunkt.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-doppelpunkt-32.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/logo/gobetter-app-icon-doppelpunkt-dunkel-180.png">
 <style>
 :root{
   --bg:#F7F8FA; --sf:#FFFFFF; --sf2:#EEF0F3; --sel:#E2E5EA; --bd:#DEE1E6; --bd2:#7E858F;
@@ -65,8 +65,9 @@ a{color:inherit}
 /* Navigation · wie die App-Kopfzeile */
 .nav{position:sticky;top:0;z-index:30;background:rgba(247,248,250,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
 .nav__in{display:flex;align-items:center;height:var(--nav-h);gap:28px}
-.wm{display:inline-flex;align-items:center;gap:1px;font-size:19px;font-weight:500;letter-spacing:-.01em;text-decoration:none;flex:none}
-.wm svg{width:6px;height:15px;margin:0 2px 1px}
+/* 25.11. Logo B (Nr. 117) — Wortmarke als eingebettetes SVG mit currentColor */
+.wm{display:inline-flex;align-items:center;flex:none;color:inherit;text-decoration:none}
+.wm svg{display:block;height:18px;width:auto;transform:translateY(1px)}
 .nav__sep{width:1px;height:20px;background:var(--bd);flex:none}
 .nav__links{display:none;align-self:stretch;gap:28px;font-size:14px}
 .nav__links a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 120ms var(--ease)}
@@ -121,8 +122,8 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 .stage::before{content:"";position:absolute;left:-40px;right:-40px;top:20%;bottom:-40px;background:radial-gradient(60% 60% at 50% 40%,rgba(16,194,127,.10),transparent 70%),radial-gradient(40% 50% at 15% 70%,rgba(240,180,42,.10),transparent 70%),radial-gradient(40% 50% at 85% 70%,rgba(59,123,255,.10),transparent 70%);pointer-events:none;z-index:0}
 .win{position:relative;z-index:1;background:var(--bg);border:1px solid var(--bd);border-radius:8px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 40px 100px -20px rgba(17,19,23,.18),0 12px 32px -12px rgba(17,19,23,.10)}
 .win__bar{display:flex;align-items:center;gap:24px;height:52px;padding:0 20px;background:var(--sf);border-bottom:1px solid var(--bd)}
-.win__bar .wm{font-size:15px}
-.win__bar .wm svg{width:5px;height:12px}
+/* 25.11. Wortmarke im App-Mockup: 18 px SVG-Höhe (wie App-Original) */
+.win__bar .wm svg{height:18px}
 .wtabs{display:flex;align-self:stretch;gap:20px;font-size:13px;overflow-x:auto;scrollbar-width:none}
 .wtabs::-webkit-scrollbar{display:none}
 .wtabs button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 200ms var(--ease)}
@@ -726,7 +727,7 @@ main{overflow-x:clip}
     <div class="stage" style="margin-top:0">
       <div class="win" aria-label="Ansicht der App">
         <div class="win__bar">
-          <span class="wm" aria-hidden="true"><span>GO</span><svg viewBox="0 0 30 71"><circle cx="15" cy="9.5" r="9.5" fill="#111317"/><circle cx="15" cy="58" r="13" fill="#111317"/></svg><span>BETTER</span></span>
+          <span class="wm" aria-hidden="true">{% include gobetter-wortmarke.svg %}</span>
           <div class="wtabs" role="tablist" aria-label="Werkzeug zeigen">
             <button role="tab" id="t-fvp" aria-controls="v-fvp" aria-selected="true" style="--c:var(--fvp)">Fair Value Pro</button>
             <button role="tab" id="t-pt" aria-controls="v-pt" aria-selected="false" tabindex="-1" style="--c:var(--pt)">Portfolio Tracker</button>
