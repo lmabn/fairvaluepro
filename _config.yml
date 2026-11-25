@@ -7,3 +7,4 @@ exclude:
   - scripts/
   - data/
   - fonts/placeholder.txt
+  - .pr-assets/
