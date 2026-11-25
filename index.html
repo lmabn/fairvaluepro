@@ -65,8 +65,9 @@ a{color:inherit}
 /* Navigation · wie die App-Kopfzeile */
 .nav{position:sticky;top:0;z-index:30;background:rgba(247,248,250,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
 .nav__in{display:flex;align-items:center;height:var(--nav-h);gap:28px}
-.wm{display:inline-flex;align-items:center;gap:1px;font-size:19px;font-weight:500;letter-spacing:-.01em;text-decoration:none;flex:none}
-.wm svg{width:6px;height:15px;margin:0 2px 1px}
+/* 25.11. Logo B (Nr. 117) — Wortmarke als eingebettetes SVG mit currentColor */
+.wm{display:inline-flex;align-items:center;flex:none;color:inherit;text-decoration:none}
+.wm svg{display:block;height:18px;width:auto;transform:translateY(1px)}
 .nav__sep{width:1px;height:20px;background:var(--bd);flex:none}
 .nav__links{display:none;align-self:stretch;gap:28px;font-size:14px}
 .nav__links a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 120ms var(--ease)}
@@ -121,8 +122,8 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 .stage::before{content:"";position:absolute;left:-40px;right:-40px;top:20%;bottom:-40px;background:radial-gradient(60% 60% at 50% 40%,rgba(16,194,127,.10),transparent 70%),radial-gradient(40% 50% at 15% 70%,rgba(240,180,42,.10),transparent 70%),radial-gradient(40% 50% at 85% 70%,rgba(59,123,255,.10),transparent 70%);pointer-events:none;z-index:0}
 .win{position:relative;z-index:1;background:var(--bg);border:1px solid var(--bd);border-radius:8px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 40px 100px -20px rgba(17,19,23,.18),0 12px 32px -12px rgba(17,19,23,.10)}
 .win__bar{display:flex;align-items:center;gap:24px;height:52px;padding:0 20px;background:var(--sf);border-bottom:1px solid var(--bd)}
-.win__bar .wm{font-size:15px}
-.win__bar .wm svg{width:5px;height:12px}
+/* 25.11. Wortmarke im App-Mockup: 18 px SVG-Höhe (wie App-Original) */
+.win__bar .wm svg{height:18px}
 .wtabs{display:flex;align-self:stretch;gap:20px;font-size:13px;overflow-x:auto;scrollbar-width:none}
 .wtabs::-webkit-scrollbar{display:none}
 .wtabs button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--mu);box-shadow:inset 0 -2px 0 transparent;transition:color 120ms var(--ease),box-shadow 200ms var(--ease)}
@@ -726,7 +727,7 @@ main{overflow-x:clip}
     <div class="stage" style="margin-top:0">
       <div class="win" aria-label="Ansicht der App">
         <div class="win__bar">
-          <span class="wm" aria-hidden="true"><span>GO</span><svg viewBox="0 0 30 71"><circle cx="15" cy="9.5" r="9.5" fill="#111317"/><circle cx="15" cy="58" r="13" fill="#111317"/></svg><span>BETTER</span></span>
+          <span class="wm" aria-hidden="true">{% include gobetter-wortmarke.svg %}</span>
           <div class="wtabs" role="tablist" aria-label="Werkzeug zeigen">
             <button role="tab" id="t-fvp" aria-controls="v-fvp" aria-selected="true" style="--c:var(--fvp)">Fair Value Pro</button>
             <button role="tab" id="t-pt" aria-controls="v-pt" aria-selected="false" tabindex="-1" style="--c:var(--pt)">Portfolio Tracker</button>
