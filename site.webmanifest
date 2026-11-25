@@ -8,19 +8,19 @@
   "theme_color": "#0B0D10",
   "icons": [
     {
-      "src": "/assets/brand/favicon.svg",
+      "src": "/assets/logo/favicon-doppelpunkt.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any"
     },
     {
-      "src": "/assets/brand/icon-192.png",
+      "src": "/assets/logo/gobetter-app-icon-doppelpunkt-dunkel-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "/assets/brand/icon-512.png",
+      "src": "/assets/logo/gobetter-app-icon-doppelpunkt-dunkel-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
