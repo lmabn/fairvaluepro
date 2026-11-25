@@ -18,6 +18,7 @@ permalink: /404.html
 <link rel="stylesheet" href="/web.css">
 <link rel="stylesheet" href="/gb-shell.css">
 <link rel="stylesheet" href="/assets/nav-shell.css">
+<link rel="stylesheet" href="/site-nav.css">
 <title>Seite nicht gefunden · GO:BETTER</title>
 <style>
   main.not-found {
@@ -59,45 +60,7 @@ permalink: /404.html
 </head>
 <body>
 
-<!-- NAV · GO:BETTER Shell -->
-
-
-<header class="site-nav">
-  <div class="site-nav__in">
-    <a class="wm" href="/" aria-label="GO:BETTER Startseite">{% include gobetter-wortmarke.svg %}</a>
-    <nav class="site-nav__links" aria-label="Produkte">
-      <div class="dd" id="dd-fvp">
-        <a class="dd__trigger" href="/fair-value-pro.html" aria-haspopup="menu" aria-expanded="false">Fair Value Pro<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
-        <ul class="dd__menu" role="menu">
-          <li><a class="dd__item" role="menuitem" href="/fair-value-pro/pro-mode.html">Pro-Modus</a></li>
-          <li><a class="dd__item" role="menuitem" href="/fair-value-pro/daten-quelle.html">Daten-Quelle</a></li>
-          <li><a class="dd__item" role="menuitem" href="/community.html">Community</a></li>
-        </ul>
-      </div>
-      <a class="nav-link" href="/portfolio-tracker.html">Portfolio Tracker</a>
-      <a class="nav-link" href="/investment-planner.html">Investment Planner</a>
-    </nav>
-    <div class="site-nav__right">
-      <a class="nav-link" href="/plaene.html">Preise</a>
-      <a class="nav-link" href="/akademie/">Akademie</a>
-      <a class="nav-btn" href="https://app.gobetter.trade/fairvalue">Jetzt starten</a>
-      <button class="burger" aria-label="Menü" aria-expanded="false" aria-controls="site-mmenu"><span></span><span></span></button>
-    </div>
-  </div>
-</header>
-
-<div class="site-mmenu" id="site-mmenu">
-  <div class="site-mmenu__in">
-    <div class="mm-acc" id="mm-fvp">
-      <div class="mm-item"><a  href="/fair-value-pro.html">Fair Value Pro</a><button class="mm-acc__btn" aria-expanded="false" aria-label="Unterseiten Fair Value Pro"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button></div>
-      <div class="mm-sub"><a  href="/fair-value-pro/pro-mode.html">Pro-Modus</a><a  href="/fair-value-pro/daten-quelle.html">Daten-Quelle</a><a  href="/community.html">Community</a></div>
-    </div>
-    <a class="mm-item" href="/portfolio-tracker.html">Portfolio Tracker</a>
-    <a class="mm-item" href="/investment-planner.html">Investment Planner</a>
-    <div class="mm-secondary"><a  href="/plaene.html">Preise</a><a  href="/akademie/">Akademie</a></div>
-    <div class="mm-cta"><a class="nav-btn nav-btn--l" href="https://app.gobetter.trade/fairvalue">Jetzt starten</a></div>
-  </div>
-</div>
+{% include site-nav.html root="/" %}<script src="/site-nav.js" defer></script>
 
 <main class="not-found">
   <div class="code">404 · Seite nicht gefunden</div>
