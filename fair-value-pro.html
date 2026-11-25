@@ -496,6 +496,50 @@ svg.viz{max-height:120px}
 /* 15.11.: Link „Preise ansehen“ im Abschluss in der Schrift der Zeile */
 .end__note .gb-link-arrow{display:inline;font:inherit;letter-spacing:inherit;color:#ECEDEF;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .end__note .gb-link-arrow:hover{color:#B9BCC0}
+
+/* Verfahren-Skala (Nr. 108/112) im Abschnitt „Was wir ausgeben": dunkle Fläche wie .ink; in jeder Breite Skala unter Name, Wert und Gewicht */
+.inkst{margin-top:auto;display:flex;flex-direction:column;gap:8px}.inkst .ink{margin-top:0}
+.vsk{background:#0B0D10;color:#ECEDEF;border-radius:4px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;--bd:#262B33;--bd2:#68707B;--tx:#ECEDEF;--mu:#9A9FA7;--sf:#0B0D10;--fvp:#2EE59D;--mono:'Geist Mono',monospace}
+.vs{display:flex;flex-direction:column;font-size:13px}
+.vs__r{display:grid;grid-template-columns:minmax(0,1fr) auto 70px;column-gap:8px;row-gap:4px;align-items:center;padding:9px 0;border-top:1px solid var(--bd)}
+.vs__r:first-child{border-top:0;padding-top:0}
+.vs__r--k{border-top-color:var(--bd2)}
+.vs__r--k .vs__n{font-weight:500}
+.vs__n{white-space:nowrap}
+.vs__v,.vs__w{font-family:var(--mono);font-feature-settings:"tnum" 1,"zero" 1;text-align:right;white-space:nowrap}
+.vs__w{color:var(--mu)}
+.vs__t{grid-column:1/-1;grid-row:2;position:relative;height:22px}
+.vs__t::before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:var(--bd)}
+.vs__p{position:absolute;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--tx)}
+.vs__d{position:absolute;top:11.5px;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--tx)}
+.vs__d--v{background:var(--sf);border:1.5px solid var(--tx)}
+.vs__r--k .vs__t{height:28px}
+.vs__r--k .vs__t::before{top:19px}
+.vs__k1{position:absolute;top:19.5px;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--tx)}
+.vs__k2{position:absolute;top:3px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--fvp)}
+.vs__ax{display:block;font:400 11px/1.4 var(--mono);color:var(--mu)}
+.vs__ax>div{display:flex;justify-content:space-between}
+.vs__lg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--mu);align-items:center}
+.vs__lg span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.vs__lg i{display:inline-block;flex:none}
+.vs__lg .g{width:8px;height:8px;border-radius:50%;background:var(--tx)}
+.vs__lg .v{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--tx);box-sizing:border-box}
+.vs__lg .p{width:1px;height:14px;background:var(--tx)}
+@media (max-width:480px){.vsk{padding:16px 14px}.vsk .vs__r{grid-template-columns:minmax(0,1fr) auto 66px;column-gap:6px}.vsk .vs__w{font-size:12px}}
+/* Nr. 112: keine Trennstriche zwischen den Verfahren, nur die Linie der Skala; der Strich über „Komposit Fairer Wert" bleibt. Rand bleibt durchsichtig stehen, damit die Höhe gleich bleibt */
+.vsk .vs__r:not(.vs__r--k){border-top-color:transparent}
+/* Zwölf Kriterien (Nr. 109) unter der Karte „Qualitätsnote": Gegenstück zur Verfahren-Skala, Texte aus der Scorecard im App-Mockup */
+.qk{display:grid;grid-template-columns:minmax(0,1fr);gap:0;font-size:13px}
+.qk__r{display:grid;grid-template-columns:14px minmax(0,1fr) auto;column-gap:8px;align-items:center;padding:9px 0;border-top:1px solid var(--bd)}
+.qk__r:first-child{border-top:0;padding-top:0}
+.qk__r i{font-style:normal;font-family:var(--mono);color:var(--tx)}
+.qk__r span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qk__r b{font:400 13px/1.4 var(--mono);font-feature-settings:"tnum" 1,"zero" 1;white-space:nowrap}
+.qk__r--n span,.qk__r--n b{color:var(--mu)}
+@media (min-width:900px){.qk__r{padding:5.85px 0}}
+.qk__r span,.qk__r b{line-height:18px}
+.qk__r--t b{font-family:inherit}
+@media (max-width:480px){.qk__r--t b{grid-column:2;grid-row:2}}
 </style>
 <link rel="stylesheet" href="site-nav.css"><link rel="stylesheet" href="site-foot.css">
 </head>
@@ -558,8 +602,8 @@ svg.viz{max-height:120px}
   <div class="wrap">
     <div class="head"><div class="mono label">Was wir ausgeben</div><h2 class="h2">Das Tool. Für deine Fundamentalanalyse.</h2><p class="lead">Qualität und Fairer Wert auf einen Blick.</p></div>
     <div class="big2">
-      <div class="bigc"><h3>Qualitätsnote</h3><p>Bevor der Preis zählt, muss die Substanz stimmen: 12 Kriterien, Note A bis D.</p><details class="more"><summary><span>Mehr erfahren</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></summary><p>Bewertet wird die wirtschaftliche Stärke: Umsatz- und Gewinnwachstum, Eigenkapitalrendite, Verschuldung und weitere Kriterien.</p></details><div class="ink" aria-hidden="true"><small>Qualitätsnote</small><b>B</b><span>9 von 12 Kriterien erfüllt</span></div></div>
-      <div class="bigc"><h3>Fairer Wert</h3><p>Was das Unternehmen wert wäre, wenn deine Annahmen eintreten. Der Komposit Fairer Wert gewichtet DCF, KGV und EV/EBITDA.</p><details class="more"><summary><span>Mehr erfahren</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></summary><p>Kein einzelner Wert, sondern ein ausgewogenes Urteil aus drei Verfahren.</p></details><div class="ink" aria-hidden="true"><small>Komposit Fairer Wert</small><b>61,40 €</b><span>50 % DCF · 25 % KGV · 25 % EV/EBITDA</span></div></div>
+      <div class="bigc"><h3>Qualitätsnote</h3><p>Bevor der Preis zählt, muss die Substanz stimmen: 12 Kriterien, Note A bis D.</p><details class="more"><summary><span>Mehr erfahren</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></summary><p>Bewertet wird die wirtschaftliche Stärke: Umsatz- und Gewinnwachstum, Eigenkapitalrendite, Verschuldung und weitere Kriterien.</p></details><div class="inkst" aria-hidden="true"><div class="ink"><small>Qualitätsnote</small><b>B</b><span>9 von 12 Kriterien erfüllt</span></div><div class="vsk qk"><div class="qk__r"><i>✓</i><span>Umsatzwachstum (10J)</span><b>6,1 %</b></div><div class="qk__r"><i>✓</i><span>Umsatzwachstum (3J)</span><b>5,8 %</b></div><div class="qk__r"><i>✓</i><span>EBIT-Wachstum (10J)</span><b>5,4 %</b></div><div class="qk__r qk__r--n"><i>✕</i><span>EBIT-Wachstum (3J)</span><b>−1,2 %</b></div><div class="qk__r"><i>✓</i><span>Nettoverschuldung/EBIT</span><b>1,1×</b></div><div class="qk__r qk__r--t"><i>✓</i><span>Gewinnkontinuität (10J)</span><b>Durchgehend positiv</b></div><div class="qk__r"><i>✓</i><span>EBIT-Drawdown max. (10J)</span><b>18,4 %</b></div><div class="qk__r"><i>✓</i><span>Eigenkapitalrendite (ROE)</span><b>17,2 %</b></div><div class="qk__r"><i>✓</i><span>Kapitalrendite (ROIC)</span><b>15,6 %</b></div><div class="qk__r qk__r--n"><i>✕</i><span>Renditeerwartung</span><b>7,8 %</b></div><div class="qk__r qk__r--n"><i>✕</i><span>Cash Conversion (FCF/NI)</span><b>64 %</b></div><div class="qk__r"><i>✓</i><span>Zinsdeckung (EBIT/Zins)</span><b>9,6×</b></div></div></div></div>
+      <div class="bigc"><h3>Fairer Wert</h3><p>Was das Unternehmen wert wäre, wenn deine Annahmen eintreten. Der Komposit Fairer Wert gewichtet DCF, KGV und EV/EBITDA.</p><details class="more"><summary><span>Mehr erfahren</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></summary><p>Kein einzelner Wert, sondern ein ausgewogenes Urteil aus drei Verfahren.</p></details><div class="inkst" aria-hidden="true"><div class="ink"><small>Komposit Fairer Wert</small><b>61,40 €</b><span>50 % DCF · 25 % KGV · 25 % EV/EBITDA</span></div><div class="vsk"><div class="vs"><div class="vs__r"><span class="vs__n">DCF</span><div class="vs__t"><i class="vs__p" style="left:41.33%"></i><i class="vs__d" style="left:79.33%"></i></div><span class="vs__v">63,80 €</span><span class="vs__w">50 %</span></div><div class="vs__r"><span class="vs__n">KGV</span><div class="vs__t"><i class="vs__p" style="left:41.33%"></i><i class="vs__d" style="left:54.00%"></i></div><span class="vs__v">56,20 €</span><span class="vs__w">25 %</span></div><div class="vs__r"><span class="vs__n">EV/EBITDA</span><div class="vs__t"><i class="vs__p" style="left:41.33%"></i><i class="vs__d" style="left:72.67%"></i></div><span class="vs__v">61,80 €</span><span class="vs__w">25 %</span></div><div class="vs__r"><span class="vs__n">DDM</span><div class="vs__t"><i class="vs__p" style="left:41.33%"></i><i class="vs__d vs__d--v" style="left:29.67%"></i></div><span class="vs__v">48,90 €</span><span class="vs__w">Vergleich</span></div><div class="vs__r vs__r--k"><span class="vs__n">Komposit Fairer Wert</span><div class="vs__t"><i class="vs__p" style="left:41.33%"></i><i class="vs__k2" style="left:71.33%"></i><i class="vs__k1" style="left:71.33%"></i></div><span class="vs__v">61,40 €</span><span class="vs__w"></span></div></div><div class="vs__ax"><div><span>40 €</span><span>70 €</span></div></div><div class="vs__lg"><span><i class="g"></i>gewichtet (Komposit)</span><span><i class="v"></i>Vergleich</span><span><i class="p"></i>Kurs 52,40 €</span></div></div></div></div>
     </div>
   </div>
 </section>
