@@ -571,11 +571,15 @@ html[data-hero="m"] .kv--hero[data-kv="c"]::before{background:linear-gradient(90
 .self2[data-v="c"] .ben>div:nth-child(3n) i{color:#2459D6}
 
 /* Handy */
-main{overflow-x:clip;background:#F7F8FA}
+main{overflow-x:clip}
 /* 27.11.2026: Statusleisten-Entscheidung endgültig.
-   body dauerhaft #070C10 (die hellen Abschnitte sitzen im hellen main),
-   dunkler Kopf bekommt den Verlauf von #070C10 oben ins Glas unten. */
+   body dauerhaft #070C10. Die hellen Abschnitte NACH dem Startbild sitzen in
+   einem eigenen Wrapper .homewrap (öffnet direkt nach </section.kv--hero>,
+   schließt direkt vor </main>) — main selbst bleibt ohne Hintergrund, damit
+   Safari am iPhone über dem Startbild keine helle Fläche sampelt.
+   Dunkler Kopf bekommt den Verlauf von #070C10 oben ins Glas unten. */
 body{background:#070C10}
+.homewrap{background:#F7F8FA}
 .gbn--dark{background-image:linear-gradient(180deg,#070C10 0%,rgba(7,12,16,0) 100%)}
 @media (max-width:719px){
   .nav__sep{display:none}
@@ -736,6 +740,7 @@ body{background:#070C10}
   </div>
 </section>
 
+<div class="homewrap">
 <section class="sec" id="workspace" style="padding-top:clamp(40px,5vw,72px)">
   <div class="wrap">
     <div class="stage" style="margin-top:0">
@@ -1103,6 +1108,7 @@ body{background:#070C10}
     </div>
   </div>
 </section>
+</div>
 
 
 </main>
