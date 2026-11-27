@@ -335,7 +335,20 @@ html[data-hero="m"] .kv[data-kv="c"]{--hero-img:image-set(url("assets/photo/work
 .kv[data-kv="c"] .btn--p{background:#ECEDEF;color:#0B0D10}
 .kv[data-kv="c"] .btn--s{background:transparent;color:#ECEDEF;border-color:#68707B}
 .kv--hero::before{background:linear-gradient(100deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,.3) 34%,rgba(255,255,255,0) 58%)}
-.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(11,13,16,.88) 0%,rgba(11,13,16,.66) 44%,rgba(11,13,16,.36) 60%,rgba(11,13,16,0) 72%)}
+/* 27.11.: Overlay-Farbe direkt aus den Bild-Schatten gemessen (rgb(7,12,16)), damit das Overlay in die Bildfarben übergeht */
+.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(7,12,16,.72) 0%,rgba(7,12,16,.50) 44%,rgba(7,12,16,.22) 60%,rgba(7,12,16,0) 72%)}
+/* Mann-Motiv: links deutlich kräftiger, weil das Bild dort mehr helle Spiegelungen zeigt */
+html[data-hero="m"] .kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(7,12,16,.95) 0%,rgba(7,12,16,.80) 44%,rgba(7,12,16,.40) 60%,rgba(7,12,16,0) 72%)}
+/* 27.11.: Luminanz-Film (reines Weiß, mix-blend-mode soft-light) lässt die hellen Stellen des Bildes (Glas-Spiegelungen, Himmel, Gesicht) sanft an- und abschwellen. Keine Farbverschiebung, keine Geometrie-Bewegung. Nur Desktop und nicht bei reduzierter Bewegung. */
+@media (min-width:1100px){
+  .kv--hero[data-kv="c"]{isolation:isolate}
+  .kv--hero[data-kv="c"]::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:rgba(255,255,255,.55);mix-blend-mode:soft-light;opacity:.6}
+  .kv--hero[data-kv="c"] .wrap{z-index:2}
+}
+@media (min-width:1100px) and (prefers-reduced-motion: no-preference){
+  .kv--hero[data-kv="c"]::after{animation:hero-breathe 11s ease-in-out infinite}
+}
+@keyframes hero-breathe{0%,100%{opacity:.2}50%{opacity:1}}
 .nav{background:rgba(247,248,250,.72)}
 .ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1px;background:var(--bd);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
 .ben>div{background:var(--bg);padding:28px 0;display:flex;flex-direction:column;gap:10px}
@@ -347,10 +360,10 @@ html[data-hero="m"] .kv[data-kv="c"]{--hero-img:image-set(url("assets/photo/work
   .kv--hero{min-height:900px;height:auto}
   .kv--hero[data-kv="a"]{background-position:66% bottom}
   .kv--hero[data-kv="b"]{background-position:70% center}
-  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0%,rgba(11,13,16,0) 30%,#0B0D10 50%,#0B0D10 100%),var(--hero-img);background-size:100% 100%,auto 70%;background-position:0 0,93% top;background-repeat:no-repeat;min-height:max(700px,100svh);align-items:flex-end}
+  .kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(7,12,16,0) 0%,rgba(7,12,16,0) 30%,#070C10 50%,#070C10 100%),var(--hero-img);background-size:100% 100%,auto 70%;background-position:0 0,93% top;background-repeat:no-repeat;min-height:max(700px,100svh);align-items:flex-end}
   .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:max(56px,calc(env(safe-area-inset-bottom,0px) + 40px))}
   .kv--hero::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 72%)}
-  .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0%,rgba(11,13,16,0) 22%)}
+  .kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(7,12,16,.45) 0%,rgba(7,12,16,0) 22%)}
   .kv--hero .wrap{padding-top:calc(var(--nav-h) + 40px)}
 }
 
@@ -636,8 +649,8 @@ main{overflow-x:clip}
 @media (max-width:1099px){.sct th:nth-child(2),.sct td:nth-child(2),.sct th:nth-child(4),.sct td:nth-child(4),.sct th:nth-child(5),.sct td:nth-child(5){display:none}}
 /* 15.11.: Hero 720 bis 1099 px: Bild oben ganz sichtbar, Text darunter */
 @media (min-width:720px) and (max-width:1099px){
-.kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(11,13,16,0) 0,rgba(11,13,16,0) calc(56.28vw * .55),#0B0D10 calc(56.28vw * .98)),var(--hero-img);background-size:100% 100%,100% auto;background-position:0 0,0 0;background-repeat:no-repeat;min-height:calc(56.28vw + 460px);align-items:flex-end}
-.kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(11,13,16,.45) 0,rgba(11,13,16,0) 120px)}
+.kv--hero[data-kv="c"]{background-image:linear-gradient(180deg,rgba(7,12,16,0) 0,rgba(7,12,16,0) calc(56.28vw * .55),#070C10 calc(56.28vw * .98)),var(--hero-img);background-size:100% 100%,100% auto;background-position:0 0,0 0;background-repeat:no-repeat;min-height:calc(56.28vw + 460px);align-items:flex-end}
+.kv--hero[data-kv="c"]::before{background:linear-gradient(180deg,rgba(7,12,16,.45) 0,rgba(7,12,16,0) 120px)}
 .kv--hero[data-kv="c"] .wrap{padding-top:0;padding-bottom:56px}
 .kvh h1{font-size:clamp(48px,7.4vw,68px)}
 }
