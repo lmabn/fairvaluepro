@@ -49,6 +49,10 @@
 
 /* Dunkel: über dunklem Untergrund */
 .gbn--dark{background:rgba(11,13,16,.55);border-bottom-color:rgba(255,255,255,.08);color:#ECEDEF}
+/* 27.11.2026 · ?sb=3 Experiment (nur Startseite, gesetzt in site-nav.js):
+   Oberkante des Kopfs in der Farbe der Statusleiste (#070C10, passt zu Hero und
+   Bildschatten), geht nach unten in das heutige Glas über. backdrop-filter bleibt. */
+.gbn--dark.gbn--sb3-top{background-image:linear-gradient(180deg,#070C10 0%,rgba(7,12,16,0) 100%)}
 .gbn--dark .gbn__sep{background:rgba(255,255,255,.16)}
 .gbn--dark .gbn__links>a,.gbn--dark .gbn__dd>a,.gbn--dark .gbn__r>a:not(.gbn__btn){color:#B9BCC0}
 .gbn--dark .gbn__links>a:hover,.gbn--dark .gbn__dd>a:hover,.gbn--dark .gbn__links [aria-current="page"],.gbn--dark .gbn__r>a:not(.gbn__btn):hover,.gbn--dark .gbn__r>a[aria-current="page"]{color:#ECEDEF}
