@@ -6,6 +6,16 @@
   if (!hdr || !menu) return;
   var burger = hdr.querySelector('.gbn__burger');
 
+  /* 27.11.2026: theme-color für die iPhone-Statusleiste mit dem Kopf mitführen.
+     #0B0D10 solange der Kopf dunkel ist (gbn--dark oder gbn-open-dark), sonst #F7F8FA.
+     Werte aus site-nav.css gelesen, nicht geschätzt. */
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function syncTheme() {
+    if (!themeMeta) return;
+    var dark = hdr.classList.contains('gbn--dark') || ROOT.classList.contains('gbn-open-dark');
+    themeMeta.setAttribute('content', dark ? '#0B0D10' : '#F7F8FA');
+  }
+
   function setOpen(o) {
     if (o) {
       /* Zustand der Kopfzeile im Moment des Öffnens einfrieren (Ludmila 15.11.2026):
@@ -16,6 +26,7 @@
     }
     ROOT.classList.toggle('gbn-open', o);
     burger.setAttribute('aria-expanded', String(o));
+    syncTheme();
   }
   burger.addEventListener('click', function () { setOpen(!ROOT.classList.contains('gbn-open')); });
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
@@ -47,7 +58,7 @@
     var b = lum(getComputedStyle(document.body).backgroundColor); return b !== null && b < .35;
   }
   var ticking = false;
-  function upd() { ticking = false; hdr.classList.toggle('gbn--dark', ground()); }
+  function upd() { ticking = false; hdr.classList.toggle('gbn--dark', ground()); syncTheme(); }
   addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
   addEventListener('resize', upd); addEventListener('load', upd);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', upd); else upd();
