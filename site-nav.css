@@ -49,10 +49,20 @@
 
 /* Dunkel: über dunklem Untergrund */
 .gbn--dark{background:rgba(11,13,16,.55);border-bottom-color:rgba(255,255,255,.08);color:#ECEDEF}
-/* 27.11.2026 · ?sb=3 Experiment (nur Startseite, gesetzt in site-nav.js):
+/* 27.11.2026 · ?sb=3/?sb=4 Experiment (nur Startseite, gesetzt in site-nav.js):
    Oberkante des Kopfs in der Farbe der Statusleiste (#070C10, passt zu Hero und
    Bildschatten), geht nach unten in das heutige Glas über. backdrop-filter bleibt. */
 .gbn--dark.gbn--sb3-top{background-image:linear-gradient(180deg,#070C10 0%,rgba(7,12,16,0) 100%)}
+/* 27.11.2026 · ?sb=5 Experiment (nur Startseite, Klasse html.sb5 aus site-nav.js):
+   body dauerhaft dunkel #070C10 (die hellen Abschnitte haben ihre eigene Farbe).
+   Dunkler Kopf arbeitet wie sb=3 (Glas + Gradient).
+   Heller Kopf am Handy (<=719px): deckend #F7F8FA ohne backdrop-filter, damit
+   Safari ihn als solides fixed Element erkennt und die Leiste hell macht.
+   Ab 720px bleibt das Glas, weil dort kein Safari-Statusleisten-Problem anliegt. */
+html.sb5,html.sb5 body{background:#070C10}
+@media (max-width:719px){
+  html.sb5 .gbn:not(.gbn--dark){background:#F7F8FA;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
 .gbn--dark .gbn__sep{background:rgba(255,255,255,.16)}
 .gbn--dark .gbn__links>a,.gbn--dark .gbn__dd>a,.gbn--dark .gbn__r>a:not(.gbn__btn){color:#B9BCC0}
 .gbn--dark .gbn__links>a:hover,.gbn--dark .gbn__dd>a:hover,.gbn--dark .gbn__links [aria-current="page"],.gbn--dark .gbn__r>a:not(.gbn__btn):hover,.gbn--dark .gbn__r>a[aria-current="page"]{color:#ECEDEF}
