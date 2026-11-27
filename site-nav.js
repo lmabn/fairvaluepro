@@ -10,10 +10,41 @@
      #0B0D10 solange der Kopf dunkel ist (gbn--dark oder gbn-open-dark), sonst #F7F8FA.
      Werte aus site-nav.css gelesen, nicht geschätzt. */
   var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  /* 27.11.2026 Experiment (Schritt 2) — nur auf der Startseite, nur per URL-Parameter.
+     Ohne Parameter bleibt die Seite exakt wie ohne dieses Stück Code.
+       ?sb=1 — fester Streifen oben, hinter dem Kopf, mit solider Farbe und ohne
+               backdrop-filter. Safari ab iOS 26 samplet ihn zur Färbung der
+               Statusleiste, weil die .gbn durch ihren backdrop-filter übersprungen
+               wird (Bug 319479). Mindesthöhe aus safari-color-tinting-Analyse:
+               mehr als 10 px, Breite > 90 % des Viewports, opak. Wir nehmen 60 px
+               Höhe (deckt alle iPhone-Statusleisten-Höhen 47–59 px) und z-index 40
+               unter dem Kopf (z-index 50), damit der Streifen vom Kopf überdeckt
+               wird und im Content nicht sichtbar wird.
+               Nicht betroffen von Bug 309956, weil kein body-background geändert.
+       ?sb=2 — Hintergrundfarbe des body mit dem Kopf mitführen. Safari samplet
+               laut Quellen body zuerst. Nebeneffekt auf der Startseite: .sec
+               (Haupt-Container) und .end--open / .end--wall haben keine eigene
+               bzw. transparente Hintergrundfarbe und werden sichtbar mit dem body
+               dunkel/hell. Zudem bekannt: Bug 309956 (iOS 26.4 beta) — body-
+               Farbwechsel per JS triggert nicht immer einen Statusleisten-Repaint.
+  */
+  var isHome = (location.pathname === '/' || location.pathname === '/index.html');
+  var SB = isHome ? new URLSearchParams(location.search).get('sb') : null;
+  var sbStripe = null;
+  if (SB === '1') {
+    sbStripe = document.createElement('div');
+    sbStripe.setAttribute('aria-hidden', 'true');
+    sbStripe.style.cssText = 'position:fixed;top:0;left:0;right:0;height:60px;z-index:40;pointer-events:none;background:#F7F8FA';
+    document.body.appendChild(sbStripe);
+  }
+
   function syncTheme() {
-    if (!themeMeta) return;
     var dark = hdr.classList.contains('gbn--dark') || ROOT.classList.contains('gbn-open-dark');
-    themeMeta.setAttribute('content', dark ? '#0B0D10' : '#F7F8FA');
+    var color = dark ? '#0B0D10' : '#F7F8FA';
+    if (themeMeta) themeMeta.setAttribute('content', color);
+    if (SB === '1' && sbStripe) sbStripe.style.background = color;
+    if (SB === '2') document.body.style.backgroundColor = color;
   }
 
   function setOpen(o) {
@@ -51,10 +82,13 @@
       if (hdr.contains(el) || menu.contains(el)) continue;
       for (var n = el; n && n !== ROOT; n = n.parentElement) {
         if (n.dataset && n.dataset.nav) return n.dataset.nav === 'dark';
+        /* Bei sb=2 ändern wir body-background selbst — darf nicht zurückgelesen werden */
+        if (SB === '2' && n === document.body) continue;
         var l = lum(getComputedStyle(n).backgroundColor); if (l !== null) return l < .35;
       }
       break;
     }
+    if (SB === '2') return false;
     var b = lum(getComputedStyle(document.body).backgroundColor); return b !== null && b < .35;
   }
   var ticking = false;
