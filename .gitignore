@@ -3,3 +3,6 @@
 # sie gehören nicht ins Git.
 /*-nachher.png
 /*-vorher.png
+
+# Lokaler Jekyll-Build für Vorschau-Tests; GitHub Pages baut selbst.
+/_site/
