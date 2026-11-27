@@ -48,6 +48,15 @@
                macht. Ab 720px bleibt das Glas. Nebenwirkung an mobilen
                Überrollen beobachten und melden (body-dunkel ist auch oben und
                unten sichtbar).
+       ?sb=6 — Weg 5 mit einer entscheidenden Änderung: .gbn--dark steht
+               schon im HTML (gesetzt vom Inline-Script in site-nav.html), so
+               dass der Kopf beim ersten Zeichnen dunkel mit backdrop-filter
+               ist. Damit sampelt Safari am iPhone beim initialen Status-
+               leisten-Rendering die dunkle Farbe und bleibt nicht wegen
+               Bug 309956 auf hell hängen, wie es bei sb=5 passierte. Ab dem
+               ersten upd() übernimmt wieder ground(); beim Zurückscrollen
+               nach oben wird gbn--dark neu gesetzt und der Kopf bekommt
+               wieder backdrop-filter.
   */
   var isHome = (location.pathname === '/' || location.pathname === '/index.html');
   var SB = isHome ? new URLSearchParams(location.search).get('sb') : null;
@@ -58,18 +67,20 @@
     sbStripe.style.cssText = 'position:fixed;top:0;left:0;right:0;height:60px;z-index:40;pointer-events:none;background:#F7F8FA';
     document.body.appendChild(sbStripe);
   }
-  if (SB === '5') {
+  if (SB === '5' || SB === '6') {
     /* body-Hintergrund dauerhaft dunkel, theme-color fest; syncTheme() macht
-       dann für sb=5 nichts mehr. CSS-Hänger in site-nav.css: html.sb5 {...} */
-    ROOT.classList.add('sb5');
+       dann für sb=5/6 nichts mehr. CSS-Hänger in site-nav.css: html.sb5 / html.sb6.
+       sb=6: Die Klasse gbn--dark steht schon im HTML (gesetzt im Include), ground()
+       und upd() übernehmen danach. */
+    ROOT.classList.add(SB === '6' ? 'sb6' : 'sb5');
     if (themeMeta) themeMeta.setAttribute('content', '#070C10');
   }
 
   function syncTheme() {
     var dark = hdr.classList.contains('gbn--dark') || ROOT.classList.contains('gbn-open-dark');
-    /* sb=5 erbt den Weg-3-Verlauf am dunklen Kopf; der Rest wird für sb=5 übersprungen */
-    if (SB === '3' || SB === '4' || SB === '5') hdr.classList.toggle('gbn--sb3-top', dark);
-    if (SB === '5') return;
+    /* sb=5/6 erben den Weg-3-Verlauf am dunklen Kopf; der Rest wird für sb=5/6 übersprungen */
+    if (SB === '3' || SB === '4' || SB === '5' || SB === '6') hdr.classList.toggle('gbn--sb3-top', dark);
+    if (SB === '5' || SB === '6') return;
     var color = dark ? '#0B0D10' : '#F7F8FA';
     if (themeMeta) themeMeta.setAttribute('content', color);
     if (SB === '1' && sbStripe) sbStripe.style.background = color;
@@ -135,12 +146,12 @@
       for (var n = el; n && n !== ROOT; n = n.parentElement) {
         if (n.dataset && n.dataset.nav) return n.dataset.nav === 'dark';
         /* Bei sb=2/3/4/5 ist body dunkel (gesetzt per JS oder CSS) — nicht zurücklesen */
-        if ((SB === '2' || SB === '3' || SB === '4' || SB === '5') && n === document.body) continue;
+        if ((SB === '2' || SB === '3' || SB === '4' || SB === '5' || SB === '6') && n === document.body) continue;
         var l = lum(getComputedStyle(n).backgroundColor); if (l !== null) return l < .35;
       }
       break;
     }
-    if (SB === '2' || SB === '3' || SB === '4' || SB === '5') return false;
+    if (SB === '2' || SB === '3' || SB === '4' || SB === '5' || SB === '6') return false;
     var b = lum(getComputedStyle(document.body).backgroundColor); return b !== null && b < .35;
   }
   var ticking = false;
