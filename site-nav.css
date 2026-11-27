@@ -64,11 +64,24 @@
    Ab 720px bleibt das Glas, weil dort kein Safari-Statusleisten-Problem anliegt.
    sb=6 unterscheidet sich von sb=5 nur dadurch, dass die Klasse gbn--dark
    schon im HTML gesetzt ist (siehe _includes/site-nav.html), damit das erste
-   Safari-Sampling die dunkle Farbe trifft (Bug 309956). */
-html.sb5,html.sb5 body,html.sb6,html.sb6 body{background:#070C10}
+   Safari-Sampling die dunkle Farbe trifft (Bug 309956).
+   sb=7/sb=8 fügen über dem Kopf einen festen Streifen .sbbar (z-index 60,
+   also über der .gbn:50) in deckender Farbe ohne backdrop-filter ein.
+   sb=7: Streifen dunkel, verschwindet über hellem Kopf — dort trägt der
+         deckende helle Kopf am Handy wie in sb=6.
+   sb=8: Streifen bleibt immer, wechselt die Farbe (dunkel/hell); heller
+         Kopf behält sein Glas wie heute. */
+html.sb5,html.sb5 body,html.sb6,html.sb6 body,html.sb7,html.sb7 body,html.sb8,html.sb8 body{background:#070C10}
 @media (max-width:719px){
-  html.sb5 .gbn:not(.gbn--dark),html.sb6 .gbn:not(.gbn--dark){background:#F7F8FA;-webkit-backdrop-filter:none;backdrop-filter:none}
+  html.sb5 .gbn:not(.gbn--dark),html.sb6 .gbn:not(.gbn--dark),html.sb7 .gbn:not(.gbn--dark){background:#F7F8FA;-webkit-backdrop-filter:none;backdrop-filter:none}
 }
+/* Fester Streifen über dem Kopf. Höhe 6px ist der Mindestwert, der in
+   WebKit-Praxisfällen reicht; wenn das Handy nicht sampelt, erhöht man ihn.
+   background-color (nicht -image), kein backdrop-filter, pointer-events:none. */
+.sbbar{position:fixed;top:0;left:0;right:0;height:6px;z-index:60;pointer-events:none;background:#070C10;display:none}
+html.sb7 .sbbar,html.sb8 .sbbar{display:block}
+html.sb7 .sbbar.sbbar--off{display:none}
+html.sb8 .sbbar.sbbar--light{background:#F7F8FA}
 .gbn--dark .gbn__sep{background:rgba(255,255,255,.16)}
 .gbn--dark .gbn__links>a,.gbn--dark .gbn__dd>a,.gbn--dark .gbn__r>a:not(.gbn__btn){color:#B9BCC0}
 .gbn--dark .gbn__links>a:hover,.gbn--dark .gbn__dd>a:hover,.gbn--dark .gbn__links [aria-current="page"],.gbn--dark .gbn__r>a:not(.gbn__btn):hover,.gbn--dark .gbn__r>a[aria-current="page"]{color:#ECEDEF}

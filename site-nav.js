@@ -57,6 +57,18 @@
                ersten upd() übernimmt wieder ground(); beim Zurückscrollen
                nach oben wird gbn--dark neu gesetzt und der Kopf bekommt
                wieder backdrop-filter.
+       ?sb=7 — Weg 6 plus ein fester Streifen (#sbbar) ÜBER dem Kopf
+               (z-index 60 > .gbn:50), 6px hoch, deckend, kein backdrop-
+               filter. Im dunklen Zustand #070C10 und sichtbar oben; im
+               hellen Zustand display:none, sodass der deckende helle Kopf
+               am Handy (sb=5/6/7-Media-Query) weiterwirkt. Hintergrund:
+               Safari sampelt am Hero wegen background-image nicht
+               (Bug 325446), der Streifen übernimmt das.
+       ?sb=8 — Streifen bleibt immer sichtbar und wechselt nur die Farbe
+               (#070C10 bei dunklem Kopf, #F7F8FA bei hellem). Der helle
+               Kopf am Handy behält sein Glas (keine Deckend-Regel). Der
+               Streifen steht beim ersten Paint schon im HTML in der
+               Startfarbe.
   */
   var isHome = (location.pathname === '/' || location.pathname === '/index.html');
   var SB = isHome ? new URLSearchParams(location.search).get('sb') : null;
@@ -67,20 +79,25 @@
     sbStripe.style.cssText = 'position:fixed;top:0;left:0;right:0;height:60px;z-index:40;pointer-events:none;background:#F7F8FA';
     document.body.appendChild(sbStripe);
   }
-  if (SB === '5' || SB === '6') {
+  if (SB === '5' || SB === '6' || SB === '7' || SB === '8') {
     /* body-Hintergrund dauerhaft dunkel, theme-color fest; syncTheme() macht
-       dann für sb=5/6 nichts mehr. CSS-Hänger in site-nav.css: html.sb5 / html.sb6.
-       sb=6: Die Klasse gbn--dark steht schon im HTML (gesetzt im Include), ground()
-       und upd() übernehmen danach. */
-    ROOT.classList.add(SB === '6' ? 'sb6' : 'sb5');
+       dann für sb=5-8 nichts mehr. CSS-Hänger in site-nav.css: html.sb5-sb8.
+       sb=6/7/8: Die Klasse gbn--dark + html.sbN steht schon im HTML (Include),
+       ground()/upd() übernehmen danach. sb=7/8 haben zusätzlich den #sbbar-Streifen. */
+    ROOT.classList.add('sb' + SB);
     if (themeMeta) themeMeta.setAttribute('content', '#070C10');
   }
+  var sbbar = (SB === '7' || SB === '8') ? document.getElementById('sbbar') : null;
 
   function syncTheme() {
     var dark = hdr.classList.contains('gbn--dark') || ROOT.classList.contains('gbn-open-dark');
-    /* sb=5/6 erben den Weg-3-Verlauf am dunklen Kopf; der Rest wird für sb=5/6 übersprungen */
-    if (SB === '3' || SB === '4' || SB === '5' || SB === '6') hdr.classList.toggle('gbn--sb3-top', dark);
-    if (SB === '5' || SB === '6') return;
+    /* sb=5-8 erben den Weg-3-Verlauf am dunklen Kopf; der Rest wird für sb=5-8 übersprungen */
+    if (SB === '3' || SB === '4' || SB === '5' || SB === '6' || SB === '7' || SB === '8') hdr.classList.toggle('gbn--sb3-top', dark);
+    /* sb=7: Streifen verschwindet im hellen Zustand (deckender heller Kopf trägt dann).
+       sb=8: Streifen bleibt, wechselt die Farbe dunkel/hell. */
+    if (SB === '7' && sbbar) sbbar.classList.toggle('sbbar--off', !dark);
+    if (SB === '8' && sbbar) sbbar.classList.toggle('sbbar--light', !dark);
+    if (SB === '5' || SB === '6' || SB === '7' || SB === '8') return;
     var color = dark ? '#0B0D10' : '#F7F8FA';
     if (themeMeta) themeMeta.setAttribute('content', color);
     if (SB === '1' && sbStripe) sbStripe.style.background = color;
@@ -146,12 +163,12 @@
       for (var n = el; n && n !== ROOT; n = n.parentElement) {
         if (n.dataset && n.dataset.nav) return n.dataset.nav === 'dark';
         /* Bei sb=2/3/4/5 ist body dunkel (gesetzt per JS oder CSS) — nicht zurücklesen */
-        if ((SB === '2' || SB === '3' || SB === '4' || SB === '5' || SB === '6') && n === document.body) continue;
+        if ((SB === '2' || SB === '3' || SB === '4' || SB === '5' || SB === '6' || SB === '7' || SB === '8') && n === document.body) continue;
         var l = lum(getComputedStyle(n).backgroundColor); if (l !== null) return l < .35;
       }
       break;
     }
-    if (SB === '2' || SB === '3' || SB === '4' || SB === '5' || SB === '6') return false;
+    if (SB === '2' || SB === '3' || SB === '4' || SB === '5' || SB === '6' || SB === '7' || SB === '8') return false;
     var b = lum(getComputedStyle(document.body).backgroundColor); return b !== null && b < .35;
   }
   var ticking = false;
