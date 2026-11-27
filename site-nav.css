@@ -13,6 +13,9 @@
 .gbn__in{max-width:1280px;margin:0 auto;height:var(--gbn-h);display:flex;align-items:center;gap:28px;
   padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 @media (min-width:1100px){.gbn__in{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+/* 27.11.2026 · Export Nr. 145 (Launch Plan 7.21): Kopf über die volle Breite,
+   max-width 1920px, 32px Rand. Greift ab 1280px und überschreibt die 1100er-Regel. */
+@media (min-width:1280px){.gbn__in{max-width:1920px;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
 .gbn a{text-decoration:none;color:inherit}
 .gbn__wm{display:inline-flex;align-items:center;flex:none;color:inherit}
 .gbn__wm svg{display:block;height:18px;width:auto;transform:translateY(1px)}
