@@ -337,8 +337,9 @@ html[data-hero="m"] .kv[data-kv="c"]{--hero-img:image-set(url("assets/photo/work
 .kv[data-kv="c"] .btn--p{background:#ECEDEF;color:#0B0D10}
 .kv[data-kv="c"] .btn--s{background:transparent;color:#ECEDEF;border-color:#68707B}
 .kv--hero::before{background:linear-gradient(100deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,.3) 34%,rgba(255,255,255,0) 58%)}
-/* 27.11.: Overlay-Farbe direkt aus den Bild-Schatten gemessen (rgb(7,12,16)), damit das Overlay in die Bildfarben übergeht */
-.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(7,12,16,.72) 0%,rgba(7,12,16,.50) 44%,rgba(7,12,16,.22) 60%,rgba(7,12,16,0) 72%)}
+/* 27.11.: Overlay-Farbe direkt aus den Bild-Schatten gemessen (rgb(7,12,16)), damit das Overlay in die Bildfarben übergeht
+   27.11. abends: etwas stärker gezogen, damit die helle Spiegelung im Fensterglas hinter dem Text nicht mehr stört */
+.kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(7,12,16,.85) 0%,rgba(7,12,16,.65) 44%,rgba(7,12,16,.30) 60%,rgba(7,12,16,0) 72%)}
 /* Mann-Motiv: links deutlich kräftiger, weil das Bild dort mehr helle Spiegelungen zeigt */
 html[data-hero="m"] .kv--hero[data-kv="c"]::before{background:linear-gradient(90deg,rgba(7,12,16,.95) 0%,rgba(7,12,16,.80) 44%,rgba(7,12,16,.40) 60%,rgba(7,12,16,0) 72%)}
 .nav{background:rgba(247,248,250,.72)}
