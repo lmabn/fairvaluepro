@@ -207,7 +207,8 @@ body.is-menu-open .nav .btn--p{background:#111317;color:#F7F8FA}
 @media (min-width:720px){ .facts>div{padding:32px 28px} .facts>div:first-child{padding-left:0} }
 
 /* Abschnitte */
-.sec{padding:var(--sec) 0}
+/* 27.11.2026: eigener Hintergrund, damit body nicht durchscheinen kann (sb=2/3 Weg). */
+.sec{padding:var(--sec) 0;background:#F7F8FA}
 .h2{margin:0;font-size:clamp(34px,5.4vw,60px);line-height:1.02;font-weight:600;letter-spacing:-.045em;text-wrap:balance}
 .lead{margin:0;font-size:18px;line-height:1.55;color:var(--t2);max-width:560px;text-wrap:pretty}
 .head{display:flex;flex-direction:column;gap:20px;margin-bottom:56px}
@@ -471,7 +472,7 @@ html[data-hero="m"] .kv--hero[data-kv="c"]::before{background:linear-gradient(90
 .halt__voices .lab{color:#9A9FA7}
 /* Gemeinsames dunkles Finale: Haltung, Stimmen, Abschluss (13.11., Probe) */
 .halt__end{position:relative;z-index:1;margin-top:clamp(72px,9vw,128px)}
-.end--open{background:transparent;border-radius:0;padding:clamp(56px,7vw,96px) 0 0;border-top:1px solid #262B33;overflow:visible}
+.end--open{background:#F7F8FA;border-radius:0;padding:clamp(56px,7vw,96px) 0 0;border-top:1px solid #262B33;overflow:visible}
 .end--open::after{right:-20%;top:-10%;width:90%;height:140%;background:radial-gradient(closest-side,rgba(46,229,157,.18),transparent),radial-gradient(closest-side at 70% 70%,rgba(91,140,255,.16),transparent)}
 @media (min-width:1100px){.end--open{padding:96px 0 0;min-height:0}}
 .halt{overflow:hidden}
@@ -481,7 +482,7 @@ html[data-hero="m"] .kv--hero[data-kv="c"]::before{background:linear-gradient(90
 .ctawall__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
 .ctawall__sh{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,13,16,.92) 0%,rgba(11,13,16,.72) 45%,rgba(11,13,16,.25) 100%),linear-gradient(0deg,rgba(11,13,16,.6),transparent 40%)}
 .ctawall .wrap{position:relative;z-index:1;width:100%}
-.end--wall{background:transparent;border-radius:0;padding:clamp(80px,10vw,140px) 0;overflow:visible}
+.end--wall{background:#F7F8FA;border-radius:0;padding:clamp(80px,10vw,140px) 0;overflow:visible}
 .end--wall::after{display:none}
 @media (min-width:1100px){.end--wall{padding:120px 0;min-height:0}}
 @media (max-width:719px){.ctawall__sh{background:linear-gradient(0deg,rgba(11,13,16,.95) 0%,rgba(11,13,16,.8) 55%,rgba(11,13,16,.45) 100%)}}

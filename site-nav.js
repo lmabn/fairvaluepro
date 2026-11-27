@@ -11,23 +11,24 @@
      Werte aus site-nav.css gelesen, nicht geschätzt. */
   var themeMeta = document.querySelector('meta[name="theme-color"]');
 
-  /* 27.11.2026 Experiment (Schritt 2) — nur auf der Startseite, nur per URL-Parameter.
+  /* 27.11.2026 Experiment — nur auf der Startseite, nur per URL-Parameter.
      Ohne Parameter bleibt die Seite exakt wie ohne dieses Stück Code.
-       ?sb=1 — fester Streifen oben, hinter dem Kopf, mit solider Farbe und ohne
-               backdrop-filter. Safari ab iOS 26 samplet ihn zur Färbung der
-               Statusleiste, weil die .gbn durch ihren backdrop-filter übersprungen
-               wird (Bug 319479). Mindesthöhe aus safari-color-tinting-Analyse:
-               mehr als 10 px, Breite > 90 % des Viewports, opak. Wir nehmen 60 px
-               Höhe (deckt alle iPhone-Statusleisten-Höhen 47–59 px) und z-index 40
-               unter dem Kopf (z-index 50), damit der Streifen vom Kopf überdeckt
-               wird und im Content nicht sichtbar wird.
-               Nicht betroffen von Bug 309956, weil kein body-background geändert.
+     Weg 1 (?sb=1) ist am iPhone wirkungslos (Statusleiste blieb hell) und fällt weg;
+     Code bleibt noch stehen für Rückvergleiche.
        ?sb=2 — Hintergrundfarbe des body mit dem Kopf mitführen. Safari samplet
-               laut Quellen body zuerst. Nebeneffekt auf der Startseite: .sec
-               (Haupt-Container) und .end--open / .end--wall haben keine eigene
-               bzw. transparente Hintergrundfarbe und werden sichtbar mit dem body
-               dunkel/hell. Zudem bekannt: Bug 309956 (iOS 26.4 beta) — body-
-               Farbwechsel per JS triggert nicht immer einen Statusleisten-Repaint.
+               laut Quellen body zuerst. Nebeneffekte reparieren: .sec, .end--open
+               und .end--wall bekommen einen eigenen Hintergrund, und ground()
+               liest body nicht mehr aus (siehe unten), damit der Kopf nicht
+               dunkel über einem hellen Abschnitt hängt.
+               Bekannter Zusatz: Bug 309956 (iOS 26.4 beta) — body-Farbwechsel
+               per JS triggert nicht immer einen Statusleisten-Repaint.
+       ?sb=3 — baut auf Weg 2 auf (body-Farbe mitführen, Nebeneffekte repariert).
+               Zusätzlich bekommt die .gbn im dunklen Zustand ein Gradient oben:
+               deckend #070C10 an der Oberkante, nach unten weich transparent.
+               So wirkt die Oberkante des Kopfs als Fortsetzung der Statusleiste
+               und das Glas (backdrop-filter) bleibt darunter sichtbar.
+               Farbwahl #070C10: passt zum Hero-Overlay und zum Bildschatten
+               (gemessen rgb(7,12,16) am linken Rand).
   */
   var isHome = (location.pathname === '/' || location.pathname === '/index.html');
   var SB = isHome ? new URLSearchParams(location.search).get('sb') : null;
@@ -44,7 +45,8 @@
     var color = dark ? '#0B0D10' : '#F7F8FA';
     if (themeMeta) themeMeta.setAttribute('content', color);
     if (SB === '1' && sbStripe) sbStripe.style.background = color;
-    if (SB === '2') document.body.style.backgroundColor = color;
+    if (SB === '2' || SB === '3') document.body.style.backgroundColor = color;
+    if (SB === '3') hdr.classList.toggle('gbn--sb3-top', dark);
   }
 
   function setOpen(o) {
@@ -82,13 +84,13 @@
       if (hdr.contains(el) || menu.contains(el)) continue;
       for (var n = el; n && n !== ROOT; n = n.parentElement) {
         if (n.dataset && n.dataset.nav) return n.dataset.nav === 'dark';
-        /* Bei sb=2 ändern wir body-background selbst — darf nicht zurückgelesen werden */
-        if (SB === '2' && n === document.body) continue;
+        /* Bei sb=2/3 ändern wir body-background selbst — darf nicht zurückgelesen werden */
+        if ((SB === '2' || SB === '3') && n === document.body) continue;
         var l = lum(getComputedStyle(n).backgroundColor); if (l !== null) return l < .35;
       }
       break;
     }
-    if (SB === '2') return false;
+    if (SB === '2' || SB === '3') return false;
     var b = lum(getComputedStyle(document.body).backgroundColor); return b !== null && b < .35;
   }
   var ticking = false;
