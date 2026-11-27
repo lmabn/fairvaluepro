@@ -580,7 +580,12 @@ main{overflow-x:clip}
    Dunkler Kopf bekommt den Verlauf von #070C10 oben ins Glas unten. */
 body{background:#070C10}
 .homewrap{background:#F7F8FA}
-.gbn--dark{background-image:linear-gradient(180deg,#070C10 0%,rgba(7,12,16,0) 100%)}
+/* Verlauf im dunklen Kopf nur auf der Startseite und nur wenn das Burger-Menü
+   geschlossen ist. Selektor mit #gbn gewinnt gegen .gbn--dark in site-nav.css
+   (dort setzt die background-Kurzschreibweise background-image auf none zurück).
+   Beim offenen Burger-Menü greift .gbn-open-dark .gbn aus site-nav.css und
+   zeigt den Kopf wieder deckend ohne Verlauf (gewünschter Zustand). */
+html:not(.gbn-open) #gbn.gbn--dark{background-image:linear-gradient(180deg,#070C10 0%,rgba(7,12,16,0) 100%)}
 @media (max-width:719px){
   .nav__sep{display:none}
   .nav .btn{height:36px;padding:0 12px;font-size:13px}
